@@ -28,7 +28,13 @@ const Slider: FunctionComponent = (): JSX.Element => {
     "slider22",
     "slider23",
     "slider24",
-    "slider25"
+    "slider25",
+    "slider26",
+    "slider27",
+    "slider28",
+    "slider29",
+    "slider30",
+    "slider31"
   ];
 
   return (

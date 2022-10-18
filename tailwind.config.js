@@ -64,6 +64,9 @@ module.exports = {
       animation: {
         reverseAnimation: "marquee 40s linear infinite",
       },
+      fontSize: {
+        xxs: "0.6rem"
+      }
     },
   },
   plugins: [],

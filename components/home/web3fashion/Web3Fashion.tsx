@@ -9,12 +9,12 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
 }): JSX.Element => {
   const { marqueeVariants, setShowImage, showImage } = useWeb3Fashion();
   return (
-    <div className="w-full h-[400vh] relative flex bg-offBlack">
+    <div className="w-full min-h-auto h-auto relative flex bg-offBlack">
       <div className="font-glitch w-72 h-fit absolute flex flex-col text-lightYellow text-lg leading-tight cursor-empireA z-10 top-0 left-20">
         Aires. I worked for many years in Branding and Web Design studios as Art
         Director and Lead Designer.
       </div>
-      <div className="h-full bg-offWhite w-full min-w-full top-11 relative z-0 cursor-empireA">
+      <div className="min-h-auto h-[400vh] bg-offWhite w-full min-w-full top-11 relative z-0 cursor-empireA left-0">
         <motion.div
           onClick={() => goShopping()}
           variants={marqueeVariants}
@@ -23,7 +23,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image priority src="/images/carts.gif" width={40} height={30} />
         </motion.div>
-        <div className="h-full w-screen absolute">
+        <div className="min-h-full h-full absolute w-screen min-w-screen">
           <Image
             priority
             src="/images/mtv2.png"
@@ -34,7 +34,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           />
         </div>
         <div
-          className="absolute w-full justify-center flex h-fit leading-tight top-96 mix-blend-hard-light text-[11rem] text-center align-center"
+          className="absolute w-full justify-center flex h-fit leading-tight top-72 mix-blend-hard-light text-[11rem] text-center align-center"
           id="want"
         >
           I WANT MY <br /> WEB3

@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
   return (
-    <div className="h-screen w-screen relative min-h-fit">
+    <div className="h-screen w-screen relative min-h-fit block clear-both">
       <div className="relative min-h-full top-0">
         <video
           className="absolute max-w-none h-[160vh] sm:min-h-full sm:h-[100vh] lg:w-full lg:h-full object-cover sm:right-auto -right-[35rem] -top-10"
@@ -12,7 +12,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
         >
           <source src="/videos/homevideo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute grid grid-rows-4 grid-flow-col auto-cols-3 w-full sm:w-auto h-[100vh] max-w-full sm:left-6 max-h-full gap-44">
+        <div className="absolute grid grid-rows-4 grid-flow-row w-full sm:w-auto h-[100vh] max-w-full sm:left-6 max-h-full gap-44">
           <div className="w-40 h-52 rounded-3xl bg-offBlue border-b-2 border-t-4 border-r-8 border-offBlue border-solid shadow-film shadow-rose-600 relative m-4 ml-8 cursor-empireS">
             <video
               autoPlay
