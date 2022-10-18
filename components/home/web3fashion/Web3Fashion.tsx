@@ -39,7 +39,6 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           I WANT MY <br /> WEB3
           <br /> FASHION
-          {/* <Image priority src="/images/wantmy.png" width={1400} height={550} /> */}
         </div>
         <div className="relative flex border-t-2 border-l-2 border-b-2 border-offWhite top-2/3 h-80 w-20 rounded-lg left-20 font-holo">
           <div className="top-0 absolute w-full">
