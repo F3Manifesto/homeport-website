@@ -66,6 +66,12 @@ module.exports = {
       },
       fontSize: {
         xxs: "0.6rem"
+      },
+      gridAutoRows: {
+        auto: 'auto auto'
+      },
+      gridAutoColumns: {
+        auto: 'auto auto'
       }
     },
   },

@@ -23,7 +23,7 @@ export type useCollectionsResult = {
   collectionFilter: string;
   styleSelect: string[];
   styleFilter: string;
-  handleSetOrderIRL: (e: any) => void
+  handleSetOrderIRL: (e: any) => void;
 };
 
 export type useWeb3FashionResults = {
@@ -60,7 +60,7 @@ export type marqueeVariants = {
 
 export type GalleryProps = {
   gallery: Gallery[];
-  handleSetOrderIRL: (e: any) => void
+  handleSetOrderIRL: (e: any) => void;
 };
 
 export type SearchProps = {
@@ -100,4 +100,16 @@ export type useFormResults = {
 
 export type FormProps = {
   orderIRL: string;
+};
+
+export type shoppingAnimate = {
+    x: number[],
+    transition: {
+      x: {
+        repeat: any,
+        repeatType: string,
+        duration: number,
+        ease: string,
+      },
+    },
 }
