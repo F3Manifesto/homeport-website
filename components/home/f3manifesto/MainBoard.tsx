@@ -32,11 +32,9 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                     return (
                       <div
                         key={index}
-                        className={`h-10 w-${
-                          widthArray[index]
-                        } relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
+                        className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
                           index + 1
-                        }`}
+                        } ${index === 0 && "w-full" || index === 1 && "w-10/12" || index === 2 && "w-8/12" || index === 3 && "w-6/12" || index === 4 && "w-4/12"}`}
                         onClick={viewMainImage}
                       >
                         <Image
