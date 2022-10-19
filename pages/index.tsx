@@ -23,7 +23,10 @@ const Home: NextPage = (): JSX.Element => {
         <meta name="description" content="CC0 Web3 Fashion" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="xl:min-h-screen min-h-full bg-offBlack">
       <VintageFilm />
+      </div>
+      
       <F3Manifesto />
       <Web3Fashion goShopping={goShopping} />
       <Collections shopping={shopping} />

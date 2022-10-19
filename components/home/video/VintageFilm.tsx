@@ -6,19 +6,16 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
   const isMounted = useRef<boolean>(false);
 
   useEffect(() => {
-    console.log(isMounted);
-    isMounted.current = true;
-    console.log(isMounted);
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
+    setTimeout(() => {
+      isMounted.current = true;
+    }, 3000)
+   
+    console.log(isMounted, "me");
+  },[]);
 
   return (
     <div
-      className={`${
-        isMounted ? "min-h-full h-full" : "min-h-screen h-screen"
-      }  min-w-full w-full relative block clear-both overflow-hidden bg-offBlack`}
+      className="min-w-full w-full h-full relative block clear-both overflow-hidden bg-offBlack"
     >
       <Sidebar />
       <div className="relative min-h-full h-full w-full">

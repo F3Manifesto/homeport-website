@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   
 
   return (
-    <div className="min-h-auto h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
+    <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
       <Component {...pageProps} />
       <Footer />
     </div>
