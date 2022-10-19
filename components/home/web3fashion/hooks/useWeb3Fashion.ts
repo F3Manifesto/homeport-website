@@ -53,8 +53,25 @@ const useWeb3Fashion = (): useWeb3FashionResults => {
     animate: animate,
   };
   const [showImage, setShowImage] = useState<string | undefined>();
+  const [imageState, setImageState] = useState<boolean>(false);
 
-  return { marqueeVariants, setShowImage, showImage };
+  const handleImageState = (e: any): void => {
+    console.log(imageState)
+    if (!imageState) {
+      setShowImage(undefined);
+    } else {
+      setShowImage(e);
+    }
+  };
+
+  return {
+    marqueeVariants,
+    setShowImage,
+    showImage,
+    handleImageState,
+    imageState,
+    setImageState,
+  };
 };
 
 export default useWeb3Fashion;

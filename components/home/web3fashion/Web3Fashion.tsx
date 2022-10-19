@@ -7,7 +7,14 @@ import { Web3FashionProps } from "./../../../types/general.types";
 const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   goShopping,
 }): JSX.Element => {
-  const { marqueeVariants, setShowImage, showImage } = useWeb3Fashion();
+  const {
+    marqueeVariants,
+    setShowImage,
+    showImage,
+    handleImageState,
+    imageState,
+    setImageState,
+  } = useWeb3Fashion();
   const videos: string[] = [
     "ZK CYPHERPUNK",
     "THE NAVIGATORS",
@@ -71,6 +78,10 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
                         onMouseOver={(e) =>
                           setShowImage((e.target as HTMLElement).innerText)
                         }
+                        onClick={(e) => {
+                          handleImageState((e.target as HTMLElement).innerText);
+                          setImageState(!imageState);
+                        }}
                         onMouseLeave={() => setShowImage(undefined)}
                       >
                         {video}
@@ -82,7 +93,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
             </div>
           </div>
           <div className="relative row-start-1 md:col-start-2">
-            {showImage && (
+            {(showImage || imageState) && (
               <div className="absolute rounded-lg h-80 w-72 sm:h-80 sm:w-96 border-4 border-offBlack  md:left-40 md:top-auto left-auto -top-96">
                 <video
                   className="object-cover w-full h-full"
