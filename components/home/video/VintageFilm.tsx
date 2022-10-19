@@ -4,6 +4,7 @@ import Shutter from "./Shutter";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
   return (
+    <div className="h-screen min-h-screen bg-black w-full min-w-full">
     <div className="min-h-full h-full min-w-full w-full relative block clear-both overflow-hidden">
       <Sidebar />
       <div className="relative min-h-full h-full w-full">
@@ -22,6 +23,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
           <Shutter />
         </div> */}
       </div>
+    </div>
     </div>
   );
 };

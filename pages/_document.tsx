@@ -4,7 +4,7 @@ import React from "react";
 class Document extends NextDocument {
   render() {
     return (
-      <Html>
+      <Html className="no-fouc">
         <Head>
           <meta property="og:url" content="https://f3manifesto.xyz/" />
           <meta property="og:title" content="F3Manifesto" />
@@ -114,9 +114,9 @@ class Document extends NextDocument {
           ></style>
         </Head>
         <body>
+        <script>0</script>
           <Main />
           <NextScript />
-          <script> </script>
         </body>
       </Html>
     );
