@@ -7,7 +7,7 @@ const usePreOrder = (): usePreOrderResults => {
   const getOrderItem = (): void => {
     if (typeof window !== "undefined") {
       const orderIRLItem: string | null = sessionStorage.getItem("orderIRL");
-      if (orderIRLItem) {
+      if (orderIRLItem && orderIRLItem !== undefined) {
         setOrderIRLChoice(orderIRLItem);
       } else {
         setOrderIRLChoice("");

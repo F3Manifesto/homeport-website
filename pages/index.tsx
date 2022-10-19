@@ -25,9 +25,8 @@ const Home: NextPage = (): JSX.Element => {
       </Head>
       <div className="xl:min-h-screen min-h-full bg-offBlack">
       <VintageFilm />
-      </div>
-      
       <F3Manifesto />
+      </div>
       <Web3Fashion goShopping={goShopping} />
       <Collections shopping={shopping} />
       <Poster />
