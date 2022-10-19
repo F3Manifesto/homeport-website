@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     scrollRestoration: true,
+    optimizeCss: true,
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if

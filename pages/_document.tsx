@@ -4,7 +4,7 @@ import React from "react";
 class Document extends NextDocument {
   render() {
     return (
-      <Html className="no-fouc">
+      <Html>
         <Head>
           <meta property="og:url" content="https://f3manifesto.xyz/" />
           <meta property="og:title" content="F3Manifesto" />
@@ -114,10 +114,16 @@ class Document extends NextDocument {
           ></style>
         </Head>
         <body>
-        <script>0</script>
+          <script>0</script>
           <Main />
           <NextScript />
         </body>
+        <div id="globalLoader">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            alt=""
+          />
+        </div>
       </Html>
     );
   }
