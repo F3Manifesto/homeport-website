@@ -127,3 +127,7 @@ export type SmallBoardProps = {
   newImages: string[] | undefined;
   mainImage: string | undefined;
 }
+
+export type usePreOrderResults = {
+  orderIRLChoice: string
+}
