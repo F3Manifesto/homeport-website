@@ -28,6 +28,9 @@ export type useCollectionsResult = {
 
 export type useWeb3FashionResults = {
   showImage: string | undefined;
+  handleImageState: (e: any) => void;
+  imageState: boolean;
+  setImageState: (e: boolean) => void;
   setShowImage: (e: string | undefined) => void;
   marqueeVariants: {
     animate: {
@@ -103,31 +106,31 @@ export type FormProps = {
 };
 
 export type shoppingAnimate = {
-    x: number[],
-    transition: {
-      x: {
-        repeat: any,
-        repeatType: string,
-        duration: number,
-        ease: string,
-      },
-    },
-}
+  x: number[];
+  transition: {
+    x: {
+      repeat: any;
+      repeatType: string;
+      duration: number;
+      ease: string;
+    };
+  };
+};
 
 export type MainBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
   newImages: string[] | undefined;
   mainImage: string | undefined;
-}
+};
 
 export type SmallBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
   newImages: string[] | undefined;
   mainImage: string | undefined;
-}
+};
 
 export type usePreOrderResults = {
-  orderIRLChoice: string
-}
+  orderIRLChoice: string;
+};
