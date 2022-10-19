@@ -28,6 +28,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <div className="min-h-full h-fit relative grid auto-rows-[auto auto] grid-flow-row gap-4 w-full min-w-full">
                 {newImages &&
                   newImages.map((image: string, index: number) => {
+                    console.log( widthArray[index])
                     return (
                       <div
                         key={index}

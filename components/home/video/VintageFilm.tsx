@@ -4,9 +4,15 @@ import Shutter from "./Shutter";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
 
+//   let vid: any = document.getElementById("lanvideo");
+//   vid.onloadeddata = function() {
+//   alert("Browser has loaded the current frame");
+// };
+
   return (
     <div
       className="min-w-full w-full h-full relative block clear-both overflow-hidden bg-offBlack"
+      id="lanvideo"
     >
       <Sidebar />
       <div className="relative min-h-full h-full w-full">
