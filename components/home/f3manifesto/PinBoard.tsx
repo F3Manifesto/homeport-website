@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const PinBoard = (): JSX.Element => {
   return (
-    <div className="w-[23vw] xl:w-2/12 bg-gradient-to-r from-grad1 via-grad2 to-grad3 h-full absolute right-0 border-2 border-borderBlue col-start-2">
+    <div className="w-[23vw] xl:w-2/12 bg-gradient-to-r from-grad1 via-grad2 to-grad3 h-full absolute right-0 border-2 border-borderBlue col-start-2 overflow-x-hidden">
       <div className="relative text-lightYellow font-fira text-xs whitespace-nowrap">
         01000001 01001001 00100000 01100110 01101111 01110010{" "}
       </div>

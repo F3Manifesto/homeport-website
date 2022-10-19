@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     //       //      // ////////  //      // //   ///////   //      /// `);
   }, []);
   return (
-    <div className="min-h-auto h-auto min-w-screen bg-black relative cursor-empire overflow-x-hidden selection:bg-lightYellow selection:text-lightYellow">
+    <div className="min-h-auto h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
       <Provider store={store}>
         <Sidebar />
         <Component {...pageProps} />

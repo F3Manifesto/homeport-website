@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
   return (
-    <div className="h-screen w-screen relative min-h-fit block clear-both">
+    <div className="h-screen w-screen relative min-h-fit block clear-both overflow-hidden">
       <div className="relative min-h-full top-0">
         <video
           className="absolute max-w-none h-[160vh] sm:min-h-full sm:h-[100vh] lg:w-full lg:h-full object-cover sm:right-auto -right-[35rem] -top-10"
