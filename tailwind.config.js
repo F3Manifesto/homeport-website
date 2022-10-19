@@ -75,7 +75,8 @@ module.exports = {
       },
       screens: { 
         midi: "1140px",
-        half: "900px"
+        half: "900px",
+        alm: "740px"
       }
     },
   },

@@ -113,3 +113,17 @@ export type shoppingAnimate = {
       },
     },
 }
+
+export type MainBoardProps = {
+  refreshImages: () => void;
+  viewMainImage: (e: any) => void;
+  newImages: string[] | undefined;
+  mainImage: string | undefined;
+}
+
+export type SmallBoardProps = {
+  refreshImages: () => void;
+  viewMainImage: (e: any) => void;
+  newImages: string[] | undefined;
+  mainImage: string | undefined;
+}

@@ -17,9 +17,9 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   ];
   return (
     <div className="w-full min-h-auto h-auto relative flex bg-offBlack overflow-hidden">
-      <div className="font-glitch w-96 xl:w-72 h-fit absolute flex flex-col text-lightYellow text-base md:text-lg leading-tight cursor-empireA z-10 top-0 left-20">
-        Aires. I worked for many years in Branding and Web Design studios as Art
-        Director and Lead Designer.
+      <div className="font-glitch w-fit sm:w-80 half:w-96 xl:w-72 h-fit absolute inline-table flex-col text-lightYellow text-base md:text-lg leading-loose cursor-empireA z-10 top-0 left-0 half:left-20">
+        these looks are devices tailor made from the fabric stuff of web3
+        <em className="font-air">,</em> for electric collections.
       </div>
       <div className="min-h-auto h-[400vh] bg-offWhite w-full min-w-full top-11 relative z-0 cursor-empireA left-0">
         <motion.div
