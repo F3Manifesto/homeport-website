@@ -132,9 +132,6 @@ class Document extends NextDocument {
           <Main />
           <NextScript />
         </body>
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
       </Html>
     );
   }
