@@ -99,7 +99,7 @@ export type useFormResults = {
 };
 
 export type FormProps = {
-  orderIRL: string;
+  orderIRL: any;
 };
 
 export type shoppingAnimate = {

@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import Footer from "../components/layout/Footer";
 import { Provider } from "react-redux";
 import store from "./../store/store";
+import { useSelector } from "react-redux";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useMemo(() => {
@@ -50,10 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <div className="min-h-auto h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
-      <Provider store={store}>
         <Component {...pageProps} />
         <Footer />
-      </Provider>
     </div>
   );
 }

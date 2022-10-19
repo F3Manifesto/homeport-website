@@ -58,6 +58,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
                     className={`relative w-fit h-fit row-start-${
                       index + 1
                     } justify-self-start`}
+                    key={index}
                   >
                     <div className="grid auto-cols-[auto auto] grid-flow-col relative gap-2 h-fit w-fit">
                       <hr

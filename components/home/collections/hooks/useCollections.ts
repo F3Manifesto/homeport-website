@@ -4,7 +4,6 @@ import {
   useCollectionsResult,
 } from "./../../../../types/general.types";
 import tokens from "./../../../../pages/api/tokens.json";
-import { useDispatch } from "react-redux";
 
 const useCollections = (): useCollectionsResult => {
   const [gallery, setGallery] = useState<Gallery[]>(tokens.slice(0, 9));
@@ -15,7 +14,6 @@ const useCollections = (): useCollectionsResult => {
   const [clickedStyle, setClickedStyle] = useState<boolean>(false);
   const [collectionSelect, setCollectionSelect] = useState<string[]>([]);
   const [styleSelect, setStyleSelect] = useState<string[]>([]);
-  const dispatch = useDispatch();
 
   const filterCollections = (e: any): void => {
     setCollectionFilter(e.target.name);
@@ -51,9 +49,7 @@ const useCollections = (): useCollectionsResult => {
 
   const handleSetOrderIRL = (e: any): void => {
     const order: string = e.target.name;
-    console.log(order)
-    console.log('clicking')
-    dispatch({ type: "ORDER_SELECTED", order });
+    sessionStorage.setItem("orderIRL", order);
   };
 
   const filterGallery = (): void => {

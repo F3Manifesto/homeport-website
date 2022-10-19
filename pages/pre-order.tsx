@@ -2,11 +2,12 @@ import type { NextPage } from "next";
 import { AiFillBackward } from "react-icons/ai";
 import Link from "next/link";
 import Form from "../components/preorders/Form";
-import { useSelector } from "react-redux";
 import Sidebar from "../components/layout/Sidebar";
+import { useMemo } from "react";
+import usePreOrder from "./hooks/usePreOrder";
 
 const PreOrder: NextPage = (): JSX.Element => {
-  const orderIRL = useSelector((state: any) => state.orderObject?.order);
+  const { orderIRLChoice } = usePreOrder();
 
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
@@ -37,8 +38,8 @@ const PreOrder: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
-            {orderIRL ? (
-              <Form orderIRL={orderIRL} />
+            { orderIRLChoice !== "" ? (
+              <Form orderIRL={orderIRLChoice} />
             ) : (
               <Link href={"/#shopping"}>
                 <div className="relative text-offWhite font-fira text-lg cursor-empireS hover:text-lightYellow h-fit w-fit">
