@@ -16,7 +16,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   }
   return (
     <div className="relative min-h-max h-max w-full flex">
-      <div className="relative w-full grid grid-cols-3 h-max grid-flow-row gap-4 items-center mb-10">
+      <div className="relative w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-max grid-flow-row gap-4 items-center mb-10">
         {gallery?.map((token: Gallery, key: number) => {
           return (
             <div

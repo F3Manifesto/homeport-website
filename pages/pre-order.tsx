@@ -8,7 +8,7 @@ const PreOrder: NextPage = (): JSX.Element => {
   const orderIRL = useSelector((state: any) => state.orderObject?.order);
 
   return (
-    <div className="h-fit min-h-screen min-w-screen bg-black relative cursor-empire overflow-x-hidden selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
+    <div className="min-h-auto h-auto min-w-screen bg-black relative cursor-empire overflow-x-hidden selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <Link href={"/"}>
         <div className="text-offWhite font-fira left-7 absolute top-7 opacity-80 hover:opacity-20 cursor-empireS">
           <AiFillBackward

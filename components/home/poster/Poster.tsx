@@ -12,32 +12,41 @@ const Poster: FunctionComponent = (): JSX.Element => {
           width={512}
           layout="fill"
           objectFit="cover"
+          objectPosition={"left"}
         />
       </div>
-      <div className="w-fit h-fit absolute bottom-20 right-20 grid grid-rows-2 grid-flow-col gap-6">
-        <div className="h-80 w-80 border border-lightYellow relative col-start-2 row-start-2">
-          <Image
-            src="/images/croquis/croq2.png"
-            priority
-            objectFit="cover"
-            layout="fill"
-          />
-        </div>
-        <div className="h-80 w-80 border border-lightYellow relative col-start-1 row-start-2">
-          <Image
-            src="/images/croquis/croq1.png"
-            priority
-            objectFit="cover"
-            layout="fill"
-          />
-        </div>
-        <div className="h-80 w-80 border border-lightYellow relative col-start-2 row-start-1">
-          <Image
-            src="/images/croquis/croq3.png"
-            priority
-            objectFit="cover"
-            layout="fill"
-          />
+      <div className="relative w-full max-h-fit">
+        <div className="w-fit right-6 min-h-fit absolute bottom-20 justify-items-end justify-content-end grid auto-rows-[auto auto] grid-flow-col gap-6">
+          <div className="relative col-start-1 md:col-start-2 md:row-start-2 row-start-3 w-fit h-fit self-end">
+            <div className="h-80 w-80 border border-lightYellow relative">
+              <Image
+                src="/images/croquis/croq2.png"
+                priority
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+          </div>
+          <div className="relative col-start-1 row-start-2 w-fit h-fit self-end">
+            <div className="h-80 w-80 border border-lightYellow relative">
+              <Image
+                src="/images/croquis/croq1.png"
+                priority
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+          </div>
+          <div className="relative col-start-1 md:col-start-2 row-start-1 w-fit h-fit self-end">
+            <div className="h-80 w-80 border border-lightYellow relative ">
+              <Image
+                src="/images/croquis/croq3.png"
+                priority
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           </div>
           <div className="relative row-start-1 md:col-start-2">
             {showImage && (
-              <div className="absolute rounded-lg h-80 w-96 border-4 border-offBlack  md:left-40 md:top-auto left-auto -top-96">
+              <div className="absolute rounded-lg h-80 w-72 sm:h-80 sm:w-96 border-4 border-offBlack  md:left-40 md:top-auto left-auto -top-96">
                 <video
                   className="object-cover w-full h-full"
                   autoPlay
