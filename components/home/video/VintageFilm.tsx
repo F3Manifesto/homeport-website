@@ -1,17 +1,8 @@
-import { FunctionComponent, useEffect, useRef } from "react";
+import { FunctionComponent } from "react";
 import Sidebar from "../../layout/Sidebar";
 import Shutter from "./Shutter";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
-  const isMounted = useRef<boolean>(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      isMounted.current = true;
-    }, 3000)
-   
-    console.log(isMounted, "me");
-  },[]);
 
   return (
     <div
