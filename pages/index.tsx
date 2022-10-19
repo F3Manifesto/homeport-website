@@ -17,7 +17,7 @@ const Home: NextPage = (): JSX.Element => {
   };
 
   return (
-    <div id="cursor" className="min-h-auto min-h-auto">
+    <div id="cursor" className="flex flex-col min-h-screen h-fit min-w-screen">
       <Head>
         <title>F3Manifesto</title>
         <meta name="description" content="CC0 Web3 Fashion" />

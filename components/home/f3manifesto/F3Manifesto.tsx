@@ -9,7 +9,7 @@ const F3Manifesto: FunctionComponent = (): JSX.Element => {
     useF3Manifesto();
   const widthArray: string[] = ["full", "10/12", "8/12", "6/12", "4/12"];
   return (
-    <div className="w-full h-auto min-h-full relative flex flex-col cursor-empireA clear-both">
+    <div className="w-full relative flex flex-col cursor-empireA clear-both flex min-h-full h-fit min-w-screen overflow-hidden">
       <div className="relative grid auto-cols-[auto auto] w-full min-h-auto h-auto">
         <div className="w-[74vw] xl:w-4/5 bg-offWhite min-h-[85vh] h-[85vvh] relative left-0 col-start-1">
           <div className="font-emiken w-fit text-[8vw] xl:text-[9vw] h-fit relative grid auto-cols-[auto auto] grid-flow-col gap-1 pt-1 pl-3">
