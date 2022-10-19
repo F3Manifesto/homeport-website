@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { usePreOrderResults } from "../../types/general.types";
+import { usePreOrderResults } from "../../../types/general.types";
 
 const usePreOrder = (): usePreOrderResults => {
   const [orderIRLChoice, setOrderIRLChoice] = useState<string>("");

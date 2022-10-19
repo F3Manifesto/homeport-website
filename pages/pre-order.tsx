@@ -3,8 +3,7 @@ import { AiFillBackward } from "react-icons/ai";
 import Link from "next/link";
 import Form from "../components/preorders/Form";
 import Sidebar from "../components/layout/Sidebar";
-import { useMemo } from "react";
-import usePreOrder from "./hooks/usePreOrder";
+import usePreOrder from "../components/preorders/hooks/usePreOrder";
 
 const PreOrder: NextPage = (): JSX.Element => {
   const { orderIRLChoice } = usePreOrder();
@@ -38,7 +37,7 @@ const PreOrder: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
-            { orderIRLChoice !== "" ? (
+            {orderIRLChoice !== "" ? (
               <Form orderIRL={orderIRLChoice} />
             ) : (
               <Link href={"/#shopping"}>
