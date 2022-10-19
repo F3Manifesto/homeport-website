@@ -2,9 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useMemo } from "react";
 import Footer from "../components/layout/Footer";
-import { Provider } from "react-redux";
-import store from "./../store/store";
-import { useSelector } from "react-redux";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useMemo(() => {
