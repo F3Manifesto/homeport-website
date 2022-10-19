@@ -5,8 +5,8 @@ import useLayout from "./hooks/useLayout";
 const Sidebar: FunctionComponent = (): JSX.Element => {
   const { clicked, setClicked } = useLayout();
   return (
-    <div className="h-fit min-h-screen sm:min-h-screen sm:h-fit absolute w-40 right-0 flex justify-end z-30">
-      <div className="relative auto-rows-[auto auto] grid-flow-row h-full min-h-screen w-fit justify-between content-between grid pr-4 pt-6 pb-6">
+    <div className="min-h-full h-full absolute w-40 right-0 flex justify-end z-30">
+      <div className="relative auto-rows-[auto auto] grid-flow-row h-full min-h-full w-fit justify-between content-between grid pr-4 pt-6 pb-6">
         <div className="relative w-fit row-start-1 h-full place-self-end">
           <div
             className="cursor-empireS relative"
@@ -15,7 +15,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
             <Image width={50} height={40} src="/images/heartbar.gif" priority />
           </div>
           {clicked && (
-            <div className="absolute text-base font-alber text-offWhite text-right">
+            <div className="absolute text-base font-alber text-offWhite text-right -top-2 right-16 sm:right-3 sm:top-auto">
               Did you <br />
               expect this <br />
               to go somewhere?

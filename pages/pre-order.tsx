@@ -3,6 +3,7 @@ import { AiFillBackward } from "react-icons/ai";
 import Link from "next/link";
 import Form from "../components/preorders/Form";
 import { useSelector } from "react-redux";
+import Sidebar from "../components/layout/Sidebar";
 
 const PreOrder: NextPage = (): JSX.Element => {
   const orderIRL = useSelector((state: any) => state.orderObject?.order);
@@ -10,6 +11,7 @@ const PreOrder: NextPage = (): JSX.Element => {
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
+        <Sidebar />
         <div className="relative grid auto-rows-[auto auto] grid-flow-row w-full h-fit gap-3 justify-center">
           <Link href={"/"}>
             <div className="text-offWhite font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1">
