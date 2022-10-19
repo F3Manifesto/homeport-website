@@ -17,16 +17,19 @@ const Home: NextPage = (): JSX.Element => {
   };
 
   return (
-    <div id="cursor" className="flex flex-col min-h-screen bg-offBlack h-full min-w-screen">
+    <div
+      id="cursor"
+      className="flex flex-col min-h-screen bg-offBlack h-full min-w-screen"
+    >
       <Head>
         <title>F3Manifesto</title>
         <meta name="description" content="CC0 Web3 Fashion" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="xl:min-h-screen min-h-full bg-offBlack">
+
       <VintageFilm />
       <F3Manifesto />
-      </div>
+
       <Web3Fashion goShopping={goShopping} />
       <Collections shopping={shopping} />
       <Poster />

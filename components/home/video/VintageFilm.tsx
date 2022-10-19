@@ -11,7 +11,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
 
   return (
     <div
-      className="min-w-full w-full h-full relative block clear-both overflow-hidden bg-offBlack"
+      className="min-w-full min-h-[100vh] w-full h-full relative block clear-both overflow-hidden bg-offBlack"
       id="lanvideo"
     >
       <Sidebar />
