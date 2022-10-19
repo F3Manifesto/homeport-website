@@ -17,7 +17,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   ];
   return (
     <div className="w-full min-h-auto h-auto relative flex bg-offBlack overflow-hidden">
-      <div className="font-glitch w-72 h-fit absolute flex flex-col text-lightYellow text-lg leading-tight cursor-empireA z-10 top-0 left-20">
+      <div className="font-glitch w-96 xl:w-72 h-fit absolute flex flex-col text-lightYellow text-base md:text-lg leading-tight cursor-empireA z-10 top-0 left-20">
         Aires. I worked for many years in Branding and Web Design studios as Art
         Director and Lead Designer.
       </div>

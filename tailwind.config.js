@@ -72,6 +72,10 @@ module.exports = {
       },
       gridAutoColumns: {
         auto: 'auto auto'
+      },
+      screens: { 
+        midi: "1140px",
+        half: "900px"
       }
     },
   },
