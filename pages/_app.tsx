@@ -1,25 +1,11 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useMemo, useRef,  } from "react";
+import { useEffect, useMemo} from "react";
 import Footer from "../components/layout/Footer";
-import Router, { useRouter } from "next/router";
-import { useTransitionFix } from "./_transition";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  // const fakeRequest = () => {
-  //   return new Promise<void>(resolve => setTimeout(() => resolve(), 2500));
-  // };
-
-  // const componentDidMount = () => {
-  //   fakeRequest().then(() => {
-  //     const el = document.querySelector(".loader-container");
-  //     if (el) {
-  //       el.remove(); 
-  //       console.log("here") // removing the spinner element
-  //     }
-  //   });
-  // }
   useMemo(() => {
     console.log(` **                                                                 
     /**                                                                 
