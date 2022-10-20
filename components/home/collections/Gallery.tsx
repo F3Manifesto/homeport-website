@@ -29,7 +29,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({ gallery }): JSX.Element => {
                 <Image
                   priority
                   placeholder="blur"
-                  blurDataURL={`/images/blurred/${token.name}.png`}
+                  blurDataURL={token.blurred}
                   objectFit="cover"
                   layout="fill"
                   objectPosition="top"
