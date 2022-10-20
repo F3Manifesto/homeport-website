@@ -131,7 +131,6 @@ class Document extends NextDocument {
           <script>0</script>
           <Main />
           <NextScript />
-          <script type="text/javascript" src="js/quiz.js"></script>
         </body>
       </Html>
     );
