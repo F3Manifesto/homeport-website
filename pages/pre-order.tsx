@@ -8,7 +8,6 @@ import { GlobalContext } from "./_app";
 
 const PreOrder: NextPage = (): JSX.Element => {
   const { orderIRL } = useContext(GlobalContext);
-  console.log(orderIRL)
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <div className="flex flex-col w-full flex-auto h-full min-h-full">

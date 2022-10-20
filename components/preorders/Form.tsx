@@ -11,7 +11,6 @@ const Form: FunctionComponent<FormProps> = ({ orderIRL }): JSX.Element => {
       }, 4000);
     }
   }, [submitSuccess]);
-  console.log(orderIRL)
   return (
     <form
       onSubmit={(e) => handleSubmitForm(e)}
