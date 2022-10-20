@@ -30,6 +30,7 @@ const Home: NextPage = (): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:site_name" content="F3M" />
         <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <VintageFilm />
