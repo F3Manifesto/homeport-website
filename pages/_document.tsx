@@ -12,13 +12,13 @@ class Document extends NextDocument {
           <meta name="og:image" content="" />
           <meta name="twitter:card" content="summary" />
           <meta name="og:url" content="https://f3manifesto.xyz/" />
-          <meta name="og:image" content="https://f3manifesto.xyz/images/card.png/" />
+          <meta name="og:image" content="https://f3manifesto.xyz/card.png/" />
           <meta name="twitter:card" content="summary_regular_image" />
           <meta name="twitter:site" content="@f3manifesto" />
           <meta name="twitter:creator" content="@f3manifesto" />
           <meta
             name="twitter:image"
-            content="https://f3manifesto.xyz/card.png/images/card.png/"
+            content="https://f3manifesto.xyz/card.png/card.png/"
           />
           <meta name="twitter:url" content="https://f3manifesto.xyz/" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
