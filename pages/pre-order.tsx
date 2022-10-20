@@ -3,10 +3,11 @@ import { AiFillBackward } from "react-icons/ai";
 import Link from "next/link";
 import Form from "../components/preorders/Form";
 import Sidebar from "../components/layout/Sidebar";
-import usePreOrder from "../components/preorders/hooks/usePreOrder";
+import { useContext } from "react";
+import { GlobalContext } from "./_app";
 
 const PreOrder: NextPage = (): JSX.Element => {
-  const { orderIRLChoice } = usePreOrder();
+  const { orderIRL } = useContext(GlobalContext);
 
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
@@ -37,8 +38,8 @@ const PreOrder: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
-            {orderIRLChoice !== "" ? (
-              <Form orderIRL={orderIRLChoice} />
+            {orderIRL !== "" || !orderIRL ? (
+              <Form orderIRL={orderIRL} />
             ) : (
               <Link href={"/#shopping"}>
                 <div className="relative text-offWhite font-fira text-lg cursor-empireS hover:text-lightYellow h-fit w-fit">

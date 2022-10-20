@@ -47,11 +47,6 @@ const useCollections = (): useCollectionsResult => {
     setNameInput(e.target.value);
   };
 
-  const handleSetOrderIRL = (e: any): void => {
-    const order: string = e.target.name;
-    sessionStorage.setItem("orderIRL", order);
-  };
-
   const filterGallery = (): void => {
     let filteredGallery: Gallery[] = [];
 
@@ -109,7 +104,6 @@ const useCollections = (): useCollectionsResult => {
     collectionFilter,
     styleSelect,
     styleFilter,
-    handleSetOrderIRL,
   };
 };
 

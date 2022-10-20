@@ -23,7 +23,6 @@ export type useCollectionsResult = {
   collectionFilter: string;
   styleSelect: string[];
   styleFilter: string;
-  handleSetOrderIRL: (e: any) => void;
 };
 
 export type useWeb3FashionResults = {
@@ -63,7 +62,6 @@ export type marqueeVariants = {
 
 export type GalleryProps = {
   gallery: Gallery[];
-  handleSetOrderIRL: (e: any) => void;
 };
 
 export type SearchProps = {

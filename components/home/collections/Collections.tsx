@@ -12,7 +12,6 @@ const Collections: FunctionComponent<CollectionProps> = ({shopping}): JSX.Elemen
     filterStyle,
     collectionSelect,
     styleSelect,
-    handleSetOrderIRL
   } = useCollections();
   return (
     <div
@@ -29,7 +28,7 @@ const Collections: FunctionComponent<CollectionProps> = ({shopping}): JSX.Elemen
           filterCollections={filterCollections}
           filterName={filterName}
         />
-        <Gallery gallery={gallery} handleSetOrderIRL={handleSetOrderIRL} />
+        <Gallery gallery={gallery} />
       </div>
     </div>
   );
