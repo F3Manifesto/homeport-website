@@ -57,7 +57,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
           >
             <Image
               width={50}
-              height={20}
+              height={17}
               src="/images/f3mstatic.gif"
               priority
               blurDataURL="base64"
@@ -72,7 +72,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
           >
             <Image
               width={35}
-              height={13}
+              height={11}
               src="/images/f3mstatic.gif"
               priority
               blurDataURL="base64"
