@@ -28,6 +28,8 @@ const Home: NextPage = (): JSX.Element => {
         <title>F3Manifesto</title>
         <meta name="description" content="CC0 Web3 Fashion" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:site_name" content="F3M" />
+        <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
       </Head>
 
       <VintageFilm />

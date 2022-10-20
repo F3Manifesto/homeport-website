@@ -22,6 +22,7 @@ class Document extends NextDocument {
           />
           <meta name="twitter:url" content="https://f3manifesto.xyz/" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="canonical" href="https://f3manifesto.xyz/" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
