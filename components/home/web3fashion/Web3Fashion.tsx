@@ -107,6 +107,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
                   className="object-cover w-full h-full"
                   autoPlay
                   loop
+                  placeholder="blur"
                   muted
                 >
                   <source src={`/videos/cyphers/${showImage}.mp4`} />

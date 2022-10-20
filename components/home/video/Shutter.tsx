@@ -9,6 +9,7 @@ const Shutter: FunctionComponent = (): JSX.Element => {
             autoPlay
             muted
             loop
+            placeholder="blur"
             className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl"
           >
             <source src="/videos/scrollfeed/scroll1.mp4" type="video/mp4" />
@@ -21,6 +22,7 @@ const Shutter: FunctionComponent = (): JSX.Element => {
             autoPlay
             muted
             loop
+            placeholder="blur"
             className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl"
           >
             <source src="/videos/scrollfeed/scroll2.mp4" type="video/mp4" />
@@ -33,6 +35,7 @@ const Shutter: FunctionComponent = (): JSX.Element => {
             autoPlay
             muted
             loop
+            placeholder="blur"
             className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl"
           >
             <source src="/videos/scrollfeed/scroll3.mp4" type="video/mp4" />
