@@ -13,7 +13,7 @@ class Document extends NextDocument {
           <meta name="twitter:card" content="summary" />
           <meta name="og:url" content="https://f3manifesto.xyz/" />
           <meta name="og:image" content="https://f3manifesto.xyz/images/card.png/" />
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary_regular_image" />
           <meta name="twitter:site" content="@f3manifesto" />
           <meta name="twitter:creator" content="@f3manifesto" />
           <meta
