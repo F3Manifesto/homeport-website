@@ -10,21 +10,21 @@ const PinBoard = (): JSX.Element => {
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://digitalax.xyz">
                 <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/digi.png" />
+                  <Image width={50} height={50} src="/images/digi.png" placeholder="blur" blurDataURL="base64"/>
                 </a>
               </Link>
             </div>
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://inarisynth.xyz">
                 <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/inari.png" />
+                  <Image width={50} height={50} src="/images/inari.png" placeholder="blur" blurDataURL="base64"/>
                 </a>
               </Link>
             </div>
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://diysynth.xyz">
                 <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/diy.png" />
+                  <Image width={50} height={50} src="/images/diy.png" placeholder="blur" blurDataURL="base64"/>
                 </a>
               </Link>
             </div>
@@ -48,14 +48,14 @@ const PinBoard = (): JSX.Element => {
                   </div>
                 </div>
                 <div className="relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-3">
-                  <Image src="/images/wheel.png" width={50} height={50} />
+                  <Image src="/images/wheel.png" width={50} height={50} placeholder="blur" blurDataURL="base64"/>
                 </div>
               </div>
             </div>
             <div className="relative w-full h-fit row-start-2">
               <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
                 <div className="relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2">
-                  <Image src="/images/player.png" width={65} height={50} />
+                  <Image src="/images/player.png" width={65} height={50} placeholder="blur" blurDataURL="base64"/>
                 </div>
                 <div className="relative col-start-2 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3">
@@ -89,14 +89,14 @@ const PinBoard = (): JSX.Element => {
                   </div>
                 </div>
                 <div className="relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-4">
-                  <Image src="/images/flag.png" width={65} height={50} />
+                  <Image src="/images/flag.png" width={65} height={50} placeholder="blur" blurDataURL="base64"/>
                 </div>
               </div>
             </div>
             <div className="relative w-fit h-fit row-start-4">
               <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
                 <div className="relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2">
-                  <Image src="/images/fox.png" width={75} height={60} />
+                  <Image src="/images/fox.png" width={75} height={60} placeholder="blur" blurDataURL="base64"/>
                 </div>
                 <div className="relative col-start-2 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3 ml-6">

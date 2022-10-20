@@ -7,8 +7,6 @@ const Shutter: FunctionComponent = (): JSX.Element => {
         <div className="w-52 h-60 sm:w-[11vw] sm:h-[14.3vw] rounded-3xl bg-offBlue border-b-2 border-t-4 border-r-8 border-offBlue border-solid shadow-film shadow-rose-600 relative cursor-empireS">
           <video
             autoPlay
-            placeholder="blur"
-            poster="/preload.png"
             muted
             loop
             className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl"

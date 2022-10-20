@@ -70,7 +70,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               onClick={refreshImages}
               className="relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0"
             >
-              <Image width={60} height={60} src="/images/disk.png" />
+              <Image width={60} height={60} placeholder="blur" blurDataURL="base64" src="/images/disk.png" />
             </motion.div>
           </div>
           <div className="relative col-start-9 col-span-4 w-full h-full">
@@ -97,6 +97,8 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                   >
                     <Image
                       priority
+                      placeholder="blur"
+                      blurDataURL="base64"
                       src={`/images/tiers/main${mainImage}.png`}
                       layout="fill"
                       objectPosition={"top"}

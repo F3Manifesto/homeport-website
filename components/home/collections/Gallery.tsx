@@ -26,6 +26,8 @@ const Gallery: FunctionComponent<GalleryProps> = ({
               <div className="w-full h-full">
                 <Image
                   priority
+                  placeholder="blur"
+                  blurDataURL="base64"
                   objectFit="cover"
                   layout="fill"
                   objectPosition="top"

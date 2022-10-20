@@ -51,6 +51,8 @@ const Slider: FunctionComponent = (): JSX.Element => {
                 objectFit="cover"
                 layout="fill"
                 priority
+                placeholder="blur"
+                blurDataURL="base64"
               />
             </div>
           );

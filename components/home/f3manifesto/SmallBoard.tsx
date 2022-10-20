@@ -36,7 +36,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                     onClick={refreshImages}
                     className="relative cursor-empireS active:mix-blend-overlay"
                   >
-                    <Image width={50} height={50} src="/images/disk.png" />
+                    <Image width={50} height={50} src="/images/disk.png" placeholder="blur" blurDataURL="base64"/>
                   </motion.div>
                 </div>
               </div>
@@ -59,6 +59,8 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           width={768}
                           height={512}
                           src={`/images/tiers/${image}.png`}
+                          placeholder="blur"
+                          blurDataURL="base64"
                         />
                       </div>
                     );
@@ -109,6 +111,8 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           objectFit="cover"
                           width={800}
                           height={800}
+                          placeholder="blur"
+                          blurDataURL="base64"
                         />
                       </div>
                     </div>
