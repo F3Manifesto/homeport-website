@@ -3,12 +3,6 @@ import Sidebar from "../../layout/Sidebar";
 import Shutter from "./Shutter";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
-
-//   let vid: any = document.getElementById("lanvideo");
-//   vid.onloadeddata = function() {
-//   alert("Browser has loaded the current frame");
-// };
-
   return (
     <div
       className="min-w-full min-h-full xl:min-h-[100vh] w-full h-full relative block clear-both overflow-hidden bg-offBlack"

@@ -12,7 +12,6 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
   newImages,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true)
-  const widthArray: string[] = ["full", "10/12", "8/12", "6/12", "4/12"];
   return (
     <div className="relative grid auto-cols-[auto auto] w-full min-h-full h-full">
       <div className="relative grid grid-flow-row auto-rows-[auto auto] max-w-full h-fit">
