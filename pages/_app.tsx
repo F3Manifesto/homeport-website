@@ -3,11 +3,8 @@ import type { AppProps } from "next/app";
 import { Suspense, useEffect } from "react";
 import Footer from "../components/layout/Footer";
 import Loading from "../components/layout/Loading";
-import BlurHash from "../components/layout/BlurHash";
-import useBlurHash from "../components/layout/BlurHash";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const {encodeImageToBlurhash} = useBlurHash();
   useEffect(() => {
     console.log(` **                                                                 
     /**                                                                 
@@ -49,11 +46,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     /**      /**//////**       /**/**     /**/**//**     ** /**   //****
     /**      /**     /** ******** /**     /**/** //*******  /**    //***
     //       //      // ////////  //      // //   ///////   //      /// `);
-
-    const imagedata = encodeImageToBlurhash(
-      "https://ibb.co/W3szpSm"
-    );
-    console.log(imagedata);
   }, []);
 
   return (

@@ -62,10 +62,10 @@ module.exports = {
         },
         unblur: {
           "0%": {
-            filter: blur(20),
+            filter: "blur(20)",
           },
           "100%": {
-            filter: blur(0),
+            filter: "blur(0)",
           },
         },
       },
