@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const PinBoard = (): JSX.Element => {
+  const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="w-fit bg-gradient-to-r from-grad1 via-grad2 to-grad3 h-full relative border-2 border-borderBlue overflow-hidden">
       <div className="relative grid auto-rows-[auto auto] grid-flow-row w-full h-full">
@@ -9,22 +11,61 @@ const PinBoard = (): JSX.Element => {
           <div className="relative w-full h-auto grid grid-cols-3 grid-flow-row justify-center">
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://digitalax.xyz">
-                <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/digi.png" placeholder="blur" blurDataURL="base64"/>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`cursor-empireS ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/images/digi.png"
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </a>
               </Link>
             </div>
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://inarisynth.xyz">
-                <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/inari.png" placeholder="blur" blurDataURL="base64"/>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`cursor-empireS ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/images/inari.png"
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </a>
               </Link>
             </div>
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
               <Link href="https://diysynth.xyz">
-                <a target="_blank" rel="noreferrer" className="cursor-empireS">
-                  <Image width={50} height={50} src="/images/diy.png" placeholder="blur" blurDataURL="base64"/>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`cursor-empireS ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/images/diy.png"
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </a>
               </Link>
             </div>
@@ -47,15 +88,37 @@ const PinBoard = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                <div className="relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-3">
-                  <Image src="/images/wheel.png" width={50} height={50} placeholder="blur" blurDataURL="base64"/>
+                <div
+                  className={`relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-3 ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    src="/images/wheel.png"
+                    width={50}
+                    height={50}
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </div>
               </div>
             </div>
             <div className="relative w-full h-fit row-start-2">
               <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
-                <div className="relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2">
-                  <Image src="/images/player.png" width={65} height={50} placeholder="blur" blurDataURL="base64"/>
+                <div
+                  className={`relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2 ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    src="/images/player.png"
+                    width={65}
+                    height={50}
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </div>
                 <div className="relative col-start-2 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3">
@@ -88,15 +151,33 @@ const PinBoard = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                <div className="relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-4">
-                  <Image src="/images/flag.png" width={65} height={50} placeholder="blur" blurDataURL="base64"/>
+                <div
+                  className={`relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-4 ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    src="/images/flag.png"
+                    width={65}
+                    height={50}
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </div>
               </div>
             </div>
             <div className="relative w-fit h-fit row-start-4">
               <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
-                <div className="relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2">
-                  <Image src="/images/fox.png" width={75} height={60} placeholder="blur" blurDataURL="base64"/>
+                <div className={`relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2 ${blur && "blur-sm animate-unblur"}`}>
+                  <Image
+                    src="/images/fox.png"
+                    width={75}
+                    height={60}
+                    placeholder="blur"
+                    blurDataURL="base64"
+                    onLoadingComplete={() => setBlur(false)}
+                  />
                 </div>
                 <div className="relative col-start-2 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3 ml-6">

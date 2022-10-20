@@ -27,7 +27,7 @@ module.exports = {
         grad3: "#C6F8FE",
         borderBlue: "#B8F3FF",
         darkP: "#462D4A",
-        foot: "#F7F8E8"
+        foot: "#F7F8E8",
       },
       boxShadow: {
         film: "15px 10px 50px -20px rgba(0, 0, 0.8, 0.3)",
@@ -53,31 +53,40 @@ module.exports = {
         firaL: "Fira Code Light",
         firaB: "Fira Code Bold",
         din: "DIN Condensed",
-        futur: "Futurist"
+        futur: "Futurist",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(100%)" },
         },
+        unblur: {
+          "0%": {
+            filter: blur(20),
+          },
+          "100%": {
+            filter: blur(0),
+          },
+        },
       },
       animation: {
         reverseAnimation: "marquee 40s linear infinite",
+        unblur: "unblur 0.5s linear",
       },
       fontSize: {
-        xxs: "0.6rem"
+        xxs: "0.6rem",
       },
       gridAutoRows: {
-        auto: 'auto auto'
+        auto: "auto auto",
       },
       gridAutoColumns: {
-        auto: 'auto auto'
+        auto: "auto auto",
       },
-      screens: { 
+      screens: {
         midi: "1140px",
         half: "900px",
-        alm: "740px"
-      }
+        alm: "740px",
+      },
     },
   },
   plugins: [],

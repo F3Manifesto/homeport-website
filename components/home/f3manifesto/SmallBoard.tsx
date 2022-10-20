@@ -50,7 +50,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                         key={index}
                         className={`h-10 w-full relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
                           index + 1
-                        } ${blur && "blur-sm"}`}
+                        } ${blur && "blur-sm animate-unblur"}`}
                         onClick={viewMainImage}
                       >
                         <Image

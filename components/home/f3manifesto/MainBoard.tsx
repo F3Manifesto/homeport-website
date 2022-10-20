@@ -106,7 +106,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 <div className="relative w-fit h-full w-fit h-fit">
                   <div
                     className={`w-[30vw] h-[30vw] relative flex flex-col bg-black cursor-empireS shrink-0 ${
-                      blur && "blur-sm"
+                      blur && "blur-sm animate-unblur"
                     }`}
                     id="#mainimage"
                   >

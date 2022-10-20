@@ -7,7 +7,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   gallery,
   handleSetOrderIRL,
 }): JSX.Element => {
-  const [blur, setBlur] = useState<boolean>(true)
+  const [blur, setBlur] = useState<boolean>(true);
   if (gallery.length === 0) {
     return (
       <div className="font-york text-offBlue flex items-center justify-center w-full h-fit">
@@ -24,7 +24,9 @@ const Gallery: FunctionComponent<GalleryProps> = ({
               key={key}
               className="h-80 w-full min-h-max relative ml-0 mt-0 m-4"
             >
-              <div className={`w-full h-full ${blur && "blur-sm"}`}>
+              <div
+                className={`w-full h-full ${blur && "blur-sm animate-unblur"}`}
+              >
                 <Image
                   priority
                   placeholder="blur"
