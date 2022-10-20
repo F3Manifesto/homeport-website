@@ -1,8 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 const Slider: FunctionComponent = (): JSX.Element => {
+  const [blur, setBlur] = useState<boolean>(true);
   const images: string[] = [
     "slider1",
     "slider2",
@@ -44,7 +45,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
           return (
             <div
               key={key}
-              className="min-h-60 min-w-60 h-60 w-60 relative mr-4"
+              className={`min-h-60 min-w-60 h-60 w-60 relative mr-4 ${blur && "blur-sm animate-unblur"}`}
             >
               <Image
                 src={`/images/slider/${image}.png`}
@@ -53,6 +54,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
                 priority
                 placeholder="blur"
                 blurDataURL="base64"
+                onLoadingComplete={() => setBlur(false)}
               />
             </div>
           );
