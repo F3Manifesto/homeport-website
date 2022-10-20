@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { SmallBoardProps } from "../../../types/general.types";
 import PinBoardM from "./PinBoardM";
 import { motion } from "framer-motion";
@@ -11,6 +11,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
   viewMainImage,
   newImages,
 }): JSX.Element => {
+  const [blur, setBlur] = useState<boolean>(true)
   const widthArray: string[] = ["full", "10/12", "8/12", "6/12", "4/12"];
   return (
     <div className="relative grid auto-cols-[auto auto] w-full min-h-full h-full">
@@ -50,7 +51,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                         key={index}
                         className={`h-10 w-full relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
                           index + 1
-                        }`}
+                        } ${blur && "blur-sm"}`}
                         onClick={viewMainImage}
                       >
                         <Image
@@ -61,6 +62,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           src={`/images/tiers/${image}.png`}
                           placeholder="blur"
                           blurDataURL="base64"
+                          onLoadingComplete={() => setBlur(false)}
                         />
                       </div>
                     );

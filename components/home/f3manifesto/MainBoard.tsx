@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { motion } from "framer-motion";
 import PinBoard from "./PinBoard";
 import PinBoardM from "./PinBoardM";
@@ -11,6 +11,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
   viewMainImage,
   newImages,
 }): JSX.Element => {
+  const [blur, setBlur] = useState<boolean>(true);
   const widthArray: string[] = ["full", "10/12", "8/12", "6/12", "4/12"];
   return (
     <div className="relative grid auto-cols-[auto auto] w-full min-h-full h-full">
@@ -28,13 +29,19 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <div className="min-h-full h-fit relative grid auto-rows-[auto auto] grid-flow-row gap-4 w-full min-w-full">
                 {newImages &&
                   newImages.map((image: string, index: number) => {
-                    console.log( widthArray[index])
+                    console.log(widthArray[index]);
                     return (
                       <div
                         key={index}
                         className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
                           index + 1
-                        } ${index === 0 && "w-full" || index === 1 && "w-10/12" || index === 2 && "w-8/12" || index === 3 && "w-6/12" || index === 4 && "w-4/12"}`}
+                        } ${
+                          (index === 0 && "w-full") ||
+                          (index === 1 && "w-10/12") ||
+                          (index === 2 && "w-8/12") ||
+                          (index === 3 && "w-6/12") ||
+                          (index === 4 && "w-4/12")
+                        }`}
                         onClick={viewMainImage}
                       >
                         <Image
@@ -70,7 +77,13 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               onClick={refreshImages}
               className="relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0"
             >
-              <Image width={60} height={60} placeholder="blur" blurDataURL="base64" src="/images/disk.png" />
+              <Image
+                width={60}
+                height={60}
+                placeholder="blur"
+                blurDataURL="base64"
+                src="/images/disk.png"
+              />
             </motion.div>
           </div>
           <div className="relative col-start-9 col-span-4 w-full h-full">
@@ -92,7 +105,9 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <div className="relative col-start-2 col-span-3 w-fit h-fit place-self-end row-start-1">
                 <div className="relative w-fit h-full w-fit h-fit">
                   <div
-                    className="w-[30vw] h-[30vw] relative flex flex-col bg-black cursor-empireS shrink-0"
+                    className={`w-[30vw] h-[30vw] relative flex flex-col bg-black cursor-empireS shrink-0 ${
+                      blur && "blur-sm"
+                    }`}
                     id="#mainimage"
                   >
                     <Image
@@ -105,6 +120,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                       objectFit="cover"
                       width={800}
                       height={800}
+                      onLoadingComplete={() => setBlur(false)}
                     />
                   </div>
                 </div>
