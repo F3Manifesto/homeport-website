@@ -16,7 +16,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
           height={768}
           width={512}
           placeholder="blur"
-          blurDataURL="images/blurred/poser.png"
+          blurDataURL="images/blurred/poster.png"
           layout="fill"
           objectFit="cover"
           objectPosition={"left"}
@@ -36,7 +36,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   src="/images/croquis/croq2.png"
                   priority
                   placeholder="blur"
-                  blurDataURL="base64"
+                  blurDataURL="/images/blurred/croq2.png"
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}
@@ -53,7 +53,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   src="/images/croquis/croq1.png"
                   priority
                   placeholder="blur"
-                  blurDataURL="base64"
+                  blurDataURL="/images/blurred/croq1.png"
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}
@@ -70,7 +70,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   src="/images/croquis/croq3.png"
                   priority
                   placeholder="blur"
-                  blurDataURL="base64"
+                  blurDataURL="/images/blurred/croq3.png"
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}

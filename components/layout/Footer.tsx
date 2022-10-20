@@ -45,11 +45,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
           </div>
-          <div
-            className={`w-fit h-fit block relative pb-24 pt-2 flex flex-col ${
-              blur && "blur-sm animate-unblur"
-            }`}
-          >
+          <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
                 className="relative w-60 h-fit min-h-fit object-cover"
@@ -80,18 +76,9 @@ const Footer: FunctionComponent = (): JSX.Element => {
             <a
               target="_blank"
               rel="noreferrer"
-              className={`cursor-empireS h-fit relative ${
-                blur && "animate-unblur blur-sm"
-              }`}
+              className="cursor-empireS h-fit relative"
             >
-              <Image
-                src={"/images/lens.png"}
-                width={30}
-                height={30}
-                placeholder="blur"
-                blurDataURL="base64"
-                onLoadingComplete={() => setBlur(false)}
-              />
+              <Image src={"/images/lens.png"} width={30} height={30} />
             </a>
           </Link>
         </div>

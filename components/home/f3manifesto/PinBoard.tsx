@@ -23,7 +23,7 @@ const PinBoard = (): JSX.Element => {
                     height={50}
                     src="/images/digi.png"
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/digi.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -43,7 +43,7 @@ const PinBoard = (): JSX.Element => {
                     height={50}
                     src="/images/inari.png"
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/inari.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -63,7 +63,7 @@ const PinBoard = (): JSX.Element => {
                     height={50}
                     src="/images/diy.png"
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/diy.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -98,7 +98,7 @@ const PinBoard = (): JSX.Element => {
                     width={50}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/wheel.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -116,7 +116,7 @@ const PinBoard = (): JSX.Element => {
                     width={65}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/player.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -161,7 +161,7 @@ const PinBoard = (): JSX.Element => {
                     width={65}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/flag.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -175,7 +175,7 @@ const PinBoard = (): JSX.Element => {
                     width={75}
                     height={60}
                     placeholder="blur"
-                    blurDataURL="base64"
+                    blurDataURL="/images/blurred/fox.png"
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>

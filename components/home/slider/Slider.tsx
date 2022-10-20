@@ -53,7 +53,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
                 layout="fill"
                 priority
                 placeholder="blur"
-                blurDataURL="base64"
+                blurDataURL={`/images/blurred/${image}.png`}
                 onLoadingComplete={() => setBlur(false)}
               />
             </div>

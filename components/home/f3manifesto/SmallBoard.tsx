@@ -43,7 +43,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                       height={50}
                       src="/images/disk.png"
                       placeholder="blur"
-                      blurDataURL="base64"
+                      blurDataURL="/images/blurred/disk.png"
                       onLoadingComplete={() => setBlur(false)}
                     />
                   </motion.div>
@@ -69,7 +69,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           height={512}
                           src={`/images/tiers/${image}.png`}
                           placeholder="blur"
-                          blurDataURL="base64"
+                          blurDataURL={`/images/blurred/${image}.png`}
                           onLoadingComplete={() => setBlur(false)}
                         />
                       </div>
@@ -124,7 +124,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           width={800}
                           height={800}
                           placeholder="blur"
-                          blurDataURL="base64"
+                          blurDataURL={`/images/blurred/main${mainImage}.png`}
                           onLoadingComplete={() => setBlur(false)}
                         />
                       </div>

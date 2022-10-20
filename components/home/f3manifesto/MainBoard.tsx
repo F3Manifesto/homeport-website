@@ -45,7 +45,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                         <Image
                           objectFit="cover"
                           placeholder="blur"
-                          blurDataURL="base64"
+                          blurDataURL={`/images/blurred/${image}.png`}
                           onLoadingComplete={() => setBlur(false)}
                           layout="fill"
                           width={768}
@@ -76,13 +76,15 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 rotate: 360,
               }}
               onClick={refreshImages}
-              className={`relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0 ${blur && "animate-unblur blur-sm"}`}
+              className={`relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0 ${
+                blur && "animate-unblur blur-sm"
+              }`}
             >
               <Image
                 width={60}
                 height={60}
                 placeholder="blur"
-                blurDataURL="base64"
+                blurDataURL="/images/blurred/disk.png"
                 src="/images/disk.png"
                 onLoadingComplete={() => setBlur(false)}
               />
@@ -115,7 +117,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                     <Image
                       priority
                       placeholder="blur"
-                      blurDataURL="base64"
+                      blurDataURL={`/images/blurred/main${mainImage}.png`}
                       src={`/images/tiers/main${mainImage}.png`}
                       layout="fill"
                       objectPosition={"top"}

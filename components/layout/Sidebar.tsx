@@ -20,8 +20,6 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
               height={40}
               src="/images/heartbar.gif"
               priority
-              blurDataURL="base64"
-              placeholder="blur"
               onLoadingComplete={() => setBlur(false)}
             />
           </div>
@@ -36,8 +34,6 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
               height={25}
               src="/images/heartbar.gif"
               priority
-              blurDataURL="base64"
-              placeholder="blur"
               onLoadingComplete={() => setBlur(false)}
             />
           </div>
@@ -60,8 +56,6 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
               height={17}
               src="/images/f3mstatic.gif"
               priority
-              blurDataURL="base64"
-              placeholder="blur"
               onLoadingComplete={() => setBlur(false)}
             />
           </div>
@@ -75,8 +69,6 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
               height={11}
               src="/images/f3mstatic.gif"
               priority
-              blurDataURL="base64"
-              placeholder="blur"
               onLoadingComplete={() => setBlur(false)}
             />
           </div>

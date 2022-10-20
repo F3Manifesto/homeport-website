@@ -4,9 +4,7 @@ import { FunctionComponent, useContext, useState } from "react";
 import { GlobalContext } from "../../../pages/_app";
 import { Gallery, GalleryProps } from "./../../../types/general.types";
 
-const Gallery: FunctionComponent<GalleryProps> = ({
-  gallery,
-}): JSX.Element => {
+const Gallery: FunctionComponent<GalleryProps> = ({ gallery }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   const { setOrderIRL } = useContext(GlobalContext);
   if (gallery.length === 0) {
@@ -31,7 +29,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                 <Image
                   priority
                   placeholder="blur"
-                  blurDataURL="base64"
+                  blurDataURL={`/images/blurred/${token.name}.png`}
                   objectFit="cover"
                   layout="fill"
                   objectPosition="top"
