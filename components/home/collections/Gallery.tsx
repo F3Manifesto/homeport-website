@@ -52,7 +52,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({ gallery }): JSX.Element => {
                     <button
                       className="rounded-full bg-offBlack relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offWhite border-2 cursor-empireS active:opacity-80"
                       name={token.name}
-                      onClick={(e: any) => setOrderIRL(e)}
+                      onClick={(e: any) => setOrderIRL(e.target.name)}
                     >
                       <p className="leading-none text-center align-middle relative h-full w-full top-1 text-offWhite">
                         PRE-ORDER IRL
