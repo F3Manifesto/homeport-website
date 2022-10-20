@@ -62,6 +62,7 @@ export type marqueeVariants = {
 
 export type GalleryProps = {
   gallery: Gallery[];
+  setOrderIRL: (e: string) => void;
 };
 
 export type SearchProps = {
@@ -83,6 +84,7 @@ export type Gallery = {
 
 export type CollectionProps = {
   shopping: any;
+  setOrderIRL: (e: string) => void;
 };
 
 export type Web3FashionProps = {
@@ -98,10 +100,6 @@ export type useFormResults = {
   setSubmitSuccess: (e: boolean) => void;
   submitSuccess: boolean;
   handleSubmitForm: (e: any) => Promise<void>;
-};
-
-export type FormProps = {
-  orderIRL: any;
 };
 
 export type shoppingAnimate = {

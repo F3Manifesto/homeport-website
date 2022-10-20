@@ -8,13 +8,16 @@ import Poster from "../components/home/poster/Poster";
 import Clear from "../components/home/clear/Clear";
 import Slider from "../components/home/slider/Slider";
 import Gap from "../components/home/gap/Gap";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { GlobalContext } from "./_app";
 
 const Home: NextPage = (): JSX.Element => {
   const shopping = useRef<null | HTMLDivElement>(null);
   const goShopping = (): void => {
     shopping.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const { setOrderIRL } = useContext(GlobalContext);
 
   return (
     <div
@@ -31,7 +34,7 @@ const Home: NextPage = (): JSX.Element => {
       <F3Manifesto />
 
       <Web3Fashion goShopping={goShopping} />
-      <Collections shopping={shopping} />
+      <Collections shopping={shopping} setOrderIRL={setOrderIRL} />
       <Poster />
       <Clear />
       <Slider />

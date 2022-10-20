@@ -38,7 +38,7 @@ const PreOrder: NextPage = (): JSX.Element => {
           </div>
           <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
             {orderIRL !== "" ? (
-              <Form orderIRL={orderIRL} />
+              <Form />
             ) : (
               <Link href={"/#shopping"}>
                 <div className="relative text-offWhite font-fira text-lg cursor-empireS hover:text-lightYellow h-fit w-fit">

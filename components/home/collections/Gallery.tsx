@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FunctionComponent, useContext, useState } from "react";
-import { GlobalContext } from "../../../pages/_app";
+import { FunctionComponent, useState } from "react";
 import { Gallery, GalleryProps } from "./../../../types/general.types";
 
-const Gallery: FunctionComponent<GalleryProps> = ({ gallery }): JSX.Element => {
+const Gallery: FunctionComponent<GalleryProps> = ({ gallery, setOrderIRL }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
-  const { setOrderIRL } = useContext(GlobalContext);
+  
   if (gallery.length === 0) {
     return (
       <div className="font-york text-offBlue flex items-center justify-center w-full h-fit">
@@ -52,7 +51,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({ gallery }): JSX.Element => {
                     <button
                       className="rounded-full bg-offBlack relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offWhite border-2 cursor-empireS active:opacity-80"
                       name={token.name}
-                      onClick={(e: any) => setOrderIRL(e.target.name)}
+                      onClick={() => setOrderIRL(token.name)}
                     >
                       <p className="leading-none text-center align-middle relative h-full w-full top-1 text-offWhite">
                         PRE-ORDER IRL

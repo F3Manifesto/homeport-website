@@ -1,8 +1,8 @@
-import { FunctionComponent, useMemo } from "react";
-import { FormProps } from "../../types/general.types";
+import { FunctionComponent, useContext, useMemo } from "react";
+import { GlobalContext } from "../../pages/_app";
 import useForm from "./hooks/useForm";
 
-const Form: FunctionComponent<FormProps> = ({ orderIRL }): JSX.Element => {
+const Form: FunctionComponent= (): JSX.Element => {
   const { setSubmitSuccess, handleSubmitForm, submitSuccess } = useForm();
   useMemo(() => {
     if (submitSuccess) {
@@ -11,6 +11,7 @@ const Form: FunctionComponent<FormProps> = ({ orderIRL }): JSX.Element => {
       }, 4000);
     }
   }, [submitSuccess]);
+  const {orderIRL} = useContext(GlobalContext)
   return (
     <form
       onSubmit={(e) => handleSubmitForm(e)}

@@ -4,7 +4,7 @@ import Gallery from "./Gallery";
 import useCollections from "./hooks/useCollections";
 import Search from "./Search";
 
-const Collections: FunctionComponent<CollectionProps> = ({shopping}): JSX.Element => {
+const Collections: FunctionComponent<CollectionProps> = ({shopping, setOrderIRL}): JSX.Element => {
   const {
     gallery,
     filterCollections,
@@ -28,7 +28,7 @@ const Collections: FunctionComponent<CollectionProps> = ({shopping}): JSX.Elemen
           filterCollections={filterCollections}
           filterName={filterName}
         />
-        <Gallery gallery={gallery} />
+        <Gallery gallery={gallery} setOrderIRL={setOrderIRL} />
       </div>
     </div>
   );
