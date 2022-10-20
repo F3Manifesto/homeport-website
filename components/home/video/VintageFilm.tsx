@@ -13,7 +13,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
       id="lanvideo"
     >
       {showBanner && (
-        <div className="bg-offBlack text-offWhite font-firaL font-sm p-4">
+        <div className="bg-offBlack text-offWhite font-firaL text-xs sm:text-sm p-4 ease-out duration-1000">
           Your signal may not be strong enough to load this interface all at
           once.
           <br />
