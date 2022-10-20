@@ -77,6 +77,7 @@ export type Gallery = {
   image: string;
   collection: string;
   style: string;
+  blurred: string;
   link: string;
 };
 
