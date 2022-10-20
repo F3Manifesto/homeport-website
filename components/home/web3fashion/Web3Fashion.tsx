@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import useWeb3Fashion from "./hooks/useWeb3Fashion";
 import { Web3FashionProps } from "./../../../types/general.types";
@@ -7,6 +7,7 @@ import { Web3FashionProps } from "./../../../types/general.types";
 const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   goShopping,
 }): JSX.Element => {
+  const [blur, setBlur] = useState<boolean>(true);
   const {
     marqueeVariants,
     setShowImage,
@@ -37,14 +38,17 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image priority src="/images/carts.gif" width={40} height={30} />
         </motion.div>
-        <div className="min-h-full h-full absolute w-screen min-w-screen">
+        <div className={`min-h-full h-full absolute w-screen min-w-screen ${blur && "blur-sm animate-unblur"}`}>
           <Image
             priority
             src="/images/mtv2.png"
             objectFit="cover"
             layout="fill"
+            blurDataURL="base64"
             width={512}
             height={1280}
+            placeholder="blur"
+            onLoadingComplete={() => setBlur(false)}
           />
         </div>
         <div

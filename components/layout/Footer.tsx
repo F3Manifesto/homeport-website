@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import useFooter from "./hooks/useLayout";
 import { BsTwitter } from "react-icons/bs";
 import Link from "next/link";
@@ -9,6 +9,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
   useEffect(() => {
     randomImages();
   }, []);
+  const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="min-w-screen relative h-auto min-h-full flex w-full cursor-empireA">
       <div className="relative grid auto-cols-[auto auto] grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12">
@@ -42,11 +43,14 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
           </div>
-          <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
+          <div className={`w-fit h-fit block relative pb-24 pt-2 flex flex-col ${blur && "blur-sm animate-unblur"}`}>
             <Image
               width={250}
               height={250}
               src={`/images/studiofeed/${randomMicrofactory}.gif`}
+              placeholder="blur"
+              blurDataURL="base64"
+              onLoadingComplete={() => setBlur(false)}
             />
           </div>
         </div>
@@ -64,9 +68,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
             <a
               target="_blank"
               rel="noreferrer"
-              className="cursor-empireS h-fit relative"
+              className={`cursor-empireS h-fit relative ${blur && "animate-unblur blur-sm"}`}
             >
-              <Image src={"/images/lens.png"} width={30} height={30} />
+              <Image src={"/images/lens.png"} width={30} height={30} 
+              onLoadingComplete={() => setBlur(false)}
+              />
             </a>
           </Link>
         </div>

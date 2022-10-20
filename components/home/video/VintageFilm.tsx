@@ -15,7 +15,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
           autoPlay
           muted
           loop
-          poster="/preload.png"
+          placeholder="blur"
         >
           <source src="/videos/homevideo.mp4" type="video/mp4" />
         </video>
