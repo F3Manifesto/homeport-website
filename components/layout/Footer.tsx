@@ -48,7 +48,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
-                className="relative w-60 h-fit min-h-fit object-cover"
+                className="relative w-48 sm:w-60 h-fit min-h-fit object-cover"
                 autoPlay
                 muted
                 loop
