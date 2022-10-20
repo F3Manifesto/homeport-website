@@ -7,7 +7,9 @@ import Link from "next/link";
 const Footer: FunctionComponent = (): JSX.Element => {
   const { randomImages, randomMicrofactory } = useFooter();
   useEffect(() => {
-    randomImages();
+    if (!randomMicrofactory) {
+      randomImages();
+    }
   }, []);
   const [blur, setBlur] = useState<boolean>(true);
   return (
@@ -43,15 +45,25 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
           </div>
-          <div className={`w-fit h-fit block relative pb-24 pt-2 flex flex-col ${blur && "blur-sm animate-unblur"}`}>
-            <Image
-              width={250}
-              height={250}
-              src={`/images/studiofeed/${randomMicrofactory}.gif`}
-              placeholder="blur"
-              blurDataURL="base64"
-              onLoadingComplete={() => setBlur(false)}
-            />
+          <div
+            className={`w-fit h-fit block relative pb-24 pt-2 flex flex-col ${
+              blur && "blur-sm animate-unblur"
+            }`}
+          >
+            {randomMicrofactory && (
+              <video
+                className="relative w-60 h-fit min-h-fit object-cover"
+                autoPlay
+                muted
+                loop
+                placeholder="blur"
+              >
+                <source
+                  src={`/videos/studiofeed/${randomMicrofactory}.mp4`}
+                  type="video/mp4"
+                />
+              </video>
+            )}
           </div>
         </div>
         <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-6 md:row-start-2 col-start-1 md:col-start-3 self-start md:self-end pr-4">
@@ -68,10 +80,17 @@ const Footer: FunctionComponent = (): JSX.Element => {
             <a
               target="_blank"
               rel="noreferrer"
-              className={`cursor-empireS h-fit relative ${blur && "animate-unblur blur-sm"}`}
+              className={`cursor-empireS h-fit relative ${
+                blur && "animate-unblur blur-sm"
+              }`}
             >
-              <Image src={"/images/lens.png"} width={30} height={30} 
-              onLoadingComplete={() => setBlur(false)}
+              <Image
+                src={"/images/lens.png"}
+                width={30}
+                height={30}
+                placeholder="blur"
+                blurDataURL="base64"
+                onLoadingComplete={() => setBlur(false)}
               />
             </a>
           </Link>

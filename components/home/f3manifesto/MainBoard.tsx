@@ -12,7 +12,6 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
   newImages,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
-  const widthArray: string[] = ["full", "10/12", "8/12", "6/12", "4/12"];
   return (
     <div className="relative grid auto-cols-[auto auto] w-full min-h-full h-full">
       <div className="w-full midi:w-fit min-h-full bg-offWhite relative left-0 col-start-1 row-start-1">
@@ -29,7 +28,6 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <div className="min-h-full h-fit relative grid auto-rows-[auto auto] grid-flow-row gap-4 w-full min-w-full">
                 {newImages &&
                   newImages.map((image: string, index: number) => {
-                    console.log(widthArray[index]);
                     return (
                       <div
                         key={index}
@@ -41,11 +39,14 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                           (index === 2 && "w-8/12") ||
                           (index === 3 && "w-6/12") ||
                           (index === 4 && "w-4/12")
-                        }`}
+                        } ${blur && "animate-unblur blur-sm"}`}
                         onClick={viewMainImage}
                       >
                         <Image
                           objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL="base64"
+                          onLoadingComplete={() => setBlur(false)}
                           layout="fill"
                           width={768}
                           height={512}
@@ -75,7 +76,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 rotate: 360,
               }}
               onClick={refreshImages}
-              className="relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0"
+              className={`relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0 ${blur && "animate-unblur blur-sm"}`}
             >
               <Image
                 width={60}
@@ -83,6 +84,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 placeholder="blur"
                 blurDataURL="base64"
                 src="/images/disk.png"
+                onLoadingComplete={() => setBlur(false)}
               />
             </motion.div>
           </div>

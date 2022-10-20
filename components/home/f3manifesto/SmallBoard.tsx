@@ -11,7 +11,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
   viewMainImage,
   newImages,
 }): JSX.Element => {
-  const [blur, setBlur] = useState<boolean>(true)
+  const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="relative grid auto-cols-[auto auto] w-full min-h-full h-full">
       <div className="relative grid grid-flow-row auto-rows-[auto auto] max-w-full h-fit">
@@ -34,9 +34,18 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                       rotate: 360,
                     }}
                     onClick={refreshImages}
-                    className="relative cursor-empireS active:mix-blend-overlay"
+                    className={`relative cursor-empireS active:mix-blend-overlay ${
+                      blur && "animate-unblur blur-sm"
+                    }`}
                   >
-                    <Image width={50} height={50} src="/images/disk.png" placeholder="blur" blurDataURL="base64"/>
+                    <Image
+                      width={50}
+                      height={50}
+                      src="/images/disk.png"
+                      placeholder="blur"
+                      blurDataURL="base64"
+                      onLoadingComplete={() => setBlur(false)}
+                    />
                   </motion.div>
                 </div>
               </div>
@@ -101,7 +110,9 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                     </div>
                     <div className="relative col-start-2 w-fit h-fit">
                       <div
-                        className="alm:w-[40vw] alm:h-[40vw] w-[80vw] h-[80vw] relative flex flex-col bg-black cursor-empireS shrink-0"
+                        className={`alm:w-[40vw] alm:h-[40vw] w-[80vw] h-[80vw] relative flex flex-col bg-black cursor-empireS shrink-0 ${
+                          blur && "animate-unblur blur-sm"
+                        }`}
                         id="#mainimage"
                       >
                         <Image
@@ -114,6 +125,7 @@ const SmallBoard: FunctionComponent<SmallBoardProps> = ({
                           height={800}
                           placeholder="blur"
                           blurDataURL="base64"
+                          onLoadingComplete={() => setBlur(false)}
                         />
                       </div>
                     </div>

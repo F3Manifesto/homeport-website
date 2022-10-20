@@ -3,7 +3,7 @@ import { UseLayoutResults } from "../../../types/general.types";
 
 const useLayout = (): UseLayoutResults => {
   const [randomMicrofactory, setRandomMicrofactory] = useState<
-    string | undefined
+    string
   >();
   const [clicked, setClicked] = useState<boolean>(false);
   const images: string[] = [

@@ -56,7 +56,6 @@ const useWeb3Fashion = (): useWeb3FashionResults => {
   const [imageState, setImageState] = useState<boolean>(false);
 
   const handleImageState = (e: any): void => {
-    console.log(imageState)
     if (!imageState) {
       setShowImage(undefined);
     } else {

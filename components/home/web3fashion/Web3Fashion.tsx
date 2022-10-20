@@ -38,7 +38,11 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image priority src="/images/carts.gif" width={40} height={30} />
         </motion.div>
-        <div className={`min-h-full h-full absolute w-screen min-w-screen ${blur && "blur-sm animate-unblur"}`}>
+        <div
+          className={`min-h-full h-full absolute w-screen min-w-screen ${
+            blur && "blur-sm animate-unblur"
+          }`}
+        >
           <Image
             priority
             src="/images/mtv2.png"
