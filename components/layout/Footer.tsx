@@ -63,24 +63,41 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-6 md:row-start-2 col-start-1 md:col-start-3 self-start md:self-end pr-4">
-          <Link href={"https://twitter.com/f3manifesto"}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className="cursor-empireS mr-4 h-fit relative"
-            >
-              <BsTwitter size={30} color={"#FCF894"} />
-            </a>
-          </Link>
-          <Link href={"https://lenster.xyz/u/f3manifesto.lens"}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className="cursor-empireS h-fit relative"
-            >
-              <Image src={"/images/lens.png"} width={30} height={30} />
-            </a>
-          </Link>
+          <div className="grid grid-flow-col auto-cols-[auto auto] relative h-fit w-fit gap-3">
+            <div className="relative w-fit h-fit col-start-1 place-self-end">
+              <Link href={"https://mirror.xyz/f3manifesto.eth"}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-empireS h-fit relative pr-1"
+                >
+                  <Image src={"/images/mirror.png"} width={21} height={26} />
+                </a>
+              </Link>
+            </div>
+            <div className="relative w-fit h-fit col-start-2">
+              <Link href={"https://lenster.xyz/u/f3manifesto.lens"}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-empireS h-fit relative"
+                >
+                  <Image src={"/images/lens.png"} width={30} height={30} />
+                </a>
+              </Link>
+            </div>
+            <div className="relative w-fit h-fit col-start-3">
+              <Link href={"https://twitter.com/f3manifesto"}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-empireS h-fit relative"
+                >
+                  <BsTwitter size={30} color={"#FCF894"} />
+                </a>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
