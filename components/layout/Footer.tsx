@@ -44,7 +44,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute h-3 w-3 rounded-full opacity-75 animate-ping bg-green-100"></div>
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
-          </div>
+          </div> 
           <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
