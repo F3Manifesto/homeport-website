@@ -22,7 +22,7 @@ const Home: NextPage = (): JSX.Element => {
   return (
     <div
       id="cursor"
-      className="flex flex-col min-h-screen bg-offBlack h-full min-w-screen"
+      className="flex flex-col midWhite bg-offBlack h-full min-w-screen"
     >
       <Head>
         <title>F3Manifesto</title>
