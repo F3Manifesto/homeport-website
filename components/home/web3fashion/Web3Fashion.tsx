@@ -34,7 +34,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           onClick={() => goShopping()}
           variants={marqueeVariants}
           animate="animate"
-          className="w-fit h-fit absolute top-28 sm:top-10 right-4 z-10 will-change-transform"
+          className="w-fit h-fit absolute top-28 sm:top-10 right-4 z-10 will-change-transform cursor-empireS"
         >
           <Image priority src="/images/carts.gif" width={40} height={30} />
         </motion.div>
