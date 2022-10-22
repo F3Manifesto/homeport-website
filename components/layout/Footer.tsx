@@ -44,7 +44,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute h-3 w-3 rounded-full opacity-75 animate-ping bg-green-100"></div>
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
-          </div> 
+          </div>
           <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
@@ -75,7 +75,18 @@ const Footer: FunctionComponent = (): JSX.Element => {
                 </a>
               </Link>
             </div>
-            <div className="relative w-fit h-fit col-start-2">
+            <div className="relative w-fit h-fit col-start-2 place-self-end">
+              <Link href={"https://github.com/f3manifesto"}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-empireS h-fit relative pr-1"
+                >
+                  <Image src={"/images/github.png"} width={29} height={28} />
+                </a>
+              </Link>
+            </div>
+            <div className="relative w-fit h-fit col-start-3">
               <Link href={"https://lenster.xyz/u/f3manifesto.lens"}>
                 <a
                   target="_blank"
@@ -86,7 +97,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                 </a>
               </Link>
             </div>
-            <div className="relative w-fit h-fit col-start-3">
+            <div className="relative w-fit h-fit col-start-4">
               <Link href={"https://twitter.com/f3manifesto"}>
                 <a
                   target="_blank"
