@@ -22,6 +22,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
     "OS ENGINEERING",
     "REALMS",
     "UNSPUN",
+    "SYNTH WAVE"
   ];
   return (
     <div className="w-full min-h-auto h-auto relative flex bg-offBlack overflow-hidden">
@@ -65,7 +66,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           FASHION
         </div>
         <div className="relative top-2/3 grid auto-rows-[auto auto] md:auto-cols-[auto auto] grid-flow-row w-fit left-4 sm:left-20">
-          <div className="relative flex border-l-2 border-t-2 border-b-2 border-offWhite h-80 w-20 font-holo rounded-bl-lg rounded-tl-lg row-start-2 md:col-start-1">
+          <div className="relative flex border-l-2 border-t-2 border-b-2 border-offWhite h-[25.3rem] w-20 font-holo rounded-bl-lg rounded-tl-lg row-start-2 md:col-start-1">
             <div className="relative grid auto-rows-[auto auto] grid-flow-row gap-14 justify-items-center w-full -top-3">
               {videos.map((video: string, index: number) => {
                 return (
@@ -78,7 +79,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
                     <div className="grid auto-cols-[auto auto] grid-flow-col relative gap-2 h-fit w-fit">
                       <hr
                         className={`w-20 h-0.5 bg-offWhite float-left col-start-1 self-center ${
-                          (index === 0 || index === 4) && `invisible`
+                          (index === 0 || index === 5) && `invisible`
                         }`}
                       />
                       <div
@@ -102,7 +103,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           </div>
           <div className="relative row-start-1 md:col-start-2">
             {(showImage || imageState) && (
-              <div className="absolute rounded-lg h-80 w-72 sm:h-80 sm:w-96 border-4 border-offBlack  md:left-40 md:top-auto left-auto -top-96">
+              <div className="absolute rounded-lg h-80 w-72 sm:h-80 sm:w-96 border-4 border-offBlack md:left-40 md:top-auto left-auto -top-96">
                 <video
                   className="object-cover w-full h-full"
                   autoPlay
