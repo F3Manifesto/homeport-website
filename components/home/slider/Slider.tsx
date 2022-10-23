@@ -39,7 +39,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
   ];
 
   return (
-    <div className="min-h-60 h-60 flex relative w-full bg-offWhite cursor-empireA overflow-hidden pb-10">
+    <div className="min-h-72 h-72 flex relative w-full bg-offWhite cursor-empireA overflow-hidden pb-10">
       <Marquee className="flex" pauseOnHover pauseOnClick direction="right">
         {images.map((image, key) => {
           return (
