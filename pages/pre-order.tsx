@@ -32,7 +32,7 @@ const PreOrder: NextPage = (): JSX.Element => {
           <div className="relative row-start-3 h-fit w-fit justify-center pl-20">
             <div className="font-fira text-base text-offWhite leading-snug relative w-[70%]">
               Before we commit to a new limited run, each of you who take the
-              time to tell us a bit about what you want goes along way in our
+              time to tell us a bit about what you want goes a long way in our
               decision of what to work on.
             </div>
           </div>
