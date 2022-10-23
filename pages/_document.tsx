@@ -9,7 +9,7 @@ class Document extends NextDocument {
           <meta name="og:url" content="https://f3manifesto.xyz/" />
           <meta name="og:title" content="F3Manifesto" />
           <meta name="og:description" content="I Want My Web3 Fashion" />
-          <meta name="og:image" content="" />
+          <meta name="og:image" content="https://f3manifesto.xyz/card.png/" />
           <meta name="twitter:card" content="summary" />
           <meta name="og:url" content="https://f3manifesto.xyz/" />
           <meta name="og:image" content="https://f3manifesto.xyz/card.png/" />
