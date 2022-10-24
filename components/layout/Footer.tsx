@@ -23,17 +23,18 @@ const Footer: FunctionComponent = (): JSX.Element => {
           Src: Ryte GPT-3
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          This high-end designer is working night and day to make a beautiful
-          garment. Shouldn't it be easy for you to find the perfect design? Be
-          more than just a silhouette. <br /> <br /> Once a fashion designer,
-          now the craziest scientist of the century. The result of many hours of
-          research, design, and planning. this garment is meticulously
-          engineered for a high-end fashionista. With a little care and some
-          love, this design will stay in your closet for years to come. I spent
-          all night making this.
+          She can relate to the rebellious otherworldly styles that form our
+          iconic collections. A daredevil, an artist. Our young designer is
+          charting uncharted territory with her latest collection, and it will
+          take some time to perfect.⁣⁣ This is a complex process. A new chemical
+          to form this seamless pattern. A new type of zero waste pattern
+          engineering that is seeping into fabric.
+          <br /> <br />
+          Stylish and sustainable. Coding is an art form. It’s time to start
+          creating something extraordinary.
         </div>
-        <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-2 pl-10 md:pl-0 self-end">
-          log: 0001
+        <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-2 pl-10 self-end">
+          log: 0002
         </div>
         <div className="relative col-start-1 row-start-5 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-16 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
