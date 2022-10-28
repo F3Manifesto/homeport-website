@@ -1,11 +1,14 @@
 [
   {
-    "collection": "mev override"
-  },
-  {
     "collection": "latent lens threads"
   },
   {
+    "collection": "mev override"
+  },
+  {
     "collection": "ora obscura"
+  },
+  {
+    "collection": "west side grammar"
   }
 ]
