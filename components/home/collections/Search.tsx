@@ -11,9 +11,9 @@ const Search: FunctionComponent<SearchProps> = ({
   styleSelect,
 }): JSX.Element => {
   return (
-    <div className="flex relative min-h-fit min-h-96 h-[110vh] sm:h-96 max-w-screen w-full min-w-fit overflow-hidden">
+    <div className="flex relative h-fit max-w-screen w-full min-w-fit overflow-hidden pb-12">
       <div className="relative max-w-full w-fit h-full grid auto-cols-[auto auto] grid-flow-col">
-        <div className="relative col-start-1 max-w-fit w-fit h-full row-start-1 pr-10">
+        <div className="relative col-start-1 max-w-fit w-fit h-full row-start-1 pr-5 xl:pr-10">
           <div className="relative auto-rows-[auto auto] h-full w-fit max-w-fit">
             <div className="relative w-full h-1/2 row-start-1 pt-12 pl-6">
               <div className="relative w-fit h-fit grid auto-rows-[auto auto] grid-flow-row gap-2">
@@ -27,7 +27,10 @@ const Search: FunctionComponent<SearchProps> = ({
                         <div
                           className={`m-2 ml-0 border relative border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS font-conso h-fit w-fit lg:col-start-${
                             index + 1
-                          } lg:row-start-1 row-start-${index + 1}`}
+                          } lg:row-start-1 ${
+                            index === 3 &&
+                            "xl:row-start-2 lg:row-start-2 lg:col-start-1 xl:col-start-1"
+                          } xl:row-start-1 row-start-${index + 1}`}
                           key={index}
                         >
                           <button
@@ -48,8 +51,8 @@ const Search: FunctionComponent<SearchProps> = ({
                 </div>
               </div>
             </div>
-            <div className="relative w-full h-1/2 row-start-2 pl-6 col-start-1">
-              <div className="w-fit h-fit lg:w-20 relative col-start-1 font-conso lg:top-auto top-24 sm:pt-0 pt-3">
+            <div className="relative w-full h-1/2 row-start-2 pl-6 col-start-1 pt-6 xl:pt-10">
+              <div className="w-fit h-fit lg:w-20 relative col-start-1 font-conso lg:top-auto top-24 sm:pt-6 xl:pt-3">
                 FILTER BY NAME
               </div>
               <div className="m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 h-fit w-fit lg:top-auto relative top-24">
@@ -65,8 +68,8 @@ const Search: FunctionComponent<SearchProps> = ({
         <div className="relative col-start-1 sm:col-start-2 w-full h-full row-start-2 sm:row-start-1 sm:pl-0 pl-3">
           <div className="relative auto-rows-[auto auto] h-full w-full">
             <div className="relative w-full h-1/2 row-start-1 hidden lg:flex"></div>
-            <div className="relative w-full h-1/2 row-start-1 lg:row-start-2 lg:pl-0 pl-4 lg:pt-0 pt-12">
-              <div className="relative grid auto-rows-[auto auto] grid-flow-row w-fit h-fit">
+            <div className="relative w-full h-1/2 row-start-1 lg:row-start-2 lg:pl-0 pl-4 lg:pt-0 pt-6 sm:pt-12">
+              <div className="relative grid auto-rows-[auto auto] grid-flow-row w-fit h-fit lg:gap-0 gap-2 sm:gap-4">
                 <div className="w-fit h-fit relative font-conso row-start-1">
                   SELECT A
                   <br />
@@ -83,7 +86,7 @@ const Search: FunctionComponent<SearchProps> = ({
                             index + 1 === 4 &&
                             `row-start-${
                               index + 1
-                            } xl:row-start-2 lg:row-start-2`
+                            } lg:row-start-2 xl:row-start-2 xl:col-start-1`
                           }`}
                           key={index}
                         >
