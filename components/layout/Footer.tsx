@@ -20,7 +20,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           model has to say for itself…
         </div>
         <div className="relative justify-end w-fit text-sm font-futur col-start-1 row-start-3 md:row-start-2 self-end h-fit pl-10 md:pt-0 pt-10">
-          Src: Ryte GPT-3
+          Src: Rytr GPT-3
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
           She can relate to the rebellious otherworldly styles that form our
