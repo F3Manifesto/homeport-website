@@ -23,18 +23,14 @@ const Footer: FunctionComponent = (): JSX.Element => {
           Src: Rytr GPT-3
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          She can relate to the rebellious otherworldly styles that form our
-          iconic collections. A daredevil, an artist. Our young designer is
-          charting uncharted territory with her latest collection, and it will
-          take some time to perfect.⁣⁣ This is a complex process. A new chemical
-          to form this seamless pattern. A new type of zero waste pattern
-          engineering that is seeping into fabric.
+          She wants the dark and glamorous style. With golden hues, you'll have
+          the best-dressed customers. The lighting should be dimmed, but not so
+          much that people can't see each other. The importance of color in a woman’s wardrobe.
           <br /> <br />
-          Stylish and sustainable. Coding is an art form. It’s time to start
-          creating something extraordinary.
+          A tight corset that accentuates your curves and flares out at the bottom to give you room to dance. Your curiosity gets the best of you. 
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-2 pl-10 self-end">
-          log: 0002
+          log: 0003
         </div>
         <div className="relative col-start-1 row-start-5 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-16 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
