@@ -29,8 +29,8 @@ const Search: FunctionComponent<SearchProps> = ({
                             index + 1
                           } lg:row-start-1 ${
                             index === 3 &&
-                            "xl:row-start-2 lg:row-start-2 lg:col-start-1 xl:col-start-1"
-                          } xl:row-start-1 row-start-${index + 1}`}
+                            "lg:row-start-2 xl:row-start-2 lg:col-start-1 xl:col-start-1"
+                          } row-start-${index + 1}`}
                           key={index}
                         >
                           <button
@@ -82,11 +82,12 @@ const Search: FunctionComponent<SearchProps> = ({
                         <div
                           className={`break-after-column m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base xl:col-start-${
                             index + 1
-                          } xl:row-start-1 ${
-                            index + 1 === 4 &&
-                            `row-start-${
-                              index + 1
-                            } lg:row-start-2 xl:row-start-2 xl:col-start-1`
+                          } ${
+                            index + 1 === 4
+                              ? `row-start-${
+                                  index + 1
+                                } lg:row-start-2 xl:row-start-2 xl:col-start-1 lg:col-start-1`
+                              : " xl:row-start-1"
                           }`}
                           key={index}
                         >
