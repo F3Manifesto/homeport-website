@@ -1,17 +1,21 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
-import { GlobalContext } from "../../../pages/_app";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
+import { useAccount } from "wagmi";
 
 const useMetadata = (): useMetadataResults => {
-  const { contract } = useContext(GlobalContext);
+  const { address } = useAccount();
 
   const [enabled, setEnabled] = useState<boolean>(false);
-  const [args, setArgs] = useState<any>();
+  const [args, setArgs] = useState<number>();
+  const [price, setPrice] = useState<string>();
+  const [contractAddress, setContractAddress] = useState<string>();
+  const [errorState, setErrorState] = useState<boolean>(false);
 
   const { config } = usePrepareContractWrite({
-    address: contract,
+    address: contractAddress,
+    chainId: 1,
     abi: [
       {
         name: "purchase",
@@ -25,36 +29,44 @@ const useMetadata = (): useMetadataResults => {
     ],
     functionName: "purchase",
     onError(error: any) {
-      console.error("Error", error);
-    },
-    onSettled(error: any) {
-      console.log("Settled", error);
-    },
-    onSuccess(error: any) {
-      console.log("Success", error);
+      console.error("Error", error.code);
+      if (error.code == "INSUFFICIENT_FUNDS") {
+        setErrorState(true);
+      }
     },
     enabled: Boolean(enabled),
     args: [args],
+    overrides: {
+      from: address,
+      value: price,
+    },
   });
 
-  const { isIdle, writeAsync } = useContractWrite(config);
+  const { writeAsync } = useContractWrite(config);
 
-  const collectNFT = async (address: string, price: number): Promise<void> => {
-    const contractArgs = ethers.utils.parseUnits(price.toString(), 18);
-
-    setArgs(contractArgs);
+  const prepareNFTData = (
+    address: string,
+    price: number,
+    amount: number
+  ): void => {
     setEnabled(true);
-    console.log("here");
-
-    try {
-      const tx = await writeAsync?.();
-      const res = await tx?.wait();
-    } catch (err) {
-      console.error(err);
-    }
+    const contractArgs: number = 1;
+    setContractAddress(address);
+    setPrice(ethers.utils.parseEther(price.toString()));
+    setArgs(contractArgs);
   };
 
-  return { collectNFT };
+  const collectNFT = async (): Promise<void> => {
+    try {
+      const tx: any = await writeAsync?.();
+      const res: any = await tx?.wait();
+    } catch (err: any) {
+      console.error(err);
+    }
+    setEnabled(false);
+  };
+
+  return { collectNFT, errorState, setErrorState, prepareNFTData };
 };
 
 export default useMetadata;

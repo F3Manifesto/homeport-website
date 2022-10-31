@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { MetadataProps } from "../../types/general.types";
 import useMetadata from "./hooks/useMetadata";
 import { useAccount } from "wagmi";
@@ -8,8 +8,17 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   token,
   connect,
 }): JSX.Element => {
-  const { collectNFT } = useMetadata();
+  const { collectNFT, setErrorState, errorState, prepareNFTData } =
+    useMetadata();
   const { isConnected } = useAccount();
+  useEffect(() => {
+    prepareNFTData(token[0].contract, token[0].price, token[0].amount);
+    if (errorState) {
+      setTimeout(() => {
+        setErrorState(false);
+      }, 4000);
+    }
+  }, [errorState]);
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
       <div className="relative w-[95%] h-fit col-start-1 border-offBlack border-4 place-self-center grid grid-flow-col auto-col-[auto auto] bg-lightY">
@@ -24,37 +33,42 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
-              <div
-                className="relative w-fit h-fit row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-                onClick={
-                  isConnected
-                    ? () =>
-                        collectNFT(
-                          "0xa5c29d03503dee4d517231f0a8fc06176faf9cd9",
-                          0.32
-                        )
-                    : () => {
-                        if (connect.current) {
-                          connect.current.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                          });
+              {errorState ? (
+                <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-red-500">
+                  <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
+                    INSUFFICIENT FUNDS{" "}
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
+                  onClick={
+                    isConnected
+                      ? () => collectNFT()
+                      : () => {
+                          if (connect.current) {
+                            connect.current.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                          }
                         }
-                      }
-                }
-              >
-                <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-                  COLLECT{" "}
+                  }
+                >
+                  <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
+                    COLLECT{" "}
+                  </div>
+                  <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
+                    <Image
+                      src="/images/expand2.png"
+                      layout="fill"
+                      alt="Expand"
+                      priority
+                    />
+                  </div>
                 </div>
-                <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
-                  <Image
-                    src="/images/expand2.png"
-                    layout="fill"
-                    alt="Expand"
-                    priority
-                  />
-                </div>
-              </div>
+              )}
+
               <div className="relative w-fit h-fit row-start-2 text-offBlack/75 text-base font-firaM place-self-end pt-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
                 <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-2">
                   <div className="relative w-4 h-4 rounded-full col-start-1 border-2 border-black bg-brightGreen place-self-center"></div>

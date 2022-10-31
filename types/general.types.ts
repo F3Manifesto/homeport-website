@@ -86,6 +86,7 @@ export type Gallery = {
   graph: string;
   styleImage: string;
   edition: string;
+  contract: string;
 };
 
 export type CollectionProps = {
@@ -141,8 +142,11 @@ export type usePreOrderResults = {
 export type MetadataProps = {
   token: any;
   connect: any;
-}
+};
 
 export type useMetadataResults = {
-  collectNFT: (address: string, price: number) => Promise<void>;
-}
+  collectNFT: () => Promise<void>;
+  setErrorState: (e: boolean) => void;
+  errorState: boolean;
+  prepareNFTData: (address: string, price: number, amount: number) => void;
+};

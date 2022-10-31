@@ -14,8 +14,8 @@ const Search: FunctionComponent<SearchProps> = ({
     <div className="flex relative h-fit max-w-screen w-full min-w-fit overflow-hidden pb-12">
       <div className="relative max-w-full w-fit h-full grid auto-cols-[auto auto] grid-flow-col">
         <div className="relative col-start-1 max-w-fit w-fit h-full row-start-1 pr-5 xl:pr-10">
-          <div className="relative auto-rows-[auto auto] h-full w-fit max-w-fit">
-            <div className="relative w-full h-1/2 row-start-1 pt-12 pl-6">
+          <div className="relative grid grid-flow-row gap-6 auto-rows-[auto auto] h-full w-fit max-w-fit">
+            <div className="relative w-full h-fit row-start-1 pt-12 pl-6">
               <div className="relative w-fit h-fit grid auto-rows-[auto auto] grid-flow-row gap-2">
                 <div className="font-conso relative text-md md:text-xl min-h-fit w-fit row-start-1">
                   CHOOSE A COLLECTION
@@ -51,11 +51,11 @@ const Search: FunctionComponent<SearchProps> = ({
                 </div>
               </div>
             </div>
-            <div className="relative w-full h-1/2 row-start-2 pl-6 col-start-1 pt-6 xl:pt-10">
-              <div className="w-fit h-fit lg:w-20 relative col-start-1 font-conso lg:top-auto top-24 sm:pt-6 xl:pt-3">
+            <div className="relative w-full h-fit row-start-2 pl-6 col-start-1">
+              <div className="w-fit h-fit lg:w-20 relative col-start-1 font-conso lg:top-auto sm:pt-6 xl:pt-3">
                 FILTER BY NAME
               </div>
-              <div className="m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 h-fit w-fit lg:top-auto relative top-24">
+              <div className="m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 h-fit w-fit lg:top-auto relative">
                 <input
                   className="border border-offBlack bg-offWhite caret-offBlue focus:caret-offBlue rounded-full p-2 w-36 font-fira h-fit"
                   name="filter"
