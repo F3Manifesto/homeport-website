@@ -62,7 +62,7 @@ export type marqueeVariants = {
 
 export type GalleryProps = {
   gallery: Gallery[];
-  setOrderIRL: (e: string) => void;
+  setOrder: (e: string) => void;
 };
 
 export type SearchProps = {
@@ -80,11 +80,15 @@ export type Gallery = {
   style: string;
   blurred: string;
   link: string;
+  price: number;
+  amount: number;
+  description: string;
+  graph: string;
 };
 
 export type CollectionProps = {
   shopping: any;
-  setOrderIRL: (e: string) => void;
+  setOrder: (e: string) => void;
 };
 
 export type Web3FashionProps = {

@@ -28,6 +28,12 @@ module.exports = {
         borderBlue: "#B8F3FF",
         darkP: "#462D4A",
         foot: "#F7F8E8",
+        lightYellow: "#FFFFF9",
+        lightPurple: "#EDE5FB",
+        lightWhite: "#FBFBF1",
+        brightGreen: "#AAFDBE",
+        bronze: "#BB552D",
+        midBlue: "#709AF3"
       },
       boxShadow: {
         film: "15px 10px 50px -20px rgba(0, 0, 0.8, 0.3)",
@@ -52,8 +58,10 @@ module.exports = {
         fira: "Fira Code",
         firaL: "Fira Code Light",
         firaB: "Fira Code Bold",
+        firaM: "Fira Medium",
         din: "DIN Condensed",
         futur: "Futurist",
+        jacklane: "Jack Lane",
       },
       keyframes: {
         marquee: {
