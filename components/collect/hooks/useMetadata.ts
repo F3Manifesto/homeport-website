@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useContractRead,
+  useAccount,
+} from "wagmi";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
-import { useAccount } from "wagmi";
 
 const useMetadata = (): useMetadataResults => {
   const { address } = useAccount();
@@ -14,8 +18,27 @@ const useMetadata = (): useMetadataResults => {
   const [errorState, setErrorState] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [abiFunction, setAbiFunction] = useState<string>();
+  const [approved, setApproved] = useState<boolean>(false);
+  const [showApproval, setShowApproval] = useState<boolean>(false);
 
-  console.log(contractAddress);
+  const { data } = useContractRead({
+    address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
+    abi: [
+      {
+        name: "isModuleApproved",
+        type: "function",
+        stateMutability: "view",
+        inputs: [
+          { internalType: "address", name: "_user", type: "address" },
+          { internalType: "address", name: "_module", type: "address" },
+        ],
+
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+      },
+    ],
+    functionName: "isModuleApproved",
+    args: [address, "0x6170B3C3A54C3d8c854934cBC314eD479b2B29A3"],
+  });
 
   const { config } = usePrepareContractWrite({
     address:
@@ -139,6 +162,14 @@ const useMetadata = (): useMetadataResults => {
     setArgs(contractArgs);
   };
 
+  const checkApproved = (): void => {
+    if (data) {
+      setApproved(true);
+    } else {
+      setApproved(false);
+    }
+  };
+
   return {
     collectNFT,
     errorState,
@@ -147,6 +178,9 @@ const useMetadata = (): useMetadataResults => {
     collectMarket,
     prepareNFTDataMarket,
     setAbiFunction,
+    checkApproved,
+    approved,
+    setShowApproval
   };
 };
 

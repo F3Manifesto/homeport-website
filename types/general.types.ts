@@ -161,4 +161,12 @@ export type useMetadataResults = {
   ) => void;
   errorMessage: boolean;
   setAbiFunction: (e: string) => void;
+  checkApproved: () => void;
+  approved: boolean;
+  setShowApproval: (e: boolean) => void;
 };
+
+export type useApproveResults = {
+  prepareApproval: () => void;
+  approveAddress: () => Promise<void>
+}

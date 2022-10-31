@@ -16,6 +16,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
     errorMessage,
     collectMarket,
     setAbiFunction,
+    checkApproved,
+    approved,
+    setShowApproval,
   } = useMetadata();
   const { address, isConnected } = useAccount();
   const balance: any = useBalance({
@@ -35,6 +38,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
     } else {
       setAbiFunction("market");
       prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
+      checkApproved();
     }
   }, [errorState, address, ethBalance, errorMessage]);
   return (
@@ -74,7 +78,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                       ? () => {
                           collectNFT();
                         }
-                      : () => collectMarket()
+                      : approved
+                      ? () => collectMarket()
+                      : () => setShowApproval(true)
                   }
                 >
                   <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">

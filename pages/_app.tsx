@@ -1,8 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Suspense, useEffect, useState, createContext } from "react";
+import {useEffect, useState, createContext } from "react";
 import Footer from "../components/layout/Footer";
-import Loading from "../components/layout/Loading";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
@@ -14,7 +13,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "F3Manifesto",
   chains,
 });
 
@@ -77,7 +76,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    // <Suspense fallback={Loading}>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <GlobalContext.Provider
@@ -90,7 +88,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         </GlobalContext.Provider>
       </RainbowKitProvider>
     </WagmiConfig>
-    // </Suspense>
   );
 }
 
