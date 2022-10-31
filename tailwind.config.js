@@ -33,7 +33,8 @@ module.exports = {
         lightWhite: "#FBFBF1",
         brightGreen: "#AAFDBE",
         bronze: "#BB552D",
-        midBlue: "#709AF3"
+        midBlue: "#709AF3",
+        pinkish: "#B42AA1"
       },
       boxShadow: {
         film: "15px 10px 50px -20px rgba(0, 0, 0.8, 0.3)",
@@ -94,7 +95,7 @@ module.exports = {
         midi: "1140px",
         half: "900px",
         alm: "740px",
-        galaxy: "300px"
+        galaxy: "350px"
       },
     },
   },
