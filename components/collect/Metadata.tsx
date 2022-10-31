@@ -2,23 +2,41 @@ import Image from "next/image";
 import { FunctionComponent, useEffect } from "react";
 import { MetadataProps } from "../../types/general.types";
 import useMetadata from "./hooks/useMetadata";
-import { useAccount } from "wagmi";
+import { useAccount, useBalance } from "wagmi";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
   connect,
 }): JSX.Element => {
-  const { collectNFT, setErrorState, errorState, prepareNFTData } =
-    useMetadata();
-  const { isConnected } = useAccount();
+  const {
+    collectNFT,
+    errorState,
+    prepareNFTDataCollection,
+    prepareNFTDataMarket,
+    errorMessage,
+    collectMarket,
+    setAbiFunction,
+  } = useMetadata();
+  const { address, isConnected } = useAccount();
+  const balance: any = useBalance({
+    addressOrName: address,
+    chainId: 1,
+    watch: true,
+  });
+  const ethBalance = Number(balance.data?.formatted).toFixed(3);
   useEffect(() => {
-    prepareNFTData(token[0].contract, token[0].price, token[0].amount);
-    if (errorState) {
-      setTimeout(() => {
-        setErrorState(false);
-      }, 4000);
+    if (token[0].type === "collection") {
+      setAbiFunction("collection");
+      prepareNFTDataCollection(
+        token[0].contract,
+        token[0].price,
+        token[0].amount
+      );
+    } else {
+      setAbiFunction("market");
+      prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
     }
-  }, [errorState]);
+  }, [errorState, address, ethBalance, errorMessage]);
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
       <div className="relative w-[95%] h-fit col-start-1 border-offBlack border-4 place-self-center grid grid-flow-col auto-col-[auto auto] bg-lightY">
@@ -33,7 +51,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
-              {errorState ? (
+              {errorMessage ? (
                 <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-red-500">
                   <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
                     INSUFFICIENT FUNDS{" "}
@@ -43,9 +61,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div
                   className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                   onClick={
-                    isConnected
-                      ? () => collectNFT()
-                      : () => {
+                    !isConnected
+                      ? () => {
                           if (connect.current) {
                             connect.current.scrollIntoView({
                               behavior: "smooth",
@@ -53,6 +70,11 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             });
                           }
                         }
+                      : token[0].type === "collection"
+                      ? () => {
+                          collectNFT();
+                        }
+                      : () => collectMarket()
                   }
                 >
                   <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
