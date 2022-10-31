@@ -17,7 +17,7 @@ const Connect: FunctionComponent = (): JSX.Element => {
         const connected =
           ready &&
           account &&
-          chain &&
+          chain && 
           (!authenticationStatus || authenticationStatus === "authenticated");
 
         return (
