@@ -17,15 +17,15 @@ const Metadata: FunctionComponent<MetadataProps> = ({
           <div className="relative w-full sm:w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-10 row-start-1">
             <div className="relative w-fit h-fit col-start-1 grid grid-flow-row auto-rows-[auto auto]">
               <div className="relative w-fit h-fit row-start-1 font-firaL text-5xl text-black">
-                0.32Ξ
+                {token[0].price}Ξ
               </div>
               <div className="relative w-fit h-fit row-start-2 text-offBlack/75 text-base font-firaM place-self-end pt-2">
-                ($420.22)
+                (${(token[0].price*1574.43).toFixed(2)})
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
               <div
-                className="relative w-fit h-fit row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:cursor-empireS active:scale-95"
+                className="relative w-fit h-fit row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                 onClick={
                   isConnected
                     ? () =>
@@ -81,7 +81,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   priority
                 />
               </div>
-              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 text-bronze hover:bg-lightPurple">
+              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 text-bronze hover:bg-lightPurple cursor-empireS">
                 {token[0].amount}
               </div>
             </div>
@@ -94,7 +94,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   priority
                 />
               </div>
-              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 text-midBlue hover:bg-lightPurple">
+              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 text-midBlue hover:bg-lightPurple cursor-empireS">
                 {token[0].edition + " Edition"}
               </div>
             </div>
@@ -107,8 +107,21 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   priority
                 />
               </div>
-              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 hover:bg-lightPurple">
+              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black rounded-lg col-start-2 hover:bg-lightPurple cursor-empireS">
                 {token[0].collection}
+              </div>
+            </div>
+            <div className="relative w-fit h-fit row-start-4 grid grid-flow-col auto-cols-[auto auto] gap-1">
+              <div className="relative w-4 h-6 col-start-1">
+                <Image
+                  src="/images/greenarrows.png"
+                  layout="fill"
+                  alt="Arrow"
+                  priority
+                />
+              </div>
+              <div className="relative w-fit h-fit pl-3 pr-3 pt-0.5 pb-0.5 border-2 border-black text-pinkish rounded-lg col-start-2 hover:bg-lightPurple cursor-empireS">
+                ERC 721
               </div>
             </div>
           </div>
@@ -119,7 +132,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-full h-1 row-start-2 bg-offBlack"></div>
             <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] pt-3 gap-2">
               <div className="relative col-start-1 w-fit h-fit">
-                <div className="relative h-10 w-16 border-r-4 border-t-2 border-b-2 border-l-2 border-offBlack rounded-md bg-lightWhite place-self-center grid grid-flow-col auto-cols-[auto auto]">
+                <div className="relative h-10 w-16 border-r-4 border-t-2 border-b-2 border-l-2 border-offBlack rounded-md bg-lightWhite place-self-center grid grid-flow-col auto-cols-[auto auto] hover:rotate-6 cursor-empireS hover:mix-blend-exclusion">
                   <div className="relative h-6 w-10 col-start-1 place-self-center">
                     <Image
                       src={`/images/${token[0].styleImage}.png`}
