@@ -86,6 +86,8 @@ export type Gallery = {
   amount: number;
   description: string;
   graph: string;
+  styleImage: string;
+  edition: string;
 };
 
 export type CollectionProps = {
