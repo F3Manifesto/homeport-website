@@ -34,12 +34,12 @@ const Connect: FunctionComponent = (): JSX.Element => {
           >
             {(() => {
               if (!connected) {
-                return <p onClick={openConnectModal}>CONNECT WALLET</p>;
+                return <p onClick={openConnectModal} className="font-fira">CONNECT WALLET</p>;
               }
 
               if (chain.unsupported) {
                 return (
-                  <p onClick={openChainModal}>
+                  <p onClick={openChainModal} className="font-fira">
                     SWITCH NETWORK
                     <div className="relative h-3 w-3">
                       <div className="animate-ping absolute -right-36 -top-6 h-3 w-3 rounded-full opacity-75 bg-red-600"></div>
@@ -50,7 +50,7 @@ const Connect: FunctionComponent = (): JSX.Element => {
               }
 
               return (
-                <div style={{ display: "flex", gap: 1, zIndex:"30" }}>
+                <div style={{ display: "flex", gap: 1, zIndex:"30" }} className="font-fira">
                   <p onClick={openAccountModal}>{account.displayName}</p>
                 </div>
               );
