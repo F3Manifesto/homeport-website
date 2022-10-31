@@ -2,7 +2,6 @@ import Image from "next/image";
 import { FunctionComponent } from "react";
 import { MetadataProps } from "../../types/general.types";
 import useMetadata from "./hooks/useMetadata";
-// @ts-ignore
 import { useAccount } from "wagmi";
 
 const Metadata: FunctionComponent<MetadataProps> = ({

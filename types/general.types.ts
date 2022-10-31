@@ -23,8 +23,6 @@ export type useCollectionsResult = {
   collectionFilter: string;
   styleSelect: string[];
   styleFilter: string;
-  styleImage: string;
-  edition: string;
 };
 
 export type useWeb3FashionResults = {

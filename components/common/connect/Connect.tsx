@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-// @ts-ignore
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Connect: FunctionComponent = (): JSX.Element => {
