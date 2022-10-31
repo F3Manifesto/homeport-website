@@ -6,6 +6,7 @@ import { Gallery, GalleryProps } from "./../../../types/general.types";
 const Gallery: FunctionComponent<GalleryProps> = ({
   gallery,
   setOrder,
+  setContract,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
 
@@ -45,7 +46,10 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                   <a>
                     <button
                       className="rounded-full bg-offWhite relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offBlack border-2 cursor-empireS active:opacity-80"
-                      onClick={() => setOrder(token.name)}
+                      onClick={() => {
+                        setOrder(token.name);
+                        setContract("0xa5c29d03503dee4d517231f0a8fc06176faf9cd9");
+                      }}
                     >
                       <p className="leading-none text-center align-middle relative h-full w-full top-1 text-offBlack">
                         COLLECT NFT

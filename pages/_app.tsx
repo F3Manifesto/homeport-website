@@ -9,7 +9,7 @@ import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [chain.mainnet],
   [publicProvider()]
 );
 
@@ -24,17 +24,18 @@ const wagmiClient = createClient({
   provider,
 });
 
-export const GlobalProfileContextDefault = {
+export const GlobalContextDefault = {
   order: "",
   setOrder: (order: string) => {},
+  contract: "",
+  setContract: (contract: string) => {},
 };
 
-export const GlobalContext = createContext(GlobalProfileContextDefault);
+export const GlobalContext = createContext(GlobalContextDefault);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [order, setOrder] = useState(
-    GlobalProfileContextDefault.order
-  );
+  const [order, setOrder] = useState(GlobalContextDefault.order);
+  const [contract, setContract] = useState(GlobalContextDefault.contract);
   useEffect(() => {
     console.log(` **                                                                 
     /**                                                                 
@@ -83,7 +84,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <GlobalContext.Provider
-          value={{ order, setOrder }}
+          value={{ order, setOrder, contract, setContract }}
         >
           <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
             <Component {...pageProps} />

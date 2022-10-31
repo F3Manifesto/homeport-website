@@ -23,6 +23,8 @@ export type useCollectionsResult = {
   collectionFilter: string;
   styleSelect: string[];
   styleFilter: string;
+  styleImage: string;
+  edition: string;
 };
 
 export type useWeb3FashionResults = {
@@ -63,6 +65,7 @@ export type marqueeVariants = {
 export type GalleryProps = {
   gallery: Gallery[];
   setOrder: (e: string) => void;
+  setContract: (e: string) => void;
 };
 
 export type SearchProps = {
@@ -89,6 +92,7 @@ export type Gallery = {
 export type CollectionProps = {
   shopping: any;
   setOrder: (e: string) => void;
+  setContract: (e: string) => void;
 };
 
 export type Web3FashionProps = {
@@ -135,3 +139,12 @@ export type SmallBoardProps = {
 export type usePreOrderResults = {
   orderIRLChoice: string;
 };
+
+export type MetadataProps = {
+  token: any;
+  connect: any;
+}
+
+export type useMetadataResults = {
+  collectNFT: (address: string, price: number) => Promise<void>;
+}

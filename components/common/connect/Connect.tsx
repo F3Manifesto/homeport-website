@@ -28,6 +28,7 @@ const Connect: FunctionComponent = (): JSX.Element => {
                 opacity: 0,
                 pointerEvents: "none",
                 userSelect: "none",
+                zIndex:"30"
               },
             })}
           >
@@ -49,7 +50,7 @@ const Connect: FunctionComponent = (): JSX.Element => {
               }
 
               return (
-                <div style={{ display: "flex", gap: 12 }}>
+                <div style={{ display: "flex", gap: 1, zIndex:"30" }}>
                   <p onClick={openAccountModal}>{account.displayName}</p>
                 </div>
               );

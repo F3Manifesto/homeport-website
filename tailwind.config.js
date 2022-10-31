@@ -28,7 +28,7 @@ module.exports = {
         borderBlue: "#B8F3FF",
         darkP: "#462D4A",
         foot: "#F7F8E8",
-        lightYellow: "#FFFFF9",
+        lightY: "#FFFFF9",
         lightPurple: "#EDE5FB",
         lightWhite: "#FBFBF1",
         brightGreen: "#AAFDBE",
@@ -94,6 +94,7 @@ module.exports = {
         midi: "1140px",
         half: "900px",
         alm: "740px",
+        galaxy: "300px"
       },
     },
   },
