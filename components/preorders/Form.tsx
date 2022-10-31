@@ -11,7 +11,7 @@ const Form: FunctionComponent= (): JSX.Element => {
       }, 4000);
     }
   }, [submitSuccess]);
-  const {orderIRL} = useContext(GlobalContext)
+  const {order} = useContext(GlobalContext)
   return (
     <form
       onSubmit={(e) => handleSubmitForm(e)}
@@ -20,7 +20,7 @@ const Form: FunctionComponent= (): JSX.Element => {
       <div className="relative grid auto-rows-[auto auto] grid-flow-row gap-10">
         <div className="relative h-fit w-fit col-start-1 row-start-1">
           <div className="relative col-start-1 row-start-1">
-            <input name="orderIRL" className="hidden" defaultValue={orderIRL} />
+            <input name="orderIRL" className="hidden" defaultValue={order} />
             <div className="text-offWhite m-2 font-firaL">
               What do you like most about this item?
             </div>

@@ -121,6 +121,18 @@ class Document extends NextDocument {
                   src: url("./fonts/Futurist Regular.ttf");
                 }
 
+                @font-face {
+                  font-family: "Jack Lane";
+                  font-weight: 400;
+                  src: url("./fonts/jacklane_2.woff");
+                }
+
+                @font-face {
+                  font-family: "Fira Medium";
+                  font-weight: 400;
+                  src: url("./../public/fonts/FiraCode-Medium.ttf");
+                }
+
                 .loader {
                   border: 16px solid #f3f3f3;
                   border-top: 16px solid #3498db;

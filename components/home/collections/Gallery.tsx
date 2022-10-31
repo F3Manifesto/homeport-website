@@ -3,9 +3,12 @@ import Link from "next/link";
 import { FunctionComponent, useState } from "react";
 import { Gallery, GalleryProps } from "./../../../types/general.types";
 
-const Gallery: FunctionComponent<GalleryProps> = ({ gallery, setOrderIRL }): JSX.Element => {
+const Gallery: FunctionComponent<GalleryProps> = ({
+  gallery,
+  setOrder,
+}): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
-  
+
   if (gallery.length === 0) {
     return (
       <div className="font-york text-offBlue flex items-center justify-center w-full h-fit">
@@ -31,15 +34,19 @@ const Gallery: FunctionComponent<GalleryProps> = ({ gallery, setOrderIRL }): JSX
                   blurDataURL={token.blurred}
                   objectFit="cover"
                   layout="fill"
+                  alt={token.name}
                   objectPosition="top"
                   src={token.image}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>
               <div className="absolute bottom-4 font-din left-3 inline-flex">
-                <Link href={token.link}>
-                  <a target="_blank" rel="noreferrer">
-                    <button className="rounded-full bg-offWhite relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offBlack border-2 cursor-empireS active:opacity-80">
+                <Link href={`/collect/${token.name}`}>
+                  <a>
+                    <button
+                      className="rounded-full bg-offWhite relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offBlack border-2 cursor-empireS active:opacity-80"
+                      onClick={() => setOrder(token.name)}
+                    >
                       <p className="leading-none text-center align-middle relative h-full w-full top-1 text-offBlack">
                         COLLECT NFT
                       </p>
@@ -51,7 +58,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({ gallery, setOrderIRL }): JSX
                     <button
                       className="rounded-full bg-offBlack relative w-fit h-fit mr-2  table-cell text-xl p-2 border-offWhite border-2 cursor-empireS active:opacity-80"
                       name={token.name}
-                      onClick={() => setOrderIRL(token.name)}
+                      onClick={() => setOrder(token.name)}
                     >
                       <p className="leading-none text-center align-middle relative h-full w-full top-1 text-offWhite">
                         PRE-ORDER IRL

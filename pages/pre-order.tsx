@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { GlobalContext } from "./_app";
 
 const PreOrder: NextPage = (): JSX.Element => {
-  const { orderIRL } = useContext(GlobalContext);
+  const { order } = useContext(GlobalContext);
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
@@ -37,7 +37,7 @@ const PreOrder: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
-            {orderIRL !== "" ? (
+            {order !== "" ? (
               <Form />
             ) : (
               <Link href={"/#shopping"}>
