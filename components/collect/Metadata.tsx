@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { FunctionComponent } from "react";
-import { useAccount } from "wagmi";
 import { MetadataProps } from "../../types/general.types";
 import useMetadata from "./hooks/useMetadata";
+// @ts-ignore
+import { useAccount } from "wagmi";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
@@ -20,7 +21,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 {token[0].price}Ξ
               </div>
               <div className="relative w-fit h-fit row-start-2 text-offBlack/75 text-base font-firaM place-self-end pt-2">
-                (${(token[0].price*1574.43).toFixed(2)})
+                (${(token[0].price * 1574.43).toFixed(2)})
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
