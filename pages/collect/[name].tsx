@@ -11,7 +11,7 @@ export const getStaticPaths = async () => {
   const paths = tokens.map((token: Gallery) => {
     return {
       params: {
-        name: token.name.replaceAll(' ', '-').toLowerCase(),
+        name: token.name.replaceAll(" ", "-").toLowerCase(),
       },
     };
   });
@@ -23,7 +23,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const name: string = context.params.name;
-  const response = tokens.filter((token: Gallery) => token.name.replaceAll(' ', '-').toLowerCase() === name.toLowerCase());
+  const response = tokens.filter(
+    (token: Gallery) =>
+      token.name.replaceAll(" ", "-").toLowerCase() === name.toLowerCase()
+  );
   return {
     props: { token: response },
   };
@@ -61,7 +64,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           </div>
         </div>
         <div className="relative w-full row-start-3 h-fit bg-foot grid grid-flow-col auto-cols-[auto auto] pt-8 pb-8 border-b-8 border-t-8 border-lightWhite">
-          <div className="relative w-full h-[120vw] sm:h-[70vw] md:h-[50vw] col-start-1 place-self-center">
+          <div className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] col-start-1 place-self-center">
             <Image
               priority
               layout="fill"
