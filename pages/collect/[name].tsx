@@ -1,18 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Gallery } from "../../types/general.types";
 import tokens from "./../api/tokens.json";
 import { AiFillBackward } from "react-icons/ai";
 import Metadata from "../../components/collect/Metadata";
 import Connect from "../../components/common/connect/Connect";
-import { GlobalContext } from "../_app";
 
 export const getStaticPaths = async () => {
   const paths = tokens.map((token: Gallery) => {
     return {
       params: {
-        name: token.name.replaceAll(' ', '-'),
+        name: token.name.replaceAll(' ', '-').toLowerCase(),
       },
     };
   });
@@ -24,7 +23,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const name: string = context.params.name;
-  const response = tokens.filter((token: Gallery) => token.name.replaceAll(' ', '-') === name);
+  const response = tokens.filter((token: Gallery) => token.name.replaceAll(' ', '-').toLowerCase() === name.toLowerCase());
   return {
     props: { token: response },
   };
@@ -32,10 +31,6 @@ export const getStaticProps = async (context: any) => {
 
 const TokenDetails = ({ token }: any): JSX.Element => {
   const connect = useRef<null | HTMLDivElement>(null);
-  const { setContract } = useContext(GlobalContext);
-  useEffect(() => {
-    setContract("0x01c8d806382d49b536f24aee8f529706ede70845");
-  }, []);
   return (
     <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple">
       <div className="grid grid-flow-row auto-rows-[auto auto] w-full h-full">

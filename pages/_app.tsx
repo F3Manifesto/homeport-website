@@ -27,15 +27,12 @@ const wagmiClient = createClient({
 export const GlobalContextDefault = {
   order: "",
   setOrder: (order: string) => {},
-  contract: "",
-  setContract: (contract: string) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [order, setOrder] = useState(GlobalContextDefault.order);
-  const [contract, setContract] = useState(GlobalContextDefault.contract);
   useEffect(() => {
     console.log(` **                                                                 
     /**                                                                 
@@ -84,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <GlobalContext.Provider
-          value={{ order, setOrder, contract, setContract }}
+          value={{ order, setOrder}}
         >
           <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
             <Component {...pageProps} />
