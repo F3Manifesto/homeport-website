@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
   const paths = tokens.map((token: Gallery) => {
     return {
       params: {
-        name: token.name,
+        name: token.name.replaceAll(' ', '-'),
       },
     };
   });
@@ -24,7 +24,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const name: string = context.params.name;
-  const response = tokens.filter((token: Gallery) => token.name === name);
+  const response = tokens.filter((token: Gallery) => token.name.replaceAll(' ', '-') === name);
   return {
     props: { token: response },
   };
