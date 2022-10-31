@@ -17,7 +17,7 @@ const Home: NextPage = (): JSX.Element => {
     shopping.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const { setOrder } = useContext(GlobalContext);
+  const { setOrder, setContract } = useContext(GlobalContext);
 
   return (
     <div
@@ -37,7 +37,7 @@ const Home: NextPage = (): JSX.Element => {
       <F3Manifesto />
 
       <Web3Fashion goShopping={goShopping} />
-      <Collections shopping={shopping} setOrder={setOrder} />
+      <Collections shopping={shopping} setOrder={setOrder} setContract={setContract} />
       <Poster />
       <Clear />
       <Slider />
