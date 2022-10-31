@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+// @ts-ignore
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Connect: FunctionComponent = (): JSX.Element => {
@@ -12,7 +13,7 @@ const Connect: FunctionComponent = (): JSX.Element => {
         openConnectModal,
         authenticationStatus,
         mounted,
-      }) => {
+      }: any) => {
         const ready = mounted && authenticationStatus !== "loading";
         const connected =
           ready &&
