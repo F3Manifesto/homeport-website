@@ -25,12 +25,12 @@ const Search: FunctionComponent<SearchProps> = ({
                     {collections.map((collection: any, index: number) => {
                       return (
                         <div
-                          className={`m-2 ml-0 border relative border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS font-conso h-fit w-fit lg:col-start-${
+                          className={`m-2 ml-0 border relative border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS font-conso h-fit w-fit row-start-${index + 1} lg:col-start-${
                             index + 1
                           } lg:row-start-1 ${
-                            index === 3 &&
-                            "lg:row-start-2 xl:row-start-2 lg:col-start-1 xl:col-start-1"
-                          } row-start-${index + 1}`}
+                            index + 1 === 4 &&
+                            "lg:row-start-3 xl:row-start-3 lg:col-start-1 xl:col-start-1"
+                          }`}
                           key={index}
                         >
                           <button
