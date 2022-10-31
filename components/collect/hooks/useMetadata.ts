@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import { GlobalContext } from "../../../pages/_app";
 import { useMetadataResults } from "../../../types/general.types";
+import { ethers } from "ethers";
 
 const useMetadata = (): useMetadataResults => {
   const { contract } = useContext(GlobalContext);
@@ -23,13 +24,13 @@ const useMetadata = (): useMetadataResults => {
       },
     ],
     functionName: "purchase",
-    onError(error) {
+    onError(error: any) {
       console.error("Error", error);
     },
-    onSettled(error) {
+    onSettled(error: any) {
       console.log("Settled", error);
     },
-    onSuccess(error) {
+    onSuccess(error: any) {
       console.log("Success", error);
     },
     enabled: Boolean(enabled),
@@ -39,14 +40,11 @@ const useMetadata = (): useMetadataResults => {
   const { isIdle, writeAsync } = useContractWrite(config);
 
   const collectNFT = async (address: string, price: number): Promise<void> => {
-    const contractArgs = {
-      payableAmount: price * (10**18),
-      quantity: 1,
-    };
+    const contractArgs = ethers.utils.parseUnits(price.toString(), 18);
 
     setArgs(contractArgs);
     setEnabled(true);
-    console.log("here")
+    console.log("here");
 
     try {
       const tx = await writeAsync?.();
