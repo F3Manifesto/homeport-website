@@ -37,7 +37,6 @@ const useMetadata = (): useMetadataResults => {
   });
 
   const { isIdle, writeAsync } = useContractWrite(config);
-  console.log(isIdle)
 
   const collectNFT = async (address: string, price: number): Promise<void> => {
     const contractArgs = {
