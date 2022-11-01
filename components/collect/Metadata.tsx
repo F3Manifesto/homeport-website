@@ -56,13 +56,13 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div
                   className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                   onClick={
-                    token[0].type === "collection"
+                    !approved
+                      ? () => setShowApproval(true)
+                      : token[0].type === "collection"
                       ? () => {
                           collectNFT();
                         }
-                      : approved
-                      ? () => collectMarket()
-                      : () => setShowApproval(true)
+                      : () => collectMarket()
                   }
                 >
                   <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
