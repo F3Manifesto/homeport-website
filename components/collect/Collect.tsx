@@ -51,7 +51,7 @@ const Collect: FunctionComponent<CollectProps> = ({
     case "ERROR":
       return (
         <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-blue-500">
-          <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
+          <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.7vw] font-fira place-self-center text-white text-center">
             INSUFFICIENT FUNDS{" "}
           </div>
         </div>
