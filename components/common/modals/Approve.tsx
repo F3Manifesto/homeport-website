@@ -1,23 +1,25 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useContext, useEffect } from "react";
 import useApprove from "./hooks/useApprove";
 import { ImCross } from "react-icons/im";
 import { AiOutlineLoading } from "react-icons/ai";
+import { CollectContext } from "../../../pages/collect/[name]";
 import { ApproveProps } from "../../../types/general.types";
 
-const Approve: FunctionComponent<ApproveProps> = ({
-  setShowApproval,
-}): JSX.Element => {
+const Approve: FunctionComponent<ApproveProps> = ({ data }): JSX.Element => {
   const { prepareApproval, approveAddress, isLoading, isSuccess, loading } =
     useApprove();
   useEffect(() => {
     prepareApproval();
   }, []);
-  console.log(loading);
+  const { setShowApproval, setApproved } = useContext(CollectContext);
   return (
     <div className="relative w-full galaxy:w-96 h-fit bg-offBlack grid grid-flow-row auto-rows-[auto auto] col-start-1 p-4 gap-4">
       <div
         className="relative place-self-end w-6 h-6 row-start-1 cursor-empireS hover:opacity-80 active:scale-95 grid grid-flow-row auto-rows-[auto auto]"
-        onClick={() => setShowApproval(false)}
+        onClick={() => {
+          setShowApproval(false);
+          setApproved(data);
+        }}
       >
         <ImCross
           color="white"

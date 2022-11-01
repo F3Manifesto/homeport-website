@@ -143,20 +143,25 @@ export type usePreOrderResults = {
 export type MetadataProps = {
   token: any;
   connect: any;
-  setShowApproval: (e: boolean) => void;
-  collectNFT: () => Promise<void>;
-  collectMarket: () => Promise<void>;
   errorMessage: boolean;
-  approved: boolean;
-  isConnected: boolean;
+  collectNFT: () => Promise<void>;
   isLoading: boolean;
-  loading: boolean;
+  collectMarket: () => Promise<void>;
   isSuccess: boolean;
-  isError: boolean;
+  loading: boolean;
+  data: boolean;
 };
 
-export type ApproveProps = {
-  setShowApproval: (e: boolean) => void;
+export type CollectProps = {
+  token: any;
+  connect: any;
+  errorMessage: boolean;
+  collectNFT: () => Promise<void>;
+  isLoading: boolean;
+  collectMarket: () => Promise<void>;
+  isSuccess: boolean;
+  loading: boolean;
+  data: boolean;
 };
 
 export type useMetadataResults = {
@@ -175,12 +180,11 @@ export type useMetadataResults = {
   ) => void;
   errorMessage: boolean;
   setAbiFunction: (e: string) => void;
-  checkApproved: () => void;
-  approved: boolean;
   isLoading: boolean;
   loading: boolean;
   isSuccess: boolean;
   isError: boolean;
+  data: boolean;
 };
 
 export type useApproveResults = {
@@ -190,3 +194,7 @@ export type useApproveResults = {
   loading: boolean;
   isSuccess: boolean;
 };
+
+export type ApproveProps = {
+  data: boolean;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   useContractWrite,
   usePrepareContractWrite,
@@ -8,10 +8,10 @@ import {
 } from "wagmi";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
+import { CollectContext } from "../../../pages/collect/[name]";
 
 const useMetadata = (): useMetadataResults => {
   const { address } = useAccount();
-
   const [enabled, setEnabled] = useState<boolean>(false);
   const [args, setArgs] = useState<number | any | any>();
   const [price, setPrice] = useState<string>();
@@ -19,7 +19,6 @@ const useMetadata = (): useMetadataResults => {
   const [errorState, setErrorState] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [abiFunction, setAbiFunction] = useState<string>();
-  const [approved, setApproved] = useState<boolean>(false);
   const [hash, setHash] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -96,8 +95,7 @@ const useMetadata = (): useMetadataResults => {
     functionName: abiFunction === "collection" ? "purchase" : "fillAsk",
     onError(error: any) {
       if (
-        error.code == "INSUFFICIENT_FUNDS" ||
-        error.code.includes("insufficient funds")
+        error.code == "INSUFFICIENT_FUNDS"
       ) {
         setErrorState(true);
       }
@@ -186,14 +184,6 @@ const useMetadata = (): useMetadataResults => {
     setArgs(contractArgs);
   };
 
-  const checkApproved = (): void => {
-    if (data) {
-      setApproved(true);
-    } else {
-      setApproved(false);
-    }
-  };
-
   return {
     collectNFT,
     errorState,
@@ -202,12 +192,11 @@ const useMetadata = (): useMetadataResults => {
     collectMarket,
     prepareNFTDataMarket,
     setAbiFunction,
-    checkApproved,
-    approved,
     isLoading,
     isSuccess,
     loading,
     isError,
+    data
   };
 };
 
