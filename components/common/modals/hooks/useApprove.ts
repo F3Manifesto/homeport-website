@@ -6,6 +6,7 @@ import { useApproveResults } from "../../../../types/general.types";
 const useApprove = (): useApproveResults => {
   const [enabled, setEnabled] = useState<boolean>(false);
   const [args, setArgs] = useState<any[]>();
+  const [res, setRes] = useState<boolean>();
   const { config } = usePrepareContractWrite({
     address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
     chainId: 1,
@@ -30,7 +31,7 @@ const useApprove = (): useApproveResults => {
     args: args,
   });
 
-  const { writeAsync } = useContractWrite(config);
+  const { writeAsync, isLoading, isSuccess } = useContractWrite(config);
 
   const prepareApproval = (): void => {
     setEnabled(true);
@@ -43,15 +44,17 @@ const useApprove = (): useApproveResults => {
 
   const approveAddress = async (): Promise<void> => {
     try {
+      setRes(false)
       const tx: any = await writeAsync?.();
       const res: any = await tx?.wait();
+      setRes(true);
     } catch (err: any) {
       console.error(err);
     }
     setEnabled(false);
   };
 
-  return { prepareApproval, approveAddress };
+  return { prepareApproval, approveAddress, isLoading, res };
 };
 
 export default useApprove;

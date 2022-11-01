@@ -1,11 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Gallery } from "../../types/general.types";
 import tokens from "./../api/tokens.json";
 import { AiFillBackward } from "react-icons/ai";
 import Metadata from "../../components/collect/Metadata";
 import Connect from "../../components/common/connect/Connect";
+import Approve from "../../components/common/modals/Approve";
+import useMetadata from "../../components/collect/hooks/useMetadata";
+import { useAccount } from "wagmi";
+import { useBalance } from "wagmi";
+
+export const CollectContextDefault = {
+  showApproval: false,
+  setShowApproval: (showApproval: boolean) => {},
+};
 
 export const getStaticPaths = async () => {
   const paths = tokens.map((token: Gallery) => {
@@ -34,8 +43,50 @@ export const getStaticProps = async (context: any) => {
 
 const TokenDetails = ({ token }: any): JSX.Element => {
   const connect = useRef<null | HTMLDivElement>(null);
+  const [showApproval, setShowApproval] = useState(
+    CollectContextDefault.showApproval
+  );
+  const {
+    collectNFT,
+    errorState,
+    prepareNFTDataCollection,
+    prepareNFTDataMarket,
+    errorMessage,
+    collectMarket,
+    setAbiFunction,
+    checkApproved,
+    approved,
+  } = useMetadata();
+  const { address, isConnected } = useAccount();
+  const balance: any = useBalance({
+    addressOrName: address,
+    chainId: 1,
+    watch: true,
+  });
+  const ethBalance = Number(balance.data?.formatted).toFixed(3);
+  useEffect(() => {
+    if (token[0].type === "collection") {
+      setAbiFunction("collection");
+      prepareNFTDataCollection(
+        token[0].contract,
+        token[0].price,
+        token[0].amount
+      );
+    } else {
+      setAbiFunction("market");
+      prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
+      checkApproved();
+    }
+  }, [errorState, address, ethBalance, errorMessage]);
   return (
-    <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple">
+    <div
+      className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0"
+    >
+      {showApproval && (
+        <div className="z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-[auto auto] backdrop-blur-sm">
+          <Approve setShowApproval={setShowApproval} />
+        </div>
+      )}
       <div className="grid grid-flow-row auto-rows-[auto auto] w-full h-full">
         <div className="relative row-start-1 w-full h-fit grid grid-flow-col auto-cols-[auto auto]">
           <Link
@@ -77,7 +128,16 @@ const TokenDetails = ({ token }: any): JSX.Element => {
             />
           </div>
         </div>
-        <Metadata token={token} connect={connect} />
+        <Metadata
+          token={token}
+          connect={connect}
+          setShowApproval={setShowApproval}
+          collectNFT={collectNFT}
+          errorMessage={errorMessage}
+          collectMarket={collectMarket}
+          approved={approved}
+          isConnected={isConnected}
+        />
       </div>
     </div>
   );
