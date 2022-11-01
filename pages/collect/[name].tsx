@@ -88,6 +88,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
         token[0].price,
         token[0].amount
       );
+      setApprovedData(false);
     } else {
       setAbiFunction("market");
       prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
