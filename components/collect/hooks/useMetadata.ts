@@ -46,7 +46,7 @@ const useMetadata = (): useMetadataResults => {
     args: [address, "0x6170B3C3A54C3d8c854934cBC314eD479b2B29A3"],
   });
 
-  const { config } = usePrepareContractWrite({
+  const { config, isError } = usePrepareContractWrite({
     address:
       abiFunction === "collection"
         ? contractAddress
@@ -147,6 +147,14 @@ const useMetadata = (): useMetadataResults => {
   };
 
   const collectMarket = async (): Promise<void> => {
+    if (errorState) {
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorState(false);
+        setErrorMessage(false);
+      }, 4000);
+      return;
+    }
     setLoading(true);
     try {
       const tx: any = await writeAsync?.();
@@ -199,6 +207,7 @@ const useMetadata = (): useMetadataResults => {
     isLoading,
     isSuccess,
     loading,
+    isError,
   };
 };
 
