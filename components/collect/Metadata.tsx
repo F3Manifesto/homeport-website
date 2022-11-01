@@ -15,6 +15,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   isLoading,
   loading,
   isSuccess,
+  isError,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
@@ -47,7 +48,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   </div>
                 </div>
               ) : errorMessage ? (
-                <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-red-500">
+                <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-blue-500">
                   <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
                     INSUFFICIENT FUNDS{" "}
                   </div>
@@ -56,7 +57,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div
                   className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                   onClick={
-                    !approved && !errorMessage
+                    !approved && !isError
                       ? () => setShowApproval(true)
                       : token[0].type === "collection"
                       ? () => {

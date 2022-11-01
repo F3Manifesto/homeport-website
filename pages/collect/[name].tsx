@@ -59,6 +59,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     isLoading,
     loading,
     isSuccess,
+    isError,
   } = useMetadata();
   const { address, isConnected } = useAccount();
   const balance: any = useBalance({
@@ -145,6 +146,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           isLoading={isLoading}
           loading={loading}
           isSuccess={isSuccess}
+          isError={isError}
         />
       </div>
     </div>

@@ -152,6 +152,7 @@ export type MetadataProps = {
   isLoading: boolean;
   loading: boolean;
   isSuccess: boolean;
+  isError: boolean;
 };
 
 export type ApproveProps = {
@@ -179,6 +180,7 @@ export type useMetadataResults = {
   isLoading: boolean;
   loading: boolean;
   isSuccess: boolean;
+  isError: boolean;
 };
 
 export type useApproveResults = {
