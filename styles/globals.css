@@ -6,61 +6,61 @@
   @font-face {
     font-family: "Nan Holo";
     font-weight: 400;
-    src: url("/fonts/NaNHoloCondensed_TRIAL-Black.ttf");
+    src: url("./../public/fonts/NaNHoloCondensed_TRIAL-Black.ttf");
   }
 
   @font-face {
     font-family: "New York";
     font-weight: 400;
-    src: url("/fonts/NewYork.otf");
+    src: url("./../public/fonts/NewYork.otf");
   }
 
   @font-face {
     font-family: "Air Strike";
     font-weight: 400;
-    src: url("/fonts/airstrikegrad.ttf");
+    src: url("./../public/fonts/airstrikegrad.ttf");
   }
 
   @font-face {
     font-family: "Emiken";
     font-weight: 400;
-    src: url("/fonts/Emiken Regular.ttf");
+    src: url("./../public/fonts/Emiken Regular.ttf");
   }
 
   @font-face {
     font-family: "Atmosphere";
     font-weight: 400;
-    src: url("/fonts/Atmosphere-Regular.ttf");
+    src: url("./../public/fonts/Atmosphere-Regular.ttf");
   }
 
   @font-face {
     font-family: "Alberto";
     font-weight: 400;
-    src: url("/fonts/Alberto-Regular.ttf");
+    src: url("./../public/fonts/Alberto-Regular.ttf");
   }
 
   @font-face {
     font-family: "Doctor Glitch";
     font-weight: 400;
-    src: url("/fonts/Doctor Glitch.otf");
+    src: url("./../public/fonts/Doctor Glitch.otf");
   }
 
   @font-face {
     font-family: "Conso Regular";
     font-weight: 400;
-    src: url("/fonts/Conso-Regular.otf");
+    src: url("./../public/fonts/Conso-Regular.otf");
   }
 
   @font-face {
     font-family: "Conso Medium";
     font-weight: 400;
-    src: url("/fonts/Conso-Medium.otf");
+    src: url("./../public/fonts/Conso-Medium.otf");
   }
 
   @font-face {
     font-family: "Gaia";
     font-weight: 400;
-    src: url("/fonts/Gaia.otf");
+    src: url("./../public/fonts/Gaia.otf");
   }
 
   @font-face {
@@ -72,37 +72,37 @@
   @font-face {
     font-family: "Fira Code Light";
     font-weight: 400;
-    src: url("/fonts/FiraCode-Light.ttf");
+    src: url("./../public/fonts/FiraCode-Light.ttf");
   }
 
   @font-face {
     font-family: "Fira Code Bold";
     font-weight: 400;
-    src: url("/fonts/FiraCode-Bold.ttf");
+    src: url("./../public/fonts/FiraCode-Bold.ttf");
   }
 
   @font-face {
     font-family: "DIN Condensed";
     font-weight: 400;
-    src: url("/fonts/DIN Condensed Bold.ttf");
+    src: url("./../public/fonts/DIN Condensed Bold.ttf");
   }
 
   @font-face {
     font-family: "Futurist";
     font-weight: 400;
-    src: url("/fonts/Futurist Regular.ttf");
+    src: url("./../public/fonts/Futurist Regular.ttf");
   }
 
   @font-face {
     font-family: "Jack Lane";
     font-weight: 400;
-    src: url("./../public/fonts/jacklane_2.woff");
+    src: url("./../public/../public/fonts/jacklane_2.woff");
   }
 
   @font-face {
     font-family: "Fira Medium";
     font-weight: 400;
-    src: url("./../public/fonts/FiraCode-Medium.ttf");
+    src: url("./../public/../public/fonts/FiraCode-Medium.ttf");
   }
 }
 

@@ -1,21 +1,25 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import { MetadataProps } from "../../types/general.types";
-import { AiOutlineLoading } from "react-icons/ai";
+// import Collect from "./Collect";
+
+import dynamic from 'next/dynamic'
+
+const DynamicCollect = dynamic(() => import('./Collect'), {
+    ssr: false,
+  })
+
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
   connect,
-  setShowApproval,
-  collectNFT,
-  collectMarket,
   errorMessage,
-  approved,
-  isConnected,
+  collectNFT,
   isLoading,
-  loading,
+  collectMarket,
   isSuccess,
-  isError,
+  loading,
+  data
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
@@ -31,61 +35,17 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
-              {!isConnected ? (
-                <div
-                  className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-green-500"
-                  onClick={() => {
-                    if (connect.current) {
-                      connect.current.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                      });
-                    }
-                  }}
-                >
-                  <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
-                    CONNECT WALLET{" "}
-                  </div>
-                </div>
-              ) : errorMessage ? (
-                <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-blue-500">
-                  <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
-                    INSUFFICIENT FUNDS{" "}
-                  </div>
-                </div>
-              ) : (
-                <div
-                  className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-                  onClick={
-                    !approved && !isError
-                      ? () => setShowApproval(true)
-                      : token[0].type === "collection"
-                      ? () => {
-                          collectNFT();
-                        }
-                      : () => collectMarket()
-                  }
-                >
-                  <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-                    {(!isLoading && !isSuccess && !loading && "COLLECT ") ||
-                      (isSuccess && "SUCCESS ") ||
-                      ((isLoading || loading) && !isSuccess && (
-                        <div className="relative w-fit h-fit animate-spin">
-                          <AiOutlineLoading color="#131313" />
-                        </div>
-                      ))}
-                  </div>
-                  <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
-                    <Image
-                      src="/images/expand2.png"
-                      layout="fill"
-                      alt="Expand"
-                      priority
-                    />
-                  </div>
-                </div>
-              )}
-
+              <DynamicCollect
+                connect={connect}
+                token={token}
+                errorMessage={errorMessage}
+                collectNFT={collectNFT}
+                isLoading={isLoading}
+                collectMarket={collectMarket}
+                isSuccess={isSuccess}
+                loading={loading}
+                data={data}
+              />
               <div className="relative w-fit h-fit row-start-2 text-offBlack/75 text-base font-firaM place-self-end pt-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
                 <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-2">
                   <div className="relative w-4 h-4 rounded-full col-start-1 border-2 border-black bg-brightGreen place-self-center"></div>
