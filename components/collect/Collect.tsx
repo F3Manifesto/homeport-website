@@ -21,19 +21,16 @@ const Collect: FunctionComponent<CollectProps> = ({
   const { isConnected } = useAccount();
 
   useEffect(() => {
-    console.log("rerun in collect");
   }, [data, collectMarket]);
 
   let action = "COLLECT";
 
   const decideStringAction = () => {
     if (errorMessage && isConnected) {
-      console.log("ERROR");
       action = "ERROR";
     }
 
     if (!isConnected && !errorMessage) {
-      console.log("NOT_CONNECTED");
       action = "NOT_CONNECTED";
     }
 
@@ -44,7 +41,6 @@ const Collect: FunctionComponent<CollectProps> = ({
       !isSuccess &&
       !approvedSuccess
     ) {
-      console.log("APPROVE");
       action = "APPROVE";
     }
 
