@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useContractWrite } from "wagmi";
-import { usePrepareContractWrite } from "wagmi";
+import { usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { useApproveResults } from "../../../../types/general.types";
 
 const useApprove = (): useApproveResults => {
   const [enabled, setEnabled] = useState<boolean>(false);
   const [args, setArgs] = useState<any[]>();
-  const [res, setRes] = useState<boolean>();
+  const [hash, setHash] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
+  
+  const { isSuccess } = useWaitForTransaction({
+    hash: hash,
+  });
   const { config } = usePrepareContractWrite({
     address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
     chainId: 1,
@@ -31,7 +36,7 @@ const useApprove = (): useApproveResults => {
     args: args,
   });
 
-  const { writeAsync, isLoading, isSuccess } = useContractWrite(config);
+  const { writeAsync, isLoading } = useContractWrite(config);
 
   const prepareApproval = (): void => {
     setEnabled(true);
@@ -43,18 +48,20 @@ const useApprove = (): useApproveResults => {
   };
 
   const approveAddress = async (): Promise<void> => {
+    setLoading(true);
     try {
-      setRes(false)
       const tx: any = await writeAsync?.();
+      setHash(tx.hash);
       const res: any = await tx?.wait();
-      setRes(true);
+      setLoading(false);
     } catch (err: any) {
+      setLoading(false);
       console.error(err);
     }
     setEnabled(false);
   };
 
-  return { prepareApproval, approveAddress, isLoading, res };
+  return { prepareApproval, approveAddress, isLoading, isSuccess, loading };
 };
 
 export default useApprove;

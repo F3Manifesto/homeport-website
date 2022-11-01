@@ -4,6 +4,7 @@ import {
   usePrepareContractWrite,
   useContractRead,
   useAccount,
+  useWaitForTransaction
 } from "wagmi";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
@@ -19,6 +20,12 @@ const useMetadata = (): useMetadataResults => {
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [abiFunction, setAbiFunction] = useState<string>();
   const [approved, setApproved] = useState<boolean>(false);
+  const [hash, setHash] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const { isSuccess } = useWaitForTransaction({
+    hash: hash,
+  });
 
   const { data } = useContractRead({
     address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
@@ -100,7 +107,7 @@ const useMetadata = (): useMetadataResults => {
     },
   });
 
-  const { writeAsync } = useContractWrite(config);
+  const { writeAsync, isLoading } = useContractWrite(config);
 
   const prepareNFTDataCollection = (
     address: string,
@@ -123,20 +130,28 @@ const useMetadata = (): useMetadataResults => {
       }, 4000);
       return;
     }
+    setLoading(true);
     try {
       const tx: any = await writeAsync?.();
+      setHash(tx.hash);
       const res: any = await tx?.wait();
+      setLoading(false);
     } catch (err: any) {
+      setLoading(false);
       console.error(err);
     }
     setEnabled(false);
   };
 
   const collectMarket = async (): Promise<void> => {
+    setLoading(true);
     try {
       const tx: any = await writeAsync?.();
+      setHash(tx.hash);
       const res: any = await tx?.wait();
+      setLoading(false);
     } catch (err: any) {
+      setLoading(false);
       console.error(err);
     }
     setEnabled(false);
@@ -162,9 +177,9 @@ const useMetadata = (): useMetadataResults => {
 
   const checkApproved = (): void => {
     if (data) {
-      setApproved(false);
-    } else {
       setApproved(true);
+    } else {
+      setApproved(false);
     }
   };
 
@@ -178,6 +193,9 @@ const useMetadata = (): useMetadataResults => {
     setAbiFunction,
     checkApproved,
     approved,
+    isLoading,
+    isSuccess, 
+    loading
   };
 };
 
