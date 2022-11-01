@@ -19,7 +19,6 @@ const useMetadata = (): useMetadataResults => {
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [abiFunction, setAbiFunction] = useState<string>();
   const [approved, setApproved] = useState<boolean>(false);
-  const [showApproval, setShowApproval] = useState<boolean>(false);
 
   const { data } = useContractRead({
     address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
@@ -89,7 +88,6 @@ const useMetadata = (): useMetadataResults => {
           ],
     functionName: abiFunction === "collection" ? "purchase" : "fillAsk",
     onError(error: any) {
-      console.error("Error", error);
       if (error.code == "INSUFFICIENT_FUNDS") {
         setErrorState(true);
       }
@@ -164,9 +162,9 @@ const useMetadata = (): useMetadataResults => {
 
   const checkApproved = (): void => {
     if (data) {
-      setApproved(true);
-    } else {
       setApproved(false);
+    } else {
+      setApproved(true);
     }
   };
 
@@ -180,7 +178,6 @@ const useMetadata = (): useMetadataResults => {
     setAbiFunction,
     checkApproved,
     approved,
-    setShowApproval
   };
 };
 

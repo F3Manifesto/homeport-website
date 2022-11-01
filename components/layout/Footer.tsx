@@ -14,7 +14,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="min-w-screen relative h-auto min-h-full flex w-full cursor-empireA">
-      <div className="relative grid auto-cols-[auto auto] grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12">
+      <div className="relative grid auto-cols-[auto auto] grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12 z-0">
         <div className="text-lg h-fit relative font-futur w-5/6 md:w-72 h-full tracking-widest leading-relaxed relative col-start-1 row-start-1 pl-10">
           Before you go, let’s take a look at what the latest language synth
           model has to say for itself…

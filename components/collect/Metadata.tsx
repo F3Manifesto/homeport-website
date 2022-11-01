@@ -1,46 +1,17 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import { MetadataProps } from "../../types/general.types";
-import useMetadata from "./hooks/useMetadata";
-import { useAccount, useBalance } from "wagmi";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
   connect,
+  setShowApproval,
+  collectNFT,
+  collectMarket,
+  errorMessage,
+  approved,
+  isConnected,
 }): JSX.Element => {
-  const {
-    collectNFT,
-    errorState,
-    prepareNFTDataCollection,
-    prepareNFTDataMarket,
-    errorMessage,
-    collectMarket,
-    setAbiFunction,
-    checkApproved,
-    approved,
-    setShowApproval,
-  } = useMetadata();
-  const { address, isConnected } = useAccount();
-  const balance: any = useBalance({
-    addressOrName: address,
-    chainId: 1,
-    watch: true,
-  });
-  const ethBalance = Number(balance.data?.formatted).toFixed(3);
-  useEffect(() => {
-    if (token[0].type === "collection") {
-      setAbiFunction("collection");
-      prepareNFTDataCollection(
-        token[0].contract,
-        token[0].price,
-        token[0].amount
-      );
-    } else {
-      setAbiFunction("market");
-      prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
-      checkApproved();
-    }
-  }, [errorState, address, ethBalance, errorMessage]);
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
       <div className="relative w-[95%] h-fit col-start-1 border-offBlack border-4 place-self-center grid grid-flow-col auto-col-[auto auto] bg-lightY">

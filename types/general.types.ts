@@ -143,6 +143,16 @@ export type usePreOrderResults = {
 export type MetadataProps = {
   token: any;
   connect: any;
+  setShowApproval: (e: boolean) => void;
+  collectNFT: () => Promise<void>;
+  collectMarket: () => Promise<void>;
+  errorMessage: boolean;
+  approved: boolean;
+  isConnected: boolean;
+};
+
+export type ApproveProps = {
+  setShowApproval: (e: boolean) => void;
 };
 
 export type useMetadataResults = {
@@ -163,10 +173,11 @@ export type useMetadataResults = {
   setAbiFunction: (e: string) => void;
   checkApproved: () => void;
   approved: boolean;
-  setShowApproval: (e: boolean) => void;
 };
 
 export type useApproveResults = {
   prepareApproval: () => void;
-  approveAddress: () => Promise<void>
-}
+  approveAddress: () => Promise<void>;
+  isLoading: boolean;
+  res: boolean | undefined;
+};
