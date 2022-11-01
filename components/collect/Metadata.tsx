@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { MetadataProps } from "../../types/general.types";
+import { AiOutlineLoading } from "react-icons/ai";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
@@ -11,6 +12,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   errorMessage,
   approved,
   isConnected,
+  isLoading,
+  loading,
+  isSuccess,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
@@ -55,7 +59,13 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   }
                 >
                   <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-                    COLLECT{" "}
+                    {(!isLoading && !isSuccess && !loading && "COLLECT ") ||
+                      (isSuccess && "SUCCESS ") ||
+                      ((isLoading || loading) && !isSuccess && (
+                        <div className="relative w-fit h-fit animate-spin">
+                          <AiOutlineLoading color="#131313" />
+                        </div>
+                      ))}
                   </div>
                   <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
                     <Image

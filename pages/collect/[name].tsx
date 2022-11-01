@@ -56,6 +56,9 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     setAbiFunction,
     checkApproved,
     approved,
+    isLoading,
+    loading,
+    isSuccess,
   } = useMetadata();
   const { address, isConnected } = useAccount();
   const balance: any = useBalance({
@@ -77,13 +80,15 @@ const TokenDetails = ({ token }: any): JSX.Element => {
       prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
       checkApproved();
     }
-  }, [errorState, address, ethBalance, errorMessage]);
+  }, [errorState, address, ethBalance, errorMessage, approved]);
   return (
-    <div
-      className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0"
-    >
+    <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0">
       {showApproval && (
-        <div className="z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-[auto auto] backdrop-blur-sm">
+        <div
+          className={`${
+            !showApproval && "hidden"
+          } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-[auto auto] backdrop-blur-sm`}
+        >
           <Approve setShowApproval={setShowApproval} />
         </div>
       )}
@@ -137,6 +142,9 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           collectMarket={collectMarket}
           approved={approved}
           isConnected={isConnected}
+          isLoading={isLoading}
+          loading={loading}
+          isSuccess={isSuccess}
         />
       </div>
     </div>

@@ -149,6 +149,9 @@ export type MetadataProps = {
   errorMessage: boolean;
   approved: boolean;
   isConnected: boolean;
+  isLoading: boolean;
+  loading: boolean;
+  isSuccess: boolean;
 };
 
 export type ApproveProps = {
@@ -173,11 +176,15 @@ export type useMetadataResults = {
   setAbiFunction: (e: string) => void;
   checkApproved: () => void;
   approved: boolean;
+  isLoading: boolean;
+  loading: boolean;
+  isSuccess: boolean;
 };
 
 export type useApproveResults = {
   prepareApproval: () => void;
   approveAddress: () => Promise<void>;
   isLoading: boolean;
-  res: boolean | undefined;
+  loading: boolean;
+  isSuccess: boolean;
 };
