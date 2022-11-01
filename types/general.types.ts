@@ -194,7 +194,3 @@ export type useApproveResults = {
   loading: boolean;
   isSuccess: boolean;
 };
-
-export type ApproveProps = {
-  data: boolean;
-}

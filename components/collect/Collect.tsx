@@ -14,16 +14,17 @@ const Collect: FunctionComponent<CollectProps> = ({
   collectMarket,
   isSuccess,
   loading,
-  data
+  data,
 }): JSX.Element => {
-  const { setShowApproval, approved } = useContext(CollectContext);
+  const { setShowApprovalModal, approvedData, approvedSuccess } =
+    useContext(CollectContext);
   const { isConnected } = useAccount();
 
   useEffect(() => {
-    console.log("rerun in collect")
-  }, [data, collectMarket])
+    console.log("rerun in collect");
+  }, [data, collectMarket]);
 
-  let action = "APPROVE";
+  let action = "COLLECT";
 
   const decideStringAction = () => {
     if (errorMessage && isConnected) {
@@ -36,29 +37,15 @@ const Collect: FunctionComponent<CollectProps> = ({
       action = "NOT_CONNECTED";
     }
 
-    if (isConnected && !errorMessage && !approved && !isSuccess) {
+    if (
+      isConnected &&
+      !errorMessage &&
+      !approvedData &&
+      !isSuccess &&
+      !approvedSuccess
+    ) {
       console.log("APPROVE");
       action = "APPROVE";
-    }
-
-    if (
-      isConnected &&
-      !errorMessage &&
-      approved &&
-      token[0].type === "collection"
-    ) {
-      console.log("COLLECTION");
-      action = "COLLECTION";
-    }
-
-    if (
-      isConnected &&
-      !errorMessage &&
-      approved &&
-      token[0].type === "market"
-    ) {
-      console.log("MARKET");
-      action = "MARKET";
     }
 
     return action;
@@ -93,48 +80,14 @@ const Collect: FunctionComponent<CollectProps> = ({
         </div>
       );
 
-    case "COLLECTION":
+    case "APPROVE":
       return (
         <div
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-          onClick={() => {
-            collectNFT();
-          }}
+          onClick={() => setShowApprovalModal(true)}
         >
           <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-            {(!isLoading && !isSuccess && !loading && "COLLECT ") ||
-              (isSuccess && "SUCCESS ") ||
-              ((isLoading || loading) && !isSuccess && (
-                <div className="relative w-fit h-fit animate-spin">
-                  <AiOutlineLoading color="#131313" />
-                </div>
-              ))}
-          </div>
-          <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
-            <Image
-              src="/images/expand2.png"
-              layout="fill"
-              alt="Expand"
-              priority
-            />
-          </div>
-        </div>
-      );
-
-    case "MARKET":
-      return (
-        <div
-          className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-          onClick={() => collectMarket()}
-        >
-          <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-            {(!isLoading && !isSuccess && !loading && "COLLECT ") ||
-              (isSuccess && "SUCCESS ") ||
-              ((isLoading || loading) && !isSuccess && (
-                <div className="relative w-fit h-fit animate-spin">
-                  <AiOutlineLoading color="#131313" />
-                </div>
-              ))}
+            COLLECT{" "}
           </div>
           <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
             <Image
@@ -151,10 +104,20 @@ const Collect: FunctionComponent<CollectProps> = ({
       return (
         <div
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-          onClick={() => setShowApproval(true)}
+          onClick={
+            token[0].type === "collection"
+              ? () => collectNFT()
+              : () => collectMarket()
+          }
         >
           <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
-            COLLECT{" "}
+            {(!isLoading && !isSuccess && !loading && "COLLECT ") ||
+              (isSuccess && "SUCCESS ") ||
+              ((isLoading || loading) && !isSuccess && (
+                <div className="relative w-fit h-fit animate-spin">
+                  <AiOutlineLoading color="#131313" />
+                </div>
+              ))}
           </div>
           <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
             <Image

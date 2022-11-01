@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   useContractWrite,
   usePrepareContractWrite,
@@ -8,7 +8,6 @@ import {
 } from "wagmi";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
-import { CollectContext } from "../../../pages/collect/[name]";
 
 const useMetadata = (): useMetadataResults => {
   const { address } = useAccount();
@@ -50,7 +49,6 @@ const useMetadata = (): useMetadataResults => {
       abiFunction === "collection"
         ? contractAddress
         : "0x6170B3C3A54C3d8c854934cBC314eD479b2B29A3",
-    chainId: 1,
     abi:
       abiFunction === "collection"
         ? [
