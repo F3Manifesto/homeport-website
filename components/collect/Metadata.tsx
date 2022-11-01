@@ -30,7 +30,23 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               </div>
             </div>
             <div className="relative w-fit h-fit pb-4 galaxy:pb-0 row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-2">
-              {errorMessage ? (
+              {!isConnected ? (
+                <div
+                  className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-green-500"
+                  onClick={() => {
+                    if (connect.current) {
+                      connect.current.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }
+                  }}
+                >
+                  <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
+                    CONNECT WALLET{" "}
+                  </div>
+                </div>
+              ) : errorMessage ? (
                 <div className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 bg-red-500">
                   <div className="col-start-1 relative w-fit h-fit text-[3vw] galaxy:text-[2.2vw] sm:text-[1.6vw] md:text-[1.3vw] lg:text-[1vw] xl:text-[0.8vw] font-fira place-self-center text-white text-center">
                     INSUFFICIENT FUNDS{" "}
@@ -40,16 +56,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div
                   className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                   onClick={
-                    !isConnected
-                      ? () => {
-                          if (connect.current) {
-                            connect.current.scrollIntoView({
-                              behavior: "smooth",
-                              block: "start",
-                            });
-                          }
-                        }
-                      : token[0].type === "collection"
+                    token[0].type === "collection"
                       ? () => {
                           collectNFT();
                         }
