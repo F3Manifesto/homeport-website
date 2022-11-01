@@ -56,7 +56,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div
                   className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-[auto auto] border-2 border-black grid grid-flow-col auto-cols-[auto auto] p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
                   onClick={
-                    !approved
+                    !approved && !errorMessage
                       ? () => setShowApproval(true)
                       : token[0].type === "collection"
                       ? () => {

@@ -4,7 +4,7 @@ import {
   usePrepareContractWrite,
   useContractRead,
   useAccount,
-  useWaitForTransaction
+  useWaitForTransaction,
 } from "wagmi";
 import { useMetadataResults } from "../../../types/general.types";
 import { ethers } from "ethers";
@@ -95,7 +95,10 @@ const useMetadata = (): useMetadataResults => {
           ],
     functionName: abiFunction === "collection" ? "purchase" : "fillAsk",
     onError(error: any) {
-      if (error.code == "INSUFFICIENT_FUNDS") {
+      if (
+        error.code == "INSUFFICIENT_FUNDS" ||
+        error.code.includes("insufficient funds")
+      ) {
         setErrorState(true);
       }
     },
@@ -194,8 +197,8 @@ const useMetadata = (): useMetadataResults => {
     checkApproved,
     approved,
     isLoading,
-    isSuccess, 
-    loading
+    isSuccess,
+    loading,
   };
 };
 
