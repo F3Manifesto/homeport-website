@@ -8,14 +8,16 @@ import Metadata from "../../components/collect/Metadata";
 import Connect from "../../components/common/connect/Connect";
 import Approve from "../../components/common/modals/Approve";
 import useMetadata from "../../components/collect/hooks/useMetadata";
-import { useAccount } from "wagmi";
-import { useBalance } from "wagmi";
+import { useAccount, useBalance } from "wagmi";
+import useApprove from "../../components/common/modals/hooks/useApprove";
 
 export const CollectContextDefault = {
-  showApproval: false,
-  setShowApproval: (showApproval: boolean) => {},
-  approved: false,
-  setApproved: (approved: boolean) => {},
+  showApprovalModal: false,
+  setShowApprovalModal: (showApproval: boolean) => {},
+  approvedData: false,
+  setApprovedData: (approved: boolean) => {},
+  approvedSuccess: false,
+  setApprovedSuccess: (approvedSuccess: boolean) => {},
 };
 
 export const CollectContext = createContext(CollectContextDefault);
@@ -46,11 +48,17 @@ export const getStaticProps = async (context: any) => {
 };
 
 const TokenDetails = ({ token }: any): JSX.Element => {
+  const { address } = useAccount();
   const connect = useRef<null | HTMLDivElement>(null);
-  const [showApproval, setShowApproval] = useState(
-    CollectContextDefault.showApproval
+  const [showApprovalModal, setShowApprovalModal] = useState(
+    CollectContextDefault.showApprovalModal
   );
-  const [approved, setApproved] = useState(CollectContextDefault.approved);
+  const [approvedData, setApprovedData] = useState(
+    CollectContextDefault.approvedData
+  );
+  const [approvedSuccess, setApprovedSuccess] = useState(
+    CollectContextDefault.approvedData
+  );
   const {
     errorState,
     prepareNFTDataCollection,
@@ -59,13 +67,13 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     setAbiFunction,
     isSuccess,
     isError,
-    data,
     collectMarket,
     collectNFT,
     loading,
-    isLoading
+    isLoading,
+    data,
   } = useMetadata();
-  const { address } = useAccount();
+  // console.log("approved success", approvedSuccess, "approved data", approvedData, "data", data)
   const balance: any = useBalance({
     addressOrName: address,
     chainId: 1,
@@ -73,7 +81,6 @@ const TokenDetails = ({ token }: any): JSX.Element => {
   });
   const ethBalance = Number(balance.data?.formatted).toFixed(3);
   useEffect(() => {
-    console.log("runningoutside")
     if (token[0].type === "collection") {
       setAbiFunction("collection");
       prepareNFTDataCollection(
@@ -84,31 +91,37 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     } else {
       setAbiFunction("market");
       prepareNFTDataMarket(token[0].contract, token[0].price, token[0].amount);
-      setApproved(data)
-      console.log("running")
+      setApprovedData(data);
     }
   }, [
     errorState,
     address,
     ethBalance,
     errorMessage,
-    approved,
+    approvedData,
     isError,
     isSuccess,
     data,
   ]);
   return (
     <CollectContext.Provider
-      value={{ approved, setShowApproval, setApproved, showApproval }}
+      value={{
+        approvedData,
+        setShowApprovalModal,
+        setApprovedData,
+        showApprovalModal,
+        approvedSuccess,
+        setApprovedSuccess,
+      }}
     >
       <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0">
-        {showApproval && (
+        {showApprovalModal && (
           <div
             className={`${
-              !showApproval && "hidden"
+              !showApprovalModal && "hidden"
             } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-[auto auto] backdrop-blur-sm`}
           >
-            <Approve data={data} />
+            <Approve />
           </div>
         )}
         <div className="grid grid-flow-row auto-rows-[auto auto] w-full h-full">

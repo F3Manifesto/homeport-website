@@ -1,14 +1,11 @@
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import { MetadataProps } from "../../types/general.types";
-// import Collect from "./Collect";
-
 import dynamic from 'next/dynamic'
 
 const DynamicCollect = dynamic(() => import('./Collect'), {
     ssr: false,
   })
-
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,

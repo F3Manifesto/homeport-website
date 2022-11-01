@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useContractWrite } from "wagmi";
 import { usePrepareContractWrite, useWaitForTransaction } from "wagmi";
+import { CollectContext } from "../../../../pages/collect/[name]";
 import { useApproveResults } from "../../../../types/general.types";
 
 const useApprove = (): useApproveResults => {
@@ -8,13 +9,13 @@ const useApprove = (): useApproveResults => {
   const [args, setArgs] = useState<any[]>();
   const [hash, setHash] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
-  
+  const { setApprovedSuccess } = useContext(CollectContext);
+
   const { isSuccess } = useWaitForTransaction({
     hash: hash,
   });
   const { config } = usePrepareContractWrite({
     address: "0x850A7c6fE2CF48eea1393554C8A3bA23f20CC401",
-    chainId: 1,
     abi: [
       {
         name: "setApprovalForModule",
@@ -54,6 +55,7 @@ const useApprove = (): useApproveResults => {
       setHash(tx.hash);
       const res: any = await tx?.wait();
       setLoading(false);
+      setApprovedSuccess(true);
     } catch (err: any) {
       setLoading(false);
       console.error(err);
