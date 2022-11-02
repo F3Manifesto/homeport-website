@@ -5,11 +5,32 @@ import Form from "../components/preorders/Form";
 import Sidebar from "../components/layout/Sidebar";
 import { useContext } from "react";
 import { GlobalContext } from "./_app";
+import Head from "next/head";
 
 const PreOrder: NextPage = (): JSX.Element => {
   const { order } = useContext(GlobalContext);
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
+      <Head>
+        <title>Pre-Order IRL</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:site_name" content="F3M" />
+        <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
+        <meta property="og:type" content="website" />
+        <meta name="og:url" content="https://f3manifesto.xyz/" />
+        <meta name="og:title" content="F3Manifesto" />
+        <meta name="og:description" content="Pre-Order Item IRL" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@f3manifesto" />
+        <meta name="twitter:creator" content="@f3manifesto" />
+        <meta
+          name="twitter:image"
+          content="https://f3manifesto.xyz/card.png/"
+        />
+        <meta name="twitter:url" content="https://f3manifesto.xyz/" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="canonical" href="https://f3manifesto.xyz/" />
+      </Head>
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
         <Sidebar />
         <div className="relative grid auto-rows-[auto auto] grid-flow-row w-full h-fit gap-3 justify-center">

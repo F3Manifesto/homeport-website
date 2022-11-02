@@ -117,6 +117,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     >
       <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0">
         <Head>
+          <title>{token[0].name}</title>
           <meta
             name="og:url"
             content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
