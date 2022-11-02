@@ -6,8 +6,6 @@ class Document extends NextDocument {
     return (
       <Html>
         <Head>
-          <meta name="og:title" content="F3Manifesto" />
-          <meta name="og:description" content="I Want My Web3 Fashion" />
           <meta name="og:image" content="https://f3manifesto.xyz/card.png/" />
           <link
             rel="preconnect"
