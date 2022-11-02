@@ -19,7 +19,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   data
 }): JSX.Element => {
   return (
-    <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24">
+    <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10 pb-24 cursor-empireA">
       <div className="relative w-[95%] h-fit col-start-1 border-offBlack border-4 place-self-center grid grid-flow-col auto-col-[auto auto] bg-lightY">
         <div className="relative w-full lg:w-fit h-full col-start-1 grid grid-flow-row auto-rows-[auto auto] gap-6 lg:gap-10 p-4 pb-12 lg:pb-8 sm:p-8 border-b-2 lg:border-r-2 border-offBlack">
           <div className="relative w-full sm:w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-10 row-start-1">
