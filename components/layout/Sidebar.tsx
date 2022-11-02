@@ -38,7 +38,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
             />
           </div>
           {clicked && (
-            <div className="absolute text-base font-alber text-offWhite text-right -top-2 right-16 sm:text-base text-xs sm:right-3 sm:top-auto">
+            <div className="absolute text-base font-alber text-offWhite text-right -top-1 right-14 sm:text-base text-xs sm:right-3 sm:top-auto">
               Did you <br />
               expect this <br />
               to go somewhere?

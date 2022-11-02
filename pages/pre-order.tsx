@@ -13,23 +13,28 @@ const PreOrder: NextPage = (): JSX.Element => {
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <Head>
         <title>Pre-Order IRL</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:site_name" content="F3M" />
-        <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
-        <meta property="og:type" content="website" />
-        <meta name="og:url" content="https://f3manifesto.xyz/" />
-        <meta name="og:title" content="F3Manifesto" />
-        <meta name="og:description" content="Pre-Order Item IRL" />
+        <meta name="og:url" content="https://f3manifesto.xyz/pre-order" />
+        <meta name="og:title" content="Pre-Order IRL" />
+        <meta name="og:description" content="Pre-0rder Item IRL" />
+        <meta name="og:image" content="https://f3manifesto.xyz/card.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="og:url" content="https://f3manifesto.xyz/pre-order" />
+        <meta name="og:image" content="https://f3manifesto.xyz/pre-order" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@f3manifesto" />
         <meta name="twitter:creator" content="@f3manifesto" />
         <meta
           name="twitter:image"
-          content="https://f3manifesto.xyz/card.png/"
+          content="https://f3manifesto.xyz/pre-order"
         />
-        <meta name="twitter:url" content="https://f3manifesto.xyz/" />
+        <meta name="twitter:url" content="https://f3manifesto.xyz/pre-order" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="canonical" href="https://f3manifesto.xyz/" />
+        <link rel="canonical" href="https://f3manifesto.xyz/pre-order" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
       </Head>
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
         <Sidebar />
