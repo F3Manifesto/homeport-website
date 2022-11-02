@@ -117,29 +117,41 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     >
       <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0">
         <Head>
-          <meta name="og:url" content="https://f3manifesto.xyz/" />
+          <meta
+            name="og:url"
+            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+          />
           <meta name="og:title" content={token[0].name} />
           <meta name="og:description" content={token[0].description} />
           <meta
             name="og:image"
-            content={`https://f3manifesto.xyz/images/${token[0].image}`}
+            content={`https://f3manifesto.xyz${token[0].image}`}
           />
           <meta name="twitter:card" content="summary" />
-          <meta name="og:url" content="https://f3manifesto.xyz/" />
+          <meta
+            name="og:url"
+            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+          />
           <meta
             name="og:image"
-            content={`https://f3manifesto.xyz/images/${token[0].image}`}
+            content={`https://f3manifesto.xyz${token[0].image}`}
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@f3manifesto" />
           <meta name="twitter:creator" content="@f3manifesto" />
           <meta
             name="twitter:image"
-            content={`https://f3manifesto.xyz/images/${token[0].image}`}
+            content={`https://f3manifesto.xyz${token[0].image}`}
           />
-          <meta name="twitter:url" content="https://f3manifesto.xyz/" />
+          <meta
+            name="twitter:url"
+            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="canonical" href="https://f3manifesto.xyz/" />
+          <link
+            rel="canonical"
+            href={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+          />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
