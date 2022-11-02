@@ -28,6 +28,13 @@ class Document extends NextDocument {
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
+          <link
+            rel="preload"
+            href="/fonts/jacklane_2.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
           <style
             dangerouslySetInnerHTML={{
               __html: `

@@ -6,103 +6,103 @@
   @font-face {
     font-family: "Nan Holo";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/NaNHoloCondensed_TRIAL-Black.ttf");
+    src: url("/fonts/NaNHoloCondensed_TRIAL-Black.ttf");
   }
 
   @font-face {
     font-family: "New York";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/NewYork.otf");
+    src: url("/fonts/NewYork.otf");
   }
 
   @font-face {
     font-family: "Air Strike";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/airstrikegrad.ttf");
+    src: url("/fonts/airstrikegrad.ttf");
   }
 
   @font-face {
     font-family: "Emiken";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Emiken Regular.ttf");
+    src: url("/fonts/Emiken Regular.ttf");
   }
 
   @font-face {
     font-family: "Atmosphere";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Atmosphere-Regular.ttf");
+    src: url("/fonts/Atmosphere-Regular.ttf");
   }
 
   @font-face {
     font-family: "Alberto";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Alberto-Regular.ttf");
+    src: url("/fonts/Alberto-Regular.ttf");
   }
 
   @font-face {
     font-family: "Doctor Glitch";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Doctor Glitch.otf");
+    src: url("/fonts/Doctor Glitch.otf");
   }
 
   @font-face {
     font-family: "Conso Regular";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Conso-Regular.otf");
+    src: url("/fonts/Conso-Regular.otf");
   }
 
   @font-face {
     font-family: "Conso Medium";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Conso-Medium.otf");
+    src: url("/fonts/Conso-Medium.otf");
   }
 
   @font-face {
     font-family: "Gaia";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Gaia.otf");
+    src: url("/fonts/Gaia.otf");
   }
 
   @font-face {
     font-family: "Fira Code";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/FiraCode-Regular.ttf");
+    src: url("/fonts/FiraCode-Regular.ttf");
   }
 
   @font-face {
     font-family: "Fira Code Light";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/FiraCode-Light.ttf");
+    src: url("/fonts/FiraCode-Light.ttf");
   }
 
   @font-face {
     font-family: "Fira Code Bold";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/FiraCode-Bold.ttf");
+    src: url("/fonts/FiraCode-Bold.ttf");
   }
 
   @font-face {
     font-family: "DIN Condensed";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/DIN Condensed Bold.ttf");
+    src: url("/fonts/DIN Condensed Bold.ttf");
   }
 
   @font-face {
     font-family: "Futurist";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/Futurist Regular.ttf");
+    src: url("/fonts/Futurist Regular.ttf");
   }
 
   @font-face {
     font-family: "Jack Lane";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/jacklane_2.woff");
+    src: url("/fonts/jacklane_2.woff");
   }
 
   @font-face {
     font-family: "Fira Medium";
     font-weight: 400;
-    src: url("https://www.f3manifesto.xyz/fonts/FiraCode-Medium.ttf");
+    src: url("/fonts/FiraCode-Medium.ttf");
   }
 }
 
