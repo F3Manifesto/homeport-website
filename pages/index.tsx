@@ -26,11 +26,23 @@ const Home: NextPage = (): JSX.Element => {
     >
       <Head>
         <title>F3Manifesto</title>
-        <meta name="description" content="CC0 Web3 Fashion" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:site_name" content="F3M" />
         <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
         <meta property="og:type" content="website" />
+        <meta name="og:url" content="https://f3manifesto.xyz/" />
+        <meta name="og:title" content="F3Manifesto" />
+        <meta name="og:description" content="I Want My Web3 Fashion" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@f3manifesto" />
+        <meta name="twitter:creator" content="@f3manifesto" />
+        <meta
+          name="twitter:image"
+          content="https://f3manifesto.xyz/card.png/"
+        />
+        <meta name="twitter:url" content="https://f3manifesto.xyz/" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="canonical" href="https://f3manifesto.xyz/" />
       </Head>
 
       <VintageFilm />
