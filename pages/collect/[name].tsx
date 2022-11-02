@@ -120,7 +120,9 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           <title>{token[0].name}</title>
           <meta
             name="og:url"
-            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+            content={`https://f3manifesto.xyz/collect/${token.name
+              .replaceAll(" ", "-")
+              .toLowerCase()}`}
           />
           <meta name="og:title" content={token[0].name} />
           <meta name="og:description" content={token[0].description} />
@@ -131,7 +133,9 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           <meta name="twitter:card" content="summary" />
           <meta
             name="og:url"
-            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+            content={`https://f3manifesto.xyz/collect/${token.name
+              .replaceAll(" ", "-")
+              .toLowerCase()}`}
           />
           <meta
             name="og:image"
@@ -146,12 +150,16 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           />
           <meta
             name="twitter:url"
-            content={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+            content={`https://f3manifesto.xyz/collect/${token.name
+              .replaceAll(" ", "-")
+              .toLowerCase()}`}
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="canonical"
-            href={`https://f3manifesto.xyz/collect/${token[0].name.toLowerCase()}`}
+            href={`https://f3manifesto.xyz/collect/${token.name
+              .replaceAll(" ", "-")
+              .toLowerCase()}`}
           />
           <link
             rel="preconnect"
