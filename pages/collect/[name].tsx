@@ -120,7 +120,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           <title>{token[0].name}</title>
           <meta
             name="og:url"
-            content={`https://f3manifesto.xyz/collect/${token.name
+            content={`https://f3manifesto.xyz/collect/${token[0].name
               .replaceAll(" ", "-")
               .toLowerCase()}`}
           />
@@ -133,7 +133,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           <meta name="twitter:card" content="summary" />
           <meta
             name="og:url"
-            content={`https://f3manifesto.xyz/collect/${token.name
+            content={`https://f3manifesto.xyz/collect/${token[0].name
               .replaceAll(" ", "-")
               .toLowerCase()}`}
           />
@@ -150,14 +150,14 @@ const TokenDetails = ({ token }: any): JSX.Element => {
           />
           <meta
             name="twitter:url"
-            content={`https://f3manifesto.xyz/collect/${token.name
+            content={`https://f3manifesto.xyz/collect/${token[0].name
               .replaceAll(" ", "-")
               .toLowerCase()}`}
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="canonical"
-            href={`https://f3manifesto.xyz/collect/${token.name
+            href={`https://f3manifesto.xyz/collect/${token[0].name
               .replaceAll(" ", "-")
               .toLowerCase()}`}
           />
