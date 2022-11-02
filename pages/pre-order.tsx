@@ -49,20 +49,20 @@ const PreOrder: NextPage = (): JSX.Element => {
               Return
             </div>
           </Link>
-          <div className="relative row-start-2 h-fit w-fit justify-center pt-20 pl-20 pr-8">
+          <div className="relative row-start-2 h-fit w-fit justify-self-center sm:justify-self-start pr-4 pl-4 pt-20 sm:pl-20 sm:pr-8">
             <div className="text-offWhite font-firaB text-3xl leading-relaxed">
               Thank you for expressing interest in more of <br />
               this item being made IRL.
             </div>
           </div>
-          <div className="relative row-start-3 h-fit w-fit justify-center pl-20">
+          <div className="relative row-start-3 h-fit w-fit justify-self-center sm:justify-self-start pl-4 sm:pl-20">
             <div className="font-fira text-base text-offWhite leading-snug relative w-[70%]">
               Before we commit to a new limited run, each of you who take the
               time to tell us a bit about what you want goes a long way in our
               decision of what to work on.
             </div>
           </div>
-          <div className="relative row-start-4 h-fit w-fit justify-center pl-20 pt-10 pr-8 pb-20">
+          <div className="relative row-start-4 h-fit w-fit justify-self-center sm:justify-self-start sm:pl-20 pt-10 pr-4 pl-4 sm:pr-8 pb-20">
             {order !== "" ? (
               <Form />
             ) : (
