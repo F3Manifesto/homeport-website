@@ -73,7 +73,7 @@ export type SearchProps = {
   styleSelect: string[];
 };
 
-export type Gallery = {
+export interface Gallery {
   name: string;
   image: string;
   collection: string;
