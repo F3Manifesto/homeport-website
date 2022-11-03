@@ -182,7 +182,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
               href={"/#shopping"}
               className="relative col-start-1 w-fit h-fit"
             >
-              <div className="text-offBlack font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-sewingHS row-start-1 pb-0 galaxy:pb-28">
+              <div className="text-offBlack font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1 pb-0 galaxy:pb-28">
                 <AiFillBackward
                   color="#131313"
                   size={25}
