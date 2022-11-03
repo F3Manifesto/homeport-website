@@ -25,14 +25,18 @@ const Search: FunctionComponent<SearchProps> = ({
                     {collections.map((collection: any, index: number) => {
                       return (
                         <div
-                          className={`m-2 ml-0 border relative border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS font-conso h-fit w-fit row-start-${index + 1} lg:col-start-${
+                          className={`m-2 ml-0 border relative border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS font-conso h-fit w-fit row-start-${
                             index + 1
-                          } lg:row-start-1 ${
-                            index + 1 === 4 &&
+                          } lg:col-start-${index + 1} lg:row-start-1 ${
+                            index + 1 === 3 &&
                             "lg:row-start-3 xl:row-start-3 lg:col-start-1 xl:col-start-1"
                           } ${
-                            index + 1 === 5 &&
+                            index + 1 === 4 &&
                             "lg:row-start-3 xl:row-start-3 lg:col-start-2 xl:col-start-2"
+                          }
+                          ${
+                            index + 1 === 5 &&
+                            "lg:row-start-4 xl:row-start-4 lg:col-start-1 xl:col-start-1"
                           }`}
                           key={index}
                         >
@@ -68,46 +72,49 @@ const Search: FunctionComponent<SearchProps> = ({
             </div>
           </div>
         </div>
-        <div className="relative col-start-1 sm:col-start-2 w-full h-full row-start-2 sm:row-start-1 sm:pl-0 pl-3">
-          <div className="relative auto-rows-[auto auto] h-full w-full">
-            <div className="relative w-full h-1/2 row-start-1 hidden lg:flex"></div>
-            <div className="relative w-full h-1/2 row-start-1 lg:row-start-2 lg:pl-0 pl-4 lg:pt-0 pt-6 sm:pt-12">
-              <div className="relative grid auto-rows-[auto auto] grid-flow-row w-fit h-fit lg:gap-0 gap-2 sm:gap-4">
-                <div className="w-fit h-fit relative font-conso row-start-1">
-                  SELECT A
-                  <br />
-                  STYLE
-                </div>
-                <div className="relative row-start-2 w-full h-fit font-conso row-start-2">
-                  <div className="relative auto-cols-[auto auto] w-fit h-fit grid-flow-col grid self-start max-w-fit overflow-hidden">
-                    {styles.map((style: any, index: number) => {
-                      return (
-                        <div
-                          className={`break-after-column m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base xl:col-start-${
-                            index + 1
-                          } ${
-                            index + 1 === 4
-                              ? `row-start-${
-                                  index + 1
-                                } lg:row-start-2 xl:row-start-2 xl:col-start-1 lg:col-start-1`
-                              : " xl:row-start-1"
+        <div className="relative col-start-1 sm:col-start-2 w-full h-full row-start-2 sm:row-start-1 sm:pl-0 pl-3 auto-rows-[auto auto] grid grid-flow-row">
+          <div className="row-start-1 relative w-full h-fit place-self-end row-start-1 lg:row-start-2 lg:pl-0 pl-4 lg:pt-0 pt-6 sm:pt-12">
+            <div className="relative grid auto-rows-[auto auto] grid-flow-row w-fit h-fit lg:gap-0 gap-2 sm:gap-4">
+              <div className="w-fit h-fit relative font-conso row-start-1">
+                SELECT A
+                <br />
+                STYLE
+              </div>
+              <div className="relative row-start-2 w-full h-fit font-conso row-start-2">
+                <div className="relative auto-cols-[auto auto] w-fit h-fit grid-flow-col grid self-start max-w-fit overflow-hidden">
+                  {styles.map((style: any, index: number) => {
+                    return (
+                      <div
+                        className={`break-after-column m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base xl:col-start-${
+                          index + 1
+                        } ${
+                          index + 1 === 3
+                            ? `row-start-${
+                                index + 1
+                              } lg:row-start-2 xl:row-start-2 xl:col-start-1 lg:col-start-1`
+                            : " xl:row-start-3"
+                        } ${
+                          index + 1 === 4
+                            ? `row-start-${
+                                index + 1
+                              } lg:row-start-2 xl:row-start-2 xl:col-start-2 lg:col-start-2`
+                            : " xl:row-start-3"
+                        }`}
+                        key={index}
+                      >
+                        <button
+                          className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
+                            styleSelect.includes(style.style) &&
+                            "bg-lightYellow"
                           }`}
-                          key={index}
+                          name={style.style}
+                          onClick={(e: any) => filterStyle(e)}
                         >
-                          <button
-                            className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                              styleSelect.includes(style.style) &&
-                              "bg-lightYellow"
-                            }`}
-                            name={style.style}
-                            onClick={(e: any) => filterStyle(e)}
-                          >
-                            {style.style.toUpperCase()}
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
+                          {style.style.toUpperCase()}
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

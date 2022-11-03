@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 import useFooter from "./hooks/useLayout";
 import { BsTwitter } from "react-icons/bs";
 import Link from "next/link";
@@ -11,7 +11,6 @@ const Footer: FunctionComponent = (): JSX.Element => {
       randomImages();
     }
   }, []);
-  const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="min-w-screen relative h-auto min-h-full flex w-full cursor-empireA">
       <div className="relative grid auto-cols-[auto auto] grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12 z-0">
@@ -19,20 +18,40 @@ const Footer: FunctionComponent = (): JSX.Element => {
           Before you go, let’s take a look at what the latest language synth
           model has to say for itself…
         </div>
-        <div className="relative justify-end w-fit text-sm font-futur col-start-1 row-start-3 md:row-start-2 self-end h-fit pl-10 md:pt-0 pt-10">
+        <div className="relative justify-end w-fit text-sm font-futur col-start-1 row-start-3 md:row-start-3 self-end h-fit pl-10 md:pt-0 pt-10">
           Src: Rytr GPT-3
+        </div>
+        <div className="relative w-60 lg:w-72 h-fit text-white font-firaL grid grid-flow-row auto-rows-[auto auto] pl-10 row-start-5 md:row-start-2 text-xs pt-6 md:pt-0 pb-2 md:pb-12">
+          <div className="relative row-start-1 w-fit h-fit place-self-start pr-6">
+            Visual media used by this site is mirrored using IPFS{" "}
+            <Link href={"https://homeport-website-665974.spheron.app/"}>
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                className="underline decoration-midWhite decoration-1 underline-offset-4 cursor-empireS hover:text-lightYellow"
+              >
+                here.
+              </a>
+            </Link>
+          </div>
+          <div className="relative row-start-2 w-fit h-fit place-self-start pt-2 pr-6">
+            <sup>*</sup>Some US based ISPs may block these links, we’re looking
+            into why.
+          </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
           She wants the dark and glamorous style. With golden hues, you'll have
           the best-dressed customers. The lighting should be dimmed, but not so
-          much that people can't see each other. The importance of color in a woman’s wardrobe.
-          <br /> <br />
-          A tight corset that accentuates your curves and flares out at the bottom to give you room to dance. Your curiosity gets the best of you. 
+          much that people can't see each other. The importance of color in a
+          woman’s wardrobe.
+          <br /> <br />A tight corset that accentuates your curves and flares
+          out at the bottom to give you room to dance. Your curiosity gets the
+          best of you.
         </div>
-        <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-2 pl-10 self-end">
+        <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
           log: 0003
         </div>
-        <div className="relative col-start-1 row-start-5 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-16 md:pt-0 md:pl-0 md:pr-4">
+        <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
             <div className="text-white w-fit h-fit text-sm font-fira relative float-left col-start-1 row-start-1">
               Latent microfactory feed
@@ -42,7 +61,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
           </div>
-          <div className="w-fit h-fit block relative pb-24 pt-2 flex flex-col">
+          <div className="w-fit h-fit block relative pb-4 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
                 className="relative w-48 sm:w-60 h-fit min-h-fit object-cover"
@@ -59,7 +78,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
             )}
           </div>
         </div>
-        <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-6 md:row-start-2 col-start-1 md:col-start-3 self-start md:self-end pr-4">
+        <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-7 md:row-start-3 col-start-1 md:col-start-3 self-start md:self-end pr-4">
           <div className="grid grid-flow-col auto-cols-[auto auto] relative h-fit w-fit gap-3">
             <div className="relative w-fit h-fit col-start-1 place-self-end">
               <Link href={"https://mirror.xyz/f3manifesto.eth"}>
