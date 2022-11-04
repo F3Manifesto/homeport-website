@@ -29,25 +29,24 @@ const useCollections = (): useCollectionsResult => {
     }
     setCollectionSelect(clickedArray);
     setClickedCollection(!clickedCollection);
-    router.replace(
-      router.asPath,
-      router.asPath.includes("collection")
-        ? router.asPath.replaceAll(
-            router.asPath.split("?collection=")[1]?.includes("=")
-              ? `${router.asPath.split("?collection=")[1]?.split("?=style")[0]}`
-              : `${router.asPath.split("?collection=")[1]}`,
-            `${clickedArray.join("-").replaceAll(" ", "")}`
-          )
-        : router.asPath.includes("style")
-        ? router.asPath +
-          `?collection=${clickedArray.join("-").replaceAll(" ", "")}`
-        : `/#shopping?collection=${clickedArray.join("-").replaceAll(" ", "")}`,
-      {
-        shallow: true,
-        scroll: false,
-      }
-    );
-    console.log(router.asPath.split("?collection=")[1]?.split("=")[0]);
+    // router.replace(
+    //   router.asPath,
+    //   router.asPath.includes("?collection=")
+    //     ? router.asPath.replaceAll(
+    //         router.asPath.split("?collection=")[1]?.includes("?style=")
+    //           ? `${router.asPath.split("?collection=")[1]?.split("?style=")[0]}`
+    //           : `${router.asPath.split("?collection=")[1]}`,
+    //         `${clickedArray.join("-").replaceAll(" ", "")}`
+    //       )
+    //     : router.asPath.includes("?style=")
+    //     ? router.asPath +
+    //       `?collection=${clickedArray.join("-").replaceAll(" ", "")}`
+    //     : `/#shopping?collection=${clickedArray.join("-").replaceAll(" ", "")}`,
+    //   {
+    //     shallow: true,
+    //     scroll: false,
+    //   }
+    // );
   };
 
   const filterStyle = (e: any): void => {
@@ -62,24 +61,23 @@ const useCollections = (): useCollectionsResult => {
     }
     setStyleSelect(clickedArray);
     setClickedStyle(!clickedStyle);
-    router.replace(
-      router.asPath,
-      router.asPath.includes("style")
-        ? router.asPath.replaceAll(
-            router.asPath.split("?style=")[1]?.includes("=")
-              ? `${router.asPath.split("?style=")[1]?.split("?=collection")[0]}`
-              : `${router.asPath.split("?style=")[1]}`,
-            `${clickedArray.join("-").replaceAll(" ", "")}`
-          )
-        : router.asPath.includes("style")
-        ? router.asPath +
-          `?style=${clickedArray.join("-").replaceAll(" ", "")}`
-        : `/#shopping?style=${clickedArray.join("-").replaceAll(" ", "")}`,
-      {
-        shallow: true,
-        scroll: false,
-      }
-    );
+    // router.replace(
+    //   router.asPath,
+    //   router.asPath.includes("?style=")
+    //     ? router.asPath.replaceAll(
+    //         router.asPath.split("?style=")[1]?.includes("?collection=")
+    //           ? `${router.asPath.split("?style=")[1]?.split("?collection=")[0]}`
+    //           : `${router.asPath.split("?style=")[1]}`,
+    //         `${clickedArray.join("-").replaceAll(" ", "")}`
+    //       )
+    //     : router.asPath.includes("?collection=")
+    //     ? router.asPath + `?style=${clickedArray.join("-").replaceAll(" ", "")}`
+    //     : `/#shopping?style=${clickedArray.join("-").replaceAll(" ", "")}`,
+    //   {
+    //     shallow: true,
+    //     scroll: false,
+    //   }
+    // );
   };
 
   const filterName = (e: any): void => {
@@ -132,13 +130,27 @@ const useCollections = (): useCollectionsResult => {
     filterGallery();
   }, [collectionSelect, styleSelect, nameInput]);
 
-  useEffect(() => {
-    console.log(
-      router.asPath.split("?collection=")[1]?.includes("=")
-        ? router.asPath.split("?collection=")[1]?.split("=", 0)
-        : router.asPath.split("?collection=")[1]
-    );
-  }, [router.asPath]);
+  // useEffect(() => {
+  //   if (router.asPath.includes("collection")) {
+  //     if (router.asPath.split("?collection=")[1]?.includes("?style=")) {
+  //       console.log(
+  //         `${router.asPath.split("?collection=")[1]?.split("?style=")[0].replaceAll("-", " ")}`
+  //       );
+  //     } else {
+  //       console.log(`${router.asPath.split("?collection=")[1]}`);
+  //     }
+  //   }
+
+  //   if (router.asPath.includes("style")) {
+  //     if (router.asPath.split("?style=")[1]?.includes("?collection=")) {
+  //       console.log(
+  //         `${router.asPath.split("?style=")[1]?.split("?collection=")[0]}`
+  //       );
+  //     } else {
+  //       console.log(`${router.asPath.split("?style=")[1]}`);
+  //     }
+  //   }
+  // }, [router.asPath]);
 
   return {
     gallery,
