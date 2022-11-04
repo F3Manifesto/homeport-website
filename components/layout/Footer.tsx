@@ -24,7 +24,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
         <div className="relative w-60 lg:w-72 h-fit text-white font-firaL grid grid-flow-row auto-rows-[auto auto] pl-10 row-start-5 md:row-start-2 text-xs pt-6 md:pt-0 pb-2 md:pb-12">
           <div className="relative row-start-1 w-fit h-fit place-self-start pr-6">
             Visual media used by this site is mirrored using IPFS{" "}
-            <Link href={"https://homeport-website-665974.spheron.app/"}>
+            <Link href={"https://ipfs.f3manifesto.xyz/"}>
               <a
                 target={"_blank"}
                 rel="noreferrer"

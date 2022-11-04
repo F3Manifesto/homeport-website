@@ -1,6 +1,6 @@
 Centralised Hosting: https://www.f3manifesto.xyz/
 
-Decentralised Hosting: https://homeport-website-665974.spheron.app/
+Decentralised Hosting: https://ipfs.f3manifesto.xyz/
 
 **                                                                 
     /**                                                                 

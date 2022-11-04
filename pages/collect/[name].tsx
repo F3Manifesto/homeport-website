@@ -10,6 +10,7 @@ import Approve from "../../components/common/modals/Approve";
 import useMetadata from "../../components/collect/hooks/useMetadata";
 import { useAccount, useBalance } from "wagmi";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export const CollectContextDefault = {
   showApprovalModal: false,
@@ -104,6 +105,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
     isSuccess,
     data,
   ]);
+  const router = useRouter();
   return (
     <CollectContext.Provider
       value={{
@@ -178,8 +180,8 @@ const TokenDetails = ({ token }: any): JSX.Element => {
         )}
         <div className="grid grid-flow-row auto-rows-[auto auto] w-full h-full">
           <div className="relative row-start-1 w-full h-fit grid grid-flow-col auto-cols-[auto auto] pb-28 galaxy:pb-0">
-            <Link
-              href={"/#shopping"}
+            <div
+              onClick={() => router.back()}
               className="relative col-start-1 w-fit h-fit"
             >
               <div className="text-offBlack font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1 pb-0 galaxy:pb-28">
@@ -190,7 +192,7 @@ const TokenDetails = ({ token }: any): JSX.Element => {
                 />{" "}
                 Return
               </div>
-            </Link>
+            </div>
             <div
               className="row-start-2 col-start-1 galaxy:row-start-1 galaxy:col-start-2 w-fit h-fit hover:text-offBlue underline underline-offset-4 cursor-pointer h-fit pt-8 pr-6 z-10 justify-self-start pl-6 galazy:pl-0 galaxy:justify-self-end"
               ref={connect}
