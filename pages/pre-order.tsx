@@ -6,9 +6,11 @@ import Sidebar from "../components/layout/Sidebar";
 import { useContext } from "react";
 import { GlobalContext } from "./_app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const PreOrder: NextPage = (): JSX.Element => {
   const { order } = useContext(GlobalContext);
+  const router = useRouter();
   return (
     <div className="flex min-h-screen h-fit min-w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-offBlack cursor-empireA">
       <Head>
@@ -39,8 +41,8 @@ const PreOrder: NextPage = (): JSX.Element => {
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
         <Sidebar />
         <div className="relative grid auto-rows-[auto auto] grid-flow-row w-full h-fit gap-3 justify-center">
-          <Link href={"/#shopping"}>
-            <div className="text-offWhite font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1">
+            <div className="text-offWhite font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1"
+            onClick={() => router.push("/#shopping")}>
               <AiFillBackward
                 color="#F2F2F2"
                 size={25}
@@ -48,7 +50,6 @@ const PreOrder: NextPage = (): JSX.Element => {
               />{" "}
               Return
             </div>
-          </Link>
           <div className="relative row-start-2 h-fit w-fit justify-self-center sm:justify-self-start pr-4 pl-4 pt-20 sm:pl-20 sm:pr-8">
             <div className="text-offWhite font-firaB text-3xl leading-relaxed">
               Thank you for expressing interest in more of <br />
