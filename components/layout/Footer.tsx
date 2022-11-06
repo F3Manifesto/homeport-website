@@ -40,16 +40,19 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          She wants the dark and glamorous style. With golden hues, you'll have
-          the best-dressed customers. The lighting should be dimmed, but not so
-          much that people can't see each other. The importance of color in a
-          woman’s wardrobe.
-          <br /> <br />A tight corset that accentuates your curves and flares
-          out at the bottom to give you room to dance. Your curiosity gets the
-          best of you.
+          Made possible by the use of algorithmic stitching and a sewing
+          machine. It is a process that uses algorithms to generate patterns for
+          stitching that can be used on any type of fabric or garment material.
+          I will explore this tool through my visit to a local New York City
+          garment textile factory in SoHo.
+          <br /> <br />
+          The first step in this process is to design the pattern for the dress
+          and then convert it into code. The program then stitches together each
+          individual piece of fabric with a needle and thread, much like a
+          traditional sewing machine would do.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0003
+          log: 0004
         </div>
         <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
