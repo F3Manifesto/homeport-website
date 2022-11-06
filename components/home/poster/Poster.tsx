@@ -13,8 +13,6 @@ const Poster: FunctionComponent = (): JSX.Element => {
         <Image
           src="/images/poster.png"
           priority
-          height={768}
-          width={512}
           placeholder="blur"
           blurDataURL="images/blurred/poster.png"
           layout="fill"
