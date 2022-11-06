@@ -36,12 +36,18 @@ const useCollections = (): useCollectionsResult => {
     //         router.asPath.split("?collection=")[1]?.includes("?style=")
     //           ? `${router.asPath.split("?collection=")[1]?.split("?style=")[0]}`
     //           : `${router.asPath.split("?collection=")[1]}`,
-    //         `${clickedArray.join("-").replaceAll(" ", "")}`
+    //         clickedArray.length !== 0
+    //           ? `${clickedArray.join("-").replaceAll(" ", "")}`
+    //           : "none"
     //       )
     //     : router.asPath.includes("?style=")
-    //     ? router.asPath +
-    //       `?collection=${clickedArray.join("-").replaceAll(" ", "")}`
-    //     : `/#shopping?collection=${clickedArray.join("-").replaceAll(" ", "")}`,
+    //     ? clickedArray.length !== 0
+    //       ? router.asPath +
+    //         `?collection=${clickedArray.join("-").replaceAll(" ", "")}`
+    //       : router.asPath + "?collection=none"
+    //     : clickedArray.length !== 0
+    //     ? `/#shopping?collection=${clickedArray.join("-").replaceAll(" ", "")}`
+    //     : `/#shopping?collection=none`,
     //   {
     //     shallow: true,
     //     scroll: false,
@@ -68,11 +74,18 @@ const useCollections = (): useCollectionsResult => {
     //         router.asPath.split("?style=")[1]?.includes("?collection=")
     //           ? `${router.asPath.split("?style=")[1]?.split("?collection=")[0]}`
     //           : `${router.asPath.split("?style=")[1]}`,
-    //         `${clickedArray.join("-").replaceAll(" ", "")}`
+    //         clickedArray.length !== 0
+    //           ? `${clickedArray.join("-").replaceAll(" ", "")}`
+    //           : "none"
     //       )
     //     : router.asPath.includes("?collection=")
-    //     ? router.asPath + `?style=${clickedArray.join("-").replaceAll(" ", "")}`
-    //     : `/#shopping?style=${clickedArray.join("-").replaceAll(" ", "")}`,
+    //     ? clickedArray.length !== 0
+    //       ? router.asPath +
+    //         `?style=${clickedArray.join("-").replaceAll(" ", "")}`
+    //       : router.asPath + "?style=none"
+    //     : clickedArray.length !== 0
+    //     ? `/#shopping?style=${clickedArray.join("-").replaceAll(" ", "")}`
+    //     : `/#shopping?style=none`,
     //   {
     //     shallow: true,
     //     scroll: false,
@@ -131,26 +144,45 @@ const useCollections = (): useCollectionsResult => {
   }, [collectionSelect, styleSelect, nameInput]);
 
   // useEffect(() => {
-  //   if (router.asPath.includes("collection")) {
+  //   if (router.asPath.includes("?collection=")) {
   //     if (router.asPath.split("?collection=")[1]?.includes("?style=")) {
-  //       console.log(
-  //         `${router.asPath.split("?collection=")[1]?.split("?style=")[0].replaceAll("-", " ")}`
-  //       );
+  //       const collectionsSelected: string[] = router.asPath
+  //         .split("?collection=")[1]
+  //         ?.split("?style=")[0]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
+
+  //       setCollectionSelect(collectionsSelected);
   //     } else {
-  //       console.log(`${router.asPath.split("?collection=")[1]}`);
+  //       const collectionsSelected: string[] = router.asPath
+  //         .split("?collection=")[1]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
+  //       setCollectionSelect(collectionsSelected);
   //     }
   //   }
 
-  //   if (router.asPath.includes("style")) {
+  //   if (router.asPath.includes("?style=")) {
   //     if (router.asPath.split("?style=")[1]?.includes("?collection=")) {
-  //       console.log(
-  //         `${router.asPath.split("?style=")[1]?.split("?collection=")[0]}`
-  //       );
+  //       const stylesSelected: string[] = router.asPath
+  //         .split("?style=")[1]
+  //         ?.split("?collection=")[0]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
+  //       setStyleSelect(stylesSelected);
   //     } else {
-  //       console.log(`${router.asPath.split("?style=")[1]}`);
+  //       const stylesSelected: string[] = router.asPath
+  //         .split("?style=")[1]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
+  //       setStyleSelect(stylesSelected);
   //     }
   //   }
-  // }, [router.asPath]);
+  // }, []);
 
   return {
     gallery,
