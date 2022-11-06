@@ -48,8 +48,6 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                           blurDataURL={`/images/blurred/${image}.png`}
                           onLoadingComplete={() => setBlur(false)}
                           layout="fill"
-                          width={768}
-                          height={512}
                           src={`/images/tiers/${image}.png`}
                         />
                       </div>

@@ -29,6 +29,7 @@ const useCollections = (): useCollectionsResult => {
     }
     setCollectionSelect(clickedArray);
     setClickedCollection(!clickedCollection);
+    console.log(clickedArray);
     // router.replace(
     //   router.asPath,
     //   router.asPath.includes("?collection=")
@@ -67,6 +68,7 @@ const useCollections = (): useCollectionsResult => {
     }
     setStyleSelect(clickedArray);
     setClickedStyle(!clickedStyle);
+    console.log(clickedArray);
     // router.replace(
     //   router.asPath,
     //   router.asPath.includes("?style=")

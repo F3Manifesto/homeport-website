@@ -50,8 +50,6 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
             objectFit="cover"
             layout="fill"
             blurDataURL="/images/mtv2.png"
-            width={512}
-            height={1280}
             placeholder="blur"
             onLoadingComplete={() => setBlur(false)}
           />
