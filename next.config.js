@@ -16,7 +16,7 @@ const nextConfig = {
   },
   images: {
     loader: "akamai",
-    path: "",
+    path: "https://f3manifesto.xyz",
   },
   trailingSlash: true,
 };
