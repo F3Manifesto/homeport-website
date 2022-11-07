@@ -30,6 +30,7 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "main16",
     "main17",
     "main18",
+    "main19",
   ];
 
   const refreshImages = (): void => {
