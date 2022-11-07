@@ -5,7 +5,7 @@ import shuffle from "shuffle-array";
 const useF3Manifesto = (): UseF3ManifestoResults => {
   const [newImages, setNewImages] = useState<string[] | undefined>([
     "main1",
-    "main2",
+    "main19",
     "main3",
     "main4",
     "main12",
