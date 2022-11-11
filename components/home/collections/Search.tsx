@@ -37,6 +37,9 @@ const Search: FunctionComponent<SearchProps> = ({
                           ${
                             index + 1 === 5 &&
                             "lg:row-start-4 xl:row-start-4 lg:col-start-1 xl:col-start-1"
+                          } ${
+                            index + 1 === 6 &&
+                            "lg:row-start-4 xl:row-start-4 lg:col-start-2 xl:col-start-2"
                           }`}
                           key={index}
                         >
