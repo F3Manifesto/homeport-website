@@ -1,4 +1,8 @@
-const useGallery = () => {
+import { useState } from "react";
+import { UseGalleryResult } from "../../../types/general.types";
+
+const useGallery = (): UseGalleryResult => {
+    const [extend, setExtend] = useState<boolean>(false)
   const gallery: string[] = [
     "gallery1",
     "gallery2",
@@ -11,7 +15,7 @@ const useGallery = () => {
     "gallery9",
   ];
 
-  return { gallery };
+  return { gallery, extend, setExtend};
 };
 
 export default useGallery;

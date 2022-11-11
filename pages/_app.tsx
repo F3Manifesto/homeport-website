@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         {/* <GlobalContext.Provider value={{ buyNow, setBuyNow }}> */}
-          <div className="relative w-full h-auto bg-black selection:bg-lBlue">
+          <div className="relative w-screen max-w-screen overflow-hidden h-auto bg-black selection:bg-lBlue">
             <Header />
             <Component {...pageProps} />
             <Footer />

@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import lodash from "lodash";
 import Image from "next/legacy/image";
+import Gallery from "../components/Home/Gallery";
 
 const Home: NextPage = () => {
   return (
-    <div className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] pt-20 pb-40 gap-10">
+    <div className="relative w-screen max-w-screen h-full grid grid-flow-col auto-cols-[auto auto] pt-20 pb-40 gap-10">
       <Head>
         <title>DMS</title>
         <meta name="description" content="DMS" />
@@ -113,17 +113,11 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="relative w-full h-full row-start-2 grid grid-flow-col auto-cols-[auto auto] pt-3">
-        <div className="relative w-fit h-full text-[11rem] leading-tight text-white font-libR whitespace-nowrap overflow-x-hidden place-self-center">
-          SUPPLY FOR ONE
+        <div className="relative w-fit h-full text-[10rem] leading-tight text-white font-libR whitespace-nowrap overflow-hidden place-self-center">
+          LATENT MARKET OV
         </div>
       </div>
-      <div className="relative w-full h-full row-start-3 grid grid-flow-col auto-cols-[auto auto] pt-3 grid-cols-3 grid gap-3">
-        {lodash.range(9).map((index: number) => {
-          return <div key={index} className="relative w-60 h-60 bg-grayBlue">
-
-          </div>;
-        })}
-      </div>
+      <Gallery />
     </div>
   );
 };

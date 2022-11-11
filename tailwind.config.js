@@ -13,7 +13,7 @@ module.exports = {
         orangeTheme: "#FA6400",
         yellowTheme: "#FBDB86",
         lGray: "#E7F2FB",
-        grayBlue: "#C9D8E4"
+        grayBlue: "#C9D8E4",
       },
       fontFamily: {
         animosaEB: "Animosa Extra Bold",
@@ -24,7 +24,7 @@ module.exports = {
         economica: "Economica Regular",
         economicaB: "Economica Bold",
         libR: "Liberation Mono Regular",
-        libB: "Liberation Mono Bold"
+        libB: "Liberation Mono Bold",
       },
     },
   },

@@ -80,3 +80,9 @@ export type UseTraitsResult = {
   traits: string[];
   values: string[];
 };
+
+export type UseGalleryResult = {
+  extend: boolean;
+  setExtend: (e: boolean) => void;
+  gallery: string[];
+};
