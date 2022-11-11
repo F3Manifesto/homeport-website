@@ -34,13 +34,19 @@ const Footer = () => {
           <div className="relative row-start-1 w-fit h-fit justify-self-end">
             <Image src="/images/logo.png" width={60} height={60} />
           </div>
-          <div className="relative w-fit h-fit row-start-2 text-right justify-self-end leading-5">A DROP</div>
-          <div className="relative w-fit h-fit row-start-3 text-right justify-self-end leading-5">MERCHANT</div>
-          <div className="relative w-fit h-fit row-start-4 text-right justify-self-end leading-5">STOREFRONT</div>
+          <div className="relative w-fit h-fit row-start-2 text-right justify-self-end leading-5">
+            A DROP
+          </div>
+          <div className="relative w-fit h-fit row-start-3 text-right justify-self-end leading-5">
+            MERCHANT
+          </div>
+          <div className="relative w-fit h-fit row-start-4 text-right justify-self-end leading-5">
+            STOREFRONT
+          </div>
         </div>
       </div>
       <div className="relative w-full h-full row-start-2 grid grid-flow-col auto-cols-[auto auto] pt-3">
-        <div className="relative w-full h-full text-[11rem] leading-tight text-white font-libR whitespace-nowrap overflow-x-hidden">
+        <div className="relative w-fit h-full text-[11rem] leading-tight text-white font-libR whitespace-nowrap overflow-x-hidden place-self-center">
           SUPPLY FOR ONE
         </div>
       </div>
