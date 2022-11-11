@@ -4,7 +4,12 @@ import { BsTwitter } from "react-icons/bs";
 const Footer = () => {
   return (
     <div className="bg-black w-full h-auto relative grid grid-flow-row auto-rows-[auto auto] text-white">
-      <div className="relative w-full h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] px-10 py-10">
+      <div className="relative w-full h-fit bg-white row-start-1 grid grid-flow-col auto-cols-[auto auto]">
+        <div className="relative w-fit h-fit font-animosaR text-black col-start-1 place-self-center py-6 text-8xl">
+          GET THE DROP
+        </div>
+      </div>
+      <div className="relative w-full h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto] px-10 py-10">
         <div className="relative w-fit h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] gap-2">
           <div className="relative w-fit h-fit col-start-1 cursor-pointer">
             <Image src="/images/lens.png" width={35} height={35} />
@@ -45,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="relative w-full h-full row-start-2 grid grid-flow-col auto-cols-[auto auto] pt-3">
+      <div className="relative w-full h-full row-start-3 grid grid-flow-col auto-cols-[auto auto] pt-3">
         <div className="relative w-fit h-full text-[11rem] leading-tight text-white font-libR whitespace-nowrap overflow-x-hidden place-self-center">
           SUPPLY FOR ONE
         </div>

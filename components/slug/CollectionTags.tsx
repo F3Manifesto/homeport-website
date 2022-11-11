@@ -6,14 +6,13 @@ const CollectionTags: FunctionComponent = (): JSX.Element => {
   const {
     formats,
     categories,
-    randomColor,
     showFormats,
     setShowFormats,
     showCategories,
-    bgColor,
     setShowCategories,
+    categoryColors,
+    formatColors,
   } = useCollectionTags();
-  console.log(randomColor[bgColor]);
   return (
     <div className="relative w-full h-full row-start-3 grid grid-flow-row auto-rows-[auto auto]">
       <div className="relative w-full h-full row-start-1 grid grid-flow-row auto-rows-[auto auto]">
@@ -26,7 +25,7 @@ const CollectionTags: FunctionComponent = (): JSX.Element => {
               return (
                 <span
                   key={index}
-                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-yellowTheme cursor-pointer hover:bg-lBlue`}
+                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${formatColors[index]} cursor-pointer hover:bg-lBlue`}
                 >
                   {format}
                 </span>
@@ -53,13 +52,13 @@ const CollectionTags: FunctionComponent = (): JSX.Element => {
         </div>
         <div className="relative w-2/3 h-fit row-start-2 flex flex-wrap justify-start gap-2">
           {(showCategories ? categories : lodash.slice(categories, 0, 4)).map(
-            (format: string, index: number) => {
+            (category: string, index: number) => {
               return (
                 <span
                   key={index}
-                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-yellowTheme cursor-pointer hover:bg-lBlue`}
+                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${categoryColors[index]} cursor-pointer hover:bg-lBlue`}
                 >
-                  {format}
+                  {category}
                 </span>
               );
             }

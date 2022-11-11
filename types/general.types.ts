@@ -68,12 +68,12 @@ export type PriceProps = {
 export type UseCollectionTagsResult = {
   categories: string[];
   formats: string[];
-  randomColor: string[];
+  categoryColors:string[];
+  formatColors:string[];
   showFormats: boolean;
   setShowFormats: (e: boolean) => void;
   showCategories: boolean;
   setShowCategories: (e: boolean) => void;
-  bgColor: number;
 };
 
 export type UseTraitsResult = {
@@ -85,4 +85,11 @@ export type UseGalleryResult = {
   extend: boolean;
   setExtend: (e: boolean) => void;
   gallery: string[];
+};
+
+export type UseFeaturedResult = {
+  dropFormat: string[]
+  dropType: string[]
+  formatColors: string[]
+  typeColors: string[]
 };

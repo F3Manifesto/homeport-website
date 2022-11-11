@@ -12,7 +12,10 @@ const useGallery = (): UseGalleryResult => {
     "gallery6",
     "gallery7",
     "gallery8",
-    "gallery9",
+    "gallery9",    
+    "gallery10",
+    "gallery11",
+    "gallery12",
   ];
 
   return { gallery, extend, setExtend};

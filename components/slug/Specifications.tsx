@@ -112,11 +112,6 @@ const Specifications: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="relative w-full h-fit bg-white row-start-2 grid grid-flow-col auto-cols-[auto auto] row-start-2">
-        <div className="relative w-fit h-fit font-animosaR text-black col-start-1 place-self-center py-6 text-8xl">
-          GET THE DROP
-        </div>
-      </div>
     </div>
   );
 };
