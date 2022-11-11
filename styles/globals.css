@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Animosa Extra Bold";
+  font-weight: 400;
+  src: url("/fonts/Animosa-ExtraBold.otf");
+}
+
+@font-face {
+  font-family: "Animosa Extra Light";
+  font-weight: 400;
+  src: url("/fonts/Animosa-ExtraLight.otf");
+}
+
+@font-face {
+  font-family: "Animosa Regular";
+  font-weight: 400;
+  src: url("/fonts/Animosa-Regular.otf");
+}
+
+@font-face {
+  font-family: "Animosa Light";
+  font-weight: 400;
+  src: url("/fonts/Animosa-Light.otf");
+}
+
+@font-face {
+  font-family: "Awkward";
+  font-weight: 400;
+  src: url("/fonts/Awkward.ttf");
+}
+
+@font-face {
+  font-family: "Economica Regular";
+  font-weight: 400;
+  src: url("/fonts/Economica-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Economica Bold";
+  font-weight: 400;
+  src: url("/fonts/Economica-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Liberation Mono Regular";
+  font-weight: 400;
+  src: url("/fonts/LiberationMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Liberation Mono Bold";
+  font-weight: 400;
+  src: url("/fonts/LiberationMono-Bold.ttf");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+}
