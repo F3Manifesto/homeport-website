@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { UseCollectionTagsResult } from "../../../types/general.types";
 import arrayShuffle from "array-shuffle";
 
