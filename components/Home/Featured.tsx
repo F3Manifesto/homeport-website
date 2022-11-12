@@ -9,15 +9,16 @@ const Featured: FunctionComponent = (): JSX.Element => {
       <div className="relative w-fit h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] place-self-center gap-36">
         <div className="relative w-[30vw] h-fit self-start col-start-1 grid grid-flow-row auto-rows-[auto auto] place-self-center gap-2">
           <div className="relative w-fit text-sm h-fit row-start-1 text-left text-white font-libB">
-            A BUNCH OF TEXT GOES HERE TO DESCRIBE THE GIST OF THE SITE ITS FEEL,
-            ETC… Made to reflect on the persistence of source materials. In the
-            aftermath of trades won and fortunes lost. The perpetual hunt for
-            resources beyond the small games of highrise hopes.
+            For the creative collector on the edge of joining a new merchant
+            society. The makings of an infinite record store, persistent in its
+            source materials, where by our records we decentralize access to
+            every memory worth sharing.
             <br />
-            <br />A new kind of market player emerges in the balance of
-            technical self sovereignty and coherence of the craft. Availability
-            limited to those who remember, not your keys means to seize your
-            repeat of the GFC.
+            <br />
+            It isn’t a couple of machines, or a few dozen. This omnicoastal
+            periphery, with each GPU added gains storefronts independent of
+            default states, enhanced by on-demand pricing feeds from oracles
+            anyone can trust + verify.
           </div>
           <div className="relative w-fit h-fit row-start-2 pt-16 font-animosaR text-white pb-6">
             DROP TYPE
@@ -29,7 +30,9 @@ const Featured: FunctionComponent = (): JSX.Element => {
                   key={index}
                   className={`relative w-fit h-fit row-start-${
                     index + 1
-                  } col-start-1 text-[${typeColors[index]}] ${index === dropType.length - 1 && "py-10"}`}
+                  } col-start-1 text-[${typeColors[index]}] ${
+                    index === dropType.length - 1 && "py-10"
+                  }`}
                 >
                   {drop}
                 </div>
@@ -57,7 +60,12 @@ const Featured: FunctionComponent = (): JSX.Element => {
       </div>
       <div className="relative w-full h-full col-start-2 grid grid-flow-col auto-cols-[auto auto]">
         <div className="relative w-[40vw] h-[78vw] bg-grayBlue rounded-lg justify-self-center">
-          <Image layout="fill" objectFit="cover" src="/images/main.png" priority />
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src="/images/main.png"
+            priority
+          />
         </div>
       </div>
     </div>
