@@ -120,6 +120,10 @@ input:focus {
 
   border-color: #fcf894 !important;
 }
+/* 
+#gal1 {
+  background: linear-gradient(to right, #b9d9ff, #0091ff, #FCF894);
+} */
 
 #want {
   font-family: "Air Strike";

@@ -44,10 +44,8 @@ const Home: NextPage = (): JSX.Element => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="canonical" href="https://f3manifesto.xyz/" />
       </Head>
-
       <VintageFilm />
       <F3Manifesto />
-
       <Web3Fashion goShopping={goShopping} />
       <Collections shopping={shopping} setOrder={setOrder} />
       <Poster />
