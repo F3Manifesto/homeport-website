@@ -38,16 +38,16 @@ export type UseOrderResult = {
   tokens: string[];
   layoutIndexes: number[];
   setSelectedPrice: (e: string) => void;
-  setPurchase: () => void;
+  setPurchase: (e: string) => void;
   increaseQuantity: () => void;
   decreaseQuantity: () => void;
-  quantity: number;
-  setQuantity: (e: number) => void;
   featurePrice: number;
   convertedPrice: number;
   currencyTag: string;
   clickedToken: string;
   setClickedToken: (e: string) => void;
+  setPayment: (e: string) => void;
+  payment: string;
 };
 
 export type UseOracleResult = {
@@ -68,8 +68,8 @@ export type PriceProps = {
 export type UseCollectionTagsResult = {
   categories: string[];
   formats: string[];
-  categoryColors:string[];
-  formatColors:string[];
+  categoryColors: string[];
+  formatColors: string[];
   showFormats: boolean;
   setShowFormats: (e: boolean) => void;
   showCategories: boolean;
@@ -88,8 +88,15 @@ export type UseGalleryResult = {
 };
 
 export type UseFeaturedResult = {
-  dropFormat: string[]
-  dropType: string[]
-  formatColors: string[]
-  typeColors: string[]
+  dropFormat: string[];
+  dropType: string[];
+  formatColors: string[];
+  typeColors: string[];
+};
+
+export type PaymentButtonProps = {
+  payment: string;
+  setPurchase: (e: string) => void;
+  setPayment: (e: string) => void;
+  clickedToken: string;
 };

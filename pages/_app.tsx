@@ -8,12 +8,16 @@ import { publicProvider } from "wagmi/providers/public";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 
-// export const GlobalContextDefault = {
-//   buyNow: false,
-//   setBuyNow: (buyNow: boolean) => {},
-// };
+export const GlobalContextDefault = {
+  quantity: 1,
+  setQuantity: (quantity: number) => {},
+  itemPrice: {price: 0, currency: ""},
+  setItemPrice: (itemPrice: {price: number, currency: string}) => {},
+  itemName: "",
+  setItemName: (itemName: string) => {},
+};
 
-// export const GlobalContext = createContext(GlobalContextDefault);
+export const GlobalContext = createContext(GlobalContextDefault);
 
 const { chains, provider } = configureChains(
   [chain.mainnet],
@@ -32,17 +36,21 @@ const wagmiClient = createClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const [buyNow, setBuyNow] = useState(GlobalContextDefault.buyNow);
+  const [quantity, setQuantity] = useState(GlobalContextDefault.quantity);
+  const [itemPrice, setItemPrice] = useState(GlobalContextDefault.itemPrice);
+  const [itemName, setItemName] = useState(GlobalContextDefault.itemName);
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        {/* <GlobalContext.Provider value={{ buyNow, setBuyNow }}> */}
+        <GlobalContext.Provider
+          value={{ quantity, setQuantity, itemPrice, setItemPrice, itemName, setItemName }}
+        >
           <div className="relative w-screen max-w-screen overflow-hidden h-auto bg-black selection:bg-lBlue">
             <Header />
             <Component {...pageProps} />
             <Footer />
           </div>
-        {/* </GlobalContext.Provider> */}
+        </GlobalContext.Provider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

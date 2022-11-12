@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { UseOrderResult } from "../../../types/general.types";
 import {
   aggregatorV3InterfaceABI,
@@ -8,6 +8,7 @@ import {
 } from "./../../../lib/constants";
 import { useContractReads } from "wagmi";
 import lodash from "lodash";
+import { GlobalContext } from "../../../pages/_app";
 
 const useOrder = (): UseOrderResult => {
   const USDPRICESET: number = 56;
@@ -19,11 +20,14 @@ const useOrder = (): UseOrderResult => {
   const [monaPrice, setMonaPrice] = useState<number>(0);
   const [featurePrice, setFeaturePrice] = useState<number>(USDPRICESET);
   const tokens: string[] = ["mona", "eth", "usdt", "matic"];
-  const [quantity, setQuantity] = useState<number>(1);
   const layoutIndexes: number[] = [1, 1, 2, 1, 2, 2, 2, 2];
   const [convertedPrice, setConvertedPrice] = useState<number>(USDPRICESET);
   const [currencyTag, setCurrencyTag] = useState<string>("USD");
   const [clickedToken, setClickedToken] = useState<string>("");
+  const { quantity, setQuantity } = useContext(GlobalContext);
+  const { itemName, setItemName, itemPrice, setItemPrice } =
+    useContext(GlobalContext);
+  const [payment, setPayment] = useState<string>("default");
 
   const { data } = useContractReads({
     contracts: [
@@ -78,7 +82,6 @@ const useOrder = (): UseOrderResult => {
 
   useEffect(() => {
     showSelectedPrice();
-    console.log(monaPrice);
   }, [selectedPrice]);
 
   const getMONAPrice = async () => {
@@ -145,9 +148,16 @@ const useOrder = (): UseOrderResult => {
     }
   };
 
-  const setPurchase = (): void => {
-
+  const setPurchase = (e: string): void => {
+    setItemName("order");
+    if (e === "crypto") {
+      setItemPrice({ price: featurePrice, currency: currencyTag });
+    } else {
+      setItemPrice({ price: USDPRICESET, currency: "USD" });
+    }
   };
+
+  console.log(itemPrice, itemName)
 
   return {
     tokens,
@@ -156,13 +166,13 @@ const useOrder = (): UseOrderResult => {
     setPurchase,
     increaseQuantity,
     decreaseQuantity,
-    quantity,
-    setQuantity,
     featurePrice,
     convertedPrice,
     currencyTag,
     clickedToken,
-    setClickedToken
+    setClickedToken,
+    setPayment,
+    payment,
   };
 };
 

@@ -1,25 +1,26 @@
-import { useRouter } from "next/router";
-import { FormEvent, FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { FiUpload } from "react-icons/fi";
+import { GlobalContext } from "../../pages/_app";
 import useOrder from "./hooks/useOrder";
+import PaymentButton from "./PaymentButton";
 import Prices from "./Prices";
 
 const Order: FunctionComponent = (): JSX.Element => {
-  const router = useRouter();
+  const { quantity } = useContext(GlobalContext);
   const {
     tokens,
     layoutIndexes,
     setSelectedPrice,
     setPurchase,
-    quantity,
     decreaseQuantity,
     increaseQuantity,
-    setQuantity,
     featurePrice,
     convertedPrice,
     currencyTag,
     clickedToken,
-    setClickedToken
+    payment,
+    setPayment,
+    setClickedToken,
   } = useOrder();
   return (
     <div className="relative w-full h-full row-start-2 grid grid-flow-row auto-rows-[auto auto]">
@@ -73,20 +74,12 @@ const Order: FunctionComponent = (): JSX.Element => {
             </div>
           </div>
         </div>
-        <div
-          className="relative w-full h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] bg-red-600 cursor-pointer hover:opacity-70 active:scale-95"
-          onClick={() => {
-            router.push("/buy-now");
-            setPurchase();
-          }}
-        >
-          <button
-            className="relative w-fit h-fit p-3 place-self-center col-start-1 text-black font-economicaB text-[1.3vw]"
-            type="submit"
-          >
-            BUY NOW
-          </button>
-        </div>
+        <PaymentButton
+          setPurchase={setPurchase}
+          payment={payment}
+          setPayment={setPayment}
+          clickedToken={clickedToken}
+        />
       </div>
     </div>
   );
