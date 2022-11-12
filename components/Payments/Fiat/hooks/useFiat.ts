@@ -1,16 +1,17 @@
 import { Appearance, StripeElementsOptions } from "@stripe/stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../pages/_app";
+import { UseFiatResult } from "../../../../types/general.types";
 
-const useFiat = () => {
+const useFiat = (): UseFiatResult => {
   const [clientSecret, setClientSecret] = useState<string>("");
-  const {quantity, itemName, itemPrice} = useContext(GlobalContext)
-
+  const { quantity, itemName, itemPrice } = useContext(GlobalContext);
+  
   const appearance: Appearance = {
     theme: "night",
     variables: {
-      colorPrimary: "#3C84F0",
-      colorBackground: "#000000",
+      colorPrimary: '#76b3f4',
+      colorBackground: '#000000',
     },
   };
 
@@ -24,11 +25,11 @@ const useFiat = () => {
       const response = await fetch("/api/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: [{ id: itemName, quantity, itemPrice}] }),
+        body: JSON.stringify({
+          items: [{ id: itemName, quantity, itemPrice }],
+        }),
       });
-      console.log(response)
       const data = await response.json();
-      console.log(data)
       setClientSecret(data.clientSecret);
     } catch (err: any) {
       console.error(err.message);
@@ -39,7 +40,11 @@ const useFiat = () => {
     createPayment();
   }, []);
 
-  return { clientSecret, options };
+ 
+  return {
+    clientSecret,
+    options
+  };
 };
 
 export default useFiat;

@@ -1,3 +1,5 @@
+import { StripeElementsOptions, Stripe, StripeElements } from "@stripe/stripe-js";
+
 export interface AggregatorInterface {
   inputs:
     | []
@@ -99,4 +101,17 @@ export type PaymentButtonProps = {
   setPurchase: (e: string) => void;
   setPayment: (e: string) => void;
   clickedToken: string;
+};
+
+export type UseFiatResult = {
+  clientSecret: string;
+  options: StripeElementsOptions;
+};
+
+export type UseFormResult = {
+  handleSubmit: (e: any) => Promise<void>;
+  isLoading: boolean;
+  stripe: Stripe | null;
+  elements: StripeElements | null;
+  message: string | undefined;
 };
