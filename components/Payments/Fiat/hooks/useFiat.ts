@@ -1,6 +1,6 @@
 import { Appearance, StripeElementsOptions } from "@stripe/stripe-js";
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../../pages/_app";
+import { GlobalContext } from "../../../../pages/_app";
 
 const useFiat = () => {
   const [clientSecret, setClientSecret] = useState<string>("");
