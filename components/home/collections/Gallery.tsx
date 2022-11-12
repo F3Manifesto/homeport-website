@@ -20,7 +20,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
     <div className="relative min-h-max h-max w-full flex">
       <div className="relative w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-max grid-flow-row gap-4 items-center mb-10">
         {gallery?.map((token: Gallery, key: number) => {
-          const nameToken = token.name.replaceAll(' ', '-').toLowerCase()
+          const nameToken = token.name.replaceAll(" ", "-").toLowerCase();
           return (
             <div
               key={key}
@@ -37,6 +37,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                   layout="fill"
                   alt={token.name}
                   objectPosition="top"
+                  style={blur ? { opacity: 0 } : { opacity: 1 }}
                   src={token.image}
                   onLoadingComplete={() => setBlur(false)}
                 />

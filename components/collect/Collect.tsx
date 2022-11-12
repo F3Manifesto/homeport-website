@@ -20,9 +20,6 @@ const Collect: FunctionComponent<CollectProps> = ({
     useContext(CollectContext);
   const { isConnected } = useAccount();
 
-  useEffect(() => {
-  }, [data, collectMarket]);
-
   let action = "COLLECT";
 
   const decideStringAction = () => {
