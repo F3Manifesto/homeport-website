@@ -52,7 +52,7 @@ const useForm = (): UseFormResult => {
       elements,
       confirmParams: {
         // payment completion page
-        return_url: "http://localhost:3000",
+        return_url: "http://localhost:3000/success",
       },
     });
 

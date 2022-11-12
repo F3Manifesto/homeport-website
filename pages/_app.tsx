@@ -11,7 +11,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 export const GlobalContextDefault = {
   quantity: 1,
   setQuantity: (quantity: number) => {},
-  itemPrice: {price: 0, currency: ""},
+  itemPrice: {price: 0, currency: "USD"},
   setItemPrice: (itemPrice: {price: number, currency: string}) => {},
   itemName: "",
   setItemName: (itemName: string) => {},
