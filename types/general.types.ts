@@ -1,4 +1,8 @@
-import { StripeElementsOptions, Stripe, StripeElements } from "@stripe/stripe-js";
+import {
+  StripeElementsOptions,
+  Stripe,
+  StripeElements,
+} from "@stripe/stripe-js";
 
 export interface AggregatorInterface {
   inputs:
@@ -114,4 +118,35 @@ export type UseFormResult = {
   stripe: Stripe | null;
   elements: StripeElements | null;
   message: string | undefined;
+};
+
+export interface ProductInterface {
+  title: string;
+  description: string;
+  collectionName: string;
+  availableFormats: string[];
+  relatedCategories: string[];
+  sizesAvailable: string[];
+  material: string;
+  colorVariations: string[];
+  keysToUnlock: string;
+  formatVariations: string[];
+  series: boolean;
+  synthModel: string;
+  numberIncluded: string;
+  props: string[];
+  customEmbeddings: string;
+  samplingMethod: string;
+  sourceIncluded: boolean;
+};
+
+export type UseDashboardResult = {
+  section: string;
+  setSection: (e: string) => void;
+  sidebar: string[];
+};
+
+export interface DropInterface {
+  title: string;
+  description: string;
 };

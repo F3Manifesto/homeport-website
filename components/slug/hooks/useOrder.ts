@@ -157,8 +157,6 @@ const useOrder = (): UseOrderResult => {
     }
   };
 
-  console.log(itemPrice, itemName)
-
   return {
     tokens,
     layoutIndexes,

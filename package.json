@@ -17,11 +17,13 @@
     "coingecko-api": "^1.0.10",
     "ethers": "^5.7.2",
     "lodash": "^4.17.21",
+    "mongoose": "^6.7.2",
     "next": "^13.0.2",
     "next-connect": "^0.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-query": "^3.39.2",
     "react-responsive-carousel": "^3.2.23",
     "stripe": "^10.17.0",
     "wagmi": "^0.8.1"

@@ -2,8 +2,10 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <div className="bg-black relative w-full h-auto grid grid-flow-col auto-cols-[auto auto] p-10 pb-4">
       <div className="relative w-fit h-fit col-start-1 grid grid-flow-col auto-cols-[auto auto] font-awkward text-white gap-4">
@@ -33,16 +35,27 @@ const Header = () => {
             SUPPLY
           </div>
         </div>
-        <div className="relative w-fit h-fit col-start-5 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-5 pt-2">
-          <BsSearch
-            className="relative w-fit h-fit place-self-center cursor-pointer"
-            color="white"
-            size={15}
-          />
-        </div>
-        <div className="relative w-fit h-fit col-start-6 place-self-center grid grid-flow-col auto-cols-[auto auto] pt-1 cursor-pointer">
-          <Image src="/images/cart.png" height={20} width={20} />
-        </div>
+        {router.asPath === "/dashboard" ? (
+          <div className="relative w-fit h-fit col-start-5 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-5 pt-2 grid grid-flow-col auto-cols-[auto auto] gap-2">
+            <div className="relative w-0.5 h-6 col-start-1 place-self-center grid grid-flow-col auto-cols-[auto auto] bg-white"></div>
+            <div className="relative w-fit h-fit col-start-2 place-self-center grid grid-flow-col auto-cols-[auto auto] cursor-pointer font-economica text-xl">
+              Product Planning
+            </div>
+          </div>
+        ) : (
+          <div className="relative w-fit h-fit col-start-5 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-5 pt-2 grid grid-flow-col auto-cols-[auto auto] gap-4">
+            <div className="relative w-fit h-fit col-start-1 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-5 pt-2">
+              <BsSearch
+                className="relative w-fit h-fit place-self-center cursor-pointer"
+                color="white"
+                size={15}
+              />
+            </div>
+            <div className="relative w-fit h-fit col-start-2 place-self-center grid grid-flow-col auto-cols-[auto auto] pt-1 cursor-pointer">
+              <Image src="/images/cart.png" height={20} width={20} />
+            </div>
+          </div>
+        )}
       </div>
       <div className="relative w-fit h-fit col-start-2 justify-self-end">
         <ConnectButton.Custom>

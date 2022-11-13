@@ -2,7 +2,6 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const handler = async (req: any, res: any) => {
   const { items } = req.body;
-  console.log("inside, items", items)
 
   // items.quantity * items.itemPrice.price,
 

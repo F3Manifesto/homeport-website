@@ -14,6 +14,7 @@ module.exports = {
         yellowTheme: "#FBDB86",
         lGray: "#E7F2FB",
         grayBlue: "#C9D8E4",
+        shaded: "#171821",
       },
       fontFamily: {
         animosaEB: "Animosa Extra Bold",
