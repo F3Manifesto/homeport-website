@@ -40,21 +40,21 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const name: string = context.params.name;
-  const { base64 } = await getPlaiceholder(
-    `/images/gallery/${name}.png`
-  );
+  // const { base64 } = await getPlaiceholder(
+  //   `/images/gallery/${name}.png`.replaceAll("-", "")
+  // );
   const response = tokens.filter(
     (token: Gallery) =>
       token.name.replaceAll(" ", "-").toLowerCase() === name.toLowerCase()
   );
   return {
-    props: { token: response, base64 },
+    props: { token: response },
   };
 };
 
 const TokenDetails: React.FC<
   InferGetStaticPropsType<typeof getStaticProps>
-> = ({ token, base64 }: any): JSX.Element => {
+> = ({ token }: any): JSX.Element => {
   const { address } = useAccount();
   const connect = useRef<null | HTMLDivElement>(null);
   const [showApprovalModal, setShowApprovalModal] = useState(
@@ -218,7 +218,7 @@ const TokenDetails: React.FC<
                 layout="fill"
                 objectFit="contain"
                 unoptimized
-                blurDataURL={base64}
+                blurDataURL={token[0].blurred}
                 placeholder="blur"
                 loader={() => token[0].image}
                 src={token[0].image}
