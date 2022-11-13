@@ -7,7 +7,11 @@ import { useRouter } from "next/router";
 const Header = () => {
   const router = useRouter();
   return (
-    <div className="bg-black relative w-full h-auto grid grid-flow-col auto-cols-[auto auto] p-10 pb-4">
+    <div
+      className={`${
+        router.asPath === "/dashboard" ? "bg-shaded" : "bg-black"
+      } relative w-full h-auto grid grid-flow-col auto-cols-[auto auto] p-10 pb-4`}
+    >
       <div className="relative w-fit h-fit col-start-1 grid grid-flow-col auto-cols-[auto auto] font-awkward text-white gap-4">
         <Link
           href="/"

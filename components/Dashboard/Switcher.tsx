@@ -1,49 +1,40 @@
 import { FunctionComponent } from "react";
-import Drafts from "./Drafts";
-import DropTypes from "./DropTypes";
-import Fulfillment from "./Fulfillment";
-import useDashBoard from "./hooks/useDashboard";
-import Inventory from "./Inventory";
-import Pricing from "./Pricing";
+import MainDropDrafts from "./Drafts";
+import MainDropFulFillment from "./Fulfillment";
+import MainDropInventory from "./Inventory";
+import MainDropPricing from "./Pricing";
+import { RootState } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
+import SwitcherDropTypes from "./DropTypes/SwitcherDropTypes";
+import { setDisplay } from "../../redux/reducers/displaySlice";
 
 const Switcher: FunctionComponent = (): JSX.Element => {
   let action = "DROP_TYPES";
-  const { section } = useDashBoard();
+  const dashSection = useSelector(
+    (state: RootState) => state.app.dashReducer.value
+  );
+  const dispatch = useDispatch();
+
   const decideStringAction = () => {
-    if (section === "DRAFTS") {
-      action = section;
-    }
-
-    if (section === "INVENTORY") {
-      action = section;
-    }
-
-    if (section === "PRICING") {
-      action = section;
-    }
-
-    if (section === "FULFILLMENT") {
-      action = section;
-    }
-
+    action = dashSection;
     return action;
   };
 
   switch (decideStringAction()) {
     case "DRAFTS":
-      return <Drafts />;
+      return <MainDropDrafts />;
 
     case "INVENTORY":
-      return <Inventory />;
+      return <MainDropInventory />;
 
     case "PRICING":
-      return <Pricing />;
+      return <MainDropPricing />;
 
     case "FULFILLMENT":
-      return <Fulfillment />;
+      return <MainDropFulFillment />;
 
     default:
-      return <DropTypes />;
+      return <SwitcherDropTypes />;
   }
 };
 

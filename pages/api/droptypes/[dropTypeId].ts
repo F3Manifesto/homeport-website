@@ -18,27 +18,27 @@ const handler = async (req: any, res: any): Promise<void> => {
     case "GET":
       try {
         const dropTypes = await getDropTypes(req, res);
-        res.status(200).json({ success: true, data: dropTypes });
+        return dropTypes
       } catch (err: any) {
-        res.status(400).json({ success: false, data: err.message });
+        res.json({ success: false, data: err.message });
       }
       break;
 
     case "PUT":
       try {
         const dropType = await updateDropType(req, res);
-        res.status(201).json({ success: true, data: dropType });
+        return dropType
       } catch (err: any) {
-        res.status(400).json({ success: false, data: err.message });
+        res.json({ success: false, data: err.message });
       }
       break;
 
     case "DELETE":
       try {
         const dropType = await deleteDropType(req, res);
-        res.status(201).json({ success: true, data: dropType });
+        return dropType
       } catch (err: any) {
-        res.status(400).json({ success: false, data: err.message });
+        res.json({ success: false, data: err.message });
       }
       break;
 

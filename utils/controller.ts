@@ -10,7 +10,7 @@ export const getProducts = async (req: any, res: any): Promise<void> => {
       res.status(200).json(products);
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -25,7 +25,7 @@ export const addProduct = async (req: any, res: any): Promise<void> => {
       });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -40,7 +40,7 @@ export const updateProduct = async (req: any, res: any): Promise<void> => {
       res.status(404).json({ err: "Product not found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -54,7 +54,7 @@ export const deleteProduct = async (req: any, res: any): Promise<void> => {
       res.status(404).json({ err: "Product not found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -68,7 +68,7 @@ export const getProduct = async (req: any, res: any): Promise<void> => {
       res.status(404).json({ err: "Product Not Found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -76,12 +76,12 @@ export const getDropTypes = async (req: any, res: any): Promise<void> => {
   try {
     const dropTypes = await DropTypes.find({});
     if (!dropTypes) {
-      res.status(404).json({ err: "No Products Found" });
+      return res.status(404).json({ err: "No Products Found" });
     } else {
-      res.status(200).json(dropTypes);
+      return res.status(200).json(dropTypes);
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -89,14 +89,14 @@ export const addDropType = async (req: any, res: any): Promise<void> => {
   try {
     const dropType = req.body;
     if (!dropType) {
-      res.status(404).json({ err: "Drop Type data not provided" });
+      return res.status(404).json({ err: "Drop Type data not provided" });
     } else {
       DropTypes.create(dropType, (err: any, data: any) => {
         return res.status(200).json(data);
       });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -108,10 +108,10 @@ export const updateDropType = async (req: any, res: any): Promise<void> => {
       await DropTypes.findByIdAndUpdate(dropTypeId, dropType);
       return res.status(200).json(dropType);
     } else {
-      res.status(404).json({ err: "Drop Type not found" });
+      return res.status(404).json({ err: "Drop Type not found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -122,10 +122,10 @@ export const deleteDropType = async (req: any, res: any): Promise<void> => {
       await DropTypes.findByIdAndDelete(dropTypeId);
       return res.status(200).json(dropTypeId);
     } else {
-      res.status(404).json({ err: "Drop Type not found" });
+      return res.status(404).json({ err: "Drop Type not found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };
 
@@ -134,11 +134,11 @@ export const getDropType = async (req: any, res: any): Promise<void> => {
     const { dropTypeId } = req.query;
     if (dropTypeId) {
       const dropType = await DropTypes.findById(dropTypeId);
-      res.status(200).json(dropType);
+      return res.status(200).json(dropType);
     } else {
-      res.status(404).json({ err: "Drop Type Not Found" });
+      return res.status(404).json({ err: "Drop Type Not Found" });
     }
   } catch (err: any) {
-    res.status(404).json({ err: err.message });
+    return res.status(404).json({ err: err.message });
   }
 };

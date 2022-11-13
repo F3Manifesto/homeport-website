@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import Purchase from "../components/slug/Purchase";
-import Banner from "../components/slug/Banner";
-import Specifications from "../components/slug/Specifications";
+import Purchase from "../components/Slug/Purchase";
+import Banner from "../components/Slug/Banner";
+import Specifications from "../components/Slug/Specifications";
 
 // get static props and paths here for the order info
 

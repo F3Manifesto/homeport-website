@@ -5,7 +5,7 @@ import {
   ETHUSD,
   MATICUSD,
   USDTUSD,
-} from "./../../../lib/constants";
+} from "../../../lib/constants";
 import { useContractReads } from "wagmi";
 import lodash from "lodash";
 import { GlobalContext } from "../../../pages/_app";

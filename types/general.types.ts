@@ -3,6 +3,7 @@ import {
   Stripe,
   StripeElements,
 } from "@stripe/stripe-js";
+import { FormEvent } from "react";
 
 export interface AggregatorInterface {
   inputs:
@@ -138,15 +139,60 @@ export interface ProductInterface {
   customEmbeddings: string;
   samplingMethod: string;
   sourceIncluded: boolean;
-};
-
-export type UseDashboardResult = {
-  section: string;
-  setSection: (e: string) => void;
-  sidebar: string[];
-};
+}
 
 export interface DropInterface {
+  _id?: string;
   title: string;
   description: string;
+}
+
+export interface OptionsInterface {
+  method: string;
+  headers: {
+    "Content-Type": string;
+  };
+  body?: string;
+}
+
+export type UseAddDropTypesResult = {
+  data: any;
+  isLoading: boolean;
+  isError: boolean;
+  handleDropSubmit: (e: FormEvent) => void;
+  addMutation: any;
+  success: boolean;
+  setSuccess: (e: boolean) => void;
+};
+
+export type AddDropTypeProps = {
+  handleDropSubmit: (e: FormEvent) => void;
+  addMutation: any;
+  success: boolean;
+  setSuccess: (e: boolean) => void;
+};
+
+export type MainDropTypeProps = {
+  data: any;
+  isLoading: boolean;
+  isError: boolean;
+};
+
+export type UpdateDropTypeProps = {
+  handleDropSubmit: (e: FormEvent) => void;
+  addMutation: any;
+  success: boolean;
+  setSuccess: (e: boolean) => void;
+  data: any;
+}
+
+
+export type UseUpdateDropTypesResult = {
+  data: any;
+  isLoading: boolean;
+  isError: boolean;
+  handleDropSubmit: (e: FormEvent) => void;
+  addMutation: any;
+  success: boolean;
+  setSuccess: (e: boolean) => void;
 };
