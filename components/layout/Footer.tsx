@@ -40,19 +40,17 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          Made possible by the use of algorithmic stitching and a sewing
-          machine. It is a process that uses algorithms to generate patterns for
-          stitching that can be used on any type of fabric or garment material.
-          I will explore this tool through my visit to a local New York City
-          garment textile factory in SoHo.
+          Constantly experimenting and pushing the boundaries of what is
+          possible. New forms of fabric that are more resistant to tearing and
+          fading. More beautiful. More functional. Always tinkering with her
+          designs, trying to find ways to make them better.
           <br /> <br />
-          The first step in this process is to design the pattern for the dress
-          and then convert it into code. The program then stitches together each
-          individual piece of fabric with a needle and thread, much like a
-          traditional sewing machine would do.
+          An obsession with freedom, code and the challenge of creating
+          something new. Who knows, you might even find yourself stumbling upon
+          some nanotechnology in the process!
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0004
+          log: 0005
         </div>
         <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
