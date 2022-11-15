@@ -1,11 +1,11 @@
 import dbConnect from "../../../utils/dbConnect";
-import { addDropType, getDropTypes } from "../../../utils/controllers";
+import { getAddress } from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
     await dbConnect();
   } catch (err: any) {
-    res.json({ success: false, data: err.message });
+    console.error(err.message);
   }
 
   const { method } = req;
@@ -13,17 +13,8 @@ const handler = async (req: any, res: any): Promise<void> => {
   switch (method) {
     case "GET":
       try {
-        const dropTypes = await getDropTypes(req, res);
-        return dropTypes;
-      } catch (err: any) {
-        res.json({ success: false, data: err.message });
-      }
-      break;
-
-    case "POST":
-      try {
-        const dropType = await addDropType(req, res);
-        return dropType;
+        const address = await getAddress(req, res);
+        return address;
       } catch (err: any) {
         res.json({ success: false, data: err.message });
       }

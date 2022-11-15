@@ -1,8 +1,11 @@
 import { FunctionComponent } from "react";
 import useCollectionTags from "./hooks/useCollectionTags";
 import lodash from "lodash";
+import { CollectionTagsProps } from "../../types/general.types";
 
-const CollectionTags: FunctionComponent = (): JSX.Element => {
+const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
+  item,
+}): JSX.Element => {
   const {
     formats,
     categories,
@@ -20,18 +23,19 @@ const CollectionTags: FunctionComponent = (): JSX.Element => {
           available formats:
         </div>
         <div className="relative w-2/3 h-fit row-start-2 flex flex-wrap justify-start gap-2">
-          {(showFormats ? formats : lodash.slice(formats, 0, 4)).map(
-            (format: string, index: number) => {
-              return (
-                <span
-                  key={index}
-                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${formatColors[index]} cursor-pointer hover:bg-lBlue`}
-                >
-                  {format}
-                </span>
-              );
-            }
-          )}
+          {(showFormats
+            ? item.dropFormat
+            : lodash.slice(item.dropFormat, 0, 4)
+          ).map((format: string, index: number) => {
+            return (
+              <span
+                key={index}
+                className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${formatColors[index]} cursor-pointer hover:bg-lBlue`}
+              >
+                {format}
+              </span>
+            );
+          })}
           {formats.length > 4 && (
             <span
               className="relative w-fit h-9 inline-flex rounded-full shadow-sm bg-lGray grid grid-flow-col auto-cols-[auto auto] cursor-pointer active:scale-95"

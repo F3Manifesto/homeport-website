@@ -22,7 +22,7 @@ const AddressSchema = new Schema({
     required: true,
   },
   buildingAparmentNo: {
-    type: String,
+    type: Number,
     required: true,
   },
   stateProvince: {
@@ -34,11 +34,11 @@ const AddressSchema = new Schema({
     required: true,
   },
   zipCode: {
-    type: String,
+    type: Number,
     required: true,
   },
 });
 
-const Address = models.Address || model("Product", AddressSchema);
+const Address = models.Address || model("Address", AddressSchema);
 
 export default Address;

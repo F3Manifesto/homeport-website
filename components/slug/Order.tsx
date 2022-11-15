@@ -4,9 +4,13 @@ import { GlobalContext } from "../../pages/_app";
 import useOrder from "./hooks/useOrder";
 import PaymentButton from "./PaymentButton";
 import Prices from "./Prices";
+import { buildLensShareUrl } from "@infinity-keys/react-lens-share-button";
+import Link from "next/link";
+import {OrderProps} from "./../../types/general.types"
 
-const Order: FunctionComponent = (): JSX.Element => {
+const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
   const { quantity } = useContext(GlobalContext);
+  const url = buildLensShareUrl({ postBody: "Hello, Lens!" });
   const {
     tokens,
     layoutIndexes,
@@ -65,20 +69,31 @@ const Order: FunctionComponent = (): JSX.Element => {
               +
             </div>
           </div>
-          <div className="relative w-full h-fit col-start-2 grid grid-flow-col auto-cols-[auto auto] place-self-center gap-2">
-            <div className="relative w-fit h-fit col-start-1 place-self-center">
-              <FiUpload color="white" size={20} />
-            </div>
-            <div className="relative w-fit h-fit col-start-2 text-white place-self-center font-libR text-[1.3vw]">
-              Share
-            </div>
-          </div>
+          <Link
+            href={url}
+            legacyBehavior
+            className="relative w-fit h-fit col-start-2 grid grid-flow-col auto-cols-[auto auto]"
+          >
+            <a
+              target={"_blank"}
+              rel="noreferrer"
+              className="relative w-fit h-fit col-start-2 grid grid-flow-col auto-cols-[auto auto] gap-2 pt-2"
+            >
+              <div className="relative w-fit h-fit col-start-1 place-self-center">
+                <FiUpload color="white" size={20} />
+              </div>
+              <div className="relative w-fit h-fit col-start-2 text-white place-self-center font-libR text-[1.3vw]">
+                Share
+              </div>
+            </a>
+          </Link>
         </div>
         <PaymentButton
           setPurchase={setPurchase}
           payment={payment}
           setPayment={setPayment}
           clickedToken={clickedToken}
+          item={item}
         />
       </div>
     </div>

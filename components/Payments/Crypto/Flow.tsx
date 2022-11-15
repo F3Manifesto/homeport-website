@@ -33,10 +33,6 @@ const Flow: FunctionComponent = (): JSX.Element => {
       action = "ERROR";
     }
 
-    // if () {
-    //   action = "APPROVE"
-    // }
-
     if (
       isConnected &&
       ((isLoading && !isSuccess && !isError) ||
@@ -57,13 +53,6 @@ const Flow: FunctionComponent = (): JSX.Element => {
   };
 
   switch (decideStringAction()) {
-    // case "APPROVE":
-    //   return (
-    //     <div onClick={() => {}} className="relative w-fit h-fit">
-    //       APPROVE
-    //     </div>
-    //   );
-
     case "COLLECT":
       return (
         <div
@@ -74,7 +63,7 @@ const Flow: FunctionComponent = (): JSX.Element => {
                   write?.();
                 }
           }
-          className="relative w-fit h-fit"
+          className="relative w-fit h-fit font-economica px-10"
         >
           MAKE PAYMENT
         </div>
@@ -90,7 +79,7 @@ const Flow: FunctionComponent = (): JSX.Element => {
                   write?.();
                 }
           }
-          className="relative w-fit h-fit"
+          className="relative w-fit h-fit font-economica px-10"
         >
           TRY AGAIN
         </div>

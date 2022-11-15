@@ -3,7 +3,7 @@ import {
   deleteProduct,
   getProduct,
   updateProduct,
-} from "../../../utils/controller";
+} from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -17,8 +17,8 @@ const handler = async (req: any, res: any): Promise<void> => {
   switch (method) {
     case "GET":
       try {
-        const products = await getProduct(req, res);
-        res.status(200).json({ success: true, data: products });
+        const product = await getProduct(req, res);
+        return product;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }
@@ -27,7 +27,7 @@ const handler = async (req: any, res: any): Promise<void> => {
     case "PUT":
       try {
         const product = await updateProduct(req, res);
-        res.status(201).json({ success: true, data: product });
+        return product;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }
@@ -36,7 +36,7 @@ const handler = async (req: any, res: any): Promise<void> => {
     case "DELETE":
       try {
         const product = await deleteProduct(req, res);
-        res.status(201).json({ success: true, data: product });
+        return product;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }

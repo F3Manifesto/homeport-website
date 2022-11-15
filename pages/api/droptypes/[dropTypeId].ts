@@ -1,9 +1,9 @@
 import dbConnect from "../../../utils/dbConnect";
 import {
   deleteDropType,
-  getDropTypes,
+  getDropType,
   updateDropType,
-} from "../../../utils/controller";
+} from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -17,7 +17,7 @@ const handler = async (req: any, res: any): Promise<void> => {
   switch (method) {
     case "GET":
       try {
-        const dropTypes = await getDropTypes(req, res);
+        const dropTypes = await getDropType(req, res);
         return dropTypes
       } catch (err: any) {
         res.json({ success: false, data: err.message });

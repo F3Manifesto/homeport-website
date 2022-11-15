@@ -1,7 +1,7 @@
 import { FormEvent, FunctionComponent, useEffect } from "react";
 import { AiFillBackward, AiOutlineLoading } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { setDisplay } from "../../../redux/reducers/displaySlice";
+import { setDrop } from "../../../redux/reducers/dropSlice";
 import { AddDropTypeProps } from "../../../types/general.types";
 
 const AddDrop: FunctionComponent<AddDropTypeProps> = ({
@@ -23,7 +23,7 @@ const AddDrop: FunctionComponent<AddDropTypeProps> = ({
       <div
         className="row-start-1 text-mainText font-economica h-fit w-fit opacity-80 hover:opacity-20 cursor-pointer"
         onClick={() => {
-          dispatch(setDisplay("DROP_TYPES"));
+          dispatch(setDrop("DROP_TYPES"));
         }}
       >
         <AiFillBackward

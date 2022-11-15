@@ -20,6 +20,10 @@ export const GlobalContextDefault = {
   setItemPrice: (itemPrice: { price: number; currency: string }) => {},
   itemName: "",
   setItemName: (itemName: string) => {},
+  deleteModal: false,
+  setDeleteModal: (deleteModal: boolean) => {},
+  cantDeleteDrop: false,
+  setCantDeleteDrop: (cantDeleteDrop: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
@@ -44,6 +48,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [quantity, setQuantity] = useState(GlobalContextDefault.quantity);
   const [itemPrice, setItemPrice] = useState(GlobalContextDefault.itemPrice);
   const [itemName, setItemName] = useState(GlobalContextDefault.itemName);
+  const [deleteModal, setDeleteModal] = useState<boolean>(
+    GlobalContextDefault.deleteModal
+  );
+  const [cantDeleteDrop, setCantDeleteDrop] = useState<boolean>(
+    GlobalContextDefault.cantDeleteDrop
+  );
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -57,6 +67,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 setItemPrice,
                 itemName,
                 setItemName,
+                deleteModal,
+                setDeleteModal,
+                cantDeleteDrop,
+                setCantDeleteDrop,
               }}
             >
               <div className="relative w-screen max-w-screen overflow-hidden h-auto bg-black selection:bg-lBlue">

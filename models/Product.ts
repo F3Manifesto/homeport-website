@@ -1,37 +1,21 @@
 import { Schema, models, model } from "mongoose";
 
 const ProductSchema = new Schema({
-  title: {
+  name: {
     type: String,
-    unique: true,
-    required: [true, "Please add a title"],
-    maxLength: [50, "Title cannot be more than 50 characters"],
+    required: true,
   },
   description: {
     type: String,
-    required: [true, "Please add a description"],
-    maxLength: [500, "Title cannot be more than 500 characters"],
+    required: true,
   },
-  collectionName: {},
-  availableFormats: {},
-  relatedCategories: {},
-  sizesAvailable: {},
-  material: {},
-  colorVariations: {},
-  keysToUnlock: {},
-  formatVariations: {},
-  series: {
-    type: Boolean,
-    required: [true, "Is this item part of a series?"],
-  },
-  synthModel: {},
-  numberIncluded: {},
-  props: {},
-  customEmbeddings: {},
-  samplingMethod: {},
-  sourceIncluded: {
-    type: Boolean,
-    required: [true, "Is the source included?"],
+  dropType: { type: String, required: true },
+  dropFormat: { type: [String], required: true },
+  mainImage: { data: Buffer, contentType: String },
+  featuredImages: { data: Buffer, contentType: [String] },
+  slug: {
+    type: String,
+    required: true,
   },
 });
 

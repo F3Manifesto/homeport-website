@@ -1,3 +1,4 @@
+import Address from "../models/Address";
 import DropTypes from "../models/DropType";
 import Product from "../models/Product";
 
@@ -16,11 +17,11 @@ export const getProducts = async (req: any, res: any): Promise<void> => {
 
 export const addProduct = async (req: any, res: any): Promise<void> => {
   try {
-    const productData = req.body;
-    if (!productData) {
-      res.status(404).json({ err: "Product data not provided" });
+    const product = req.body;
+    if (!product) {
+      return res.status(404).json({ err: "Product data not provided" });
     } else {
-      Product.create(productData, (err: any, data: any) => {
+      Product.create(product, (err: any, data: any) => {
         return res.status(200).json(data);
       });
     }
@@ -31,10 +32,10 @@ export const addProduct = async (req: any, res: any): Promise<void> => {
 
 export const updateProduct = async (req: any, res: any): Promise<void> => {
   try {
-    const { productId } = req.query;
+    const { productSlug } = req.query;
     const productData = req.body;
-    if (productId && productData) {
-      await Product.findByIdAndUpdate(productId, productData);
+    if (productSlug && productData) {
+      await Product.findOneAndUpdate({ slug: productSlug }, productData);
       return res.status(200).json(productData);
     } else {
       res.status(404).json({ err: "Product not found" });
@@ -46,10 +47,10 @@ export const updateProduct = async (req: any, res: any): Promise<void> => {
 
 export const deleteProduct = async (req: any, res: any): Promise<void> => {
   try {
-    const { productId } = req.query;
-    if (productId) {
-      await Product.findByIdAndDelete(productId);
-      return res.status(200).json(productId);
+    const { productSlug } = req.query;
+    if (productSlug) {
+      await Product.findOneAndDelete({ slug: productSlug });
+      return res.status(200).json(productSlug);
     } else {
       res.status(404).json({ err: "Product not found" });
     }
@@ -60,9 +61,9 @@ export const deleteProduct = async (req: any, res: any): Promise<void> => {
 
 export const getProduct = async (req: any, res: any): Promise<void> => {
   try {
-    const { productId } = req.query;
-    if (productId) {
-      const product = await Product.findById(productId);
+    const { productSlug } = req.query;
+    if (productSlug) {
+      const product = await Product.findOne({ slug: productSlug });
       res.status(200).json(product);
     } else {
       res.status(404).json({ err: "Product Not Found" });
@@ -137,6 +138,35 @@ export const getDropType = async (req: any, res: any): Promise<void> => {
       return res.status(200).json(dropType);
     } else {
       return res.status(404).json({ err: "Drop Type Not Found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getAddress = async (req: any, res: any): Promise<void> => {
+  try {
+    const { addressId } = req.query;
+    if (addressId) {
+      const addressType = await Address.findById(addressId);
+      return res.status(200).json(addressType);
+    } else {
+      return res.status(404).json({ err: "Address Not Found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const addAddress = async (req: any, res: any): Promise<void> => {
+  try {
+    const address = req.body;
+    if (!address) {
+      return res.status(404).json({ err: "Address data not provided" });
+    } else {
+      Address.create(address, (err: any, data: any) => {
+        return res.status(200).json(data);
+      });
     }
   } catch (err: any) {
     return res.status(404).json({ err: err.message });

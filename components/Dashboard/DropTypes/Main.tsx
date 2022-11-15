@@ -1,7 +1,11 @@
 import { FunctionComponent } from "react";
-import { DropInterface, MainDropTypeProps } from "../../../types/general.types";
+import {
+  DropInterface,
+  MainDropTypeProps,
+  ProductInterface,
+} from "../../../types/general.types";
 import { useDispatch } from "react-redux";
-import { setDisplay } from "../../../redux/reducers/displaySlice";
+import { setDrop } from "../../../redux/reducers/dropSlice";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { MdModeEdit } from "react-icons/md";
 
@@ -9,6 +13,9 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
   isLoading,
   isError,
   data,
+  setDeleteModal,
+  productData,
+  setCantDeleteDrop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   if (isLoading) {
@@ -17,6 +24,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
   if (isError) {
     return <div>Error</div>;
   }
+
   return (
     <div className="relative col-start-2 w-full h-fit grid grid-flow-row auto-rows-[auto auto] py-8">
       <div className="relative w-fit h-fit row-start-1 grid grid-cols-4 auto-rows-auto place-self-center pt-10 gap-4">
@@ -39,7 +47,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
                         className="hover:scale-90 active:scale-90"
                         onClick={() =>
                           dispatch(
-                            setDisplay({
+                            setDrop({
                               actionValue: "DROP_TYPES_UPDATE",
                               actionId: item._id,
                             })
@@ -52,6 +60,22 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
                         size={25}
                         color="white"
                         className="hover:scale-90 active:scale-90"
+                        onClick={
+                          productData?.filter(
+                            (product: ProductInterface) =>
+                              product.dropType === item.title
+                          ).length !== 0
+                            ? () => setCantDeleteDrop(true)
+                            : () => {
+                                dispatch(
+                                  setDrop({
+                                    actionValue: "DROP_TYPES",
+                                    actionId: item._id,
+                                  })
+                                );
+                                setDeleteModal(true);
+                              }
+                        }
                       />
                     </div>
                   </div>
@@ -63,9 +87,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
         <span className="relative w-80 h-60 font-economica text-lg grid grid-flow-col auto-cols-[auto auto] border-white/50 border-2 border-dashed">
           <div
             className="relative w-fit h-fit col-start-1 grid grid-flow-col auto-cols-[auto auto] bg-grayBlue place-self-center px-10 py-1 cursor-pointer hover:scale-105 active:scale-95"
-            onClick={() =>
-              dispatch(setDisplay({ actionValue: "DROP_TYPES_ADD" }))
-            }
+            onClick={() => dispatch(setDrop({ actionValue: "DROP_TYPES_ADD" }))}
           >
             <div className="relative w-fit h-fit col-start-1 place-self-center text-black">
               new drop type

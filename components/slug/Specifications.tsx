@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
+import { SpecificationsProps } from "../../types/general.types";
 
-const Specifications: FunctionComponent = (): JSX.Element => {
+const Specifications: FunctionComponent<SpecificationsProps> = ({item}): JSX.Element => {
   return (
     <div className="relative w-full h-full grid grid-flow-rows auto-rows-[auto auto]">
       <div className="row-start-1 relative w-full h-full text-white pt-28 pb-10 px-10 grid grid-flow-rows auto-rows-[auto auto]">
@@ -8,8 +9,7 @@ const Specifications: FunctionComponent = (): JSX.Element => {
           UNIT SPECIFICATIONS
         </div>
         <div className="relative w-fit h-fit row-start-2 font-libR pb-6">
-          Nostalgia for balance, we walk the new vaporwave. Format: 24 x 26
-          Poster.
+          {item.name}
         </div>
         <div className="relative w-full h-full row-start-3 font-libR grid grid-flow-col auto-cols-[auto auto] gap-36 pb-12">
           <div className="relative w-fit h-fit col-start-1">

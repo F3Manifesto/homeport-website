@@ -1,44 +1,75 @@
 import { useQuery } from "react-query";
 import { useMutation } from "react-query";
-import { getDropType } from "../../../../lib/helpers";
-import { FormEvent, useState } from "react";
-import { DropInterface } from "../../../../types/general.types";
+import {
+  deleteDropType,
+  getDropType,
+  getDropTypes,
+  updateDropType,
+} from "../../../../lib/helpers";
+import { FormEvent, useContext, useState } from "react";
+import {
+  DropInterface,
+  UseUpdateDropTypesResult,
+} from "../../../../types/general.types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
+import { GlobalContext } from "../../../../pages/_app";
+import { useQueryClient } from "react-query";
 
-const useUpdateDropTypes = () => {
+const useUpdateDropTypes = (): UseUpdateDropTypesResult => {
   const dropTypeId = useSelector(
-    (state: RootState) => state.app.displayReducer.id
+    (state: RootState) => state.app.dropReducer.id
   );
-  const { isLoading, isError, data } = useQuery(
-    ["dropTypes", dropTypeId],
-    () => getDropType
+  const { setDeleteModal } = useContext(GlobalContext);
+  const { isLoading, isError, data } = useQuery(["dropTypes", dropTypeId], () =>
+    getDropType(dropTypeId as string)
   );
   const [success, setSuccess] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
-  const addMutation = useMutation(getDropType, {
-    onSuccess: () => {
-      setSuccess(true);
-    },
-  });
+  const updatedMutation = useMutation(
+    (updatedData: DropInterface) =>
+      updateDropType(dropTypeId as string, updatedData),
+    {
+      onSuccess: async () => {
+        setSuccess(true);
+        queryClient.prefetchQuery("dropTypes", getDropTypes);
+      },
+    }
+  );
 
-  const handleDropSubmit = (e: FormEvent): void => {
+  const handleDropSubmitUpdate = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     const dropTypeData: DropInterface = {
       title: (e.target as HTMLFormElement).dropTypeTitle.value,
       description: (e.target as HTMLFormElement).dropTypeDescription.value,
     };
-    // addMutation.mutate(dropTypeData);
+    try {
+      await updatedMutation.mutate(dropTypeData);
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
+
+  const handleDropDelete = async (): Promise<void> => {
+    try {
+      await deleteDropType(dropTypeId as string);
+      await queryClient.prefetchQuery("dropTypes", getDropTypes);
+      setDeleteModal(false);
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
 
   return {
     data,
     isLoading,
     isError,
-    handleDropSubmit,
-    addMutation,
+    handleDropSubmitUpdate,
+    updatedMutation,
     success,
     setSuccess,
+    handleDropDelete,
   };
 };
 

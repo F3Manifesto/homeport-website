@@ -1,7 +1,33 @@
 import dbConnect from "../../../utils/dbConnect";
 import { addProduct, getProducts } from "../../../utils/controllers";
-// import path from "path";
-// import multer from "multer";
+import path from "path";
+import multer from "multer";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "/public/uploads/");
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, ext);
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, callback) => {
+    if (file.mimetype === "image/png" || file.mimetype === "image/jpg") {
+      callback(null, true);
+    } else {
+      alert("Only JPG or PNG file type supported.");
+      callback(null, false);
+    }
+  },
+  limits: {
+    fileSize: 1024 * 1024 * 2,
+  },
+});
+
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -12,36 +38,11 @@ const handler = async (req: any, res: any): Promise<void> => {
 
   const { method } = req;
 
-  // const storage = multer.diskStorage({
-  //   destination: (req, file, cb) => {
-  //     cb(null, "/public/uploads/");
-  //   },
-  //   filename: (req, file, cb) => {
-  //     const ext = path.extname(file.originalname);
-  //     cb(null, ext);
-  //   },
-  // });
-
-  // const upload = multer({
-  //   storage: storage,
-  //   fileFilter: (req, file, callback) => {
-  //     if (file.mimetype === "image/png" || file.mimetype === "image/jpg") {
-  //       callback(null, true);
-  //     } else {
-  //       alert("Only JPG or PNG file type supported.");
-  //       callback(null, false);
-  //     }
-  //   },
-  //   limits: {
-  //     fileSize: 1024 * 1024 * 2,
-  //   },
-  // });
-
   switch (method) {
     case "GET":
       try {
         const products = await getProducts(req, res);
-        return products;
+        res.status(200).json({ success: true, data: products });
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }
@@ -50,7 +51,7 @@ const handler = async (req: any, res: any): Promise<void> => {
     case "POST":
       try {
         const product = await addProduct(req, res);
-        return product;
+        res.status(201).json({ success: true, data: product });
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }

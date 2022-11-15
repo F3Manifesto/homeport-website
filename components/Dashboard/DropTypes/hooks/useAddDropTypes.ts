@@ -1,17 +1,22 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getDropTypes } from "../../../../lib/helpers";
 import { useMutation } from "react-query";
 import { addDropType } from "../../../../lib/helpers";
 import { FormEvent, useState } from "react";
-import { DropInterface, UseAddDropTypesResult } from "../../../../types/general.types";
+import {
+  DropInterface,
+  UseAddDropTypesResult,
+} from "../../../../types/general.types";
 
 const useAddDropTypes = (): UseAddDropTypesResult => {
   const { isLoading, isError, data } = useQuery("dropTypes", getDropTypes);
   const [success, setSuccess] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
   const addMutation = useMutation(addDropType, {
-    onSuccess: () => {
-      setSuccess(true)
+    onSuccess: async () => {
+      setSuccess(true);
+      queryClient.prefetchQuery("dropTypes", getDropTypes);
     },
   });
 
@@ -22,6 +27,7 @@ const useAddDropTypes = (): UseAddDropTypesResult => {
       description: (e.target as HTMLFormElement).dropTypeDescription.value,
     };
     addMutation.mutate(dropTypeData);
+    (e.target as HTMLFormElement).reset();
   };
 
   return {
@@ -31,7 +37,7 @@ const useAddDropTypes = (): UseAddDropTypesResult => {
     handleDropSubmit,
     addMutation,
     success,
-    setSuccess
+    setSuccess,
   };
 };
 

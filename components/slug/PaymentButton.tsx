@@ -1,5 +1,8 @@
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setItem } from "../../redux/reducers/itemSlice";
+import { RootState } from "../../redux/store";
 import { PaymentButtonProps } from "../../types/general.types";
 
 const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
@@ -7,9 +10,13 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
   payment,
   setPayment,
   clickedToken,
+  item,
 }): JSX.Element => {
   const router = useRouter();
   let action = "BUY_NOW";
+  const dispatch = useDispatch();
+  console.log(useSelector((state: RootState) => state.app.itemReducer));
+
 
   useEffect(() => {
     if (clickedToken !== "") {
@@ -90,7 +97,16 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
       return (
         <div
           className="relative w-full h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] bg-red-600 cursor-pointer hover:opacity-70 active:scale-95"
-          onClick={() => setPayment("order")}
+          onClick={() => {
+            setPayment("order");
+            dispatch(
+              setItem({
+                name: item.name,
+                description: item.description,
+                mainImage: item.mainImage,
+              })
+            );
+          }}
         >
           <button
             className="relative w-fit h-fit p-3 place-self-center col-start-1 text-black font-economicaB text-[1.3vw]"

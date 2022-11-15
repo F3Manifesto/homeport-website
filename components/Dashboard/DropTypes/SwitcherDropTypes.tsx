@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { RootState } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import Main from "./Main";
@@ -6,6 +6,8 @@ import AddDrop from "./AddDrop";
 import UpdateDrop from "./UpdateDrop";
 import useAddDropTypes from "./hooks/useAddDropTypes";
 import useUpdateDropTypes from "./hooks/useUpdateDropTypes";
+import { GlobalContext } from "../../../pages/_app";
+import useAddProduct from "../Inventory/hooks/useAddProduct";
 
 const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
   let action = "DROP_TYPES";
@@ -21,21 +23,25 @@ const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
   } = useAddDropTypes();
 
   const {
-    handleDropSubmit: handleDropSubmitUpdate,
-    addMutation: addMutationUpdate,
+    handleDropSubmitUpdate,
+    updatedMutation,
     success: successUpdate,
     setSuccess: setSuccessUpdate,
     data: updateData,
   } = useUpdateDropTypes();
 
+  const { setDeleteModal, setCantDeleteDrop } = useContext(GlobalContext);
+
   const displaySection = useSelector(
-    (state: RootState) => state.app.displayReducer.value
+    (state: RootState) => state.app.dropReducer.value
   );
 
   const decideStringAction = () => {
     action = displaySection;
     return action;
   };
+
+  const { data: productData } = useAddProduct();
 
   switch (decideStringAction()) {
     case "DROP_TYPES_ADD":
@@ -51,8 +57,8 @@ const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
     case "DROP_TYPES_UPDATE":
       return (
         <UpdateDrop
-          handleDropSubmit={handleDropSubmitUpdate}
-          addMutation={addMutationUpdate}
+          handleDropSubmitUpdate={handleDropSubmitUpdate}
+          updatedMutation={updatedMutation}
           success={successUpdate}
           setSuccess={setSuccessUpdate}
           data={updateData}
@@ -60,7 +66,16 @@ const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
       );
 
     default:
-      return <Main isLoading={isLoading} isError={isError} data={data} />;
+      return (
+        <Main
+          setDeleteModal={setDeleteModal}
+          isLoading={isLoading}
+          isError={isError}
+          data={data}
+          productData={productData}
+          setCantDeleteDrop={setCantDeleteDrop}
+        />
+      );
   }
 };
 
