@@ -54,7 +54,6 @@ const useAddProduct = (): UseAddProductResult => {
       );
       dispatch(setDropFormat(newDropFormatArray));
     }
-    console.log(newDropFormatArray, "NEWs")
   };
   const queryClient = useQueryClient();
   const addMutation = useMutation(addProduct, {
@@ -81,6 +80,7 @@ const useAddProduct = (): UseAddProductResult => {
         description: (e.target as HTMLFormElement).productDescription.value,
         dropType: dropTypeName,
         dropFormat: dropFormatArray,
+        quantity: (e.target as HTMLFormElement).quantity.value,
         mainImage: mainFile,
         // featuredImages: ["asdf", "sadf", "asdfda"],
         slug: (e.target as HTMLFormElement).productName.value

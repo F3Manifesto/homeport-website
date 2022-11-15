@@ -25,16 +25,17 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const productSlug: string = context.params.slug;
   const response = await fetch(`${BASE_URL}/api/products/${productSlug}`);
+  const priceResponse = await fetch(`${BASE_URL}/api/currency/${productSlug}`);
   const data: ProductInterface = await response.json();
   return {
-    props: { item: data },
+    props: { item: data, currency: priceResponse },
   };
 };
 
-const Slug: NextPage<SlugProps> = ({ item }): JSX.Element => {
+const Slug: NextPage<SlugProps> = ({ item, currency }): JSX.Element => {
   return (
     <div className="relative h-full w-full bg-black grid grid-flow-row auto-rows-[auto auto] overflow-hidden">
-      <Purchase item={item} />
+      <Purchase item={item} currency={currency} />
       <Banner />
       <Specifications item={item} />
     </div>

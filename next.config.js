@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     scrollRestoration: true,
+    appDir: false,
   },
 };
 

@@ -1,5 +1,6 @@
 import Address from "../models/Address";
 import DropTypes from "../models/DropType";
+import Currency from "../models/Currency";
 import Product from "../models/Product";
 import User from "../models/User";
 
@@ -174,14 +175,13 @@ export const addAddress = async (req: any, res: any): Promise<void> => {
   }
 };
 
-export const getUser = async (req: any, res: any): Promise<void> => {
+export const getUsers = async (req: any, res: any): Promise<void> => {
   try {
-    const { username } = req.query;
-    if (username) {
-      const user = await User.findOne({ username });
-      res.status(200).json(user);
+    const users = await User.find({});
+    if (!users) {
+      return res.status(404).json({ err: "No Users Found" });
     } else {
-      res.status(404).json({ err: "User Not Found" });
+      return res.status(200).json(users);
     }
   } catch (err: any) {
     return res.status(404).json({ err: err.message });
@@ -197,6 +197,63 @@ export const addUser = async (req: any, res: any): Promise<void> => {
       User.create(user, (err: any, data: any) => {
         return res.status(200).json(data);
       });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const addCurrency = async (req: any, res: any): Promise<void> => {
+  try {
+    const currency = req.body;
+    if (!currency) {
+      return res.status(404).json({ err: "Currency data not provided" });
+    } else {
+      Currency.create(currency, (err: any, data: any) => {
+        return res.status(200).json(data);
+      });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getCurrency = async (req: any, res: any): Promise<void> => {
+  try {
+    const { currencySlug } = req.query;
+    if (currencySlug) {
+      const currency = await Currency.findOne({ itemSlug: currencySlug });
+      return res.status(200).json(currency);
+    } else {
+      return res.status(404).json({ err: "Currencies Not Found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const updateCurrency = async (req: any, res: any): Promise<void> => {
+  try {
+    const { currencySlug } = req.query;
+    const currencyData = req.body;
+    if (currencySlug && currencyData) {
+      await Currency.findOneAndUpdate({ itemSlug: currencySlug }, currencyData);
+      return res.status(200).json(currencyData);
+    } else {
+      res.status(404).json({ err: "Product not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getCurrencies = async (req: any, res: any): Promise<void> => {
+  try {
+    const currencies = await Currency.find({});
+    if (!currencies) {
+      return res.status(404).json({ err: "No Currencies Found" });
+    } else {
+      return res.status(200).json(currencies);
     }
   } catch (err: any) {
     return res.status(404).json({ err: err.message });

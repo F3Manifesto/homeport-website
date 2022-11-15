@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { FormEvent, useContext, useEffect, useMemo, useState } from "react";
 import { UseOrderResult } from "../../../types/general.types";
 import {
   aggregatorV3InterfaceABI,
@@ -9,8 +9,15 @@ import {
 import { useContractReads } from "wagmi";
 import lodash from "lodash";
 import { GlobalContext } from "../../../pages/_app";
+import { useDispatch } from "react-redux";
+import { setPrice } from "../../../redux/reducers/priceSlice";
 
 const useOrder = (): UseOrderResult => {
+  const [ethConversion, setEthConversion] = useState<string>();
+  const [monaConversion, setMonaConversion] = useState<string>();
+  const [usdtConversion, setUsdtConversion] = useState<string>();
+  const [maticConversion, setMaticConversion] = useState<string>();
+
   const USDPRICESET: number = 56;
   const USDTPRICESET: number = 52;
   const ETHPRICESET: number = 40;
@@ -25,10 +32,9 @@ const useOrder = (): UseOrderResult => {
   const [currencyTag, setCurrencyTag] = useState<string>("USD");
   const [clickedToken, setClickedToken] = useState<string>("");
   const { quantity, setQuantity } = useContext(GlobalContext);
-  const { itemName, setItemName, itemPrice, setItemPrice } =
-    useContext(GlobalContext);
+  const { setItemName } = useContext(GlobalContext);
   const [payment, setPayment] = useState<string>("default");
-
+  const dispatch = useDispatch();
   const { data } = useContractReads({
     contracts: [
       {
@@ -138,8 +144,12 @@ const useOrder = (): UseOrderResult => {
     }
   };
 
-  const increaseQuantity = (): void => {
-    setQuantity(quantity + 1);
+  const increaseQuantity = (max: number): void => {
+    if (quantity + 1 < max) {
+      setQuantity(quantity + 1);
+    } else {
+      alert(`There are only ${max} number of item/s in this drop!`);
+    }
   };
 
   const decreaseQuantity = (): void => {
@@ -151,10 +161,52 @@ const useOrder = (): UseOrderResult => {
   const setPurchase = (e: string): void => {
     setItemName("order");
     if (e === "crypto") {
-      setItemPrice({ price: featurePrice, currency: currencyTag });
+      dispatch(
+        setPrice({ actionPrice: featurePrice, actionToken: currencyTag })
+      );
     } else {
-      setItemPrice({ price: USDPRICESET, currency: "USD" });
+      dispatch(setPrice({ actionPrice: USDPRICESET, actionToken: "USD" }));
     }
+  };
+
+  const showCurrencyETH = (e: FormEvent) => {
+    e.preventDefault();
+    const ETHUSD = parseInt(
+      (lodash.chunk(data, 3)[0][2] as Array<any>)[1]._hex.toString()
+    );
+    const ETHConversion =
+      (e.target as HTMLFormElement).value /
+      Number(ETHUSD / Math.pow(10, Number(lodash.chunk(data, 3)[0][0])));
+    setEthConversion(ETHConversion.toFixed(2).toString());
+  };
+
+  const showCurrencyMona = (e: FormEvent) => {
+    e.preventDefault();
+    setMonaConversion(
+      ((e.target as HTMLFormElement).value / monaPrice).toFixed(2).toString()
+    );
+  };
+
+  const showCurrencyMatic = (e: FormEvent) => {
+    e.preventDefault();
+    const MATICUSD = parseInt(
+      (lodash.chunk(data, 3)[2][2] as Array<any>)[1]._hex.toString()
+    );
+    const MaticConversion =
+      (e.target as HTMLFormElement).value *
+      Number(MATICUSD / Math.pow(10, Number(lodash.chunk(data, 3)[2][0])));
+    setMaticConversion(MaticConversion.toFixed(2).toString());
+  };
+
+  const showCurrencyUsdt = (e: FormEvent) => {
+    e.preventDefault();
+    const USDTUSD = parseInt(
+      (lodash.chunk(data, 3)[1][2] as Array<any>)[1]._hex.toString()
+    );
+    const USDTConversion =
+      Number(USDTUSD / Math.pow(10, Number(lodash.chunk(data, 3)[1][0]))) *
+      (e.target as HTMLFormElement).value;
+    setUsdtConversion(USDTConversion.toFixed(2).toString());
   };
 
   return {
@@ -171,6 +223,14 @@ const useOrder = (): UseOrderResult => {
     setClickedToken,
     setPayment,
     payment,
+    showCurrencyETH,
+    showCurrencyMatic,
+    showCurrencyMona,
+    showCurrencyUsdt,
+    ethConversion,
+    monaConversion,
+    maticConversion,
+    usdtConversion,
   };
 };
 

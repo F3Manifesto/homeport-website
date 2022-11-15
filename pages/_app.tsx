@@ -10,20 +10,21 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { store } from "./../redux/store";
 import { Provider } from "react-redux";
+import { useRef } from "react";
 
 const queryClient = new QueryClient();
 
 export const GlobalContextDefault = {
   quantity: 1,
   setQuantity: (quantity: number) => {},
-  itemPrice: { price: 0, currency: "USD" },
-  setItemPrice: (itemPrice: { price: number; currency: string }) => {},
   itemName: "",
   setItemName: (itemName: string) => {},
   deleteModal: false,
   setDeleteModal: (deleteModal: boolean) => {},
   cantDeleteDrop: false,
   setCantDeleteDrop: (cantDeleteDrop: boolean) => {},
+  addPricingModal: false,
+  setAddPricingModal: (addPricingModal: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
@@ -46,7 +47,6 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [quantity, setQuantity] = useState(GlobalContextDefault.quantity);
-  const [itemPrice, setItemPrice] = useState(GlobalContextDefault.itemPrice);
   const [itemName, setItemName] = useState(GlobalContextDefault.itemName);
   const [deleteModal, setDeleteModal] = useState<boolean>(
     GlobalContextDefault.deleteModal
@@ -54,6 +54,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [cantDeleteDrop, setCantDeleteDrop] = useState<boolean>(
     GlobalContextDefault.cantDeleteDrop
   );
+  const [addPricingModal, setAddPricingModal] = useState<boolean>(
+    GlobalContextDefault.addPricingModal
+  );
+  const landTop = useRef<null | HTMLDivElement>(null);
+  const handleLandTop = (): void => {
+    landTop.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -63,10 +70,10 @@ function MyApp({ Component, pageProps }: AppProps) {
               value={{
                 quantity,
                 setQuantity,
-                itemPrice,
-                setItemPrice,
                 itemName,
                 setItemName,
+                addPricingModal,
+                setAddPricingModal,
                 deleteModal,
                 setDeleteModal,
                 cantDeleteDrop,
@@ -74,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               }}
             >
               <div className="relative w-screen max-w-screen overflow-hidden h-auto bg-black selection:bg-lBlue">
-                <Header />
-                <Component {...pageProps} />
+                <Header landTop={landTop} />
+                <Component {...pageProps} handleLandTop={handleLandTop} />
                 <Footer />
               </div>
             </GlobalContext.Provider>

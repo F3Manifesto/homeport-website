@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDropType } from "../../../redux/reducers/dropTypeSlice";
 import { setDrop } from "../../../redux/reducers/dropSlice";
 import { RootState } from "../../../redux/store";
+import { setType } from "../../../redux/reducers/dashSlice";
 
 const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   success,
@@ -27,6 +28,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   newDropFormatArray,
   handleExistingDropFormatArray,
   handleDispatchFormatArray,
+  handleLandTop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const dropFormatArray = useSelector(
@@ -166,7 +168,21 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
         </div>
       </div>
-      <div className="relative gap-6 w-full h-full row-start-4 grid grid-flow-col auto-cols-[auto auto] pt-10">
+      <div className="relative w-full h-full row-start-4 grid grid-flow-row auto-rows-[auto auto] gap-3">
+        <div className="relative row-start-1 w-fit h-fit text-white font-economica text-left">
+          Quantity
+        </div>
+        <input
+          name="quantity"
+          type={"number"}
+          min={0}
+          defaultValue={updatedProductData?.quantity}
+          className={`relative row-start-2 w-[30vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 `}
+          required
+          disabled={success || updatedMutation.isLoading ? true : false}
+        />
+      </div>
+      <div className="relative gap-6 w-full h-full row-start-5 grid grid-flow-col auto-cols-[auto auto] pt-10">
         <div className="relative w-full h-48 col-start-1 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
           {mainFile && (
             <Image
@@ -237,14 +253,14 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
         </div>
       </div>
       {updatedMutation.isLoading ? (
-        <div className="relative w-full h-10 row-start-5 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
+        <div className="relative w-full h-10 row-start-6 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB animate-spin">
             <AiOutlineLoading size={5} color={"white"} />
           </div>
         </div>
       ) : updatedMutation.isError ? (
         <button
-          className="relative w-full h-10 row-start-5 bg-grayPink px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
+          className="relative w-full h-10 row-start-6 bg-grayPink px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
           type="submit"
         >
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB">
@@ -252,14 +268,14 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
         </button>
       ) : success ? (
-        <div className="relative w-full h-10 row-start-5 bg-grayGreen px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
+        <div className="relative w-full h-10 row-start-6 bg-grayGreen px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB">
             SUCCESS
           </div>
         </div>
       ) : (
         <button
-          className="relative w-full h-10 row-start-5 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
+          className="relative w-full h-10 row-start-6 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
           type="submit"
         >
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB">
@@ -267,6 +283,15 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
         </button>
       )}
+      {/* <div
+        className="relative w-full h-10 row-start-7 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] text-center text-black hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
+        onClick={() => {
+          handleLandTop();
+          dispatch(setType("PRICING"));
+        }}
+      >
+        Add Pricing to View Product Live
+      </div> */}
     </form>
   );
 };

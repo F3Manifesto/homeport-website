@@ -4,15 +4,17 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
-import { GlobalContext } from "../../../pages/_app";
 import useCurrency from "./hooks/useCurrency";
-import { BigNumber } from "ethers";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const Flow: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
   const { chain } = useNetwork();
   const router = useRouter();
-  const { itemPrice } = useContext(GlobalContext);
+  const itemPrice = useSelector(
+    (state: RootState) => state.app.priceReducer
+  );
   const { isLoading, isSuccess, isError, sendTransactionAsync } = useFlow();
   const {
     write,
@@ -63,7 +65,7 @@ const Flow: FunctionComponent = (): JSX.Element => {
       return (
         <div
           onClick={
-            itemPrice.currency === "ETH"
+            itemPrice.token === "ETH"
               ? async () => sendTransactionAsync?.()
               : async () => {
                   write?.();
@@ -79,7 +81,7 @@ const Flow: FunctionComponent = (): JSX.Element => {
       return (
         <div
           onClick={
-            itemPrice.currency === "ETH"
+            itemPrice.token === "ETH"
               ? async () => sendTransactionAsync?.()
               : async () => {
                   write?.();

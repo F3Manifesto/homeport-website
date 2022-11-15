@@ -25,7 +25,8 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
   success,
   updatedMutation,
   handleExistingDropFormatArray,
-  handleDispatchFormatArray
+  handleDispatchFormatArray,
+  handleLandTop
 }): JSX.Element => {
   let action = "INVENTORY_ADD";
   const displaySection = useSelector(
@@ -62,6 +63,7 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           setSuccess={setSuccess}
           updatedMutation={updatedMutation}
           handleExistingDropFormatArray={handleExistingDropFormatArray}
+          handleLandTop={handleLandTop}
         />
       );
 
@@ -81,6 +83,7 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           handleDropFormatArray={handleDropFormatArray}
           data={data}
           addMutation={addMutation}
+          handleLandTop={handleLandTop}
         />
       );
   }

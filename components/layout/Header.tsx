@@ -3,8 +3,10 @@ import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { BsSearch } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { FunctionComponent } from "react";
+import { HeaderProps } from "../../types/general.types";
 
-const Header = () => {
+const Header: FunctionComponent<HeaderProps> = ({ landTop }) => {
   const router = useRouter();
   return (
     <div
@@ -24,7 +26,10 @@ const Header = () => {
             className="relative w-fit h-fit col-start-1 cursor-pointer"
           />
         </Link>
-        <div className="relative w-fit h-fit col-start-2 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-10">
+        <div
+          className="relative w-fit h-fit col-start-2 place-self-center grid grid-flow-col auto-cols-[auto auto] pl-10"
+          ref={landTop}
+        >
           <div className="relative w-fit h-fit col-start-1 place-self-center text-4xl cursor-pointer">
             DROP
           </div>

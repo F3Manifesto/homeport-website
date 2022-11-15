@@ -61,6 +61,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
         dropFormatArray.length === 0
           ? (data?.dropFormat as string[])
           : dropFormatArray,
+      quantity: (e.target as HTMLFormElement).quantity.value,
       // mainImage: mainFile,
       // featuredImages: ["asdf", "sadf", "asdfda"],
       slug: (e.target as HTMLFormElement).productName.value

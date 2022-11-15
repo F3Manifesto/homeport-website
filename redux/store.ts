@@ -6,6 +6,10 @@ import productReducer from "./reducers/productSlice";
 import dropFormatReducer from "./reducers/dropFormatSlice";
 import dropTypeReducer from "./reducers/dropTypeSlice";
 import itemReducer from "./reducers/itemSlice";
+import priceReducer from "./reducers/priceSlice";
+import currencyReducer from "./reducers/currencySlice";
+import activeReducer from "./reducers/activeSlice";
+import selectedDropReducer from "./reducers/selectedDropSlice";
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -16,6 +20,10 @@ const reducer = combineReducers({
   dropTypeReducer,
   dropFormatReducer,
   itemReducer,
+  priceReducer,
+  currencyReducer,
+  activeReducer,
+  selectedDropReducer,
 });
 
 export const store = configureStore({

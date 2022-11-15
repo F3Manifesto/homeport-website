@@ -11,6 +11,7 @@ const ProductSchema = new Schema({
   },
   dropType: { type: String, required: true },
   dropFormat: { type: [String], required: true },
+  quantity: { type: Number, required: true },
   mainImage: { data: Buffer, contentType: String },
   featuredImages: { data: Buffer, contentType: [String] },
   slug: {

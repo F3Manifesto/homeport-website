@@ -4,6 +4,7 @@ import {
   ProductInterface,
   AddressInterface,
   UserInterface,
+  CurrencyInterface,
 } from "../types/general.types";
 import { BASE_URL } from "./constants";
 
@@ -196,13 +197,11 @@ export const addAddress = async (
   }
 };
 
-export const getUser = async (
-  username: string
-): Promise<UserInterface | undefined> => {
+export const getUsers = async (): Promise<UserInterface[] | undefined> => {
   try {
-    const response = await fetch(`${BASE_URL}/api/address/${username}`);
-    const user: UserInterface | undefined = await response.json();
-    return user;
+    const response = await fetch(`${BASE_URL}/api/user`);
+    const users: UserInterface[] = await response.json();
+    return users;
   } catch (err: any) {
     console.error(err.message);
   }
@@ -217,9 +216,72 @@ export const addUser = async (
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(UserTypeData),
     };
-    const response = await fetch(`${BASE_URL}/api/address`, Options);
+    const response = await fetch(`${BASE_URL}/api/user`, Options);
     const userData: UserInterface = await response.json();
     return userData;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const addCurrency = async (
+  CurrencyTypeData: CurrencyInterface
+): Promise<CurrencyInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(CurrencyTypeData),
+    };
+    console.log(CurrencyTypeData);
+    const response = await fetch(`${BASE_URL}/api/currency`, Options);
+    const currencyData: CurrencyInterface = await response.json();
+    return currencyData;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getCurrency = async (
+  currencySlug: string
+): Promise<CurrencyInterface | undefined> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/currency/${currencySlug}`);
+    const currency: CurrencyInterface | undefined = await response.json();
+    return currency;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const updateCurrency = async (
+  currencySlug: string,
+  currencyData: CurrencyInterface
+): Promise<CurrencyInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(currencyData),
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/currency/${currencySlug}`,
+      Options
+    );
+    const currency: CurrencyInterface = await response.json();
+    return currency;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getCurrencies = async (): Promise<
+  CurrencyInterface[] | undefined
+> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/currency`);
+    const currencies: CurrencyInterface[] = await response.json();
+    return currencies;
   } catch (err: any) {
     console.error(err.message);
   }

@@ -10,6 +10,7 @@ const SideBar: FunctionComponent = (): JSX.Element => {
     "inventory",
     "pricing",
     "fulfillment",
+    "admin"
   ];
   const dispatch = useDispatch();
   const dashSection = useSelector(

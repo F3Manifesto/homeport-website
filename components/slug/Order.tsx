@@ -6,9 +6,9 @@ import PaymentButton from "./PaymentButton";
 import Prices from "./Prices";
 import { buildLensShareUrl } from "@infinity-keys/react-lens-share-button";
 import Link from "next/link";
-import {OrderProps} from "./../../types/general.types"
+import { OrderProps } from "./../../types/general.types";
 
-const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
+const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
   const { quantity } = useContext(GlobalContext);
   const url = buildLensShareUrl({ postBody: "Hello, Lens!" });
   const {
@@ -39,8 +39,13 @@ const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
         setClickedToken={setClickedToken}
       />
       <div className="relative w-full h-fit row-start-2 grid grid-flow-row auto-rows-[auto auto] gap-3">
-        <div className="relative w-fit h-fit row-start-1 text-white place-self-start font-economica">
-          Quantity
+        <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-3">
+          <div className="relative w-fit h-fit col-start-1 text-white place-self-center font-economica">
+            Quantity
+          </div>
+          <div className="relative w-fit h-fit col-start-2 text-white place-self-center self-center font-economica text-sm">
+            {item.quantity + " items in drop"}
+          </div>
         </div>
         <div className="relative w-fit h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto] gap-10 pb-6">
           <div className="relative w-40 h-fit pt-2 pb-2 col-start-1 border-2 border-white grid grid-flow-col auto-cols-[auto auto] text-white font-lib">
@@ -55,7 +60,7 @@ const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
             </div>
             <div
               className="relative w-fit h-fit col-start-3 place-self-center cursor-pointer hover:opacity-70 active:scale-95"
-              onClick={() => increaseQuantity()}
+              onClick={() => increaseQuantity(item.quantity as number)}
             >
               +
             </div>

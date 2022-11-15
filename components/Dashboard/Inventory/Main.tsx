@@ -7,8 +7,12 @@ import useAddDropTypes from "../DropTypes/hooks/useAddDropTypes";
 import useUpdateProduct from "./hooks/useUpdateProduct";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { MainInventoryProps } from "../../../types/general.types";
+import useCheckCurrency from "./hooks/useCheckCurrency";
 
-const Main: FunctionComponent = (): JSX.Element => {
+const Main: FunctionComponent<MainInventoryProps> = ({
+  handleLandTop,
+}): JSX.Element => {
   const {
     isLoading,
     isError,
@@ -25,8 +29,8 @@ const Main: FunctionComponent = (): JSX.Element => {
     featuredFiles,
     handleDropFormatArray,
   } = useAddProduct();
-  const { setDeleteModal } = useContext(GlobalContext);
-
+  const { setDeleteModal, setAddPricingModal } = useContext(GlobalContext);
+  const { currencyData } = useCheckCurrency();
   const {
     handleProductSubmitUpdate,
     success,
@@ -83,13 +87,19 @@ const Main: FunctionComponent = (): JSX.Element => {
           setSuccess={setSuccess}
           handleProductSubmitUpdate={handleProductSubmitUpdate}
           handleExistingDropFormatArray={handleExistingDropFormatArray}
+          handleLandTop={handleLandTop}
         />
       </div>
       <div className="relative w-full h-fit col-start-2 grid grid-flow-row auto-rows-[auto auto] justify-self-end">
         <div className="relative w-fit h-fit text-white font-economicaB row-start-1 text-3xl justify-self-end">
           ALL PRODUCTS
         </div>
-        <Map productData={productData} setDeleteModal={setDeleteModal} />
+        <Map
+          productData={productData}
+          setDeleteModal={setDeleteModal}
+          currencyData={currencyData}
+          setAddPricingModal={setAddPricingModal}
+        />
       </div>
     </div>
   );

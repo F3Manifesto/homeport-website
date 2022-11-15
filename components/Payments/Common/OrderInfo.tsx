@@ -1,10 +1,15 @@
 import Image from "next/legacy/image";
 import { FunctionComponent } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 import { OrderInfoProps } from "../../../types/general.types";
 
 const OrderInfo: FunctionComponent<OrderInfoProps> = ({
   item,
 }): JSX.Element => {
+  const { price, token } = useSelector(
+    (state: RootState) => state.app.priceReducer
+  );
   return (
     <div className="relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] place-self-start gap-4">
       <div className="relative w-full h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] gap-10">
@@ -27,7 +32,7 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
             <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">
               <div className="relative col-start-1 w-fit h-fit">Price:</div>
               <div className="relative col-start-2 w-fit h-fit">
-                {item.price + " " + item.token}
+                {price + " " + token}
               </div>
             </div>
             <div className="col-start-2 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">

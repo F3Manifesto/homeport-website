@@ -1,14 +1,21 @@
 import { FunctionComponent } from "react";
-import { MdModeEdit } from "react-icons/md";
+import { MdModeEdit, MdPreview } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { setDrop } from "../../../redux/reducers/dropSlice";
-import { MapProps, ProductInterface } from "../../../types/general.types";
+import {
+  CurrencyInterface,
+  MapProps,
+  ProductInterface,
+} from "../../../types/general.types";
+import { AiOutlineDollar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../../../redux/reducers/productSlice";
+import { BASE_URL } from "../../../lib/constants";
 
 const Map: FunctionComponent<MapProps> = ({
   productData,
   setDeleteModal,
+  setAddPricingModal,
+  currencyData,
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
@@ -58,6 +65,37 @@ const Map: FunctionComponent<MapProps> = ({
                           );
                           setDeleteModal(true);
                         }}
+                      />
+                    </div>
+                    <div className="relative w-fit h-fit col-start-3 place-self-center">
+                      <MdPreview
+                        size={25}
+                        color="white"
+                        className="hover:scale-90 active:scale-90"
+                        onClick={
+                          currencyData?.filter(
+                            (data: CurrencyInterface) =>
+                              data.itemSlug === item.slug
+                          ).length !== 0
+                            ? () =>
+                                window?.open(`${BASE_URL}/items/${item.slug}`)
+                            : () => setAddPricingModal(true)
+                        }
+                      />
+                    </div>
+                    <div className="relative w-fit h-fit col-start-4 place-self-center">
+                      <AiOutlineDollar
+                        size={25}
+                        color={
+                          currencyData?.filter(
+                            (data: CurrencyInterface) =>
+                              data.itemSlug === item.slug
+                          ).length === 0
+                            ? "#E25049"
+                            : "#ADE7B5"
+                        }
+                        className="hover:scale-90 active:scale-90"
+                        // onClick={() => dispatch()}
                       />
                     </div>
                   </div>

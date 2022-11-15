@@ -1,13 +1,17 @@
-import { FunctionComponent, useContext } from "react";
-import MainDropDrafts from "./Drafts";
-import MainDropFulFillment from "./Fulfillment";
-import MainDropPricing from "./Pricing";
+import { FunctionComponent } from "react";
+import MainDrafts from "./Drafts/Main";
+import MainFulFillment from "./Fulfillment/Main";
+import MainPricing from "./Pricing/Main";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import SwitcherDropTypes from "./DropTypes/SwitcherDropTypes";
 import MainInventory from "./Inventory/Main";
+import MainAdmin from "./Admin/Main";
+import { SwitcherDashboardProps } from "../../types/general.types";
 
-const Switcher: FunctionComponent = (): JSX.Element => {
+const Switcher: FunctionComponent<SwitcherDashboardProps> = ({
+  handleLandTop,
+}): JSX.Element => {
   let action = "DROP_TYPES";
   const dashSection = useSelector(
     (state: RootState) => state.app.dashReducer.value
@@ -20,18 +24,19 @@ const Switcher: FunctionComponent = (): JSX.Element => {
 
   switch (decideStringAction()) {
     case "DRAFTS":
-      return <MainDropDrafts />;
+      return <MainDrafts />;
+
+    case "ADMIN":
+      return <MainAdmin />;
 
     case "INVENTORY":
-      return (
-        <MainInventory />
-      );
+      return <MainInventory handleLandTop={handleLandTop} />;
 
     case "PRICING":
-      return <MainDropPricing />;
+      return <MainPricing />;
 
     case "FULFILLMENT":
-      return <MainDropFulFillment />;
+      return <MainFulFillment />;
 
     default:
       return <SwitcherDropTypes />;

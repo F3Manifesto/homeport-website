@@ -47,7 +47,7 @@ export type UseOrderResult = {
   layoutIndexes: number[];
   setSelectedPrice: (e: string) => void;
   setPurchase: (e: string) => void;
-  increaseQuantity: () => void;
+  increaseQuantity: (max: number) => void;
   decreaseQuantity: () => void;
   featurePrice: number;
   convertedPrice: number;
@@ -56,6 +56,14 @@ export type UseOrderResult = {
   setClickedToken: (e: string) => void;
   setPayment: (e: string) => void;
   payment: string;
+  showCurrencyETH: (e: FormEvent) => void;
+  showCurrencyMona: (e: FormEvent) => void;
+  showCurrencyMatic: (e: FormEvent) => void;
+  showCurrencyUsdt: (e: FormEvent) => void;
+  ethConversion: string | undefined;
+  monaConversion: string | undefined;
+  maticConversion: string | undefined;
+  usdtConversion: string | undefined;
 };
 
 export type UseOracleResult = {
@@ -130,6 +138,7 @@ export interface ProductInterface {
   description: string;
   dropType: string;
   dropFormat: string[];
+  quantity: number;
   mainImage?: Buffer;
   featuredImages?: Buffer[];
   slug: string;
@@ -232,6 +241,8 @@ export type UseAddProductResult = {
 export type MapProps = {
   productData: any;
   setDeleteModal: (e: boolean) => void;
+  currencyData: CurrencyInterface[] | undefined;
+  setAddPricingModal: (e: boolean) => void;
 };
 
 export type FormProps = {
@@ -248,6 +259,7 @@ export type FormProps = {
   addMutation: any;
   dropTypeName: string;
   setOpenDropDown: (e: boolean) => void;
+  handleLandTop: () => void;
 };
 
 export type SwitcherProps = {
@@ -271,6 +283,7 @@ export type SwitcherProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
+  handleLandTop: () => void;
 };
 
 export type UpdateFormProps = {
@@ -291,14 +304,17 @@ export type UpdateFormProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
+  handleLandTop: () => void;
 };
 
 export type SlugProps = {
   item: ProductInterface;
+  currency: CurrencyInterface;
 };
 
 export type PurchaseProps = {
   item: ProductInterface;
+  currency: CurrencyInterface;
 };
 
 export type CollectionTagsProps = {
@@ -347,3 +363,72 @@ export interface UserInterface {
   username: string;
   password: string;
 }
+
+export type UseConnectResult = {
+  handleSignUp: (e: FormEvent) => void;
+  success: boolean;
+  handleLogIn: (e: FormEvent) => void;
+  foundUser: boolean;
+  setFoundUser: (e: boolean) => void;
+};
+
+export type EditPricingProps = {
+  handleCurrencySubmit: (e: FormEvent) => void;
+  oneCurrencyData: CurrencyInterface | undefined;
+  handleUpdateCurrency: (e: FormEvent) => Promise<void>;
+  showCurrencyETH: (e: FormEvent) => void;
+  showCurrencyMona: (e: FormEvent) => void;
+  showCurrencyMatic: (e: FormEvent) => void;
+  showCurrencyUsdt: (e: FormEvent) => void;
+  ethConversion: string | undefined;
+  monaConversion: string | undefined;
+  maticConversion: string | undefined;
+  usdtConversion: string | undefined;
+};
+
+export interface CurrencyInterface {
+  itemSlug: string;
+  itemName: string;
+  usdPrice: number;
+  ethPrice: number;
+  monaPrice: number;
+  usdtPrice: number;
+  maticPrice: number;
+}
+
+export type SwitcherDashboardProps = {
+  handleLandTop: () => void;
+};
+
+export type HeaderProps = {
+  landTop: any;
+};
+
+export type MainInventoryProps = {
+  handleLandTop: () => void;
+};
+
+export type DashboardProps = {
+  handleLandTop: () => void;
+};
+
+export type UseAddCurrencyResult = {
+  handleCurrencySubmit: (e: FormEvent) => void;
+  success: boolean | undefined;
+  oneCurrencyData: CurrencyInterface | undefined;
+  handleUpdateCurrency: (e: FormEvent) => Promise<void>;
+  handleDropAddPrice: () => any;
+};
+
+export type ActiveDropsProps = {
+  data: DropInterface[] | undefined;
+};
+
+export type SelectedDropProps = {
+  productData: ProductInterface[] | undefined;
+};
+
+export type AddPricingModalProps = {
+  handleDropAddPrice: () => void;
+  setAddPricingModal: (e: boolean) => void;
+};

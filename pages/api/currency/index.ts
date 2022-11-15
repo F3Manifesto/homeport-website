@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import { addUser, getUsers } from "../../../utils/controllers";
+import { addCurrency, getCurrencies } from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -13,8 +13,8 @@ const handler = async (req: any, res: any): Promise<void> => {
   switch (method) {
     case "GET":
       try {
-        const users = await getUsers(req, res);
-        return users;
+        const currencies = await getCurrencies(req, res);
+        return currencies;
       } catch (err: any) {
         res.json({ success: false, data: err.message });
       }
@@ -22,8 +22,8 @@ const handler = async (req: any, res: any): Promise<void> => {
 
     case "POST":
       try {
-        const user = await addUser(req, res);
-        return user;
+        const currency = await addCurrency(req, res);
+        return currency;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }

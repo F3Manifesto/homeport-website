@@ -1,20 +1,26 @@
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
 import { ethers } from "ethers";
-import { useContext } from "react";
-import { GlobalContext } from "../../../../pages/_app";
 import {
   MATIC_ADDRESS,
   MONA_ADDRESS,
   USDT_ADDRESS,
 } from "../../../../lib/constants";
+import { RootState } from "../../../../redux/store";
+import { useSelector } from "react-redux";
 
 const useCurrency = () => {
-  const { itemPrice } = useContext(GlobalContext);
+  const itemPrice = useSelector(
+    (state: RootState) => state.app.priceReducer
+  );
   const { config } = usePrepareContractWrite({
     address:
-      itemPrice.currency === "MONA"
+      itemPrice.token === "MONA"
         ? MONA_ADDRESS
-        : itemPrice.currency === "MATIC"
+        : itemPrice.token === "MATIC"
         ? MATIC_ADDRESS
         : USDT_ADDRESS,
     abi: [
@@ -38,7 +44,7 @@ const useCurrency = () => {
     ],
   });
 
-  const {data, write, error} = useContractWrite(config)
+  const { data, write, error } = useContractWrite(config);
 
   const { isLoading, isSuccess, isError } = useWaitForTransaction({
     hash: data?.hash,

@@ -4,12 +4,13 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import { ethers } from "ethers";
-import { useContext } from "react";
-import { GlobalContext } from "../../../../pages/_app";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
 
 const useFlow = () => {
-  const { itemPrice } = useContext(GlobalContext);
-  console.log(itemPrice, "IN HERE")
+  const itemPrice = useSelector(
+    (state: RootState) => state.app.priceReducer
+  );
 
   const { config } = usePrepareSendTransaction({
     request: {
