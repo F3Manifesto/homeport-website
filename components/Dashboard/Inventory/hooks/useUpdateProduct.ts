@@ -91,16 +91,22 @@ const useUpdateProduct = (): UseUpdateProductResult => {
 
   let newDropFormatArray: string[] = data?.dropFormat as string[];
 
-  const handleExistingDropFormatArray = (e: FormEvent): void => {
-    if (newDropFormatArray.includes((e.target as HTMLFormElement).value)) {
-      newDropFormatArray = newDropFormatArray.filter(
-        (value) => (e.target as HTMLFormElement).value !== value
-      );
+  const handleExistingDropFormatArray = (form: string): void => {
+    if (newDropFormatArray.includes(form)) {
+      newDropFormatArray = newDropFormatArray.filter((value) => form !== value);
       dispatch(setDropFormat(newDropFormatArray));
     } else {
-      newDropFormatArray = newDropFormatArray.concat(
-        (e.target as HTMLFormElement).value
-      );
+      newDropFormatArray = newDropFormatArray.concat(form);
+      dispatch(setDropFormat(newDropFormatArray));
+    }
+  };
+
+  const handleDispatchFormatArray = (form: string): void => {
+    if (dropFormatArray.includes(form)) {
+      newDropFormatArray = dropFormatArray.filter((value) => form !== value);
+      dispatch(setDropFormat(newDropFormatArray));
+    } else {
+      newDropFormatArray = dropFormatArray.concat(form);
       dispatch(setDropFormat(newDropFormatArray));
     }
   };
@@ -114,6 +120,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
     handleProductDelete,
     handleExistingDropFormatArray,
     newDropFormatArray,
+    handleDispatchFormatArray,
   };
 };
 

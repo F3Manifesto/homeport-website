@@ -52,15 +52,6 @@ const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
             </div>
             <div className="relative w-fit h-fit col-start-2 place-self-center grid grid-flow-col auto-cols-[auto auto] font-libR text-white">
               {quantity}
-              {/* <input
-                type={"number"}
-                placeholder={quantity.toString()}
-                min={1}
-                className="bg-black font-libR text-white w-20 relative pl-4 col-start-1 place-self-center"
-                id="quantity"
-                name="quantity"
-                onChange={(e) => setQuantity(Number(e.target.value))}
-              /> */}
             </div>
             <div
               className="relative w-fit h-fit col-start-3 place-self-center cursor-pointer hover:opacity-70 active:scale-95"
@@ -94,6 +85,7 @@ const Order: FunctionComponent <OrderProps>= ({item}): JSX.Element => {
           setPayment={setPayment}
           clickedToken={clickedToken}
           item={item}
+          quantity={quantity}
         />
       </div>
     </div>

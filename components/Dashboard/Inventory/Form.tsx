@@ -52,7 +52,7 @@ const Form: FunctionComponent<FormProps> = ({
           maxLength={50}
           className={`relative row-start-2 w-[30vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 `}
           required
-          //   disabled={success || addMutation.isLoading ? true : false}
+          disabled={productSuccess || addMutation.isLoading ? true : false}
         />
       </div>
       <div className="relative w-full h-full grid grid-flow-row auto-rows-[auto auto] gap-3 row-start-2">
@@ -63,7 +63,7 @@ const Form: FunctionComponent<FormProps> = ({
           name="productDescription"
           className={`relative row-start-2 w-full h-96 text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 align-top text-start`}
           required
-          //   disabled={success || addMutation.isLoading ? true : false}
+          disabled={productSuccess || addMutation.isLoading ? true : false}
         />
       </div>
       <div className="relative max-w-full h-full grid grid-flow-row auto-rows-[auto auto] row-start-3 gap-10">
@@ -109,6 +109,9 @@ const Form: FunctionComponent<FormProps> = ({
                   <input
                     key={index}
                     value={format}
+                    disabled={
+                      productSuccess || addMutation.isLoading ? true : false
+                    }
                     name={format}
                     type="checkbox"
                     className="cursor-pointer checked:bg-yellowTheme appearance-none bg-white border border-white h-4 w-4"
@@ -146,6 +149,9 @@ const Form: FunctionComponent<FormProps> = ({
                 id="files"
                 multiple={false}
                 name="mainImage"
+                disabled={
+                  productSuccess || addMutation.isLoading ? true : false
+                }
               />
             </label>
           </div>
@@ -184,6 +190,9 @@ const Form: FunctionComponent<FormProps> = ({
                 id="files"
                 multiple={true}
                 name="featuredImages"
+                disabled={
+                  productSuccess || addMutation.isLoading ? true : false
+                }
               />
             </label>
           </div>

@@ -1,14 +1,16 @@
 import { FunctionComponent, useContext } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
 import { GlobalContext } from "../../../pages/_app";
 import useCurrency from "./hooks/useCurrency";
+import { BigNumber } from "ethers";
 
 const Flow: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
+  const { chain } = useNetwork();
   const router = useRouter();
   const { itemPrice } = useContext(GlobalContext);
   const { isLoading, isSuccess, isError, sendTransactionAsync } = useFlow();
@@ -49,6 +51,10 @@ const Flow: FunctionComponent = (): JSX.Element => {
       action = "SUCCESS";
     }
 
+    if (isConnected && chain?.id !== 1) {
+      action = "SWITCH";
+    }
+
     return action;
   };
 
@@ -57,15 +63,15 @@ const Flow: FunctionComponent = (): JSX.Element => {
       return (
         <div
           onClick={
-            itemPrice.currency === "USD"
+            itemPrice.currency === "ETH"
               ? async () => sendTransactionAsync?.()
               : async () => {
                   write?.();
                 }
           }
-          className="relative w-fit h-fit font-economica px-10"
+          className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl"
         >
-          MAKE PAYMENT
+          PAY NOW
         </div>
       );
 
@@ -73,13 +79,13 @@ const Flow: FunctionComponent = (): JSX.Element => {
       return (
         <div
           onClick={
-            itemPrice.currency === "USD"
+            itemPrice.currency === "ETH"
               ? async () => sendTransactionAsync?.()
               : async () => {
                   write?.();
                 }
           }
-          className="relative w-fit h-fit font-economica px-10"
+          className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl"
         >
           TRY AGAIN
         </div>
@@ -94,6 +100,53 @@ const Flow: FunctionComponent = (): JSX.Element => {
 
     case "SUCCESS":
       router.push("/success");
+
+    case "SWITCH":
+      return (
+        <ConnectButton.Custom>
+          {({
+            account,
+            chain,
+            openAccountModal,
+            openChainModal,
+            openConnectModal,
+            authenticationStatus,
+            mounted,
+          }: any) => {
+            const ready = mounted && authenticationStatus !== "loading";
+            const connected =
+              ready &&
+              account &&
+              chain &&
+              (!authenticationStatus ||
+                authenticationStatus === "authenticated");
+            return (
+              <div
+                {...(!ready && {
+                  "aria-hidden": true,
+                  style: {
+                    opacity: 0,
+                    pointerEvents: "none",
+                    userSelect: "none",
+                    zIndex: "0",
+                  },
+                })}
+              >
+                {(() => {
+                  return (
+                    <div
+                      onClick={openChainModal}
+                      className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl text-white"
+                    >
+                      SWITCH NETWORK
+                    </div>
+                  );
+                })()}
+              </div>
+            );
+          }}
+        </ConnectButton.Custom>
+      );
 
     default:
       return (
@@ -130,27 +183,12 @@ const Flow: FunctionComponent = (): JSX.Element => {
                 {(() => {
                   if (!connected) {
                     return (
-                      <p
+                      <div
                         onClick={openConnectModal}
-                        className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
+                        className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl"
                       >
                         CONNECT WALLET
-                      </p>
-                    );
-                  }
-
-                  if (chain.unsupported) {
-                    return (
-                      <p
-                        onClick={openChainModal}
-                        className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
-                      >
-                        SWITCH NETWORK
-                        <span className="relative h-4 w-4 -top-4">
-                          <span className="animate-ping absolute h-4 w-4 rounded-full opacity-75 bg-red-600"></span>
-                          <span className="absolute inline-flex rounded-full h-4 w-4 bg-red-500"></span>
-                        </span>
-                      </p>
+                      </div>
                     );
                   }
                 })()}

@@ -54,6 +54,7 @@ const useAddProduct = (): UseAddProductResult => {
       );
       dispatch(setDropFormat(newDropFormatArray));
     }
+    console.log(newDropFormatArray, "NEWs")
   };
   const queryClient = useQueryClient();
   const addMutation = useMutation(addProduct, {
@@ -64,7 +65,7 @@ const useAddProduct = (): UseAddProductResult => {
   });
 
   const handleProductSubmit = (e: FormEvent): void => {
-    if (e as FormEvent) e.preventDefault();
+    e.preventDefault();
     if (dropTypeName === "Select Drop Type") {
       alert("Please select drop type");
       return;

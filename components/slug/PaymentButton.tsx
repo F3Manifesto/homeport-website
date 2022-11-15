@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { FunctionComponent, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { GlobalContext } from "../../pages/_app";
 import { setItem } from "../../redux/reducers/itemSlice";
-import { RootState } from "../../redux/store";
 import { PaymentButtonProps } from "../../types/general.types";
 
 const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
@@ -11,13 +12,12 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
   setPayment,
   clickedToken,
   item,
+  quantity,
 }): JSX.Element => {
   const router = useRouter();
+  const { itemPrice } = useContext(GlobalContext);
   let action = "BUY_NOW";
   const dispatch = useDispatch();
-  console.log(useSelector((state: RootState) => state.app.itemReducer));
-
-
   useEffect(() => {
     if (clickedToken !== "") {
       setPayment("selected");
@@ -101,9 +101,12 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
             setPayment("order");
             dispatch(
               setItem({
-                name: item.name,
-                description: item.description,
-                mainImage: item.mainImage,
+                actionName: item.name,
+                actionDescription: item.description,
+                actionMainImage: item.mainImage,
+                actionQuantity: quantity,
+                actionPrice: itemPrice.price,
+                actionToken: itemPrice.currency,
               })
             );
           }}

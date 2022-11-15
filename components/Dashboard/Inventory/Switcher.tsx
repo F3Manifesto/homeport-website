@@ -24,7 +24,8 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
   setSuccess,
   success,
   updatedMutation,
-  handleExistingDropFormatArray
+  handleExistingDropFormatArray,
+  handleDispatchFormatArray
 }): JSX.Element => {
   let action = "INVENTORY_ADD";
   const displaySection = useSelector(
@@ -48,6 +49,7 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           setOpenDropDown={setOpenDropDown}
           openDropDown={openDropDown}
           dropTypeName={dropTypeName}
+          handleDispatchFormatArray={handleDispatchFormatArray}
           showFileMainImage={showFileMainImage}
           mainFile={mainFile}
           featuredFiles={featuredFiles}

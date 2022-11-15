@@ -26,6 +26,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   updatedProductData,
   newDropFormatArray,
   handleExistingDropFormatArray,
+  handleDispatchFormatArray,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const dropFormatArray = useSelector(
@@ -61,7 +62,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           maxLength={50}
           className={`relative row-start-2 w-[30vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 `}
           required
-          //   disabled={success || addMutation.isLoading ? true : false}
+          disabled={success || updatedMutation.isLoading ? true : false}
         />
       </div>
       <div className="relative w-full h-full grid grid-flow-row auto-rows-[auto auto] gap-3 row-start-2">
@@ -73,7 +74,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           name="productDescription"
           className={`relative row-start-2 w-full h-96 text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 align-top text-start`}
           required
-          //   disabled={success || addMutation.isLoading ? true : false}
+          disabled={success || updatedMutation.isLoading ? true : false}
         />
       </div>
       <div className="relative max-w-full h-full grid grid-flow-row auto-rows-[auto auto] row-start-3 gap-10">
@@ -115,43 +116,51 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           <div className="relative row-start-1 w-fit h-fit text-white font-economica text-left">
             Drop Format
           </div>
-          <div className="relative w-[30vw] h-fit row-start-2 text-white font-economica px-2 py-3 cursor-pointer flex flex-wrap justify-start gap-2">
+          <div className="relative w-[30vw] h-fit row-start-2 text-white font-economica px-2 py-3 cursor-pointer flex flex-wrap justify-start">
             {dropFormat.map((format: string, index: number) => {
               return (
-                <span className="relative w-fit h-fit p-1" key={index}>
-                  <input
+                <div
+                  className="relative w-fit h-fit px-1 py-2 grid grid-flow-col auto-cols-[auto auto] gap-4"
+                  key={index}
+                >
+                  <div
+                    className={`cursor-pointer appearance-none bg-white border border-white h-4 w-4 float-left col-start-1 place-self-center ${
+                      (newDropFormatArray?.includes(format) ||
+                        dropFormatArray?.includes(format)) &&
+                      "bg-yellowTheme"
+                    }`}
+                    onClick={
+                      dropFormatArray.length !== 0
+                        ? () => handleDispatchFormatArray(format)
+                        : () => handleExistingDropFormatArray(format)
+                    }
+                  ></div>
+                  {/* <input
                     key={index}
                     value={format}
                     name={format}
                     type="checkbox"
-                    // INCOMPLETE NOT WORKING PROPERLY!!
-                    checked={
-                      dropFormatArray.length === 0
-                      ? (newDropFormatArray?.includes(format)
-                        ? true
-                        : false)
-                      : (dropFormatArray.includes(format)
-                        ? true
-                        : false)
+                    disabled={
+                      success || updatedMutation.isLoading ? true : false
                     }
-                    defaultChecked={
-                      dropFormatArray.length === 0
-                        ? (newDropFormatArray?.includes(format)
-                          ? true
-                          : false)
-                        : (dropFormatArray.includes(format)
-                          ? true
-                          : false)
-                    }
+                    // checked={newDropFormatArray?.includes(format)
+                    //   ? true
+                    //   : false
+                    //   // dropFormatArray.length === 0
+                    //   //   ? newDropFormatArray?.includes(format)
+                    //   //     ? true
+                    //   //     : false
+                    //   //   : dropFormatArray.includes(format)
+                    //   //   ? true
+                    //   //   : false
+                    // }
                     className="cursor-pointer checked:bg-yellowTheme appearance-none bg-white border border-white h-4 w-4"
-                    onChange={
-                      updatedProductData?.dropFormat.length !== 0
-                        ? (e: FormEvent) => handleExistingDropFormatArray(e)
-                        : (e: FormEvent) => handleDropFormatArray(e)
-                    }
-                  />
-                  <label className="pl-2">{format}</label>
-                </span>
+                    
+                  /> */}
+                  <div className="col-start-2 relative w-fit h-fit">
+                    {format}
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -161,7 +170,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
         <div className="relative w-full h-48 col-start-1 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
           {mainFile && (
             <Image
-              src={mainFile as string}
+              src={URL.createObjectURL(mainFile as MediaSource)}
               layout="fill"
               objectFit="cover"
               className="absolute w-full h-full"
@@ -182,6 +191,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                 id="files"
                 multiple={false}
                 name="mainImage"
+                disabled={success || updatedMutation.isLoading ? true : false}
               />
             </label>
           </div>
@@ -189,11 +199,11 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
         <div className="relative w-full h-48 col-start-2 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
           {featuredFiles && (
             <div className="absolute w-full h-full grid grid-cols-2 auto-rows-auto">
-              {featuredFiles.map((image: string, index: number) => {
+              {featuredFiles.map((image: any, index: number) => {
                 return (
                   <Image
                     key={index}
-                    src={image}
+                    src={URL.createObjectURL(image)}
                     width={22}
                     height={22}
                     objectFit="cover"
@@ -220,6 +230,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                 id="files"
                 multiple={true}
                 name="featuredImages"
+                disabled={success || updatedMutation.isLoading ? true : false}
               />
             </label>
           </div>

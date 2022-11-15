@@ -4,6 +4,7 @@ import {
   StripeElements,
 } from "@stripe/stripe-js";
 import { Dispatch, FormEvent, SetStateAction } from "react";
+import { ItemState } from "../redux/reducers/itemSlice";
 
 export interface AggregatorInterface {
   inputs:
@@ -106,7 +107,8 @@ export type PaymentButtonProps = {
   setPurchase: (e: string) => void;
   setPayment: (e: string) => void;
   clickedToken: string;
-  item: any
+  item: any;
+  quantity: number;
 };
 
 export type UseFiatResult = {
@@ -205,7 +207,8 @@ export type UseUpdateProductResult = {
   success: boolean;
   setSuccess: (e: boolean) => void;
   handleProductDelete: () => Promise<void>;
-  handleExistingDropFormatArray: (e: FormEvent) => void;
+  handleExistingDropFormatArray: (e: string) => void;
+  handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
 };
 
@@ -221,7 +224,7 @@ export type UseAddProductResult = {
   openDropDown: boolean;
   setOpenDropDown: (e: boolean) => void;
   showFileMainImage: (e: FormEvent, name: string) => void;
-  mainFile: Buffer | undefined | MediaSource;
+  mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
 };
@@ -237,7 +240,7 @@ export type FormProps = {
   dropFormat: string[];
   openDropDown: boolean;
   showFileMainImage: (e: FormEvent, name: string) => void;
-  mainFile: Buffer | undefined | MediaSource;
+  mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
   productSuccess: boolean;
@@ -254,7 +257,7 @@ export type SwitcherProps = {
   openDropDown: boolean;
   setOpenDropDown: (e: boolean) => void;
   showFileMainImage: (e: FormEvent, name: string) => void;
-  mainFile: Buffer | undefined | MediaSource;
+  mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
   productSuccess: boolean;
@@ -265,7 +268,8 @@ export type SwitcherProps = {
   success: boolean;
   updatedMutation: any;
   handleProductSubmitUpdate: (e: FormEvent) => Promise<void>;
-  handleExistingDropFormatArray: (e: FormEvent) => void;
+  handleExistingDropFormatArray: (e: string) => void;
+  handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
 };
 
@@ -276,7 +280,7 @@ export type UpdateFormProps = {
   setOpenDropDown: (e: boolean) => void;
   dropTypeName: string;
   showFileMainImage: (e: FormEvent, name: string) => void;
-  mainFile: Buffer | undefined | MediaSource;
+  mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
   updatedProductData: any;
@@ -284,7 +288,8 @@ export type UpdateFormProps = {
   success: boolean;
   updatedMutation: any;
   handleProductSubmitUpdate: (e: FormEvent) => Promise<void>;
-  handleExistingDropFormatArray: (e: FormEvent) => void;
+  handleExistingDropFormatArray: (e: string) => void;
+  handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
 };
 
@@ -308,7 +313,7 @@ export type DeleteDropProps = {
   setCantDeleteDrop: (e: boolean) => void;
 };
 
-export type AddressInterface = {
+export interface AddressInterface {
   firstName: string;
   lastName: string;
   email: string;
@@ -318,12 +323,27 @@ export type AddressInterface = {
   stateProvince: string;
   city: string;
   zipCode: number;
-};
-
-export type OrderProps = {
-  item: any
 }
 
+export type OrderProps = {
+  item: ItemState;
+};
+
 export type OrderInfoProps = {
-  name: string | undefined;
+  item: ItemState;
+};
+
+export type DetailsProps = {
+  handleAddressSubmit: (e: FormEvent) => void;
+  detailsSuccess: boolean;
+};
+
+export type useDetailsResults = {
+  handleAddressSubmit: (e: FormEvent) => void;
+  detailsSuccess: boolean;
+};
+
+export interface UserInterface {
+  username: string;
+  password: string;
 }

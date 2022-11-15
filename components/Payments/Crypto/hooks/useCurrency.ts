@@ -1,5 +1,5 @@
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
-import { BigNumber } from "ethers";
+import { ethers } from "ethers";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../pages/_app";
 import {
@@ -34,22 +34,15 @@ const useCurrency = () => {
     functionName: "transfer",
     args: [
       "0xfa3fea500eeDAa120f7EeC2E4309Fe094F854E61",
-      BigNumber.from(itemPrice.price.toString()),
+      ethers.utils.parseEther("1"),
     ],
   });
 
-  const {data, write} = useContractWrite(config)
+  const {data, write, error} = useContractWrite(config)
 
   const { isLoading, isSuccess, isError } = useWaitForTransaction({
     hash: data?.hash,
   });
-
-  //   const approveTokenSpend = async () => {
-  //     try {
-  //     } catch (err: any) {
-  //       console.error(err.message);
-  //     }
-  //   };
 
   return { write, isLoading, isSuccess, isError };
 };

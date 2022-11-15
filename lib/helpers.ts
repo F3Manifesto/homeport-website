@@ -3,6 +3,7 @@ import {
   OptionsInterface,
   ProductInterface,
   AddressInterface,
+  UserInterface,
 } from "../types/general.types";
 import { BASE_URL } from "./constants";
 
@@ -179,7 +180,7 @@ export const getAddress = async (
 };
 
 export const addAddress = async (
-  AddressTypeData: ProductInterface
+  AddressTypeData: AddressInterface
 ): Promise<AddressInterface | undefined> => {
   try {
     const Options: OptionsInterface = {
@@ -190,6 +191,35 @@ export const addAddress = async (
     const response = await fetch(`${BASE_URL}/api/address`, Options);
     const addressData: AddressInterface = await response.json();
     return addressData;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getUser = async (
+  username: string
+): Promise<UserInterface | undefined> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/address/${username}`);
+    const user: UserInterface | undefined = await response.json();
+    return user;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const addUser = async (
+  UserTypeData: UserInterface
+): Promise<UserInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(UserTypeData),
+    };
+    const response = await fetch(`${BASE_URL}/api/address`, Options);
+    const userData: UserInterface = await response.json();
+    return userData;
   } catch (err: any) {
     console.error(err.message);
   }

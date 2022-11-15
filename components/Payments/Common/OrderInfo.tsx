@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { OrderInfoProps } from "../../../types/general.types";
 
 const OrderInfo: FunctionComponent<OrderInfoProps> = ({
-  name,
+  item,
 }): JSX.Element => {
   return (
     <div className="relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] place-self-start gap-4">
@@ -18,25 +18,23 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
         </div>
         <div className="relative w-96 h-fit text-white font-economica text-3xl col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-8">
           <div className="relative w-fit h-fit row-start-1 text-7xl">
-            Product Name
+            {item.name}
           </div>
           <div className="relative w-fit h-fit row-start-2 text-xl text-justify leading-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            {item.description}
           </div>
           <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] gap-20 text-xl">
             <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">
               <div className="relative col-start-1 w-fit h-fit">Price:</div>
-              <div className="relative col-start-2 w-fit h-fit">$USD 57.00</div>
+              <div className="relative col-start-2 w-fit h-fit">
+                {item.price + " " + item.token}
+              </div>
             </div>
             <div className="col-start-2 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">
               <div className="relative col-start-1 w-fit h-fit">Quantity:</div>
-              <div className="relative col-start-2 w-fit h-fit">1</div>
+              <div className="relative col-start-2 w-fit h-fit">
+                {item.quantity}
+              </div>
             </div>
           </div>
           <div className="relative w-fit h-fit row-start-4 text-xl">

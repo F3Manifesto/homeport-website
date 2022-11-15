@@ -1,6 +1,7 @@
 import Address from "../models/Address";
 import DropTypes from "../models/DropType";
 import Product from "../models/Product";
+import User from "../models/User";
 
 export const getProducts = async (req: any, res: any): Promise<void> => {
   try {
@@ -165,6 +166,35 @@ export const addAddress = async (req: any, res: any): Promise<void> => {
       return res.status(404).json({ err: "Address data not provided" });
     } else {
       Address.create(address, (err: any, data: any) => {
+        return res.status(200).json(data);
+      });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getUser = async (req: any, res: any): Promise<void> => {
+  try {
+    const { username } = req.query;
+    if (username) {
+      const user = await User.findOne({ username });
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ err: "User Not Found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const addUser = async (req: any, res: any): Promise<void> => {
+  try {
+    const user = req.body;
+    if (!user) {
+      return res.status(404).json({ err: "User data not provided" });
+    } else {
+      User.create(user, (err: any, data: any) => {
         return res.status(200).json(data);
       });
     }
