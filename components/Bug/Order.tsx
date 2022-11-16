@@ -6,7 +6,7 @@ import PaymentButton from "./PaymentButton";
 import Prices from "./Prices";
 import { buildLensShareUrl } from "@infinity-keys/react-lens-share-button";
 import Link from "next/link";
-import { OrderProps } from "./../../types/general.types";
+import { OrderProps } from "../../types/general.types";
 
 const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
   const { quantity } = useContext(GlobalContext);

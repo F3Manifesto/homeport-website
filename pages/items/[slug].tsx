@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import Purchase from "../../components/Slug/Purchase";
-import Banner from "../../components/Slug/Banner";
-import Specifications from "../../components/Slug/Specifications";
+import Purchase from "../../components/Bug/Purchase";
+import Banner from "../../components/Bug/Banner";
+import Specifications from "../../components/Bug/Specifications";
 import { ProductInterface, SlugProps } from "../../types/general.types";
 import { BASE_URL } from "../../lib/constants";
 import { useDispatch } from "react-redux";
