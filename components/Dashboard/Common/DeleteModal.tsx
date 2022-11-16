@@ -29,11 +29,11 @@ const DeleteModal: FunctionComponent<DeleteModalProps> = ({
         </div>
         <div className="relative w-1/2 text-center h-fit text-white font-economica row-start-2 justify-self-center text-2xl">
           {displayType === "DROP_TYPES"
-            ? "Are you sure you'd like to delete this drop type?"
+            ? "Are you sure you&apos;d like to delete this drop type?"
             : displayType === "INVENTORY"
-            ? "Are you sure you'd like to delete this product?"
+            ? "Are you sure you&apos;d like to delete this product?"
             : displayType === "ADMIN" &&
-              "Are you sure you'd like to delete this admin?"}
+              "Are you sure you&apos;d like to delete this admin?"}
         </div>
         <div className="relative w-fit h-fit text-white font-economica row-start-3 grid grid-flow-col auto-cols-[auto auto] justify-self-center">
           <div

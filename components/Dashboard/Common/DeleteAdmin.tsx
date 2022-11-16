@@ -20,7 +20,7 @@ const DeleteAdmin: FunctionComponent<DeleteAdminProps> = ({
           />
         </div>
         <div className="relative w-1/2 text-center h-fit text-white font-economica row-start-2 justify-self-center text-2xl">
-          You can't delete yourself or you'll be locked out!
+          You can&apos;t delete yourself or you&apos;ll be locked out!
         </div>
         <div className="relative w-fit h-fit text-white font-economica row-start-3 grid grid-flow-col auto-cols-[auto auto] justify-self-center">
           <div

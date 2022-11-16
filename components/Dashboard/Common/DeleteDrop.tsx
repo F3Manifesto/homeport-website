@@ -20,7 +20,7 @@ const DeleteDrop: FunctionComponent<DeleteDropProps> = ({
           />
         </div>
         <div className="relative w-1/2 text-center h-fit text-white font-economica row-start-2 justify-self-center text-2xl">
-          You can't delete a drop type that is linked to a product. Delete the
+          You can&apos;t delete a drop type that is linked to a product. Delete the
           linked product first.
         </div>
         <div className="relative w-fit h-fit text-white font-economica row-start-3 grid grid-flow-col auto-cols-[auto auto] justify-self-center">
