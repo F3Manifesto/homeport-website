@@ -3,6 +3,7 @@ import DropTypes from "../models/DropType";
 import Currency from "../models/Currency";
 import Product from "../models/Product";
 import User from "../models/User";
+import Payment from "../models/Payment";
 
 export const getProducts = async (req: any, res: any): Promise<void> => {
   try {
@@ -268,6 +269,49 @@ export const deleteUser = async (req: any, res: any): Promise<void> => {
       return res.status(200).json(userId);
     } else {
       return res.status(404).json({ err: "User not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const updatePaymentAdmin = async (req: any, res: any): Promise<void> => {
+  try {
+    const { paymentId } = req.query;
+    const paymentType = req.body;
+    if (paymentId && paymentType) {
+      await Payment.findByIdAndUpdate(paymentId, paymentType);
+      return res.status(200).json(paymentType);
+    } else {
+      return res.status(404).json({ err: "Payment not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getPaymentAdmins = async (req: any, res: any): Promise<void> => {
+  try {
+    const paymentAdmins = await Payment.find({});
+    if (!paymentAdmins) {
+      return res.status(404).json({ err: "No Payment Admins Found" });
+    } else {
+      return res.status(200).json(paymentAdmins);
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const addPaymentAdmin = async (req: any, res: any): Promise<void> => {
+  try {
+    const paymentAdmin = req.body;
+    if (!paymentAdmin) {
+      return res.status(404).json({ err: "Payment data not provided" });
+    } else {
+      Payment.create(paymentAdmin, (err: any, data: any) => {
+        return res.status(200).json(data);
+      });
     }
   } catch (err: any) {
     return res.status(404).json({ err: err.message });

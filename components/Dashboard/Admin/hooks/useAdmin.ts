@@ -12,6 +12,8 @@ const useAdmin = (): UseAdminResults => {
   const queryClient = useQueryClient();
   const { setDeleteModal } = useContext(GlobalContext);
   const adminId = useSelector((state: RootState) => state.app.dropReducer.id);
+  const [showSecretPassword, setShowSecretPassword] = useState<boolean>();
+  const [showPublishPassword, setShowPublishPassword] = useState<boolean>();
 
   const handleAdminDelete = async (): Promise<void> => {
     try {
@@ -23,7 +25,16 @@ const useAdmin = (): UseAdminResults => {
     }
   };
 
-  return { admins, show, setShow, handleAdminDelete };
+  return {
+    admins,
+    show,
+    setShow,
+    handleAdminDelete,
+    showSecretPassword,
+    setShowSecretPassword,
+    showPublishPassword,
+    setShowPublishPassword,
+  };
 };
 
 export default useAdmin;

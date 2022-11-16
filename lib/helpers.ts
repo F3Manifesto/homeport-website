@@ -5,6 +5,7 @@ import {
   AddressInterface,
   UserInterface,
   CurrencyInterface,
+  PaymentInterface,
 } from "../types/general.types";
 import { BASE_URL } from "./constants";
 
@@ -297,6 +298,56 @@ export const deleteUser = async (
     const response = await fetch(`${BASE_URL}/api/user/${userId}`, Options);
     const user: UserInterface = await response.json();
     return user;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const addPaymentAdmin = async (
+  adminPaymentDataType: PaymentInterface
+): Promise<PaymentInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(adminPaymentDataType),
+    };
+    const response = await fetch(`${BASE_URL}/api/payments`, Options);
+    const currencyData: PaymentInterface = await response.json();
+    return currencyData;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const updatePaymentAdmin = async (
+  paymentId: string,
+  paymentAdminData: PaymentInterface
+): Promise<PaymentInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(paymentAdminData),
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/payments/${paymentId}`,
+      Options
+    );
+    const paymentType: PaymentInterface = await response.json();
+    return paymentType;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getPaymentAdmins = async (): Promise<
+  PaymentInterface[] | undefined
+> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/payments`);
+    const paymentAdminType: PaymentInterface[] = await response.json();
+    return paymentAdminType;
   } catch (err: any) {
     console.error(err.message);
   }

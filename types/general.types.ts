@@ -484,4 +484,32 @@ export type UseAdminResults = {
   show: boolean;
   setShow: (e: boolean) => void;
   handleAdminDelete: () => Promise<void>;
+  showSecretPassword: boolean;
+  setShowSecretPassword: (e: boolean) => void;
+  showPublishPassword: boolean;
+  setShowPublishPassword: (e: boolean) => void;
+};
+
+export type PaymentInfoProps = {
+  handleAdminPayment: (e: FormEvent) => void;
+  data: PaymentInterface[] | undefined;
+  handleAdminUpdate: (e: FormEvent) => Promise<void>;
+  showSecretPassword: boolean;
+  setShowSecretPassword: (e: boolean) => void;
+  showPublishPassword: boolean;
+  setShowPublishPassword: (e: boolean) => void;
+};
+
+export type UseAdminPaymentResults = {
+  handleAdminPayment: (e: FormEvent) => void;
+  success: boolean;
+  data: PaymentInterface[] | undefined;
+  handleAdminUpdate: (e: FormEvent) => Promise<void>;
+};
+
+export type PaymentInterface = {
+  _id?: string;
+  wallet: string;
+  stripeSecret: string;
+  stripePublish: string;
 };

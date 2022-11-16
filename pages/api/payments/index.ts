@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import { addProduct, getProducts } from "../../../utils/controllers";
+import { addPaymentAdmin, getPaymentAdmins } from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -13,8 +13,8 @@ const handler = async (req: any, res: any): Promise<void> => {
   switch (method) {
     case "GET":
       try {
-        const products = await getProducts(req, res);
-        return products;
+        const paymentAdmins = await getPaymentAdmins(req, res);
+        return paymentAdmins;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }
@@ -22,8 +22,8 @@ const handler = async (req: any, res: any): Promise<void> => {
 
     case "POST":
       try {
-        const product = await addProduct(req, res);
-        return product;
+        const paymentAdmin = await addPaymentAdmin(req, res);
+        return paymentAdmin;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }

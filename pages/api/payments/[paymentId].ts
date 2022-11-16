@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import { addProduct, getProducts } from "../../../utils/controllers";
+import { updatePaymentAdmin } from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -11,19 +11,10 @@ const handler = async (req: any, res: any): Promise<void> => {
   const { method } = req;
 
   switch (method) {
-    case "GET":
+    case "PUT":
       try {
-        const products = await getProducts(req, res);
-        return products;
-      } catch (err: any) {
-        res.status(400).json({ success: false, data: err.message });
-      }
-      break;
-
-    case "POST":
-      try {
-        const product = await addProduct(req, res);
-        return product;
+        const paymentAdmin = await updatePaymentAdmin(req, res);
+        return paymentAdmin;
       } catch (err: any) {
         res.status(400).json({ success: false, data: err.message });
       }

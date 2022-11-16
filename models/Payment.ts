@@ -2,7 +2,8 @@ import { Schema, models, model } from "mongoose";
 
 interface IPayment {
   wallet: string;
-  stripe: string;
+  stripeSecret: string;
+  stripePublish: string;
 }
 
 const PaymentSchema = new Schema<IPayment>({
@@ -10,13 +11,17 @@ const PaymentSchema = new Schema<IPayment>({
     type: String,
     required: true,
   },
-  stripe: {
+  stripeSecret: {
+    type: String,
+    required: true,
+  },
+  stripePublish: {
     type: String,
     required: true,
   },
 });
 
 const Payment: any =
-  models.Payment || model<IPayment>("Product", PaymentSchema);
+  models.Payment || model<IPayment>("Payment", PaymentSchema);
 
 export default Payment;
