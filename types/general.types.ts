@@ -42,7 +42,7 @@ export type UseImageSliderResult = {
   setFeaturedImage: (e: string) => void;
 };
 
-export type UseOrderResult = {
+export type UseOrderValueResult = {
   tokens: string[];
   layoutIndexes: number[];
   setSelectedPrice: (e: string) => void;

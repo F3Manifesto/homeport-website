@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import useOrder from "./../../Slug/hooks/useOrder";
+import useOrder from "../../Slug/hooks/useOrderValue";
 import ActiveDrops from "./ActiveDrops";
 import EditPricing from "./EditPricing";
 import useActiveDrops from "./hooks/useActiveDrops";

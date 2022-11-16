@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext } from "react";
 import { FiUpload } from "react-icons/fi";
 import { GlobalContext } from "../../pages/_app";
-import useOrder from "./hooks/useOrder";
+import useOrderValue from "./hooks/useOrderValue";
 import PaymentButton from "./PaymentButton";
 import Prices from "./Prices";
 import { buildLensShareUrl } from "@infinity-keys/react-lens-share-button";
@@ -26,7 +26,7 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
     setPayment,
     setClickedToken,
     USDPRICESET
-  } = useOrder();
+  } = useOrderValue();
   return (
     <div className="relative w-full h-full row-start-2 grid grid-flow-row auto-rows-[auto auto]">
       <Prices

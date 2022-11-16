@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useEffect, useMemo, useState } from "react";
-import { UseOrderResult } from "../../../types/general.types";
+import { UseOrderValueResult } from "../../../types/general.types";
 import {
   aggregatorV3InterfaceABI,
   ETHUSD,
@@ -15,7 +15,7 @@ import { RootState } from "../../../redux/store";
 import { useQuery } from "react-query";
 import { getCurrency } from "../../../lib/helpers";
 
-const useOrder = (): UseOrderResult => {
+const useOrderValue = (): UseOrderValueResult => {
   const [ethConversion, setEthConversion] = useState<string>();
   const [monaConversion, setMonaConversion] = useState<string>();
   const [usdtConversion, setUsdtConversion] = useState<string>();
@@ -247,4 +247,4 @@ const useOrder = (): UseOrderResult => {
   };
 };
 
-export default useOrder;
+export default useOrderValue;
