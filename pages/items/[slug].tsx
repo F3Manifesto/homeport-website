@@ -24,7 +24,6 @@ export const getStaticPaths = async () => {
   return {
     paths,
     fallback: false,
-    revalidate: 30,
   };
 };
 
@@ -34,6 +33,7 @@ export const getStaticProps = async (context: any) => {
   const data: ProductInterface = await response.json();
   return {
     props: { item: data },
+    revalidate: 30,
   };
 };
 
