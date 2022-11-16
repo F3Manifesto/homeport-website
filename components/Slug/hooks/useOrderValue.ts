@@ -2,6 +2,7 @@ import { FormEvent, useContext, useEffect, useMemo, useState } from "react";
 import { UseOrderValueResult } from "../../../types/general.types";
 import {
   aggregatorV3InterfaceABI,
+  BASE_URL,
   ETHUSD,
   MATICUSD,
   USDTUSD,
@@ -101,7 +102,7 @@ const useOrderValue = (): UseOrderValueResult => {
 
   const getMONAPrice = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/coin", {
+      const response = await fetch(`${BASE_URL}/api/coin`, {
         method: "POST",
       });
       return response.json();
