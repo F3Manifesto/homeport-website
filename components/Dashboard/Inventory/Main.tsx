@@ -87,7 +87,6 @@ const Main: FunctionComponent<MainInventoryProps> = ({
           setSuccess={setSuccess}
           handleProductSubmitUpdate={handleProductSubmitUpdate}
           handleExistingDropFormatArray={handleExistingDropFormatArray}
-          handleLandTop={handleLandTop}
         />
       </div>
       <div className="relative w-full h-fit col-start-2 grid grid-flow-row auto-rows-[auto auto] justify-self-end">
@@ -99,6 +98,7 @@ const Main: FunctionComponent<MainInventoryProps> = ({
           setDeleteModal={setDeleteModal}
           currencyData={currencyData}
           setAddPricingModal={setAddPricingModal}
+          handleLandTop={handleLandTop}
         />
       </div>
     </div>

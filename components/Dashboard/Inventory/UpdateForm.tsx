@@ -28,7 +28,6 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   newDropFormatArray,
   handleExistingDropFormatArray,
   handleDispatchFormatArray,
-  handleLandTop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const dropFormatArray = useSelector(
@@ -283,15 +282,6 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
         </button>
       )}
-      {/* <div
-        className="relative w-full h-10 row-start-7 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] text-center text-black hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
-        onClick={() => {
-          handleLandTop();
-          dispatch(setType("PRICING"));
-        }}
-      >
-        Add Pricing to View Product Live
-      </div> */}
     </form>
   );
 };

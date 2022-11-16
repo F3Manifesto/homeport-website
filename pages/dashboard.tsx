@@ -22,10 +22,9 @@ const Dashboard: NextPage<DashboardProps> = ({
     addPricingModal,
     setAddPricingModal,
   } = useContext(GlobalContext);
-  console.log(addPricingModal)
+  console.log(addPricingModal);
   const { handleDropDelete } = useUpdateDropTypes();
   const { handleProductDelete } = useUpdateProduct();
-  const { handleDropAddPrice } = useAddCurrency();
   return (
     <div className="relative grid grid-flow-col auto-cols-[auto auto] w-full h-full min-h-screen bg-shaded text-white font-economica text-xl pb-20">
       <div className="relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-4">
@@ -39,8 +38,8 @@ const Dashboard: NextPage<DashboardProps> = ({
         {cantDeleteDrop && <DeleteDrop setCantDeleteDrop={setCantDeleteDrop} />}
         {addPricingModal && (
           <AddPricingModal
-            handleDropAddPrice={handleDropAddPrice}
             setAddPricingModal={setAddPricingModal}
+            handleLandTop={handleLandTop}
           />
         )}
         <SideBar />

@@ -10,12 +10,15 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../../../redux/reducers/productSlice";
 import { BASE_URL } from "../../../lib/constants";
+import { setType } from "../../../redux/reducers/dashSlice";
+import { setSelected } from "../../../redux/reducers/selectedDropSlice";
 
 const Map: FunctionComponent<MapProps> = ({
   productData,
   setDeleteModal,
   setAddPricingModal,
   currencyData,
+  handleLandTop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
@@ -79,7 +82,17 @@ const Map: FunctionComponent<MapProps> = ({
                           ).length !== 0
                             ? () =>
                                 window?.open(`${BASE_URL}/items/${item.slug}`)
-                            : () => setAddPricingModal(true)
+                            : () => {
+                                dispatch(
+                                  setSelected({
+                                    actionName: item.name,
+                                    actionSlug: item.slug,
+                                    actionDescription: item.description,
+                                    actionDropType: item.dropType,
+                                  })
+                                );
+                                setAddPricingModal(true);
+                              }
                         }
                       />
                     </div>
@@ -95,7 +108,18 @@ const Map: FunctionComponent<MapProps> = ({
                             : "#ADE7B5"
                         }
                         className="hover:scale-90 active:scale-90"
-                        // onClick={() => dispatch()}
+                        onClick={() => {
+                          handleLandTop();
+                          dispatch(
+                            setSelected({
+                              actionName: item.name,
+                              actionSlug: item.slug,
+                              actionDescription: item.description,
+                              actionDropType: item.dropType,
+                            })
+                          );
+                          dispatch(setType("PRICING"));
+                        }}
                       />
                     </div>
                   </div>

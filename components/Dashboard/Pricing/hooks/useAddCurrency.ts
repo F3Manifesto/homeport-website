@@ -55,10 +55,6 @@ const useAddCurrency = (): UseAddCurrencyResult => {
     (e.target as HTMLFormElement).reset();
   };
 
-  const handleDropAddPrice = () => {
-
-  }
-
   const updatedMutation = useMutation(
     (currencyUpdatedData: CurrencyInterface) =>
       updateCurrency(productInfo?.slug as string, currencyUpdatedData),
@@ -93,7 +89,6 @@ const useAddCurrency = (): UseAddCurrencyResult => {
     success,
     oneCurrencyData,
     handleUpdateCurrency,
-    handleDropAddPrice
   };
 };
 

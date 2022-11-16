@@ -25,6 +25,7 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
     payment,
     setPayment,
     setClickedToken,
+    USDPRICESET
   } = useOrder();
   return (
     <div className="relative w-full h-full row-start-2 grid grid-flow-row auto-rows-[auto auto]">
@@ -37,6 +38,7 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
         convertedPrice={convertedPrice}
         clickedToken={clickedToken}
         setClickedToken={setClickedToken}
+        USDPRICESET={USDPRICESET}
       />
       <div className="relative w-full h-fit row-start-2 grid grid-flow-row auto-rows-[auto auto] gap-3">
         <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-3">

@@ -9,19 +9,20 @@ const Prices: FunctionComponent<PriceProps> = ({
   convertedPrice,
   currencyTag,
   setClickedToken,
-  clickedToken
+  clickedToken,
+  USDPRICESET,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-4 pb-10 justify-start">
       <div className="relative w-full h-full col-start-1 text-white font-animosaR grid grid-flow-row auto-rows-[auto auto]">
         <div className="relative w-full h-fit row-start-1 justify-self-end pr-4 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-end col-start-1">
-            {convertedPrice.toFixed(2)} {currencyTag}
+            {convertedPrice?.toFixed(2)} {currencyTag}
           </div>
         </div>
         <div className="relative w-full h-full row-start-2 text-8xl grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-end col-start-1">
-            ${featurePrice.toString()}
+            ${featurePrice ? featurePrice?.toString() : USDPRICESET}
           </div>
         </div>
       </div>

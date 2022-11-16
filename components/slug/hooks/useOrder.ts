@@ -9,20 +9,31 @@ import {
 import { useContractReads } from "wagmi";
 import lodash from "lodash";
 import { GlobalContext } from "../../../pages/_app";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPrice } from "../../../redux/reducers/priceSlice";
+import { RootState } from "../../../redux/store";
+import { useQuery } from "react-query";
+import { getCurrency } from "../../../lib/helpers";
 
 const useOrder = (): UseOrderResult => {
   const [ethConversion, setEthConversion] = useState<string>();
   const [monaConversion, setMonaConversion] = useState<string>();
   const [usdtConversion, setUsdtConversion] = useState<string>();
   const [maticConversion, setMaticConversion] = useState<string>();
+  const currencySlug = useSelector(
+    (state: RootState) => state.app.currencyReducer.itemSlug
+  );
+  const { data: currencyData } = useQuery(["currency", currencySlug], () =>
+    getCurrency(currencySlug as string)
+  );
 
-  const USDPRICESET: number = 56;
-  const USDTPRICESET: number = 52;
-  const ETHPRICESET: number = 40;
-  const MATICPRICESET: number = 60;
-  const MONAPRICESET: number = 30;
+  console.log(currencyData);
+
+  const USDPRICESET: number = currencyData?.usdPrice as number;
+  const USDTPRICESET: number = currencyData?.usdtPrice as number;
+  const ETHPRICESET: number = currencyData?.ethPrice as number;
+  const MATICPRICESET: number = currencyData?.maticPrice as number;
+  const MONAPRICESET: number = currencyData?.monaPrice as number;
   const [selectedPrice, setSelectedPrice] = useState<string>("usd");
   const [monaPrice, setMonaPrice] = useState<number>(0);
   const [featurePrice, setFeaturePrice] = useState<number>(USDPRICESET);
@@ -145,7 +156,7 @@ const useOrder = (): UseOrderResult => {
   };
 
   const increaseQuantity = (max: number): void => {
-    if (quantity + 1 < max) {
+    if (quantity + 1 <= max) {
       setQuantity(quantity + 1);
     } else {
       alert(`There are only ${max} number of item/s in this drop!`);
@@ -162,7 +173,10 @@ const useOrder = (): UseOrderResult => {
     setItemName("order");
     if (e === "crypto") {
       dispatch(
-        setPrice({ actionPrice: featurePrice, actionToken: currencyTag })
+        setPrice({
+          actionPrice: convertedPrice.toFixed(4),
+          actionToken: currencyTag,
+        })
       );
     } else {
       dispatch(setPrice({ actionPrice: USDPRICESET, actionToken: "USD" }));
@@ -231,6 +245,7 @@ const useOrder = (): UseOrderResult => {
     monaConversion,
     maticConversion,
     usdtConversion,
+    USDPRICESET,
   };
 };
 

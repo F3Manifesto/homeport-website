@@ -64,6 +64,7 @@ export type UseOrderResult = {
   monaConversion: string | undefined;
   maticConversion: string | undefined;
   usdtConversion: string | undefined;
+  USDPRICESET: number;
 };
 
 export type UseOracleResult = {
@@ -79,6 +80,7 @@ export type PriceProps = {
   currencyTag: string;
   clickedToken: string;
   setClickedToken: (e: string) => void;
+  USDPRICESET: number;
 };
 
 export type UseCollectionTagsResult = {
@@ -139,7 +141,7 @@ export interface ProductInterface {
   dropType: string;
   dropFormat: string[];
   quantity: number;
-  mainImage?: Buffer;
+  mainImage?: any;
   featuredImages?: Buffer[];
   slug: string;
 }
@@ -243,6 +245,7 @@ export type MapProps = {
   setDeleteModal: (e: boolean) => void;
   currencyData: CurrencyInterface[] | undefined;
   setAddPricingModal: (e: boolean) => void;
+  handleLandTop: () => void;
 };
 
 export type FormProps = {
@@ -259,7 +262,6 @@ export type FormProps = {
   addMutation: any;
   dropTypeName: string;
   setOpenDropDown: (e: boolean) => void;
-  handleLandTop: () => void;
 };
 
 export type SwitcherProps = {
@@ -283,7 +285,6 @@ export type SwitcherProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
-  handleLandTop: () => void;
 };
 
 export type UpdateFormProps = {
@@ -304,17 +305,14 @@ export type UpdateFormProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
-  handleLandTop: () => void;
 };
 
 export type SlugProps = {
   item: ProductInterface;
-  currency: CurrencyInterface;
 };
 
 export type PurchaseProps = {
   item: ProductInterface;
-  currency: CurrencyInterface;
 };
 
 export type CollectionTagsProps = {
@@ -400,12 +398,12 @@ export type SwitcherDashboardProps = {
   handleLandTop: () => void;
 };
 
-export type HeaderProps = {
-  landTop: any;
-};
-
 export type MainInventoryProps = {
   handleLandTop: () => void;
+};
+
+export type HeaderProps = {
+  landTop: any;
 };
 
 export type DashboardProps = {
@@ -417,7 +415,6 @@ export type UseAddCurrencyResult = {
   success: boolean | undefined;
   oneCurrencyData: CurrencyInterface | undefined;
   handleUpdateCurrency: (e: FormEvent) => Promise<void>;
-  handleDropAddPrice: () => any;
 };
 
 export type ActiveDropsProps = {
@@ -429,6 +426,6 @@ export type SelectedDropProps = {
 };
 
 export type AddPricingModalProps = {
-  handleDropAddPrice: () => void;
   setAddPricingModal: (e: boolean) => void;
+  handleLandTop: () => void;
 };
