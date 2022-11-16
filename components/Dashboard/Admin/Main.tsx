@@ -19,7 +19,8 @@ const Main: FunctionComponent<AdminMainProps> = ({
     setShowPublishPassword,
   } = useAdmin();
   const { setDeleteModal, setCantDeleteAdmin } = useContext(GlobalContext);
-  const { handleAdminPayment, data, handleAdminUpdate } = useAdminPayment();
+  const { handleAdminPayment, data, handleAdminUpdate, success, setSuccess } =
+    useAdminPayment();
   return (
     <div className="relative col-start-2 w-full h-fit grid grid-flow-row auto-rows-[auto auto] py-8 pr-10">
       <UserInfo
@@ -38,6 +39,8 @@ const Main: FunctionComponent<AdminMainProps> = ({
         showSecretPassword={showSecretPassword}
         showPublishPassword={showPublishPassword}
         setShowPublishPassword={setShowPublishPassword}
+        success={success}
+        setSuccess={setSuccess}
       />
     </div>
   );

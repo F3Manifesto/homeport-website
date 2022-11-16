@@ -1,4 +1,4 @@
-import { FormEvent, FunctionComponent } from "react";
+import { FormEvent, FunctionComponent, useEffect } from "react";
 import {
   PaymentInfoProps,
   PaymentInterface,
@@ -13,11 +13,20 @@ const PaymentInfo: FunctionComponent<PaymentInfoProps> = ({
   setShowSecretPassword,
   showPublishPassword,
   setShowPublishPassword,
+  success,
+  setSuccess
 }): JSX.Element => {
   let newArray: PaymentInterface | undefined;
   if (data?.length !== 0) {
     newArray = lodash.first(data as any);
   }
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        setSuccess(false);
+      }, 4000);
+    }
+  }, [success]);
   return (
     <form
       className="relative w-full h-full row-start-2 pt-20 grid grid-flow-row auto-rows-[auto auto]"
@@ -76,7 +85,13 @@ const PaymentInfo: FunctionComponent<PaymentInfoProps> = ({
           onClick={() => setShowPublishPassword(!showPublishPassword)}
         />
       </div>
-      {
+      {success ? (
+        <div className="relative w-fit h-10 row-start-3 bg-grayGreen px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
+          <div className="relative w-fit h-fit place-self-center text-black font-economicaB">
+            SUCCESS
+          </div>
+        </div>
+      ) : (
         <button
           className="relative w-fit h-10 row-start-3 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto] hover:scale-95 active:scale-95 hover:opacity-80 cursor-pointer"
           type="submit"
@@ -85,7 +100,7 @@ const PaymentInfo: FunctionComponent<PaymentInfoProps> = ({
             SUBMIT
           </div>
         </button>
-      }
+      )}
     </form>
   );
 };

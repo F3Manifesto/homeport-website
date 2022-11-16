@@ -498,11 +498,14 @@ export type PaymentInfoProps = {
   setShowSecretPassword: (e: boolean) => void;
   showPublishPassword: boolean;
   setShowPublishPassword: (e: boolean) => void;
+  success: boolean;
+  setSuccess: (e: boolean) => void;
 };
 
 export type UseAdminPaymentResults = {
   handleAdminPayment: (e: FormEvent) => void;
   success: boolean;
+  setSuccess: (e: boolean) => void;
   data: PaymentInterface[] | undefined;
   handleAdminUpdate: (e: FormEvent) => Promise<void>;
 };
@@ -512,4 +515,9 @@ export type PaymentInterface = {
   wallet: string;
   stripeSecret: string;
   stripePublish: string;
+};
+
+export type useHeaderLayoutResult = {
+  showDropdownBurger: boolean;
+  setShowDropdownBurger: (e: boolean) => void;
 };

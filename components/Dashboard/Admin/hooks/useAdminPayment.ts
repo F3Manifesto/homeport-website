@@ -57,7 +57,7 @@ const useAdminPayment = (): UseAdminPaymentResults => {
     }
   };
 
-  return { handleAdminPayment, success, data, handleAdminUpdate };
+  return { handleAdminPayment, success, data, handleAdminUpdate, setSuccess };
 };
 
 export default useAdminPayment;

@@ -28,6 +28,10 @@ const useConnect = (): UseConnectResult => {
     addMutation.mutate(userDataType);
     (e.target as HTMLFormElement).reset();
   };
+  let newArray: UserInterface | undefined;
+  if (data?.length !== 0) {
+    newArray = lodash.first(data as any);
+  }
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
@@ -41,7 +45,8 @@ const useConnect = (): UseConnectResult => {
       dispatch(
         setUser({
           actionValue: true,
-          actionId: newData[0]._id,
+          actionId: newArray?._id,
+          actionUsername: newArray?.username,
         })
       );
       router.push("/dashboard");

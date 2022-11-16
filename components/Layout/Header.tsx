@@ -5,9 +5,16 @@ import { BsSearch } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 import { HeaderProps } from "../../types/general.types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import useHeaderLayout from "./hooks/useHeaderLayout";
 
 const Header: FunctionComponent<HeaderProps> = ({ landTop }) => {
+  const { showDropdownBurger, setShowDropdownBurger } = useHeaderLayout();
   const router = useRouter();
+  const userAuthenticated = useSelector(
+    (state: RootState) => state.app.userReducer.username
+  );
   return (
     <div
       className={`${
@@ -66,77 +73,106 @@ const Header: FunctionComponent<HeaderProps> = ({ landTop }) => {
           </div>
         )}
       </div>
-      <div className="relative w-fit h-fit col-start-2 justify-self-end">
-        <ConnectButton.Custom>
-          {({
-            account,
-            chain,
-            openAccountModal,
-            openChainModal,
-            openConnectModal,
-            authenticationStatus,
-            mounted,
-          }: any) => {
-            const ready = mounted && authenticationStatus !== "loading";
-            const connected =
-              ready &&
-              account &&
-              chain &&
-              (!authenticationStatus ||
-                authenticationStatus === "authenticated");
-
-            return (
-              <div
-                {...(!ready && {
-                  "aria-hidden": true,
-                  style: {
-                    opacity: 0,
-                    pointerEvents: "none",
-                    userSelect: "none",
-                    zIndex: "0",
-                  },
-                })}
-              >
-                {(() => {
-                  if (!connected) {
-                    return (
-                      <p
-                        onClick={openConnectModal}
-                        className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
-                      >
-                        CONNECT WALLET
-                      </p>
-                    );
-                  }
-
-                  if (chain.unsupported) {
-                    return (
-                      <p
-                        onClick={openChainModal}
-                        className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
-                      >
-                        SWITCH NETWORK
-                        <span className="relative h-4 w-4 -top-4">
-                          <span className="animate-ping absolute h-4 w-4 rounded-full opacity-75 bg-red-600"></span>
-                          <span className="absolute inline-flex rounded-full h-4 w-4 bg-red-500"></span>
-                        </span>
-                      </p>
-                    );
-                  }
-
-                  return (
-                    <div
-                      style={{ display: "flex", gap: 1, zIndex: "30" }}
-                      className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
-                    >
-                      <p onClick={openAccountModal}>{account.displayName}</p>
-                    </div>
-                  );
-                })()}
+      <div className="relative w-fit h-fit col-start-2 justify-self-end grid grid-flow-col auto-cols-[auto auto] gap-5">
+        <div className="relative col-start-1 w-fit h-fit grid grid-flow-row auto-rows-[auto auto]">
+          <div
+            className="relative w-fit h-fit row-start-1 border-2 border-white grid grid-flow-col auto-cols-[auto auto]  font-awkward text-white text-[1.3em] p-2 cursor-pointer"
+            onClick={
+              userAuthenticated
+                ? () => setShowDropdownBurger(!showDropdownBurger)
+                : () => router.push("log-in")
+            }
+          >
+            <div className="relative col-start-1 w-fit h-fit place-self-center px-3">
+              {userAuthenticated ? userAuthenticated.toUpperCase() : "LOG IN"}
+            </div>
+          </div>
+          {showDropdownBurger && (
+            <div
+              className="absolute z-10 w-full h-fit row-start-2 border-x-2 border-b-2 border-white grid grid-flow-col auto-cols-[auto auto]  font-awkward text-white text-[1.3em] p-2 cursor-pointer"
+              onClick={() => {
+                router.push("dashboard");
+                setShowDropdownBurger(false);
+              }}
+            >
+              <div className="relative col-start-1 w-fit h-fit place-self-center">
+                DASHBOARD
               </div>
-            );
-          }}
-        </ConnectButton.Custom>
+            </div>
+          )}
+        </div>
+        <div className="relative w-fit h-fit col-start-2">
+          <ConnectButton.Custom>
+            {({
+              account,
+              chain,
+              openAccountModal,
+              openChainModal,
+              openConnectModal,
+              authenticationStatus,
+              mounted,
+            }: any) => {
+              const ready = mounted && authenticationStatus !== "loading";
+              const connected =
+                ready &&
+                account &&
+                chain &&
+                (!authenticationStatus ||
+                  authenticationStatus === "authenticated");
+
+              return (
+                <div
+                  {...(!ready && {
+                    "aria-hidden": true,
+                    style: {
+                      opacity: 0,
+                      pointerEvents: "none",
+                      userSelect: "none",
+                      zIndex: "0",
+                    },
+                  })}
+                >
+                  {(() => {
+                    if (!connected) {
+                      return (
+                        <p
+                          onClick={openConnectModal}
+                          className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
+                        >
+                          CONNECT WALLET
+                        </p>
+                      );
+                    }
+
+                    if (chain.unsupported) {
+                      return (
+                        <p
+                          onClick={openChainModal}
+                          className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
+                        >
+                          SWITCH NETWORK
+                          <span className="relative h-4 w-4 -top-4">
+                            <span className="animate-ping absolute h-4 w-4 rounded-full opacity-75 bg-red-600"></span>
+                            <span className="absolute inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+                          </span>
+                        </p>
+                      );
+                    }
+
+                    return (
+                      <div
+                        style={{ display: "flex", gap: 1, zIndex: "30" }}
+                        className="font-awkward text-white cursor-pointer border-2 border-white p-2 text-[1.3em]"
+                      >
+                        <p onClick={openAccountModal}>{account.displayName}</p>
+                      </div>
+                    );
+                  })()}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
+        </div>
       </div>
     </div>
   );
