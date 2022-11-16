@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import { FormEvent } from "react";
-import { useDispatch } from "react-redux";
 import useConnect from "../components/Connect/hooks/useConnect";
 
 const LogIn: NextPage = (): JSX.Element => {

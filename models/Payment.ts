@@ -1,13 +1,22 @@
 import { Schema, models, model } from "mongoose";
 
-const PaymentSchema = new Schema({
+interface IPayment {
+  wallet: string;
+  stripe: string;
+}
+
+const PaymentSchema = new Schema<IPayment>({
   wallet: {
     type: String,
     required: true,
   },
-  stripe: {},
+  stripe: {
+    type: String,
+    required: true,
+  },
 });
 
-const Payment = models.Payment || model("Product", PaymentSchema);
+const Payment: any =
+  models.Payment || model<IPayment>("Product", PaymentSchema);
 
 export default Payment;

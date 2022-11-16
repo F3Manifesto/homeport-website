@@ -1,6 +1,11 @@
 import { Schema, models, model } from "mongoose";
 
-const DropTypeSchema = new Schema({
+interface IDropType {
+  title: string;
+  description: string;
+}
+
+const DropTypeSchema = new Schema<IDropType>({
   title: {
     type: String,
     unique: true,
@@ -12,6 +17,7 @@ const DropTypeSchema = new Schema({
   },
 });
 
-const DropType = models.DropType || model("DropType", DropTypeSchema);
+const DropType: any =
+  models.DropType || model<IDropType>("DropType", DropTypeSchema);
 
 export default DropType;

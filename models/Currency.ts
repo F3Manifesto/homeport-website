@@ -1,6 +1,16 @@
 import { Schema, models, model } from "mongoose";
 
-const CurrencySchema = new Schema({
+interface ICurrency {
+  itemSlug: string;
+  itemName: string;
+  usdPrice: number;
+  ethPrice: number;
+  monaPrice: number;
+  usdtPrice: number;
+  maticPrice: number;
+}
+
+const CurrencySchema = new Schema<ICurrency>({
   itemSlug: {
     type: String,
     required: true,
@@ -31,6 +41,7 @@ const CurrencySchema = new Schema({
   },
 });
 
-const Currency = models.Currency || model("Currency", CurrencySchema);
+const Currency: any =
+  models.Currency || model<ICurrency>("Currency", CurrencySchema);
 
 export default Currency;

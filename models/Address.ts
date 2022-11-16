@@ -1,6 +1,18 @@
 import { Schema, models, model } from "mongoose";
 
-const AddressSchema = new Schema({
+interface IAddress {
+  firstName: string;
+  lastName: string;
+  email: string;
+  countryLocation: string;
+  street: string;
+  buildingAparmentNo: number;
+  stateProvince: string;
+  city: string;
+  zipCode: number;
+}
+
+const AddressSchema = new Schema<IAddress>({
   firstName: {
     type: String,
     required: true,
@@ -39,6 +51,7 @@ const AddressSchema = new Schema({
   },
 });
 
-const Address = models.Address || model("Address", AddressSchema);
+const Address: any =
+  models.Address || model<IAddress>("Address", AddressSchema);
 
 export default Address;
