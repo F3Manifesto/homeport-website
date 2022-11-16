@@ -23,14 +23,15 @@ const ProductSchema = new Schema<IProduct>({
   dropType: { type: String, required: true },
   dropFormat: { type: [String], required: true },
   quantity: { type: Number, required: true },
-  mainImage: { data: Buffer, contentType: String },
-  featuredImages: { data: Buffer, contentType: [String] },
+  mainImage: { type: String, required: true },
+  featuredImages: { type: [String], required: true },
   slug: {
     type: String,
     required: true,
   },
 });
 
-const Product: any = models.Product || model<IProduct>("Product", ProductSchema);
+const Product: any =
+  models.Product || model<IProduct>("Product", ProductSchema);
 
 export default Product;

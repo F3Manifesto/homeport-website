@@ -7,7 +7,6 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { setDropType } from "../../../redux/reducers/dropTypeSlice";
 import { useEffect } from "react";
-import { setType } from "../../../redux/reducers/dashSlice";
 
 const Form: FunctionComponent<FormProps> = ({
   productSuccess,
@@ -23,6 +22,9 @@ const Form: FunctionComponent<FormProps> = ({
   addMutation,
   featuredFiles,
   mainFile,
+  hashImageStringOne,
+  imageUploading,
+  hashImageStringMultiple,
 }): JSX.Element => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -154,7 +156,10 @@ const Form: FunctionComponent<FormProps> = ({
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
               className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
-              onChange={(e: FormEvent) => showFileMainImage(e, "MainImage")}
+              onChange={(e: FormEvent) => {
+                showFileMainImage(e, "MainImage");
+                hashImageStringOne(e);
+              }}
             >
               <TbPlus size={25} color="black" />
               <input
@@ -164,7 +169,9 @@ const Form: FunctionComponent<FormProps> = ({
                 multiple={false}
                 name="mainImage"
                 disabled={
-                  productSuccess || addMutation.isLoading ? true : false
+                  productSuccess || imageUploading || addMutation.isLoading
+                    ? true
+                    : false
                 }
               />
             </label>
@@ -193,9 +200,10 @@ const Form: FunctionComponent<FormProps> = ({
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
               className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
-              onChange={(e: FormEvent) =>
-                showFileMainImage(e, "FeaturedImages")
-              }
+              onChange={(e: FormEvent) => {
+                showFileMainImage(e, "FeaturedImages");
+                hashImageStringMultiple(e);
+              }}
             >
               <TbPlus size={25} color="black" />
               <input
@@ -205,17 +213,19 @@ const Form: FunctionComponent<FormProps> = ({
                 multiple={true}
                 name="featuredImages"
                 disabled={
-                  productSuccess || addMutation.isLoading ? true : false
+                  productSuccess || imageUploading || addMutation.isLoading
+                    ? true
+                    : false
                 }
               />
             </label>
           </div>
         </div>
       </div>
-      {addMutation.isLoading ? (
+      {addMutation.isLoading || imageUploading ? (
         <div className="relative w-full h-10 row-start-6 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB animate-spin">
-            <AiOutlineLoading size={5} color={"white"} />
+            <AiOutlineLoading size={20} color={"black"} />
           </div>
         </div>
       ) : addMutation.isError ? (

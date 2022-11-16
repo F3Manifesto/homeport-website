@@ -13,6 +13,7 @@ import { setDropFormat } from "../../../../redux/reducers/dropFormatSlice";
 
 const useAddProduct = (): UseAddProductResult => {
   const dispatch = useDispatch();
+  const [imageUploading, setImageUploading] = useState<boolean>(false);
   const dropTypeName = useSelector(
     (state: RootState) => state.app.dropTypeReducer.value
   );
@@ -38,8 +39,10 @@ const useAddProduct = (): UseAddProductResult => {
   ];
 
   const [openDropDown, setOpenDropDown] = useState<boolean>(false);
-  const [mainFile, setMainFile] = useState<Buffer>();
-  const [featuredFiles, setFeaturedFiles] = useState<string[]>();
+  const [mainFile, setMainFile] = useState<string | undefined>();
+  const [mappedMainFile, setMappedMainFile] = useState<string>();
+  const [featuredFiles, setFeaturedFiles] = useState<string[]>([]);
+  const [mappedFeaturedFiles, setMappedFeaturedFiles] = useState<string[]>([]);
   let newDropFormatArray: string[] = [];
 
   const handleDropFormatArray = (e: FormEvent): void => {
@@ -72,23 +75,22 @@ const useAddProduct = (): UseAddProductResult => {
       alert("Please select one or multiple drop formats");
       return;
     } else {
-      // const img = fs.readFileSync(mainFile as any);
-      // const base64 = img.toString("base64");
-      // const mainImage = new Buffer(base64, "base64");
       const productTypeData: ProductInterface = {
         name: (e.target as HTMLFormElement).productName.value,
         description: (e.target as HTMLFormElement).productDescription.value,
         dropType: dropTypeName,
         dropFormat: dropFormatArray,
         quantity: (e.target as HTMLFormElement).quantity.value,
-        mainImage: mainFile,
-        // featuredImages: ["asdf", "sadf", "asdfda"],
+        mainImage: mappedMainFile,
+        featuredImages: mappedFeaturedFiles,
         slug: (e.target as HTMLFormElement).productName.value
           .replace(/ /g, "-")
           .replace(/[^\w-/]+/g, "")
           .toLowerCase(),
       };
       addMutation.mutate(productTypeData);
+      setMainFile(undefined);
+      setFeaturedFiles([]);
       (e.target as HTMLFormElement).reset();
       dispatch(setDropFormat([]));
       dispatch(setDropType("Select Drop Type"));
@@ -114,6 +116,68 @@ const useAddProduct = (): UseAddProductResult => {
     }
   };
 
+  const hashImageStringOne = async (e: FormEvent): Promise<any> => {
+    let imageData = new FormData();
+    let finalImages: any[] = [];
+    setImageUploading(true);
+    imageData.append("image", (e.target as HTMLFormElement).files[0]);
+    try {
+      const response = await fetch("/api/ipfs", {
+        method: "POST",
+        body: imageData,
+      });
+      if (response.status !== 200) {
+        console.log("ERROR", response);
+        setImageUploading(false);
+      } else {
+        let responseJSON = await response.json();
+        finalImages.push(responseJSON.cid);
+        setImageUploading(false);
+        setMappedMainFile(finalImages[0]);
+        return finalImages;
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
+
+  const hashImageStringMultiple = async (e: FormEvent): Promise<any> => {
+    let finalImages: any[] = [];
+    setImageUploading(true);
+    Array.from((e.target as HTMLFormElement).files).map(
+      async (file: any, index: number) => {
+        let imageData = new FormData();
+        imageData.append(
+          `image${index}`,
+          (e.target as HTMLFormElement).files[index]
+        );
+        try {
+          const response = await fetch("/api/ipfs", {
+            method: "POST",
+            body: imageData,
+          });
+          if (response.status !== 200) {
+            console.log("ERROR", response);
+            setImageUploading(false);
+          } else {
+            let responseJSON = await response.json();
+            finalImages.push(responseJSON.cid);
+            console.log(finalImages);
+            if (
+              finalImages.length === (e.target as HTMLFormElement).files.length
+            ) {
+              setImageUploading(false);
+            }
+            return finalImages;
+          }
+        } catch (err: any) {
+          console.error(err.message);
+        }
+      }
+    );
+    setMappedFeaturedFiles(finalImages);
+  };
+
   return {
     data,
     isLoading,
@@ -129,6 +193,9 @@ const useAddProduct = (): UseAddProductResult => {
     mainFile,
     featuredFiles,
     handleDropFormatArray,
+    hashImageStringOne,
+    imageUploading,
+    hashImageStringMultiple,
   };
 };
 

@@ -31,10 +31,16 @@ const Map: FunctionComponent<MapProps> = ({
         {productData?.map((item: ProductInterface, index: number) => {
           return (
             <div
-              className="relative w-80 h-60 bg-grayBlue font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer"
+              className="relative w-80 h-60 bg-black font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer"
               key={index}
             >
-              <div className="relative w-fit h-fit place-self-center col-start-1 text-black">
+              {item.mainImage && (
+                <img
+                  src={`https://${item.mainImage}.ipfs.w3s.link`}
+                  className="absolute w-full h-full object-cover opacity-60"
+                />
+              )}
+              <div className="relative w-fit h-fit place-self-center col-start-1 text-white text-xl">
                 {item.name}
               </div>
               {
@@ -69,7 +75,6 @@ const Map: FunctionComponent<MapProps> = ({
                           );
                           handleModalTop();
                           setDeleteModal(true);
-                          
                         }}
                       />
                     </div>

@@ -112,7 +112,7 @@ const useOrderValue = (): UseOrderValueResult => {
 
   useMemo(async () => {
     const data = await getMONAPrice();
-    setMonaPrice(data.data.monavale.usd);
+    setMonaPrice(data?.data?.monavale?.usd);
   }, []);
 
   const showSelectedPrice = (): void => {

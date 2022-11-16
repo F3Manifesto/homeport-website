@@ -11,6 +11,8 @@ import currencyReducer from "./reducers/currencySlice";
 import activeReducer from "./reducers/activeSlice";
 import userReducer from "./reducers/userSlice";
 import selectedDropReducer from "./reducers/selectedDropSlice";
+import mainImageReducer from "./reducers/mainImageSlice";
+import featuredImagesReducer from "./reducers/featuredImageSlice";
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -26,6 +28,8 @@ const reducer = combineReducers({
   activeReducer,
   selectedDropReducer,
   userReducer,
+  mainImageReducer,
+  featuredImagesReducer,
 });
 
 export const store = configureStore({

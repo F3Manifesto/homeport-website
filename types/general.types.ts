@@ -140,8 +140,8 @@ export interface ProductInterface {
   dropType: string;
   dropFormat: string[];
   quantity: number;
-  mainImage?: any;
-  featuredImages?: Buffer[];
+  mainImage?: string;
+  featuredImages?: string[];
   slug: string;
 }
 
@@ -240,6 +240,9 @@ export type UseAddProductResult = {
   mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imageUploading: boolean;
+  hashImageStringMultiple: (e: FormEvent) => Promise<any>;
 };
 
 export type MapProps = {
@@ -265,6 +268,9 @@ export type FormProps = {
   addMutation: any;
   dropTypeName: string;
   setOpenDropDown: (e: boolean) => void;
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imageUploading: boolean;
+  hashImageStringMultiple: (e: FormEvent) => Promise<any>;
 };
 
 export type SwitcherProps = {
@@ -288,6 +294,9 @@ export type SwitcherProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imageUploading: boolean;
+  hashImageStringMultiple: (e: FormEvent) => Promise<any>;
 };
 
 export type UpdateFormProps = {

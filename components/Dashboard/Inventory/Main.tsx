@@ -29,6 +29,9 @@ const Main: FunctionComponent<MainInventoryProps> = ({
     mainFile,
     featuredFiles,
     handleDropFormatArray,
+    hashImageStringOne,
+    imageUploading,
+    hashImageStringMultiple,
   } = useAddProduct();
   const { setDeleteModal, setAddPricingModal } = useContext(GlobalContext);
   const { currencyData } = useCheckCurrency();
@@ -88,6 +91,9 @@ const Main: FunctionComponent<MainInventoryProps> = ({
           setSuccess={setSuccess}
           handleProductSubmitUpdate={handleProductSubmitUpdate}
           handleExistingDropFormatArray={handleExistingDropFormatArray}
+          hashImageStringOne={hashImageStringOne}
+          imageUploading={imageUploading}
+          hashImageStringMultiple={hashImageStringMultiple}
         />
       </div>
       <div className="relative w-full h-fit col-start-2 grid grid-flow-row auto-rows-[auto auto] justify-self-end">

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addUser, getUsers } from "../../../lib/helpers";
 import { setUser } from "../../../redux/reducers/userSlice";
 import { UseConnectResult, UserInterface } from "../../../types/general.types";
+import lodash from "lodash";
 
 const useConnect = (): UseConnectResult => {
   const { data } = useQuery("users", getUsers);
@@ -30,16 +31,17 @@ const useConnect = (): UseConnectResult => {
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
-    const newData = data?.filter(
-      (user: any) =>
-        user.username === (e.target as HTMLFormElement).username.value &&
-        user.password === (e.target as HTMLFormElement).password.value
+    const newData = lodash.filter(
+      data,
+      (item) =>
+        item.password === (e.target as HTMLFormElement).password.value &&
+        item.username === (e.target as HTMLFormElement).username.value
     );
     if (newData?.length !== 0) {
       dispatch(
         setUser({
           actionValue: true,
-          actionId: (newData as any)[0]?._id,
+          actionId: newData[0]._id,
         })
       );
       router.push("/dashboard");
