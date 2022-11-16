@@ -1,6 +1,6 @@
 import { AggregatorInterface } from "../types/general.types";
 
-export const BASE_URL: string = "http://localhost:3000/";
+export const BASE_URL: string = "https://dms-dbpbznjdt-digitalax.vercel.app/";
 export const ETHUSD: string = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
 export const USDTUSD: string = "0x3E7d1eAB13ad0104d2750B8863b489D65364e32D";
 export const MATICUSD: string = "0x7bAC85A8a13A4BcD8abb3eB7d6b4d632c5a57676";
