@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { UseImageSliderResult } from "../../../types/general.types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const useImageSlider = (): UseImageSliderResult => {
-  const imageList: string[] = ["extra", "shoes"];
+  const mainImage = useSelector(
+    (state: RootState) => state.app.mainImageReducer.value
+  );
+  const featuredImages = useSelector(
+    (state: RootState) => state.app.featuredImagesReducer.value
+  );
+  const imageList: string[] = featuredImages as string[];
   const [imageIndex, setImageIndex] = useState<number>(0);
-  const [featuredImage, setFeaturedImage] = useState<string>("extra");
-
+  const [featuredImage, setFeaturedImage] = useState<string>(
+    mainImage as string
+  );
   const nextImage = (): void => {
     if (imageIndex === imageList.length - 1) {
       setImageIndex(0);

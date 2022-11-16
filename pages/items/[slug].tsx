@@ -1,12 +1,14 @@
 import { NextPage } from "next";
-import Purchase from "../../components/Bug/Purchase";
-import Banner from "../../components/Bug/Banner";
-import Specifications from "../../components/Bug/Specifications";
+import Purchase from "../../components/Slug/Purchase";
+import Banner from "../../components/Slug/Banner";
+import Specifications from "../../components/Slug/Specifications";
 import { ProductInterface, SlugProps } from "../../types/general.types";
 import { BASE_URL } from "../../lib/constants";
 import { useDispatch } from "react-redux";
 import { setCurrency } from "../../redux/reducers/currencySlice";
 import { useEffect } from "react";
+import { setMain } from "../../redux/reducers/mainImageSlice";
+import { setFeatured } from "../../redux/reducers/featuredImageSlice";
 
 export const getStaticPaths = async () => {
   const response = await fetch(`${BASE_URL}/api/products`);
@@ -42,6 +44,8 @@ const Slug: NextPage<SlugProps> = ({ item }): JSX.Element => {
         actionSlug: item.slug,
       })
     );
+    dispatch(setMain(item.mainImage as string));
+    dispatch(setFeatured(item.featuredImages as string[]));
   }, []);
 
   return (

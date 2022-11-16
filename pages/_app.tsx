@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Header from "../components/Arrows/Header";
-import Footer from "../components/Arrows/Footer";
+import Header from "../components/Layout/Header";
+import Footer from "../components/Layout/Footer";
 import { createContext, useState } from "react";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";

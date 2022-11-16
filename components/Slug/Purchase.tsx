@@ -9,10 +9,10 @@ const Purchase: FunctionComponent<PurchaseProps> = ({ item }): JSX.Element => {
   return (
     <div className="relative grid grid-flow-col auto-cols-[auto auto] w-full h-full gap-40 justify-center">
       <div className="relative col-start-1 w-fit h-full grid grid-flow-row auto-rows-[auto auto] p-36 pr-0 gap-8">
-        <ImageSlider />
+        <ImageSlider item={item}/>
         <div className="relative w-96 h-fit row-start-2 text-left text-white font-awkward text-[2.3vw] leading-5">
           LESS DISTRACTIONS, MORE SOUL, JUST PURE INSTINCT, FORMED AS A
-          MACHINIE, TOLD THROUGH BEAUTIFFUL SYMBOLS, DEEPER INTERACTIONS.
+          MACHINE, TOLD THROUGH BEAUTIFFUL SYMBOLS, DEEPER INTERACTIONS.
         </div>
         <CollectionTags item={item} />
       </div>
