@@ -29,7 +29,7 @@ const AddPricingModal: FunctionComponent<AddPricingModalProps> = ({
           />
         </div>
         <div className="relative w-1/2 text-center h-fit text-white font-economica row-start-2 justify-self-center text-2xl">
-          You&apos;re product won't be live until you add pricing. Would you like to
+          You&apos;re product won&apos;t be live until you add pricing. Would you like to
           add pricing now?
         </div>
         <div className="relative w-fit h-fit text-white font-economica row-start-3 grid grid-flow-col auto-cols-[auto auto] justify-self-center gap-3 pb-10 pt-4">
