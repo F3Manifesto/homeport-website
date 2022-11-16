@@ -24,6 +24,7 @@ export const getStaticPaths = async () => {
   return {
     paths,
     fallback: false,
+    revalidate: 30,
   };
 };
 
