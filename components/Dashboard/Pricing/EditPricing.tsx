@@ -30,7 +30,14 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
       }
     >
       <div className="relative w-full h-full row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-12">
-        <div className="relative w-72 h-72 rounded-md bg-grayBlue grid grid-flow-col auto-cols-[auto auto] col-start-1"></div>
+        {productInfo.mainImage ? (
+          <img
+            src={`https://${productInfo.mainImage}.ipfs.w3s.link`}
+            className="relative col-start-1 w-72 h-72 object-cover"
+          />
+        ) : (
+          <div className="relative w-72 h-72 rounded-md bg-grayBlue col-start-1"></div>
+        )}
         <div className="relative w-full h-fit col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-3">
           <div className="relative w-fit h-fit text-white font-economicaB row-start-1 justify-self-end text-right bg-shaded">
             {productInfo.name ? productInfo.name : "Product Name"}

@@ -43,6 +43,7 @@ const AddPricingModal: FunctionComponent<AddPricingModalProps> = ({
                   actionSlug: productInfo?.slug,
                   actionDescription: productInfo?.description,
                   actionDropType: productInfo?.dropType,
+                  actionMainImage: productInfo?.mainImage
                 })
               );
               setAddPricingModal(false);

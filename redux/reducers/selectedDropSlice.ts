@@ -5,6 +5,7 @@ export interface SelectedState {
   slug?: string;
   description?: string;
   dropType?: string;
+  mainImage?: string;
 }
 
 const initialPriceState: SelectedState = {
@@ -12,6 +13,7 @@ const initialPriceState: SelectedState = {
   slug: undefined,
   description: undefined,
   dropType: undefined,
+  mainImage: undefined,
 };
 
 export const selectedSlice = createSlice({
@@ -20,12 +22,21 @@ export const selectedSlice = createSlice({
   reducers: {
     setSelected: (
       state: SelectedState,
-      { payload: { actionName, actionSlug, actionDescription, actionDropType } }
+      {
+        payload: {
+          actionName,
+          actionSlug,
+          actionDescription,
+          actionDropType,
+          actionMainImage,
+        },
+      }
     ) => {
       state.name = actionName;
       state.slug = actionSlug;
       state.description = actionDescription;
       state.dropType = actionDropType;
+      state.mainImage = actionMainImage;
     },
   },
 });

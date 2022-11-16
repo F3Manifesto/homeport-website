@@ -469,3 +469,19 @@ export type AdminMainProps = {
 export type SwitcherDropProps = {
   handleModalTop: () => void;
 };
+
+export type UserInfoProps = {
+  admins: UserInterface[] | undefined;
+  show: boolean;
+  setShow: (e: boolean) => void;
+  setDeleteModal: (e: boolean) => void;
+  setCantDeleteAdmin: (e: boolean) => void;
+  handleModalTop: () => void;
+};
+
+export type UseAdminResults = {
+  admins: UserInterface[] | undefined;
+  show: boolean;
+  setShow: (e: boolean) => void;
+  handleAdminDelete: () => Promise<void>;
+};

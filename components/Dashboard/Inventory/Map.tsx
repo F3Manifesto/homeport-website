@@ -97,6 +97,7 @@ const Map: FunctionComponent<MapProps> = ({
                                     actionSlug: item.slug,
                                     actionDescription: item.description,
                                     actionDropType: item.dropType,
+                                    actionMainImage: item.mainImage,
                                   })
                                 );
                                 setAddPricingModal(true);
@@ -124,6 +125,7 @@ const Map: FunctionComponent<MapProps> = ({
                               actionSlug: item.slug,
                               actionDescription: item.description,
                               actionDropType: item.dropType,
+                              actionMainImage: item.mainImage,
                             })
                           );
                           dispatch(setType("PRICING"));

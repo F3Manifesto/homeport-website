@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { deleteUser, getUsers } from "../../../../lib/helpers";
 import { GlobalContext } from "../../../../pages/_app";
 import { RootState } from "../../../../redux/store";
+import { UseAdminResults } from "../../../../types/general.types";
 
-const useAdmin = () => {
+const useAdmin = (): UseAdminResults => {
   const [show, setShow] = useState<boolean>();
   const { data: admins } = useQuery("users", getUsers);
   const queryClient = useQueryClient();

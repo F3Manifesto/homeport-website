@@ -55,6 +55,7 @@ const SelectedDrop: FunctionComponent<SelectedDropProps> = ({
                                   actionSlug: item.slug,
                                   actionDescription: item.description,
                                   actionDropType: item.dropType,
+                                  actionMainImage: item.mainImage,
                                 })
                               )
                             }
