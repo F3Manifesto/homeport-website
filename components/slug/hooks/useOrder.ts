@@ -27,8 +27,6 @@ const useOrder = (): UseOrderResult => {
     getCurrency(currencySlug as string)
   );
 
-  console.log(currencyData);
-
   const USDPRICESET: number = currencyData?.usdPrice as number;
   const USDTPRICESET: number = currencyData?.usdtPrice as number;
   const ETHPRICESET: number = currencyData?.ethPrice as number;

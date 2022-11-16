@@ -25,6 +25,8 @@ export const GlobalContextDefault = {
   setCantDeleteDrop: (cantDeleteDrop: boolean) => {},
   addPricingModal: false,
   setAddPricingModal: (addPricingModal: boolean) => {},
+  cantDeleteAdmin: false,
+  setCantDeleteAdmin: (cantDeleteAdmin: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
@@ -57,6 +59,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [addPricingModal, setAddPricingModal] = useState<boolean>(
     GlobalContextDefault.addPricingModal
   );
+  const [cantDeleteAdmin, setCantDeleteAdmin] = useState<boolean>(
+    GlobalContextDefault.cantDeleteAdmin
+  );
   const landTop = useRef<null | HTMLDivElement>(null);
   const handleLandTop = (): void => {
     landTop.current?.scrollIntoView({ behavior: "smooth" });
@@ -78,6 +83,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 setDeleteModal,
                 cantDeleteDrop,
                 setCantDeleteDrop,
+                setCantDeleteAdmin,
+                cantDeleteAdmin,
               }}
             >
               <div className="relative w-screen max-w-screen overflow-hidden h-auto bg-black selection:bg-lBlue">

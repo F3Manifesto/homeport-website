@@ -208,6 +208,7 @@ export type DeleteModalProps = {
   setDeleteModal: (e: boolean) => void;
   handleDropDelete: () => Promise<void>;
   handleProductDelete: () => Promise<void>;
+  handleAdminDelete: () => Promise<void>;
 };
 
 export type UseUpdateProductResult = {
@@ -357,6 +358,7 @@ export type useDetailsResults = {
 };
 
 export interface UserInterface {
+  _id?: string;
   username: string;
   password: string;
 }
@@ -427,4 +429,8 @@ export type SelectedDropProps = {
 export type AddPricingModalProps = {
   setAddPricingModal: (e: boolean) => void;
   handleLandTop: () => void;
+};
+
+export type DeleteAdminProps = {
+  setCantDeleteAdmin: (e: boolean) => void;
 };

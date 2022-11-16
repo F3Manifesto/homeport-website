@@ -2,11 +2,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormEvent } from "react";
 import { useMutation, useQuery } from "react-query";
+import { useDispatch } from "react-redux";
 import { addUser, getUsers } from "../../../lib/helpers";
+import { setUser } from "../../../redux/reducers/userSlice";
 import { UseConnectResult, UserInterface } from "../../../types/general.types";
 
 const useConnect = (): UseConnectResult => {
   const { data } = useQuery("users", getUsers);
+  const dispatch = useDispatch();
   const router = useRouter();
   const [success, setSuccess] = useState<boolean>(false);
   const [foundUser, setFoundUser] = useState<boolean>(true);
@@ -33,6 +36,12 @@ const useConnect = (): UseConnectResult => {
         user.password === (e.target as HTMLFormElement).password.value
     );
     if (newData?.length !== 0) {
+      dispatch(
+        setUser({
+          actionValue: true,
+          actionId: (newData as any)[0]?._id,
+        })
+      );
       router.push("/dashboard");
     } else {
       setFoundUser(false);

@@ -259,3 +259,17 @@ export const getCurrencies = async (req: any, res: any): Promise<void> => {
     return res.status(404).json({ err: err.message });
   }
 };
+
+export const deleteUser = async (req: any, res: any): Promise<void> => {
+  try {
+    const { userId } = req.query;
+    if (userId) {
+      await User.findByIdAndDelete(userId);
+      return res.status(200).json(userId);
+    } else {
+      return res.status(404).json({ err: "User not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};

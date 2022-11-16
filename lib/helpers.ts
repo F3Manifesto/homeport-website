@@ -233,7 +233,6 @@ export const addCurrency = async (
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(CurrencyTypeData),
     };
-    console.log(CurrencyTypeData);
     const response = await fetch(`${BASE_URL}/api/currency`, Options);
     const currencyData: CurrencyInterface = await response.json();
     return currencyData;
@@ -282,6 +281,22 @@ export const getCurrencies = async (): Promise<
     const response = await fetch(`${BASE_URL}/api/currency`);
     const currencies: CurrencyInterface[] = await response.json();
     return currencies;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const deleteUser = async (
+  userId: string
+): Promise<UserInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(`${BASE_URL}/api/user/${userId}`, Options);
+    const user: UserInterface = await response.json();
+    return user;
   } catch (err: any) {
     console.error(err.message);
   }
