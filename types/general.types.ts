@@ -34,6 +34,10 @@ export type UseBannerResult = {
   setDirection: (e: number) => void;
 };
 
+export type ImageSliderProps = {
+  item: ProductInterface;
+};
+
 export type UseImageSliderResult = {
   nextImage: () => void;
   imageList: string[];
@@ -223,6 +227,9 @@ export type UseUpdateProductResult = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
+  hashImageStringOneUpdated: (e: FormEvent) => Promise<any>;
+  imageUploadingUpdated: boolean;
+  hashImageStringMultipleUpdated: (e: FormEvent) => Promise<any>;
 };
 
 export type UseAddProductResult = {
@@ -237,8 +244,6 @@ export type UseAddProductResult = {
   openDropDown: boolean;
   setOpenDropDown: (e: boolean) => void;
   showFileMainImage: (e: FormEvent, name: string) => void;
-  mainFile: Buffer | undefined | MediaSource | string;
-  featuredFiles: string[] | undefined;
   handleDropFormatArray: (e: FormEvent) => void;
   hashImageStringOne: (e: FormEvent) => Promise<any>;
   imageUploading: boolean;
@@ -297,6 +302,9 @@ export type SwitcherProps = {
   hashImageStringOne: (e: FormEvent) => Promise<any>;
   imageUploading: boolean;
   hashImageStringMultiple: (e: FormEvent) => Promise<any>;
+  hashImageStringOneUpdated: (e: FormEvent) => Promise<any>;
+  imageUploadingUpdated: boolean;
+  hashImageStringMultipleUpdated: (e: FormEvent) => Promise<any>;
 };
 
 export type UpdateFormProps = {
@@ -308,7 +316,6 @@ export type UpdateFormProps = {
   showFileMainImage: (e: FormEvent, name: string) => void;
   mainFile: Buffer | undefined | MediaSource | string;
   featuredFiles: string[] | undefined;
-  handleDropFormatArray: (e: FormEvent) => void;
   updatedProductData: any;
   setSuccess: (e: boolean) => void;
   success: boolean;
@@ -317,6 +324,9 @@ export type UpdateFormProps = {
   handleExistingDropFormatArray: (e: string) => void;
   handleDispatchFormatArray: (e: string) => void;
   newDropFormatArray: string[];
+  hashImageStringOneUpdated: (e: FormEvent) => Promise<any>;
+  imageUploadingUpdated: boolean;
+  hashImageStringMultipleUpdated: (e: FormEvent) => Promise<any>;
 };
 
 export type SlugProps = {

@@ -27,6 +27,10 @@ export const GlobalContextDefault = {
   setAddPricingModal: (addPricingModal: boolean) => {},
   cantDeleteAdmin: false,
   setCantDeleteAdmin: (cantDeleteAdmin: boolean) => {},
+  mainFile: undefined,
+  setMainFile: (cantDeleteAdmin: any) => {},
+  featuredFiles: [],
+  setFeaturedFiles: (featuredFiles: any) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
@@ -66,6 +70,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const handleLandTop = (): void => {
     landTop.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const [mainFile, setMainFile] = useState<any>(GlobalContextDefault.mainFile);
+  const [featuredFiles, setFeaturedFiles] = useState<any>(
+    GlobalContextDefault.featuredFiles
+  );
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -76,6 +84,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 quantity,
                 setQuantity,
                 itemName,
+                mainFile,
+                setMainFile,
+                featuredFiles,
+                setFeaturedFiles,
                 setItemName,
                 addPricingModal,
                 setAddPricingModal,

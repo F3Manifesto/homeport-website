@@ -29,6 +29,9 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
   hashImageStringOne,
   hashImageStringMultiple,
   imageUploading,
+  imageUploadingUpdated,
+  hashImageStringOneUpdated,
+  hashImageStringMultipleUpdated,
 }): JSX.Element => {
   let action = "INVENTORY_ADD";
   const displaySection = useSelector(
@@ -57,7 +60,6 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           mainFile={mainFile}
           featuredFiles={featuredFiles}
           handleProductSubmitUpdate={handleProductSubmitUpdate}
-          handleDropFormatArray={handleDropFormatArray}
           data={data}
           updatedProductData={updatedProductData}
           success={success}
@@ -65,6 +67,9 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           setSuccess={setSuccess}
           updatedMutation={updatedMutation}
           handleExistingDropFormatArray={handleExistingDropFormatArray}
+          hashImageStringOneUpdated={hashImageStringOneUpdated}
+          imageUploadingUpdated={imageUploadingUpdated}
+          hashImageStringMultipleUpdated={hashImageStringMultipleUpdated}
         />
       );
 

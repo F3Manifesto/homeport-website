@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 import { addProduct, getProducts } from "../../../../lib/helpers";
 import { useMutation } from "react-query";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import {
   ProductInterface,
   UseAddProductResult,
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDropType } from "../../../../redux/reducers/dropTypeSlice";
 import { RootState } from "../../../../redux/store";
 import { setDropFormat } from "../../../../redux/reducers/dropFormatSlice";
+import { GlobalContext } from "../../../../pages/_app";
 
 const useAddProduct = (): UseAddProductResult => {
   const dispatch = useDispatch();
@@ -39,9 +40,8 @@ const useAddProduct = (): UseAddProductResult => {
   ];
 
   const [openDropDown, setOpenDropDown] = useState<boolean>(false);
-  const [mainFile, setMainFile] = useState<string | undefined>();
-  const [mappedMainFile, setMappedMainFile] = useState<string>();
-  const [featuredFiles, setFeaturedFiles] = useState<string[]>([]);
+  const [mappedMainFile, setMappedMainFile] = useState<string | undefined>();
+  const { setFeaturedFiles, setMainFile } = useContext(GlobalContext);
   const [mappedFeaturedFiles, setMappedFeaturedFiles] = useState<string[]>([]);
   let newDropFormatArray: string[] = [];
 
@@ -162,7 +162,6 @@ const useAddProduct = (): UseAddProductResult => {
           } else {
             let responseJSON = await response.json();
             finalImages.push(responseJSON.cid);
-            console.log(finalImages);
             if (
               finalImages.length === (e.target as HTMLFormElement).files.length
             ) {
@@ -190,8 +189,6 @@ const useAddProduct = (): UseAddProductResult => {
     openDropDown,
     setOpenDropDown,
     showFileMainImage,
-    mainFile,
-    featuredFiles,
     handleDropFormatArray,
     hashImageStringOne,
     imageUploading,

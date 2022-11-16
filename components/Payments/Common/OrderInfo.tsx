@@ -13,14 +13,10 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
   return (
     <div className="relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] place-self-start gap-4">
       <div className="relative w-full h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] gap-10">
-        <div className="relative w-80 h-full bg-lBlue col-start-1">
-          <Image
-            src="/images/extra.png"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-        </div>
+        <img
+          className="relative w-80 h-full bg-lBlue col-start-1 object-cover"
+          src={`https://${item.mainImage}.ipfs.w3s.link`}
+        />
         <div className="relative w-96 h-fit text-white font-economica text-3xl col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-8">
           <div className="relative w-fit h-fit row-start-1 text-7xl">
             {item.name}
@@ -52,14 +48,14 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
               </div>
             </div>
           </div>
-          <div className="relative w-fit h-fit row-start-5 justify-self-end grid grid-flow-row auto-rows-[auto auto]">
-            <div className="relative w-fit h-fit row-start-1 text-sm text-right justify-self-end">
+          <div className="relative w-fit h-fit row-start-5 justify-self-start grid grid-flow-row auto-rows-[auto auto]">
+            <div className="relative w-fit h-fit row-start-1 text-sm text-right justify-self-start">
               Estimated delivery to United States Nov 18⁠–21
             </div>
-            <div className="relative w-fit h-fit row-start-2 text-sm text-right justify-self-end">
+            <div className="relative w-fit h-fit row-start-2 text-sm text-right justify-self-start">
               • Paper thickness: 10.3 mil (0.26 mm)
             </div>
-            <div className="relative w-fit h-fit row-start-3 text-sm text-right justify-self-end">
+            <div className="relative w-fit h-fit row-start-3 text-sm text-right justify-self-start">
               • Paper weight: 5.57 oz/y² (189 g/m²)
             </div>
           </div>

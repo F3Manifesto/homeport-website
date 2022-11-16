@@ -178,9 +178,9 @@ const Form: FunctionComponent<FormProps> = ({
           </div>
         </div>
         <div className="relative w-full h-48 col-start-2 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
-          {featuredFiles && (
+          {featuredFiles?.length !== 0 && (
             <div className="absolute w-full h-full grid grid-cols-2 auto-rows-auto">
-              {featuredFiles.map((image: string, index: number) => {
+              {featuredFiles?.map((image: string, index: number) => {
                 return (
                   <Image
                     key={index}

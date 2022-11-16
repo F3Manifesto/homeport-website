@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDropType } from "../../../redux/reducers/dropTypeSlice";
 import { setDrop } from "../../../redux/reducers/dropSlice";
 import { RootState } from "../../../redux/store";
-import { setType } from "../../../redux/reducers/dashSlice";
 
 const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   success,
@@ -19,7 +18,6 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   data,
   dropTypeName,
   dropFormat,
-  handleDropFormatArray,
   showFileMainImage,
   updatedMutation,
   featuredFiles,
@@ -28,6 +26,9 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   newDropFormatArray,
   handleExistingDropFormatArray,
   handleDispatchFormatArray,
+  hashImageStringOneUpdated,
+  hashImageStringMultipleUpdated,
+  imageUploadingUpdated,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const dropFormatArray = useSelector(
@@ -136,28 +137,6 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                         : () => handleExistingDropFormatArray(format)
                     }
                   ></div>
-                  {/* <input
-                    key={index}
-                    value={format}
-                    name={format}
-                    type="checkbox"
-                    disabled={
-                      success || updatedMutation.isLoading ? true : false
-                    }
-                    // checked={newDropFormatArray?.includes(format)
-                    //   ? true
-                    //   : false
-                    //   // dropFormatArray.length === 0
-                    //   //   ? newDropFormatArray?.includes(format)
-                    //   //     ? true
-                    //   //     : false
-                    //   //   : dropFormatArray.includes(format)
-                    //   //   ? true
-                    //   //   : false
-                    // }
-                    className="cursor-pointer checked:bg-yellowTheme appearance-none bg-white border border-white h-4 w-4"
-                    
-                  /> */}
                   <div className="col-start-2 relative w-fit h-fit">
                     {format}
                   </div>
@@ -183,13 +162,21 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
       </div>
       <div className="relative gap-6 w-full h-full row-start-5 grid grid-flow-col auto-cols-[auto auto] pt-10">
         <div className="relative w-full h-48 col-start-1 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
-          {mainFile && (
+          {mainFile ? (
             <Image
               src={URL.createObjectURL(mainFile as MediaSource)}
               layout="fill"
               objectFit="cover"
               className="absolute w-full h-full"
             />
+          ) : (
+            updatedProductData?.mainImage &&
+            !mainFile && (
+              <img
+                src={`https://${updatedProductData?.mainImage}.ipfs.w3s.link`}
+                className="w-full h-full absolute object-cover"
+              />
+            )
           )}
           <div className="relative w-fit h-fit self-end justify-self-center row-start-1 text-white text-economica px-4">
             add main image
@@ -197,7 +184,10 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
               className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
-              onChange={(e: FormEvent) => showFileMainImage(e, "MainImage")}
+              onChange={(e: FormEvent) => {
+                showFileMainImage(e, "MainImage");
+                hashImageStringOneUpdated(e);
+              }}
             >
               <TbPlus size={25} color="black" />
               <input
@@ -206,19 +196,23 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                 id="files"
                 multiple={false}
                 name="mainImage"
-                disabled={success || updatedMutation.isLoading ? true : false}
+                disabled={
+                  success || imageUploadingUpdated || updatedMutation.isLoading
+                    ? true
+                    : false
+                }
               />
             </label>
           </div>
         </div>
         <div className="relative w-full h-48 col-start-2 border-2 border-white grid grid-flow-row auto-rows-[auto auto]">
-          {featuredFiles && (
+          {featuredFiles?.length !== 0 && (
             <div className="absolute w-full h-full grid grid-cols-2 auto-rows-auto">
-              {featuredFiles.map((image: any, index: number) => {
+              {featuredFiles?.map((image: string, index: number) => {
                 return (
                   <Image
                     key={index}
-                    src={URL.createObjectURL(image)}
+                    src={image}
                     width={22}
                     height={22}
                     objectFit="cover"
@@ -228,15 +222,32 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
               })}
             </div>
           )}
+          {updatedProductData?.featuredImages.length !== 0 &&
+            featuredFiles?.length === 0 && (
+              <div className="absolute w-full h-full grid grid-cols-2 auto-rows-auto overflow-hidden place-content-center">
+                {updatedProductData?.featuredImages?.map(
+                  (image: any, index: number) => {
+                    return (
+                      <img
+                        key={index}
+                        src={`https://${image}.ipfs.w3s.link`}
+                        className="w-full h-full relative object-cover"
+                      />
+                    );
+                  }
+                )}
+              </div>
+            )}
           <div className="relative w-fit h-fit self-end justify-self-center row-start-1 text-white text-economica">
             add secondary images
           </div>
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
               className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
-              onChange={(e: FormEvent) =>
-                showFileMainImage(e, "FeaturedImages")
-              }
+              onChange={(e: FormEvent) => {
+                showFileMainImage(e, "FeaturedImages");
+                hashImageStringMultipleUpdated(e);
+              }}
             >
               <TbPlus size={25} color="black" />
               <input
@@ -245,16 +256,20 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                 id="files"
                 multiple={true}
                 name="featuredImages"
-                disabled={success || updatedMutation.isLoading ? true : false}
+                disabled={
+                  success || imageUploadingUpdated || updatedMutation.isLoading
+                    ? true
+                    : false
+                }
               />
             </label>
           </div>
         </div>
       </div>
-      {updatedMutation.isLoading ? (
+      {updatedMutation.isLoading || imageUploadingUpdated ? (
         <div className="relative w-full h-10 row-start-6 bg-grayBlue px-5 py-1.5 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-center text-black font-economicaB animate-spin">
-            <AiOutlineLoading size={5} color={"white"} />
+            <AiOutlineLoading size={20} color={"black"} />
           </div>
         </div>
       ) : updatedMutation.isError ? (
