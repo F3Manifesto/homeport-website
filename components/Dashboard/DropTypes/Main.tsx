@@ -14,6 +14,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
   isError,
   data,
   setDeleteModal,
+  handleModalTop,
   productData,
   setCantDeleteDrop,
 }): JSX.Element => {
@@ -67,6 +68,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
                           ).length !== 0
                             ? () => setCantDeleteDrop(true)
                             : () => {
+                                handleModalTop();
                                 dispatch(
                                   setDrop({
                                     actionValue: "DROP_TYPES",

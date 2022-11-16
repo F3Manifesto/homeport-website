@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { GlobalContext } from "../../../pages/_app";
 import { setDrop } from "../../../redux/reducers/dropSlice";
 import { RootState } from "../../../redux/store";
-import { UserInterface } from "../../../types/general.types";
+import { AdminMainProps, UserInterface } from "../../../types/general.types";
 import useAdmin from "./hooks/useAdmin";
 
-const Main: FunctionComponent = (): JSX.Element => {
+const Main: FunctionComponent<AdminMainProps> = ({
+  handleModalTop,
+}): JSX.Element => {
   const { admins, show, setShow } = useAdmin();
   const { setDeleteModal, setCantDeleteAdmin } = useContext(GlobalContext);
   const router = useRouter();
@@ -48,6 +50,7 @@ const Main: FunctionComponent = (): JSX.Element => {
                       item._id === currentAdmin
                         ? () => setCantDeleteAdmin(true)
                         : () => {
+                            handleModalTop();
                             dispatch(
                               setDrop({
                                 actionValue: "ADMIN_DELETE",

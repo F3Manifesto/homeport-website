@@ -11,6 +11,7 @@ import { SwitcherDashboardProps } from "../../types/general.types";
 
 const Switcher: FunctionComponent<SwitcherDashboardProps> = ({
   handleLandTop,
+  handleModalTop,
 }): JSX.Element => {
   let action = "DROP_TYPES";
   const dashSection = useSelector(
@@ -27,10 +28,15 @@ const Switcher: FunctionComponent<SwitcherDashboardProps> = ({
       return <MainDrafts />;
 
     case "ADMIN":
-      return <MainAdmin />;
+      return <MainAdmin handleModalTop={handleModalTop} />;
 
     case "INVENTORY":
-      return <MainInventory handleLandTop={handleLandTop} />;
+      return (
+        <MainInventory
+          handleModalTop={handleModalTop}
+          handleLandTop={handleLandTop}
+        />
+      );
 
     case "PRICING":
       return <MainPricing />;
@@ -39,7 +45,7 @@ const Switcher: FunctionComponent<SwitcherDashboardProps> = ({
       return <MainFulFillment />;
 
     default:
-      return <SwitcherDropTypes />;
+      return <SwitcherDropTypes handleModalTop={handleModalTop} />;
   }
 };
 

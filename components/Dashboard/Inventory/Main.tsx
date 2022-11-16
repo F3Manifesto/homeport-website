@@ -12,6 +12,7 @@ import useCheckCurrency from "./hooks/useCheckCurrency";
 
 const Main: FunctionComponent<MainInventoryProps> = ({
   handleLandTop,
+  handleModalTop,
 }): JSX.Element => {
   const {
     isLoading,
@@ -96,6 +97,7 @@ const Main: FunctionComponent<MainInventoryProps> = ({
         <Map
           productData={productData}
           setDeleteModal={setDeleteModal}
+          handleModalTop={handleModalTop}
           currencyData={currencyData}
           setAddPricingModal={setAddPricingModal}
           handleLandTop={handleLandTop}

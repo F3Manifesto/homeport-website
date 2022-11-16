@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import SideBar from "../components/Dashboard/Sidebar";
 import Switcher from "../components/Dashboard/Switcher";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { GlobalContext } from "./_app";
 import DeleteModal from "../components/Dashboard/Common/DeleteModal";
 import useUpdateDropTypes from "../components/Dashboard/DropTypes/hooks/useUpdateDropTypes";
@@ -36,7 +36,12 @@ const Dashboard: NextPage<DashboardProps> = ({
   );
   const router = useRouter();
 
-  if (userAuthenticated === false) {
+  const modalTop = useRef<null | HTMLDivElement>(null);
+  const handleModalTop = (): void => {
+    modalTop.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  if (!userAuthenticated) {
     return (
       <div className="relative w-screen h-screen text-center text-white font-economica text-3xl grid grid-flow-col auto-cols-[auto auto]">
         <div className="relative w-fit h-fit col-start-1 place-self-center -top-20">
@@ -62,20 +67,33 @@ const Dashboard: NextPage<DashboardProps> = ({
             handleDropDelete={handleDropDelete}
             handleProductDelete={handleProductDelete}
             handleAdminDelete={handleAdminDelete}
+            modalTop={modalTop}
           />
         )}
-        {cantDeleteDrop && <DeleteDrop setCantDeleteDrop={setCantDeleteDrop} />}
+        {cantDeleteDrop && (
+          <DeleteDrop
+            setCantDeleteDrop={setCantDeleteDrop}
+            modalTop={modalTop}
+          />
+        )}
         {addPricingModal && (
           <AddPricingModal
             setAddPricingModal={setAddPricingModal}
             handleLandTop={handleLandTop}
+            modalTop={modalTop}
           />
         )}
         {cantDeleteAdmin && (
-          <DeleteAdmin setCantDeleteAdmin={setCantDeleteAdmin} />
+          <DeleteAdmin
+            setCantDeleteAdmin={setCantDeleteAdmin}
+            modalTop={modalTop}
+          />
         )}
         <SideBar />
-        <Switcher handleLandTop={handleLandTop} />
+        <Switcher
+          handleLandTop={handleLandTop}
+          handleModalTop={handleModalTop}
+        />
       </div>
     </div>
   );

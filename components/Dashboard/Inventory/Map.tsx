@@ -19,6 +19,7 @@ const Map: FunctionComponent<MapProps> = ({
   setAddPricingModal,
   currencyData,
   handleLandTop,
+  handleModalTop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
@@ -66,7 +67,9 @@ const Map: FunctionComponent<MapProps> = ({
                               actionId: item.slug,
                             })
                           );
+                          handleModalTop();
                           setDeleteModal(true);
+                          
                         }}
                       />
                     </div>

@@ -183,6 +183,7 @@ export type MainDropTypeProps = {
   setDeleteModal: (e: boolean) => void;
   productData: any;
   setCantDeleteDrop: (e: boolean) => void;
+  handleModalTop: () => void;
 };
 
 export type UpdateDropTypeProps = {
@@ -209,6 +210,7 @@ export type DeleteModalProps = {
   handleDropDelete: () => Promise<void>;
   handleProductDelete: () => Promise<void>;
   handleAdminDelete: () => Promise<void>;
+  modalTop: any;
 };
 
 export type UseUpdateProductResult = {
@@ -246,6 +248,7 @@ export type MapProps = {
   currencyData: CurrencyInterface[] | undefined;
   setAddPricingModal: (e: boolean) => void;
   handleLandTop: () => void;
+  handleModalTop: () => void;
 };
 
 export type FormProps = {
@@ -325,6 +328,7 @@ export type SpecificationsProps = {
 
 export type DeleteDropProps = {
   setCantDeleteDrop: (e: boolean) => void;
+  modalTop: any;
 };
 
 export interface AddressInterface {
@@ -397,10 +401,12 @@ export interface CurrencyInterface {
 
 export type SwitcherDashboardProps = {
   handleLandTop: () => void;
+  handleModalTop: () => void;
 };
 
 export type MainInventoryProps = {
   handleLandTop: () => void;
+  handleModalTop: () => void;
 };
 
 export type HeaderProps = {
@@ -429,8 +435,18 @@ export type SelectedDropProps = {
 export type AddPricingModalProps = {
   setAddPricingModal: (e: boolean) => void;
   handleLandTop: () => void;
+  modalTop: any;
 };
 
 export type DeleteAdminProps = {
   setCantDeleteAdmin: (e: boolean) => void;
+  modalTop: any;
+};
+
+export type AdminMainProps = {
+  handleModalTop: () => void;
+};
+
+export type SwitcherDropProps = {
+  handleModalTop: () => void;
 };

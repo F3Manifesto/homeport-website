@@ -8,8 +8,11 @@ import useAddDropTypes from "./hooks/useAddDropTypes";
 import useUpdateDropTypes from "./hooks/useUpdateDropTypes";
 import { GlobalContext } from "../../../pages/_app";
 import useAddProduct from "../Inventory/hooks/useAddProduct";
+import { SwitcherDropProps } from "../../../types/general.types";
 
-const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
+const SwitcherDropTypes: FunctionComponent<SwitcherDropProps> = ({
+  handleModalTop,
+}): JSX.Element => {
   let action = "DROP_TYPES";
 
   const {
@@ -74,6 +77,7 @@ const SwitcherDropTypes: FunctionComponent = (): JSX.Element => {
           data={data}
           productData={productData}
           setCantDeleteDrop={setCantDeleteDrop}
+          handleModalTop={handleModalTop}
         />
       );
   }

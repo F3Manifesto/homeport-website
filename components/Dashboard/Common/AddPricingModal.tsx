@@ -9,6 +9,7 @@ import { setType } from "../../../redux/reducers/dashSlice";
 const AddPricingModal: FunctionComponent<AddPricingModalProps> = ({
   setAddPricingModal,
   handleLandTop,
+  modalTop,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const productInfo = useSelector(
@@ -16,7 +17,10 @@ const AddPricingModal: FunctionComponent<AddPricingModalProps> = ({
   );
   return (
     <div className="absolute flex items-center justify-center fixed w-full h-full z-30 bg-opacity-50 backdrop-blur-sm">
-      <div className="relative w-96 h-80 place-self-center bg-lBlue border-2 border-black grid grid-flow-row auto-rows-[auto auto]">
+      <div
+        className="relative w-96 h-80 place-self-center bg-lBlue border-2 border-black grid grid-flow-row auto-rows-[auto auto]"
+        ref={modalTop}
+      >
         <div className="relative w-fit h-fit row-start-1 justify-self-end p-4">
           <AiFillCloseSquare
             color="white"
