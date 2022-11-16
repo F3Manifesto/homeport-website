@@ -7,7 +7,6 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
   item,
 }): JSX.Element => {
   const {
-    formats,
     categories,
     showFormats,
     setShowFormats,
@@ -30,13 +29,13 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
             return (
               <span
                 key={index}
-                className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${formatColors[index]} cursor-pointer hover:bg-lBlue`}
+                className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-yellowTheme cursor-pointer hover:bg-lBlue`}
               >
                 {format}
               </span>
             );
           })}
-          {formats.length > 4 && (
+          {item.dropFormat.length > 4 && (
             <span
               className="relative w-fit h-9 inline-flex rounded-full shadow-sm bg-lGray grid grid-flow-col auto-cols-[auto auto] cursor-pointer active:scale-95"
               onClick={() => setShowFormats(!showFormats)}
@@ -60,7 +59,7 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
               return (
                 <span
                   key={index}
-                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-${categoryColors[index]} cursor-pointer hover:bg-lBlue`}
+                  className={`relative w-fit h-fit inline-flex items-center px-3 py-1.5 rounded-full shadow-sm bg-blueTheme cursor-pointer hover:bg-lBlue`}
                 >
                   {category}
                 </span>

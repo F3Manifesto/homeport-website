@@ -85,7 +85,6 @@ export type PriceProps = {
 
 export type UseCollectionTagsResult = {
   categories: string[];
-  formats: string[];
   categoryColors: string[];
   formatColors: string[];
   showFormats: boolean;

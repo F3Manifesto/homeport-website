@@ -174,7 +174,7 @@ const useOrder = (): UseOrderResult => {
     if (e === "crypto") {
       dispatch(
         setPrice({
-          actionPrice: convertedPrice.toFixed(4),
+          actionPrice: convertedPrice.toFixed(2),
           actionToken: currencyTag,
         })
       );
