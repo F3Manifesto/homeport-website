@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@stripe/react-stripe-js": "^1.14.2",
     "@stripe/stripe-js": "^1.44.1",
+    "@types/mongoose": "^5.11.97",
     "array-shuffle": "^3.0.0",
     "body-parser": "^1.20.1",
     "coingecko-api": "^1.0.10",
