@@ -14,6 +14,7 @@ import { RootState } from "../redux/store";
 import { useRouter } from "next/router";
 import DeleteAdmin from "../components/Dashboard/Common/DeleteAdmin";
 import useAdmin from "../components/Dashboard/Admin/hooks/useAdmin";
+import useUpdateDraft from "../components/Dashboard/Drafts/hooks/useUpdateDraft";
 
 const Dashboard: NextPage<DashboardProps> = ({
   handleLandTop,
@@ -31,6 +32,7 @@ const Dashboard: NextPage<DashboardProps> = ({
   const { handleDropDelete } = useUpdateDropTypes();
   const { handleProductDelete } = useUpdateProduct();
   const { handleAdminDelete } = useAdmin();
+  const { handleDraftsDelete } = useUpdateDraft();
   const userAuthenticated = useSelector(
     (state: RootState) => state.app.userReducer.value
   );
@@ -67,6 +69,7 @@ const Dashboard: NextPage<DashboardProps> = ({
             handleDropDelete={handleDropDelete}
             handleProductDelete={handleProductDelete}
             handleAdminDelete={handleAdminDelete}
+            handleDraftsDelete={handleDraftsDelete}
             modalTop={modalTop}
           />
         )}

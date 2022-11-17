@@ -13,18 +13,13 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
   hashImageStringDraftUpdate,
   imageDraftUpdateUploading,
   imageDraftUpdated,
+  setDeleteModal,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
       setUpdateSuccess(false);
     }, 4000);
   }, [updateSuccess]);
-  console.log(
-    draft?.productImages,
-    "draft product",
-    imageDraftUpdated,
-    "image updated"
-  );
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"
@@ -36,7 +31,10 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
             {moment().format("MM/D hh:mm:ss")}
           </div>
           <div className="relative w-full h-fit col-start-2 place-self-center cursor-pointer grid grid-flow-col auto-cols-[auto auto] gap-2 pr-4">
-            <div className="relative w-fit h-fit col-start-1 place-self-center cursor-pointer">
+            <div
+              className="relative w-fit h-fit col-start-1 place-self-center cursor-pointer"
+              onClick={() => setDeleteModal(true)}
+            >
               <RiDeleteBin5Fill
                 size={15}
                 color="black"

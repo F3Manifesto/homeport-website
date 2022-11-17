@@ -11,13 +11,13 @@ const Form: FunctionComponent<DraftFormProps> = ({
   imagesArray,
   imageDraftUploading,
   success,
-  setSuccess
+  setSuccess,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
-      setSuccess(false)
-    }, 4000)
-  }, [success])
+      setSuccess(false);
+    }, 4000);
+  }, [success]);
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"
@@ -28,16 +28,9 @@ const Form: FunctionComponent<DraftFormProps> = ({
           <div className="relative w-full h-fit col-start-1 place-self-center pr-16 text-black text-base">
             {moment().format("MM/D hh:mm:ss")}
           </div>
-          <div className="relative w-full h-fit col-start-2 place-self-center cursor-pointer grid grid-flow-col auto-cols-[auto auto] gap-2 pr-4">
-            <div className="relative w-fit h-fit col-start-1 place-self-center cursor-pointer">
-              <RiDeleteBin5Fill
-                size={15}
-                color="black"
-                className="hover:scale-90 active:scale-90"
-              />
-            </div>
+          <div className="relative w-full h-fit col-start-2 place-self-center cursor-pointer grid grid-flow-col auto-cols-[auto auto] gap-2 pr-10">
             <button
-              className="relative w-fit h-fit col-start-2 place-self-center cursor-pointer"
+              className="relative w-fit h-fit col-start-1 place-self-center cursor-pointer"
               type="submit"
             >
               <IoIosSave

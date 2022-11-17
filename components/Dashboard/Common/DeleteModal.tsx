@@ -9,6 +9,7 @@ const DeleteModal: FunctionComponent<DeleteModalProps> = ({
   handleDropDelete,
   handleProductDelete,
   handleAdminDelete,
+  handleDraftsDelete,
   modalTop,
 }): JSX.Element => {
   const displayType = useSelector(
@@ -32,8 +33,10 @@ const DeleteModal: FunctionComponent<DeleteModalProps> = ({
             ? "Are you sure you'd like to delete this drop type?"
             : displayType === "INVENTORY"
             ? "Are you sure you'd like to delete this product?"
-            : displayType === "ADMIN" &&
-              "Are you sure you'd like to delete this admin?"}
+            : displayType === "ADMIN"
+            ? "Are you sure you'd like to delete this admin?"
+            : displayType === "DRAFTS" &&
+              "Are you sure you'd like to delete this draft?"}
         </div>
         <div className="relative w-fit h-fit text-white font-economica row-start-3 grid grid-flow-col auto-cols-[auto auto] justify-self-center">
           <div
@@ -43,6 +46,8 @@ const DeleteModal: FunctionComponent<DeleteModalProps> = ({
                 ? () => handleDropDelete()
                 : displayType === "INVENTORY"
                 ? () => handleProductDelete()
+                : displayType === "DRAFTS"
+                ? () => handleDraftsDelete()
                 : () => handleAdminDelete()
             }
           >

@@ -1,14 +1,22 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
-import { getDraft, getDrafts, updateDraft } from "../../../../lib/helpers";
+import {
+  deleteDraft,
+  getDraft,
+  getDrafts,
+  updateDraft,
+} from "../../../../lib/helpers";
 import { RootState } from "../../../../redux/store";
 import { DraftInterface } from "../../../../types/general.types";
 import moment from "moment";
 import { setUpdateDraftImages } from "../../../../redux/reducers/updateDraftImagesSlice";
+import { GlobalContext } from "../../../../pages/_app";
+import { setDraft } from "../../../../redux/reducers/draftSlice";
 
 const useUpdateDraft = () => {
   const draftId = useSelector((state: RootState) => state.app.draftReducer.id);
+  const { setDeleteModal } = useContext(GlobalContext);
 
   const { data: oneDraft } = useQuery(["drafts", draftId], () =>
     getDraft(draftId as string)
@@ -87,6 +95,28 @@ const useUpdateDraft = () => {
       console.error(err.message);
     }
   };
+  // const draftDeleteId = useSelector(
+  //   (state: RootState) => state.app.dropReducer.id
+  // );
+
+  const handleDraftsDelete = async (): Promise<void> => {
+    try {
+      await deleteDraft(draftId as string);
+      await queryClient.prefetchQuery("drafts", getDrafts);
+      dispatch(
+        setDraft({
+          actionId: undefined,
+          actionTitle: undefined,
+          actionDescription: undefined,
+          actionProductImages: undefined,
+          actionType: "ADD_DRAFT",
+        })
+      );
+      setDeleteModal(false);
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
 
   return {
     handleDraftUpdate,
@@ -96,6 +126,7 @@ const useUpdateDraft = () => {
     setUpdateSuccess,
     hashImageStringDraftUpdate,
     setMappedUpdatedImages,
+    handleDraftsDelete,
   };
 };
 

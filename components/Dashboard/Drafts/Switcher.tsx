@@ -1,9 +1,10 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { RootState } from "./../../../redux/store";
 import { useSelector } from "react-redux";
 import { SwitcherDraftProps } from "../../../types/general.types";
 import Form from "./Form";
 import UpdateForm from "./UpdateForm";
+import { GlobalContext } from "../../../pages/_app";
 
 const Switcher: FunctionComponent<SwitcherDraftProps> = ({
   hashImageStringDraft,
@@ -25,6 +26,8 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
     (state: RootState) => state.app.draftReducer.type
   );
 
+  const {setDeleteModal} = useContext(GlobalContext);
+
   const decideStringAction = () => {
     action = draftSection;
     return action;
@@ -41,6 +44,7 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
           setUpdateSuccess={setUpdateSuccess}
           hashImageStringDraftUpdate={hashImageStringDraftUpdate}
           imageDraftUpdated={imageDraftUpdated}
+          setDeleteModal={setDeleteModal}
         />
       );
 

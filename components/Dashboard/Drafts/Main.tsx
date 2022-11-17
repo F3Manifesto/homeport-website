@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { setDraft } from "../../../redux/reducers/draftSlice";
 import useAddDraft from "./hooks/useAddDraft";
@@ -33,7 +33,6 @@ const Main: FunctionComponent = (): JSX.Element => {
   const imageDraftUpdated = useSelector(
     (state: RootState) => state.app.updateDraftImagesReducer.value
   );
-  // const draft = useSelector((state: RootState) => state.app.draftReducer);
   return (
     <div className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] py-8 gap-10">
       <div className="relative w-full max-h-[60vw] overflow-y-scroll h-fit col-start-1 grid grid-flow-row auto-rows-[auto auto] pt-10 pr-16 gap-10">

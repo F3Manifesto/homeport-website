@@ -214,6 +214,7 @@ export type DeleteModalProps = {
   handleDropDelete: () => Promise<void>;
   handleProductDelete: () => Promise<void>;
   handleAdminDelete: () => Promise<void>;
+  handleDraftsDelete: () => Promise<void>;
   modalTop: any;
 };
 
@@ -547,6 +548,7 @@ export type DraftFormUpdateProps = {
   setUpdateSuccess: (e: boolean) => void;
   hashImageStringDraftUpdate: (e: FormEvent) => Promise<any>;
   imageDraftUpdated: string[];
+  setDeleteModal: (e: boolean) => void;
 };
 
 export type SwitcherDraftProps = {
