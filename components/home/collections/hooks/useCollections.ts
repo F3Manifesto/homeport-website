@@ -4,7 +4,7 @@ import {
   useCollectionsResult,
 } from "./../../../../types/general.types";
 import tokens from "./../../../../pages/api/tokens.json";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"; 
 
 const useCollections = (): useCollectionsResult => {
   const router = useRouter();
@@ -51,7 +51,7 @@ const useCollections = (): useCollectionsResult => {
     //     : `/#shopping?collection=none`,
     //   {
     //     shallow: true,
-    //     scroll: false,
+    //     scroll: false, 
     //   }
     // );
   };
