@@ -13,6 +13,8 @@ import userReducer from "./reducers/userSlice";
 import selectedDropReducer from "./reducers/selectedDropSlice";
 import mainImageReducer from "./reducers/mainImageSlice";
 import featuredImagesReducer from "./reducers/featuredImageSlice";
+import draftImageReducer from "./reducers/draftImageSlice";
+import draftReducer from "./reducers/draftSlice";
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -30,6 +32,8 @@ const reducer = combineReducers({
   userReducer,
   mainImageReducer,
   featuredImagesReducer,
+  draftImageReducer,
+  draftReducer,
 });
 
 export const store = configureStore({

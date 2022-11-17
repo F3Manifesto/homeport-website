@@ -35,7 +35,7 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
               </span>
             );
           })}
-          {item.dropFormat.length > 4 && (
+          {item.dropFormat?.length > 4 && (
             <span
               className="relative w-fit h-9 inline-flex rounded-full shadow-sm bg-lGray grid grid-flow-col auto-cols-[auto auto] cursor-pointer active:scale-95"
               onClick={() => setShowFormats(!showFormats)}
@@ -66,7 +66,7 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
               );
             }
           )}
-          {categories.length > 4 && (
+          {categories?.length > 4 && (
             <span
               className="relative w-fit h-9 inline-flex rounded-full shadow-sm bg-lGray grid grid-flow-col auto-cols-[auto auto] cursor-pointer active:scale-95"
               onClick={() => setShowCategories(!showCategories)}

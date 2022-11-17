@@ -25,11 +25,7 @@ const useCollectionTags = (): UseCollectionTagsResult => {
   useEffect(() => {
     let colorsArrayFormats: string[] = []
     let colorsArrayCategories: string[] = []
-    // for (let i = 0; i < formats.length; i++) {
-    //   const numbersArray: number[] = arrayShuffle([0, 1, 2, 3]);
-    //   colorsArrayFormats.push(randomColor[numbersArray[0]])
-    // }
-    for (let i = 0; i < categories.length; i++) {
+    for (let i = 0; i < categories?.length; i++) {
       const numbersArray: number[] = arrayShuffle([0, 1, 2, 3]);
       colorsArrayCategories.push(randomColor[numbersArray[0]])
     }

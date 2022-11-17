@@ -36,7 +36,7 @@ const Prices: FunctionComponent<PriceProps> = ({
                   ? `col-start-${layoutIndexes[index]} row-start-${
                       layoutIndexes[index + 1]
                     }`
-                  : index === layoutIndexes.length - 2
+                  : index === layoutIndexes?.length - 2
                   ? `col-start-${layoutIndexes[-2]} row-start-${
                       layoutIndexes[-1]
                     }`

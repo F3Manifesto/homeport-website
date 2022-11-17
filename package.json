@@ -20,6 +20,7 @@
     "coingecko-api": "^1.0.10",
     "ethers": "^5.7.2",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "mongoose": "^6.7.2",
     "multiparty": "^4.2.3",
     "next": "^13.0.2",

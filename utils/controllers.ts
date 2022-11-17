@@ -4,6 +4,7 @@ import Currency from "../models/Currency";
 import Product from "../models/Product";
 import User from "../models/User";
 import Payment from "../models/Payment";
+import Drafts from "../models/Drafts";
 
 export const getProducts = async (req: any, res: any): Promise<void> => {
   try {
@@ -312,6 +313,77 @@ export const addPaymentAdmin = async (req: any, res: any): Promise<void> => {
       Payment.create(paymentAdmin, (err: any, data: any) => {
         return res.status(200).json(data);
       });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getDrafts = async (req: any, res: any): Promise<void> => {
+  try {
+    const drafts = await Drafts.find({});
+    if (!drafts) {
+      return res.status(404).json({ err: "No Drafts Found" });
+    } else {
+      return res.status(200).json(drafts);
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const addDraft = async (req: any, res: any): Promise<void> => {
+  try {
+    const drafts = req.body;
+    if (!drafts) {
+      return res.status(404).json({ err: "Draft data not provided" });
+    } else {
+      Drafts.create(drafts, (err: any, data: any) => {
+        return res.status(200).json(data);
+      });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const updateDraft = async (req: any, res: any): Promise<void> => {
+  try {
+    const { draftId } = req.query;
+    const draftsType = req.body;
+    if (draftId && draftsType) {
+      await Drafts.findByIdAndUpdate(draftId, draftsType);
+      return res.status(200).json(draftsType);
+    } else {
+      return res.status(404).json({ err: "Draft not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const deleteDraft = async (req: any, res: any): Promise<void> => {
+  try {
+    const { draftId } = req.query;
+    if (draftId) {
+      await Drafts.findByIdAndDelete(draftId);
+      return res.status(200).json(draftId);
+    } else {
+      return res.status(404).json({ err: "Draft not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const getDraft = async (req: any, res: any): Promise<void> => {
+  try {
+    const { draftId } = req.query;
+    if (draftId) {
+      const draft = await Drafts.findById(draftId);
+      return res.status(200).json(draft);
+    } else {
+      return res.status(404).json({ err: "Draft Not Found" });
     }
   } catch (err: any) {
     return res.status(404).json({ err: err.message });

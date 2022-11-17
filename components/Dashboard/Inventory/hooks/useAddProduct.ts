@@ -71,7 +71,7 @@ const useAddProduct = (): UseAddProductResult => {
     if (dropTypeName === "Select Drop Type") {
       alert("Please select drop type");
       return;
-    } else if (dropFormatArray.length === 0) {
+    } else if (dropFormatArray?.length === 0) {
       alert("Please select one or multiple drop formats");
       return;
     } else {
@@ -101,11 +101,11 @@ const useAddProduct = (): UseAddProductResult => {
     if (name === "MainImage") {
       setMainFile((e.target as HTMLFormElement).files[0]);
     } else if (name === "FeaturedImages") {
-      if ((e.target as HTMLFormElement).files.length > 4) {
+      if ((e.target as HTMLFormElement).files?.length > 4) {
         alert("Max 4 Featured Images");
       } else {
         let featuredFilesArray: string[] = [];
-        for (let i = 0; i < (e.target as HTMLFormElement).files.length; i++) {
+        for (let i = 0; i < (e.target as HTMLFormElement).files?.length; i++) {
           const file = (e.target as HTMLFormElement).files[i];
           featuredFilesArray.push(
             (window.URL || window.webkitURL).createObjectURL(file)
@@ -163,7 +163,7 @@ const useAddProduct = (): UseAddProductResult => {
             let responseJSON = await response.json();
             finalImages.push(responseJSON.cid);
             if (
-              finalImages.length === (e.target as HTMLFormElement).files.length
+              finalImages?.length === (e.target as HTMLFormElement).files?.length
             ) {
               setImageUploading(false);
             }

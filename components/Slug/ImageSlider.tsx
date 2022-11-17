@@ -2,17 +2,26 @@ import { FunctionComponent } from "react";
 import useImageSlider from "./hooks/useImageSlider";
 import { RiArrowRightSFill } from "react-icons/ri";
 import { ImageSliderProps } from "../../types/general.types";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const ImageSlider: FunctionComponent<ImageSliderProps> = ({
   item,
 }): JSX.Element => {
   const { nextImage, imageIndex, imageList, featuredImage, setFeaturedImage } =
     useImageSlider();
+  const mainImage = useSelector(
+    (state: RootState) => state.app.mainImageReducer.value
+  );
   return (
     <div className="relative w-full h-full row-start-1 grid grid-flow-row auto-rows-[auto auto] gap-16">
       <div className="relative w-full h-[35rem] row-start-1">
         <img
-          src={`https://${featuredImage}.ipfs.w3s.link`}
+          src={
+            featuredImage
+              ? `https://${mainImage}.ipfs.w3s.link`
+              : `https://${featuredImage}.ipfs.w3s.link`
+          }
           alt="featured"
           className="object-cover w-full h-full"
         />

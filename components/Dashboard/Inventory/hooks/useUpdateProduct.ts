@@ -68,7 +68,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
           ? (data?.dropType as string)
           : dropTypeName,
       dropFormat:
-        dropFormatArray.length === 0
+        dropFormatArray?.length === 0
           ? (data?.dropFormat as string[])
           : dropFormatArray,
       quantity: (e.target as HTMLFormElement).quantity.value,
@@ -176,7 +176,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
             let responseJSON = await response.json();
             finalImages.push(responseJSON.cid);
             if (
-              finalImages.length === (e.target as HTMLFormElement).files.length
+              finalImages?.length === (e.target as HTMLFormElement).files?.length
             ) {
               setImageUploadingUpdated(false);
             }

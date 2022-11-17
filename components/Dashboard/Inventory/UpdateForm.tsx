@@ -132,7 +132,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                       "bg-yellowTheme"
                     }`}
                     onClick={
-                      dropFormatArray.length !== 0
+                      dropFormatArray?.length !== 0
                         ? () => handleDispatchFormatArray(format)
                         : () => handleExistingDropFormatArray(format)
                     }
@@ -222,9 +222,14 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
               })}
             </div>
           )}
-          {updatedProductData?.featuredImages.length !== 0 &&
+          {updatedProductData?.featuredImages?.length !== 0 &&
             featuredFiles?.length === 0 && (
-              <div className="absolute w-full h-full grid grid-cols-2 auto-rows-auto overflow-hidden place-content-center">
+              <div
+                className={`absolute w-full h-full grid grid-cols-2 auto-rows-auto overflow-hidden ${
+                  updatedProductData?.featuredImages?.length > 2 &&
+                  "place-content-center"
+                } `}
+              >
                 {updatedProductData?.featuredImages?.map(
                   (image: any, index: number) => {
                     return (

@@ -87,7 +87,7 @@ const Map: FunctionComponent<MapProps> = ({
                           currencyData?.filter(
                             (data: CurrencyInterface) =>
                               data.itemSlug === item.slug
-                          ).length !== 0
+                          )?.length !== 0
                             ? () =>
                                 window?.open(`${BASE_URL}/items/${item.slug}`)
                             : () => {
@@ -112,7 +112,7 @@ const Map: FunctionComponent<MapProps> = ({
                           currencyData?.filter(
                             (data: CurrencyInterface) =>
                               data.itemSlug === item.slug
-                          ).length === 0
+                          )?.length === 0
                             ? "#E25049"
                             : "#ADE7B5"
                         }

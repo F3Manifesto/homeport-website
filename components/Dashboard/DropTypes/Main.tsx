@@ -65,7 +65,7 @@ const Main: FunctionComponent<MainDropTypeProps> = ({
                           productData?.filter(
                             (product: ProductInterface) =>
                               product.dropType === item.title
-                          ).length !== 0
+                          )?.length !== 0
                             ? () => setCantDeleteDrop(true)
                             : () => {
                                 handleModalTop();

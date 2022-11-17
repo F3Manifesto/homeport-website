@@ -521,3 +521,41 @@ export type useHeaderLayoutResult = {
   showDropdownBurger: boolean;
   setShowDropdownBurger: (e: boolean) => void;
 };
+
+export interface DraftInterface {
+  _id?: string;
+  title?: string;
+  description?: string;
+  productImages?: string[];
+  date?: string;
+}
+
+export type DraftFormProps = {
+  success: boolean;
+  handleDraftSubmit: (e: FormEvent) => void;
+  showImages: (e: FormEvent) => void;
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imagesArray: string[];
+};
+
+export type DraftFormUpdateProps = {
+  showImages: (e: FormEvent) => void;
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imagesArray: string[];
+  handleDraftUpdate: (e: FormEvent) => void;
+  draft: DraftInterface | undefined;
+};
+
+export type SwitcherDraftProps = {
+  showImages: (e: FormEvent) => void;
+  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  imagesArray: string[];
+  handleDraftUpdate: (e: FormEvent) => void;
+  success: boolean;
+  handleDraftSubmit: (e: FormEvent) => void;
+  draft: DraftInterface | undefined;
+};
+
+export type ListedProps = {
+  drafts: DraftInterface[] | undefined;
+};

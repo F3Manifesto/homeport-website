@@ -6,6 +6,7 @@ import {
   UserInterface,
   CurrencyInterface,
   PaymentInterface,
+  DraftInterface,
 } from "../types/general.types";
 import { BASE_URL } from "./constants";
 
@@ -348,6 +349,79 @@ export const getPaymentAdmins = async (): Promise<
     const response = await fetch(`${BASE_URL}/api/payments`);
     const paymentAdminType: PaymentInterface[] = await response.json();
     return paymentAdminType;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getDrafts = async (): Promise<DraftInterface[] | undefined> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/drafts`);
+    const drafts: DraftInterface[] = await response.json();
+    return drafts;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const getDraft = async (
+  draftId: string
+): Promise<DraftInterface | undefined> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/drafts/${draftId}`);
+    const draft: DraftInterface | undefined = await response.json();
+    return draft;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const addDraft = async (
+  draftData: DraftInterface
+): Promise<DraftInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(draftData),
+    };
+    const response = await fetch(`${BASE_URL}/api/drafts`, Options);
+    const draft: DraftInterface = await response.json();
+    return draft;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const updateDraft = async (
+  draftId: string,
+  draftData: DraftInterface
+): Promise<DraftInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(draftData),
+    };
+    const response = await fetch(`${BASE_URL}/api/drafts/${draftId}`, Options);
+    const draft: DraftInterface = await response.json();
+    return draft;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const deleteDraft = async (
+  draftId: string
+): Promise<DraftInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(`${BASE_URL}/api/drafts/${draftId}`, Options);
+    const draft: DraftInterface = await response.json();
+    return draft;
   } catch (err: any) {
     console.error(err.message);
   }

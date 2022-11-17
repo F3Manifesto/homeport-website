@@ -24,14 +24,14 @@ const Featured: FunctionComponent = (): JSX.Element => {
             DROP TYPE
           </div>
           <div className="relative w-fit h-full row-start-3 font-animosaR gap-1 grid grid-flow-row auto-rows-[auto auto]">
-            {dropType.map((drop: string, index: number) => {
+            {dropType?.map((drop: string, index: number) => {
               return (
                 <div
                   key={index}
                   className={`relative w-fit h-fit row-start-${
                     index + 1
-                  } col-start-1 text-[${typeColors[index]}] ${
-                    index === dropType.length - 1 && "py-10"
+                  } col-start-1 text-yellowTheme ${
+                    index === dropType?.length - 1 && "py-10"
                   }`}
                 >
                   {drop}
@@ -43,13 +43,13 @@ const Featured: FunctionComponent = (): JSX.Element => {
             DROP FORMAT
           </div>
           <div className="relative w-fit h-full row-start-5 font-animosaR gap-1 grid grid-flow-row auto-rows-[auto auto]">
-            {dropFormat.map((drop: string, index: number) => {
+            {dropFormat?.map((drop: string, index: number) => {
               return (
                 <div
                   key={index}
                   className={`relative w-fit h-fit row-start-${
                     index + 1
-                  } col-start-1 text-[${formatColors[index]}]`}
+                  } col-start-1 text-yellowTheme`}
                 >
                   {drop}
                 </div>
