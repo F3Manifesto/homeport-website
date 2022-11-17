@@ -3,19 +3,22 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
-import { ethers } from "ethers";
+import { utils } from "ethers";
 import {
   MATIC_ADDRESS,
+  MATIC_DECIMAL,
   MONA_ADDRESS,
+  MONA_DECIMAL,
+  transferABI,
   USDT_ADDRESS,
+  USDT_DECIMAL,
 } from "../../../../lib/constants";
 import { RootState } from "../../../../redux/store";
 import { useSelector } from "react-redux";
 
 const useCurrency = () => {
-  const itemPrice = useSelector(
-    (state: RootState) => state.app.priceReducer
-  );
+  const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
+
   const { config } = usePrepareContractWrite({
     address:
       itemPrice.token === "MONA"
@@ -23,34 +26,42 @@ const useCurrency = () => {
         : itemPrice.token === "MATIC"
         ? MATIC_ADDRESS
         : USDT_ADDRESS,
-    abi: [
-      {
-        constant: false,
-        inputs: [
-          { name: "_to", type: "address" },
-          { name: "_value", type: "uint256" },
-        ],
-        name: "transfer",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-    ],
+    abi: transferABI,
     functionName: "transfer",
+    chainId: 1,
     args: [
       "0xfa3fea500eeDAa120f7EeC2E4309Fe094F854E61",
-      ethers.utils.parseEther("1"),
+      utils.parseUnits(
+        (itemPrice?.price).toString(),
+        itemPrice.token === "MONA"
+          ? MONA_DECIMAL
+          : itemPrice.token === "MATIC"
+          ? MATIC_DECIMAL
+          : USDT_DECIMAL
+      ),
     ],
+    onError(data) {
+      console.log(data, "ERROR");
+    },
+    onSuccess(data) {
+      console.log(data, "SUCESS");
+    },
+    onSettled(data) {
+      console.log(error, data, "settled!!!");
+    },
   });
 
   const { data, write, error } = useContractWrite(config);
+
+  const handleWriteCrypto = async () => {
+    write?.();
+  };
 
   const { isLoading, isSuccess, isError } = useWaitForTransaction({
     hash: data?.hash,
   });
 
-  return { write, isLoading, isSuccess, isError };
+  return { isLoading, isSuccess, isError, handleWriteCrypto, error };
 };
 
 export default useCurrency;

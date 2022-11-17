@@ -581,3 +581,13 @@ export type ListedProps = {
   drafts: DraftInterface[] | undefined;
   setMappedUpdatedImages: (e: string[]) => void;
 };
+
+export interface TransferInterface {
+  constant: boolean;
+  inputs: [{ name: string; type: string }, { name: string; type: string }];
+  name: string;
+  outputs: [];
+  payable: false;
+  stateMutability: string;
+  type: string;
+}

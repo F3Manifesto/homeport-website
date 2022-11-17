@@ -1,28 +1,22 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
 import useCurrency from "./hooks/useCurrency";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
 
-const Flow: FunctionComponent = (): JSX.Element => {
+const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
+  let action = "NOT_CONNECTED";
   const { chain } = useNetwork();
   const router = useRouter();
-  const itemPrice = useSelector(
-    (state: RootState) => state.app.priceReducer
-  );
-  const { isLoading, isSuccess, isError, sendTransactionAsync } = useFlow();
   const {
-    write,
     isLoading: LoadingCurrency,
     isSuccess: SuccessCurrency,
     isError: ErrorCurrency,
+    handleWriteCrypto,
+    error,
   } = useCurrency();
-  let action = "NOT_CONNECTED";
 
   const decideStringAction = () => {
     if (isConnected) {
@@ -30,26 +24,17 @@ const Flow: FunctionComponent = (): JSX.Element => {
     }
 
     if (
-      isConnected &&
-      ((!isLoading && !isSuccess && isError) ||
-        (!LoadingCurrency && !SuccessCurrency && ErrorCurrency))
+      (isConnected && !LoadingCurrency && !SuccessCurrency && ErrorCurrency) ||
+      error
     ) {
       action = "ERROR";
     }
 
-    if (
-      isConnected &&
-      ((isLoading && !isSuccess && !isError) ||
-        (LoadingCurrency && SuccessCurrency && ErrorCurrency))
-    ) {
+    if (isConnected && LoadingCurrency && SuccessCurrency && ErrorCurrency) {
       action = "LOADING";
     }
 
-    if (
-      isConnected &&
-      ((!isLoading && isSuccess && !isError) ||
-        (!LoadingCurrency && SuccessCurrency && !ErrorCurrency))
-    ) {
+    if (isConnected && !LoadingCurrency && SuccessCurrency && !ErrorCurrency) {
       action = "SUCCESS";
     }
 
@@ -64,32 +49,24 @@ const Flow: FunctionComponent = (): JSX.Element => {
     case "COLLECT":
       return (
         <div
-          onClick={
-            itemPrice.token === "ETH"
-              ? async () => sendTransactionAsync?.()
-              : async () => {
-                  write?.();
-                }
-          }
-          className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl"
+          className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]"
+          onClick={() => handleWriteCrypto()}
         >
-          PAY NOW
+          <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
+            PAY NOW
+          </div>
         </div>
       );
 
     case "ERROR":
       return (
         <div
-          onClick={
-            itemPrice.token === "ETH"
-              ? async () => sendTransactionAsync?.()
-              : async () => {
-                  write?.();
-                }
-          }
-          className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl"
+          className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]"
+          onClick={() => handleWriteCrypto()}
         >
-          TRY AGAIN
+          <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
+            TRY AGAIN
+          </div>
         </div>
       );
 
@@ -137,10 +114,12 @@ const Flow: FunctionComponent = (): JSX.Element => {
                 {(() => {
                   return (
                     <div
+                      className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]"
                       onClick={openChainModal}
-                      className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl text-white"
                     >
-                      SWITCH NETWORK
+                      <div className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl text-white">
+                        SWITCH NETWORK
+                      </div>
                     </div>
                   );
                 })()}
@@ -186,10 +165,12 @@ const Flow: FunctionComponent = (): JSX.Element => {
                   if (!connected) {
                     return (
                       <div
+                        className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]"
                         onClick={openConnectModal}
-                        className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl"
                       >
-                        CONNECT WALLET
+                        <div className="relative w-full text-center h-full font-economica px-10 justify-self-center col-start-1 text-xl">
+                          CONNECT WALLET
+                        </div>
                       </div>
                     );
                   }
@@ -201,4 +182,4 @@ const Flow: FunctionComponent = (): JSX.Element => {
       );
   }
 };
-export default Flow;
+export default CurrencyTransaction;

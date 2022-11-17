@@ -4,13 +4,13 @@ import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import { createContext, useState } from "react";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { store } from "./../redux/store";
 import { Provider } from "react-redux";
 import { useRef } from "react";
+import { alchemyProvider } from "wagmi/providers/alchemy";
 
 const queryClient = new QueryClient();
 
@@ -39,7 +39,9 @@ export const GlobalContext = createContext(GlobalContextDefault);
 
 const { chains, provider } = configureChains(
   [chain.mainnet],
-  [publicProvider()]
+  [
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }),
+  ]
 );
 
 const { connectors } = getDefaultWallets({

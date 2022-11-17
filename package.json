@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@infinity-keys/react-lens-share-button": "^0.0.4",
-    "@rainbow-me/rainbowkit": "^0.7.4",
+    "@rainbow-me/rainbowkit": "^0.8.0",
     "@reduxjs/toolkit": "^1.9.0",
     "@stripe/react-stripe-js": "^1.14.2",
     "@stripe/stripe-js": "^1.44.1",
@@ -32,7 +32,7 @@
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "stripe": "^10.17.0",
-    "wagmi": "^0.8.1",
+    "wagmi": "^0.8.5",
     "web3.storage": "^4.4.0"
   },
   "devDependencies": {

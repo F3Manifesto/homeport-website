@@ -1,4 +1,4 @@
-import { AggregatorInterface } from "../types/general.types";
+import { AggregatorInterface, TransferInterface } from "../types/general.types";
 
 export const BASE_URL: string = "https://dms-tau.vercel.app";
 // export const BASE_URL: string = "http://localhost:3000";
@@ -11,6 +11,25 @@ export const MATIC_ADDRESS: string =
   "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0";
 export const USDT_ADDRESS: string =
   "0xdac17f958d2ee523a2206206994597c13d831ec7";
+
+export const MATIC_DECIMAL: number = 18;
+export const MONA_DECIMAL: number = 18;
+export const USDT_DECIMAL: number = 6;
+
+export const transferABI: TransferInterface[] = [
+  {
+    constant: false,
+    inputs: [
+      { name: "_to", type: "address" },
+      { name: "_value", type: "uint256" },
+    ],
+    name: "transfer",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
 
 export const aggregatorV3InterfaceABI: AggregatorInterface[] = [
   {

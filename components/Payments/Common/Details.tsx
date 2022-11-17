@@ -8,7 +8,9 @@ const Details: FunctionComponent<DetailsProps> = ({
   return (
     <form
       className="relative w-full h-fit grid grid-flow-col auto-cols-[auto auto] text-white font-economicaB gap-4"
-      onSubmit={(e: FormEvent) => handleAddressSubmit(e)}
+      onSubmit={(e: FormEvent) => {
+        handleAddressSubmit(e);
+      }}
     >
       <div className="relative row-start-1 w-full h-fit text-2xl">
         Contact Information

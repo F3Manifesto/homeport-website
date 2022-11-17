@@ -15,6 +15,7 @@ import { setPrice } from "../../../redux/reducers/priceSlice";
 import { RootState } from "../../../redux/store";
 import { useQuery } from "react-query";
 import { getCurrency } from "../../../lib/helpers";
+import { ContractInterface } from "ethers";
 
 const useOrderValue = (): UseOrderValueResult => {
   const [ethConversion, setEthConversion] = useState<string>();
@@ -45,51 +46,55 @@ const useOrderValue = (): UseOrderValueResult => {
   const { setItemName } = useContext(GlobalContext);
   const [payment, setPayment] = useState<string>("default");
   const dispatch = useDispatch();
+  const ethContract = {
+    address: ETHUSD,
+    abi: aggregatorV3InterfaceABI,
+  };
+  const usdtContract = {
+    address: USDTUSD,
+    abi: aggregatorV3InterfaceABI,
+  };
+  const maticContract = {
+    address: MATICUSD,
+    abi: aggregatorV3InterfaceABI,
+  };
+
   const { data } = useContractReads({
     contracts: [
       {
-        address: ETHUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...ethContract,
         functionName: "decimals",
       },
       {
-        address: ETHUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...ethContract,
         functionName: "description",
       },
       {
-        address: ETHUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...ethContract,
         functionName: "latestRoundData",
       },
       {
-        address: USDTUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...usdtContract,
         functionName: "decimals",
       },
       {
-        address: USDTUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...usdtContract,
         functionName: "description",
       },
       {
-        address: USDTUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...usdtContract,
         functionName: "latestRoundData",
       },
       {
-        address: MATICUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...maticContract,
         functionName: "decimals",
       },
       {
-        address: MATICUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...maticContract,
         functionName: "description",
       },
       {
-        address: MATICUSD,
-        abi: aggregatorV3InterfaceABI as any,
+        ...maticContract,
         functionName: "latestRoundData",
       },
     ],
@@ -129,7 +134,7 @@ const useOrderValue = (): UseOrderValueResult => {
       setFeaturePrice(ETHPRICESET);
     } else if (selectedPrice === "usdt") {
       const USDTUSD = parseInt(
-        (lodash.chunk(data, 3)[1][2] as Array<any>)[1]._hex.toString()
+      (lodash.chunk(data, 3)[1][2] as Array<any>)[1]._hex.toString()
       );
       setConvertedPrice(
         Number(USDTUSD / Math.pow(10, Number(lodash.chunk(data, 3)[1][0]))) *
@@ -185,7 +190,7 @@ const useOrderValue = (): UseOrderValueResult => {
   const showCurrencyETH = (e: FormEvent) => {
     e.preventDefault();
     const ETHUSD = parseInt(
-      (lodash.chunk(data, 3)[0][2] as Array<any>)[1]._hex.toString()
+      (lodash.chunk(data, 3)[0][2] as Array<any>)[0]._hex.toString()
     );
     const ETHConversion =
       (e.target as HTMLFormElement).value /
