@@ -164,6 +164,7 @@ const Form: FunctionComponent<FormProps> = ({
               <TbPlus size={25} color="black" />
               <input
                 type="file"
+                accept="image/png"
                 hidden
                 id="files"
                 multiple={false}
@@ -208,6 +209,7 @@ const Form: FunctionComponent<FormProps> = ({
               <TbPlus size={25} color="black" />
               <input
                 type="file"
+                accept="image/png"
                 hidden
                 id="files"
                 multiple={true}

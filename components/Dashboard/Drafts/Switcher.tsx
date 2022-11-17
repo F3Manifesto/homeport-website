@@ -6,13 +6,19 @@ import Form from "./Form";
 import UpdateForm from "./UpdateForm";
 
 const Switcher: FunctionComponent<SwitcherDraftProps> = ({
-  showImages,
-  hashImageStringOne,
+  hashImageStringDraft,
   imagesArray,
   handleDraftUpdate,
   handleDraftSubmit,
   success,
   draft,
+  imageDraftUploading,
+  setSuccess,
+  imageDraftUpdateUploading,
+  updateSuccess,
+  setUpdateSuccess,
+  hashImageStringDraftUpdate,
+  imageDraftUpdated,
 }): JSX.Element => {
   let action = "ADD_DRAFT";
   const draftSection = useSelector(
@@ -28,22 +34,25 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
     case "UPDATE_DRAFT":
       return (
         <UpdateForm
-          showImages={showImages}
-          hashImageStringOne={hashImageStringOne}
-          imagesArray={imagesArray}
           handleDraftUpdate={handleDraftUpdate}
           draft={draft}
+          imageDraftUpdateUploading={imageDraftUpdateUploading}
+          updateSuccess={updateSuccess}
+          setUpdateSuccess={setUpdateSuccess}
+          hashImageStringDraftUpdate={hashImageStringDraftUpdate}
+          imageDraftUpdated={imageDraftUpdated}
         />
       );
 
     default:
       return (
         <Form
-          showImages={showImages}
+          imageDraftUploading={imageDraftUploading}
           handleDraftSubmit={handleDraftSubmit}
           success={success}
-          hashImageStringOne={hashImageStringOne}
+          hashImageStringDraft={hashImageStringDraft}
           imagesArray={imagesArray}
+          setSuccess={setSuccess}
         />
       );
   }

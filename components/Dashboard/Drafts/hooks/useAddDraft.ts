@@ -15,6 +15,7 @@ const useAddDraft = () => {
     (state: RootState) => state.app.draftImageReducer.value
   );
   const dispatch = useDispatch();
+  const [imageDraftUploading, setImageDraftUploading] = useState<boolean>();
 
   const addMutation = useMutation(addDraft, {
     onSuccess: async () => {
@@ -22,6 +23,7 @@ const useAddDraft = () => {
       queryClient.prefetchQuery("drafts", getDrafts);
     },
   });
+  const [mappedImages, setMappedImages] = useState<string[]>([]);
 
   const handleDraftSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -32,20 +34,45 @@ const useAddDraft = () => {
       date: moment().format("MM/D hh:mm:ss"),
     };
     addMutation.mutate(draftTypeData);
+    dispatch(setDraftImages([]));
     (e.target as HTMLFormElement).reset();
   };
 
-  const showImages = (e: FormEvent): void => {
-    if (draftImagesCache?.length !== 0) {
-      let imagesArray: string[] = draftImagesCache;
-      imagesArray.concat((e.target as HTMLFormElement).files[0]);
-      dispatch(setDraftImages(imagesArray));
-    } else {
-      dispatch(setDraftImages((e.target as HTMLFormElement).files[0]));
+  const hashImageStringDraft = async (e: FormEvent): Promise<any> => {
+    let imageData = new FormData();
+    let finalImages: any[] = [];
+    setImageDraftUploading(true);
+    imageData.append("image", (e.target as HTMLFormElement).files[0]);
+    try {
+      const response = await fetch("/api/ipfs", {
+        method: "POST",
+        body: imageData,
+      });
+      if (response.status !== 200) {
+        console.log("ERROR", response);
+        setImageDraftUploading(false);
+        dispatch(setDraftImages(mappedImages));
+      } else {
+        let responseJSON = await response.json();
+        finalImages.push(responseJSON.cid);
+        setImageDraftUploading(false);
+        dispatch(setDraftImages([finalImages[0], ...mappedImages]));
+        setMappedImages([finalImages[0], ...mappedImages]);
+        return finalImages;
+      }
+    } catch (err: any) {
+      console.error(err.message);
     }
   };
 
-  return { handleDraftSubmit, success, showImages, drafts };
+  return {
+    handleDraftSubmit,
+    success,
+    drafts,
+    hashImageStringDraft,
+    imageDraftUploading,
+    setSuccess,
+  };
 };
 
 export default useAddDraft;

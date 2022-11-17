@@ -192,6 +192,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
               <TbPlus size={25} color="black" />
               <input
                 type="file"
+                accept="image/png"
                 hidden
                 id="files"
                 multiple={false}
@@ -259,6 +260,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                 type="file"
                 hidden
                 id="files"
+                accept="image/png"
                 multiple={true}
                 name="featuredImages"
                 disabled={

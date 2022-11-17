@@ -533,29 +533,39 @@ export interface DraftInterface {
 export type DraftFormProps = {
   success: boolean;
   handleDraftSubmit: (e: FormEvent) => void;
-  showImages: (e: FormEvent) => void;
-  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  hashImageStringDraft: (e: FormEvent) => Promise<any>;
   imagesArray: string[];
+  imageDraftUploading: boolean;
+  setSuccess: (e: boolean) => void;
 };
 
 export type DraftFormUpdateProps = {
-  showImages: (e: FormEvent) => void;
-  hashImageStringOne: (e: FormEvent) => Promise<any>;
-  imagesArray: string[];
   handleDraftUpdate: (e: FormEvent) => void;
   draft: DraftInterface | undefined;
+  imageDraftUpdateUploading: boolean;
+  updateSuccess: boolean;
+  setUpdateSuccess: (e: boolean) => void;
+  hashImageStringDraftUpdate: (e: FormEvent) => Promise<any>;
+  imageDraftUpdated: string[];
 };
 
 export type SwitcherDraftProps = {
-  showImages: (e: FormEvent) => void;
-  hashImageStringOne: (e: FormEvent) => Promise<any>;
+  hashImageStringDraft: (e: FormEvent) => Promise<any>;
   imagesArray: string[];
   handleDraftUpdate: (e: FormEvent) => void;
   success: boolean;
   handleDraftSubmit: (e: FormEvent) => void;
   draft: DraftInterface | undefined;
+  imageDraftUploading: boolean;
+  setSuccess: (e: boolean) => void;
+  imageDraftUpdateUploading: boolean;
+  updateSuccess: boolean;
+  setUpdateSuccess: (e: boolean) => void;
+  hashImageStringDraftUpdate: (e: FormEvent) => Promise<any>;
+  imageDraftUpdated: string[];
 };
 
 export type ListedProps = {
   drafts: DraftInterface[] | undefined;
+  setMappedUpdatedImages: (e: string[]) => void;
 };
