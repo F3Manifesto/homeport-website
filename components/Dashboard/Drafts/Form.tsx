@@ -103,6 +103,7 @@ const Form: FunctionComponent<DraftFormProps> = ({
                   className={`relative w-80 h-60 row-start-${
                     index + 1
                   } cursor-pointer bg-black grid grid-flow-col auto-cols-[auto auto] group`}
+                  key={index}
                 >
                   <img
                     src={`https://${image}.ipfs.w3s.link`}
