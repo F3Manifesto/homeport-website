@@ -25,7 +25,7 @@ export const CollectContextDefault = {
 export const CollectContext = createContext(CollectContextDefault);
 
 export const getStaticPaths = async () => {
-  const paths = tokens.map((token: Gallery) => {
+  const paths = tokens.map((token) => {
     return {
       params: {
         name: token.name.replaceAll(" ", "-").toLowerCase(),
@@ -44,7 +44,7 @@ export const getStaticProps = async (context: any) => {
   //   `/images/gallery/${name}.png`.replaceAll("-", "")
   // );
   const response = tokens.filter(
-    (token: Gallery) =>
+    (token) =>
       token.name.replaceAll(" ", "-").toLowerCase() === name.toLowerCase()
   );
   return {
