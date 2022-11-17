@@ -538,6 +538,7 @@ export type DraftFormProps = {
   imagesArray: string[];
   imageDraftUploading: boolean;
   setSuccess: (e: boolean) => void;
+  handleRemoveImage: (image: string) => void;
 };
 
 export type DraftFormUpdateProps = {
@@ -549,6 +550,8 @@ export type DraftFormUpdateProps = {
   hashImageStringDraftUpdate: (e: FormEvent) => Promise<any>;
   imageDraftUpdated: string[];
   setDeleteModal: (e: boolean) => void;
+  handleUpdateRemoveImages: (image: string) => void;
+  handleRemoveSecondUpdateImage: (image: string) => void;
 };
 
 export type SwitcherDraftProps = {
@@ -565,6 +568,9 @@ export type SwitcherDraftProps = {
   setUpdateSuccess: (e: boolean) => void;
   hashImageStringDraftUpdate: (e: FormEvent) => Promise<any>;
   imageDraftUpdated: string[];
+  handleRemoveImage: (image: string) => void;
+  handleUpdateRemoveImages: (image: string) => void;
+  handleRemoveSecondUpdateImage: (image: string) => void;
 };
 
 export type ListedProps = {

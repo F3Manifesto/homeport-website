@@ -7,6 +7,7 @@ import { RootState } from "../../../redux/store";
 import useUpdateDraft from "./hooks/useUpdateDraft";
 import Switcher from "./Switcher";
 import Listed from "./Listed";
+import { setDraftImages } from "../../../redux/reducers/draftImageSlice";
 
 const Main: FunctionComponent = (): JSX.Element => {
   const {
@@ -16,6 +17,8 @@ const Main: FunctionComponent = (): JSX.Element => {
     hashImageStringDraft,
     imageDraftUploading,
     setSuccess,
+    handleRemoveImage,
+    setMappedImages,
   } = useAddDraft();
   const {
     handleDraftUpdate,
@@ -25,6 +28,8 @@ const Main: FunctionComponent = (): JSX.Element => {
     setUpdateSuccess,
     hashImageStringDraftUpdate,
     setMappedUpdatedImages,
+    handleUpdateRemoveImages,
+    handleRemoveSecondUpdateImage,
   } = useUpdateDraft();
   const dispatch = useDispatch();
   const imagesArray = useSelector(
@@ -38,7 +43,9 @@ const Main: FunctionComponent = (): JSX.Element => {
       <div className="relative w-full max-h-[60vw] overflow-y-scroll h-fit col-start-1 grid grid-flow-row auto-rows-[auto auto] pt-10 pr-16 gap-10">
         <div
           className="relative w-full h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] bg-grayBlue cursor-pointer hover:scale-105 active:scale-95"
-          onClick={() =>
+          onClick={() => {
+            setMappedImages([]);
+            dispatch(setDraftImages([]));
             dispatch(
               setDraft({
                 actionId: undefined,
@@ -47,8 +54,8 @@ const Main: FunctionComponent = (): JSX.Element => {
                 actionProductImages: undefined,
                 actionType: "ADD_DRAFT",
               })
-            )
-          }
+            );
+          }}
         >
           <div className="relative w-full h-fit px-10 py-1.5 col-start-1 place-self-center text-black font-economica">
             New Draft
@@ -76,6 +83,9 @@ const Main: FunctionComponent = (): JSX.Element => {
           setUpdateSuccess={setUpdateSuccess}
           hashImageStringDraftUpdate={hashImageStringDraftUpdate}
           imageDraftUpdated={imageDraftUpdated}
+          handleRemoveImage={handleRemoveImage}
+          handleUpdateRemoveImages={handleUpdateRemoveImages}
+          handleRemoveSecondUpdateImage={handleRemoveSecondUpdateImage}
         />
       </div>
     </div>

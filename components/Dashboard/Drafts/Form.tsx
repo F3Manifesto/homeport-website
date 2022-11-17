@@ -4,6 +4,7 @@ import { IoIosSave } from "react-icons/io";
 import moment from "moment";
 import { DraftFormProps } from "../../../types/general.types";
 import { AiOutlineLoading } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
 const Form: FunctionComponent<DraftFormProps> = ({
   handleDraftSubmit,
@@ -12,12 +13,14 @@ const Form: FunctionComponent<DraftFormProps> = ({
   imageDraftUploading,
   success,
   setSuccess,
+  handleRemoveImage,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
       setSuccess(false);
     }, 4000);
   }, [success]);
+  const dispatch = useDispatch();
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"
@@ -97,14 +100,28 @@ const Form: FunctionComponent<DraftFormProps> = ({
             {imagesArray.map((image: string, index: number) => {
               return (
                 <div
-                  className={`relative w-80 h-60 border-white/50 border-2 row-start-${
+                  className={`relative w-80 h-60 row-start-${
                     index + 1
-                  }`}
+                  } cursor-pointer bg-black grid grid-flow-col auto-cols-[auto auto] group`}
                 >
                   <img
                     src={`https://${image}.ipfs.w3s.link`}
-                    className="relative object-cover w-full h-full"
+                    className="absolute object-cover w-full h-full col-start-1"
                   />
+                  {
+                    <div className="absolute group-hover:visible invisible bg-black w-full h-full bg-opacity-80 grid grid-flow-col auto-cols-[auto auto]">
+                      <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-5 place-self-center">
+                        <div className="relative w-fit h-fit col-start-1 place-self-center">
+                          <RiDeleteBin5Fill
+                            size={25}
+                            color="white"
+                            className="hover:scale-90 active:scale-90"
+                            onClick={() => handleRemoveImage(image)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  }
                 </div>
               );
             })}

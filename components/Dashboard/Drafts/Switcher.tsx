@@ -9,10 +9,12 @@ import { GlobalContext } from "../../../pages/_app";
 const Switcher: FunctionComponent<SwitcherDraftProps> = ({
   hashImageStringDraft,
   imagesArray,
+  handleUpdateRemoveImages,
   handleDraftUpdate,
   handleDraftSubmit,
   success,
   draft,
+  handleRemoveImage,
   imageDraftUploading,
   setSuccess,
   imageDraftUpdateUploading,
@@ -20,13 +22,14 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
   setUpdateSuccess,
   hashImageStringDraftUpdate,
   imageDraftUpdated,
+  handleRemoveSecondUpdateImage,
 }): JSX.Element => {
   let action = "ADD_DRAFT";
   const draftSection = useSelector(
     (state: RootState) => state.app.draftReducer.type
   );
 
-  const {setDeleteModal} = useContext(GlobalContext);
+  const { setDeleteModal } = useContext(GlobalContext);
 
   const decideStringAction = () => {
     action = draftSection;
@@ -45,6 +48,8 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
           hashImageStringDraftUpdate={hashImageStringDraftUpdate}
           imageDraftUpdated={imageDraftUpdated}
           setDeleteModal={setDeleteModal}
+          handleUpdateRemoveImages={handleUpdateRemoveImages}
+          handleRemoveSecondUpdateImage={handleRemoveSecondUpdateImage}
         />
       );
 
@@ -57,6 +62,7 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
           hashImageStringDraft={hashImageStringDraft}
           imagesArray={imagesArray}
           setSuccess={setSuccess}
+          handleRemoveImage={handleRemoveImage}
         />
       );
   }

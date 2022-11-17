@@ -13,6 +13,8 @@ import moment from "moment";
 import { setUpdateDraftImages } from "../../../../redux/reducers/updateDraftImagesSlice";
 import { GlobalContext } from "../../../../pages/_app";
 import { setDraft } from "../../../../redux/reducers/draftSlice";
+import lodash from "lodash";
+import { setDraftImages } from "../../../../redux/reducers/draftImageSlice";
 
 const useUpdateDraft = () => {
   const draftId = useSelector((state: RootState) => state.app.draftReducer.id);
@@ -32,7 +34,11 @@ const useUpdateDraft = () => {
   const [imageDraftUpdateUploading, setImageDraftUpdateUploading] =
     useState<boolean>();
   const [mappedUpdatedImages, setMappedUpdatedImages] = useState<string[]>(
-    draftImagesPresent?.length !== 0 ? draftImagesPresent : []
+    draftImagesPresent?.length !== 0
+      ? draftImagesPresent
+      : oneDraft?.productImages.length !== 0
+      ? oneDraft?.productImages
+      : []
   );
   const [updateSuccess, setUpdateSuccess] = useState<boolean>(false);
   const queryClient = useQueryClient();
@@ -64,8 +70,11 @@ const useUpdateDraft = () => {
     } catch (err: any) {
       console.error(err.message);
     }
+    dispatch(setDraftImages([]));
     (e.target as HTMLFormElement).reset();
   };
+
+  console.log(mappedUpdatedImages, "MAPPED");
 
   const hashImageStringDraftUpdate = async (e: FormEvent): Promise<any> => {
     let imageData = new FormData();
@@ -95,9 +104,6 @@ const useUpdateDraft = () => {
       console.error(err.message);
     }
   };
-  // const draftDeleteId = useSelector(
-  //   (state: RootState) => state.app.dropReducer.id
-  // );
 
   const handleDraftsDelete = async (): Promise<void> => {
     try {
@@ -118,6 +124,24 @@ const useUpdateDraft = () => {
     }
   };
 
+  console.log(oneDraft, "ONE DRAFT");
+
+  const handleUpdateRemoveImages = (imageRemove: string): void => {
+    const newArray = lodash.filter(
+      oneDraft?.productImages,
+      (image) => image !== imageRemove
+    );
+    dispatch(setUpdateDraftImages(newArray));
+  };
+
+  const handleRemoveSecondUpdateImage = (imageRemove: string): void => {
+    const newArray = lodash.filter(
+      finalImagesUpdated,
+      (image) => image !== imageRemove
+    );
+    dispatch(setUpdateDraftImages(newArray));
+  };
+
   return {
     handleDraftUpdate,
     oneDraft,
@@ -127,6 +151,8 @@ const useUpdateDraft = () => {
     hashImageStringDraftUpdate,
     setMappedUpdatedImages,
     handleDraftsDelete,
+    handleUpdateRemoveImages,
+    handleRemoveSecondUpdateImage,
   };
 };
 

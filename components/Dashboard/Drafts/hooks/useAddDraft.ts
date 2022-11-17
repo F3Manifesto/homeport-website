@@ -6,6 +6,7 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
 import { setDraftImages } from "../../../../redux/reducers/draftImageSlice";
+import lodash from "lodash";
 
 const useAddDraft = () => {
   const [success, setSuccess] = useState<boolean>(false);
@@ -35,6 +36,7 @@ const useAddDraft = () => {
     };
     addMutation.mutate(draftTypeData);
     dispatch(setDraftImages([]));
+    setMappedImages([]);
     (e.target as HTMLFormElement).reset();
   };
 
@@ -65,6 +67,19 @@ const useAddDraft = () => {
     }
   };
 
+  const imagesArray = useSelector(
+    (state: RootState) => state.app.draftImageReducer.value
+  );
+
+  const handleRemoveImage = (imageRemove: string): void => {
+    const newArray = lodash.filter(
+      imagesArray,
+      (image) => image !== imageRemove
+    );
+    console.log(newArray);
+    dispatch(setDraftImages(newArray));
+  };
+
   return {
     handleDraftSubmit,
     success,
@@ -72,6 +87,8 @@ const useAddDraft = () => {
     hashImageStringDraft,
     imageDraftUploading,
     setSuccess,
+    handleRemoveImage,
+    setMappedImages,
   };
 };
 

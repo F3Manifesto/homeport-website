@@ -14,12 +14,15 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
   imageDraftUpdateUploading,
   imageDraftUpdated,
   setDeleteModal,
+  handleUpdateRemoveImages,
+  handleRemoveSecondUpdateImage,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
       setUpdateSuccess(false);
     }, 4000);
   }, [updateSuccess]);
+  console.log(imageDraftUpdated?.length);
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"
@@ -113,14 +116,29 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
             {draft?.productImages.map((image: string, index: number) => {
               return (
                 <div
-                  className={`relative w-80 h-60 border-white/50 border-2 row-start-${
+                  className={`relative w-80 h-60 row-start-${
                     index + 1
-                  }`}
+                  } cursor-pointer bg-black grid grid-flow-col auto-cols-[auto auto] group`}
+                  key={index}
                 >
                   <img
                     src={`https://${image}.ipfs.w3s.link`}
-                    className="relative object-cover w-full h-full"
+                    className="absolute object-cover w-full h-full col-start-1"
                   />
+                  {
+                    <div className="absolute group-hover:visible invisible bg-black w-full h-full bg-opacity-80 grid grid-flow-col auto-cols-[auto auto]">
+                      <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-5 place-self-center">
+                        <div className="relative w-fit h-fit col-start-1 place-self-center">
+                          <RiDeleteBin5Fill
+                            size={25}
+                            color="white"
+                            className="hover:scale-90 active:scale-90"
+                            onClick={() => handleUpdateRemoveImages(image)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  }
                 </div>
               );
             })}
@@ -131,14 +149,31 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
               {imageDraftUpdated?.map((image: string, index: number) => {
                 return (
                   <div
-                    className={`relative w-80 h-60 border-white/50 border-2 row-start-${
+                    className={`relative w-80 h-60 row-start-${
                       index + 1
-                    }`}
+                    } cursor-pointer bg-black grid grid-flow-col auto-cols-[auto auto] group`}
+                    key={index}
                   >
                     <img
                       src={`https://${image}.ipfs.w3s.link`}
-                      className="relative object-cover w-full h-full"
+                      className="absolute object-cover w-full h-full col-start-1"
                     />
+                    {
+                      <div className="absolute group-hover:visible invisible bg-black w-full h-full bg-opacity-80 grid grid-flow-col auto-cols-[auto auto]">
+                        <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-5 place-self-center">
+                          <div className="relative w-fit h-fit col-start-1 place-self-center">
+                            <RiDeleteBin5Fill
+                              size={25}
+                              color="white"
+                              className="hover:scale-90 active:scale-90"
+                              onClick={() =>
+                                handleRemoveSecondUpdateImage(image)
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    }
                   </div>
                 );
               })}
