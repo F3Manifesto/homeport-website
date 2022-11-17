@@ -23,8 +23,8 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
         </div>
         <div className="relative w-2/3 h-fit row-start-2 flex flex-wrap justify-start gap-2">
           {(showFormats
-            ? item.dropFormat
-            : lodash.slice(item.dropFormat, 0, 4)
+            ? item?.dropFormat
+            : lodash.slice(item?.dropFormat, 0, 4)
           ).map((format: string, index: number) => {
             return (
               <span
@@ -35,7 +35,7 @@ const CollectionTags: FunctionComponent<CollectionTagsProps> = ({
               </span>
             );
           })}
-          {item.dropFormat?.length > 4 && (
+          {item?.dropFormat?.length > 4 && (
             <span
               className="relative w-fit h-9 inline-flex rounded-full shadow-sm bg-lGray grid grid-flow-col auto-cols-[auto auto] cursor-pointer active:scale-95"
               onClick={() => setShowFormats(!showFormats)}

@@ -18,11 +18,11 @@ const Purchase: FunctionComponent<PurchaseProps> = ({ item }): JSX.Element => {
       </div>
       <div className="relative col-start-2 w-[55vw] h-fit grid grid-flow-row auto-rows-[auto auto] pl-0 p-36">
         <div className="relative w-fit h-fit row-start-1 text-white font-animosaEB text-[7vw] text-left leading-none min-h-80 pb-16">
-          {item.name.toUpperCase()}
+          {item?.name?.toUpperCase()}
         </div>
         <Order item={item} />
         <div className="relative w-fit h-fit row-start-3 text-light text-white font-awkward text-[2vw] leading-4 pt-20">
-          {item.description}
+          {item?.description}
         </div>
         <Traits />
       </div>

@@ -38,7 +38,7 @@ const SelectedDrop: FunctionComponent<SelectedDropProps> = ({
                     />
                   )}
                   <div className="relative w-fit h-fit place-self-center col-start-1 text-white">
-                    {item.name}
+                    {item?.name}
                   </div>
                   {
                     <div className="absolute group-hover:visible invisible bg-black w-full h-full bg-opacity-80 grid grid-flow-col auto-cols-[auto auto]">

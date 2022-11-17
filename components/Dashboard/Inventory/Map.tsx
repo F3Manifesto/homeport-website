@@ -42,7 +42,7 @@ const Map: FunctionComponent<MapProps> = ({
                 />
               )}
               <div className="relative w-fit h-fit place-self-center col-start-1 text-white text-xl">
-                {item.name}
+                {item?.name}
               </div>
               {
                 <div className="absolute group-hover:visible invisible bg-black w-full h-full bg-opacity-80 grid grid-flow-col auto-cols-[auto auto]">
@@ -88,7 +88,7 @@ const Map: FunctionComponent<MapProps> = ({
                         onClick={
                           currencyData?.filter(
                             (data: CurrencyInterface) =>
-                              data.itemSlug === item.slug
+                              data?.itemSlug === item?.slug
                           )?.length !== 0
                             ? () =>
                                 window?.open(`${BASE_URL}/items/${item.slug}`)
@@ -113,7 +113,7 @@ const Map: FunctionComponent<MapProps> = ({
                         color={
                           currencyData?.filter(
                             (data: CurrencyInterface) =>
-                              data.itemSlug === item.slug
+                              data?.itemSlug === item?.slug
                           )?.length === 0
                             ? "#E25049"
                             : "#ADE7B5"

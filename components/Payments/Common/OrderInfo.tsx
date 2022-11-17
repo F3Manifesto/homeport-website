@@ -19,7 +19,7 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
         />
         <div className="relative w-96 h-fit text-white font-economica text-3xl col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-8">
           <div className="relative w-fit h-fit row-start-1 text-7xl">
-            {item.name}
+            {item?.name}
           </div>
           <div className="relative w-fit h-fit row-start-2 text-xl text-justify leading-5">
             {item.description}
@@ -34,7 +34,7 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
             <div className="col-start-2 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">
               <div className="relative col-start-1 w-fit h-fit">Quantity:</div>
               <div className="relative col-start-2 w-fit h-fit">
-                {item.quantity}
+                {item?.quantity}
               </div>
             </div>
           </div>

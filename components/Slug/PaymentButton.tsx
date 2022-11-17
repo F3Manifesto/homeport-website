@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { FunctionComponent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setItem } from "../../redux/reducers/itemSlice";
+import { setPage } from "../../redux/reducers/pageSlice";
 import { RootState } from "../../redux/store";
 import { PaymentButtonProps } from "../../types/general.types";
 
@@ -48,6 +49,7 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
             onClick={
               clickedToken !== ""
                 ? () => {
+                    dispatch(setPage("crypto"));
                     setPurchase("crypto");
                     router.push("/crypto");
                   }
@@ -66,6 +68,7 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
           <div
             className="relative w-full h-fit col-start-2 border-2 border-white grid grid-flow-col auto-cols-[auto auto] hover:opacity-70 active:scale-95 hover:bg-lBlue active:bg-lBlue"
             onClick={() => {
+              dispatch(setPage("fiat"));
               setPurchase("fiat");
               router.push("/fiat");
             }}

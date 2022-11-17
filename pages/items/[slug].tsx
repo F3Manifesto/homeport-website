@@ -42,7 +42,7 @@ const Slug: NextPage<SlugProps> = ({ item }): JSX.Element => {
   useEffect(() => {
     dispatch(
       setCurrency({
-        actionSlug: item.slug,
+        actionSlug: item?.slug,
       })
     );
     dispatch(setMain(item.mainImage as string));

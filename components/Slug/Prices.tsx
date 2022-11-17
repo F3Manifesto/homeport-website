@@ -3,7 +3,6 @@ import { PriceProps } from "../../types/general.types";
 
 const Prices: FunctionComponent<PriceProps> = ({
   tokens,
-  layoutIndexes,
   setSelectedPrice,
   featurePrice,
   convertedPrice,
@@ -33,16 +32,14 @@ const Prices: FunctionComponent<PriceProps> = ({
               key={index}
               className={`relative ${
                 index === 0
-                  ? `col-start-${layoutIndexes[index]} row-start-${
-                      layoutIndexes[index + 1]
-                    }`
-                  : index === layoutIndexes?.length - 2
-                  ? `col-start-${layoutIndexes[-2]} row-start-${
-                      layoutIndexes[-1]
-                    }`
-                  : `col-start-${layoutIndexes[index + 1]} row-start-${
-                      layoutIndexes[index + 2]
-                    }`
+                  ? `col-start-1 row-start-1`
+                  : index === 1
+                  ? `col-start-2 row-start-1`
+                  : index === 2
+                  ? `col-start-1 row-start-2`
+                  : index === 3
+                  ? `col-start-2 row-start-2`
+                  : index === 4 && `col-start-3 row-start-1`
               } border-2 border-white rounded-xl text-[1.3em] w-28 h-fit grid grid-flow-col auto-cols-[auto auto] p-2 cursor-pointer active:bg-lBlue hover:bg-lBlue ${
                 clickedToken === token && "bg-lBlue"
               }`}

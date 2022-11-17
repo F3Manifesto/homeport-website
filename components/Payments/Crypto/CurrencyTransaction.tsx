@@ -23,6 +23,10 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
       action = "COLLECT";
     }
 
+    if (!isConnected) {
+      action = "NOT_CONNECTED";
+    }
+
     if (
       (isConnected && !LoadingCurrency && !SuccessCurrency && ErrorCurrency) ||
       error

@@ -84,7 +84,7 @@ const Header: FunctionComponent<HeaderProps> = ({ landTop }) => {
             }
           >
             <div className="relative col-start-1 w-fit h-fit place-self-center px-3">
-              {userAuthenticated ? userAuthenticated.toUpperCase() : "LOG IN"}
+              {userAuthenticated ? userAuthenticated?.toUpperCase() : "LOG IN"}
             </div>
           </div>
           {showDropdownBurger && (

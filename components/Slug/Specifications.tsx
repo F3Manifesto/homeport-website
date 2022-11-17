@@ -9,7 +9,7 @@ const Specifications: FunctionComponent<SpecificationsProps> = ({item}): JSX.Ele
           UNIT SPECIFICATIONS
         </div>
         <div className="relative w-fit h-fit row-start-2 font-libR pb-6">
-          {item.name}
+          {item?.name}
         </div>
         <div className="relative w-full h-full row-start-3 font-libR grid grid-flow-col auto-cols-[auto auto] gap-36 pb-12">
           <div className="relative w-fit h-fit col-start-1">

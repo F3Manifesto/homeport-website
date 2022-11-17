@@ -19,7 +19,7 @@ const SideBar: FunctionComponent = (): JSX.Element => {
   return (
     <div className="relative col-start-1 w-fit h-fit grid grid-flow-row auto-rows-[auto auto] gap-6 px-10 py-16">
       {sidebar.map((item: string, index: number) => {
-        const itemDispatch = item.toUpperCase().replaceAll(" ", "_");
+        const itemDispatch = item?.toUpperCase().replaceAll(" ", "_");
         return (
           <div
             key={index}

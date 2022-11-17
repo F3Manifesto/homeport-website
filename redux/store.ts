@@ -15,6 +15,7 @@ import mainImageReducer from "./reducers/mainImageSlice";
 import featuredImagesReducer from "./reducers/featuredImageSlice";
 import draftImageReducer from "./reducers/draftImageSlice";
 import draftReducer from "./reducers/draftSlice";
+import pageReducer from "./reducers/pageSlice";
 import updateDraftImagesReducer from "./reducers/updateDraftImagesSlice";
 import { combineReducers } from "redux";
 
@@ -36,6 +37,7 @@ const reducer = combineReducers({
   draftImageReducer,
   draftReducer,
   updateDraftImagesReducer,
+  pageReducer,
 });
 
 export const store = configureStore({

@@ -37,8 +37,8 @@ const useOrderValue = (): UseOrderValueResult => {
   const [selectedPrice, setSelectedPrice] = useState<string>("usd");
   const [monaPrice, setMonaPrice] = useState<number>(0);
   const [featurePrice, setFeaturePrice] = useState<number>(USDPRICESET);
-  const tokens: string[] = ["mona", "eth", "usdt", "matic"];
-  const layoutIndexes: number[] = [1, 1, 2, 1, 2, 2, 2, 2];
+  const tokens: string[] = ["mona", "eth", "usdt", "matic", "usd"];
+  const layoutIndexes: number[] = [1, 1, 2, 1, 2, 2, 2, 2, 10, 10];
   const [convertedPrice, setConvertedPrice] = useState<number>(USDPRICESET);
   const [currencyTag, setCurrencyTag] = useState<string>("USD");
   const [clickedToken, setClickedToken] = useState<string>("");
@@ -134,7 +134,7 @@ const useOrderValue = (): UseOrderValueResult => {
       setFeaturePrice(ETHPRICESET);
     } else if (selectedPrice === "usdt") {
       const USDTUSD = parseInt(
-      (lodash.chunk(data, 3)[1][2] as Array<any>)[1]._hex.toString()
+        (lodash.chunk(data, 3)[1][2] as Array<any>)[1]._hex.toString()
       );
       setConvertedPrice(
         Number(USDTUSD / Math.pow(10, Number(lodash.chunk(data, 3)[1][0]))) *
@@ -156,6 +156,10 @@ const useOrderValue = (): UseOrderValueResult => {
       setConvertedPrice(MONAPRICESET / monaPrice);
       setCurrencyTag("MONA");
       setFeaturePrice(MONAPRICESET);
+    } else {
+      setConvertedPrice(undefined);
+      setCurrencyTag("USD");
+      setFeaturePrice(USDPRICESET);
     }
   };
 
