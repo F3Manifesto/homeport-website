@@ -10,7 +10,7 @@ const useImageSlider = (): UseImageSliderResult => {
   const featuredImages = useSelector(
     (state: RootState) => state.app.featuredImagesReducer.value
   );
-  const imageList: string[] = featuredImages as string[];
+  const imageList: string[] = featuredImages.concat(mainImage) as string[];
   const [imageIndex, setImageIndex] = useState<number>(0);
   const [featuredImage, setFeaturedImage] = useState<string>(
     mainImage as string
@@ -23,7 +23,14 @@ const useImageSlider = (): UseImageSliderResult => {
     }
   };
 
-  return { nextImage, imageList, imageIndex, featuredImage, setFeaturedImage };
+  return {
+    nextImage,
+    imageList,
+    imageIndex,
+    featuredImage,
+    setFeaturedImage,
+    mainImage,
+  };
 };
 
 export default useImageSlider;

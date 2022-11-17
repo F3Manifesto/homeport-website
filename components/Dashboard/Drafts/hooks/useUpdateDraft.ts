@@ -74,8 +74,6 @@ const useUpdateDraft = () => {
     (e.target as HTMLFormElement).reset();
   };
 
-  console.log(mappedUpdatedImages, "MAPPED");
-
   const hashImageStringDraftUpdate = async (e: FormEvent): Promise<any> => {
     let imageData = new FormData();
     let finalImages: any[] = [];
@@ -123,8 +121,6 @@ const useUpdateDraft = () => {
       console.error(err.message);
     }
   };
-
-  console.log(oneDraft, "ONE DRAFT");
 
   const handleUpdateRemoveImages = (imageRemove: string): void => {
     const newArray = lodash.filter(

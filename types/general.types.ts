@@ -44,6 +44,7 @@ export type UseImageSliderResult = {
   imageIndex: number;
   featuredImage: string;
   setFeaturedImage: (e: string) => void;
+  mainImage: string;
 };
 
 export type UseOrderValueResult = {
@@ -258,6 +259,7 @@ export type MapProps = {
   setAddPricingModal: (e: boolean) => void;
   handleLandTop: () => void;
   handleModalTop: () => void;
+  setClickedFirst: (e: boolean) => void;
 };
 
 export type FormProps = {
@@ -306,6 +308,7 @@ export type SwitcherProps = {
   hashImageStringOneUpdated: (e: FormEvent) => Promise<any>;
   imageUploadingUpdated: boolean;
   hashImageStringMultipleUpdated: (e: FormEvent) => Promise<any>;
+  clickedFirst: boolean;
 };
 
 export type UpdateFormProps = {
@@ -328,6 +331,7 @@ export type UpdateFormProps = {
   hashImageStringOneUpdated: (e: FormEvent) => Promise<any>;
   imageUploadingUpdated: boolean;
   hashImageStringMultipleUpdated: (e: FormEvent) => Promise<any>;
+  clickedFirst: boolean;
 };
 
 export type SlugProps = {

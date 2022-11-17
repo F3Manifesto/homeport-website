@@ -31,6 +31,8 @@ export const GlobalContextDefault = {
   setMainFile: (cantDeleteAdmin: any) => {},
   featuredFiles: [],
   setFeaturedFiles: (featuredFiles: any) => {},
+  clickedFirst: true,
+  setClickedFirst: (clickedFirst: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
@@ -60,6 +62,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [cantDeleteDrop, setCantDeleteDrop] = useState<boolean>(
     GlobalContextDefault.cantDeleteDrop
   );
+  const [clickedFirst, setClickedFirst] = useState<boolean>(
+    GlobalContextDefault.clickedFirst
+  );
   const [addPricingModal, setAddPricingModal] = useState<boolean>(
     GlobalContextDefault.addPricingModal
   );
@@ -81,6 +86,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <RainbowKitProvider chains={chains}>
             <GlobalContext.Provider
               value={{
+                clickedFirst,
+                setClickedFirst,
                 quantity,
                 setQuantity,
                 itemName,

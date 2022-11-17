@@ -39,6 +39,8 @@ const Main: FunctionComponent<MainInventoryProps> = ({
     setMainFile,
     setDeleteModal,
     setAddPricingModal,
+    clickedFirst,
+    setClickedFirst,
   } = useContext(GlobalContext);
   const { currencyData } = useCheckCurrency();
   const dispatch = useDispatch();
@@ -93,6 +95,7 @@ const Main: FunctionComponent<MainInventoryProps> = ({
                       actionId: undefined,
                     })
                   );
+                  setClickedFirst(true);
                 }}
               >
                 ADD PRODUCT
@@ -129,6 +132,7 @@ const Main: FunctionComponent<MainInventoryProps> = ({
           hashImageStringOne={hashImageStringOne}
           imageUploading={imageUploading}
           hashImageStringMultiple={hashImageStringMultiple}
+          clickedFirst={clickedFirst}
         />
       </div>
       <div className="relative w-full h-fit col-start-2 grid grid-flow-row auto-rows-[auto auto] justify-self-end">
@@ -142,6 +146,7 @@ const Main: FunctionComponent<MainInventoryProps> = ({
           currencyData={currencyData}
           setAddPricingModal={setAddPricingModal}
           handleLandTop={handleLandTop}
+          setClickedFirst={setClickedFirst}
         />
       </div>
     </div>

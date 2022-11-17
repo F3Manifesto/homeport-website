@@ -20,6 +20,7 @@ const Map: FunctionComponent<MapProps> = ({
   currencyData,
   handleLandTop,
   handleModalTop,
+  setClickedFirst,
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
@@ -51,14 +52,15 @@ const Map: FunctionComponent<MapProps> = ({
                         size={25}
                         color="white"
                         className="hover:scale-90 active:scale-90"
-                        onClick={() =>
+                        onClick={() => {
                           dispatch(
                             setProduct({
                               actionValue: "INVENTORY_UPDATE",
                               actionId: item.slug,
                             })
-                          )
-                        }
+                          );
+                          setClickedFirst(true);
+                        }}
                       />
                     </div>
                     <div className="relative w-fit h-fit col-start-2 place-self-center">

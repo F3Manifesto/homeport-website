@@ -32,6 +32,7 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
   imageUploadingUpdated,
   hashImageStringOneUpdated,
   hashImageStringMultipleUpdated,
+  clickedFirst,
 }): JSX.Element => {
   let action = "INVENTORY_ADD";
   const displaySection = useSelector(
@@ -70,6 +71,7 @@ const Switcher: FunctionComponent<SwitcherProps> = ({
           hashImageStringOneUpdated={hashImageStringOneUpdated}
           imageUploadingUpdated={imageUploadingUpdated}
           hashImageStringMultipleUpdated={hashImageStringMultipleUpdated}
+          clickedFirst={clickedFirst}
         />
       );
 

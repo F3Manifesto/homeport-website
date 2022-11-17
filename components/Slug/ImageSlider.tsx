@@ -8,19 +8,23 @@ import { useSelector } from "react-redux";
 const ImageSlider: FunctionComponent<ImageSliderProps> = ({
   item,
 }): JSX.Element => {
-  const { nextImage, imageIndex, imageList, featuredImage, setFeaturedImage } =
-    useImageSlider();
-  const mainImage = useSelector(
-    (state: RootState) => state.app.mainImageReducer.value
-  );
+  const {
+    nextImage,
+    imageIndex,
+    imageList,
+    featuredImage,
+    setFeaturedImage,
+    mainImage,
+  } = useImageSlider();
+
   return (
     <div className="relative w-full h-full row-start-1 grid grid-flow-row auto-rows-[auto auto] gap-16">
       <div className="relative w-full h-[35rem] row-start-1">
         <img
           src={
             featuredImage
-              ? `https://${mainImage}.ipfs.w3s.link`
-              : `https://${featuredImage}.ipfs.w3s.link`
+              ? `https://${featuredImage}.ipfs.w3s.link`
+              : `https://${mainImage}.ipfs.w3s.link`
           }
           alt="featured"
           className="object-cover w-full h-full"

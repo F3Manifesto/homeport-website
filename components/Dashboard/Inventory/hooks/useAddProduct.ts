@@ -41,7 +41,8 @@ const useAddProduct = (): UseAddProductResult => {
 
   const [openDropDown, setOpenDropDown] = useState<boolean>(false);
   const [mappedMainFile, setMappedMainFile] = useState<string | undefined>();
-  const { setFeaturedFiles, setMainFile } = useContext(GlobalContext);
+  const { setFeaturedFiles, setMainFile, setClickedFirst } =
+    useContext(GlobalContext);
   const [mappedFeaturedFiles, setMappedFeaturedFiles] = useState<string[]>([]);
   let newDropFormatArray: string[] = [];
 
@@ -91,6 +92,7 @@ const useAddProduct = (): UseAddProductResult => {
       addMutation.mutate(productTypeData);
       setMainFile(undefined);
       setFeaturedFiles([]);
+      setClickedFirst(true);
       (e.target as HTMLFormElement).reset();
       dispatch(setDropFormat([]));
       dispatch(setDropType("Select Drop Type"));
@@ -163,7 +165,8 @@ const useAddProduct = (): UseAddProductResult => {
             let responseJSON = await response.json();
             finalImages.push(responseJSON.cid);
             if (
-              finalImages?.length === (e.target as HTMLFormElement).files?.length
+              finalImages?.length ===
+              (e.target as HTMLFormElement).files?.length
             ) {
               setImageUploading(false);
             }

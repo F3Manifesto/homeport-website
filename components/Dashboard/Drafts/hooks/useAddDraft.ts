@@ -76,7 +76,6 @@ const useAddDraft = () => {
       imagesArray,
       (image) => image !== imageRemove
     );
-    console.log(newArray);
     dispatch(setDraftImages(newArray));
   };
 

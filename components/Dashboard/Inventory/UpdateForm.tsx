@@ -29,6 +29,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
   hashImageStringOneUpdated,
   hashImageStringMultipleUpdated,
   imageUploadingUpdated,
+  clickedFirst,
 }): JSX.Element => {
   const dispatch = useDispatch();
   const dropFormatArray = useSelector(
@@ -118,18 +119,19 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           <div className="relative row-start-1 w-fit h-fit text-white font-economica text-left">
             Drop Format
           </div>
-          <div className="relative w-[30vw] h-fit row-start-2 text-white font-economica px-2 py-3 cursor-pointer flex flex-wrap justify-start">
+          <div className="relative w-[30vw] h-fit row-start-2 text-white font-economica px-2 py-3 cursor-pointer flex flex-wrap justify-start gap-3">
             {dropFormat.map((format: string, index: number) => {
               return (
                 <div
-                  className="relative w-fit h-fit px-1 py-2 grid grid-flow-col auto-cols-[auto auto] gap-4"
+                  className="relative w-fit h-fit px-1 py-2 grid grid-flow-col auto-cols-[auto auto] gap-1"
                   key={index}
                 >
                   <div
                     className={`cursor-pointer appearance-none bg-white border border-white h-4 w-4 float-left col-start-1 place-self-center ${
-                      (newDropFormatArray?.includes(format) ||
-                        dropFormatArray?.includes(format)) &&
-                      "bg-yellowTheme"
+                      dropFormatArray?.length === 0 && clickedFirst
+                        ? newDropFormatArray?.includes(format) &&
+                          "bg-yellowTheme"
+                        : !clickedFirst && dropFormatArray?.includes(format) && "bg-yellowTheme"
                     }`}
                     onClick={
                       dropFormatArray?.length !== 0

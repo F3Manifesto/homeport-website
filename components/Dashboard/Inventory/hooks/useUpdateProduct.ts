@@ -21,6 +21,7 @@ import { setProduct } from "../../../../redux/reducers/productSlice";
 
 const useUpdateProduct = (): UseUpdateProductResult => {
   const dispatch = useDispatch();
+  const { clickedFirst, setClickedFirst } = useContext(GlobalContext);
   const dropTypeName = useSelector(
     (state: RootState) => state.app.dropTypeReducer.value
   );
@@ -60,41 +61,49 @@ const useUpdateProduct = (): UseUpdateProductResult => {
 
   const handleProductSubmitUpdate = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
-    const productData: ProductInterface = {
-      name: (e.target as HTMLFormElement).productName.value,
-      description: (e.target as HTMLFormElement).productDescription.value,
-      dropType:
-        dropTypeName === "Select Drop Type"
-          ? (data?.dropType as string)
-          : dropTypeName,
-      dropFormat:
-        dropFormatArray?.length === 0
-          ? (data?.dropFormat as string[])
-          : dropFormatArray,
-      quantity: (e.target as HTMLFormElement).quantity.value,
-      mainImage: mainUpdatedFile ? mainUpdatedFile : data?.mainImage,
-      featuredImages:
-        featuredUpdatedFiles?.length !== 0
-          ? featuredUpdatedFiles
-          : data?.featuredImages,
-      slug: (e.target as HTMLFormElement).productName.value
-        .replace(/ /g, "-")
-        .replace(/[^\w-/]+/g, "")
-        .toLowerCase(),
-    };
-    try {
-      updatedMutation.mutate(productData);
-    } catch (err: any) {
-      console.error(err.message);
+    if (dropFormatArray?.length === 0 && !clickedFirst) {
+      setClickedFirst(true)
+      alert("Please select one or more drop formats");
+    } else {
+      const productData: ProductInterface = {
+        name: (e.target as HTMLFormElement).productName.value,
+        description: (e.target as HTMLFormElement).productDescription.value,
+        dropType:
+          dropTypeName === "Select Drop Type"
+            ? (data?.dropType as string)
+            : dropTypeName,
+        dropFormat:
+          dropFormatArray?.length === 0
+            ? (data?.dropFormat as string[])
+            : dropFormatArray,
+        quantity: (e.target as HTMLFormElement).quantity.value,
+        mainImage: mainUpdatedFile ? mainUpdatedFile : data?.mainImage,
+        featuredImages:
+          featuredUpdatedFiles?.length !== 0
+            ? featuredUpdatedFiles
+            : data?.featuredImages,
+        slug: (e.target as HTMLFormElement).productName.value
+          .replace(/ /g, "-")
+          .replace(/[^\w-/]+/g, "")
+          .toLowerCase(),
+      };
+      try {
+        updatedMutation.mutate(productData);
+      } catch (err: any) {
+        console.error(err.message);
+      }
+      (e.target as HTMLFormElement).reset();
+      dispatch(
+        setProduct({ actionValue: "INVENTORY_ADD", actionId: undefined })
+      );
+      setMainUpdatedFile(undefined);
+      setFeaturedUpdatedFiles([]);
+      setClickedFirst(true);
+      setMainFile(undefined);
+      setFeaturedFiles([]);
+      dispatch(setDropFormat([]));
+      dispatch(setDropType("Select Drop Type"));
     }
-    (e.target as HTMLFormElement).reset();
-    dispatch(setProduct({ actionValue: "INVENTORY_ADD", actionId: undefined }));
-    setMainUpdatedFile(undefined);
-    setFeaturedUpdatedFiles([]);
-    setMainFile(undefined);
-    setFeaturedFiles([]);
-    dispatch(setDropFormat([]));
-    dispatch(setDropType("Select Drop Type"));
   };
 
   const handleProductDelete = async (): Promise<void> => {
@@ -110,6 +119,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
   let newDropFormatArray: string[] = data?.dropFormat as string[];
 
   const handleExistingDropFormatArray = (form: string): void => {
+    setClickedFirst(false);
     if (newDropFormatArray.includes(form)) {
       newDropFormatArray = newDropFormatArray.filter((value) => form !== value);
       dispatch(setDropFormat(newDropFormatArray));
@@ -176,7 +186,8 @@ const useUpdateProduct = (): UseUpdateProductResult => {
             let responseJSON = await response.json();
             finalImages.push(responseJSON.cid);
             if (
-              finalImages?.length === (e.target as HTMLFormElement).files?.length
+              finalImages?.length ===
+              (e.target as HTMLFormElement).files?.length
             ) {
               setImageUploadingUpdated(false);
             }
