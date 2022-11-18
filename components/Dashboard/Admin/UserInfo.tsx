@@ -66,7 +66,7 @@ const UserInfo: FunctionComponent<UserInfoProps> = ({
           </div>
         );
       })}
-      <span className="relative w-80 h-60 font-economica text-lg grid grid-flow-col auto-cols-[auto auto] border-white/50 border-2 border-dashed">
+      {/* <span className="relative w-80 h-60 font-economica text-lg grid grid-flow-col auto-cols-[auto auto] border-white/50 border-2 border-dashed">
         <div
           className="relative w-fit h-fit col-start-1 grid grid-flow-col auto-cols-[auto auto] bg-grayBlue place-self-center px-10 py-1 cursor-pointer hover:scale-105 active:scale-95"
           onClick={() => router.push("/sign-up")}
@@ -75,7 +75,7 @@ const UserInfo: FunctionComponent<UserInfoProps> = ({
             add another admin
           </div>
         </div>
-      </span>
+      </span> */}
     </div>
   );
 };

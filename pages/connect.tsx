@@ -12,12 +12,12 @@ const Connect: NextPage = (): JSX.Element => {
         >
           <div>Merchant Log In</div>
         </div>
-        <div
+        {/* <div
           className="relative w-fit h-fit place-self-center border-white border-2 row-start-2 px-10 text-lg rounded-md py-2 -top-24 cursor-pointer hover:bg-lBlue active:scale-95 active:bg-lBlue row-start-3"
           onClick={() => router.push("/sign-up")}
         >
           <div>Merchant Sign Up</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
