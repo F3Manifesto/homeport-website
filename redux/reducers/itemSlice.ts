@@ -7,6 +7,7 @@ export interface ItemState {
   quantity?: number;
   price?: number;
   token?: string;
+  dropType?: string;
 }
 
 const initialItemState: ItemState = {
@@ -16,6 +17,7 @@ const initialItemState: ItemState = {
   quantity: undefined,
   price: undefined,
   token: undefined,
+  dropType: undefined,
 };
 export const itemSlice = createSlice({
   name: "item",
@@ -31,6 +33,7 @@ export const itemSlice = createSlice({
           actionQuantity,
           actionPrice,
           actionToken,
+          actionDropType,
         },
       }
     ) => {
@@ -40,6 +43,7 @@ export const itemSlice = createSlice({
       state.quantity = actionQuantity;
       state.price = actionPrice;
       state.token = actionToken;
+      state.dropType = actionDropType;
     },
   },
 });

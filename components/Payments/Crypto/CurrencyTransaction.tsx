@@ -1,9 +1,10 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
 import useCurrency from "./hooks/useCurrency";
+import useDetails from "../Common/hooks/useDetails";
 
 const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
@@ -16,8 +17,14 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
     isError: ErrorCurrency,
     handleWriteCrypto,
     error,
+    hashData,
   } = useCurrency();
-
+  const { handleAddressSubmit } = useDetails();
+  useEffect(() => {
+    if (hashData?.transactionHash) {
+      handleAddressSubmit();
+    }
+  }, [SuccessCurrency]);
   const decideStringAction = () => {
     if (isConnected) {
       action = "COLLECT";
@@ -34,11 +41,17 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
       action = "ERROR";
     }
 
-    if (isConnected && LoadingCurrency && SuccessCurrency && ErrorCurrency) {
+    if (isConnected && LoadingCurrency) {
       action = "LOADING";
     }
 
-    if (isConnected && !LoadingCurrency && SuccessCurrency && !ErrorCurrency) {
+    if (
+      isConnected &&
+      !LoadingCurrency &&
+      SuccessCurrency &&
+      !ErrorCurrency &&
+      hashData?.transactionHash
+    ) {
       action = "SUCCESS";
     }
 
@@ -76,8 +89,10 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
 
     case "LOADING":
       return (
-        <div className="relative animate-spin w-40 h-10">
-          <AiOutlineLoading size={5} color={"white"} />
+        <div className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]">
+          <div className="relative animate-spin w-fit h-fit place-self-center">
+            <AiOutlineLoading size={15} color={"white"} />
+          </div>
         </div>
       );
 

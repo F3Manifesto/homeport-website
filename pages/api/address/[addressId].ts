@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import { getAddress } from "../../../utils/controllers";
+import { getAddress, updateAddress } from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -17,6 +17,15 @@ const handler = async (req: any, res: any): Promise<void> => {
         return address;
       } catch (err: any) {
         res.json({ success: false, data: err.message });
+      }
+      break;
+
+    case "PUT":
+      try {
+        const address = await updateAddress(req, res);
+        return address;
+      } catch (err: any) {
+        res.status(400).json({ success: false, data: err.message });
       }
       break;
 

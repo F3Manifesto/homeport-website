@@ -5,6 +5,7 @@ import {
 } from "@stripe/stripe-js";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { ItemState } from "../redux/reducers/itemSlice";
+import { SelectedFulfillState } from "../redux/reducers/selectedFulfillSlice";
 
 export interface AggregatorInterface {
   inputs:
@@ -123,6 +124,7 @@ export type PaymentButtonProps = {
   clickedToken: string;
   item: any;
   quantity: number;
+  setClickedToken: (e: string) => void;
 };
 
 export type UseFiatResult = {
@@ -358,17 +360,24 @@ export type DeleteDropProps = {
 };
 
 export interface AddressInterface {
+  _id?: string;
   firstName: string;
   lastName: string;
   email: string;
   countryLocation: string;
   street: string;
-  buildingAparmentNo: number;
+  buildingAparmentNo: string;
   stateProvince: string;
   city: string;
-  zipCode: number;
+  zipCode: string;
   forProductName: string;
-  forProductId: string;
+  forProductPrice: number;
+  forProductToken: string;
+  forProductQuantity: number;
+  forProductMainImage: string;
+  forProductDropType: string;
+  fulfilled?: boolean;
+  provider?: string;
 }
 
 export type OrderProps = {
@@ -380,12 +389,14 @@ export type OrderInfoProps = {
 };
 
 export type DetailsProps = {
-  handleAddressSubmit: (e: FormEvent) => void;
+  setDetailsSuccess: (e: boolean) => void;
   detailsSuccess: boolean;
 };
 
 export type useDetailsResults = {
-  handleAddressSubmit: (e: FormEvent) => void;
+  handleAddressSubmit: () => void;
+  paymentSuccess: boolean;
+  setDetailsSuccess: (e: boolean) => void;
   detailsSuccess: boolean;
 };
 
@@ -600,3 +611,15 @@ export interface TransferInterface {
   stateMutability: string;
   type: string;
 }
+
+export type SelectedDropFulFillmentProps = {
+  addressData: AddressInterface[] | undefined;
+};
+
+export type FulFilledOrderProps = {
+  productInfo: SelectedFulfillState | undefined;
+  handleFulfillOrder: (e: FormEvent) => void;
+  providers: string[];
+  setProviderValue: (e: string) => void;
+  providerValue: string;
+};

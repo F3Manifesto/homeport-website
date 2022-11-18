@@ -17,14 +17,12 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
   handleUpdateRemoveImages,
   handleRemoveSecondUpdateImage,
   clickedFirstDraft,
-  setClickedFirstDraft,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
       setUpdateSuccess(false);
     }, 4000);
   }, [updateSuccess]);
-  console.log(imageDraftUpdated?.length);
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"

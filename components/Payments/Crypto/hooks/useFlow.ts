@@ -27,7 +27,12 @@ const useFlow = () => {
     await sendTransactionAsync?.();
   };
 
-  const { isLoading, isSuccess, isError } = useWaitForTransaction({
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    data: hashData,
+  } = useWaitForTransaction({
     hash: data?.hash,
   });
 
@@ -39,6 +44,7 @@ const useFlow = () => {
     sendTransactionAsync,
     data,
     handleSendEth,
+    hashData,
   };
 };
 

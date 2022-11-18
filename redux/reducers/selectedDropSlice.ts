@@ -8,7 +8,7 @@ export interface SelectedState {
   mainImage?: string;
 }
 
-const initialPriceState: SelectedState = {
+const initialSelectedState: SelectedState = {
   name: undefined,
   slug: undefined,
   description: undefined,
@@ -18,7 +18,7 @@ const initialPriceState: SelectedState = {
 
 export const selectedSlice = createSlice({
   name: "selected",
-  initialState: initialPriceState,
+  initialState: initialSelectedState,
   reducers: {
     setSelected: (
       state: SelectedState,

@@ -1,37 +1,53 @@
 import { FormEvent, useState } from "react";
 import { useMutation } from "react-query";
+import { useSelector } from "react-redux";
 import { addAddress } from "../../../../lib/helpers";
+import { RootState } from "../../../../redux/store";
 import {
   AddressInterface,
   useDetailsResults,
 } from "../../../../types/general.types";
 
 const useDetails = (): useDetailsResults => {
-  const [detailsSuccess, setDetailsSuccess] = useState<boolean>(false);
+  const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
+  const addressDataValues = useSelector(
+    (state: RootState) => state.app.addressReducer
+  );
+  const [detailsSuccess, setDetailsSuccess] = useState<boolean>();
 
   const addMutation = useMutation(addAddress, {
     onSuccess: async () => {
-      setDetailsSuccess(true);
+      setPaymentSuccess(true);
     },
   });
 
-  const handleAddressSubmit = (e: FormEvent): void => {
-    e.preventDefault();
+  const handleAddressSubmit = (): void => {
     const addressData: AddressInterface = {
-      firstName: (e.target as HTMLFormElement).firstName.value,
-      lastName: (e.target as HTMLFormElement).lastName.value,
-      email: (e.target as HTMLFormElement).email.value,
-      countryLocation: (e.target as HTMLFormElement).country.value,
-      street: (e.target as HTMLFormElement).street.value,
-      buildingAparmentNo: (e.target as HTMLFormElement).aptNo.value,
-      stateProvince: (e.target as HTMLFormElement).state.value,
-      city: (e.target as HTMLFormElement).city.value,
-      zipCode: (e.target as HTMLFormElement).zip.value,
+      firstName: addressDataValues.firstName,
+      lastName: addressDataValues.lastName,
+      email: addressDataValues.email,
+      countryLocation: addressDataValues.countryLocation,
+      street: addressDataValues.street,
+      buildingAparmentNo: addressDataValues.buildingAparmentNo,
+      stateProvince: addressDataValues.stateProvince,
+      city: addressDataValues.city,
+      zipCode: addressDataValues.zipCode,
+      forProductName: addressDataValues.forProductName,
+      forProductPrice: addressDataValues.forProductPrice,
+      forProductToken: addressDataValues.forProductToken,
+      forProductQuantity: addressDataValues.forProductQuantity,
+      forProductMainImage: addressDataValues.forProductMainImage,
+      forProductDropType: addressDataValues.forProductDropType,
     };
     addMutation.mutate(addressData);
   };
 
-  return { handleAddressSubmit, detailsSuccess };
+  return {
+    handleAddressSubmit,
+    paymentSuccess,
+    setDetailsSuccess,
+    detailsSuccess,
+  };
 };
 
 export default useDetails;

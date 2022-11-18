@@ -55,15 +55,6 @@ const useUpdateDraft = () => {
     }
   );
 
-  console.log(
-    "final",
-    finalImagesUpdated,
-    "clicked",
-    clickedFirstDraft,
-    "present",
-    draftImagesPresent
-  );
-
   const handleDraftUpdate = (e: FormEvent) => {
     e.preventDefault();
     const draftTypeData: DraftInterface = {

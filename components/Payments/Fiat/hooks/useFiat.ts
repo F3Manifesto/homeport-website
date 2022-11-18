@@ -34,6 +34,7 @@ const useFiat = (): UseFiatResult => {
       });
       const data = await response.json();
       setClientSecret(data.clientSecret);
+      return data.clientSecret
     } catch (err: any) {
       console.error(err.message);
     }

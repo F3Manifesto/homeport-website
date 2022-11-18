@@ -1,15 +1,23 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
+import useDetails from "../Common/hooks/useDetails";
 
 const EthTransaction: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
   const { chain } = useNetwork();
   const router = useRouter();
-  const { isLoading, isSuccess, isError, handleSendEth, sendError } = useFlow();
+  const { isLoading, isSuccess, isError, handleSendEth, sendError, hashData } =
+    useFlow();
+  const { handleAddressSubmit } = useDetails();
+  useEffect(() => {
+    if (hashData?.transactionHash) {
+      handleAddressSubmit();
+    }
+  }, [isSuccess]);
 
   let action = "NOT_CONNECTED";
 
@@ -22,11 +30,17 @@ const EthTransaction: FunctionComponent = (): JSX.Element => {
       action = "ERROR";
     }
 
-    if (isConnected && isLoading && !isSuccess && !isError) {
+    if (isConnected && isLoading) {
       action = "LOADING";
     }
 
-    if (isConnected && !isLoading && isSuccess && !isError) {
+    if (
+      isConnected &&
+      !isLoading &&
+      isSuccess &&
+      !isError &&
+      hashData?.transactionHash
+    ) {
       action = "SUCCESS";
     }
 
@@ -64,9 +78,9 @@ const EthTransaction: FunctionComponent = (): JSX.Element => {
 
     case "LOADING":
       return (
-        <div className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]">
-          <div className="relative animate-spin w-40 h-10">
-            <AiOutlineLoading size={5} color={"white"} />
+        <div className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white rounded-md py-4 grid grid-flow-col auto-cols-[auto auto]">
+          <div className="relative animate-spin w-fit h-fit place-self-center">
+            <AiOutlineLoading size={15} color={"white"} />
           </div>
         </div>
       );

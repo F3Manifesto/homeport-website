@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Fiat: NextPage = (): JSX.Element => {
   const items = useSelector((state: RootState) => state.app.itemReducer);
-  const { handleAddressSubmit, detailsSuccess } = useDetails();
+  const { detailsSuccess, setDetailsSuccess } = useDetails();
   const pageType = useSelector(
     (state: RootState) => state.app.pageReducer.value
   );
@@ -36,7 +36,7 @@ const Fiat: NextPage = (): JSX.Element => {
       </div>
       <div className="relative w-fit h-full col-start-2 row-start-1  place-self-center">
         <Details
-          handleAddressSubmit={handleAddressSubmit}
+          setDetailsSuccess={setDetailsSuccess}
           detailsSuccess={detailsSuccess}
         />
       </div>

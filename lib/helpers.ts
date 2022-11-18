@@ -426,3 +426,36 @@ export const deleteDraft = async (
     console.error(err.message);
   }
 };
+
+export const getAddresses = async (): Promise<
+  AddressInterface[] | undefined
+> => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/address`);
+    const addresses: AddressInterface[] = await response.json();
+    return addresses;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
+export const updateAddress = async (
+  addressId: string,
+  addressData: AddressInterface
+): Promise<AddressInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addressData),
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/address/${addressId}`,
+      Options
+    );
+    const address: AddressInterface = await response.json();
+    return address;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};

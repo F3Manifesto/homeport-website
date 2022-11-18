@@ -13,6 +13,7 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
   clickedToken,
   item,
   quantity,
+  setClickedToken,
 }): JSX.Element => {
   const router = useRouter();
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
@@ -47,7 +48,12 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
           <div
             className="relative w-full h-fit col-start-1 border-2 border-white grid grid-flow-col auto-cols-[auto auto] hover:opacity-70 active:scale-95 hover:bg-lBlue active:bg-lBlue"
             onClick={
-              clickedToken !== ""
+              clickedToken === "usd"
+                ? () => {
+                    setPayment("unselected");
+                    setClickedToken("");
+                  }
+                : clickedToken !== ""
                 ? () => {
                     dispatch(setPage("crypto"));
                     setPurchase("crypto");
@@ -109,6 +115,7 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
                 actionQuantity: quantity,
                 actionPrice: itemPrice.price,
                 actionToken: itemPrice.token,
+                actionDropType: item.dropType,
               })
             );
           }}

@@ -17,6 +17,8 @@ import draftImageReducer from "./reducers/draftImageSlice";
 import draftReducer from "./reducers/draftSlice";
 import pageReducer from "./reducers/pageSlice";
 import updateDraftImagesReducer from "./reducers/updateDraftImagesSlice";
+import addressReducer from "./reducers/addressSlice";
+import fulfillReducer from "./reducers/selectedFulfillSlice";
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -38,6 +40,8 @@ const reducer = combineReducers({
   draftReducer,
   updateDraftImagesReducer,
   pageReducer,
+  addressReducer,
+  fulfillReducer,
 });
 
 export const store = configureStore({

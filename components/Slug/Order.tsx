@@ -93,6 +93,7 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
           clickedToken={clickedToken}
           item={item}
           quantity={quantity}
+          setClickedToken={setClickedToken}
         />
       </div>
     </div>

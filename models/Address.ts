@@ -6,12 +6,18 @@ interface IAddress {
   email: string;
   countryLocation: string;
   street: string;
-  buildingAparmentNo: number;
+  buildingAparmentNo: string;
   stateProvince: string;
   city: string;
-  zipCode: number;
+  zipCode: string;
   forProductName: string;
-  forProductId: string;
+  forProductPrice: number;
+  forProductToken: string;
+  forProductQuantity: number;
+  forProductMainImage: string;
+  forProductDropType: string;
+  fulfilled?: boolean;
+  provider: string;
 }
 
 const AddressSchema = new Schema<IAddress>({
@@ -36,7 +42,7 @@ const AddressSchema = new Schema<IAddress>({
     required: true,
   },
   buildingAparmentNo: {
-    type: Number,
+    type: String,
     required: true,
   },
   stateProvince: {
@@ -48,16 +54,40 @@ const AddressSchema = new Schema<IAddress>({
     required: true,
   },
   zipCode: {
-    type: Number,
+    type: String,
     required: true,
   },
   forProductName: {
     type: String,
     required: true,
   },
-  forProductId: {
+  forProductPrice: {
+    type: Number,
+    required: true,
+  },
+  forProductToken: {
     type: String,
     required: true,
+  },
+  forProductQuantity: {
+    type: Number,
+    required: true,
+  },
+  forProductMainImage: {
+    type: String,
+    required: true,
+  },
+  forProductDropType: {
+    type: String,
+    required: true,
+  },
+  fulfilled: {
+    type: Boolean,
+    required: false,
+  },
+  provider: {
+    type: String,
+    required: false,
   },
 });
 

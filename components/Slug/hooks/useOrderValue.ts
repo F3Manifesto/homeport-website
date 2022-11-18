@@ -182,7 +182,7 @@ const useOrderValue = (): UseOrderValueResult => {
     if (e === "crypto") {
       dispatch(
         setPrice({
-          actionPrice: convertedPrice.toFixed(2),
+          actionPrice: convertedPrice?.toFixed(2),
           actionToken: currencyTag,
         })
       );

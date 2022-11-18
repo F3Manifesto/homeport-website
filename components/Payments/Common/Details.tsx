@@ -1,15 +1,43 @@
-import { FormEvent, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddress } from "../../../redux/reducers/addressSlice";
+import { RootState } from "../../../redux/store";
 import { DetailsProps } from "../../../types/general.types";
 
 const Details: FunctionComponent<DetailsProps> = ({
-  handleAddressSubmit,
+  setDetailsSuccess,
   detailsSuccess,
 }): JSX.Element => {
+  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.app.itemReducer);
+  const priceValues = useSelector((state: RootState) => state.app.priceReducer);
   return (
     <form
       className="relative w-full h-fit grid grid-flow-col auto-cols-[auto auto] text-white font-economicaB gap-4"
-      onSubmit={(e: FormEvent) => {
-        handleAddressSubmit(e);
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(
+          setAddress({
+            actionFirstName: (e.target as HTMLFormElement).firstName.value,
+            actionLastName: (e.target as HTMLFormElement).lastName.value,
+            actionEmail: (e.target as HTMLFormElement).email.value,
+            actionCountryLocation: (e.target as HTMLFormElement).country.value,
+            actionStreet: (e.target as HTMLFormElement).street.value,
+            actionBuilding: (
+              e.target as HTMLFormElement
+            ).aptNo.value.toString(),
+            actionState: (e.target as HTMLFormElement).state.value,
+            actionCity: (e.target as HTMLFormElement).city.value,
+            actionZip: (e.target as HTMLFormElement).zip.value.toString(),
+            actionProductName: items.name,
+            actionProductPrice: priceValues.price,
+            actionProductToken: priceValues.token,
+            actionProductQuantity: items.quantity,
+            actionProductMainImage: items.mainImage,
+            actionProductDropType: items.dropType,
+          })
+        );
+        setDetailsSuccess(true);
       }}
     >
       <div className="relative row-start-1 w-full h-fit text-2xl">

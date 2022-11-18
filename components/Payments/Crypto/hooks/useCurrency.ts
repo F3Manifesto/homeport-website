@@ -15,6 +15,7 @@ import {
 } from "../../../../lib/constants";
 import { RootState } from "../../../../redux/store";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const useCurrency = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
@@ -40,15 +41,6 @@ const useCurrency = () => {
           : USDT_DECIMAL
       ),
     ],
-    onError(data) {
-      console.log(data, "ERROR");
-    },
-    onSuccess(data) {
-      console.log(data, "SUCESS");
-    },
-    onSettled(data) {
-      console.log(error, data, "settled!!!");
-    },
   });
 
   const { data, write, error } = useContractWrite(config);
@@ -57,11 +49,16 @@ const useCurrency = () => {
     write?.();
   };
 
-  const { isLoading, isSuccess, isError } = useWaitForTransaction({
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    data: hashData,
+  } = useWaitForTransaction({
     hash: data?.hash,
   });
 
-  return { isLoading, isSuccess, isError, handleWriteCrypto, error };
+  return { isLoading, isSuccess, isError, handleWriteCrypto, error, hashData };
 };
 
 export default useCurrency;

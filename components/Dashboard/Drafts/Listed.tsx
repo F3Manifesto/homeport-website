@@ -12,7 +12,7 @@ const Listed: FunctionComponent<ListedProps> = ({
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
-    <div className="relative w-full h-fit row-start-2 grid grid-flow-row auto-rows-[auto auto] gap-6">
+    <div className="relative w-48 h-fit row-start-2 grid grid-flow-row auto-rows-[auto auto] gap-6">
       {drafts?.map((draft: DraftInterface, index: number) => {
         return (
           <div

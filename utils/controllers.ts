@@ -389,3 +389,31 @@ export const getDraft = async (req: any, res: any): Promise<void> => {
     return res.status(404).json({ err: err.message });
   }
 };
+
+export const getAddresses = async (req: any, res: any): Promise<void> => {
+  try {
+    const addresses = await Address.find({});
+    if (!addresses) {
+      return res.status(404).json({ err: "No Addresses Found" });
+    } else {
+      return res.status(200).json(addresses);
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
+export const updateAddress = async (req: any, res: any): Promise<void> => {
+  try {
+    const { addressId } = req.query;
+    const addressType = req.body;
+    if (addressId && addressType) {
+      await Address.findByIdAndUpdate(addressId, addressType);
+      return res.status(200).json(addressType);
+    } else {
+      return res.status(404).json({ err: "Address not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};

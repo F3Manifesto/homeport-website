@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Crypto: NextPage = (): JSX.Element => {
   const items = useSelector((state: RootState) => state.app.itemReducer);
-  const { handleAddressSubmit, detailsSuccess } = useDetails();
+  const { setDetailsSuccess, detailsSuccess } = useDetails();
   const pageType = useSelector(
     (state: RootState) => state.app.pageReducer.value
   );
@@ -37,8 +37,8 @@ const Crypto: NextPage = (): JSX.Element => {
       </div>
       <div className="relative w-full h-full col-start-2 row-start-1">
         <Details
-          handleAddressSubmit={handleAddressSubmit}
           detailsSuccess={detailsSuccess}
+          setDetailsSuccess={setDetailsSuccess}
         />
       </div>
       {detailsSuccess && (
