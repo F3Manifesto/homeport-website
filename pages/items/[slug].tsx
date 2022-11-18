@@ -49,6 +49,8 @@ const Slug: NextPage<SlugProps> = ({ item }): JSX.Element => {
     dispatch(setFeatured(item?.featuredImages as string[]));
   }, []);
 
+  console.log(item)
+
   return (
     <div className="relative h-full w-full bg-black grid grid-flow-row auto-rows-[auto auto] overflow-hidden">
       <Purchase item={item} />

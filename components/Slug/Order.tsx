@@ -51,6 +51,8 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
           <div className="relative w-fit h-fit col-start-2 text-white place-self-center self-center font-economica text-sm">
             {item?.quantity - item?.amountSold <= 0
               ? "Drop Sold Out"
+              : !item?.amountSold
+              ? item?.quantity + " items in drop"
               : item?.quantity - item?.amountSold + " items in drop"}
           </div>
         </div>
