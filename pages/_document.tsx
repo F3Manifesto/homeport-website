@@ -6,7 +6,24 @@ class Document extends NextDocument {
     return (
       <Html>
         <Head>
-          <meta name="og:image" content="https://digitalax.xyz/card.png/" />
+          <meta name="og:url" content="https://dms.digitalax.xyz/" />
+          <meta name="og:title" content="Drop Merchant Supply" />
+          <meta
+            name="og:description"
+            content="For the creative collector on the edge of joining a new merchant society."
+          />
+          <meta name="og:image" content="https://dms.digitalax.xyz/card.png/" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="og:url" content="https://dms.digitalax.xyz/" />
+          <meta name="og:image" content="https://dms.digitalax.xyz/card.png/" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@igitalax_" />
+          <meta name="twitter:creator" content="@digitalax_" />
+          <meta
+            name="twitter:image"
+            content="https://dms.digitalax.xyz/card.png/"
+          />
+          <meta name="twitter:url" content="https://dms.digitalax.xyz/" />
           <link
             rel="preload"
             href="/fonts/Animosa-ExtraBold.otf"
