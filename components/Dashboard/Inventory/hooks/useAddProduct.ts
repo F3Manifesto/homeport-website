@@ -88,6 +88,8 @@ const useAddProduct = (): UseAddProductResult => {
           .replace(/ /g, "-")
           .replace(/[^\w-/]+/g, "")
           .toLowerCase(),
+        soldOut: false,
+        amountSold: 0,
       };
       addMutation.mutate(productTypeData);
       setMainFile(undefined);

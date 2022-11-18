@@ -9,6 +9,8 @@ interface IProduct {
   mainImage: string;
   featuredImages: string[];
   slug: string;
+  soldOut: boolean;
+  amountSold: number;
 }
 
 const ProductSchema = new Schema<IProduct>({
@@ -29,6 +31,8 @@ const ProductSchema = new Schema<IProduct>({
     type: String,
     required: true,
   },
+  soldOut: Boolean,
+  amountSold: Number,
 });
 
 const Product: any =

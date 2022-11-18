@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner: FunctionComponent = (): JSX.Element => {
-  const { imageList, currentIndex, setCurrentIndex, direction, setDirection } =
+  const { imageList} =
     useBanner();
 
   return (

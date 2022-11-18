@@ -10,6 +10,8 @@ interface IAddress {
   stateProvince: string;
   city: string;
   zipCode: number;
+  forProductName: string;
+  forProductId: string;
 }
 
 const AddressSchema = new Schema<IAddress>({
@@ -47,6 +49,14 @@ const AddressSchema = new Schema<IAddress>({
   },
   zipCode: {
     type: Number,
+    required: true,
+  },
+  forProductName: {
+    type: String,
+    required: true,
+  },
+  forProductId: {
+    type: String,
     required: true,
   },
 });

@@ -8,6 +8,7 @@ import { DraftInterface, ListedProps } from "../../../types/general.types";
 const Listed: FunctionComponent<ListedProps> = ({
   drafts,
   setMappedUpdatedImages,
+  setClickedFirstDraft,
 }): JSX.Element => {
   const dispatch = useDispatch();
   return (
@@ -30,6 +31,7 @@ const Listed: FunctionComponent<ListedProps> = ({
               dispatch(setDraftImages([]));
               dispatch(setUpdateDraftImages([]));
               setMappedUpdatedImages([]);
+              setClickedFirstDraft(true);
             }}
           >
             <div className="relative w-fit h-fit col-start-1 pr-3 grid grid-flow-col auto-cols-[auto auto] place-self-center">

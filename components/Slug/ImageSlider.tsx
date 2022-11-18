@@ -2,8 +2,6 @@ import { FunctionComponent } from "react";
 import useImageSlider from "./hooks/useImageSlider";
 import { RiArrowRightSFill } from "react-icons/ri";
 import { ImageSliderProps } from "../../types/general.types";
-import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
 
 const ImageSlider: FunctionComponent<ImageSliderProps> = ({
   item,
@@ -31,14 +29,16 @@ const ImageSlider: FunctionComponent<ImageSliderProps> = ({
         />
       </div>
       <div className="relative w-full h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto]">
-        <img
-          src={`https://${imageList[imageIndex]}.ipfs.w3s.link`}
-          alt="featured"
-          className="relative w-60 h-60 col-start-1 place-self-start grid grid-flow-col auto-cols-[auto auto] cursor-pointer hover:opacity-70 object-cover"
-          onClick={() =>
-            setFeaturedImage((item.featuredImages as string[])[imageIndex])
-          }
-        />
+        {imageList?.length !== 0 && (
+          <img
+            src={`https://${imageList[imageIndex]}.ipfs.w3s.link`}
+            alt="featured"
+            className="relative w-60 h-60 col-start-1 place-self-start grid grid-flow-col auto-cols-[auto auto] cursor-pointer hover:opacity-70 object-cover"
+            onClick={() =>
+              setFeaturedImage((item?.featuredImages as string[])[imageIndex])
+            }
+          />
+        )}
         <div
           className="relative w-full h-full col-start-2 grid grid-flow-col auto-cols-[auto auto] border-2 border-lBlue rounded-lg cursor-pointer hover:opacity-70"
           onClick={() => nextImage()}

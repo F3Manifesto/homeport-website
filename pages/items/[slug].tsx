@@ -45,8 +45,8 @@ const Slug: NextPage<SlugProps> = ({ item }): JSX.Element => {
         actionSlug: item?.slug,
       })
     );
-    dispatch(setMain(item.mainImage as string));
-    dispatch(setFeatured(item.featuredImages as string[]));
+    dispatch(setMain(item?.mainImage as string));
+    dispatch(setFeatured(item?.featuredImages as string[]));
   }, []);
 
   return (

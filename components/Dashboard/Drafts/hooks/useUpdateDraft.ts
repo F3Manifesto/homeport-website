@@ -18,7 +18,8 @@ import { setDraftImages } from "../../../../redux/reducers/draftImageSlice";
 
 const useUpdateDraft = () => {
   const draftId = useSelector((state: RootState) => state.app.draftReducer.id);
-  const { setDeleteModal } = useContext(GlobalContext);
+  const { setDeleteModal, clickedFirstDraft, setClickedFirstDraft } =
+    useContext(GlobalContext);
 
   const { data: oneDraft } = useQuery(["drafts", draftId], () =>
     getDraft(draftId as string)
@@ -54,15 +55,25 @@ const useUpdateDraft = () => {
     }
   );
 
+  console.log(
+    "final",
+    finalImagesUpdated,
+    "clicked",
+    clickedFirstDraft,
+    "present",
+    draftImagesPresent
+  );
+
   const handleDraftUpdate = (e: FormEvent) => {
     e.preventDefault();
     const draftTypeData: DraftInterface = {
       title: (e.target as HTMLFormElement).productTitle.value,
       description: (e.target as HTMLFormElement).description.value,
-      productImages:
-        finalImagesUpdated?.length !== 0
-          ? finalImagesUpdated
-          : draftImagesPresent,
+      productImages: !clickedFirstDraft
+        ? finalImagesUpdated
+        : clickedFirstDraft && finalImagesUpdated.length !== 0
+        ? finalImagesUpdated
+        : draftImagesPresent,
       date: moment().format("MM/D hh:mm:ss"),
     };
     try {
@@ -72,6 +83,7 @@ const useUpdateDraft = () => {
     }
     dispatch(setDraftImages([]));
     (e.target as HTMLFormElement).reset();
+    setClickedFirstDraft(true);
   };
 
   const hashImageStringDraftUpdate = async (e: FormEvent): Promise<any> => {
@@ -123,6 +135,7 @@ const useUpdateDraft = () => {
   };
 
   const handleUpdateRemoveImages = (imageRemove: string): void => {
+    setClickedFirstDraft(false);
     const newArray = lodash.filter(
       oneDraft?.productImages,
       (image) => image !== imageRemove

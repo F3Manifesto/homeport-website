@@ -62,7 +62,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
   const handleProductSubmitUpdate = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     if (dropFormatArray?.length === 0 && !clickedFirst) {
-      setClickedFirst(true)
+      setClickedFirst(true);
       alert("Please select one or more drop formats");
     } else {
       const productData: ProductInterface = {
@@ -86,6 +86,11 @@ const useUpdateProduct = (): UseUpdateProductResult => {
           .replace(/ /g, "-")
           .replace(/[^\w-/]+/g, "")
           .toLowerCase(),
+        soldOut:
+          (e.target as HTMLFormElement).quantity.value - data?.amountSold === 0
+            ? true
+            : false,
+        amountSold: data?.amountSold ? data?.amountSold : 0,
       };
       try {
         updatedMutation.mutate(productData);

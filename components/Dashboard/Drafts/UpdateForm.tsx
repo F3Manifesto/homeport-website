@@ -16,16 +16,21 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
   setDeleteModal,
   handleUpdateRemoveImages,
   handleRemoveSecondUpdateImage,
+  clickedFirstDraft,
+  setClickedFirstDraft,
 }): JSX.Element => {
   useEffect(() => {
     setTimeout(() => {
       setUpdateSuccess(false);
     }, 4000);
   }, [updateSuccess]);
+  console.log(imageDraftUpdated?.length);
   return (
     <form
       className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] gap-20"
-      onSubmit={(e: FormEvent) => handleDraftUpdate(e)}
+      onSubmit={(e: FormEvent) => {
+        handleDraftUpdate(e);
+      }}
     >
       <div className="relative w-full h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] bg-grayBlue p-8 gap-4">
         <div className="relative w-full h-fit row-start-1 grid grid-flow-col auto-cols-[auto auto] col-start-1 gap-6">
@@ -110,7 +115,9 @@ const UpdateForm: FunctionComponent<DraftFormUpdateProps> = ({
             </label>
           </div>
         </span>
-        {draft?.productImages && imageDraftUpdated?.length === 0 ? (
+        {draft?.productImages &&
+        imageDraftUpdated?.length === 0 &&
+        clickedFirstDraft ? (
           <div className="relative w-fit h-fit row-start-2 grid grid-flow-row auto-rows-auto place-self-center pt-10 gap-4">
             {draft?.productImages.map((image: string, index: number) => {
               return (

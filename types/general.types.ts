@@ -148,6 +148,8 @@ export interface ProductInterface {
   mainImage?: string;
   featuredImages?: string[];
   slug: string;
+  soldOut: boolean;
+  amountSold: number;
 }
 
 export interface DropInterface {
@@ -365,6 +367,8 @@ export interface AddressInterface {
   stateProvince: string;
   city: string;
   zipCode: number;
+  forProductName: string;
+  forProductId: string;
 }
 
 export type OrderProps = {
@@ -556,6 +560,8 @@ export type DraftFormUpdateProps = {
   setDeleteModal: (e: boolean) => void;
   handleUpdateRemoveImages: (image: string) => void;
   handleRemoveSecondUpdateImage: (image: string) => void;
+  clickedFirstDraft: boolean;
+  setClickedFirstDraft: (e: boolean) => void;
 };
 
 export type SwitcherDraftProps = {
@@ -575,11 +581,14 @@ export type SwitcherDraftProps = {
   handleRemoveImage: (image: string) => void;
   handleUpdateRemoveImages: (image: string) => void;
   handleRemoveSecondUpdateImage: (image: string) => void;
+  clickedFirstDraft: boolean;
+  setClickedFirstDraft: (e: boolean) => void;
 };
 
 export type ListedProps = {
   drafts: DraftInterface[] | undefined;
   setMappedUpdatedImages: (e: string[]) => void;
+  setClickedFirstDraft: (e: boolean) => void;
 };
 
 export interface TransferInterface {

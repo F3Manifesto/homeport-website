@@ -8,6 +8,7 @@ import useUpdateDraft from "./hooks/useUpdateDraft";
 import Switcher from "./Switcher";
 import Listed from "./Listed";
 import { setDraftImages } from "../../../redux/reducers/draftImageSlice";
+import { GlobalContext } from "../../../pages/_app";
 
 const Main: FunctionComponent = (): JSX.Element => {
   const {
@@ -38,6 +39,7 @@ const Main: FunctionComponent = (): JSX.Element => {
   const imageDraftUpdated = useSelector(
     (state: RootState) => state.app.updateDraftImagesReducer.value
   );
+  const { clickedFirstDraft, setClickedFirstDraft } = useContext(GlobalContext);
   return (
     <div className="relative w-full h-full grid grid-flow-col auto-cols-[auto auto] py-8 gap-10">
       <div className="relative w-full max-h-[60vw] overflow-y-scroll h-fit col-start-1 grid grid-flow-row auto-rows-[auto auto] pt-10 pr-16 gap-10">
@@ -55,6 +57,7 @@ const Main: FunctionComponent = (): JSX.Element => {
                 actionType: "ADD_DRAFT",
               })
             );
+            setClickedFirstDraft(true);
           }}
         >
           <div className="relative w-full h-fit px-10 py-1.5 col-start-1 place-self-center text-black font-economica">
@@ -65,6 +68,7 @@ const Main: FunctionComponent = (): JSX.Element => {
           <Listed
             drafts={drafts}
             setMappedUpdatedImages={setMappedUpdatedImages}
+            setClickedFirstDraft={setClickedFirstDraft}
           />
         )}
       </div>
@@ -86,6 +90,8 @@ const Main: FunctionComponent = (): JSX.Element => {
           handleRemoveImage={handleRemoveImage}
           handleUpdateRemoveImages={handleUpdateRemoveImages}
           handleRemoveSecondUpdateImage={handleRemoveSecondUpdateImage}
+          clickedFirstDraft={clickedFirstDraft}
+          setClickedFirstDraft={setClickedFirstDraft}
         />
       </div>
     </div>

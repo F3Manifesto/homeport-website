@@ -33,15 +33,15 @@ export const GlobalContextDefault = {
   setFeaturedFiles: (featuredFiles: any) => {},
   clickedFirst: true,
   setClickedFirst: (clickedFirst: boolean) => {},
+  clickedFirstDraft: true,
+  setClickedFirstDraft: (clickedFirst: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
 
 const { chains, provider } = configureChains(
   [chain.mainnet],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }),
-  ]
+  [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY })]
 );
 
 const { connectors } = getDefaultWallets({
@@ -67,6 +67,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [clickedFirst, setClickedFirst] = useState<boolean>(
     GlobalContextDefault.clickedFirst
   );
+  const [clickedFirstDraft, setClickedFirstDraft] = useState<boolean>(
+    GlobalContextDefault.clickedFirstDraft
+  );
   const [addPricingModal, setAddPricingModal] = useState<boolean>(
     GlobalContextDefault.addPricingModal
   );
@@ -88,6 +91,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <RainbowKitProvider chains={chains}>
             <GlobalContext.Provider
               value={{
+                clickedFirstDraft,
+                setClickedFirstDraft,
                 clickedFirst,
                 setClickedFirst,
                 quantity,

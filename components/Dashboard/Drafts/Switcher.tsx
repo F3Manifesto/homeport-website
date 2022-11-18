@@ -23,6 +23,8 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
   hashImageStringDraftUpdate,
   imageDraftUpdated,
   handleRemoveSecondUpdateImage,
+  setClickedFirstDraft,
+  clickedFirstDraft,
 }): JSX.Element => {
   let action = "ADD_DRAFT";
   const draftSection = useSelector(
@@ -50,6 +52,8 @@ const Switcher: FunctionComponent<SwitcherDraftProps> = ({
           setDeleteModal={setDeleteModal}
           handleUpdateRemoveImages={handleUpdateRemoveImages}
           handleRemoveSecondUpdateImage={handleRemoveSecondUpdateImage}
+          clickedFirstDraft={clickedFirstDraft}
+          setClickedFirstDraft={setClickedFirstDraft}
         />
       );
 
