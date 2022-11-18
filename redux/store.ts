@@ -20,6 +20,7 @@ import updateDraftImagesReducer from "./reducers/updateDraftImagesSlice";
 import addressReducer from "./reducers/addressSlice";
 import fulfillReducer from "./reducers/selectedFulfillSlice";
 import soldAmountReducer from "./reducers/soldAmountSlice";
+import adminPaymentReducer from "./reducers/adminPaymentSlice";
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -44,6 +45,7 @@ const reducer = combineReducers({
   addressReducer,
   fulfillReducer,
   soldAmountReducer,
+  adminPaymentReducer,
 });
 
 export const store = configureStore({

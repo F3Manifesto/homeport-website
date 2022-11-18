@@ -15,11 +15,12 @@ import {
 } from "../../../../lib/constants";
 import { RootState } from "../../../../redux/store";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 const useCurrency = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
-
+  const adminPaymentAddress = useSelector(
+    (state: RootState) => state.app.adminPaymentReducer.value
+  );
   const { config, isError: errorConfig } = usePrepareContractWrite({
     address:
       itemPrice.token === "MONA"
@@ -31,7 +32,7 @@ const useCurrency = () => {
     functionName: "transfer",
     chainId: 1,
     args: [
-      "0xfa3fea500eeDAa120f7EeC2E4309Fe094F854E61",
+      adminPaymentAddress,
       utils.parseUnits(
         (itemPrice?.price).toString(),
         itemPrice.token === "MONA"
@@ -58,7 +59,15 @@ const useCurrency = () => {
     hash: data?.hash,
   });
 
-  return { isLoading, isSuccess, isError, handleWriteCrypto, error, hashData, errorConfig };
+  return {
+    isLoading,
+    isSuccess,
+    isError,
+    handleWriteCrypto,
+    error,
+    hashData,
+    errorConfig,
+  };
 };
 
 export default useCurrency;
