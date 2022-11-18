@@ -33,7 +33,7 @@ const SelectedDrop: FunctionComponent<SelectedDropFulFillmentProps> = ({
             (item: AddressInterface, index: number) => {
               return (
                 <div
-                  className="relative w-full h-52 bg-black font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer"
+                  className={`relative w-full h-52 bg-black font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer ${item?.fulfilled && "border-2 border-grayGreen"}`}
                   key={index}
                 >
                   {item?.forProductMainImage && (

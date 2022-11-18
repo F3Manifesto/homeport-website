@@ -65,19 +65,19 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
       <div className="relative w-full h-full row-start-3 grid grid-flow-row auto-rows-[auto auto]">
         <div className="relative w-fit h-full row-start-1 grid grid-flow-col auto-cols-[auto auto] gap-3 text-base">
           <div className="relative col-start-1 w-fit h-fit font-economicaB">
-            First Name:
+            {productInfo?.firstName ? "First Name:" : "---"}
           </div>
           <div className="relative col-start-2 w-fit h-fit font-economica">
             {productInfo?.firstName}
           </div>
           <div className="relative col-start-3 w-fit h-fit font-economicaB">
-            Last Name:
+            {productInfo?.lastName ? "Last Name:" : "---"}
           </div>
           <div className="relative col-start-4 w-fit h-fit font-economica">
             {productInfo?.lastName}
           </div>
           <div className="relative col-start-5 w-fit h-fit font-economicaB">
-            Email:
+            {productInfo?.email ? "Email:" : "---"}
           </div>
           <div className="relative col-start-6 w-fit h-fit font-economica">
             {productInfo?.email}
@@ -85,7 +85,7 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
         </div>
         <div className="relative w-fit h-full row-start-2 grid grid-flow-col auto-cols-[auto auto] text-base pt-4">
           <div className="relative col-start-1 row-start-1 w-fit h-fit font-economicaB text-lg pb-2">
-            Address:
+            {productInfo?.city ? "Address:" : "---"}
           </div>
           <div className="relative col-start-1 row-start-2 w-fit h-fit font-economica">
             {productInfo?.buildingAparmentNo} {productInfo?.street}{" "}
@@ -101,10 +101,18 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
       </div>
       <div className="relative w-fit h-fit row-start-5 text-white text-economicaB text-xl pb-4 grid grid-flow-col auto-cols-auto gap-3">
         <div className="relative w-fit h-fit col-start-1">
-          Order Fullfilled ?
+          {productInfo?.firstName ? "Order Fullfilled ?" : "---"}
         </div>
-        <div className={`relative w-fit h-fit col-start-2 font-economica ${productInfo?.forProductFulfilled === true && "text-grayGreen"}`}>
-          {productInfo?.forProductFulfilled === true ? "Yes" : "No"}
+        <div
+          className={`relative w-fit h-fit col-start-2 font-economica ${
+            productInfo?.forProductFulfilled === true && "text-grayGreen"
+          }`}
+        >
+          {productInfo?.forProductFulfilled === true
+            ? "Yes"
+            : productInfo?.forProductFulfilled === false
+            ? "No"
+            : "---"}
         </div>
       </div>
       <div className="relative w-fit gap-4 h-fit row-start-6 grid grid-cols-3 grid-flow-row pb-6">
@@ -116,7 +124,9 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
                 !productInfo?.forProductFulfilled &&
                 "cursor-pointer hover:opacity-80 active:scale-95"
               } rounded-md grid grid-flow-col auto-cols-auto ${
-                providerValue === (provider || productInfo?.forProductProvider)
+                providerValue === provider ? "bg-grayGreen" : "bg-grayBlue"
+              } ${
+                productInfo?.forProductProvider === provider
                   ? "bg-grayGreen"
                   : "bg-grayBlue"
               }`}
