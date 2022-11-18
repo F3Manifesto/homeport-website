@@ -60,6 +60,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           Product Name
         </div>
         <input
+          key={updatedProductData?.name}
           name="productName"
           defaultValue={updatedProductData?.name}
           maxLength={50}
@@ -73,6 +74,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           Product Description
         </div>
         <textarea
+          key={updatedProductData?.description}
           defaultValue={updatedProductData?.description}
           name="productDescription"
           className={`relative row-start-2 w-full h-96 text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 align-top text-start`}
@@ -158,6 +160,7 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           name="quantity"
           type={"number"}
           min={0}
+          key={updatedProductData?.quantity}
           defaultValue={updatedProductData?.quantity}
           className={`relative row-start-2 w-[30vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 `}
           required

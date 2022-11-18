@@ -47,6 +47,7 @@ const UpdateDrop: FunctionComponent<UpdateDropTypeProps> = ({
           </div>
           <input
             defaultValue={data?.title}
+            key={data?.title}
             name="dropTypeTitle"
             className={`relative row-start-2 w-96 h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 ${
               (success || updatedMutation.isLoading) && "opacity-70"
@@ -61,6 +62,7 @@ const UpdateDrop: FunctionComponent<UpdateDropTypeProps> = ({
           </div>
           <textarea
             defaultValue={data?.description}
+            key={data?.description}
             name="dropTypeDescription"
             className={`relative row-start-2 w-96 h-60 text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 align-top text-start ${
               (success || updatedMutation.isLoading) && "opacity-70"

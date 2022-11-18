@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setType } from "../../redux/reducers/dashSlice";
+import { setProduct } from "../../redux/reducers/productSlice";
 import { RootState } from "../../redux/store";
 
 const SideBar: FunctionComponent = (): JSX.Element => {
@@ -10,7 +11,7 @@ const SideBar: FunctionComponent = (): JSX.Element => {
     "inventory",
     "pricing",
     "fulfillment",
-    "admin"
+    "admin",
   ];
   const dispatch = useDispatch();
   const dashSection = useSelector(
@@ -31,7 +32,13 @@ const SideBar: FunctionComponent = (): JSX.Element => {
               className={`relative w-16 h-12 rounded-xl row-start-1 hover:scale-105 active:scale-95 cursor-pointer hover:bg-grayPink ${
                 dashSection === itemDispatch ? "bg-grayPink" : "bg-grayBlue"
               }`}
-              onClick={() => dispatch(setType(itemDispatch))}
+              onClick={() => {
+                dispatch(setType(itemDispatch));
+                setProduct({
+                  actionValue: "INVENTORY_ADD",
+                  actionId: undefined,
+                });
+              }}
             ></div>
             <div className="relative row-start-2 text-center">{item}</div>
           </div>
