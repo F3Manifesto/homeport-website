@@ -10,7 +10,9 @@ import { OrderProps } from "../../types/general.types";
 
 const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
   const { quantity } = useContext(GlobalContext);
-  const url = buildLensShareUrl({ postBody: "Hello, Lens!" });
+  const url = buildLensShareUrl({
+    postBody: `${item?.name} https://dms.digitalax.xyz/items/${item?.slug}`,
+  });
   const {
     tokens,
     layoutIndexes,
