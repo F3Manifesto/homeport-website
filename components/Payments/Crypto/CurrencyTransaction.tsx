@@ -18,6 +18,7 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
     handleWriteCrypto,
     error,
     hashData,
+    errorConfig,
   } = useCurrency();
   const { handleAddressSubmit, handleUpdateAmountSold } = useDetails();
   useEffect(() => {
@@ -29,6 +30,10 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
   const decideStringAction = () => {
     if (isConnected) {
       action = "COLLECT";
+    }
+
+    if (isConnected && errorConfig) {
+      action = "INSUFFICIENT FUNDS";
     }
 
     if (!isConnected) {
@@ -72,6 +77,15 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
         >
           <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
             PAY NOW
+          </div>
+        </div>
+      );
+
+    case "INSUFFICIENT FUNDS":
+      return (
+        <div className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto] text-center">
+          <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
+            INSUFFICIENT FUNDS, PLEASE TOP UP TO COLLECT DROP!
           </div>
         </div>
       );

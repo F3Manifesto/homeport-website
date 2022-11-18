@@ -9,7 +9,7 @@ import { RootState } from "../../../../redux/store";
 
 const useFlow = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
-  const { config } = usePrepareSendTransaction({
+  const { config, isError: errorConfig } = usePrepareSendTransaction({
     request: {
       to: "emmajane.eth",
       value: ethers.utils.parseEther((itemPrice?.price).toString()),
@@ -45,6 +45,7 @@ const useFlow = () => {
     data,
     handleSendEth,
     hashData,
+    errorConfig
   };
 };
 

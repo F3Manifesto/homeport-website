@@ -1,6 +1,6 @@
 import { AggregatorInterface, TransferInterface } from "../types/general.types";
 
-export const BASE_URL: string = "https://dms-tau.vercel.app";
+export const BASE_URL: string = "https://dms.digitalax.xyz";
 // export const BASE_URL: string = "http://localhost:3000";
 export const ETHUSD: string = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
 export const USDTUSD: string = "0x3E7d1eAB13ad0104d2750B8863b489D65364e32D";

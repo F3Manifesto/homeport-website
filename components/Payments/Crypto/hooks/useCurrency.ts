@@ -20,7 +20,7 @@ import { useState } from "react";
 const useCurrency = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
 
-  const { config } = usePrepareContractWrite({
+  const { config, isError: errorConfig } = usePrepareContractWrite({
     address:
       itemPrice.token === "MONA"
         ? MONA_ADDRESS
@@ -58,7 +58,7 @@ const useCurrency = () => {
     hash: data?.hash,
   });
 
-  return { isLoading, isSuccess, isError, handleWriteCrypto, error, hashData };
+  return { isLoading, isSuccess, isError, handleWriteCrypto, error, hashData, errorConfig };
 };
 
 export default useCurrency;

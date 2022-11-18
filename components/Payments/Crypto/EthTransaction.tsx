@@ -5,14 +5,20 @@ import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
 import useDetails from "../Common/hooks/useDetails";
-import { GlobalContext } from "../../../pages/_app";
 
 const EthTransaction: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
   const { chain } = useNetwork();
   const router = useRouter();
-  const { isLoading, isSuccess, isError, handleSendEth, sendError, hashData } =
-    useFlow();
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    handleSendEth,
+    sendError,
+    hashData,
+    errorConfig,
+  } = useFlow();
   const { handleAddressSubmit, handleUpdateAmountSold } = useDetails();
   useEffect(() => {
     if (hashData?.transactionHash) {
@@ -34,6 +40,10 @@ const EthTransaction: FunctionComponent = (): JSX.Element => {
 
     if (isConnected && isLoading) {
       action = "LOADING";
+    }
+
+    if (isConnected && errorConfig) {
+      action = "INSUFFICIENT FUNDS";
     }
 
     if (
@@ -74,6 +84,15 @@ const EthTransaction: FunctionComponent = (): JSX.Element => {
         >
           <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
             TRY AGAIN
+          </div>
+        </div>
+      );
+
+    case "INSUFFICIENT FUNDS":
+      return (
+        <div className="row-start-1 relative w-full h-fit bg-lBlue p-3 border-2 border-white text-white cursor-pointer active:scale-95 rounded-md py-4 grid grid-flow-col auto-cols-[auto auto] text-center">
+          <div className="relative w-fit h-fit font-economica px-10 justify-self-center col-start-1 text-xl">
+            INSUFFICIENT FUNDS, PLEASE TOP UP TO COLLECT DROP!
           </div>
         </div>
       );
