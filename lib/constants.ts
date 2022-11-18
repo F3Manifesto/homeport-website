@@ -10,7 +10,7 @@ export const MONA_ADDRESS: string =
 export const MATIC_ADDRESS: string =
   "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0";
 export const USDT_ADDRESS: string =
-  "0xdac17f958d2ee523a2206206994597c13d831ec7";
+  "0xdac17f958d2ee523a2206206994597c13d831ec7"; 
 
 export const MATIC_DECIMAL: number = 18;
 export const MONA_DECIMAL: number = 18;
