@@ -31,7 +31,7 @@ const LogIn: NextPage = (): JSX.Element => {
             className="relative w-full text-center h-fit bg-lBlue border-2 border-white text-white rounded-md -top-24 py-2 cursor-pointer hover:bg-lBlue active:scale-95 active:bg-lBlue"
             type="submit"
           >
-            {foundUser ? "Log In" : "Wrong User or Password, Try Again"}
+            {foundUser ? "Merchant Log In" : "Wrong User or Password, Try Again"}
           </button>
         }
       </form>

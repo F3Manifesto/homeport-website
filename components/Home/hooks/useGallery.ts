@@ -1,24 +1,17 @@
 import { useState } from "react";
 import { UseGalleryResult } from "../../../types/general.types";
+import { useQuery } from "react-query";
+import { getProducts } from "../../../lib/helpers";
 
 const useGallery = (): UseGalleryResult => {
-    const [extend, setExtend] = useState<boolean>(false)
-  const gallery: string[] = [
-    "gallery1",
-    "gallery2",
-    "gallery3",
-    "gallery4",
-    "gallery5",
-    "gallery6",
-    "gallery7",
-    "gallery8",
-    "gallery9",    
-    "gallery10",
-    "gallery11",
-    "gallery12",
-  ];
+  const [extend, setExtend] = useState<boolean>(false);
+  const {
+    isLoading,
+    isError,
+    data: gallery,
+  } = useQuery("products", getProducts);
 
-  return { gallery, extend, setExtend};
+  return { gallery, extend, setExtend };
 };
 
 export default useGallery;

@@ -30,9 +30,13 @@ const Featured: FunctionComponent = (): JSX.Element => {
                   key={index}
                   className={`relative w-fit h-fit row-start-${
                     index + 1
-                  } col-start-1 text-yellowTheme ${
-                    index === dropType?.length - 1 && "py-10"
-                  }`}
+                  } col-start-1 ${
+                    index % 2 == 0 && index % 4 !== 0 && "text-yellowTheme"
+                  } ${index % 2 == 0 && index % 4 === 0 && "text-blueTheme"} ${
+                    index % 3 == 0 && index % 6 !== 0 && "text-purpleTheme"
+                  } ${
+                    index % 3 == 0 && index % 6 === 0 && "text-orangeTheme"
+                  } ${index === dropType?.length - 1 && "py-10"}`}
                 >
                   {drop}
                 </div>
@@ -49,7 +53,13 @@ const Featured: FunctionComponent = (): JSX.Element => {
                   key={index}
                   className={`relative w-fit h-fit row-start-${
                     index + 1
-                  } col-start-1 text-yellowTheme`}
+                  } col-start-1 ${
+                    index % 2 == 0 && index % 4 !== 0 && "text-purpleTheme"
+                  } ${
+                    index % 2 == 0 && index % 4 === 0 && "text-orangeTheme"
+                  } ${index % 3 == 0 && index % 6 !== 0 && "text-blueTheme"} ${
+                    index % 3 == 0 && index % 6 === 0 && "text-yellowTheme"
+                  } `}
                 >
                   {drop}
                 </div>

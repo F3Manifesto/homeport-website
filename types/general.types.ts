@@ -107,7 +107,7 @@ export type UseTraitsResult = {
 export type UseGalleryResult = {
   extend: boolean;
   setExtend: (e: boolean) => void;
-  gallery: string[];
+  gallery: ProductInterface[];
 };
 
 export type UseFeaturedResult = {

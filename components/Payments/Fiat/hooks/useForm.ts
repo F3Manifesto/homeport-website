@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { UseFormResult } from "../../../../types/general.types";
+import { BASE_URL } from "../../../../lib/constants";
 
 const useForm = (): UseFormResult => {
   const [message, setMessage] = useState<string | undefined>();
@@ -51,7 +52,7 @@ const useForm = (): UseFormResult => {
       elements,
       confirmParams: {
         // payment completion page
-        return_url: "http://dms.digitalax.xyz/success",
+        return_url: `${BASE_URL}/success"`,
       },
     });
 

@@ -7,11 +7,12 @@ import Prices from "./Prices";
 import { buildLensShareUrl } from "@infinity-keys/react-lens-share-button";
 import Link from "next/link";
 import { OrderProps } from "../../types/general.types";
+import { BASE_URL } from "../../lib/constants";
 
 const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
   const { quantity } = useContext(GlobalContext);
   const url = buildLensShareUrl({
-    postBody: `${item?.name} https://dms.digitalax.xyz/items/${item?.slug}`,
+    postBody: `${item?.name} ${BASE_URL}/items/${item?.slug}`,
   });
   const {
     tokens,

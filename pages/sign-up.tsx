@@ -38,14 +38,14 @@ const SignUp: NextPage = (): JSX.Element => {
             className="relative w-full h-fit bg-lBlue border-2 border-white text-white rounded-md row-start-4 -top-24 py-2 cursor-pointer hover:bg-lBlue active:scale-95 active:bg-lBlue"
             type="submit"
           >
-            Seller Sign Up
+            Merchant Sign Up
           </button>
         ) : (
           <div
             className="relative w-full h-fit bg-lBlue border-2 border-white text-white text-center rounded-md row-start-4 -top-24 py-2 cursor-pointer hover:bg-lBlue active:scale-95 active:bg-lBlue"
             onClick={() => router.push("/log-in")}
           >
-            Success! Head to Log In ...
+            Success! Head to Merchant Log In ...
           </div>
         )}
       </form>
