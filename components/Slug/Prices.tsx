@@ -16,7 +16,7 @@ const Prices: FunctionComponent<PriceProps> = ({
       <div className="relative w-full h-full col-start-1 text-white font-animosaR grid grid-flow-row auto-rows-[auto auto]">
         <div className="relative w-full h-fit row-start-1 justify-self-end pr-4 grid grid-flow-col auto-cols-[auto auto]">
           <div className="relative w-fit h-fit place-self-end col-start-1">
-            {convertedPrice?.toFixed(2)} {currencyTag}
+            {convertedPrice?.toFixed(4)} {currencyTag}
           </div>
         </div>
         <div className="relative w-full h-full row-start-2 text-8xl grid grid-flow-col auto-cols-[auto auto]">

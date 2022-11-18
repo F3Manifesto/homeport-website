@@ -182,7 +182,7 @@ const useOrderValue = (): UseOrderValueResult => {
     if (e === "crypto") {
       dispatch(
         setPrice({
-          actionPrice: convertedPrice?.toFixed(2),
+          actionPrice: convertedPrice?.toFixed(4),
           actionToken: currencyTag,
         })
       );
@@ -199,13 +199,13 @@ const useOrderValue = (): UseOrderValueResult => {
     const ETHConversion =
       (e.target as HTMLFormElement).value /
       Number(ETHUSD / Math.pow(10, Number(lodash.chunk(data, 3)[0][0])));
-    setEthConversion(ETHConversion.toFixed(2).toString());
+    setEthConversion(ETHConversion.toFixed(4).toString());
   };
 
   const showCurrencyMona = (e: FormEvent) => {
     e.preventDefault();
     setMonaConversion(
-      ((e.target as HTMLFormElement).value / monaPrice).toFixed(2).toString()
+      ((e.target as HTMLFormElement).value / monaPrice).toFixed(4).toString()
     );
   };
 
@@ -217,7 +217,7 @@ const useOrderValue = (): UseOrderValueResult => {
     const MaticConversion =
       (e.target as HTMLFormElement).value *
       Number(MATICUSD / Math.pow(10, Number(lodash.chunk(data, 3)[2][0])));
-    setMaticConversion(MaticConversion.toFixed(2).toString());
+    setMaticConversion(MaticConversion.toFixed(4).toString());
   };
 
   const showCurrencyUsdt = (e: FormEvent) => {
@@ -228,7 +228,7 @@ const useOrderValue = (): UseOrderValueResult => {
     const USDTConversion =
       Number(USDTUSD / Math.pow(10, Number(lodash.chunk(data, 3)[1][0]))) *
       (e.target as HTMLFormElement).value;
-    setUsdtConversion(USDTConversion.toFixed(2).toString());
+    setUsdtConversion(USDTConversion.toFixed(4).toString());
   };
 
   return {
