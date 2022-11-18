@@ -38,6 +38,10 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
       action = "BUY_NOW";
     }
 
+    if (item?.amountSold >= item?.quantity) {
+      action = "SOLD_OUT";
+    }
+
     return action;
   };
 
@@ -101,6 +105,18 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
         </div>
       );
 
+    case "SOLD_OUT":
+      return (
+        <div className="relative w-full h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] bg-red-600 cursor-pointer hover:opacity-70 active:scale-95">
+          <button
+            className="relative w-fit h-fit p-3 place-self-center col-start-1 text-black font-economicaB text-[1.3vw]"
+            type="submit"
+          >
+            DROP SOLD OUT
+          </button>
+        </div>
+      );
+
     default:
       return (
         <div
@@ -116,6 +132,11 @@ const PaymentButton: FunctionComponent<PaymentButtonProps> = ({
                 actionPrice: itemPrice.price,
                 actionToken: itemPrice.token,
                 actionDropType: item.dropType,
+                actionDropFormat: item.dropFormat,
+                actionFeaturedImages: item.featuredImages,
+                actionSlug: item.slug,
+                actionDropTotalQuantity: item.quantity,
+                actionAmountSold: item.amountSold,
               })
             );
           }}

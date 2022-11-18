@@ -1,5 +1,6 @@
 import { FormEvent, FunctionComponent } from "react";
 import { FulFilledOrderProps } from "../../../types/general.types";
+import lodash from "lodash";
 
 const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
   productInfo,
@@ -7,8 +8,9 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
   providers,
   setProviderValue,
   providerValue,
+  productData,
 }): JSX.Element => {
-  console.log(productInfo?.forProductFulfilled);
+  const firstData = lodash.first(productData);
   return (
     <form
       className="relative w-full h-fit row-start-2 grid grid-flow-row auto-rows-[auto auto] pt-10 gap-4"
@@ -96,12 +98,19 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
           </div>
         </div>
       </div>
-      <div className="relative w-fit h-fit row-start-4 text-white text-economicaB text-xl">
-        Amount Left in Drop:
+      <div className="relative w-fit h-fit row-start-4 text-white text-economicaB text-xl grid grid-flow-col auto-cols-auto gap-3">
+        <div className="relative col-start-1 w-fit h-fit">
+          Amount Left in Drop:
+        </div>
+        <div className="relative w-fit h-fit col-start-2 font-economica">
+          {firstData?.quantity - firstData?.amountSold > 0
+            ? firstData?.quantity - firstData?.amountSold
+            : "Drop Sold Out"}
+        </div>
       </div>
       <div className="relative w-fit h-fit row-start-5 text-white text-economicaB text-xl pb-4 grid grid-flow-col auto-cols-auto gap-3">
         <div className="relative w-fit h-fit col-start-1">
-          {productInfo?.firstName ? "Order Fullfilled ?" : "---"}
+          {productInfo?.firstName ? "Order Fulfilled ?" : "---"}
         </div>
         <div
           className={`relative w-fit h-fit col-start-2 font-economica ${
@@ -111,6 +120,8 @@ const FulFilledOrder: FunctionComponent<FulFilledOrderProps> = ({
           {productInfo?.forProductFulfilled === true
             ? "Yes"
             : productInfo?.forProductFulfilled === false
+            ? "No"
+            : productInfo?.firstName
             ? "No"
             : "---"}
         </div>

@@ -17,7 +17,7 @@ const SelectedDrop: FunctionComponent<SelectedDropProps> = ({
   );
   const newData = productData?.filter((item) => item.dropType === activeDrop);
   return (
-    <div className="relative w-fit h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto] pt-5">
+    <div className="relative w-full h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto] pt-5">
       <div className="grid grid-cols-3 auto-flow-row place-self-center gap-4 relative w-full h-full col-start-1">
         {activeDrop && newData?.length === 0 ? (
           <div className="relative w-fit h-fit text-center place-self-center text-white font-economicaB col-start-1">
@@ -28,7 +28,7 @@ const SelectedDrop: FunctionComponent<SelectedDropProps> = ({
             (item: ProductInterface, index: number) => {
               return (
                 <div
-                  className="relative w-60 h-52 bg-black font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer"
+                  className="relative w-full h-52 bg-shaded font-economica text-lg grid grid-flow-col auto-cols-[auto auto] group cursor-pointer"
                   key={index}
                 >
                   {item.mainImage && (

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
-import { getAddresses, updateAddress } from "../../../../lib/helpers";
+import { getAddresses, getProducts, updateAddress } from "../../../../lib/helpers";
 import { setFulfill } from "../../../../redux/reducers/selectedFulfillSlice";
 import { RootState } from "../../../../redux/store";
 import { AddressInterface } from "../../../../types/general.types";
@@ -20,6 +20,12 @@ const useFulfill = () => {
     (state: RootState) => state.app.fulfillReducer
   );
   const queryClient = useQueryClient();
+
+  const {
+    isLoading,
+    isError,
+    data: productData,
+  } = useQuery("products", getProducts);
 
   const updatedMutation = useMutation(
     (updatedData: AddressInterface) =>
@@ -73,6 +79,7 @@ const useFulfill = () => {
     providerValue,
     addressUpdateSuccess,
     setAddressUpdateSuccess,
+    productData
   };
 };
 

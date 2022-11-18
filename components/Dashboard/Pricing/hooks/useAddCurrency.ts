@@ -1,11 +1,13 @@
-import { FormEvent, useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { FormEvent, useContext, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCurrency,
+  getCurrencies,
   getCurrency,
   updateCurrency,
 } from "../../../../lib/helpers";
+import { GlobalContext } from "../../../../pages/_app";
 import { setCurrency } from "../../../../redux/reducers/currencySlice";
 import { RootState } from "../../../../redux/store";
 import {
@@ -54,6 +56,7 @@ const useAddCurrency = (): UseAddCurrencyResult => {
     );
     (e.target as HTMLFormElement).reset();
   };
+  const queryClient = useQueryClient();
 
   const updatedMutation = useMutation(
     (currencyUpdatedData: CurrencyInterface) =>
@@ -61,6 +64,7 @@ const useAddCurrency = (): UseAddCurrencyResult => {
     {
       onSuccess: async () => {
         setUpdateSuccess(true);
+        queryClient.prefetchQuery("currency", getCurrencies);
       },
     }
   );

@@ -8,6 +8,11 @@ export interface ItemState {
   price?: number;
   token?: string;
   dropType?: string;
+  dropFormat?: string[];
+  featuredImages?: string[];
+  slug?: string;
+  totalQuantity?: number;
+  amountSold?: number;
 }
 
 const initialItemState: ItemState = {
@@ -18,6 +23,11 @@ const initialItemState: ItemState = {
   price: undefined,
   token: undefined,
   dropType: undefined,
+  dropFormat: undefined,
+  featuredImages: undefined,
+  slug: undefined,
+  totalQuantity: undefined,
+  amountSold: undefined,
 };
 export const itemSlice = createSlice({
   name: "item",
@@ -34,6 +44,11 @@ export const itemSlice = createSlice({
           actionPrice,
           actionToken,
           actionDropType,
+          actionDropFormat,
+          actionFeaturedImages,
+          actionSlug,
+          actionDropTotalQuantity,
+          actionAmountSold,
         },
       }
     ) => {
@@ -44,6 +59,11 @@ export const itemSlice = createSlice({
       state.price = actionPrice;
       state.token = actionToken;
       state.dropType = actionDropType;
+      state.dropFormat = actionDropFormat;
+      state.featuredImages = actionFeaturedImages;
+      state.slug = actionSlug;
+      state.totalQuantity = actionDropTotalQuantity;
+      state.amountSold = actionAmountSold;
     },
   },
 });

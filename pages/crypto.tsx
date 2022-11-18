@@ -35,17 +35,18 @@ const Crypto: NextPage = (): JSX.Element => {
       <div className="relative w-full h-full col-start-1 row-start-1 place-self-start">
         <OrderInfo item={items} />
       </div>
-      <div className="relative w-full h-full col-start-2 row-start-1">
+      <div className="relative w-full h-fit col-start-2 grid grid-flow-col auto-cols-auto gap-10">
         <Details
           detailsSuccess={detailsSuccess}
           setDetailsSuccess={setDetailsSuccess}
         />
-      </div>
-      {detailsSuccess && (
-        <div className="relative w-full h-fit col-span-2 col-start-1 row-start-2 place-self-end">
+        {detailsSuccess && (
+        <div className="relative w-full place-self-start h-full row-start-2 place-self-end">
           <CryptoOrders />
         </div>
       )}
+      </div>
+      
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { OrderInfoProps } from "../../../types/general.types";
+import lodash from "lodash";
 
 const OrderInfo: FunctionComponent<OrderInfoProps> = ({
   item,
@@ -15,20 +16,22 @@ const OrderInfo: FunctionComponent<OrderInfoProps> = ({
       <div className="relative w-full h-full col-start-1 grid grid-flow-col auto-cols-[auto auto] gap-10">
         <img
           className="relative w-80 h-full bg-lBlue col-start-1 object-cover"
-          src={`https://${item.mainImage}.ipfs.w3s.link`}
+          src={`https://${item?.mainImage}.ipfs.w3s.link`}
         />
         <div className="relative w-96 h-fit text-white font-economica text-3xl col-start-2 grid grid-flow-row auto-rows-[auto auto] gap-8">
           <div className="relative w-fit h-fit row-start-1 text-7xl">
             {item?.name}
           </div>
           <div className="relative w-fit h-fit row-start-2 text-xl text-justify leading-5">
-            {item.description}
+            {lodash.truncate(item?.description, {
+              length: 400,
+            })}
           </div>
           <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-[auto auto] gap-20 text-xl">
             <div className="col-start-1 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">
               <div className="relative col-start-1 w-fit h-fit">Price:</div>
               <div className="relative col-start-2 w-fit h-fit">
-                {price + " " + token}
+                {price * item?.quantity + " " + token}
               </div>
             </div>
             <div className="col-start-2 relative w-fit h-fit grid grid-flow-col auto-cols-[auto auto] gap-3">

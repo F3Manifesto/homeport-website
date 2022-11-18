@@ -19,10 +19,11 @@ const CurrencyTransaction: FunctionComponent = (): JSX.Element => {
     error,
     hashData,
   } = useCurrency();
-  const { handleAddressSubmit } = useDetails();
+  const { handleAddressSubmit, handleUpdateAmountSold } = useDetails();
   useEffect(() => {
     if (hashData?.transactionHash) {
       handleAddressSubmit();
+      handleUpdateAmountSold();
     }
   }, [SuccessCurrency]);
   const decideStringAction = () => {

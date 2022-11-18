@@ -25,7 +25,7 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
     payment,
     setPayment,
     setClickedToken,
-    USDPRICESET
+    USDPRICESET,
   } = useOrderValue();
   return (
     <div className="relative w-full h-full row-start-2 grid grid-flow-row auto-rows-[auto auto]">
@@ -46,7 +46,9 @@ const Order: FunctionComponent<OrderProps> = ({ item }): JSX.Element => {
             Quantity
           </div>
           <div className="relative w-fit h-fit col-start-2 text-white place-self-center self-center font-economica text-sm">
-            {item?.quantity + " items in drop"}
+            {item?.quantity - item?.amountSold <= 0
+              ? "Drop Sold Out"
+              : item?.quantity - item?.amountSold + " items in drop"}
           </div>
         </div>
         <div className="relative w-fit h-fit row-start-2 grid grid-flow-col auto-cols-[auto auto] gap-10 pb-6">

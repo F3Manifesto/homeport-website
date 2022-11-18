@@ -1,10 +1,11 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useContext, useEffect } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import useFlow from "./hooks/useFlow";
 import { useRouter } from "next/router";
 import { AiOutlineLoading } from "react-icons/ai";
 import useDetails from "../Common/hooks/useDetails";
+import { GlobalContext } from "../../../pages/_app";
 
 const EthTransaction: FunctionComponent = (): JSX.Element => {
   const { isConnected } = useAccount();
@@ -12,10 +13,11 @@ const EthTransaction: FunctionComponent = (): JSX.Element => {
   const router = useRouter();
   const { isLoading, isSuccess, isError, handleSendEth, sendError, hashData } =
     useFlow();
-  const { handleAddressSubmit } = useDetails();
+  const { handleAddressSubmit, handleUpdateAmountSold } = useDetails();
   useEffect(() => {
     if (hashData?.transactionHash) {
       handleAddressSubmit();
+      handleUpdateAmountSold();
     }
   }, [isSuccess]);
 

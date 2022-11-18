@@ -87,7 +87,7 @@ const useUpdateProduct = (): UseUpdateProductResult => {
           .replace(/[^\w-/]+/g, "")
           .toLowerCase(),
         soldOut:
-          (e.target as HTMLFormElement).quantity.value - data?.amountSold === 0
+          (e.target as HTMLFormElement).quantity.value - data?.amountSold <= 0
             ? true
             : false,
         amountSold: data?.amountSold ? data?.amountSold : 0,

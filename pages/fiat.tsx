@@ -34,17 +34,17 @@ const Fiat: NextPage = (): JSX.Element => {
       <div className="relative w-fit h-full col-start-1 row-start-1 place-self-center">
         <OrderInfo item={items} />
       </div>
-      <div className="relative w-fit h-full col-start-2 row-start-1  place-self-center">
+      <div className="relative w-full h-fit col-start-2 grid grid-flow-col auto-cols-auto gap-10">
         <Details
           setDetailsSuccess={setDetailsSuccess}
           detailsSuccess={detailsSuccess}
         />
+        {detailsSuccess && (
+          <div className="relative w-full place-self-start h-full row-start-2 place-self-end">
+            <StripeCheckout />
+          </div>
+        )}
       </div>
-      {detailsSuccess && (
-        <div className="relative w-full h-fit col-span-2 col-start-1 row-start-2 place-self-end pb-20">
-          <StripeCheckout />
-        </div>
-      )}
     </div>
   );
 };

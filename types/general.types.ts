@@ -398,6 +398,7 @@ export type useDetailsResults = {
   paymentSuccess: boolean;
   setDetailsSuccess: (e: boolean) => void;
   detailsSuccess: boolean;
+  handleUpdateAmountSold: () => void;
 };
 
 export interface UserInterface {
@@ -622,4 +623,5 @@ export type FulFilledOrderProps = {
   providers: string[];
   setProviderValue: (e: string) => void;
   providerValue: string;
+  productData: ProductInterface[] | undefined;
 };

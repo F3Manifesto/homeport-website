@@ -1,6 +1,7 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddress } from "../../../redux/reducers/addressSlice";
+import { setSoldAmount } from "../../../redux/reducers/soldAmountSlice";
 import { RootState } from "../../../redux/store";
 import { DetailsProps } from "../../../types/general.types";
 
@@ -13,7 +14,7 @@ const Details: FunctionComponent<DetailsProps> = ({
   const priceValues = useSelector((state: RootState) => state.app.priceReducer);
   return (
     <form
-      className="relative w-full h-fit grid grid-flow-col auto-cols-[auto auto] text-white font-economicaB gap-4"
+      className="relative w-full h-fit grid grid-flow-col auto-cols-[auto auto] text-white font-economicaB gap-4 row-start-1"
       onSubmit={(e) => {
         e.preventDefault();
         dispatch(
@@ -35,6 +36,20 @@ const Details: FunctionComponent<DetailsProps> = ({
             actionProductQuantity: items.quantity,
             actionProductMainImage: items.mainImage,
             actionProductDropType: items.dropType,
+          })
+        );
+        dispatch(
+          setSoldAmount({
+            actionName: items.name,
+            actionDescription: items.description,
+            actionDropType: items.dropType,
+            actionDropFormat: items.dropFormat,
+            actionQuantity: items.totalQuantity,
+            actionMainImage: items.mainImage,
+            actionFeaturedImages: items.featuredImages,
+            actionSlug: items.slug,
+            actionSoldOut:
+              items.totalQuantity - items.quantity === 0 ? true : false,
           })
         );
         setDetailsSuccess(true);

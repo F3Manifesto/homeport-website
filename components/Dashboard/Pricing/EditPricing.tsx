@@ -1,8 +1,10 @@
 import Image from "next/legacy/image";
-import { FormEvent, FunctionComponent } from "react";
+import { FormEvent, FunctionComponent, useContext } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { EditPricingProps } from "../../../types/general.types";
+import lodash from "lodash";
+import { GlobalContext } from "../../../pages/_app";
 
 const EditPricing: FunctionComponent<EditPricingProps> = ({
   handleCurrencySubmit,
@@ -45,9 +47,11 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
           <div className="relative w-fit h-fit text-white font-economicaB row-start-2 justify-self-end text-right bg-shaded">
             {productInfo.slug ? productInfo.slug : "Product Slug"}
           </div>
-          <div className="relative w-fit h-fit text-white font-economicaB row-start-3 justify-self-end text-right pt-10">
+          <div className="relative w-60 h-fit text-white font-economicaB row-start-3 justify-self-end text-right pt-10">
             {productInfo?.description
-              ? productInfo.description
+              ? lodash.truncate(productInfo.description, {
+                  length: 100,
+                })
               : "Product Description"}
           </div>
           <div className="relative w-fit h-fit text-white font-economicaB row-start-4 pt-6 justify-self-end text-right">
@@ -66,8 +70,9 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
           <input
             name="usdPrice"
             type={"number"}
+            key={oneCurrencyData?.usdPrice}
             defaultValue={
-              oneCurrencyData ? oneCurrencyData.usdPrice : undefined
+              oneCurrencyData ? oneCurrencyData?.usdPrice : undefined
             }
             disabled={productInfo?.name ? false : true}
             step={0.01}
@@ -105,8 +110,9 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
             className={`relative col-start-2 w-[8vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 col-start-4`}
             placeholder={"USD / ETH"}
             required
+            key={oneCurrencyData?.ethPrice}
             defaultValue={
-              oneCurrencyData ? oneCurrencyData.ethPrice : undefined
+              oneCurrencyData ? oneCurrencyData?.ethPrice : undefined
             }
             disabled={productInfo?.name ? false : true}
             // disabled={productSuccess || addMutation.isLoading ? true : false}
@@ -136,8 +142,9 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
             className={`relative col-start-2 w-[8vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 col-start-4`}
             placeholder={"USD / MONA"}
             required
+            key={oneCurrencyData?.monaPrice}
             defaultValue={
-              oneCurrencyData ? oneCurrencyData.monaPrice : undefined
+              oneCurrencyData ? oneCurrencyData?.monaPrice : undefined
             }
             // disabled={productSuccess || addMutation.isLoading ? true : false}
           />
@@ -162,8 +169,9 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
             type={"number"}
             onChange={(e: FormEvent) => showCurrencyMatic(e)}
             step={0.01}
+            key={oneCurrencyData?.maticPrice}
             defaultValue={
-              oneCurrencyData ? oneCurrencyData.maticPrice : undefined
+              oneCurrencyData ? oneCurrencyData?.maticPrice : undefined
             }
             disabled={productInfo?.name ? false : true}
             className={`relative col-start-2 w-[8vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 col-start-4`}
@@ -192,8 +200,9 @@ const EditPricing: FunctionComponent<EditPricingProps> = ({
             type={"number"}
             step={0.01}
             onChange={(e: FormEvent) => showCurrencyUsdt(e)}
+            key={oneCurrencyData?.usdtPrice}
             defaultValue={
-              oneCurrencyData ? oneCurrencyData.usdtPrice : undefined
+              oneCurrencyData ? oneCurrencyData?.usdtPrice : undefined
             }
             disabled={productInfo?.name ? false : true}
             className={`relative col-start-2 w-[8vw] h-fit text-white font-economica px-2 bg-shaded border-white border-2 rounded-md py-3 col-start-4`}
