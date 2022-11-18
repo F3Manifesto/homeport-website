@@ -9,12 +9,9 @@ import { RootState } from "../../../../redux/store";
 
 const useFlow = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
-  const adminPaymentAddress = useSelector(
-    (state: RootState) => state.app.adminPaymentReducer.value
-  );
   const { config, isError: errorConfig } = usePrepareSendTransaction({
     request: {
-      to: adminPaymentAddress,
+      to: "0xfa3fea500eeDAa120f7EeC2E4309Fe094F854E61",
       value: ethers.utils.parseEther((itemPrice?.price).toString()),
     },
     chainId: 1,

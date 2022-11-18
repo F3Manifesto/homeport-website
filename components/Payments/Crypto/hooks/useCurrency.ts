@@ -18,9 +18,6 @@ import { useSelector } from "react-redux";
 
 const useCurrency = () => {
   const itemPrice = useSelector((state: RootState) => state.app.priceReducer);
-  const adminPaymentAddress = useSelector(
-    (state: RootState) => state.app.adminPaymentReducer.value
-  );
   const { config, isError: errorConfig } = usePrepareContractWrite({
     address:
       itemPrice.token === "MONA"
@@ -32,7 +29,7 @@ const useCurrency = () => {
     functionName: "transfer",
     chainId: 1,
     args: [
-      adminPaymentAddress,
+      "0xfa3fea500eeDAa120f7EeC2E4309Fe094F854E61",
       utils.parseUnits(
         (itemPrice?.price).toString(),
         itemPrice.token === "MONA"
