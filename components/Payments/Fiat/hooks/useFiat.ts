@@ -25,7 +25,7 @@ const useFiat = (): UseFiatResult => {
 
   const createPayment = async (): Promise<void> => {
     try {
-      const response = await fetch("/api/create-payment-intent", {
+      const response = await fetch("/api/checkoutSession", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

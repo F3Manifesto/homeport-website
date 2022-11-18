@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { UseFormResult } from "../../../../types/general.types";
 
@@ -39,9 +39,8 @@ const useForm = (): UseFormResult => {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e: any): Promise<void> => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
-
     if (!stripe || !elements) {
       return;
     }
@@ -52,7 +51,7 @@ const useForm = (): UseFormResult => {
       elements,
       confirmParams: {
         // payment completion page
-        return_url: "http://dms-tau.vercel.app/success",
+        return_url: "http://dms.digitalax.xyz/success",
       },
     });
 

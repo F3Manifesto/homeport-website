@@ -33,7 +33,6 @@ const Main: FunctionComponent = (): JSX.Element => {
     productData,
     (item) => item.name === productInfo.forProductName
   );
-  console.log(newProductData)
   return (
     <div className="relative col-start-2 w-full h-fit grid grid-flow-cols auto-cols-[auto auto] py-8 gap-12 pr-10">
       <div className="relative w-full h-fit col-start-1 grid grid-flow-row auto-rows-[auto auto]">

@@ -251,7 +251,6 @@ export const deleteCurrency = async (
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     };
-    console.log("deleting")
     const response = await fetch(
       `${BASE_URL}/api/currency/${currencySlug}`,
       Options
