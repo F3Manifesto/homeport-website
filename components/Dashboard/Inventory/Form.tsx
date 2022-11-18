@@ -155,7 +155,11 @@ const Form: FunctionComponent<FormProps> = ({
           </div>
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
-              className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
+              className={`relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue ${
+                !productSuccess ||
+                !imageUploading ||
+                (!addMutation.isLoading && "cursor-pointer active:scale-95")
+              } p-2`}
               onChange={(e: FormEvent) => {
                 showFileMainImage(e, "MainImage");
                 hashImageStringOne(e);
@@ -166,6 +170,7 @@ const Form: FunctionComponent<FormProps> = ({
                 type="file"
                 accept="image/png"
                 hidden
+                required
                 id="files"
                 multiple={false}
                 name="mainImage"
@@ -200,7 +205,11 @@ const Form: FunctionComponent<FormProps> = ({
           </div>
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
-              className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
+              className={`relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue ${
+                !productSuccess ||
+                !imageUploading ||
+                (!addMutation.isLoading && "cursor-pointer active:scale-95")
+              } p-2`}
               onChange={(e: FormEvent) => {
                 showFileMainImage(e, "FeaturedImages");
                 hashImageStringMultiple(e);
@@ -211,6 +220,7 @@ const Form: FunctionComponent<FormProps> = ({
                 type="file"
                 accept="image/png"
                 hidden
+                required
                 id="files"
                 multiple={true}
                 name="featuredImages"

@@ -1,5 +1,9 @@
 import dbConnect from "../../../utils/dbConnect";
-import { getCurrency, updateCurrency } from "../../../utils/controllers";
+import {
+  getCurrency,
+  updateCurrency,
+  deleteCurrency,
+} from "../../../utils/controllers";
 
 const handler = async (req: any, res: any): Promise<void> => {
   try {
@@ -17,6 +21,15 @@ const handler = async (req: any, res: any): Promise<void> => {
         return currency;
       } catch (err: any) {
         res.json({ success: false, data: err.message });
+      }
+      break;
+
+    case "DELETE":
+      try {
+        const currency = await deleteCurrency(req, res);
+        return currency;
+      } catch (err: any) {
+        res.status(400).json({ success: false, data: err.message });
       }
       break;
 

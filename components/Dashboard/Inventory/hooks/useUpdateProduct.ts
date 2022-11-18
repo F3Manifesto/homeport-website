@@ -5,6 +5,8 @@ import {
   getProduct,
   updateProduct,
   deleteProduct,
+  deleteCurrency,
+  getCurrencies,
 } from "../../../../lib/helpers";
 import { FormEvent, useContext, useState } from "react";
 import {
@@ -38,6 +40,11 @@ const useUpdateProduct = (): UseUpdateProductResult => {
   const productSlug = useSelector(
     (state: RootState) => state.app.productReducer.slug
   );
+
+  // const { data: currencyData } = useQuery(["currency", productSlug], () =>
+  //   getCurrency(productSlug as string)
+  // );
+
   const { setDeleteModal } = useContext(GlobalContext);
   const { data } = useQuery(["products", productSlug], () =>
     getProduct(productSlug as string)
@@ -114,7 +121,9 @@ const useUpdateProduct = (): UseUpdateProductResult => {
   const handleProductDelete = async (): Promise<void> => {
     try {
       await deleteProduct(productSlug as string);
+      await deleteCurrency(productSlug as string);
       await queryClient.prefetchQuery("products", getProducts);
+      await queryClient.prefetchQuery("currency", getCurrencies);
       setDeleteModal(false);
     } catch (err: any) {
       console.error(err.message);

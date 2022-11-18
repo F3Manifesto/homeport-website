@@ -249,6 +249,20 @@ export const updateCurrency = async (req: any, res: any): Promise<void> => {
   }
 };
 
+export const deleteCurrency = async (req: any, res: any): Promise<void> => {
+  try {
+    const { currencySlug } = req.query;
+    if (currencySlug) {
+      await Currency.findOneAndDelete({ itemSlug: currencySlug });
+      return res.status(200).json(currencySlug);
+    } else {
+      res.status(404).json({ err: "Currency not found" });
+    }
+  } catch (err: any) {
+    return res.status(404).json({ err: err.message });
+  }
+};
+
 export const getCurrencies = async (req: any, res: any): Promise<void> => {
   try {
     const currencies = await Currency.find({});

@@ -131,7 +131,9 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
                       dropFormatArray?.length === 0 && clickedFirst
                         ? newDropFormatArray?.includes(format) &&
                           "bg-yellowTheme"
-                        : !clickedFirst && dropFormatArray?.includes(format) && "bg-yellowTheme"
+                        : !clickedFirst &&
+                          dropFormatArray?.includes(format) &&
+                          "bg-yellowTheme"
                     }`}
                     onClick={
                       dropFormatArray?.length !== 0
@@ -185,7 +187,11 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
-              className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
+              className={`relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue ${
+                !success ||
+                !imageUploadingUpdated ||
+                (!updatedMutation.isLoading && "cursor-pointer active:scale-95")
+              } p-2`}
               onChange={(e: FormEvent) => {
                 showFileMainImage(e, "MainImage");
                 hashImageStringOneUpdated(e);
@@ -251,7 +257,11 @@ const UpdateForm: FunctionComponent<UpdateFormProps> = ({
           </div>
           <div className="relative w-fit h-fit p-2 place-self-end row-start-2 grid grid-flow-col auto-cols-[auto auto]">
             <label
-              className="relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue cursor-pointer active:scale-95 p-2"
+              className={`relative w-fit h-fit p-2 place-self-end rounded-sm bg-grayBlue p-2 ${
+                !success ||
+                !imageUploadingUpdated ||
+                (!updatedMutation.isLoading && "cursor-pointer active:scale-95")
+              }`}
               onChange={(e: FormEvent) => {
                 showFileMainImage(e, "FeaturedImages");
                 hashImageStringMultipleUpdated(e);

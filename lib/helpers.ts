@@ -243,6 +243,26 @@ export const addCurrency = async (
   }
 };
 
+export const deleteCurrency = async (
+  currencySlug: string
+): Promise<CurrencyInterface | undefined> => {
+  try {
+    const Options: OptionsInterface = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    console.log("deleting")
+    const response = await fetch(
+      `${BASE_URL}/api/currency/${currencySlug}`,
+      Options
+    );
+    const currency: CurrencyInterface = await response.json();
+    return currency;
+  } catch (err: any) {
+    console.error(err.message);
+  }
+};
+
 export const getCurrency = async (
   currencySlug: string
 ): Promise<CurrencyInterface | undefined> => {
