@@ -33,13 +33,13 @@ const Banner: FunctionComponent = (): JSX.Element => {
                   objectFit="cover"
                 />
               </div>
-              <div className="relative w-fit h-fit text-white font-animosaL row-start-2 self-end justify-self-center grid grid-flow-col auto-cols-[auto auto] pb-28 pt-8">
+              {/* <div className="relative w-fit h-fit text-white font-animosaL row-start-2 self-end justify-self-center grid grid-flow-col auto-cols-[auto auto] pb-28 pt-8">
                 <div className="col-start-1 relative w-fit h-fit border-2 border-white grid grid-flow-col auto-cols-[auto auto] p-3 rounded-xl px-6">
                   <div className="relative w-fit h-fit place-self-center col-start-1 text-sm">
                     SIMILAR LOOKS
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           );
         })}
