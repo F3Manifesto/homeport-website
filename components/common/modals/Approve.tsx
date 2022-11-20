@@ -12,9 +12,9 @@ const Approve: FunctionComponent = (): JSX.Element => {
   }, []);
   const { setShowApprovalModal } = useContext(CollectContext);
   return (
-    <div className="relative w-full galaxy:w-96 h-fit bg-offBlack grid grid-flow-row auto-rows-[auto auto] col-start-1 p-4 gap-4">
+    <div className="relative w-full galaxy:w-96 h-fit bg-offBlack grid grid-flow-row auto-rows-auto col-start-1 p-4 gap-4">
       <div
-        className="relative place-self-end w-6 h-6 row-start-1 cursor-empireS hover:opacity-80 active:scale-95 grid grid-flow-row auto-rows-[auto auto]"
+        className="relative place-self-end w-6 h-6 row-start-1 cursor-empireS hover:opacity-80 active:scale-95 grid grid-flow-row auto-rows-auto"
         onClick={() => {
           setShowApprovalModal(false);
         }}
@@ -31,7 +31,7 @@ const Approve: FunctionComponent = (): JSX.Element => {
         Approve your tokens to spend.
       </div>
       <button
-        className={`w-24 h-12 row-start-4 relative text-white grid grid-flow-col auto-cols-[auto auto] place-self-center p-2 font-fira border-2 border-offWhite hover:bg-midBlue hover:cursor-empireS active:scale-95 ${
+        className={`w-24 h-12 row-start-4 relative text-white grid grid-flow-col auto-cols-auto place-self-center p-2 font-fira border-2 border-offWhite hover:bg-midBlue hover:cursor-empireS active:scale-95 ${
           isSuccess && "active:scale-100 hover:bg-offBlack hover:cursor-empireA"
         }`}
         disabled={isSuccess}

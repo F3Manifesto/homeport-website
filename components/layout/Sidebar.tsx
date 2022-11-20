@@ -7,7 +7,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
   const [blur, setBlur] = useState(true);
   return (
     <div className="min-h-full h-full absolute w-40 right-0 flex justify-end z-30">
-      <div className="relative auto-rows-[auto auto] grid-flow-row h-full min-h-full w-fit justify-between content-between grid pr-1 pt-1 pb-1 sm:pr-4 sm:pt-6 sm:pb-6">
+      <div className="relative auto-rows-auto grid-flow-row h-full min-h-full w-fit justify-between content-between grid pr-1 pt-1 pb-1 sm:pr-4 sm:pt-6 sm:pb-6">
         <div className="relative w-fit row-start-1 h-full place-self-end">
           <div
             className={`cursor-empireS relative sm:flex hidden ${

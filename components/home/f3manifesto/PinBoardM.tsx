@@ -6,7 +6,7 @@ const PinBoardM = (): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="max-w-full w-full bg-gradient-to-r from-grad1 via-grad2 to-grad3 h-fit relative border-2 border-borderBlue overflow-hidden">
-      <div className="relative grid auto-cols-[auto auto] grid-flow-row max-w-full w-full h-full pt-8 pb-8 justify-items-center">
+      <div className="relative grid auto-cols-auto grid-flow-row max-w-full w-full h-full pt-8 pb-8 justify-items-center">
         <div className="relative h-fit w-fit col-start-1 row-start-1">
           <div className="relative w-full h-auto grid grid-rows-3 grid-flow-row justify-start gap-4">
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
@@ -72,13 +72,13 @@ const PinBoardM = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-full min-w-full row-start-1 row-span-4 pt-3 col-start-2">
-          <div className="relative w-full max-h-fit grid auto-cols-[auto auto] grid-flow-col gap-2">
+          <div className="relative w-full max-h-fit grid auto-cols-auto grid-flow-col gap-2">
             <div className="relative w-fit h-fit col-start-1 row-start-1">
               <div className="relative h-fit w-full col-start-1">
                 <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex ml-4 mb-3">
                   68 73 89
                 </div>
-                <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+                <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                   <div className="relative top-1 h-fit w-fit font-fira text-darkP text-xs col-start-1 self-start mr-2">
                     01
                   </div>
@@ -113,12 +113,12 @@ const PinBoardM = (): JSX.Element => {
               />
             </div>
             <div className="relative w-full h-fit col-start-2 row-start-2">
-              <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+              <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                 <div className="relative col-start-1 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3">
                     100 105 103 105
                   </div>
-                  <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+                  <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                     <div className="relative top-1 h-fit w-fit font-fira text-darkP text-xs col-start-1 self-start mr-2">
                       02
                     </div>
@@ -131,12 +131,12 @@ const PinBoardM = (): JSX.Element => {
               </div>
             </div>
             <div className="relative w-fit h-fit row-start-3 col-start-1 sm:col-start-3 sm:row-start-1">
-              <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+              <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                 <div className="relative h-fit w-fit col-start-1">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex ml-4 mb-3">
                     118 105 110 116
                   </div>
-                  <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+                  <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                     <div className="relative top-1 h-fit w-fit font-fira text-darkP text-xs col-start-1 self-start mr-2">
                       03
                     </div>
@@ -176,12 +176,12 @@ const PinBoardM = (): JSX.Element => {
               />
             </div>
             <div className="relative w-fit h-fit row-start-4 col-start-2 sm:col-start-4 sm:row-start-2">
-              <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+              <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                 <div className="relative col-start-2 relative h-fit w-fit">
                   <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex mr-4 mb-3 ml-6">
                     119 101 98
                   </div>
-                  <div className="relative grid auto-cols-[auto auto] grid-flow-col w-full h-fit">
+                  <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
                     <div className="relative top-1 h-fit w-fit font-fira text-darkP text-xs col-start-1 self-start mr-2">
                       04
                     </div>

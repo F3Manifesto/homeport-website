@@ -179,13 +179,13 @@ const TokenDetails: React.FC<
           <div
             className={`${
               !showApprovalModal && "hidden"
-            } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-[auto auto] backdrop-blur-sm`}
+            } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-auto backdrop-blur-sm`}
           >
             <Approve />
           </div>
         )}
-        <div className="grid grid-flow-row auto-rows-[auto auto] w-full h-full">
-          <div className="relative row-start-1 w-full h-fit grid grid-flow-col auto-cols-[auto auto] pb-28 galaxy:pb-0">
+        <div className="grid grid-flow-row auto-rows-auto w-full h-full">
+          <div className="relative row-start-1 w-full h-fit grid grid-flow-col auto-cols-auto pb-28 galaxy:pb-0">
             <div
               onClick={() => router.back()}
               className="relative col-start-1 w-fit h-fit"
@@ -206,12 +206,12 @@ const TokenDetails: React.FC<
               <Connect />
             </div>
           </div>
-          <div className="relative w-full h-fit row-start-2 border-t-4 border-lightWhite grid grid-flow-col auto-cols-[auto auto]">
+          <div className="relative w-full h-fit row-start-2 border-t-4 border-lightWhite grid grid-flow-col auto-cols-auto">
             <div className="relative col-start-1 place-self-start pl-4 sm:pr-0 pr-4 sm:pl-14 pt-8 pb-4 font-jacklane text-4xl sm:text-7xl place-self-start">
               {token[0].name.toUpperCase()}
             </div>
           </div>
-          <div className="relative w-full row-start-3 h-fit bg-foot grid grid-flow-col auto-cols-[auto auto] pt-8 pb-8 border-b-8 border-t-8 border-lightWhite">
+          <div className="relative w-full row-start-3 h-fit bg-foot grid grid-flow-col auto-cols-auto pt-8 pb-8 border-b-8 border-t-8 border-lightWhite">
             <div className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] col-start-1 place-self-center">
               <Image
                 priority

@@ -63,9 +63,9 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           <br />
           FASHION
         </div>
-        <div className="relative top-2/3 grid auto-rows-[auto auto] md:auto-cols-[auto auto] grid-flow-row w-fit left-4 sm:left-20">
+        <div className="relative top-2/3 grid auto-rows-auto md:auto-cols-auto grid-flow-row w-fit left-4 sm:left-20">
           <div className="relative flex border-l-2 border-t-2 border-b-2 border-offWhite h-[25.3rem] w-20 font-holo rounded-bl-lg rounded-tl-lg row-start-2 md:col-start-1">
-            <div className="relative grid auto-rows-[auto auto] grid-flow-row gap-14 justify-items-center w-full -top-3">
+            <div className="relative grid auto-rows-auto grid-flow-row gap-14 justify-items-center w-full -top-3">
               {videos.map((video: string, index: number) => {
                 return (
                   <div
@@ -74,7 +74,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
                     } justify-self-start`}
                     key={index}
                   >
-                    <div className="grid auto-cols-[auto auto] grid-flow-col relative gap-2 h-fit w-fit">
+                    <div className="grid auto-cols-auto grid-flow-col relative gap-2 h-fit w-fit">
                       <hr
                         className={`w-20 h-0.5 bg-offWhite float-left col-start-1 self-center ${
                           (index === 0 || index === 5) && `invisible`

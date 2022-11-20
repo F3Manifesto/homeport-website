@@ -4,7 +4,7 @@ import Sidebar from "../components/layout/Sidebar";
 
 const Custom404: NextPage = (): JSX.Element => {
   return (
-    <div className="relative min-h-screen min-w-screen h-screen w-screen grid grid-flow-col auto-cols-[auto auto] cursor-empireA">
+    <div className="relative min-h-screen min-w-screen h-screen w-screen grid grid-flow-col auto-cols-auto cursor-empireA">
       <Sidebar />
       <div className="relative w-fit h-fit place-self-center text-lightYellow font-fira p-6 text-center">
         There's been a glitch in the fabric. Find your way back{" "}

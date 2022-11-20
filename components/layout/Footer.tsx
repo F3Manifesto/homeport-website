@@ -13,7 +13,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
   }, []);
   return (
     <div className="min-w-screen relative h-auto min-h-full flex w-full cursor-empireA">
-      <div className="relative grid auto-cols-[auto auto] grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12 z-0">
+      <div className="relative grid auto-cols-auto grid-flow-col h-full text-foot w-full gap-3 bottom-0 pt-12 z-0">
         <div className="text-lg h-fit relative font-futur w-5/6 md:w-72 h-full tracking-widest leading-relaxed relative col-start-1 row-start-1 pl-10">
           Before you go, let’s take a look at what the latest language synth
           model has to say for itself…
@@ -21,7 +21,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
         <div className="relative justify-end w-fit text-sm font-futur col-start-1 row-start-3 md:row-start-3 self-end h-fit pl-10 md:pt-0 pt-10">
           Src: Rytr GPT-3
         </div>
-        <div className="relative w-60 lg:w-72 h-fit text-white font-firaL grid grid-flow-row auto-rows-[auto auto] pl-10 row-start-5 md:row-start-2 text-xs pt-6 md:pt-0 pb-2 md:pb-12">
+        <div className="relative w-60 lg:w-72 h-fit text-white font-firaL grid grid-flow-row auto-rows-auto pl-10 row-start-5 md:row-start-2 text-xs pt-6 md:pt-0 pb-2 md:pb-12">
           <div className="relative row-start-1 w-fit h-fit place-self-start pr-6">
             Visual media used by this site is mirrored using IPFS{" "}
             <Link href={"https://ipfs.f3manifesto.xyz/"}>
@@ -53,7 +53,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           log: 0005
         </div>
         <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
-          <div className="relative grid auto-cols-[auto auto] grid-flow-col gap-2 h-fit max-w-fit w-fit">
+          <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
             <div className="text-white w-fit h-fit text-sm font-fira relative float-left col-start-1 row-start-1">
               Latent microfactory feed
             </div>
@@ -80,7 +80,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-7 md:row-start-3 col-start-1 md:col-start-3 self-start md:self-end pr-4">
-          <div className="grid grid-flow-col auto-cols-[auto auto] relative h-fit w-fit gap-3">
+          <div className="grid grid-flow-col auto-cols-auto relative h-fit w-fit gap-3">
             <div className="relative w-fit h-fit col-start-1 place-self-end">
               <Link href={"https://mirror.xyz/f3manifesto.eth"}>
                 <a
