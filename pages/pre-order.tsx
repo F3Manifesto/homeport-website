@@ -40,7 +40,7 @@ const PreOrder: NextPage = (): JSX.Element => {
       </Head>
       <div className="flex flex-col w-full flex-auto h-full min-h-full">
         <Sidebar />
-        <div className="relative grid auto-rows-[auto auto] grid-flow-row w-full h-fit gap-3 justify-center">
+        <div className="relative grid auto-rows-auto grid-flow-row w-full h-fit gap-3 justify-center">
             <div className="text-offWhite font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1"
             onClick={() => router.push("/#shopping")}>
               <AiFillBackward
