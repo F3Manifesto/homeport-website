@@ -48,7 +48,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           We need designers who can create things that will overthrow the
           empire. The garment factory is a place where rebellion and defiance
           can be found— the birthplace of a new American industrial and creative
-          movement. 
+          movement.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
           log: 0006
@@ -89,7 +89,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   rel="noreferrer"
                   className="cursor-empireS h-fit relative pr-1"
                 >
-                  <Image src={"/images/mirror.png"} width={21} height={26} />
+                  <Image
+                    src={`https://bafybeifygoiu2mkf42fnxtc66y5hmyetaod7pdvb4nb5jhyvrth74vgebu.ipfs.w3s.link/mirror.png`}
+                    width={21}
+                    height={26}
+                  />
                 </a>
               </Link>
             </div>
@@ -100,7 +104,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   rel="noreferrer"
                   className="cursor-empireS h-fit relative pr-1"
                 >
-                  <Image src={"/images/github.png"} width={29} height={28} />
+                  <Image
+                    width={29}
+                    height={28}
+                    src={`https://bafybeibpez3bkqr7e2cgcve5asfinhlrilrepkltnwxdpju64s3nlh4hz4.ipfs.w3s.link/github.png`}
+                  />
                 </a>
               </Link>
             </div>
@@ -111,7 +119,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   rel="noreferrer"
                   className="cursor-empireS h-fit relative"
                 >
-                  <Image src={"/images/lens.png"} width={30} height={30} />
+                  <Image
+                    src={`https://bafybeihrt54p7celvxkvsatgbejey3yfq6z744yuvpa3zwp6udk2oaaa6y.ipfs.w3s.link/lens.png`}
+                    width={30}
+                    height={30}
+                  />
                 </a>
               </Link>
             </div>

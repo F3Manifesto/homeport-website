@@ -22,7 +22,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
     "OS ENGINEERING",
     "REALMS",
     "UNSPUN",
-    "SYNTH WAVE"
+    "SYNTH WAVE",
   ];
   return (
     <div className="w-full min-h-auto h-auto relative flex bg-offBlack overflow-hidden">
@@ -46,10 +46,10 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image
             priority
-            src="/images/mtv2.png"
+            src={`https://bafybeievmtbg3m3oqkyaiejawkxcyo3luqbpidsawwvefxspik4dsqxdxe.ipfs.w3s.link/mtv2.png`}
             objectFit="cover"
             layout="fill"
-            blurDataURL="/images/mtv2.png"
+            blurDataURL={`https://bafybeia4blinlxvlnz4iczhfq6ntca7aocpkiw5hejmlpr57ge7hdgsdka.ipfs.w3s.link/mtv2.png`}
             placeholder="blur"
             onLoadingComplete={() => setBlur(false)}
           />

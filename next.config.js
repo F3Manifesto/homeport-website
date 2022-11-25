@@ -15,8 +15,15 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    loader: "akamai",
-    path: "https://f3manifesto.xyz",
+    // loader: "akamai",
+    // path: "https://f3manifesto.xyz",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.ipfs.w3s.link',
+        pathname: '/**',
+      },
+    ],
   },
   trailingSlash: true,
 };

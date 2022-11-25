@@ -4,8 +4,15 @@ import MainBoard from "./MainBoard";
 import SmallBoard from "./SmallBoard";
 
 const F3Manifesto: FunctionComponent = (): JSX.Element => {
-  const { newImages, refreshImages, viewMainImage, mainImage } =
-    useF3Manifesto();
+  const {
+    newImages,
+    refreshImages,
+    viewMainImage,
+    mainImage,
+    blurred,
+    imagesURI,
+    newImagesURI,
+  } = useF3Manifesto();
   return (
     <div className="flex min-h-full h-fit min-w-screen cursor-empireA clear-both pt-10">
       <div className="half:flex half:flex-col w-full flex-auto h-full min-h-full hidden">
@@ -14,6 +21,9 @@ const F3Manifesto: FunctionComponent = (): JSX.Element => {
           viewMainImage={viewMainImage}
           mainImage={mainImage}
           newImages={newImages}
+          blurred={blurred}
+          imagesURI={imagesURI}
+          newImagesURI={newImagesURI}
         />
       </div>
       <div className="flex flex-col w-full flex-auto h-full min-h-full half:hidden">
@@ -22,6 +32,9 @@ const F3Manifesto: FunctionComponent = (): JSX.Element => {
           viewMainImage={viewMainImage}
           mainImage={mainImage}
           newImages={newImages}
+          blurred={blurred}
+          imagesURI={imagesURI}
+          newImagesURI={newImagesURI}
         />
       </div>
     </div>

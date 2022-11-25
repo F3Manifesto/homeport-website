@@ -84,7 +84,7 @@ const Collect: FunctionComponent<CollectProps> = ({
           </div>
           <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
             <Image
-              src="/images/expand2.png"
+              src={`https://bafybeib7zi4wkt4tlhn7fzops6dllrof5wvvvtstgcdzsoxf25klxindjy.ipfs.w3s.link/expand2.png`}
               layout="fill"
               alt="Expand"
               priority
@@ -114,7 +114,7 @@ const Collect: FunctionComponent<CollectProps> = ({
           </div>
           <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
             <Image
-              src="/images/expand2.png"
+              src={`https://bafybeib7zi4wkt4tlhn7fzops6dllrof5wvvvtstgcdzsoxf25klxindjy.ipfs.w3s.link/expand2.png`}
               layout="fill"
               alt="Expand"
               priority

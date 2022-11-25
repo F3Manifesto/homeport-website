@@ -10,7 +10,6 @@ import useMetadata from "../../components/collect/hooks/useMetadata";
 import { useAccount, useBalance } from "wagmi";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getPlaiceholder } from "plaiceholder";
 import { InferGetStaticPropsType } from "next";
 
 export const CollectContextDefault = {
@@ -136,7 +135,9 @@ const TokenDetails: React.FC<
           <meta name="og:description" content={token[0].description} />
           <meta
             name="og:image"
-            content={`https://f3manifesto.xyz${token[0].image}`}
+            content={`https://${
+              token[0].image
+            }.ipfs.w3s.link/${token[0].name.replaceAll(" ", "")}.png`}
           />
           <meta name="twitter:card" content="summary" />
           <meta
@@ -147,14 +148,18 @@ const TokenDetails: React.FC<
           />
           <meta
             name="og:image"
-            content={`https://f3manifesto.xyz${token[0].image}`}
+            content={`https://${
+              token[0].image
+            }.ipfs.w3s.link/${token[0].name.replaceAll(" ", "")}.png`}
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@f3manifesto" />
           <meta name="twitter:creator" content="@f3manifesto" />
           <meta
             name="twitter:image"
-            content={`https://f3manifesto.xyz${token[0].image}`}
+            content={`https://${
+              token[0].image
+            }.ipfs.w3s.link/${token[0].name.replaceAll(" ", "")}.png`}
           />
           <meta
             name="twitter:url"
@@ -218,10 +223,14 @@ const TokenDetails: React.FC<
                 layout="fill"
                 objectFit="contain"
                 unoptimized
-                blurDataURL={token[0].blurred}
+                src={`https://${
+                  token[0].image
+                }.ipfs.w3s.link/${token[0].name.replaceAll(" ", "")}.png`}
+                blurDataURL={`https://${
+                  token[0].blurred
+                }.ipfs.w3s.link/${token[0].name.replaceAll(" ", "")}.png`}
                 placeholder="blur"
                 loader={() => token[0].image}
-                src={token[0].image}
               />
             </div>
           </div>
