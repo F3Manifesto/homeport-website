@@ -10,6 +10,9 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
   mainImage,
   viewMainImage,
   newImages,
+  blurred,
+  imagesURI,
+  newImagesURI,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
@@ -45,10 +48,10 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                         <Image
                           objectFit="cover"
                           placeholder="blur"
-                          blurDataURL={`/images/blurred/${image}.png`}
                           onLoadingComplete={() => setBlur(false)}
                           layout="fill"
-                          src={`/images/tiers/${image}.png`}
+                          src={`https://${newImagesURI[index]}.ipfs.w3s.link/${image}.png`}
+                          blurDataURL={`https://${blurred[index]}.ipfs.w3s.link/${image}.png`}
                         />
                       </div>
                     );
@@ -82,8 +85,8 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 width={60}
                 height={60}
                 placeholder="blur"
-                blurDataURL="/images/blurred/disk.png"
-                src="/images/disk.png"
+                blurDataURL={`https://bafybeihcrrfsd72q5zlrvyja42ao4tn3vgz27xiaf2sdj75ouvmczuh26m.ipfs.w3s.link/disk.png`}
+                src={`https://bafybeihbjy7i3jakpn5lfkbonpbaml2bsjh6heqiqefn6oe562urymtbzy.ipfs.w3s.link/disk.png`}
                 onLoadingComplete={() => setBlur(false)}
               />
             </motion.div>
@@ -115,8 +118,12 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                     <Image
                       priority
                       placeholder="blur"
-                      blurDataURL={`/images/blurred/main${mainImage}.png`}
-                      src={`/images/tiers/main${mainImage}.png`}
+                      src={`https://${
+                        imagesURI[Number(mainImage) - 1]
+                      }.ipfs.w3s.link/main${mainImage}.png`}
+                      blurDataURL={`https://${
+                        blurred[Number(mainImage) - 1]
+                      }.ipfs.w3s.link/main${mainImage}.png`}
                       layout="fill"
                       objectPosition={"top"}
                       objectFit="cover"

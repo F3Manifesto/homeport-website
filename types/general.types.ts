@@ -9,7 +9,10 @@ export type UseF3ManifestoResults = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
   newImages: string[] | undefined;
-  mainImage: string | undefined;
+  mainImage: string;
+  blurred: string[];
+  imagesURI: string[];
+  newImagesURI: string[];
 };
 
 export type useCollectionsResult = {
@@ -88,7 +91,8 @@ export interface Gallery {
   edition: string;
   contract: string;
   type: string;
-};
+  styleName: string;
+}
 
 export type CollectionProps = {
   shopping: any;
@@ -126,14 +130,20 @@ export type MainBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
   newImages: string[] | undefined;
-  mainImage: string | undefined;
+  mainImage: string;
+  blurred: string[];
+  imagesURI: string[];
+  newImagesURI: string[];
 };
 
 export type SmallBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
   newImages: string[] | undefined;
-  mainImage: string | undefined;
+  mainImage: string;
+  blurred: string[];
+  imagesURI: string[];
+  newImagesURI: string[];
 };
 
 export type usePreOrderResults = {

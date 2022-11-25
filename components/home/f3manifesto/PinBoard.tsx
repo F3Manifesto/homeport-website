@@ -21,9 +21,9 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src="/images/digi.png"
+                    src={`https://bafybeiclh42efupubyev4vrbvivxqxaijpklj4sq5v4ijtyhjdpetqvrbu.ipfs.w3s.link/digi.png`}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/digi.png"
+                    blurDataURL={`https://bafybeifjaq2f6hektobf4yhyco5mao4ql7zbbnrdov3zrc7uli2qfvjhim.ipfs.w3s.link/digi.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -41,9 +41,9 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src="/images/inari.png"
+                    src={`https://bafybeicjx5t2m6mkdyw6pq44svyehj5zf7akcujosusz4dafmfoyqo5kyi.ipfs.w3s.link/inari.png`}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/inari.png"
+                    blurDataURL={`https://bafybeigwle5f5up3mtj7wos5fghphzyuuvitg2rlcmc7jsoqgcp3m6xs3m.ipfs.w3s.link/inari.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -61,9 +61,9 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src="/images/diy.png"
+                    src={`https://bafybeigym3q7opulubjzjnv63ry7pqu5cc7nmhp3dhhwwozlitp2ctrx5q.ipfs.w3s.link/diy.png`}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/diy.png"
+                    blurDataURL={`https://bafybeie5qbssfuiwjxiueekd22sxwr3nqzch4fp7762lzf55msfxxuqtzu.ipfs.w3s.link/diy.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -94,11 +94,11 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src="/images/wheel.png"
+                    src={`https://bafybeiga3k7vrdjukoyalvpiu7hyjlozxrqoh367wk2oaioo465aqs4yoi.ipfs.w3s.link/wheel.png`}
                     width={50}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/wheel.png"
+                    blurDataURL={`https://bafybeihehwvyymhspkpv5bxfixkpfeazxibpw6nhfjefezapfdzlb7m6ie.ipfs.w3s.link/wheel.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -112,11 +112,11 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src="/images/player.png"
+                    src={`https://bafybeie3y242lveoh5btglzom3sonrynp5o2v5usr3docrcdw7watxpntm.ipfs.w3s.link/player.png`}
                     width={65}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/player.png"
+                    blurDataURL={`https://bafybeidyxz2oglpcdeidcwbzghs7kzbgsxdbhvfc6wg4l3ha6os5y5dofu.ipfs.w3s.link/player.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -157,11 +157,11 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src="/images/flag.png"
+                    src={`https://bafybeiafghblmzeheouptjjq5hdfjqbspf2bzcyssfmg3ih663mmb4dfqe.ipfs.w3s.link/flag.png`}
                     width={65}
                     height={50}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/flag.png"
+                    blurDataURL={`https://bafybeig76kzuz4evtkzogq3d7uaxpcr73dmwmuzuj3tbhxyvzlzfal7e3a.ipfs.w3s.link/flag.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -169,13 +169,17 @@ const PinBoard = (): JSX.Element => {
             </div>
             <div className="relative w-fit h-fit row-start-4">
               <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
-                <div className={`relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2 ${blur && "blur-sm animate-unblur"}`}>
+                <div
+                  className={`relative col-start-1 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pr-2 ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
                   <Image
-                    src="/images/fox.png"
+                    src={`https://bafybeibwmr35dlv7vxufvtmbtlbp5ymltf3eb5bzlh63hgr3brpqkkv254.ipfs.w3s.link/fox.png`}
                     width={75}
                     height={60}
                     placeholder="blur"
-                    blurDataURL="/images/blurred/fox.png"
+                    blurDataURL={`https://bafybeichll3avg422wwdzctxxkj3erjui27a5oo24v4dirwrmpc6ibcrsy.ipfs.w3s.link/fox.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>

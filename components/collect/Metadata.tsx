@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import { MetadataProps } from "../../types/general.types";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-const DynamicCollect = dynamic(() => import('./Collect'), {
-    ssr: false,
-  })
+const DynamicCollect = dynamic(() => import("./Collect"), {
+  ssr: false,
+});
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   token,
@@ -16,7 +16,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   collectMarket,
   isSuccess,
   loading,
-  data
+  data,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full row-start-4 grid grid-flow-col auto-cols-auto pt-10 pb-24 cursor-empireA">
@@ -63,7 +63,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src="/images/greenarrows.png"
+                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -76,7 +76,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-2 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src="/images/greenarrows.png"
+                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -89,7 +89,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src="/images/greenarrows.png"
+                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -102,7 +102,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-4 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src="/images/greenarrows.png"
+                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -123,7 +123,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div className="relative h-10 w-16 border-r-4 border-t-2 border-b-2 border-l-2 border-offBlack rounded-md bg-lightWhite place-self-center grid grid-flow-col auto-cols-auto hover:rotate-6 cursor-empireS hover:mix-blend-exclusion">
                   <div className="relative h-6 w-10 col-start-1 place-self-center">
                     <Image
-                      src={`/images/${token[0].styleImage}.png`}
+                      src={`https://${token[0].styleImage}.ipfs.w3s.link/${token[0].styleName}.png`}
                       objectFit="contain"
                       layout="fill"
                       alt="Profile Image"

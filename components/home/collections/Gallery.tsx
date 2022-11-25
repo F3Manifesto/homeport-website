@@ -32,13 +32,18 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                 <Image
                   priority
                   placeholder="blur"
-                  blurDataURL={token.blurred}
+                  blurDataURL={`https://${
+                    token.image
+                  }.ipfs.w3s.link/${token.name.replaceAll(" ", "")}.png`}
                   objectFit="cover"
                   layout="fill"
                   alt={token.name}
                   objectPosition="top"
                   style={blur ? { opacity: 0 } : { opacity: 1 }}
-                  src={token.image}
+                  // src={token.image}
+                  src={`https://${
+                    token.image
+                  }.ipfs.w3s.link/${token.name.replaceAll(" ", "")}.png`}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>
