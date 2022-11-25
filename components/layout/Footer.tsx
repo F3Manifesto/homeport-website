@@ -40,17 +40,18 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          Constantly experimenting and pushing the boundaries of what is
-          possible. New forms of fabric that are more resistant to tearing and
-          fading. More beautiful. More functional. Always tinkering with her
-          designs, trying to find ways to make them better.
+          In 1910, NYC garment factories started hiring immigrants from Europe
+          who had more experience in sewing than most of the workers in the
+          city. The garment industry was saved to flourish and become one of the
+          largest industries in America.
           <br /> <br />
-          An obsession with freedom, code and the challenge of creating
-          something new. Who knows, you might even find yourself stumbling upon
-          some nanotechnology in the process!
+          We need designers who can create things that will overthrow the
+          empire. The garment factory is a place where rebellion and defiance
+          can be found— the birthplace of a new American industrial and creative
+          movement. 
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0005
+          log: 0006
         </div>
         <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
