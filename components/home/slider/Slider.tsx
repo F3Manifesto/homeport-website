@@ -201,7 +201,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
           return (
             <div
               key={index}
-              className={`min-h-60 min-w-60 h-60 w-60 relative mr-4 ${
+              className={`min-h-60 min-w-60 h-60 w-60 relative mr-4 bg-lightYellow ${
                 blur && "blur-sm animate-unblur"
               }`}
             >
