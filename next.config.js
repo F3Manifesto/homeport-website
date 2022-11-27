@@ -19,14 +19,14 @@ const nextConfig = {
     // path: "https://f3manifesto.xyz",
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**.ipfs.w3s.link',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "**.ipfs.w3s.link",
+        pathname: "/**",
       },
     ],
+    unoptimized: true,
   },
   trailingSlash: true,
-  unoptimized: true,
 };
 
 module.exports = nextConfig;
