@@ -24,7 +24,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
           return (
             <div
               key={key}
-              className="h-80 w-full min-h-max relative ml-0 mt-0 m-4"
+              className="h-80 w-full bg-lightYellow min-h-max relative ml-0 mt-0 m-4"
             >
               <div
                 className={`w-full h-full ${blur && "blur-sm animate-unblur"}`}
