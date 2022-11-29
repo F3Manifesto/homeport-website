@@ -26,6 +26,8 @@ export type useCollectionsResult = {
   collectionFilter: string;
   styleSelect: string[];
   styleFilter: string;
+  sexSelect: string[];
+  filterSex: (e: any) => void;
 };
 
 export type useWeb3FashionResults = {
@@ -74,6 +76,8 @@ export type SearchProps = {
   filterStyle: (e: any) => void;
   collectionSelect: string[];
   styleSelect: string[];
+  sexSelect: string[];
+  filterSex: (e: any) => void;
 };
 
 export interface Gallery {
@@ -92,6 +96,7 @@ export interface Gallery {
   contract: string;
   type: string;
   styleName: string;
+  sex: string;
 }
 
 export type CollectionProps = {
