@@ -4,17 +4,17 @@ import shuffle from "shuffle-array";
 
 const useF3Manifesto = (): UseF3ManifestoResults => {
   const [newImages, setNewImages] = useState<string[] | undefined>([
-    "main1",
+    "main20",
     "main19",
     "main3",
-    "main4",
+    "main23",
     "main12",
   ]);
   const [newImagesURI, setNewImagesURI] = useState<string[]>([
-    "bafybeibkrioxv5ixbar4bfbp4ebebgmzyan7hir6y3ewoagncnw5oeb46m",
+    "bafybeiatntwh6s3tljzqza7oigcp6r33zabaihfnbnhyykwroob7dkcfai",
     "bafybeideh7fcwexbilzdrowh65x5nlc7wy3e5242hyqj4afjpc6n3ott4y",
     "bafybeibyoeyov2cfamxr2cj6dznec2vygjsxoczinwp6q2fufwypv5jyru",
-    "bafybeibuccupnqpihgjvofbmqtwujmexrur5eo4eaiw7jyeq2ma7h2wjra",
+    "bafybeigw5ojalpbjl7h4ltlfx35ej7mg5wzxvzk7squwfnfteucivoxvpa",
     "bafybeie2x3ag2hdeazuzq43tnuo4yasjbhyqtvndwxkkxoumzd4pz7qrj4",
   ]);
   const [mainImage, setMainImage] = useState<string>("14");
@@ -38,6 +38,11 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "main17",
     "main18",
     "main19",
+    "main20",
+    "main21",
+    "main22",
+    "main23",
+    "main24",
   ];
 
   const imagesURI: string[] = [
@@ -60,6 +65,11 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "bafybeibcit3fxw26ufiwfbzugpgbslfxasxf4wg6txufiiq434573vlwwa",
     "bafybeid53vh52kal3sta33nxwmpf4ujhrudzuefs54vcllb356uwqntgpm",
     "bafybeideh7fcwexbilzdrowh65x5nlc7wy3e5242hyqj4afjpc6n3ott4y",
+    "bafybeiatntwh6s3tljzqza7oigcp6r33zabaihfnbnhyykwroob7dkcfai",
+    "bafybeifcendjrudop32iwbfyebq2yckj7xbrbwxum6fe2e2bwilh22kely",
+    "bafybeiec25hefq3rrg5eecsphexmhvzqeyd5muse6drwosq7lhgw5zueie",
+    "bafybeigw5ojalpbjl7h4ltlfx35ej7mg5wzxvzk7squwfnfteucivoxvpa",
+    "bafybeihapfukzaurgb6rcv2fa3jthczwujqzzxrt5m26zyhoorqfawkkam",
   ];
 
   const blurred: string[] = [
@@ -82,13 +92,19 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "bafybeibwils533ehxkt4zz4j7obbomcn5iulghunpnuxly5i46anvbyr74",
     "bafybeihl5p6qxez6i4eyn7vdr3esxrrxk3bmw6p5agx7hdwmtqbcf6unmq",
     "bafybeihjjr7omi33tarp7vqvzjs56u35gzdesaxz4ytxhon4cqkh4ybtei",
+    "bafybeidod24hstfoxovsvjht66fkrmphka6wi6rsrmy2r6wn3dpzqj2fwu",
+    "bafybeiaiywchi4alycaztbzg5sm47xn7vxhggy5lbzcxlugbaxw22gogpy",
+    "bafybeiavsdbqngvvu7dgxfqm6tmbcqiq7vh56ripx2wgoxusb2ejx62mkq",
+    "bafybeidezeuppyfcnuuwdct6xk6uetbnnr3hcfembdi5omasvxdlywtwum",
+    "bafybeiac53b5fmjl7enefxvjsbusmoqa2hjg2yeb6nvs76r6d4jqije7c4",
   ];
 
   const refreshImages = (): void => {
     let newImages: string[] = [];
     let newImagesURI: string[] = [];
     const AllNumbers: number[] = [
-      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+      21, 22, 23,
     ];
     shuffle<number>(AllNumbers);
     for (let i = 0; i < 5; i++) {
@@ -100,7 +116,7 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
   };
 
   const viewMainImage = (e: any): void => {
-    let src: string = e.target.srcset;
+    let src: string = e.target.src;
     if (src.split("main")[1].charAt(1) === ".") {
       src = src.split("main")[1].charAt(0);
     } else {

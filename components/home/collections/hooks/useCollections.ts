@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Gallery,
   useCollectionsResult,
 } from "./../../../../types/general.types";
 import tokens from "./../../../../pages/api/tokens.json";
-import { useRouter } from "next/router"; 
+// import { useRouter } from "next/router";
 
 const useCollections = (): useCollectionsResult => {
-  const router = useRouter();
+  // const router = useRouter();
   const [gallery, setGallery] = useState<Gallery[]>(tokens.slice(0, 9));
   const [collectionFilter, setCollectionFilter] = useState<string>("");
   const [nameInput, setNameInput] = useState<string>();
@@ -16,6 +16,9 @@ const useCollections = (): useCollectionsResult => {
   const [clickedStyle, setClickedStyle] = useState<boolean>(false);
   const [collectionSelect, setCollectionSelect] = useState<string[]>([]);
   const [styleSelect, setStyleSelect] = useState<string[]>([]);
+  const [sexSelect, setSexSelect] = useState<string[]>([]);
+  const [clickedSex, setClickedSex] = useState<boolean>(false);
+  const [sexFilter, setSexFilter] = useState<boolean>(false);
 
   const filterCollections = (e: any): void => {
     setCollectionFilter(e.target.name);
@@ -51,9 +54,21 @@ const useCollections = (): useCollectionsResult => {
     //     : `/#shopping?collection=none`,
     //   {
     //     shallow: true,
-    //     scroll: false, 
+    //     scroll: false,
     //   }
     // );
+  };
+
+  const filterSex = (e: any): void => {
+    setSexFilter(e.target.name);
+    let clickedArray: string[] = [];
+    if (sexSelect.includes(e.target.name)) {
+      clickedArray = sexSelect.filter((sex: string) => sex !== e.target.name);
+    } else {
+      clickedArray = [...sexSelect, e.target.name];
+    }
+    setSexSelect(clickedArray);
+    setClickedSex(!clickedSex);
   };
 
   const filterStyle = (e: any): void => {
@@ -110,15 +125,69 @@ const useCollections = (): useCollectionsResult => {
       });
     } else {
       tokens.forEach((token) => {
-        if (collectionSelect.length === 0 && styleSelect.length !== 0) {
+        if (
+          collectionSelect.length === 0 &&
+          styleSelect.length !== 0 &&
+          sexSelect.length === 0
+        ) {
           if (styleSelect.includes(token.style)) {
             filteredGallery.push(token);
           }
-        } else if (collectionSelect.length !== 0 && styleSelect.length === 0) {
+        } else if (
+          collectionSelect.length !== 0 &&
+          styleSelect.length === 0 &&
+          sexSelect.length === 0
+        ) {
           if (collectionSelect.includes(token.collection)) {
             filteredGallery.push(token);
           }
-        } else if (collectionSelect.length !== 0 && styleSelect.length !== 0) {
+        } else if (
+          collectionSelect.length === 0 &&
+          styleSelect.length === 0 &&
+          sexSelect.length !== 0
+        ) {
+          if (sexSelect.includes(token.sex)) {
+            filteredGallery.push(token);
+          }
+        } else if (
+          collectionSelect.length !== 0 &&
+          styleSelect.length !== 0 &&
+          sexSelect.length !== 0
+        ) {
+          if (
+            collectionSelect.includes(token.collection) &&
+            styleSelect.includes(token.style) &&
+            sexSelect.includes(token.sex)
+          ) {
+            filteredGallery.push(token);
+          }
+        } else if (
+          collectionSelect.length !== 0 &&
+          styleSelect.length === 0 &&
+          sexSelect.length !== 0
+        ) {
+          if (
+            collectionSelect.includes(token.collection) &&
+            sexSelect.includes(token.sex)
+          ) {
+            filteredGallery.push(token);
+          }
+        } else if (
+          collectionSelect.length === 0 &&
+          styleSelect.length !== 0 &&
+          sexSelect.length !== 0
+        ) {
+          if (
+            styleSelect.includes(token.style) &&
+            sexSelect.includes(token.sex)
+          ) {
+            filteredGallery.push(token);
+          }
+        } else if (
+          collectionSelect.length !== 0 &&
+          styleSelect.length !== 0 &&
+          sexSelect.length === 0
+        ) {
           if (
             collectionSelect.includes(token.collection) &&
             styleSelect.includes(token.style)
@@ -132,6 +201,7 @@ const useCollections = (): useCollectionsResult => {
         } else if (
           collectionSelect.length === 0 &&
           styleSelect.length === 0 &&
+          sexSelect.length === 0 &&
           !nameInput
         ) {
           filteredGallery = tokens.slice(0, 9);
@@ -143,7 +213,7 @@ const useCollections = (): useCollectionsResult => {
 
   useMemo(() => {
     filterGallery();
-  }, [collectionSelect, styleSelect, nameInput]);
+  }, [collectionSelect, styleSelect, nameInput, sexSelect]);
 
   // useEffect(() => {
   //   if (router.asPath.includes("?collection=")) {
@@ -197,6 +267,8 @@ const useCollections = (): useCollectionsResult => {
     collectionFilter,
     styleSelect,
     styleFilter,
+    sexSelect,
+    filterSex,
   };
 };
 
