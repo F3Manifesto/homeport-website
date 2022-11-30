@@ -79,31 +79,19 @@ const Search: FunctionComponent<SearchProps> = ({
           </div>
         </div>
         <div className="relative col-start-1 sm:col-start-2 w-full h-full row-start-2 sm:row-start-1 sm:pl-0 pl-3 auto-rows-auto grid grid-flow-row">
-          <div className="relative col-start-1 w-full h-full row-start-1 sm:pl-0 pl-3 auto-rows-auto grid grid-flow-row">
+          <div className="relative col-start-1 row-start-2 md:col-start-2 lg:col-start-1 w-full h-full md:row-start-1 sm:pl-0 pl-3 auto-rows-auto grid grid-flow-row">
             <div className="row-start-1 relative w-full h-fit place-self-end row-start-1 lg:row-start-2 lg:pl-0 pl-4 lg:pt-0 pt-6 sm:pt-12">
               <div className="relative grid auto-rows-auto grid-flow-row w-fit h-fit lg:gap-0 gap-2 sm:gap-4">
                 <div className="w-fit h-fit relative font-conso row-start-1">
                   SEX
                 </div>
-                <div className="relative row-start-2 w-full h-fit font-conso row-start-2">
+                <div className="relative row-start-2 w-full h-fit font-conso">
                   <div className="relative auto-cols-auto w-fit h-fit grid-flow-col grid self-start max-w-fit overflow-hidden">
                     {sex.map((type: any, index: number) => {
                       return (
                         <div
                           className={`break-after-column m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base xl:col-start-${
                             index + 1
-                          } ${
-                            index + 1 === 3
-                              ? `row-start-${
-                                  index + 1
-                                } lg:row-start-2 xl:row-start-2 xl:col-start-1 lg:col-start-1`
-                              : " xl:row-start-3"
-                          } ${
-                            index + 1 === 4
-                              ? `row-start-${
-                                  index + 1
-                                } lg:row-start-2 xl:row-start-2 xl:col-start-2 lg:col-start-2`
-                              : " xl:row-start-3"
                           }`}
                           key={index}
                         >
