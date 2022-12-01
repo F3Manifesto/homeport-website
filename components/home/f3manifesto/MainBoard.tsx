@@ -9,8 +9,6 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
   refreshImages,
   mainImage,
   viewMainImage,
-  newImages,
-  blurred,
   imagesURI,
   newImagesURI,
 }): JSX.Element => {
@@ -29,33 +27,30 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
           <div className="relative grid auto-rows-auto w-full h-full grid-flow-row col-start-1 col-span-7">
             <div className="relative row-start-1 w-full h-full">
               <div className="min-h-full h-fit relative grid auto-rows-auto grid-flow-row gap-4 w-full min-w-full">
-                {newImages &&
-                  newImages.map((image: string, index: number) => {
-                    return (
-                      <div
-                        key={index}
-                        className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
-                          index + 1
-                        } ${
-                          (index === 0 && "w-full") ||
-                          (index === 1 && "w-10/12") ||
-                          (index === 2 && "w-8/12") ||
-                          (index === 3 && "w-6/12") ||
-                          (index === 4 && "w-4/12")
-                        } ${blur && "animate-unblur blur-sm"}`}
-                        onClick={viewMainImage}
-                      >
-                        <Image
-                          objectFit="cover"
-                          placeholder="blur"
-                          onLoadingComplete={() => setBlur(false)}
-                          layout="fill"
-                          src={`https://${newImagesURI[index]}.ipfs.w3s.link/${image}.png`}
-                          blurDataURL={`https://${blurred[index]}.ipfs.w3s.link/${image}.png`}
-                        />
-                      </div>
-                    );
-                  })}
+                {newImagesURI.map((uri: string, index: number) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
+                        index + 1
+                      } ${
+                        (index === 0 && "w-full") ||
+                        (index === 1 && "w-10/12") ||
+                        (index === 2 && "w-8/12") ||
+                        (index === 3 && "w-6/12") ||
+                        (index === 4 && "w-4/12")
+                      } ${blur && "animate-unblur blur-sm"}`}
+                      onClick={viewMainImage}
+                    >
+                      <Image
+                        objectFit="cover"
+                        onLoadingComplete={() => setBlur(false)}
+                        layout="fill"
+                        src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="relative row-start-2 w-fit h-fit pt-16 pl-20">
@@ -84,9 +79,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <Image
                 width={60}
                 height={60}
-                placeholder="blur"
-                blurDataURL={`https://bafybeihcrrfsd72q5zlrvyja42ao4tn3vgz27xiaf2sdj75ouvmczuh26m.ipfs.w3s.link/disk.png`}
-                src={`https://bafybeihbjy7i3jakpn5lfkbonpbaml2bsjh6heqiqefn6oe562urymtbzy.ipfs.w3s.link/disk.png`}
+                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                 onLoadingComplete={() => setBlur(false)}
               />
             </motion.div>
@@ -117,13 +110,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                   >
                     <Image
                       priority
-                      placeholder="blur"
-                      src={`https://${
-                        imagesURI[Number(mainImage) - 1]
-                      }.ipfs.w3s.link/main${mainImage}.png`}
-                      blurDataURL={`https://${
-                        blurred[Number(mainImage) - 1]
-                      }.ipfs.w3s.link/main${mainImage}.png`}
+                      src={`https://f3manifesto.infura-ipfs.io/ipfs/${mainImage}`}
                       layout="fill"
                       objectPosition={"top"}
                       objectFit="cover"

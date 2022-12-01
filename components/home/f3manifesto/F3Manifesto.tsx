@@ -5,11 +5,9 @@ import SmallBoard from "./SmallBoard";
 
 const F3Manifesto: FunctionComponent = (): JSX.Element => {
   const {
-    newImages,
     refreshImages,
     viewMainImage,
     mainImage,
-    blurred,
     imagesURI,
     newImagesURI,
   } = useF3Manifesto();
@@ -20,8 +18,6 @@ const F3Manifesto: FunctionComponent = (): JSX.Element => {
           refreshImages={refreshImages}
           viewMainImage={viewMainImage}
           mainImage={mainImage}
-          newImages={newImages}
-          blurred={blurred}
           imagesURI={imagesURI}
           newImagesURI={newImagesURI}
         />
@@ -31,8 +27,6 @@ const F3Manifesto: FunctionComponent = (): JSX.Element => {
           refreshImages={refreshImages}
           viewMainImage={viewMainImage}
           mainImage={mainImage}
-          newImages={newImages}
-          blurred={blurred}
           imagesURI={imagesURI}
           newImagesURI={newImagesURI}
         />

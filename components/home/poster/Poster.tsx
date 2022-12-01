@@ -11,10 +11,8 @@ const Poster: FunctionComponent = (): JSX.Element => {
         }`}
       >
         <Image
-          src={`https://bafybeigwgu5p5oxsdhm2lybi7fvfjnvhulcn6qcxb7lte3hyr2ekb6i4xy.ipfs.w3s.link/poster.png`}
+          src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL`}
           priority
-          placeholder="blur"
-          blurDataURL={`https://bafybeihktytzbsre6xpfcat6bl6rcymthzqyaflpil3n34ds43jqdfsriu.ipfs.w3s.link/poster.png`}
           layout="fill"
           objectFit="cover"
           objectPosition={"left"}
@@ -31,10 +29,8 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://bafybeifgpmfcfihd4ytk7cs24b7nghrnwhwzookxi6lwvk6bsztbnncotq.ipfs.w3s.link/croq2.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
                   priority
-                  placeholder="blur"
-                  blurDataURL={`https://bafybeiabb4mip7b4d4lnnaf5oe7grl7xd6ogxecek7lsit45ugz5lj4u4y.ipfs.w3s.link/croq2.png`}
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}
@@ -48,10 +44,8 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://bafybeiaw7bfnwo5fog5yacnl6l4h53tpeqyulh4mb5qxiqoyviwyrpcppe.ipfs.w3s.link/croq1.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu`}
                   priority
-                  placeholder="blur"
-                  blurDataURL={`https://bafybeihccr2koswczllxtlbavbpso7jqnqdtxngvp2qw7gojb3ix3lkpbu.ipfs.w3s.link/croq1.png`}
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}
@@ -65,10 +59,8 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://bafybeiewgiuqvm3epddoe4is5c63n323vyiygeytmuzm3g2yvsk5plpwce.ipfs.w3s.link/croq3.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
                   priority
-                  placeholder="blur"
-                  blurDataURL={`https://bafybeibsjouddrarutkyrzmqmr2uoqeijlkbwn5mphrgz3rjoaendzz7oy.ipfs.w3s.link/croq3.png`}
                   objectFit="cover"
                   layout="fill"
                   onLoadingComplete={() => setBlur(false)}

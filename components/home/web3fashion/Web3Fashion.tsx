@@ -46,11 +46,9 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image
             priority
-            src={`https://bafybeievmtbg3m3oqkyaiejawkxcyo3luqbpidsawwvefxspik4dsqxdxe.ipfs.w3s.link/mtv2.png`}
+            src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQaYUSxJXbzojqFr132a2HZxqjxhxGNrjH15LS6jKWFPM`}
             objectFit="cover"
             layout="fill"
-            blurDataURL={`https://bafybeia4blinlxvlnz4iczhfq6ntca7aocpkiw5hejmlpr57ge7hdgsdka.ipfs.w3s.link/mtv2.png`}
-            placeholder="blur"
             onLoadingComplete={() => setBlur(false)}
           />
         </div>

@@ -31,19 +31,13 @@ const Gallery: FunctionComponent<GalleryProps> = ({
               >
                 <Image
                   priority
-                  placeholder="blur"
-                  blurDataURL={`https://${
-                    token.image
-                  }.ipfs.w3s.link/${token.name.replaceAll(" ", "")}.png`}
                   objectFit="cover"
                   layout="fill"
                   alt={token.name}
                   objectPosition="top"
                   style={blur ? { opacity: 0 } : { opacity: 1 }}
                   // src={token.image}
-                  src={`https://${
-                    token.image
-                  }.ipfs.w3s.link/${token.name.replaceAll(" ", "")}.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/${token.image}`}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>

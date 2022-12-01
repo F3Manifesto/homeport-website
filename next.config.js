@@ -20,8 +20,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.ipfs.w3s.link",
-        pathname: "/**",
+        // hostname: "**.ipfs.w3s.link",
+        hostname: "f3manifesto.infura-ipfs.io",
+        pathname: "/ipfs/**",
       },
     ],
     unoptimized: true,
