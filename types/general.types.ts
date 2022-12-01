@@ -8,9 +8,7 @@ export type UseLayoutResults = {
 export type UseF3ManifestoResults = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
-  newImages: string[] | undefined;
   mainImage: string;
-  blurred: string[];
   imagesURI: string[];
   newImagesURI: string[];
 };
@@ -134,9 +132,7 @@ export type shoppingAnimate = {
 export type MainBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
-  newImages: string[] | undefined;
   mainImage: string;
-  blurred: string[];
   imagesURI: string[];
   newImagesURI: string[];
 };
@@ -144,9 +140,7 @@ export type MainBoardProps = {
 export type SmallBoardProps = {
   refreshImages: () => void;
   viewMainImage: (e: any) => void;
-  newImages: string[] | undefined;
   mainImage: string;
-  blurred: string[];
   imagesURI: string[];
   newImagesURI: string[];
 };

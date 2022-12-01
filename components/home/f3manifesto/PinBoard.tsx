@@ -21,9 +21,7 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src={`https://bafybeiclh42efupubyev4vrbvivxqxaijpklj4sq5v4ijtyhjdpetqvrbu.ipfs.w3s.link/digi.png`}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeifjaq2f6hektobf4yhyco5mao4ql7zbbnrdov3zrc7uli2qfvjhim.ipfs.w3s.link/digi.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -41,9 +39,7 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src={`https://bafybeicjx5t2m6mkdyw6pq44svyehj5zf7akcujosusz4dafmfoyqo5kyi.ipfs.w3s.link/inari.png`}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeigwle5f5up3mtj7wos5fghphzyuuvitg2rlcmc7jsoqgcp3m6xs3m.ipfs.w3s.link/inari.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmSnQomokCSA6gmD3qoxqw1Nabqa6S1cCn99XocC9xQ7hJ`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -61,9 +57,7 @@ const PinBoard = (): JSX.Element => {
                   <Image
                     width={50}
                     height={50}
-                    src={`https://bafybeigym3q7opulubjzjnv63ry7pqu5cc7nmhp3dhhwwozlitp2ctrx5q.ipfs.w3s.link/diy.png`}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeie5qbssfuiwjxiueekd22sxwr3nqzch4fp7762lzf55msfxxuqtzu.ipfs.w3s.link/diy.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmP1YcKZaxPu1PCGEgd5QSgbhyazMnG67oZSiLHBtG3HXc`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </a>
@@ -94,11 +88,9 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src={`https://bafybeiga3k7vrdjukoyalvpiu7hyjlozxrqoh367wk2oaioo465aqs4yoi.ipfs.w3s.link/wheel.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H`}
                     width={50}
                     height={50}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeihehwvyymhspkpv5bxfixkpfeazxibpw6nhfjefezapfdzlb7m6ie.ipfs.w3s.link/wheel.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -112,11 +104,9 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src={`https://bafybeie3y242lveoh5btglzom3sonrynp5o2v5usr3docrcdw7watxpntm.ipfs.w3s.link/player.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX`}
                     width={65}
                     height={50}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeidyxz2oglpcdeidcwbzghs7kzbgsxdbhvfc6wg4l3ha6os5y5dofu.ipfs.w3s.link/player.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -157,11 +147,9 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src={`https://bafybeiafghblmzeheouptjjq5hdfjqbspf2bzcyssfmg3ih663mmb4dfqe.ipfs.w3s.link/flag.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML`}
                     width={65}
                     height={50}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeig76kzuz4evtkzogq3d7uaxpcr73dmwmuzuj3tbhxyvzlzfal7e3a.ipfs.w3s.link/flag.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>
@@ -175,11 +163,9 @@ const PinBoard = (): JSX.Element => {
                   }`}
                 >
                   <Image
-                    src={`https://bafybeibwmr35dlv7vxufvtmbtlbp5ymltf3eb5bzlh63hgr3brpqkkv254.ipfs.w3s.link/fox.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR`}
                     width={75}
                     height={60}
-                    placeholder="blur"
-                    blurDataURL={`https://bafybeichll3avg422wwdzctxxkj3erjui27a5oo24v4dirwrmpc6ibcrsy.ipfs.w3s.link/fox.png`}
                     onLoadingComplete={() => setBlur(false)}
                   />
                 </div>

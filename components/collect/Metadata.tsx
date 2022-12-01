@@ -63,7 +63,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-1 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -76,7 +76,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-2 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -89,7 +89,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -102,7 +102,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit row-start-4 grid grid-flow-col auto-cols-auto gap-1">
               <div className="relative w-4 h-6 col-start-1">
                 <Image
-                  src={`https://bafybeiecwlof2bj52d5p7yftchltxdy7ms7n4hu3ixxi366fotgcdci2xm.ipfs.w3s.link/greenarrows.png`}
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                   layout="fill"
                   alt="Arrow"
                   priority
@@ -123,7 +123,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div className="relative h-10 w-16 border-r-4 border-t-2 border-b-2 border-l-2 border-offBlack rounded-md bg-lightWhite place-self-center grid grid-flow-col auto-cols-auto hover:rotate-6 cursor-empireS hover:mix-blend-exclusion">
                   <div className="relative h-6 w-10 col-start-1 place-self-center">
                     <Image
-                      src={`https://${token[0].styleImage}.ipfs.w3s.link/${token[0].styleName}.png`}
+                      src={`https://f3manifesto.infura-ipfs.io/ipfs/${token[0].styleImage}`}
                       objectFit="contain"
                       layout="fill"
                       alt="Profile Image"

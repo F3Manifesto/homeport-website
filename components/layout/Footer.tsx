@@ -90,7 +90,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   className="cursor-empireS h-fit relative pr-1"
                 >
                   <Image
-                    src={`https://bafybeifygoiu2mkf42fnxtc66y5hmyetaod7pdvb4nb5jhyvrth74vgebu.ipfs.w3s.link/mirror.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVBiKdFNfb7p8TCiaiHFiof3Z3cWJ1SFAPackcKr3m5SU`}
                     width={21}
                     height={26}
                   />
@@ -107,7 +107,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   <Image
                     width={29}
                     height={28}
-                    src={`https://bafybeibpez3bkqr7e2cgcve5asfinhlrilrepkltnwxdpju64s3nlh4hz4.ipfs.w3s.link/github.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmTgYZMe5qgaFCBoSicsr6sdEJmfguqwPzQ2CEFLTXWvMA`}
                   />
                 </a>
               </Link>
@@ -120,7 +120,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   className="cursor-empireS h-fit relative"
                 >
                   <Image
-                    src={`https://bafybeihrt54p7celvxkvsatgbejey3yfq6z744yuvpa3zwp6udk2oaaa6y.ipfs.w3s.link/lens.png`}
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmamuDJVJw4BoWUrnRdE4GVabsbUFsYPysqzQn3pfeTPL9`}
                     width={30}
                     height={30}
                   />
@@ -135,6 +135,21 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   className="cursor-empireS h-fit relative"
                 >
                   <BsTwitter size={30} color={"#FCF894"} />
+                </a>
+              </Link>
+            </div>
+            <div className="relative w-fit h-fit col-start-5 place-self-center">
+              <Link href={"https://youtube.com/@f3manifesto"}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cursor-empireS h-fit relative"
+                >
+                  <Image
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVCdoxVzrTLwzht4L11VJp2Kove61EJobtoxzCzoEK6Go`}
+                    width={30}
+                    height={20}
+                  />
                 </a>
               </Link>
             </div>
