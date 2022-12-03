@@ -19,7 +19,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           model has to say for itself…
         </div>
         <div className="relative justify-end w-fit text-sm font-futur col-start-1 row-start-3 md:row-start-3 self-end h-fit pl-10 md:pt-0 pt-10">
-          Src: Rytr GPT-3
+          Src: ChatGPT
         </div>
         <div className="relative w-60 lg:w-72 h-fit text-white font-firaL grid grid-flow-row auto-rows-auto pl-10 row-start-5 md:row-start-2 text-xs pt-6 md:pt-0 pb-2 md:pb-12">
           <div className="relative row-start-1 w-fit h-fit place-self-start pr-6">
@@ -40,18 +40,21 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          In 1910, NYC garment factories started hiring immigrants from Europe
-          who had more experience in sewing than most of the workers in the
-          city. The garment industry was saved to flourish and become one of the
-          largest industries in America.
+          She worked out of her small workshop in the heart of New York City,
+          where she spent hours tinkering with new materials and technologies.
           <br /> <br />
-          We need designers who can create things that will overthrow the
-          empire. The garment factory is a place where rebellion and defiance
-          can be found— the birthplace of a new American industrial and creative
-          movement.
+          She created dresses that glowed in the dark, skirts that shimmered in
+          the sunlight, and even jackets that could change color to match the
+          wearer's outfit. She used 3D printers and other advanced tools to
+          create unique materials that could be programmed to change color,
+          texture, and even shape based on the wearer's mood or environment.
+          <br /> <br />
+          She refused to give up. She was driven by a belief in the power of
+          technology to create a freer, more sustainable world, and she was
+          determined to use her skills to make a difference.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0006
+          log: 0007
         </div>
         <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
           <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
