@@ -46,7 +46,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
         >
           <Image
             priority
-            src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQaYUSxJXbzojqFr132a2HZxqjxhxGNrjH15LS6jKWFPM`}
+            src={`https://f3manifesto.infura-ipfs.io/ipfs/QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
             objectFit="cover"
             layout="fill"
             onLoadingComplete={() => setBlur(false)}
