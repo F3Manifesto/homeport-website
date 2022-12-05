@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import {useEffect, useState, createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import Footer from "../components/layout/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
@@ -26,12 +26,17 @@ const wagmiClient = createClient({
 export const GlobalContextDefault = {
   order: "",
   setOrder: (order: string) => {},
+  clickedFromMain: false,
+  setClickedFromMain: (clickedFromMain: boolean) => {},
 };
 
 export const GlobalContext = createContext(GlobalContextDefault);
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [order, setOrder] = useState(GlobalContextDefault.order);
+  const [clickedFromMain, setClickedFromMain] = useState(
+    GlobalContextDefault.clickedFromMain
+  );
   useEffect(() => {
     console.log(` **                                                                 
     /**                                                                 
@@ -79,7 +84,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <GlobalContext.Provider
-          value={{ order, setOrder}}
+          value={{ order, setOrder, clickedFromMain, setClickedFromMain }}
         >
           <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
             <Component {...pageProps} />
