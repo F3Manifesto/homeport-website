@@ -9,10 +9,10 @@ const useDropStatus = (): useDropStatusResults => {
     e.preventDefault();
     try {
       await emailjs.sendForm(
-        "service_f7x2sjb",
-        "template_d52wkoc",
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID_2 as string,
+        process.env.NEXT_PUBLIC_SERVICE_ID_2 as string,
         e.target,
-        "fvUz2_RQo7oeFreDc"
+        process.env.NEXT_PUBLIC_TEMPLATE_ID_2 as string
       );
       setSubmitSuccess(true);
     } catch (err: any) {
