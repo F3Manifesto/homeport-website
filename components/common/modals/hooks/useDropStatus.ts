@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDropStatusResults } from "../../../../types/general.types";
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser"; 
 
 const useDropStatus = (): useDropStatusResults => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
