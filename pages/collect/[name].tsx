@@ -11,14 +11,17 @@ import { useAccount, useBalance } from "wagmi";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { InferGetStaticPropsType } from "next";
+import DropStatus from "../../components/common/modals/DropStatus";
 
 export const CollectContextDefault = {
   showApprovalModal: false,
-  setShowApprovalModal: (showApproval: boolean) => {},
+  setShowApprovalModal: (showApprovalModal: boolean) => {},
   approvedData: false,
   setApprovedData: (approved: boolean) => {},
   approvedSuccess: false,
   setApprovedSuccess: (approvedSuccess: boolean) => {},
+  showDropStatusModal: false,
+  setShowDropStatusModal: (showDropStatusModal: boolean) => {},
 };
 
 export const CollectContext = createContext(CollectContextDefault);
@@ -56,14 +59,17 @@ const TokenDetails: React.FC<
 > = ({ token }: any): JSX.Element => {
   const { address } = useAccount();
   const connect = useRef<null | HTMLDivElement>(null);
-  const [showApprovalModal, setShowApprovalModal] = useState(
+  const [showApprovalModal, setShowApprovalModal] = useState<boolean>(
     CollectContextDefault.showApprovalModal
   );
-  const [approvedData, setApprovedData] = useState(
+  const [approvedData, setApprovedData] = useState<boolean>(
     CollectContextDefault.approvedData
   );
-  const [approvedSuccess, setApprovedSuccess] = useState(
+  const [approvedSuccess, setApprovedSuccess] = useState<boolean>(
     CollectContextDefault.approvedData
+  );
+  const [showDropStatusModal, setShowDropStatusModal] = useState<boolean>(
+    CollectContextDefault.showDropStatusModal
   );
   const {
     errorState,
@@ -120,6 +126,8 @@ const TokenDetails: React.FC<
         showApprovalModal,
         approvedSuccess,
         setApprovedSuccess,
+        showDropStatusModal,
+        setShowDropStatusModal,
       }}
     >
       <div className="flex min-h-screen h-fit min-w-screen relative cursor-empire selection:bg-lightYellow selection:text-lightYellow cursor-empireA bg-gradient-to-b from-lightY via-white to-lightPurple z-0">
@@ -187,6 +195,15 @@ const TokenDetails: React.FC<
             } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-auto backdrop-blur-sm`}
           >
             <Approve />
+          </div>
+        )}
+        {showDropStatusModal && (
+          <div
+            className={`${
+              !showDropStatusModal && "hidden"
+            } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-auto backdrop-blur-sm`}
+          >
+            <DropStatus />
           </div>
         )}
         <div className="grid grid-flow-row auto-rows-auto w-full h-full">

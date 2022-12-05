@@ -84,17 +84,18 @@ export interface Gallery {
   collection: string;
   style: string;
   blurred?: string;
-  link: string;
+  link?: string;
   price: number;
   amount: number;
   description: string;
   graph: string;
   styleImage: string;
   edition: string;
-  contract: string;
+  contract?: string;
   type: string;
   styleName: string;
   sex: string;
+  dropStatus?: boolean;
 }
 
 export type CollectionProps = {
@@ -202,4 +203,10 @@ export type useApproveResults = {
   isLoading: boolean;
   loading: boolean;
   isSuccess: boolean;
+};
+
+export type useDropStatusResults = {
+  submitSuccess: boolean;
+  setSubmitSuccess: (e: boolean) => void;
+  handleSubmitForm: (e: any) => Promise<void>;
 };
