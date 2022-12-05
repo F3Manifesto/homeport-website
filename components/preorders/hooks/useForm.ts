@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { useFormResults } from "../../../types/general.types";
 import emailjs from "@emailjs/browser";
-import * as dotenv from "dotenv";
 
 const useForm = (): useFormResults => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
-  dotenv.config({ path: ".env" });
 
   const handleSubmitForm = async (e: any): Promise<void> => {
     e.preventDefault();
     try {
       await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_SERVICE_ID as string,
+        `${process.env.NEXT_PUBLIC_SERVICE_ID}` as string,
+        `${process.env.NEXT_PUBLIC_TEMPLATE_ID}` as string,
         e.target,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID as string
+        `${process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID}` as string
       );
       setSubmitSuccess(true);
     } catch (err: any) {
