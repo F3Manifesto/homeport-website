@@ -1,5 +1,11 @@
 import Image from "next/image";
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Gallery } from "../../types/general.types";
 import tokens from "./../api/tokens.json";
 import { AiFillBackward } from "react-icons/ai";
@@ -12,6 +18,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { InferGetStaticPropsType } from "next";
 import DropStatus from "../../components/common/modals/DropStatus";
+import { GlobalContext } from "../_app";
 
 export const CollectContextDefault = {
   showApprovalModal: false,
@@ -91,6 +98,7 @@ const TokenDetails: React.FC<
     chainId: 1,
     watch: true,
   });
+  const { clickedFromMain } = useContext(GlobalContext);
   const ethBalance = Number(balance.data?.formatted).toFixed(3);
   useEffect(() => {
     if (token[0].type === "collection") {
@@ -209,7 +217,11 @@ const TokenDetails: React.FC<
         <div className="grid grid-flow-row auto-rows-auto w-full h-full">
           <div className="relative row-start-1 w-full h-fit grid grid-flow-col auto-cols-auto pb-28 galaxy:pb-0">
             <div
-              onClick={() => router.push("/#shopping")}
+              onClick={
+                clickedFromMain
+                  ? () => router.back()
+                  : () => router.push("/#shopping")
+              }
               className="relative col-start-1 w-fit h-fit"
             >
               <div className="text-offBlack font-fira left-7 self-center pt-8 pl-6 place-self-start h-fit w-fit top-7 opacity-80 hover:opacity-20 cursor-empireS row-start-1 pb-0 galaxy:pb-28">

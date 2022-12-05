@@ -1,13 +1,13 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Gallery,
   useCollectionsResult,
 } from "./../../../../types/general.types";
 import tokens from "./../../../../pages/api/tokens.json";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const useCollections = (): useCollectionsResult => {
-  // const router = useRouter();
+  const router = useRouter();
   const [gallery, setGallery] = useState<Gallery[]>(tokens.slice(0, 9));
   const [collectionFilter, setCollectionFilter] = useState<string>("");
   const [nameInput, setNameInput] = useState<string>();
@@ -32,31 +32,34 @@ const useCollections = (): useCollectionsResult => {
     }
     setCollectionSelect(clickedArray);
     setClickedCollection(!clickedCollection);
-    // console.log(clickedArray);
-    // router.replace(
-    //   router.asPath,
-    //   router.asPath.includes("?collection=")
-    //     ? router.asPath.replaceAll(
-    //         router.asPath.split("?collection=")[1]?.includes("?style=")
-    //           ? `${router.asPath.split("?collection=")[1]?.split("?style=")[0]}`
-    //           : `${router.asPath.split("?collection=")[1]}`,
-    //         clickedArray.length !== 0
-    //           ? `${clickedArray.join("-").replaceAll(" ", "")}`
-    //           : "none"
-    //       )
-    //     : router.asPath.includes("?style=")
-    //     ? clickedArray.length !== 0
-    //       ? router.asPath +
-    //         `?collection=${clickedArray.join("-").replaceAll(" ", "")}`
-    //       : router.asPath + "?collection=none"
-    //     : clickedArray.length !== 0
-    //     ? `/#shopping?collection=${clickedArray.join("-").replaceAll(" ", "")}`
-    //     : `/#shopping?collection=none`,
-    //   {
-    //     shallow: true,
-    //     scroll: false,
-    //   }
-    // );
+    router.asPath.includes("?collection=") &&
+    clickedArray.length !== 0 &&
+    !router.asPath.includes("?sex=") &&
+    !router.asPath.includes("?style=")
+      ? router.replace(
+          router.asPath,
+          `?collection=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        )
+      : router.asPath.includes("?collection=") &&
+        clickedArray.length === 0 &&
+        !router.asPath.includes("?sex=") &&
+        !router.asPath.includes("?style=")
+      ? router.replace(router.asPath, `?collection=none/#shopping`, {
+          shallow: true,
+          scroll: false,
+        })
+      : router.replace(
+          router.asPath,
+          `?collection=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        );
   };
 
   const filterSex = (e: any): void => {
@@ -67,6 +70,34 @@ const useCollections = (): useCollectionsResult => {
     } else {
       clickedArray = [...sexSelect, e.target.name];
     }
+    router.asPath.includes("?sex=") &&
+    clickedArray.length !== 0 &&
+    !router.asPath.includes("?collection=") &&
+    !router.asPath.includes("?style=")
+      ? router.replace(
+          router.asPath,
+          `?sex=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        )
+      : router.asPath.includes("?sex=") &&
+        clickedArray.length === 0 &&
+        !router.asPath.includes("?collection=") &&
+        !router.asPath.includes("?style=")
+      ? router.replace(router.asPath, `?sex=none/#shopping`, {
+          shallow: true,
+          scroll: false,
+        })
+      : router.replace(
+          router.asPath,
+          `?sex=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        );
     setSexSelect(clickedArray);
     setClickedSex(!clickedSex);
   };
@@ -82,32 +113,36 @@ const useCollections = (): useCollectionsResult => {
       clickedArray = [...styleSelect, e.target.name];
     }
     setStyleSelect(clickedArray);
+    console.log(clickedArray);
     setClickedStyle(!clickedStyle);
-    // console.log(clickedArray);
-    // router.replace(
-    //   router.asPath,
-    //   router.asPath.includes("?style=")
-    //     ? router.asPath.replaceAll(
-    //         router.asPath.split("?style=")[1]?.includes("?collection=")
-    //           ? `${router.asPath.split("?style=")[1]?.split("?collection=")[0]}`
-    //           : `${router.asPath.split("?style=")[1]}`,
-    //         clickedArray.length !== 0
-    //           ? `${clickedArray.join("-").replaceAll(" ", "")}`
-    //           : "none"
-    //       )
-    //     : router.asPath.includes("?collection=")
-    //     ? clickedArray.length !== 0
-    //       ? router.asPath +
-    //         `?style=${clickedArray.join("-").replaceAll(" ", "")}`
-    //       : router.asPath + "?style=none"
-    //     : clickedArray.length !== 0
-    //     ? `/#shopping?style=${clickedArray.join("-").replaceAll(" ", "")}`
-    //     : `/#shopping?style=none`,
-    //   {
-    //     shallow: true,
-    //     scroll: false,
-    //   }
-    // );
+    router.asPath.includes("?style=") &&
+    clickedArray.length !== 0 &&
+    !router.asPath.includes("?collection=") &&
+    !router.asPath.includes("?sex=")
+      ? router.replace(
+          router.asPath,
+          `?style=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        )
+      : router.asPath.includes("?style=") &&
+        clickedArray.length === 0 &&
+        !router.asPath.includes("?collection=") &&
+        !router.asPath.includes("?sex=")
+      ? router.replace(router.asPath, `?style=none/#shopping`, {
+          shallow: true,
+          scroll: false,
+        })
+      : router.replace(
+          router.asPath,
+          `?style=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
+          {
+            shallow: true,
+            scroll: false,
+          }
+        );
   };
 
   const filterName = (e: any): void => {
@@ -215,46 +250,55 @@ const useCollections = (): useCollectionsResult => {
     filterGallery();
   }, [collectionSelect, styleSelect, nameInput, sexSelect]);
 
-  // useEffect(() => {
-  //   if (router.asPath.includes("?collection=")) {
-  //     if (router.asPath.split("?collection=")[1]?.includes("?style=")) {
-  //       const collectionsSelected: string[] = router.asPath
-  //         .split("?collection=")[1]
-  //         ?.split("?style=")[0]
-  //         .replaceAll("-", " ")
-  //         .trim()
-  //         .split(" ");
+  useEffect(() => {
+    if (router.asPath.includes("?sex=")) {
+      const sexSelected: string[] = router.asPath
+        .split("?sex=")[1]
+        .split("/#shopping")[0]
+        .replaceAll("-", " ")
+        .trim()
+        .split(" ");
+      setSexSelect(sexSelected);
+    }
 
-  //       setCollectionSelect(collectionsSelected);
-  //     } else {
-  //       const collectionsSelected: string[] = router.asPath
-  //         .split("?collection=")[1]
-  //         .replaceAll("-", " ")
-  //         .trim()
-  //         .split(" ");
-  //       setCollectionSelect(collectionsSelected);
-  //     }
-  //   }
+    if (router.asPath.includes("?collection=")) {
+      const collectionsSelected: string[] = router.asPath
+        .split("?collection=")[1]
+        .split("/#shopping")[0]
+        .replaceAll("-", " ")
+        .trim()
+        .split(" ");
 
-  //   if (router.asPath.includes("?style=")) {
-  //     if (router.asPath.split("?style=")[1]?.includes("?collection=")) {
-  //       const stylesSelected: string[] = router.asPath
-  //         .split("?style=")[1]
-  //         ?.split("?collection=")[0]
-  //         .replaceAll("-", " ")
-  //         .trim()
-  //         .split(" ");
-  //       setStyleSelect(stylesSelected);
-  //     } else {
-  //       const stylesSelected: string[] = router.asPath
-  //         .split("?style=")[1]
-  //         .replaceAll("-", " ")
-  //         .trim()
-  //         .split(" ");
-  //       setStyleSelect(stylesSelected);
-  //     }
-  //   }
-  // }, []);
+      let formattedCollection: string[] = [];
+      for (let i: number = 0; i < collectionsSelected.length; i++) {
+        formattedCollection?.push(
+          collectionsSelected[i]
+            ?.match(/[A-Z][a-z]+|[0-9]+/g)
+            ?.join(" ") as string
+        );
+      }
+
+      setCollectionSelect(formattedCollection);
+    }
+
+    if (router.asPath.includes("?style=")) {
+      const stylesSelected: string[] = router.asPath
+        .split("?style=")[1]
+        .split("/#shopping")[0]
+        .replaceAll("-", " ")
+        .trim()
+        .split(" ");
+
+      let formattedStyle: string[] = [];
+      for (let i: number = 0; i < stylesSelected.length; i++) {
+        formattedStyle?.push(
+          stylesSelected[i]?.match(/[A-Z][a-z]+|[0-9]+/g)?.join(" ") as string
+        );
+      }
+
+      setStyleSelect(formattedStyle);
+    }
+  }, []);
 
   return {
     gallery,
