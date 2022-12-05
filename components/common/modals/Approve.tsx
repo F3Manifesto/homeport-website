@@ -14,7 +14,7 @@ const Approve: FunctionComponent = (): JSX.Element => {
   return (
     <div className="relative w-full galaxy:w-96 h-fit bg-offBlack grid grid-flow-row auto-rows-auto col-start-1 p-4 gap-4">
       <div
-        className="relative place-self-end w-6 h-6 row-start-1 cursor-empireS hover:opacity-80 active:scale-95 grid grid-flow-row auto-rows-auto"
+        className="relative place-self-end w-10 h-10 row-start-1 cursor-empireS hover:opacity-80 active:scale-95 grid grid-flow-row auto-rows-auto"
         onClick={() => {
           setShowApprovalModal(false);
         }}

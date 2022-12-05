@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent, useContext, useEffect } from "react";
+import { FunctionComponent, useContext } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useAccount } from "wagmi";
 import { CollectContext } from "../../pages/collect/[name]";
@@ -16,10 +16,14 @@ const Collect: FunctionComponent<CollectProps> = ({
   loading,
   data,
 }): JSX.Element => {
-  const { setShowApprovalModal, approvedData, approvedSuccess } =
-    useContext(CollectContext);
+  const {
+    setShowApprovalModal,
+    approvedData,
+    approvedSuccess,
+    setShowDropStatusModal,
+  } = useContext(CollectContext);
   const { isConnected } = useAccount();
-
+  
   let action = "COLLECT";
 
   const decideStringAction = () => {
@@ -77,7 +81,11 @@ const Collect: FunctionComponent<CollectProps> = ({
       return (
         <div
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-auto border-2 border-black grid grid-flow-col auto-cols-auto p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
-          onClick={() => setShowApprovalModal(true)}
+          onClick={
+            token[0]?.dropStatus === true
+              ? () => setShowDropStatusModal(true)
+              : () => setShowApprovalModal(true)
+          }
         >
           <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
             COLLECT{" "}
@@ -98,7 +106,9 @@ const Collect: FunctionComponent<CollectProps> = ({
         <div
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-auto border-2 border-black grid grid-flow-col auto-cols-auto p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
           onClick={
-            token[0].type === "collection"
+            token[0]?.dropStatus === true
+              ? () => setShowDropStatusModal(true)
+              : token[0].type === "collection"
               ? () => collectNFT()
               : () => collectMarket()
           }
