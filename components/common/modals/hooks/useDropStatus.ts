@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDropStatusResults } from "../../../../types/general.types";
-import emailjs from "@emailjs/browser"; 
+import emailjs from "@emailjs/browser";
+import * as dotenv from "dotenv";
 
 const useDropStatus = (): useDropStatusResults => {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+  dotenv.config({ path: ".env" });
 
   const handleSubmitForm = async (e: any): Promise<void> => {
     e.preventDefault();
