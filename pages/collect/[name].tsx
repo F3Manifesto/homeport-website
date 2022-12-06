@@ -151,9 +151,7 @@ const TokenDetails: React.FC<
           <meta name="og:description" content={token[0].description} />
           <meta
             name="og:image"
-            content={`https://f3manifesto.infura-ipfs.io/ipfs/${
-              token[0].image
-            }/${token[0].name.replaceAll(" ", "")}.png`}
+            content={`https://f3manifesto.infura-ipfs.io/ipfs/${token[0].image}`}
           />
           <meta name="twitter:card" content="summary" />
           <meta
@@ -164,18 +162,14 @@ const TokenDetails: React.FC<
           />
           <meta
             name="og:image"
-            content={`https://f3manifesto.infura-ipfs.io/ipfs/${
-              token[0].image
-            }/${token[0].name.replaceAll(" ", "")}.png`}
+            content={`https://f3manifesto.infura-ipfs.io/ipfs/${token[0].image}`}
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@f3manifesto" />
           <meta name="twitter:creator" content="@f3manifesto" />
           <meta
             name="twitter:image"
-            content={`https://f3manifesto.infura-ipfs.io/ipfs/${
-              token[0].image
-            }/${token[0].name.replaceAll(" ", "")}.png`}
+            content={`https://f3manifesto.infura-ipfs.io/ipfs/${token[0].image}`}
           />
           <meta
             name="twitter:url"

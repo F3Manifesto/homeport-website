@@ -32,34 +32,6 @@ const useCollections = (): useCollectionsResult => {
     }
     setCollectionSelect(clickedArray);
     setClickedCollection(!clickedCollection);
-    router.asPath.includes("?collection=") &&
-    clickedArray.length !== 0 &&
-    !router.asPath.includes("?sex=") &&
-    !router.asPath.includes("?style=")
-      ? router.replace(
-          router.asPath,
-          `?collection=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        )
-      : router.asPath.includes("?collection=") &&
-        clickedArray.length === 0 &&
-        !router.asPath.includes("?sex=") &&
-        !router.asPath.includes("?style=")
-      ? router.replace(router.asPath, `?collection=none/#shopping`, {
-          shallow: true,
-          scroll: false,
-        })
-      : router.replace(
-          router.asPath,
-          `?collection=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
   };
 
   const filterSex = (e: any): void => {
@@ -70,34 +42,7 @@ const useCollections = (): useCollectionsResult => {
     } else {
       clickedArray = [...sexSelect, e.target.name];
     }
-    router.asPath.includes("?sex=") &&
-    clickedArray.length !== 0 &&
-    !router.asPath.includes("?collection=") &&
-    !router.asPath.includes("?style=")
-      ? router.replace(
-          router.asPath,
-          `?sex=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        )
-      : router.asPath.includes("?sex=") &&
-        clickedArray.length === 0 &&
-        !router.asPath.includes("?collection=") &&
-        !router.asPath.includes("?style=")
-      ? router.replace(router.asPath, `?sex=none/#shopping`, {
-          shallow: true,
-          scroll: false,
-        })
-      : router.replace(
-          router.asPath,
-          `?sex=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
+
     setSexSelect(clickedArray);
     setClickedSex(!clickedSex);
   };
@@ -115,34 +60,6 @@ const useCollections = (): useCollectionsResult => {
     setStyleSelect(clickedArray);
     console.log(clickedArray);
     setClickedStyle(!clickedStyle);
-    router.asPath.includes("?style=") &&
-    clickedArray.length !== 0 &&
-    !router.asPath.includes("?collection=") &&
-    !router.asPath.includes("?sex=")
-      ? router.replace(
-          router.asPath,
-          `?style=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        )
-      : router.asPath.includes("?style=") &&
-        clickedArray.length === 0 &&
-        !router.asPath.includes("?collection=") &&
-        !router.asPath.includes("?sex=")
-      ? router.replace(router.asPath, `?style=none/#shopping`, {
-          shallow: true,
-          scroll: false,
-        })
-      : router.replace(
-          router.asPath,
-          `?style=${clickedArray.join("-").replaceAll(" ", "")}/#shopping`,
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
   };
 
   const filterName = (e: any): void => {
@@ -246,59 +163,135 @@ const useCollections = (): useCollectionsResult => {
     setGallery(filteredGallery);
   };
 
+  // const filterURL = (): void => {
+  //   if (router.asPath.includes("?sex=") && sexSelect.length !== 0) {
+  //     router.replace(
+  //       router.asPath,
+  //       `?sex=${sexSelect.join("-").replaceAll(" ", "")}/#shopping`,
+  //       {
+  //         shallow: true,
+  //         scroll: false,
+  //       }
+  //     );
+  //   } else if (router.asPath.includes("?sex=") && sexSelect.length === 0) {
+  //     // can only do this if its not the first click / first render
+  //     router.replace(router.asPath, `?sex=none/#shopping`, {
+  //       shallow: true,
+  //       scroll: false,
+  //     });
+  //   }
+  // };
+
   useMemo(() => {
     filterGallery();
+    // filterURL();
   }, [collectionSelect, styleSelect, nameInput, sexSelect]);
 
-  useEffect(() => {
-    if (router.asPath.includes("?sex=")) {
-      const sexSelected: string[] = router.asPath
-        .split("?sex=")[1]
-        .split("/#shopping")[0]
-        .replaceAll("-", " ")
-        .trim()
-        .split(" ");
-      setSexSelect(sexSelected);
-    }
 
-    if (router.asPath.includes("?collection=")) {
-      const collectionsSelected: string[] = router.asPath
-        .split("?collection=")[1]
-        .split("/#shopping")[0]
-        .replaceAll("-", " ")
-        .trim()
-        .split(" ");
+  // useEffect(() => {
+  //   if (router.asPath.includes("?sex=")) {
+  //     if (
+  //       !router.asPath.includes("?collection=") &&
+  //       !router.asPath.includes("?style=")
+  //     ) {
+  //       const sexSelected: string[] = router.asPath
+  //         .split("?sex=")[1]
+  //         .split("/#shopping")[0]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
 
-      let formattedCollection: string[] = [];
-      for (let i: number = 0; i < collectionsSelected.length; i++) {
-        formattedCollection?.push(
-          collectionsSelected[i]
-            ?.match(/[A-Z][a-z]+|[0-9]+/g)
-            ?.join(" ") as string
-        );
-      }
+  //       if (sexSelected[0] !== "none") {
+  //         setSexSelect(sexSelected);
+  //       }
+  //     }
+  //   }
 
-      setCollectionSelect(formattedCollection);
-    }
+  //   if (router.asPath.includes("?collection=")) {
+  //     if (
+  //       !router.asPath.includes("?sex=") &&
+  //       !router.asPath.includes("?style=")
+  //     ) {
+  //       const collectionsSelected: string[] = router.asPath
+  //         .split("?collection=")[1]
+  //         .split("/#shopping")[0]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
 
-    if (router.asPath.includes("?style=")) {
-      const stylesSelected: string[] = router.asPath
-        .split("?style=")[1]
-        .split("/#shopping")[0]
-        .replaceAll("-", " ")
-        .trim()
-        .split(" ");
+  //       let formattedCollection: string[] = [];
+  //       for (let i: number = 0; i < collectionsSelected.length; i++) {
+  //         if (collectionsSelected[i] !== "MEVOverride") {
+  //           formattedCollection?.push(
+  //             collectionsSelected[i]
+  //               ?.match(/[A-Z][a-z]+|[0-9]+/g)
+  //               ?.join(" ") as string
+  //           );
+  //         } else {
+  //           formattedCollection?.push("MEV Override");
+  //         }
+  //       }
+  //       if (collectionsSelected[0] !== "none") {
+  //         setCollectionSelect(formattedCollection);
+  //       }
+  //     } else if (
+  //       router.asPath.includes("?sex=") &&
+  //       !router.asPath.includes("?style=")
+  //     ) {
+  //     } else if (
+  //       !router.asPath.includes("?sex=") &&
+  //       router.asPath.includes("?style=")
+  //     ) {
+  //     } else if (
+  //       router.asPath.includes("?sex=") &&
+  //       router.asPath.includes("?style=")
+  //     ) {
+  //     }
+  //   }
 
-      let formattedStyle: string[] = [];
-      for (let i: number = 0; i < stylesSelected.length; i++) {
-        formattedStyle?.push(
-          stylesSelected[i]?.match(/[A-Z][a-z]+|[0-9]+/g)?.join(" ") as string
-        );
-      }
+  //   if (router.asPath.includes("?style=")) {
+  //     if (
+  //       !router.asPath.includes("?collection=") &&
+  //       !router.asPath.includes("?sex=")
+  //     ) {
+  //       const stylesSelected: string[] = router.asPath
+  //         .split("?style=")[1]
+  //         .split("/#shopping")[0]
+  //         .replaceAll("-", " ")
+  //         .trim()
+  //         .split(" ");
 
-      setStyleSelect(formattedStyle);
-    }
-  }, []);
+  //       let formattedStyle: string[] = [];
+  //       for (let i: number = 0; i < stylesSelected.length; i++) {
+  //         if (stylesSelected[i] !== "DIYBrutalism") {
+  //           formattedStyle?.push(
+  //             stylesSelected[i]
+  //               ?.match(/[A-Z][a-z]+|[0-9]+/g)
+  //               ?.join(" ") as string
+  //           );
+  //         } else {
+  //           formattedStyle?.push("DIY Brutalism");
+  //         }
+  //       }
+
+  //       if (stylesSelected[0] !== "none") {
+  //         setStyleSelect(formattedStyle);
+  //       }
+  //     } else if (
+  //       !router.asPath.includes("?collection=") &&
+  //       router.asPath.includes("?sex=")
+  //     ) {
+  //     } else if (
+  //       router.asPath.includes("?collection=") &&
+  //       !router.asPath.includes("?sex=")
+  //     ) {
+  //     } else if (
+  //       router.asPath.includes("?collection=") &&
+  //       router.asPath.includes("?sex=")
+  //     ) {
+  //     }
+  //   }
+  // }, []);
 
   return {
     gallery,
