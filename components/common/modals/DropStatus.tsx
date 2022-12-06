@@ -51,9 +51,9 @@ const DropStatus: FunctionComponent = (): JSX.Element => {
           SUBMIT
         </button>
       </div>
-      <div className="relative h-fit w-fit row-start-6 pb-8">
+      <div className="relative h-fit w-fit row-start-6 pb-8 place-self-center">
         {submitSuccess && (
-          <div className="text-offWhite font-firaB relative">
+          <div className="text-offWhite font-firaB relative place-self-center">
             Thank you! We'll be in touch.
           </div>
         )}
