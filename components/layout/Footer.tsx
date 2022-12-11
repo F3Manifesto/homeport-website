@@ -56,7 +56,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
           log: 0007
         </div>
-        <div className="relative col-start-1 row-start-6 md:col-start-3 md:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-0 md:pl-0 md:pr-4">
+        <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
           <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
             <div className="text-white w-fit h-fit text-sm font-fira relative float-left col-start-1 row-start-1">
               Latent microfactory feed
@@ -83,7 +83,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
             )}
           </div>
         </div>
-        <div className="relative h-fit w-full md:w-fit pl-10 pb-4 md:pb-0 md:pl-0 flex justify-self-end row-start-7 md:row-start-3 col-start-1 md:col-start-3 self-start md:self-end pr-4">
+        <div className="relative h-fit w-full lg:w-fit pl-10 pb-4 lg:pb-0 lg:pl-0 flex justify-self-end row-start-7 md:row-start-4 lg:row-start-3 col-start-1 md:pt-10 md:col-start-2 lg:col-start-3 self-start md:self-end pr-4 lg:pt-0">
           <div className="grid grid-flow-col auto-cols-auto relative h-fit w-fit gap-3">
             <div className="relative w-fit h-fit col-start-1 place-self-end">
               <Link href={"https://mirror.xyz/f3manifesto.eth"}>
