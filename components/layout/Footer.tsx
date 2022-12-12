@@ -40,18 +40,19 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          She worked out of her small workshop in the heart of New York City,
-          where she spent hours tinkering with new materials and technologies.
+          In the bustling metropolis of New York City, drawn to the world of
+          fashion and design with a unique vision that set her apart from the
+          rest.
           <br /> <br />
-          She created dresses that glowed in the dark, skirts that shimmered in
-          the sunlight, and even jackets that could change color to match the
-          wearer's outfit. She used 3D printers and other advanced tools to
-          create unique materials that could be programmed to change color,
-          texture, and even shape based on the wearer's mood or environment.
+          A web3 synth designer, using advanced technology and programming to
+          create clothing that was not only beautiful, but also functional and
+          versatile. She sat at her workstation, surrounded by screens and
+          devices. She threw herself into her work, pouring all of her passion
+          and creativity into her designs.
           <br /> <br />
-          She refused to give up. She was driven by a belief in the power of
-          technology to create a freer, more sustainable world, and she was
-          determined to use her skills to make a difference.
+          She spent countless hours working, refining her ideas and
+          experimenting with new techniques and technologies. Then finally, after
+          months of hard work...
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
           log: 0007
