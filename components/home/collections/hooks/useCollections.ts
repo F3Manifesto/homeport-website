@@ -492,14 +492,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -549,14 +554,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -608,14 +618,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -673,14 +688,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -732,14 +752,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -794,14 +819,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -856,14 +886,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -959,14 +994,19 @@ const useCollections = (): useCollectionsResult => {
           }
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1007,14 +1047,19 @@ const useCollections = (): useCollectionsResult => {
           }
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1135,14 +1180,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1194,14 +1244,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1259,14 +1314,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1318,14 +1378,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1380,14 +1445,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1442,14 +1512,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1494,14 +1569,19 @@ const useCollections = (): useCollectionsResult => {
 
         let formattedStyle: string[] = [];
         for (let i: number = 0; i < stylesSelected.length; i++) {
-          if (stylesSelected[i] !== "DIYBrutalism") {
+          if (
+            stylesSelected[i] !== "DIYBrutalism" &&
+            stylesSelected[i] !== "LoFiTechWear"
+          ) {
             formattedStyle?.push(
               stylesSelected[i]
                 ?.match(/[A-Z][a-z]+|[0-9]+/g)
                 ?.join(" ") as string
             );
-          } else {
+          } else if (stylesSelected[i] === "DIYBrutalism") {
             formattedStyle?.push("DIY Brutalism");
+          } else if (stylesSelected[i] === "LoFiTechWear") {
+            formattedStyle?.push("LoFi Tech Wear");
           }
         }
 
@@ -1545,14 +1625,19 @@ const useCollections = (): useCollectionsResult => {
           }
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1593,14 +1678,19 @@ const useCollections = (): useCollectionsResult => {
           }
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1630,14 +1720,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -1666,14 +1761,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
           if (styleSelected[0] !== "none") {
@@ -1722,14 +1822,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1781,14 +1886,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1846,14 +1956,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1905,14 +2020,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
-              if (styleSelected[i] !== "DIYBrutalism") {
+              if (
+                styleSelected[i] !== "DIYBrutalism" &&
+                styleSelected[i] !== "LoFiTechWear"
+              ) {
                 formattedStyle?.push(
                   styleSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (styleSelected[i] === "DIYBrutalism") {
                 formattedStyle?.push("DIY Brutalism");
+              } else if (styleSelected[i] === "LoFiTechWear") {
+                formattedStyle?.push("LoFi Tech Wear");
               }
             }
 
@@ -1967,14 +2087,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -2029,14 +2154,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 

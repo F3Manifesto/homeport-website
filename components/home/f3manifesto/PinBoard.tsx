@@ -185,6 +185,35 @@ const PinBoard = (): JSX.Element => {
                 </div>
               </div>
             </div>
+            <div className="relative w-fit h-fit row-start-5">
+              <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
+                <div className="relative h-fit w-fit col-start-1">
+                  <div className="relative border border-offWhite text-darkP font-firaL w-fit h-fit p-1 text-xxs flex ml-4 mb-3">
+                    108 111 102 105
+                  </div>
+                  <div className="relative grid auto-cols-auto grid-flow-col w-full h-fit">
+                    <div className="relative top-1 h-fit w-fit font-fira text-darkP text-xs col-start-1 self-start mr-2">
+                      05
+                    </div>
+                    <div className="relative h-fit w-fit font-fira text-darkP text-md col-start-2 self-center">
+                      LoFi <br /> <b className="font-firaB">Tech Wear</b>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`relative col-start-2 w-fit h-fit hover:rotate-45 h-fit w-fit self-center pl-4 ${
+                    blur && "blur-sm animate-unblur"
+                  }`}
+                >
+                  <Image
+                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP`}
+                    width={70}
+                    height={70}
+                    onLoadingComplete={() => setBlur(false)}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="relative h-fit w-full row-start-3 pb-2 pr-3 pl-3">
