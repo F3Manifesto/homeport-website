@@ -410,7 +410,7 @@ const useCollections = (): useCollectionsResult => {
 
           const collectionSelected: string[] = router.asPath
             .split("?collection=")[1]
-            .split("?sex")[0]
+            .split("?sex=")[0]
             .replaceAll("-", " ")
             .trim()
             .split(" ");
@@ -485,7 +485,7 @@ const useCollections = (): useCollectionsResult => {
 
           const styleSelected: string[] = router.asPath
             .split("?style=")[1]
-            .split("?sex")[0]
+            .split("?sex=")[0]
             .replaceAll("-", " ")
             .trim()
             .split(" ");
@@ -1082,7 +1082,7 @@ const useCollections = (): useCollectionsResult => {
 
           const collectionSelected: string[] = router.asPath
             .split("?collection=")[1]
-            .split("?sex")[0]
+            .split("?sex=")[0]
             .replaceAll("-", " ")
             .trim()
             .split(" ");
@@ -1117,7 +1117,7 @@ const useCollections = (): useCollectionsResult => {
 
           const sexSelected: string[] = router.asPath
             .split("?collection=")[0]
-            .split("?sex")[1]
+            .split("?sex=")[1]
             .replaceAll("-", " ")
             .trim()
             .split(" ");
@@ -1713,7 +1713,7 @@ const useCollections = (): useCollectionsResult => {
 
           const styleSelected: string[] = router.asPath
             .split("?style=")[1]
-            .split("?sex")[0]
+            .split("?sex=")[0]
             .replaceAll("-", " ")
             .trim()
             .split(" ");
@@ -1879,7 +1879,7 @@ const useCollections = (): useCollectionsResult => {
 
             const styleSelected: string[] = router.asPath
               .split("?style=")[1]
-              .split("?sex")[0]
+              .split("?sex=")[0]
               .replaceAll("-", " ")
               .trim()
               .split(" ");
