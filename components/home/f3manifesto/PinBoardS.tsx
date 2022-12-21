@@ -28,7 +28,7 @@ const PinBoardS = (): JSX.Element => {
               </Link>
             </div>
             <div className="relative h-full w-full flex justify-center align-center cursor-empireS hover:rotate-12">
-              <Link href="https://inarisynth.xyz">
+              <Link href="https://thedial.xyz">
                 <a
                   target="_blank"
                   rel="noreferrer"
