@@ -40,22 +40,28 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          In the bustling metropolis of New York City, drawn to the world of
-          fashion and design with a unique vision that set her apart from the
-          rest.
-          <br /> <br />
-          A web3 synth designer, using advanced technology and programming to
-          create clothing that was not only beautiful, but also functional and
-          versatile. She sat at her workstation, surrounded by screens and
-          devices. She threw herself into her work, pouring all of her passion
-          and creativity into her designs.
-          <br /> <br />
-          She spent countless hours working, refining her ideas and
-          experimenting with new techniques and technologies. Then finally, after
-          months of hard work...
+          As she sat in her cramped studio apartment, surrounded by sketches and
+          fabric swatches, the young fashion designer couldn't help but feel
+          excited about the future. She had always dreamed of building a life of
+          freedom and independence, and she was determined to use her talents to
+          change the fashion industry for the better.
+          <br />
+          <br />
+          With a love for the future of web3 and a passion for sustainability,
+          she spent her days hustling to make a name for herself.
+          <br />
+          <br />
+          But it wasn't easy. The competition in the fashion world was fierce. But she never
+          let that discourage her. Instead, she threw herself into her work,
+          pouring her heart and soul into every garment she created. Using open
+          source tools like artificial intelligence, she crafted unique and
+          innovative designs that turned heads wherever she went. And with the
+          help of local microfactories, she brought her vision to life, using
+          ethical and sustainable manufacturing practices that made her stand
+          out in a crowded market.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0007
+          log: 0008
         </div>
         <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
           <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
