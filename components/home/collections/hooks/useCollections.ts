@@ -382,14 +382,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -417,14 +422,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -456,14 +466,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
-            if (styleSelected[i] !== "DIYBrutalism") {
+            if (
+              styleSelected[i] !== "DIYBrutalism" &&
+              styleSelected[i] !== "LoFiTechWear"
+            ) {
               formattedStyle?.push(
                 styleSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (styleSelected[i] === "DIYBrutalism") {
               formattedStyle?.push("DIY Brutalism");
+            } else if (styleSelected[i] === "LoFiTechWear") {
+              formattedStyle?.push("LoFi Tech Wear");
             }
           }
 
@@ -579,14 +594,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -643,14 +663,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -713,14 +738,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -777,14 +807,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -844,14 +879,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -911,14 +951,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -943,14 +988,19 @@ const useCollections = (): useCollectionsResult => {
 
         let formattedCollection: string[] = [];
         for (let i: number = 0; i < collectionsSelected.length; i++) {
-          if (collectionsSelected[i] !== "MEVOverride") {
+          if (
+            collectionsSelected[i] !== "MEVOverride" &&
+            collectionsSelected[i] !== "LoFiSynthwear"
+          ) {
             formattedCollection?.push(
               collectionsSelected[i]
                 ?.match(/[A-Z][a-z]+|[0-9]+/g)
                 ?.join(" ") as string
             );
-          } else {
+          } else if (collectionsSelected[i] === "MEVOverride") {
             formattedCollection?.push("MEV Override");
+          } else if (collectionsSelected[i] === "LoFiSynthwear") {
+            formattedCollection?.push("LoFi Synthwear");
           }
         }
         if (collectionsSelected[0] !== "none") {
@@ -979,14 +1029,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1032,14 +1087,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1089,14 +1149,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1124,14 +1189,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1205,14 +1275,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1269,14 +1344,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1339,14 +1419,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1403,14 +1488,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1470,14 +1560,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1537,14 +1632,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1610,14 +1710,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1663,14 +1768,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1847,14 +1957,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1911,14 +2026,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1981,14 +2101,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2045,14 +2170,19 @@ const useCollections = (): useCollectionsResult => {
 
             let formattedCollection: string[] = [];
             for (let i: number = 0; i < collectionSelected.length; i++) {
-              if (collectionSelected[i] !== "MEVOverride") {
+              if (
+                collectionSelected[i] !== "MEVOverride" &&
+                collectionSelected[i] !== "LoFiSynthwear"
+              ) {
                 formattedCollection?.push(
                   collectionSelected[i]
                     ?.match(/[A-Z][a-z]+|[0-9]+/g)
                     ?.join(" ") as string
                 );
-              } else {
+              } else if (collectionSelected[i] === "MEVOverride") {
                 formattedCollection?.push("MEV Override");
+              } else if (collectionSelected[i] === "LoFiSynthwear") {
+                formattedCollection?.push("LoFi Synthwear");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2112,14 +2242,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2179,14 +2314,19 @@ const useCollections = (): useCollectionsResult => {
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
-            if (collectionSelected[i] !== "MEVOverride") {
+            if (
+              collectionSelected[i] !== "MEVOverride" &&
+              collectionSelected[i] !== "LoFiSynthwear"
+            ) {
               formattedCollection?.push(
                 collectionSelected[i]
                   ?.match(/[A-Z][a-z]+|[0-9]+/g)
                   ?.join(" ") as string
               );
-            } else {
+            } else if (collectionSelected[i] === "MEVOverride") {
               formattedCollection?.push("MEV Override");
+            } else if (collectionSelected[i] === "LoFiSynthwear") {
+              formattedCollection?.push("LoFi Synthwear");
             }
           }
           if (collectionSelected[0] !== "none") {
