@@ -40,23 +40,22 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          In the roaring heart of New York City, there lies a hidden gem of a
-          fashion manufacturing co-op that is unlike any other. At the core of
-          their operations is an open-source, AI-powered system that allows any
-          designer that so chooses to create beautiful, sustainable garments,
-          with efficiency and precision.
-          <br />
-          <br />
-          Dedicated engineers and programmers experimenting with new techniques
-          that blur the lines between digital and physical production.
-          <br />
-          <br />
-          Proving that sustainable and ethical production can go hand-in-hand
-          with high-end design and that technology can be used to enhance the
-          human experience, rather than replace it.
+          They wove secret messages into their designs, messages of economic
+          self-determination and decentralization, and used the new web3
+          technologies to spread their message far and wide, like a beacon in
+          the night. <br />
+          <br /> With samizdat as their sword, their textiles were more than
+          just cloth, they were a call to arms, a symbol of hope and a reminder
+          of freedom and for a better future. Each fiber spun with the story of
+          how textiles have built the foundations of all technology - from first
+          computation to the flight of man.
+          <br /> <br />
+          Harnessing the power of AI synth machines to optimize every aspect of
+          the production process, from spinning to weaving to cutting, allowing
+          for garments to be produced faster and more efficiently— these garments speak louder than words ever could.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0009
+          log: 0010
         </div>
         <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
           <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
