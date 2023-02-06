@@ -5,6 +5,7 @@ import {
 } from "./../../../../types/general.types";
 import tokens from "./../../../../pages/api/tokens.json";
 import { useRouter } from "next/router";
+import lodash from "lodash";
 
 const useCollections = (): useCollectionsResult => {
   const router = useRouter();
@@ -60,7 +61,6 @@ const useCollections = (): useCollectionsResult => {
       clickedArray = [...styleSelect, e.target.name];
     }
     setStyleSelect(clickedArray);
-    console.log(clickedArray);
     setClickedStyle(!clickedStyle);
     filterURL(clickedArray, "style");
   };
@@ -379,12 +379,25 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -395,6 +408,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -419,12 +434,25 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -435,6 +463,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -566,6 +596,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -596,7 +638,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -607,6 +650,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -628,6 +673,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             const styleSelected: string[] = router.asPath
               .split("?style=")[1]
@@ -665,7 +722,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -676,6 +734,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -710,6 +770,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -740,7 +812,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -751,6 +824,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -779,6 +854,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -809,7 +896,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -820,6 +908,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -851,6 +941,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -881,7 +983,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -892,6 +995,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -923,6 +1028,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -953,7 +1070,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -964,6 +1082,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -979,18 +1099,31 @@ const useCollections = (): useCollectionsResult => {
         !router.asPath.includes("?sex=") &&
         !router.asPath.includes("?style=")
       ) {
-        const collectionsSelected: string[] = router.asPath
+        const collectionsSelected = router.asPath
           .split("?collection=")[1]
           .split("/#shopping")[0]
           .replaceAll("-", " ")
           .trim()
           .split(" ");
+        if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+          const index: number = lodash.findIndex(
+            router.asPath
+              .split("?collection=")[1]
+              .split("/#shopping")[0]
+              .replaceAll("-", " ")
+              .trim()
+              .split(" "),
+            (item) => item === "Jid%C5%8DkaImprint"
+          );
+          collectionsSelected[index] = "Jidōka Imprint";
+        }
 
         let formattedCollection: string[] = [];
         for (let i: number = 0; i < collectionsSelected.length; i++) {
           if (
             collectionsSelected[i] !== "MEVOverride" &&
-            collectionsSelected[i] !== "LoFiSynthwear"
+            collectionsSelected[i] !== "LoFiSynthwear" &&
+            collectionsSelected[i] !== "Jidōka Imprint"
           ) {
             formattedCollection?.push(
               collectionsSelected[i]
@@ -1001,6 +1134,8 @@ const useCollections = (): useCollectionsResult => {
             formattedCollection?.push("MEV Override");
           } else if (collectionsSelected[i] === "LoFiSynthwear") {
             formattedCollection?.push("LoFi Synthwear");
+          } else if (collectionsSelected[i] === "Jidōka Imprint") {
+            formattedCollection?.push("Jidōka Imprint");
           }
         }
         if (collectionsSelected[0] !== "none") {
@@ -1018,6 +1153,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           const styleSelected: string[] = router.asPath
             .split("?collection=")[1]
@@ -1031,7 +1178,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1042,6 +1190,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1078,6 +1228,19 @@ const useCollections = (): useCollectionsResult => {
             .trim()
             .split(" ");
 
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
+
           const styleSelected: string[] = router.asPath
             .split("?style=")[1]
             .split("?collection")[0]
@@ -1089,7 +1252,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1100,6 +1264,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1147,11 +1313,25 @@ const useCollections = (): useCollectionsResult => {
             .trim()
             .split(" ");
 
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
+
           let formattedCollection: string[] = [];
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1162,6 +1342,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1179,6 +1361,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           const sexSelected: string[] = router.asPath
             .split("?collection=")[0]
@@ -1191,7 +1385,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1202,6 +1397,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1247,6 +1444,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1277,7 +1486,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1288,6 +1498,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1309,6 +1521,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             const styleSelected: string[] = router.asPath
               .split("?style=")[1]
@@ -1346,7 +1570,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1357,6 +1582,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1391,6 +1618,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1421,7 +1660,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1432,6 +1672,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1460,6 +1702,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1490,7 +1744,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1501,6 +1756,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1532,6 +1789,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1562,7 +1831,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1573,6 +1843,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1604,6 +1876,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1634,7 +1918,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1645,6 +1930,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1700,6 +1987,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           const styleSelected: string[] = router.asPath
             .split("?style=")[1]
@@ -1712,7 +2011,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1723,6 +2023,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1758,6 +2060,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           const styleSelected: string[] = router.asPath
             .split("?style=")[1]
@@ -1770,7 +2084,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1781,6 +2096,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1929,6 +2246,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -1959,7 +2288,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1970,6 +2300,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1991,6 +2323,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             const styleSelected: string[] = router.asPath
               .split("?style=")[1]
@@ -2028,7 +2372,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2039,6 +2384,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2066,6 +2413,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             const styleSelected: string[] = router.asPath
               .split("?style=")[1]
@@ -2103,7 +2462,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2114,6 +2474,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2142,6 +2504,18 @@ const useCollections = (): useCollectionsResult => {
               .replaceAll("-", " ")
               .trim()
               .split(" ");
+            if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+              const index: number = lodash.findIndex(
+                router.asPath
+                  .split("?collection=")[1]
+                  .split("/#shopping")[0]
+                  .replaceAll("-", " ")
+                  .trim()
+                  .split(" "),
+                (item) => item === "Jid%C5%8DkaImprint"
+              );
+              collectionSelected[index] = "Jidōka Imprint";
+            }
 
             let formattedStyle: string[] = [];
             for (let i: number = 0; i < styleSelected.length; i++) {
@@ -2172,7 +2546,8 @@ const useCollections = (): useCollectionsResult => {
             for (let i: number = 0; i < collectionSelected.length; i++) {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
-                collectionSelected[i] !== "LoFiSynthwear"
+                collectionSelected[i] !== "LoFiSynthwear" &&
+                collectionSelected[i] !== "Jidōka Imprint"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2183,6 +2558,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("MEV Override");
               } else if (collectionSelected[i] === "LoFiSynthwear") {
                 formattedCollection?.push("LoFi Synthwear");
+              } else if (collectionSelected[i] === "Jidōka Imprint") {
+                formattedCollection?.push("Jidōka Imprint");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2214,6 +2591,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -2244,7 +2633,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2255,6 +2645,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2286,6 +2678,18 @@ const useCollections = (): useCollectionsResult => {
             .replaceAll("-", " ")
             .trim()
             .split(" ");
+          if (router.asPath.includes("Jid%C5%8DkaImprint")) {
+            const index: number = lodash.findIndex(
+              router.asPath
+                .split("?collection=")[1]
+                .split("/#shopping")[0]
+                .replaceAll("-", " ")
+                .trim()
+                .split(" "),
+              (item) => item === "Jid%C5%8DkaImprint"
+            );
+            collectionSelected[index] = "Jidōka Imprint";
+          }
 
           let formattedStyle: string[] = [];
           for (let i: number = 0; i < styleSelected.length; i++) {
@@ -2316,7 +2720,8 @@ const useCollections = (): useCollectionsResult => {
           for (let i: number = 0; i < collectionSelected.length; i++) {
             if (
               collectionSelected[i] !== "MEVOverride" &&
-              collectionSelected[i] !== "LoFiSynthwear"
+              collectionSelected[i] !== "LoFiSynthwear" &&
+              collectionSelected[i] !== "Jidōka Imprint"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2327,6 +2732,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("MEV Override");
             } else if (collectionSelected[i] === "LoFiSynthwear") {
               formattedCollection?.push("LoFi Synthwear");
+            } else if (collectionSelected[i] === "Jidōka Imprint") {
+              formattedCollection?.push("Jidōka Imprint");
             }
           }
           if (collectionSelected[0] !== "none") {

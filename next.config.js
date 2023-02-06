@@ -15,13 +15,15 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    // loader: "akamai",
-    // path: "https://f3manifesto.xyz",
     remotePatterns: [
       {
         protocol: "https",
-        // hostname: "**.ipfs.w3s.link",
         hostname: "f3manifesto.infura-ipfs.io",
+        pathname: "/ipfs/**",
+      },
+      {
+        protocol: "https",
+        hostname: "thedial.infura-ipfs.io",
         pathname: "/ipfs/**",
       },
     ],
