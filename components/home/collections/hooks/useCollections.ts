@@ -75,7 +75,10 @@ const useCollections = (): useCollectionsResult => {
 
     if (nameInput) {
       tokens.forEach((token) => {
-        if (nameInput.toLowerCase() === token.name.toLowerCase()) {
+        if (
+          nameInput.toLowerCase() === token.name.toLowerCase() ||
+          token.name.toLowerCase().startsWith(nameInput.toLowerCase())
+        ) {
           filteredGallery.push(token);
         }
       });
