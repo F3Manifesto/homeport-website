@@ -94,7 +94,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                     </div>
                   </div>
                   <div className="relative row-start-2 w-fit h-full">
-                    <div className="relative h-fit w-fit font-alber rotate-90 whitespace-nowrap right-11 bottom-14">
+                    <div className="relative h-fit w-fit font-alber rotate-90 whitespace-nowrap right-11 wide:bottom-32 bottom-14">
                       CYPHERPUNKS WRITE PROMPTS
                     </div>
                   </div>
