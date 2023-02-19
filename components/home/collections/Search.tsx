@@ -28,11 +28,11 @@ const Search: FunctionComponent<SearchProps> = ({
                     {collections.map((collection: any, index: number) => {
                       return (
                         <span
-                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base inline-flex font-conso`}
+                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex font-conso break-word`}
                           key={index}
                         >
                           <button
-                            className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-sm lg:text-md ${
+                            className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
                               collectionSelect.includes(
                                 collection.collection
                               ) && "bg-lightYellow"
@@ -55,7 +55,7 @@ const Search: FunctionComponent<SearchProps> = ({
               </div>
               <div className="m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 h-fit w-fit lg:top-auto relative">
                 <input
-                  className="border border-offBlack bg-offWhite caret-offBlue focus:caret-offBlue rounded-full p-2 w-36 font-fira h-fit"
+                  className="border border-offBlack bg-offWhite caret-offBlue focus:caret-offBlue rounded-full p-2 w-36 font-fira h-fit text-xs galaxy:text-sm sm:text-base"
                   name="filter"
                   onChange={(e) => filterName(e)}
                 />
@@ -75,11 +75,11 @@ const Search: FunctionComponent<SearchProps> = ({
                     {sex.map((type: any, index: number) => {
                       return (
                         <span
-                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base inline-flex`}
+                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex break-word`}
                           key={index}
                         >
                           <button
-                            className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
+                            className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
                               sexSelect.includes(type.sex) && "bg-lightYellow"
                             }`}
                             name={type.sex}
@@ -107,11 +107,11 @@ const Search: FunctionComponent<SearchProps> = ({
                   {styles.map((style: any, index: number) => {
                     return (
                       <span
-                        className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-sm xl:text-base inline-flex`}
+                        className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex`}
                         key={index}
                       >
                         <button
-                          className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
+                          className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS break-word galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
                             styleSelect.includes(style.style) &&
                             "bg-lightYellow"
                           }`}

@@ -9,7 +9,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
   }, 10000);
   return (
     <div
-      className="min-w-full min-h-full xl:min-h-[100vh] w-full h-full relative block clear-both overflow-hidden bg-offBlack"
+      className="min-w-full min-h-full xl:min-h-[100vh] wide:min-h-fit w-full h-full relative block clear-both overflow-hidden bg-offBlack"
       id="lanvideo"
     >
       {showBanner && (
@@ -26,7 +26,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
       <Sidebar />
       <div className="relative min-h-full h-full w-full">
         <video
-          className="relative h-full min-h-full object-cover"
+          className="relative h-full min-h-full w-full object-cover"
           autoPlay
           muted
           loop

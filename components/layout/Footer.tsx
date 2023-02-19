@@ -58,11 +58,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
           log: 0010
         </div>
         <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
-          <div className="relative grid auto-cols-auto grid-flow-col gap-2 h-fit max-w-fit w-fit">
-            <div className="text-white w-fit h-fit text-sm font-fira relative float-left col-start-1 row-start-1">
+          <div className="relative flex flex-col galaxy:flex-row flex-wrap gap-4 galaxy:gap-2 h-fit max-w-fit w-fit">
+            <div className="text-white w-fit h-fit text-sm font-fira relative float-left col-start-1 row-start-1 break-word pr-1 galaxy:pr-0">
               Latent microfactory feed
             </div>
-            <div className="relative h-fit w-fit self-center -top-2 col-start-2 row-start-1">
+            <div className="relative h-fit w-fit self-start galaxy:self-center -top-2 col-start-2 row-start-1">
               <div className="absolute h-3 w-3 rounded-full opacity-75 animate-ping bg-green-100"></div>
               <div className="absolute rounded-full h-3 w-3 bg-green-500"></div>
             </div>
@@ -70,7 +70,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           <div className="w-fit h-fit block relative pb-4 pt-2 flex flex-col">
             {randomMicrofactory && (
               <video
-                className="relative w-48 sm:w-60 h-fit min-h-fit object-cover"
+                className="relative w-3/4 galaxy:w-48 sm:w-60 h-fit min-h-fit object-cover"
                 autoPlay
                 muted
                 loop
@@ -85,7 +85,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-full lg:w-fit pl-10 pb-4 lg:pb-0 lg:pl-0 flex justify-self-end row-start-7 md:row-start-4 lg:row-start-3 col-start-1 md:pt-10 md:col-start-2 lg:col-start-3 self-start md:self-end pr-4 lg:pt-0">
-          <div className="grid grid-flow-col auto-cols-auto relative h-fit w-fit gap-3">
+          <div className="flex flex-row flex-wrap relative h-fit w-fit gap-3">
             <div className="relative w-fit h-fit col-start-1 place-self-end">
               <Link href={"https://mirror.xyz/f3manifesto.eth"}>
                 <a
