@@ -26,7 +26,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   ];
   return (
     <div className="w-full min-h-auto h-auto relative flex bg-offBlack overflow-hidden">
-      <div className="font-glitch w-fit sm:w-80 half:w-96 xl:w-72 h-fit absolute inline-table flex-col text-lightYellow text-base md:text-lg leading-loose cursor-empireA z-10 top-0 left-0 half:left-20">
+      <div className="font-glitch w-fit sm:w-80 half:w-96 xl:w-72 h-fit absolute inline-table flex-col text-lightYellow text-base md:text-lg leading-loose cursor-empireA z-10 top-0 left-0 half:left-20  break-word">
         these looks are devices tailor made from the fabric stuff of web3
         <em className="font-air">,</em> for electric collections.
       </div>

@@ -2,7 +2,6 @@ import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import { motion } from "framer-motion";
 import PinBoard from "./PinBoard";
-import PinBoardM from "./PinBoardM";
 import { MainBoardProps } from "../../../types/general.types";
 
 const MainBoard: FunctionComponent<MainBoardProps> = ({
@@ -14,47 +13,45 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
-    <div className="relative grid auto-cols-auto w-full min-h-full h-full">
-      <div className="w-full midi:w-fit min-h-full bg-offWhite relative left-0 col-start-1 row-start-1">
+    <div className="relative flex flex-row xl:flex-nowrap flex-wrap w-full min-h-full h-full">
+      <div className="w-full h-auto bg-offWhite relative grid grid-flow-row auto-rows-auto">
         <div className="font-emiken w-fit text-[8vw] xl:text-[9vw] h-fit relative grid auto-cols-auto grid-flow-col gap-1 pl-3 lg:pr-10 xl:pr-0">
           <div className="relative col-start-1 w-fit h-fit">F</div>
-          <div className="relative col-start-2 font-atmos text-4xl lg:text-5xl xl:text-6xl self-end justify-start w-fit h-fit">
+          <div className="relative col-start-2 font-atmos text-lg galaxy:text-4xl lg:text-5xl xl:text-6xl wide:text-9xl self-end justify-start w-fit h-fit">
             3
           </div>
           <div className="relative col-start-3 w-fit h-fit pl-3">MANIFESTO</div>
         </div>
-        <div className="grid auto-cols-auto h-fit max-w-full min-w-full justify-between content-between w-full grid-flow-col relative pt-3 justify-between">
-          <div className="relative grid auto-rows-auto w-full h-full grid-flow-row col-start-1 col-span-7">
-            <div className="relative row-start-1 w-full h-full">
-              <div className="min-h-full h-fit relative grid auto-rows-auto grid-flow-row gap-4 w-full min-w-full">
-                {newImagesURI.map((uri: string, index: number) => {
-                  return (
-                    <div
-                      key={index}
-                      className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
-                        index + 1
-                      } ${
-                        (index === 0 && "w-full") ||
-                        (index === 1 && "w-10/12") ||
-                        (index === 2 && "w-8/12") ||
-                        (index === 3 && "w-6/12") ||
-                        (index === 4 && "w-4/12")
-                      } ${blur && "animate-unblur blur-sm"}`}
-                      onClick={viewMainImage}
-                    >
-                      <Image
-                        objectFit="cover"
-                        onLoadingComplete={() => setBlur(false)}
-                        layout="fill"
-                        src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+        <div className="flex flex-col md:flex-row h-fit w-full relative pt-3">
+          <div className="relative flex flex-col w-full h-full grid-flow-row">
+            <div className="h-full relative flex flex-col gap-4 w-full">
+              {newImagesURI.map((uri: string, index: number) => {
+                return (
+                  <div
+                    key={index}
+                    className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
+                      index + 1
+                    } ${
+                      (index === 0 && "w-full") ||
+                      (index === 1 && "w-10/12") ||
+                      (index === 2 && "w-8/12") ||
+                      (index === 3 && "w-6/12") ||
+                      (index === 4 && "w-4/12")
+                    } ${blur && "animate-unblur blur-sm"}`}
+                    onClick={viewMainImage}
+                  >
+                    <Image
+                      objectFit="cover"
+                      onLoadingComplete={() => setBlur(false)}
+                      layout="fill"
+                      src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
+                    />
+                  </div>
+                );
+              })}
             </div>
-            <div className="relative row-start-2 w-fit h-fit pt-16 pl-20">
-              <p className="font-glitch w-96 xl:w-72 h-fit relative inline-table flex-col text-base md:text-lg leading-tight cursor-empireS">
+            <div className="relative w-fit h-fit pt-16">
+              <p className="font-glitch w-full md:w-96 xl:w-72 h-fit relative inline-table flex-col text-sm sm:text-base md:text-lg leading-tight cursor-empireS left-0 half:left-20 break-word">
                 Like most things in glass dial simulacra
                 <span className="font-air">,</span>
                 their appeal comes from appearance, status, and material use.
@@ -66,14 +63,14 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               </p>
             </div>
           </div>
-          <div className="w-[5vw] h-[5vw] relative col-start-8 col-span-1 place-self-center">
+          <div className="w-[7rem] h-[7rem] xl:w-[5rem] xl:h-[5rem] relative place-self-center grid grid-flow-col auto-cols-auto">
             <motion.div
               whileHover={{
                 rotate: 360,
               }}
               onClick={refreshImages}
-              className={`relative cursor-empireS active:mix-blend-overlay -top-28  lg:-top-20 xl:top-auto midi:pr-3 xl:pr-0 ${
-                blur && "animate-unblur blur-sm"
+              className={`relative cursor-empireS active:mix-blend-overlay place-self-center top-auto md:pt-0 pt-8 md:-top-20 xl:top-auto pr-0 midi:pr-3 xl:pr-0 ${
+                blur && "animate-unblur blur-sm w-full h-full"
               }`}
             >
               <Image
@@ -81,60 +78,44 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 height={60}
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                 onLoadingComplete={() => setBlur(false)}
+                className="relative w-full h-full"
               />
             </motion.div>
           </div>
-          <div className="relative col-start-9 col-span-4 w-full h-full">
-            <div className="relative grid grid-flow-col auto-cols-auto">
-              <div className="relative col-start-1 w-fit h-full col-span-1">
-                <div className="grid relative grid-flow-row auto-rows-auto w-10 h-full min-h-full justify-between content-between pt-4 pr-6 w-fit">
-                  <div className="row-start-1 w-fit h-full">
-                    <div className="relative h-fit w-fit font-alber rotate-90 whitespace-nowrap">
-                      100% CC0
-                    </div>
-                  </div>
-                  <div className="relative row-start-2 w-fit h-full">
-                    <div className="relative h-fit w-fit font-alber rotate-90 whitespace-nowrap right-11 wide:bottom-32 bottom-14">
-                      CYPHERPUNKS WRITE PROMPTS
-                    </div>
-                  </div>
-                </div>
+          <div className="relative w-full h-full flex flex-col xl:flex-row self-end items-end xl:gap-0 gap-10">
+            <div className="relative w-fit xl:w-full h-fit xl:h-[30vw] pt-4 pr-6 flex flex-col xl:right-[11vw] items-end xl:items-between xl:justify-between">
+              <div className="relative xl:absolute h-full w-fit font-alber xl:rotate-90 whitespace-nowrap flex xl:top-[7vw]  xl:right-[6vw]">
+                100% CC0
               </div>
-              <div className="relative col-start-2 col-span-3 w-fit h-fit place-self-end row-start-1">
-                <div className="relative w-fit h-full w-fit h-fit">
-                  <div
-                    className={`w-[30vw] h-[30vw] relative flex flex-col bg-black cursor-empireS shrink-0 ${
-                      blur && "blur-sm animate-unblur"
-                    }`}
-                    id="#mainimage"
-                  >
-                    <Image
-                      priority
-                      src={`https://f3manifesto.infura-ipfs.io/ipfs/${mainImage}`}
-                      layout="fill"
-                      objectPosition={"top"}
-                      objectFit="cover"
-                      width={800}
-                      height={800}
-                      onLoadingComplete={() => setBlur(false)}
-                    />
-                  </div>
-                </div>
+              <div className="relative xl:absolute h-full w-fit font-alber xl:rotate-90 whitespace-nowrap xl:right-[3vw] flex xl:bottom-[10vw]">
+                CYPHERPUNKS WRITE PROMPTS
+              </div>
+            </div>
+            <div className="relative w-full h-full grid grid-flow-col auto-cols-auto">
+              <div
+                className={`w-full md:w-[30vw] h-[80vw] md:h-[40vw] xl:h-[30vw] relative bg-black cursor-empireS self-end place-self-end ${
+                  blur && "blur-sm animate-unblur"
+                }`}
+                id="#mainimage"
+              >
+                <Image
+                  priority
+                  src={`https://f3manifesto.infura-ipfs.io/ipfs/${mainImage}`}
+                  layout="fill"
+                  objectPosition={"top"}
+                  objectFit="cover"
+                  width={800}
+                  height={800}
+                  onLoadingComplete={() => setBlur(false)}
+                  className="relative w-full h-full flex"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="relative col-start-2 h-full w-[4vw] bg-offBlack hidden midi:flex"></div>
-      <div className="relative col-start-1 row-start-2 h-[4vw] min-w-full w-full place-self-end midi:hidden flex"></div>
-      <div className="relative col-start-3 row-start-1 h-full min-w-fit w-fit place-self-end hidden midi:flex">
-        <PinBoard />
-      </div>
-      <div>
-        <div className="relative col-start-1 row-start-3 h-full min-w-full w-full place-self-end midi:hidden flex">
-          <PinBoardM />
-        </div>
-      </div>
+      <div className="relative col-start-2 h-full w-[4vw] bg-offBlack"></div>
+      <PinBoard />
     </div>
   );
 };

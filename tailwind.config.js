@@ -97,6 +97,7 @@ module.exports = {
         alm: "740px",
         galaxy: "350px",
         wide: "1280px",
+        equ: "1200px",
       },
     },
   },
