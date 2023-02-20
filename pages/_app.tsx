@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalContext.Provider
           value={{ order, setOrder, clickedFromMain, setClickedFromMain }}
         >
-          <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow">
+          <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden">
             <Component {...pageProps} />
             <Footer />
           </div>
