@@ -91,9 +91,9 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 CYPHERPUNKS WRITE PROMPTS
               </div>
             </div>
-            <div className="relative w-full h-full grid grid-flow-col auto-cols-auto">
+            <div className="relative w-full md:w-[40vw] h-[80vw] md:h-[40vw] xl:h-[30vw] grid grid-flow-col auto-cols-auto">
               <div
-                className={`w-full md:w-[30vw] h-[80vw] md:h-[40vw] xl:h-[30vw] relative bg-black cursor-empireS self-end place-self-end ${
+                className={`w-full h-full relative bg-black cursor-empireS place-self-end ${
                   blur && "blur-sm animate-unblur"
                 }`}
                 id="#mainimage"
@@ -104,8 +104,6 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                   layout="fill"
                   objectPosition={"top"}
                   objectFit="cover"
-                  width={800}
-                  height={800}
                   onLoadingComplete={() => setBlur(false)}
                   className="relative w-full h-full flex"
                 />
