@@ -29,9 +29,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 return (
                   <div
                     key={index}
-                    className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn row-start-${
-                      index + 1
-                    } ${
+                    className={`h-10 relative cursor-empireS hover:opacity-70 bg-lightYellow active:bg-lightYellow active:mix-blend-color-burn ${
                       (index === 0 && "w-full") ||
                       (index === 1 && "w-10/12") ||
                       (index === 2 && "w-8/12") ||
@@ -63,7 +61,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               </p>
             </div>
           </div>
-          <div className="w-[7rem] h-[7rem] xl:w-[5rem] xl:h-[5rem] relative place-self-center grid grid-flow-col auto-cols-auto">
+          <div className="w-[7rem] h-[7rem] xl:w-[5rem] xl:h-[5rem] relative place-self-center grid grid-flow-col auto-cols-auto z-10">
             <motion.div
               whileHover={{
                 rotate: 360,
@@ -82,16 +80,16 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               />
             </motion.div>
           </div>
-          <div className="relative w-full h-full flex flex-col xl:flex-row self-end items-end xl:gap-0 gap-10">
-            <div className="relative w-fit xl:w-full h-fit xl:h-[30vw] pt-4 pr-6 flex flex-col xl:right-[11vw] items-end xl:items-between xl:justify-between">
-              <div className="relative xl:absolute h-full w-fit font-alber xl:rotate-90 whitespace-nowrap flex xl:top-[7vw]  xl:right-[6vw]">
+          <div className="relative w-full h-full flex flex-col xl:flex-row items-end justify-end xl:gap-0 gap-10">
+            <div className="relative w-fit h-fit xl:h-[30vw] pt-4 pr-6 flex flex-col xl:right-[11vw] items-end xl:items-between xl:justify-between">
+              <div className="relative xl:absolute h-full w-fit font-alber xl:rotate-90 whitespace-nowrap flex xl:top-[7vw] xl:right-[6vw]">
                 100% CC0
               </div>
               <div className="relative xl:absolute h-full w-fit font-alber xl:rotate-90 whitespace-nowrap xl:right-[3vw] flex xl:bottom-[10vw]">
                 CYPHERPUNKS WRITE PROMPTS
               </div>
             </div>
-            <div className="relative w-full md:w-[40vw] h-[80vw] md:h-[40vw] xl:h-[30vw] grid grid-flow-col auto-cols-auto">
+            <div className="relative w-full md:w-[40vw] h-[80vw] md:h-[40vw] xl:h-[40vw] xl:w-[30vw] grid grid-flow-col auto-cols-auto items-end">
               <div
                 className={`w-full h-full relative bg-black cursor-empireS place-self-end ${
                   blur && "blur-sm animate-unblur"
