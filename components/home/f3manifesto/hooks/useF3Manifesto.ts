@@ -40,14 +40,15 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "QmexdPsD4NLMccKny1dciqwiMopJKG2MmLibojozJ6RK2r",
     "QmctyzRkHN2LJ8hrFaMrwqDBgHHUF18WdrcLgMF4BqtBUe",
     "QmRgqssivj2WTMBnfqa5VkRBZSmYtt2JWZ2jqeYjB8pH7U",
+    "QmSmXa7BgJComJmvFRexRqegyo8XETZzj6m2JjBkewXXLo",
+    "QmQ9x9pZysAe1DLvEVqJJDxVBDJfCCMdhU3Gzafha1T9Z7",
   ];
 
   const refreshImages = (): void => {
-    let newImages: string[] = [];
     let newImagesURI: string[] = [];
     const AllNumbers: number[] = [
       0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-      21, 22, 23, 24,
+      21, 22, 23, 24, 25, 26,
     ];
     shuffle<number>(AllNumbers);
     for (let i = 0; i < 5; i++) {
