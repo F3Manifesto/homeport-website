@@ -21,7 +21,23 @@ const PinBoard = (): JSX.Element => {
               height={50}
               src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC`}
               onLoadingComplete={() => setBlur(false)}
-              className="w-full h-full place-self-center"
+              className="w-full h-full place-self-center rounded-full"
+            />
+          </a>
+          <a
+            href="https://chromadin.xyz"
+            target="_blank"
+            rel="noreferrer"
+            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
+              blur && "blur-sm animate-unblur"
+            }`}
+          >
+            <Image
+              width={50}
+              height={50}
+              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmXM6QSYCbMJ5eXJHuGqMTbCTkaDqth5c4NswX2nWTpenB`}
+              onLoadingComplete={() => setBlur(false)}
+              className="w-full h-full place-self-center rounded-full"
             />
           </a>
           <a
@@ -35,25 +51,9 @@ const PinBoard = (): JSX.Element => {
             <Image
               width={50}
               height={50}
-              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmSnQomokCSA6gmD3qoxqw1Nabqa6S1cCn99XocC9xQ7hJ`}
+              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmbF9Lt5KQ3m9xxnqSRD2nmcr5mgtf1V2ruRYcrMnrFpni`}
               onLoadingComplete={() => setBlur(false)}
-              className="w-full h-full place-self-center"
-            />
-          </a>
-          <a
-            href="https://diysynth.xyz"
-            target="_blank"
-            rel="noreferrer"
-            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
-              blur && "blur-sm animate-unblur"
-            }`}
-          >
-            <Image
-              width={50}
-              height={50}
-              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmP1YcKZaxPu1PCGEgd5QSgbhyazMnG67oZSiLHBtG3HXc`}
-              onLoadingComplete={() => setBlur(false)}
-              className="w-full h-full place-self-center"
+              className="w-full h-full place-self-center rounded-full"
             />
           </a>
         </div>
