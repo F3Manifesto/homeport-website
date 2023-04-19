@@ -40,22 +40,24 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          They wove secret messages into their designs, messages of economic
-          self-determination and decentralization, and used the new web3
-          technologies to spread their message far and wide, like a beacon in
-          the night. <br />
-          <br /> With samizdat as their sword, their textiles were more than
-          just cloth, they were a call to arms, a symbol of hope and a reminder
-          of freedom and for a better future. Each fiber spun with the story of
-          how textiles have built the foundations of all technology - from first
-          computation to the flight of man.
+          In the forgotten corners of the world, a group of weavers had set out
+          to challenge the very foundations of the fashion industry. Their
+          mission was simple yet bold: to create a new paradigm of production,
+          one that was free, open, and accessible to all. Armed with
+          cutting-edge web3 and AI technologies, they designed a new kind of
+          loom that could be built using basic materials, giving rise to a wave
+          of grassroots innovation and creativity that spread like wildfire.
           <br /> <br />
-          Harnessing the power of AI synth machines to optimize every aspect of
-          the production process, from spinning to weaving to cutting, allowing
-          for garments to be produced faster and more efficiently— these garments speak louder than words ever could.
+          Their workshops became sanctuaries of the new industry, where the most
+          talented and visionary fashion designers gathered to learn the secrets
+          of the weavers' craft. Every thread they spun was infused with the
+          magic of their dreams, forming an intricate tapestry that shimmered
+          under the dim light of the ancient moon. But their path was fraught
+          with danger, as the old guard of the fashion industry fought tooth and
+          nail to maintain their grip on power and profit.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0010
+          log: 0011
         </div>
         <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
           <div className="relative flex flex-col galaxy:flex-row flex-wrap gap-4 galaxy:gap-2 h-fit max-w-fit w-fit">
