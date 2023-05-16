@@ -9,7 +9,7 @@ import lodash from "lodash";
 
 const useCollections = (): useCollectionsResult => {
   const router = useRouter();
-  const [gallery, setGallery] = useState<Gallery[]>(tokens.slice(0, 9));
+  const [gallery, setGallery] = useState<Gallery[]>(tokens.slice(-9));
   const [collectionFilter, setCollectionFilter] = useState<string>("");
   const [nameInput, setNameInput] = useState<string>();
   const [styleFilter, setStyleFilter] = useState<string>(" ");
@@ -163,7 +163,7 @@ const useCollections = (): useCollectionsResult => {
           sexSelect.length === 0 &&
           !nameInput
         ) {
-          filteredGallery = tokens.slice(0, 9);
+          filteredGallery = tokens.slice(-9);
         }
       });
     }
