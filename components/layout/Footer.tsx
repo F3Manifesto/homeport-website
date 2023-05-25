@@ -119,7 +119,11 @@ const Footer: FunctionComponent = (): JSX.Element => {
               </Link>
             </div>
             <div className="relative w-fit h-fit col-start-3">
-              <Link href={"https://lenster.xyz/u/f3manifesto.lens"}>
+              <Link
+                href={
+                  "https://www.chromadin.xyz/#chat?option=history&profile=f3manifesto"
+                }
+              >
                 <a
                   target="_blank"
                   rel="noreferrer"
