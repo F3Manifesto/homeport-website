@@ -5,13 +5,13 @@ import shuffle from "shuffle-array";
 const useF3Manifesto = (): UseF3ManifestoResults => {
   const [newImagesURI, setNewImagesURI] = useState<string[]>([
     "QmToXdYPDtkWEsgmhHKef5yXPuuXKpvmSwGKdfE8u5z5LR",
-    "QmWPRaKEPK8pexCPkdPg5viome8x5RQx8xjRehXkxMY4BH",
+    "QmZkDxAytc1em4HjDugaADBLQ29ke3FSrrrnThas41DzE8",
     "QmahxsFpuw13Yr33BYaouvf3uhUHq14dec5HPgShoLrbu6",
     "QmavRQgQJ7DpiBEx6TA9iMqM6eswW72bHN4iRfHbymg3tA",
     "QmebQ98BepuhihKMKgH6qv1XztAW2WoVxeaj13aNUh6dCw",
   ]);
   const [mainImage, setMainImage] = useState<string>(
-    "QmWPRaKEPK8pexCPkdPg5viome8x5RQx8xjRehXkxMY4BH"
+    "QmZkDxAytc1em4HjDugaADBLQ29ke3FSrrrnThas41DzE8"
   );
 
   const imagesURI: string[] = [
@@ -42,6 +42,7 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     "QmRgqssivj2WTMBnfqa5VkRBZSmYtt2JWZ2jqeYjB8pH7U",
     "QmSmXa7BgJComJmvFRexRqegyo8XETZzj6m2JjBkewXXLo",
     "QmQ9x9pZysAe1DLvEVqJJDxVBDJfCCMdhU3Gzafha1T9Z7",
+    "QmWPRaKEPK8pexCPkdPg5viome8x5RQx8xjRehXkxMY4BH",
   ];
 
   const refreshImages = (): void => {
