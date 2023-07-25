@@ -41,9 +41,8 @@ const Footer: FunctionComponent = (): JSX.Element => {
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
           Through the gritty streets of Brooklyn, across the park, forward
-          towards Graham. Her steel-toed boots clicked on the pavement. She was
-          on a mission. <br /> <br /> The old guard of the looked upon her
-          movement with fear and envy.
+          towards Graham. Her steel-toed boots clicked on the pavement. <br />
+          <br /> She was on a mission.
           <br /> <br />
           Decentralized manufacturing in New York City. In hidden workshops
           beneath the city, fabrics shimmered with arcane beauty, woven from
