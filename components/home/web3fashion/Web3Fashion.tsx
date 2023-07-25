@@ -37,7 +37,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           animate="animate"
           className="w-fit h-fit absolute top-28 sm:top-10 right-4 z-10 will-change-transform cursor-empireS"
         >
-          <Image priority src="/images/carts.gif" width={40} height={30} />
+          <Image priority src="/images/carts.gif" width={40} height={30}         draggable={false} />
         </motion.div>
         <div
           className={`min-h-full h-full absolute w-screen min-w-screen ${
@@ -49,6 +49,7 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
             src={`https://f3manifesto.infura-ipfs.io/ipfs/QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
             objectFit="cover"
             layout="fill"
+            draggable={false}
             onLoadingComplete={() => setBlur(false)}
           />
         </div>

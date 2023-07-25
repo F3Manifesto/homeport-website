@@ -42,6 +42,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                       objectFit="cover"
                       onLoadingComplete={() => setBlur(false)}
                       layout="fill"
+                      draggable={false}
                       src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
                     />
                   </div>
@@ -74,6 +75,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <Image
                 width={60}
                 height={60}
+                draggable={false}
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                 onLoadingComplete={() => setBlur(false)}
                 className="relative w-full h-full"
@@ -98,6 +100,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               >
                 <Image
                   priority
+                  draggable={false}
                   src={`https://f3manifesto.infura-ipfs.io/ipfs/${mainImage}`}
                   layout="fill"
                   objectPosition={"top"}

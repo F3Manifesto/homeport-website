@@ -20,6 +20,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
               height={40}
               src="/images/heartbar.gif"
               priority
+              draggable={false}
               onLoadingComplete={() => setBlur(false)}
             />
           </div>
@@ -32,6 +33,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
             <Image
               width={35}
               height={25}
+              draggable={false}
               src="/images/heartbar.gif"
               priority
               onLoadingComplete={() => setBlur(false)}
@@ -54,6 +56,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
             <Image
               width={50}
               height={17}
+              draggable={false}
               src="/images/f3mstatic.gif"
               priority
               onLoadingComplete={() => setBlur(false)}
@@ -66,6 +69,7 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
           >
             <Image
               width={35}
+              draggable={false}
               height={11}
               src="/images/f3mstatic.gif"
               priority

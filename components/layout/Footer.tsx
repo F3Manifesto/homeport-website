@@ -40,24 +40,21 @@ const Footer: FunctionComponent = (): JSX.Element => {
           </div>
         </div>
         <div className="relative h-fit w-fit md:w-fit text-xs font-glitch w-fit leading-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 pr-10 md:pr-32 pl-10">
-          In the forgotten corners of the world, a group of weavers had set out
-          to challenge the very foundations of the fashion industry. Their
-          mission was simple yet bold: to create a new paradigm of production,
-          one that was free, open, and accessible to all. Armed with
-          cutting-edge web3 and AI technologies, they designed a new kind of
-          loom that could be built using basic materials, giving rise to a wave
-          of grassroots innovation and creativity that spread like wildfire.
+          Through the gritty streets of Brooklyn, across the park, forward
+          towards Graham. Her steel-toed boots clicked on the pavement. She was
+          on a mission. <br /> <br /> The old guard of the looked upon her
+          movement with fear and envy.
           <br /> <br />
-          Their workshops became sanctuaries of the new industry, where the most
-          talented and visionary fashion designers gathered to learn the secrets
-          of the weavers' craft. Every thread they spun was infused with the
-          magic of their dreams, forming an intricate tapestry that shimmered
-          under the dim light of the ancient moon. But their path was fraught
-          with danger, as the old guard of the fashion industry fought tooth and
-          nail to maintain their grip on power and profit.
+          Decentralized manufacturing in New York City. In hidden workshops
+          beneath the city, fabrics shimmered with arcane beauty, woven from
+          ether and moonbeams. Each item bestows uncanny gifts upon the wearer -
+          invisibility, flight, protection from blades and spells. Where once
+          was just brick and concrete, now swirled portals to other realms,
+          viewable only by those initiated into the fold. Each cloak and tunic
+          was a spell, waiting to be unleashed.
         </div>
         <div className="relative h-fit w-fit text-sm font-futur col-start-1 md:col-start-2 row-start-4 md:row-start-3 pl-10 self-end">
-          log: 0011
+          log: 0012
         </div>
         <div className="relative col-start-1 row-start-6 md:row-start-4 md:col-start-1 lg:col-start-3 lg:row-start-1 h-fit w-fit pl-10 pt-4 md:pt-10 lg:pt-0 lg:pl-0 lg:pr-4">
           <div className="relative flex flex-col galaxy:flex-row flex-wrap gap-4 galaxy:gap-2 h-fit max-w-fit w-fit">
@@ -96,6 +93,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   className="cursor-empireS h-fit relative pr-1"
                 >
                   <Image
+                    draggable={false}
                     src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVBiKdFNfb7p8TCiaiHFiof3Z3cWJ1SFAPackcKr3m5SU`}
                     width={21}
                     height={26}
@@ -113,6 +111,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   <Image
                     width={29}
                     height={28}
+                    draggable={false}
                     src={`https://f3manifesto.infura-ipfs.io/ipfs/QmTgYZMe5qgaFCBoSicsr6sdEJmfguqwPzQ2CEFLTXWvMA`}
                   />
                 </a>
@@ -133,6 +132,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                     src={`https://f3manifesto.infura-ipfs.io/ipfs/QmamuDJVJw4BoWUrnRdE4GVabsbUFsYPysqzQn3pfeTPL9`}
                     width={30}
                     height={30}
+                    draggable={false}
                   />
                 </a>
               </Link>
@@ -159,6 +159,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                     src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVCdoxVzrTLwzht4L11VJp2Kove61EJobtoxzCzoEK6Go`}
                     width={30}
                     height={20}
+                    draggable={false}
                   />
                 </a>
               </Link>

@@ -246,6 +246,7 @@ const TokenDetails: React.FC<
                 layout="fill"
                 objectFit="contain"
                 unoptimized
+                draggable={false}
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/${token[0].image}`}
                 loader={() => token[0].image}
               />

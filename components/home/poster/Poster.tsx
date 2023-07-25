@@ -17,6 +17,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
           objectFit="cover"
           objectPosition={"left"}
           onLoadingComplete={() => setBlur(false)}
+          draggable={false}
         />
       </div>
       <div className="relative w-full h-full min-h-full">
@@ -33,6 +34,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   priority
                   objectFit="cover"
                   layout="fill"
+                  draggable={false}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>
@@ -48,6 +50,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   priority
                   objectFit="cover"
                   layout="fill"
+                  draggable={false}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>
@@ -63,6 +66,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                   priority
                   objectFit="cover"
                   layout="fill"
+                  draggable={false}
                   onLoadingComplete={() => setBlur(false)}
                 />
               </div>
