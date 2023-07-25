@@ -114,6 +114,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
                 objectFit="cover"
                 layout="fill"
                 priority
+                draggable={false}
                 onLoadingComplete={() => setBlur(false)}
               />
             </div>

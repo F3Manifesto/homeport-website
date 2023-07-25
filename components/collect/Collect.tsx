@@ -96,6 +96,7 @@ const Collect: FunctionComponent<CollectProps> = ({
               layout="fill"
               alt="Expand"
               priority
+              draggable={false}
             />
           </div>
         </div>
@@ -128,6 +129,7 @@ const Collect: FunctionComponent<CollectProps> = ({
               layout="fill"
               alt="Expand"
               priority
+              draggable={false}
             />
           </div>
         </div>

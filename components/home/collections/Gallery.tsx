@@ -35,6 +35,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                   priority
                   objectFit="cover"
                   layout="fill"
+                  draggable={false}
                   alt={token.name}
                   objectPosition="top"
                   style={blur ? { opacity: 0 } : { opacity: 1 }}

@@ -22,6 +22,7 @@ const PinBoard = (): JSX.Element => {
               src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
+              draggable={false}
             />
           </a>
           <a
@@ -38,6 +39,7 @@ const PinBoard = (): JSX.Element => {
               src={`https://f3manifesto.infura-ipfs.io/ipfs/QmXM6QSYCbMJ5eXJHuGqMTbCTkaDqth5c4NswX2nWTpenB`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
+              draggable={false}
             />
           </a>
           <a
@@ -54,6 +56,7 @@ const PinBoard = (): JSX.Element => {
               src={`https://f3manifesto.infura-ipfs.io/ipfs/QmbF9Lt5KQ3m9xxnqSRD2nmcr5mgtf1V2ruRYcrMnrFpni`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
+              draggable={false}
             />
           </a>
         </div>
@@ -83,6 +86,7 @@ const PinBoard = (): JSX.Element => {
                 height={50}
                 onLoadingComplete={() => setBlur(false)}
                 className="flex place-self-center w-fit h-fit"
+                draggable={false}
               />
             </div>
           </div>
@@ -96,6 +100,7 @@ const PinBoard = (): JSX.Element => {
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX`}
                 width={65}
                 height={50}
+                draggable={false}
                 onLoadingComplete={() => setBlur(false)}
                 className="flex place-self-center w-fit h-fit"
               />
@@ -137,6 +142,7 @@ const PinBoard = (): JSX.Element => {
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML`}
                 width={65}
+                draggable={false}
                 height={50}
                 onLoadingComplete={() => setBlur(false)}
                 className="flex place-self-center w-fit h-fit"
@@ -153,6 +159,7 @@ const PinBoard = (): JSX.Element => {
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR`}
                 width={75}
                 height={60}
+                draggable={false}
                 onLoadingComplete={() => setBlur(false)}
                 className="flex place-self-center w-fit h-fit"
               />
@@ -197,6 +204,7 @@ const PinBoard = (): JSX.Element => {
                 height={70}
                 onLoadingComplete={() => setBlur(false)}
                 className="flex place-self-center w-fit h-fit"
+                draggable={false}
               />
             </div>
           </div>
