@@ -400,7 +400,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -413,6 +414,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -455,7 +458,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -468,6 +472,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -642,7 +648,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -655,6 +662,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -726,7 +735,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -739,6 +749,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -816,7 +828,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -829,6 +842,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -900,7 +915,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -913,6 +929,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -987,7 +1005,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1000,6 +1019,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1074,7 +1095,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1087,6 +1109,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1126,7 +1150,8 @@ const useCollections = (): useCollectionsResult => {
           if (
             collectionsSelected[i] !== "MEVOverride" &&
             collectionsSelected[i] !== "LoFiSynthwear" &&
-            collectionsSelected[i] !== "Jidōka Imprint"
+            collectionsSelected[i] !== "Jidōka Imprint" &&
+            collectionsSelected[i] !== "LESExchange"
           ) {
             formattedCollection?.push(
               collectionsSelected[i]
@@ -1139,6 +1164,8 @@ const useCollections = (): useCollectionsResult => {
             formattedCollection?.push("LoFi Synthwear");
           } else if (collectionsSelected[i] === "Jidōka Imprint") {
             formattedCollection?.push("Jidōka Imprint");
+          } else if (collectionsSelected[i] === "LESExchange") {
+            formattedCollection?.push("LES Exchange");
           }
         }
         if (collectionsSelected[0] !== "none") {
@@ -1182,7 +1209,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1195,6 +1223,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1256,7 +1286,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1269,6 +1300,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1334,7 +1367,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1347,6 +1381,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1389,7 +1425,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1402,6 +1439,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1490,7 +1529,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelect[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1503,6 +1543,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1574,7 +1616,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1587,6 +1630,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1664,7 +1709,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1677,6 +1723,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1748,7 +1796,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -1761,6 +1810,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -1835,7 +1886,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1848,6 +1900,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -1922,7 +1976,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -1935,6 +1990,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2015,7 +2072,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2028,6 +2086,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2088,7 +2148,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2101,6 +2162,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2292,7 +2355,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2305,6 +2369,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2376,7 +2442,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2389,6 +2456,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2466,7 +2535,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2479,6 +2549,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2550,7 +2622,8 @@ const useCollections = (): useCollectionsResult => {
               if (
                 collectionSelected[i] !== "MEVOverride" &&
                 collectionSelected[i] !== "LoFiSynthwear" &&
-                collectionSelected[i] !== "Jidōka Imprint"
+                collectionSelected[i] !== "Jidōka Imprint" &&
+                collectionSelected[i] !== "LESExchange"
               ) {
                 formattedCollection?.push(
                   collectionSelected[i]
@@ -2563,6 +2636,8 @@ const useCollections = (): useCollectionsResult => {
                 formattedCollection?.push("LoFi Synthwear");
               } else if (collectionSelected[i] === "Jidōka Imprint") {
                 formattedCollection?.push("Jidōka Imprint");
+              } else if (collectionSelected[i] === "LESExchange") {
+                formattedCollection?.push("LES Exchange");
               }
             }
             if (collectionSelected[0] !== "none") {
@@ -2637,7 +2712,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2650,6 +2726,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
@@ -2724,7 +2802,8 @@ const useCollections = (): useCollectionsResult => {
             if (
               collectionSelected[i] !== "MEVOverride" &&
               collectionSelected[i] !== "LoFiSynthwear" &&
-              collectionSelected[i] !== "Jidōka Imprint"
+              collectionSelected[i] !== "Jidōka Imprint" &&
+              collectionSelected[i] !== "LESExchange"
             ) {
               formattedCollection?.push(
                 collectionSelected[i]
@@ -2737,6 +2816,8 @@ const useCollections = (): useCollectionsResult => {
               formattedCollection?.push("LoFi Synthwear");
             } else if (collectionSelected[i] === "Jidōka Imprint") {
               formattedCollection?.push("Jidōka Imprint");
+            } else if (collectionSelected[i] === "LESExchange") {
+              formattedCollection?.push("LES Exchange");
             }
           }
           if (collectionSelected[0] !== "none") {
