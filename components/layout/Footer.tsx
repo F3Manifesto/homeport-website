@@ -119,7 +119,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
             <div className="relative w-fit h-fit col-start-3">
               <Link
                 href={
-                  "https://www.chromadin.xyz/#chat?option=history&profile=f3manifesto"
+                  "https://www.chromadin.xyz/autograph/f3manifesto"
                 }
               >
                 <a

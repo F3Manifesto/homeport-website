@@ -27,8 +27,16 @@ export const CollectContextDefault = {
   setApprovedData: (approved: boolean) => {},
   approvedSuccess: false,
   setApprovedSuccess: (approvedSuccess: boolean) => {},
-  showDropStatusModal: false,
-  setShowDropStatusModal: (showDropStatusModal: boolean) => {},
+  showDropStatusModal: {
+    open: false,
+    type: "",
+    name: "",
+  },
+  setShowDropStatusModal: (showDropStatusModal: {
+    open: boolean;
+    type: string;
+    name: string;
+  }) => {},
 };
 
 export const CollectContext = createContext(CollectContextDefault);
@@ -75,9 +83,11 @@ const TokenDetails: React.FC<
   const [approvedSuccess, setApprovedSuccess] = useState<boolean>(
     CollectContextDefault.approvedData
   );
-  const [showDropStatusModal, setShowDropStatusModal] = useState<boolean>(
-    CollectContextDefault.showDropStatusModal
-  );
+  const [showDropStatusModal, setShowDropStatusModal] = useState<{
+    open: boolean;
+    type: string;
+    name: string;
+  }>(CollectContextDefault.showDropStatusModal);
   const {
     errorState,
     prepareNFTDataCollection,
@@ -199,10 +209,10 @@ const TokenDetails: React.FC<
             <Approve />
           </div>
         )}
-        {showDropStatusModal && (
+        {showDropStatusModal.open && (
           <div
             className={`${
-              !showDropStatusModal && "hidden"
+              !showDropStatusModal.open && "hidden"
             } z-10 items-center justify-center fixed inset-0 w-full h-auto grid grid-flow-col auto-cols-auto backdrop-blur-sm`}
           >
             <DropStatus />
