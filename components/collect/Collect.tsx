@@ -23,7 +23,7 @@ const Collect: FunctionComponent<CollectProps> = ({
     setShowDropStatusModal,
   } = useContext(CollectContext);
   const { isConnected } = useAccount();
-  
+
   let action = "COLLECT";
 
   const decideStringAction = () => {
@@ -83,7 +83,14 @@ const Collect: FunctionComponent<CollectProps> = ({
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-auto border-2 border-black grid grid-flow-col auto-cols-auto p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
           onClick={
             token[0]?.dropStatus === true
-              ? () => setShowDropStatusModal(true)
+              ? () =>
+                  setShowDropStatusModal({
+                    open: true,
+                    type: token[0]?.link?.includes("chromadin")
+                      ? "chromadin"
+                      : "",
+                    name: token[0]?.name,
+                  })
               : () => setShowApprovalModal(true)
           }
         >
@@ -108,7 +115,14 @@ const Collect: FunctionComponent<CollectProps> = ({
           className="relative w-28 h-10 row-start-1 font-firaL text-5xl text-black grid grid-flow-col auto-cols-auto border-2 border-black grid grid-flow-col auto-cols-auto p-1 hover:bg-midBlue hover:cursor-empireS active:scale-95"
           onClick={
             token[0]?.dropStatus === true
-              ? () => setShowDropStatusModal(true)
+              ? () =>
+                  setShowDropStatusModal({
+                    open: true,
+                    type: token[0]?.link?.includes("chromadin")
+                      ? "chromadin"
+                      : "",
+                    name: token[0]?.name,
+                  })
               : token[0].type === "collection"
               ? () => collectNFT()
               : () => collectMarket()
