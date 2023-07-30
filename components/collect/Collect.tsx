@@ -90,7 +90,7 @@ const Collect: FunctionComponent<CollectProps> = ({
           <div className="col-start-1 relative w-fit h-fit hover:opacity-70 text-base font-fira place-self-center pr-2">
             COLLECT{" "}
           </div>
-          <div className="col-start-2 w-4 h-4 relative w-fit h-fit place-self-center">
+          <div className="col-start-2 w-4 h-4 relative place-self-center">
             <Image
               src={`https://f3manifesto.infura-ipfs.io/ipfs/QmU7d9YioaZKoAoNBG95T5W5JohNR2Ci2fYfJKC7NKkZSg`}
               layout="fill"
