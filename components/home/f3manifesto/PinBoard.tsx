@@ -1,8 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
+import { PinBoardProps } from "../../../types/general.types";
+import styles from "./../../../pages/api/styles.json";
 
-const PinBoard = (): JSX.Element => {
+const PinBoard: FunctionComponent<PinBoardProps> = ({
+  goShopping,
+  filterStyle,
+}): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
     <div className="w-full bg-gradient-to-r from-grad1 via-grad2 to-grad3 h-auto relative border-2 border-borderBlue">
@@ -76,9 +80,13 @@ const PinBoard = (): JSX.Element => {
               </div>
             </div>
             <div
-              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto ${
+              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto cursor-empireS ${
                 blur && "blur-sm animate-unblur"
               }`}
+              onClick={() => {
+                goShopping();
+                filterStyle(styles[2].style, true);
+              }}
             >
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H`}
@@ -92,9 +100,13 @@ const PinBoard = (): JSX.Element => {
           </div>
           <div className="relative flex flex-col xl:flex-row w-fit h-fit gap-3 items-center">
             <div
-              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto ${
+              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto cursor-empireS ${
                 blur && "blur-sm animate-unblur"
               }`}
+              onClick={() => {
+                goShopping();
+                filterStyle(styles[1].style, true);
+              }}
             >
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX`}
@@ -135,9 +147,13 @@ const PinBoard = (): JSX.Element => {
               </div>
             </div>
             <div
-              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto ${
+              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto cursor-empireS ${
                 blur && "blur-sm animate-unblur"
               }`}
+              onClick={() => {
+                goShopping();
+                filterStyle(styles[0].style, true);
+              }}
             >
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML`}
@@ -151,9 +167,13 @@ const PinBoard = (): JSX.Element => {
           </div>
           <div className="relative flex flex-col xl:flex-row w-fit h-fit gap-3 items-center">
             <div
-              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto ${
+              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto cursor-empireS ${
                 blur && "blur-sm animate-unblur"
               }`}
+              onClick={() => {
+                goShopping();
+                filterStyle(styles[4].style, true);
+              }}
             >
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR`}
@@ -194,9 +214,13 @@ const PinBoard = (): JSX.Element => {
               </div>
             </div>
             <div
-              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto ${
+              className={`relative w-fit hover:rotate-45 h-fit grid grid-flow-cols auto-cols-auto cursor-empireS ${
                 blur && "blur-sm animate-unblur"
               }`}
+              onClick={() => {
+                goShopping();
+                filterStyle(styles[3].style, true);
+              }}
             >
               <Image
                 src={`https://f3manifesto.infura-ipfs.io/ipfs/QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP`}

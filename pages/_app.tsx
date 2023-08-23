@@ -4,25 +4,30 @@ import { useEffect, useState, createContext } from "react";
 import Footer from "../components/layout/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { polygon } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
 
-const { chains, provider } = configureChains(
-  [chain.mainnet],
-  [publicProvider()]
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [polygon],
+  [
+    alchemyProvider({
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,
+    }),
+  ]
 );
-
 const { connectors } = getDefaultWallets({
-  appName: "F3Manifesto",
+  appName: "Legend",
   chains,
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
 });
 
-const wagmiClient = createClient({
+const config = createConfig({
   autoConnect: true,
+  publicClient,
+  webSocketPublicClient,
   connectors,
-  provider,
 });
-
 export const GlobalContextDefault = {
   order: "",
   setOrder: (order: string) => {},
@@ -81,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
         <GlobalContext.Provider
           value={{ order, setOrder, clickedFromMain, setClickedFromMain }}

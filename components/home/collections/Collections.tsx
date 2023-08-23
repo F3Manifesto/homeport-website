@@ -1,23 +1,20 @@
 import { FunctionComponent } from "react";
 import { CollectionProps } from "./../../../types/general.types";
 import Gallery from "./Gallery";
-import useCollections from "./hooks/useCollections";
 import Search from "./Search";
 
 const Collections: FunctionComponent<CollectionProps> = ({
   shopping,
   setOrder,
+  gallery,
+  filterCollections,
+  filterName,
+  filterStyle,
+  collectionSelect,
+  styleSelect,
+  sexSelect,
+  filterSex,
 }): JSX.Element => {
-  const {
-    gallery,
-    filterCollections,
-    filterName,
-    filterStyle,
-    collectionSelect,
-    styleSelect,
-    sexSelect,
-    filterSex,
-  } = useCollections();
   return (
     <div
       className="w-full min-h-auto h-auto relative flex cursor-empireA"
