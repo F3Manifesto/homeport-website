@@ -57,9 +57,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const name: string = context.params.name;
-  // const { base64 } = await getPlaiceholder(
-  //   `/images/gallery/${name}.png`.replaceAll("-", "")
-  // );
   const response = tokens.filter(
     (token: Gallery) =>
       token.name.replaceAll(" ", "-").toLowerCase() === name.toLowerCase()
