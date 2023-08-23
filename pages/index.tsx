@@ -10,12 +10,23 @@ import Slider from "../components/home/slider/Slider";
 import Gap from "../components/home/gap/Gap";
 import { useContext, useRef } from "react";
 import { GlobalContext } from "./_app";
+import useCollections from "../components/home/collections/hooks/useCollections";
 
 const Home: NextPage = (): JSX.Element => {
   const shopping = useRef<null | HTMLDivElement>(null);
   const goShopping = (): void => {
     shopping.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const {
+    gallery,
+    filterCollections,
+    filterName,
+    filterStyle,
+    collectionSelect,
+    styleSelect,
+    sexSelect,
+    filterSex,
+  } = useCollections();
 
   const { setOrder } = useContext(GlobalContext);
 
@@ -45,9 +56,20 @@ const Home: NextPage = (): JSX.Element => {
         <link rel="canonical" href="https://f3manifesto.xyz/" />
       </Head>
       <VintageFilm />
-      <F3Manifesto />
+      <F3Manifesto goShopping={goShopping} filterStyle={filterStyle} />
       <Web3Fashion goShopping={goShopping} />
-      <Collections shopping={shopping} setOrder={setOrder} />
+      <Collections
+        shopping={shopping}
+        setOrder={setOrder}
+        gallery={gallery}
+        filterCollections={filterCollections}
+        filterName={filterName}
+        filterStyle={filterStyle}
+        collectionSelect={collectionSelect}
+        styleSelect={styleSelect}
+        sexSelect={sexSelect}
+        filterSex={filterSex}
+      />
       <Poster />
       <Clear />
       <Slider />

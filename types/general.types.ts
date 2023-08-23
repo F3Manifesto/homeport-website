@@ -17,7 +17,7 @@ export type useCollectionsResult = {
   gallery: Gallery[];
   filterName: (e: any) => void;
   filterCollections: (e: any) => void;
-  filterStyle: (e: any) => void;
+  filterStyle: (e: any, type?: boolean) => void;
   clickedStyle: boolean;
   clickedCollection: boolean;
   collectionSelect: string[];
@@ -71,7 +71,7 @@ export type GalleryProps = {
 export type SearchProps = {
   filterName: (e: any) => void;
   filterCollections: (e: any) => void;
-  filterStyle: (e: any) => void;
+  filterStyle: (e: any, type?: boolean) => void;
   collectionSelect: string[];
   styleSelect: string[];
   sexSelect: string[];
@@ -101,6 +101,14 @@ export interface Gallery {
 export type CollectionProps = {
   shopping: any;
   setOrder: (e: string) => void;
+  filterName: (e: any) => void;
+  filterCollections: (e: any) => void;
+  filterStyle: (e: any, type?: boolean) => void;
+  collectionSelect: string[];
+  styleSelect: string[];
+  sexSelect: string[];
+  filterSex: (e: any) => void;
+  gallery: Gallery[];
 };
 
 export type Web3FashionProps = {
@@ -136,14 +144,18 @@ export type MainBoardProps = {
   mainImage: string;
   imagesURI: string[];
   newImagesURI: string[];
+  goShopping: () => void;
+  filterStyle: (e: any, type?: boolean) => void;
 };
 
-export type SmallBoardProps = {
-  refreshImages: () => void;
-  viewMainImage: (e: any) => void;
-  mainImage: string;
-  imagesURI: string[];
-  newImagesURI: string[];
+export type PinBoardProps = {
+  goShopping: () => void;
+  filterStyle: (e: any, type?: boolean) => void;
+};
+
+export type F3ManifestoProps = {
+  goShopping: () => void;
+  filterStyle: (e: any, type?: boolean) => void;
 };
 
 export type usePreOrderResults = {

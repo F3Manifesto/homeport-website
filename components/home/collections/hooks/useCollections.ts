@@ -50,15 +50,21 @@ const useCollections = (): useCollectionsResult => {
     filterURL(clickedArray, "sex");
   };
 
-  const filterStyle = (e: any): void => {
-    setStyleFilter(e.target.name);
+  const filterStyle = (e: any, type?: boolean): void => {
+    let value: string;
+    if (type) {
+      value = e;
+    } else {
+      value = e.target.name;
+    }
+    setStyleFilter(value);
     let clickedArray: string[] = [];
-    if (styleSelect.includes(e.target.name)) {
+    if (styleSelect.includes(value)) {
       clickedArray = styleSelect.filter(
-        (collection: string) => collection !== e.target.name
+        (collection: string) => collection !== value
       );
     } else {
-      clickedArray = [...styleSelect, e.target.name];
+      clickedArray = [...styleSelect, value];
     }
     setStyleSelect(clickedArray);
     setClickedStyle(!clickedStyle);

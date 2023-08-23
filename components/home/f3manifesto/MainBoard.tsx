@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 import PinBoard from "./PinBoard";
 import { MainBoardProps } from "../../../types/general.types";
 
+
 const MainBoard: FunctionComponent<MainBoardProps> = ({
   refreshImages,
   mainImage,
   viewMainImage,
   imagesURI,
   newImagesURI,
+  goShopping,
+  filterStyle,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
@@ -114,7 +117,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
         </div>
       </div>
       <div className="relative col-start-2 h-full w-[4vw] bg-offBlack"></div>
-      <PinBoard />
+      <PinBoard goShopping={goShopping} filterStyle={filterStyle} />
     </div>
   );
 };
