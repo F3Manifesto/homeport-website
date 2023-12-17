@@ -64,6 +64,11 @@ module.exports = {
         futur: "Futurist",
         jacklane: "Jack Lane",
       },
+      zIndex: {
+        1: "1",
+        2: "2",
+        3: "3",
+      },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0)" },

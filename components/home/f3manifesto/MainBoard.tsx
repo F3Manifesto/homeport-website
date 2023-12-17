@@ -3,16 +3,16 @@ import { FunctionComponent, useState } from "react";
 import { motion } from "framer-motion";
 import PinBoard from "./PinBoard";
 import { MainBoardProps } from "../../../types/general.types";
-
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const MainBoard: FunctionComponent<MainBoardProps> = ({
   refreshImages,
   mainImage,
   viewMainImage,
-  imagesURI,
   newImagesURI,
   goShopping,
-  filterStyle,
+  filterURL,
+  filterConstants,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
@@ -28,7 +28,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
         <div className="flex flex-col md:flex-row h-fit w-full relative pt-3">
           <div className="relative flex flex-col w-full h-full grid-flow-row">
             <div className="h-full relative flex flex-col gap-4 w-full">
-              {newImagesURI.map((uri: string, index: number) => {
+              {newImagesURI?.map((uri: string, index: number) => {
                 return (
                   <div
                     key={index}
@@ -46,7 +46,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                       onLoadingComplete={() => setBlur(false)}
                       layout="fill"
                       draggable={false}
-                      src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
+                      src={`${INFURA_GATEWAY}/ipfs/${uri}`}
                     />
                   </div>
                 );
@@ -56,12 +56,14 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
               <p className="font-glitch w-full md:w-96 xl:w-72 h-fit relative inline-table flex-col text-sm sm:text-base md:text-lg leading-tight cursor-empireS left-0 half:left-20 break-word">
                 Like most things in glass dial simulacra
                 <span className="font-air">,</span>
-                their appeal comes from appearance, status, and material use.
+                their appeal comes from appearance
+                <span className="font-air">,</span> status
+                <span className="font-air">,</span> and material use.
                 <br />
                 <br />
                 In worlds run by interfaces
                 <span className="font-air">,</span> machine code
-                <span className="font-air">,</span> and whimsy<span>,</span>
+                <span className="font-air">,</span> and whimsy<span>.</span>
               </p>
             </div>
           </div>
@@ -79,7 +81,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 width={60}
                 height={60}
                 draggable={false}
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
+                src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                 onLoadingComplete={() => setBlur(false)}
                 className="relative w-full h-full"
               />
@@ -104,7 +106,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                 <Image
                   priority
                   draggable={false}
-                  src={`https://f3manifesto.infura-ipfs.io/ipfs/${mainImage}`}
+                  src={`${INFURA_GATEWAY}/ipfs/${mainImage}`}
                   layout="fill"
                   objectPosition={"top"}
                   objectFit="cover"
@@ -117,7 +119,11 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
         </div>
       </div>
       <div className="relative col-start-2 h-full w-[4vw] bg-offBlack"></div>
-      <PinBoard goShopping={goShopping} filterStyle={filterStyle} />
+      <PinBoard
+        filterConstants={filterConstants}
+        goShopping={goShopping}
+        filterURL={filterURL}
+      />
     </div>
   );
 };

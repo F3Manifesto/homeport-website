@@ -1,6 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const Slider: FunctionComponent = (): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
@@ -110,7 +111,7 @@ const Slider: FunctionComponent = (): JSX.Element => {
               }`}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/${uri}`}
+                src={`${INFURA_GATEWAY}/ipfs/${uri}`}
                 objectFit="cover"
                 layout="fill"
                 priority

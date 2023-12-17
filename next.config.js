@@ -1,20 +1,18 @@
 /** @type {import('next').NextConfig} */
+
+const allowedOrigins = [
+  "https://api-v2-mumbai.lens.dev/",
+  "https://api-v2.lens.dev/",
+  "https://thedial.infura-ipfs.io",
+  "https://f3manifesto.infura-ipfs.io",
+  "https://api.thegraph.com",
+  "https://arweave.net/",
+  "https://gw.ipfs-lens.dev",
+  "https://hey.xyz",
+];
+
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    scrollRestoration: true,
-    optimizeCss: true,
-  },
-
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-  compiler: {
-    styledComponents: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -30,7 +28,32 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  trailingSlash: true,
+  async headers() {
+    let headersConfig = [];
+
+    allowedOrigins.forEach((origin) => {
+      headersConfig.push({
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: origin,
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value:
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, PUT, DELETE, OPTIONS",
+          },
+        ],
+      });
+    });
+
+    return headersConfig;
+  },
 };
 
 module.exports = nextConfig;

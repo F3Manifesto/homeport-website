@@ -5,15 +5,20 @@ import Search from "./Search";
 
 const Collections: FunctionComponent<CollectionProps> = ({
   shopping,
-  setOrder,
   gallery,
-  filterCollections,
-  filterName,
-  filterStyle,
-  collectionSelect,
-  styleSelect,
-  sexSelect,
-  filterSex,
+  router,
+  filterConstants,
+  filteredGallery,
+  galleryLoading,
+  filterURL,
+  interactionLoaders,
+  mirror,
+  like,
+  quote,
+  connected,
+  lensConnected,
+  openConnectModal,
+  dispatch,
 }): JSX.Element => {
   return (
     <div
@@ -24,15 +29,24 @@ const Collections: FunctionComponent<CollectionProps> = ({
       <div className="w-full min-h-auto bg-offWhite relative inline-block">
         <hr className="h-4 w-full bg-grayBlue top-2 absolute" />
         <Search
-          styleSelect={styleSelect}
-          collectionSelect={collectionSelect}
-          filterStyle={filterStyle}
-          filterCollections={filterCollections}
-          filterName={filterName}
-          sexSelect={sexSelect}
-          filterSex={filterSex}
+          router={router}
+          filterURL={filterURL}
+          filterConstants={filterConstants}
         />
-        <Gallery gallery={gallery} setOrder={setOrder} />
+        <Gallery
+          filteredGallery={filteredGallery}
+          gallery={gallery}
+          router={router}
+          galleryLoading={galleryLoading}
+          dispatch={dispatch}
+          connected={connected}
+          mirror={mirror}
+          quote={quote}
+          like={like}
+          interactionLoaders={interactionLoaders}
+          lensConnected={lensConnected}
+          openConnectModal={openConnectModal}
+        />
       </div>
     </div>
   );

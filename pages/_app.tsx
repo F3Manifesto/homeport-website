@@ -1,12 +1,15 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useState, createContext } from "react";
+import { useEffect } from "react";
 import Footer from "../components/layout/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { Provider } from "react-redux";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { store } from "../redux/store";
+import Modals from "../components/modals/Modals";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [polygon],
@@ -17,7 +20,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   ]
 );
 const { connectors } = getDefaultWallets({
-  appName: "Legend",
+  appName: "F3Manifesto",
   chains,
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
 });
@@ -28,20 +31,8 @@ const config = createConfig({
   webSocketPublicClient,
   connectors,
 });
-export const GlobalContextDefault = {
-  order: "",
-  setOrder: (order: string) => {},
-  clickedFromMain: false,
-  setClickedFromMain: (clickedFromMain: boolean) => {},
-};
-
-export const GlobalContext = createContext(GlobalContextDefault);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [order, setOrder] = useState(GlobalContextDefault.order);
-  const [clickedFromMain, setClickedFromMain] = useState(
-    GlobalContextDefault.clickedFromMain
-  );
   useEffect(() => {
     console.log(` **                                                                 
     /**                                                                 
@@ -88,14 +79,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
-        <GlobalContext.Provider
-          value={{ order, setOrder, clickedFromMain, setClickedFromMain }}
-        >
-          <div className="min-h-screen h-auto min-w-screen w-screen bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden">
+        <Provider store={store}>
+          <div className="min-h-screen h-auto w-full bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden">
             <Component {...pageProps} />
+            <Modals />
             <Footer />
           </div>
-        </GlobalContext.Provider>
+        </Provider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

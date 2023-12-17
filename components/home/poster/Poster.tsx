@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const Poster: FunctionComponent = (): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
@@ -11,7 +12,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
         }`}
       >
         <Image
-          src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL`}
+          src={`${INFURA_GATEWAY}/ipfs/QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL`}
           priority
           layout="fill"
           objectFit="cover"
@@ -30,7 +31,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
+                  src={`${INFURA_GATEWAY}/ipfs/QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
                   priority
                   objectFit="cover"
                   layout="fill"
@@ -46,7 +47,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu`}
+                  src={`${INFURA_GATEWAY}/ipfs/QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu`}
                   priority
                   objectFit="cover"
                   layout="fill"
@@ -62,7 +63,7 @@ const Poster: FunctionComponent = (): JSX.Element => {
                 }`}
               >
                 <Image
-                  src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
+                  src={`${INFURA_GATEWAY}/ipfs/QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
                   priority
                   objectFit="cover"
                   layout="fill"
