@@ -8,27 +8,49 @@ import Poster from "../components/home/poster/Poster";
 import Clear from "../components/home/clear/Clear";
 import Slider from "../components/home/slider/Slider";
 import Gap from "../components/home/gap/Gap";
-import { useContext, useRef } from "react";
-import { GlobalContext } from "./_app";
 import useCollections from "../components/home/collections/hooks/useCollections";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
+import { polygon } from "viem/chains";
+import { createPublicClient, http } from "viem";
+import useInteractions from "../components/home/collections/hooks/useInteractions";
 
 const Home: NextPage = (): JSX.Element => {
-  const shopping = useRef<null | HTMLDivElement>(null);
-  const goShopping = (): void => {
-    shopping.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  const {
-    gallery,
-    filterCollections,
-    filterName,
-    filterStyle,
-    collectionSelect,
-    styleSelect,
-    sexSelect,
-    filterSex,
-  } = useCollections();
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { openConnectModal } = useConnectModal();
+  const { address } = useAccount();
+  const publicClient = createPublicClient({
+    chain: polygon,
+    transport: http(
+      `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`
+    ),
+  });
+  const filterConstants = useSelector(
+    (state: RootState) => state.app.filterConstantsReducer.constants
+  );
 
-  const { setOrder } = useContext(GlobalContext);
+  const gallery = useSelector(
+    (state: RootState) => state.app.allGalleryReducer.gallery
+  );
+  const walletConnected = useSelector(
+    (state: RootState) => state.app.walletConnectedReducer.value
+  );
+  const lensProfile = useSelector(
+    (state: RootState) => state.app.lensConnectedReducer.profile
+  );
+  const { shopping, goShopping, filteredGallery, galleryLoading, handleURL } =
+    useCollections(dispatch, router, gallery, lensProfile);
+  const { like, quote, mirror, interactionLoaders } = useInteractions(
+    gallery,
+    dispatch,
+    lensProfile,
+    publicClient,
+    address
+  );
 
   return (
     <div
@@ -56,19 +78,28 @@ const Home: NextPage = (): JSX.Element => {
         <link rel="canonical" href="https://f3manifesto.xyz/" />
       </Head>
       <VintageFilm />
-      <F3Manifesto goShopping={goShopping} filterStyle={filterStyle} />
+      <F3Manifesto
+        filterURL={handleURL}
+        goShopping={goShopping}
+        filterConstants={filterConstants}
+      />
       <Web3Fashion goShopping={goShopping} />
       <Collections
+        filterURL={handleURL}
         shopping={shopping}
-        setOrder={setOrder}
+        filteredGallery={filteredGallery}
+        router={router}
         gallery={gallery}
-        filterCollections={filterCollections}
-        filterName={filterName}
-        filterStyle={filterStyle}
-        collectionSelect={collectionSelect}
-        styleSelect={styleSelect}
-        sexSelect={sexSelect}
-        filterSex={filterSex}
+        filterConstants={filterConstants}
+        galleryLoading={galleryLoading}
+        interactionLoaders={interactionLoaders}
+        connected={walletConnected}
+        lensConnected={lensProfile}
+        dispatch={dispatch}
+        openConnectModal={openConnectModal}
+        mirror={mirror}
+        like={like}
+        quote={quote}
       />
       <Poster />
       <Clear />

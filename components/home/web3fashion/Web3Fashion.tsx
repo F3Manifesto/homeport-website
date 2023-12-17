@@ -3,6 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import useWeb3Fashion from "./hooks/useWeb3Fashion";
 import { Web3FashionProps } from "./../../../types/general.types";
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
   goShopping,
@@ -46,13 +47,13 @@ const Web3Fashion: FunctionComponent<Web3FashionProps> = ({
           />
         </motion.div>
         <div
-          className={`min-h-full h-full absolute w-screen min-w-screen ${
+          className={`min-h-full bg-lightYellow h-full absolute w-screen min-w-screen ${
             blur && "blur-sm animate-unblur"
           }`}
         >
           <Image
             priority
-            src={`https://f3manifesto.infura-ipfs.io/ipfs/QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
+            src={`${INFURA_GATEWAY}/ipfs/QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
             objectFit="cover"
             layout="fill"
             draggable={false}

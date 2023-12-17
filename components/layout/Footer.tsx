@@ -3,6 +3,7 @@ import { FunctionComponent, useEffect } from "react";
 import useFooter from "./hooks/useLayout";
 import { BsTwitter } from "react-icons/bs";
 import Link from "next/link";
+import { INFURA_GATEWAY } from "../../lib/constants";
 
 const Footer: FunctionComponent = (): JSX.Element => {
   const { randomImages, randomMicrofactory } = useFooter();
@@ -93,7 +94,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                 >
                   <Image
                     draggable={false}
-                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVBiKdFNfb7p8TCiaiHFiof3Z3cWJ1SFAPackcKr3m5SU`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmVBiKdFNfb7p8TCiaiHFiof3Z3cWJ1SFAPackcKr3m5SU`}
                     width={21}
                     height={26}
                   />
@@ -111,24 +112,20 @@ const Footer: FunctionComponent = (): JSX.Element => {
                     width={29}
                     height={28}
                     draggable={false}
-                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmTgYZMe5qgaFCBoSicsr6sdEJmfguqwPzQ2CEFLTXWvMA`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmTgYZMe5qgaFCBoSicsr6sdEJmfguqwPzQ2CEFLTXWvMA`}
                   />
                 </a>
               </Link>
             </div>
             <div className="relative w-fit h-fit col-start-3">
-              <Link
-                href={
-                  "https://www.chromadin.xyz/autograph/f3manifesto"
-                }
-              >
+              <Link href={"https://www.cypher.digitalax.xyz/autograph/f3manifesto"}>
                 <a
                   target="_blank"
                   rel="noreferrer"
                   className="cursor-empireS h-fit relative"
                 >
                   <Image
-                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmamuDJVJw4BoWUrnRdE4GVabsbUFsYPysqzQn3pfeTPL9`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmamuDJVJw4BoWUrnRdE4GVabsbUFsYPysqzQn3pfeTPL9`}
                     width={30}
                     height={30}
                     draggable={false}
@@ -155,7 +152,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
                   className="cursor-empireS h-fit relative"
                 >
                   <Image
-                    src={`https://f3manifesto.infura-ipfs.io/ipfs/QmVCdoxVzrTLwzht4L11VJp2Kove61EJobtoxzCzoEK6Go`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmVCdoxVzrTLwzht4L11VJp2Kove61EJobtoxzCzoEK6Go`}
                     width={30}
                     height={20}
                     draggable={false}

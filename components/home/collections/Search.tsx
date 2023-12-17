@@ -1,17 +1,10 @@
 import { FunctionComponent } from "react";
 import { SearchProps } from "./../../../types/general.types";
-import collections from "./../../../pages/api/collections.json";
-import styles from "./../../../pages/api/styles.json";
-import sex from "./../../../pages/api/sex.json";
 
 const Search: FunctionComponent<SearchProps> = ({
-  filterCollections,
-  filterName,
-  filterStyle,
-  collectionSelect,
-  styleSelect,
-  sexSelect,
-  filterSex,
+  filterConstants,
+  filterURL,
+  router,
 }): JSX.Element => {
   return (
     <div className="flex relative h-fit max-w-screen w-full min-w-fit overflow-hidden pb-12">
@@ -25,26 +18,26 @@ const Search: FunctionComponent<SearchProps> = ({
                 </div>
                 <div className="relative w-full h-fit font-conso">
                   <div className="relative flex flex-wrap justify-start gap-2 w-fit h-fit overflow-hidden">
-                    {collections.map((collection: any, index: number) => {
-                      return (
-                        <span
-                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex font-conso break-word`}
-                          key={index}
-                        >
-                          <button
-                            className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
-                              collectionSelect.includes(
-                                collection.collection
-                              ) && "bg-lightYellow"
-                            }`}
-                            name={collection.collection}
-                            onClick={(e: any) => filterCollections(e)}
+                    {filterConstants?.drops?.map(
+                      (drop: string, index: number) => {
+                        return (
+                          <span
+                            className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex font-conso break-word`}
+                            key={index}
                           >
-                            {collection.collection.toUpperCase()}
-                          </button>
-                        </span>
-                      );
-                    })}
+                            <button
+                              className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
+                                router.asPath.includes(drop) && "bg-lightYellow"
+                              }`}
+                              name={drop}
+                              onClick={() => filterURL("drop", drop)}
+                            >
+                              {drop?.toUpperCase()}
+                            </button>
+                          </span>
+                        );
+                      }
+                    )}
                   </div>
                 </div>
               </div>
@@ -57,7 +50,7 @@ const Search: FunctionComponent<SearchProps> = ({
                 <input
                   className="border border-offBlack bg-offWhite caret-offBlue focus:caret-offBlue rounded-full p-2 w-36 font-fira h-fit text-xs galaxy:text-sm sm:text-base"
                   name="filter"
-                  onChange={(e) => filterName(e)}
+                  onChange={(e) => filterURL("name", e.target.value)}
                 />
               </div>
             </div>
@@ -72,24 +65,27 @@ const Search: FunctionComponent<SearchProps> = ({
                 </div>
                 <div className="relative row-start-2 w-full h-fit font-conso">
                   <div className="relative flex flex-wrap justify-start gap-2 w-fit h-fit overflow-hidden">
-                    {sex.map((type: any, index: number) => {
-                      return (
-                        <span
-                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex break-word`}
-                          key={index}
-                        >
-                          <button
-                            className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                              sexSelect.includes(type.sex) && "bg-lightYellow"
-                            }`}
-                            name={type.sex}
-                            onClick={(e: any) => filterSex(e)}
+                    {filterConstants?.sexes?.map(
+                      (type: string, index: number) => {
+                        return (
+                          <span
+                            className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex break-word`}
+                            key={index}
                           >
-                            {type.sex.toUpperCase()}
-                          </button>
-                        </span>
-                      );
-                    })}
+                            <button
+                              className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
+                                router.asPath?.includes(type) &&
+                                "bg-lightYellow"
+                              }`}
+                              name={type}
+                              onClick={() => filterURL("sex", type)}
+                            >
+                              {type?.toUpperCase()}
+                            </button>
+                          </span>
+                        );
+                      }
+                    )}
                   </div>
                 </div>
               </div>
@@ -104,25 +100,26 @@ const Search: FunctionComponent<SearchProps> = ({
               </div>
               <div className="relative row-start-2 w-full h-fit font-conso">
                 <div className="relative flex flex-wrap justify-start gap-2 w-fit h-fit overflow-hidden">
-                  {styles.map((style: any, index: number) => {
-                    return (
-                      <span
-                        className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex`}
-                        key={index}
-                      >
-                        <button
-                          className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS break-word galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                            styleSelect.includes(style.style) &&
-                            "bg-lightYellow"
-                          }`}
-                          name={style.style}
-                          onClick={(e: any) => filterStyle(e)}
+                  {filterConstants?.styles?.map(
+                    (style: string, index: number) => {
+                      return (
+                        <span
+                          className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative text-xs galaxy:text-sm xl:text-base inline-flex`}
+                          key={index}
                         >
-                          {style.style.toUpperCase()}
-                        </button>
-                      </span>
-                    );
-                  })}
+                          <button
+                            className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS break-word galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
+                              router.asPath?.includes(style) && "bg-lightYellow"
+                            }`}
+                            name={style}
+                            onClick={() => filterURL("style", style)}
+                          >
+                            {style?.toUpperCase()}
+                          </button>
+                        </span>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>

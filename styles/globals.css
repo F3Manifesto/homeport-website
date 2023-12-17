@@ -177,3 +177,28 @@ input:focus {
     background-position: 100% 100%;
   }
 }
+
+
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(249, 246, 66)
+}
+
+input::-webkit-inner-spin-button:focus,
+input::-webkit-outer-spin-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(249, 246, 66, 0.6);
+}
+
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(249, 246, 66)
+}
+
+textarea::-webkit-inner-spin-button:focus,
+textarea::-webkit-outer-spin-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(249, 246, 66, 0.6);
+}

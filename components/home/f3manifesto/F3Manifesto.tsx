@@ -5,7 +5,8 @@ import { F3ManifestoProps } from "../../../types/general.types";
 
 const F3Manifesto: FunctionComponent<F3ManifestoProps> = ({
   goShopping,
-  filterStyle,
+  filterConstants,
+  filterURL,
 }): JSX.Element => {
   const { refreshImages, viewMainImage, mainImage, imagesURI, newImagesURI } =
     useF3Manifesto();
@@ -15,10 +16,10 @@ const F3Manifesto: FunctionComponent<F3ManifestoProps> = ({
         refreshImages={refreshImages}
         viewMainImage={viewMainImage}
         mainImage={mainImage}
-        imagesURI={imagesURI}
+        filterConstants={filterConstants}
         newImagesURI={newImagesURI}
         goShopping={goShopping}
-        filterStyle={filterStyle}
+        filterURL={filterURL}
       />
     </div>
   );

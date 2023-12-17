@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import { PinBoardProps } from "../../../types/general.types";
-import styles from "./../../../pages/api/styles.json";
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const PinBoard: FunctionComponent<PinBoardProps> = ({
   goShopping,
-  filterStyle,
+  filterURL,
+  filterConstants,
 }): JSX.Element => {
   const [blur, setBlur] = useState<boolean>(true);
   return (
@@ -16,14 +17,14 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
             href="https://digitalax.xyz"
             target="_blank"
             rel="noreferrer"
-            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
+            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center rounded-full grid grid-flow-col auto-cols-auto ${
               blur && "blur-sm animate-unblur"
             }`}
           >
             <Image
               width={50}
               height={50}
-              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC`}
+              src={`${INFURA_GATEWAY}/ipfs/QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
               draggable={false}
@@ -33,31 +34,31 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
             href="https://chromadin.xyz"
             target="_blank"
             rel="noreferrer"
-            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
+            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 rounded-full border border-black justify-center grid grid-flow-col auto-cols-auto ${
               blur && "blur-sm animate-unblur"
             }`}
           >
             <Image
               width={50}
               height={50}
-              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmXM6QSYCbMJ5eXJHuGqMTbCTkaDqth5c4NswX2nWTpenB`}
+              src={`${INFURA_GATEWAY}/ipfs/QmXM6QSYCbMJ5eXJHuGqMTbCTkaDqth5c4NswX2nWTpenB`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
               draggable={false}
             />
           </a>
           <a
-            href="https://thedial.xyz"
+            href="https://cypher.digitalax.xyz"
             target="_blank"
             rel="noreferrer"
-            className={`relative h-fit w-fit cursor-empireS hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
+            className={`border border-black relative h-fit w-fit cursor-empireS rounded-full hover:rotate-12 justify-center grid grid-flow-col auto-cols-auto ${
               blur && "blur-sm animate-unblur"
             }`}
           >
             <Image
               width={50}
               height={50}
-              src={`https://f3manifesto.infura-ipfs.io/ipfs/QmbF9Lt5KQ3m9xxnqSRD2nmcr5mgtf1V2ruRYcrMnrFpni`}
+              src={`${INFURA_GATEWAY}/ipfs/QmYRZYGFKgH6wGJ39aWHbr7T1PsySh2kTSjo11yEZrrGcM`}
               onLoadingComplete={() => setBlur(false)}
               className="w-full h-full place-self-center rounded-full"
               draggable={false}
@@ -85,11 +86,11 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
               }`}
               onClick={() => {
                 goShopping();
-                filterStyle(styles[2].style, true);
+                filterURL("style", filterConstants?.styles?.[2]);
               }}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H`}
+                src={`${INFURA_GATEWAY}/ipfs/QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H`}
                 width={50}
                 height={50}
                 onLoadingComplete={() => setBlur(false)}
@@ -105,11 +106,11 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
               }`}
               onClick={() => {
                 goShopping();
-                filterStyle(styles[1].style, true);
+                filterURL("style", filterConstants?.styles?.[1]);
               }}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX`}
+                src={`${INFURA_GATEWAY}/ipfs/QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX`}
                 width={65}
                 height={50}
                 draggable={false}
@@ -152,11 +153,11 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
               }`}
               onClick={() => {
                 goShopping();
-                filterStyle(styles[0].style, true);
+                filterURL("style", filterConstants?.styles?.[0]);
               }}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML`}
+                src={`${INFURA_GATEWAY}/ipfs/QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML`}
                 width={65}
                 draggable={false}
                 height={50}
@@ -172,11 +173,11 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
               }`}
               onClick={() => {
                 goShopping();
-                filterStyle(styles[4].style, true);
+                filterURL("style", filterConstants?.styles?.[4]);
               }}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR`}
+                src={`${INFURA_GATEWAY}/ipfs/QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR`}
                 width={75}
                 height={60}
                 draggable={false}
@@ -219,11 +220,11 @@ const PinBoard: FunctionComponent<PinBoardProps> = ({
               }`}
               onClick={() => {
                 goShopping();
-                filterStyle(styles[3].style, true);
+                filterURL("style", filterConstants?.styles?.[3]);
               }}
             >
               <Image
-                src={`https://f3manifesto.infura-ipfs.io/ipfs/QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP`}
+                src={`${INFURA_GATEWAY}/ipfs/QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP`}
                 width={70}
                 height={70}
                 onLoadingComplete={() => setBlur(false)}
