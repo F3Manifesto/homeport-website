@@ -73,7 +73,6 @@ const Footer: FunctionComponent = (): JSX.Element => {
                 autoPlay
                 muted
                 loop
-                placeholder="blur"
               >
                 <source
                   src={`/videos/studiofeed/${randomMicrofactory}.mp4`}
