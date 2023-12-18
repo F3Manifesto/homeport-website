@@ -18,22 +18,7 @@ const collectionFixer = async (collection: Gallery): Promise<Gallery> => {
     ...ipfs,
   };
 
-  return {
-    ...coll,
-    collectionMetadata: {
-      ...coll?.collectionMetadata,
-      tags:
-        typeof coll?.collectionMetadata?.tags === "string"
-          ? (coll?.collectionMetadata?.tags as any)
-              ?.split(",")
-              ?.map((word: string) => word.trim())
-              ?.filter((word: string) => word.length > 0)
-          : coll?.collectionMetadata?.tags,
-    },
-    prices: coll?.prices?.map((price: string) =>
-      String(Number(price) / 10 ** 18)
-    ),
-  } as Gallery;
+  return coll;
 };
 
 export default collectionFixer;

@@ -3,7 +3,7 @@ import { graphPrintClient } from "../../../lib/graph/client";
 
 const COLLECTIONS = `
   query($title: String!, $origin: String!) {
-    collectionCreateds(where: {origin: $origin, collectionMetadata_: {title: $title}}, first: 1) {
+    collectionCreateds(where: {origin: $origin, collectionMetadata_: {title_contains_nocase: $title}}, first: 1) {
       amount
       uri
       dropMetadata {
@@ -27,6 +27,7 @@ const COLLECTIONS = `
       prices
       collectionId
       soldTokens
+      blockTimestamp
     }
   }
 `;

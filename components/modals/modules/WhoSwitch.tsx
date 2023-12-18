@@ -26,7 +26,7 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
           loader={<></>}
           hasMore={hasMore}
           next={showMore}
-          className="w-fit h-fit items-start justify-start flex flex-col gap-10"
+          className="w-full h-fit items-center justify-start flex flex-col gap-10"
         >
           {quoters?.map((item: Quote, index: number) => {
             return (
@@ -56,6 +56,8 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
                 }
                 left={"auto"}
                 right={"2px"}
+                main={false}
+                quote={false}
               />
             );
           })}

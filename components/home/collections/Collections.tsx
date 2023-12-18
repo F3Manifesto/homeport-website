@@ -14,7 +14,6 @@ const Collections: FunctionComponent<CollectionProps> = ({
   interactionLoaders,
   mirror,
   like,
-  quote,
   connected,
   lensConnected,
   openConnectModal,
@@ -41,7 +40,6 @@ const Collections: FunctionComponent<CollectionProps> = ({
           dispatch={dispatch}
           connected={connected}
           mirror={mirror}
-          quote={quote}
           like={like}
           interactionLoaders={interactionLoaders}
           lensConnected={lensConnected}

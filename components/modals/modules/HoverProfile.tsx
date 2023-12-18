@@ -15,16 +15,14 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
   publication,
   index,
   setProfileHovers,
-  feed,
   dispatch,
-  main,
+  quote,
   lensConnected,
   parentId,
   bottom,
   right,
   left,
   top,
-  gallery,
 }): JSX.Element => {
   const [popperElement, setPopperElement] = useState<HTMLElement | null>();
   const popperRef = useRef<HTMLDivElement>(null);
@@ -57,7 +55,7 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
   return document.getElementById(parentId) ? (
     ReactDOM.createPortal(
       <div
-        className="w-28 h-fit flex flex-col items-center justify-center p-2 z-20 border border-black rounded-sm bg-black"
+        className="w-28 h-fit flex flex-col items-center justify-center p-2 z-20 border border-black rounded-sm bg-lightYellow"
         onMouseLeave={() =>
           setProfileHovers((prev) => {
             const arr = [...(prev || [])];
@@ -79,7 +77,7 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
           <div className="relative flex flex-col items-center justify-between gap-7">
             <div className="relative flex flex-col gap-2 flex items-center justify-center w-fit h-fit">
               <div
-                className="relative flex flex-row w-10 h-10 items-center justify-start rounded-full border border-offWhite cursor-pointer"
+                className="relative flex flex-row w-10 h-10 items-center justify-start rounded-full border border-black cursor-pointer"
                 onClick={() =>
                   window.open(
                     `https://cypher.digitalax.xyz/autograph/${
@@ -111,7 +109,7 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
             </div>
             <div className="relative flex flex-row items-center justify-center gap-5">
               <div
-                className={`relative w-7 h-7 flex items-center justify-center ${
+                className={`relative w-7 h-7 flex items-center justify-center grayscale ${
                   followLoading[index] &&
                   !publication?.operations?.isFollowedByMe?.value &&
                   "animate-spin"
@@ -142,21 +140,13 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
                           actionFollower: publication,
                         })
                       )
-                    : feed || main || gallery
-                    ? (
-                        followProfile as (
-                          id: string,
-                          index: number,
-                          feed?: boolean,
-                          main?: boolean
-                        ) => Promise<void>
-                      )(publication?.id, index, feed, main)
                     : (
                         followProfile as (
                           id: string,
-                          index?: number
+                          index: number,
+                          quote?: boolean
                         ) => Promise<void>
-                      )(publication?.id, index);
+                      )(publication?.id, index, quote);
                 }}
               >
                 {followLoading[index] &&
@@ -165,14 +155,14 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
                 ) : (
                   <Image
                     layout="fill"
-                    src={`${INFURA_GATEWAY}/ipfs/QmadanZQr9dxDXQFG41d2gZrhbKgVvnVnG64qAzMhXyxmG`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmajsnLaenwLqvVbarWLzUvn2a9etQmkgYcpnLZxt1wQiP`}
                     draggable={false}
                     priority
                   />
                 )}
               </div>
               <div
-                className={`relative w-7 h-7 flex items-center justify-center ${
+                className={`relative w-7 h-7 flex items-center justify-center grayscale ${
                   publication?.operations?.isFollowedByMe?.value &&
                   !followLoading[index]
                     ? "cursor-pointer active:scale-95"
@@ -191,21 +181,13 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
                     return;
                   e.stopPropagation();
                   publication?.operations?.isFollowedByMe?.value &&
-                    (feed || main || gallery
-                      ? (
-                          unfollowProfile as (
-                            id: string,
-                            index: number,
-                            feed?: boolean,
-                            main?: boolean
-                          ) => Promise<void>
-                        )(publication?.id, index, feed, main)
-                      : (
-                          unfollowProfile as (
-                            id: string,
-                            index?: number
-                          ) => Promise<void>
-                        )(publication?.id, index));
+                    (
+                      unfollowProfile as (
+                        id: string,
+                        index: number,
+                        quote?: boolean
+                      ) => Promise<void>
+                    )(publication?.id, index, quote);
                 }}
               >
                 {followLoading[index] &&
@@ -214,7 +196,7 @@ const HoverProfile: FunctionComponent<HoverProfileProps> = ({
                 ) : (
                   <Image
                     layout="fill"
-                    src={`${INFURA_GATEWAY}/ipfs/QmSWjjhXh1VAEkNzhfzEojqg1dfSJ69Xf9ezxbKpwTRjZC`}
+                    src={`${INFURA_GATEWAY}/ipfs/QmRkkvF1fa49njKrTnsHxEP8E1BP6Q9Ngu8CFazpDcaJEU`}
                     draggable={false}
                     priority
                   />

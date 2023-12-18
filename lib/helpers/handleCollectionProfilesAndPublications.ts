@@ -25,6 +25,23 @@ const handleCollectionProfilesAndPublications = async (
           ...coll,
           profile: publication?.data?.publication?.by as Profile,
           publication: publication?.data?.publication,
+          prices: coll?.prices?.map((price: string) =>
+            String(Number(price) / 10 ** 18)
+          ),
+          access:
+            typeof coll?.collectionMetadata?.access === "string"
+              ? (coll?.collectionMetadata?.access as any)
+                  ?.split(",")
+                  ?.map((word: string) => word.trim())
+                  ?.filter((word: string) => word.length > 0)
+              : coll?.collectionMetadata?.access,
+          tags:
+            typeof coll?.collectionMetadata?.tags === "string"
+              ? (coll?.collectionMetadata?.tags as any)
+                  ?.split(",")
+                  ?.map((word: string) => word.trim())
+                  ?.filter((word: string) => word.length > 0)
+              : coll?.collectionMetadata?.tags,
         } as Gallery;
       }
     });

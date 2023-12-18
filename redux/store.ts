@@ -14,6 +14,8 @@ import reactBoxReducer from "./reducers/reactBoxSlice";
 import lensConnectModalReducer from "./reducers/lensConnectModalSlice";
 import followCollectReducer from "./reducers/followCollectSlice";
 import availableCurrenciesReducer from "./reducers/availableCurrenciesSlice";
+import insufficientBalanceReducer from "./reducers/insufficientBalanceSlice";
+import successCheckoutReducer from "./reducers/successCheckoutSlice";
 
 const reducer = combineReducers({
   walletConnectedReducer,
@@ -29,7 +31,9 @@ const reducer = combineReducers({
   reactBoxReducer,
   lensConnectModalReducer,
   followCollectReducer,
-  availableCurrenciesReducer
+  availableCurrenciesReducer,
+  insufficientBalanceReducer,
+  successCheckoutReducer,
 });
 
 export const store = configureStore({

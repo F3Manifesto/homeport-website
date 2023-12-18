@@ -16,7 +16,7 @@ const Connect: FunctionComponent<ConnectProps> = ({
 }): JSX.Element => {
   const profilePicture = createProfilePicture(lensProfile?.metadata?.picture);
   return (
-    <div className="relative cursor-empireS flex items-center justify-center flex-row gap-4">
+    <div className="relative flex items-center justify-center flex-row gap-4">
       {connected && lensProfile && (
         <div className="relative flex flex-row gap-1.5 items-center justify-center">
           <div className="relative flex items-center justify-center rounded-full w-5 h-5 bg-white border border-black">
@@ -30,13 +30,13 @@ const Connect: FunctionComponent<ConnectProps> = ({
               />
             )}
           </div>
-          <div className="text-black text-base relative w-fit h-fit flex items-center justify-center font-fira">
+          <div className="text-black text-xs relative w-fit h-fit flex items-center justify-center font-fira">
             {lensProfile?.handle?.suggestedFormatted?.localName}
           </div>
         </div>
       )}
       <div
-        className="relative font-fira flex items-center justify-center text-black text-base"
+        className="relative font-fira flex items-center justify-center text-black text-xs cursor-empireS"
         onClick={
           !connected
             ? openConnectModal

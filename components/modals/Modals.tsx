@@ -14,8 +14,10 @@ import { useAccountModal } from "@rainbow-me/rainbowkit";
 import useQuote from "./hooks/useQuote";
 import { createPublicClient, http } from "viem";
 import { polygon } from "viem/chains";
-import { PrimaryPublication } from "../../graphql/generated";
 import PostCollect from "./PostCollect";
+import InsufficientBalance from "./InsufficientBalance";
+import SuccessCheckout from "./SuccessCheckout";
+import FollowCollect from "./FollowCollect";
 
 const Modals: FunctionComponent = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -33,12 +35,18 @@ const Modals: FunctionComponent = (): JSX.Element => {
   const lensConnect = useSelector(
     (state: RootState) => state.app.lensConnectModalReducer
   );
+  const successCheckout = useSelector(
+    (state: RootState) => state.app.successCheckoutReducer
+  );
   const oracleData = useSelector(
     (state: RootState) => state.app.oracleDataReducer.data
   );
   const quoteBox = useSelector((state: RootState) => state.app.quoteBoxReducer);
   const interact = useSelector(
     (state: RootState) => state.app.interactErrorReducer
+  );
+  const insufficientBalance = useSelector(
+    (state: RootState) => state.app.insufficientBalanceReducer
   );
   const postCollect = useSelector(
     (state: RootState) => state.app.postCollectReducer
@@ -155,8 +163,31 @@ const Modals: FunctionComponent = (): JSX.Element => {
           setMirrorQuote={setMirrorQuote}
         />
       )}
+      {followCollect?.type && (
+        <FollowCollect
+          dispatch={dispatch}
+          type={followCollect?.type!}
+          collect={followCollect?.collect}
+          follower={followCollect?.follower}
+          handleCollect={handleCollect}
+          handleFollow={handleFollow}
+          informationLoading={informationLoading}
+          transactionLoading={transactionLoading}
+          approved={approved}
+          approveSpend={approveSpend}
+        />
+      )}
       {indexer?.open && <Index message={indexer?.message!} />}
       {interact?.value && <InteractError dispatch={dispatch} />}
+      {successCheckout?.value && (
+        <SuccessCheckout image={successCheckout?.image} dispatch={dispatch} />
+      )}
+      {insufficientBalance?.value && (
+        <InsufficientBalance
+          dispatch={dispatch}
+          message={insufficientBalance?.message!}
+        />
+      )}
       {lensConnect?.value && (
         <LensConnect
           dispatch={dispatch}

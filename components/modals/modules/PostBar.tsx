@@ -35,6 +35,7 @@ const PostBar: FunctionComponent<PostBarProps> = ({
   bottom,
   left,
   right,
+  quote,
 }): JSX.Element => {
   const profilePicture = createProfilePicture(
     (item?.__typename == "Mirror" ? item?.mirrorOn : (item as Post))?.by
@@ -44,262 +45,235 @@ const PostBar: FunctionComponent<PostBarProps> = ({
     <div className="relative w-full justify-between flex flex-col sm:flex-row items-between sm:items-center gap-2">
       <div className="relative w-fit h-fit flex flex-row items-start sm:items-center gap-2 justify-center">
         {[
-          ["QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo", "Mirrors"],
-          ["QmV2VzKD9NMX1CzqcwFhzwzASpPrxZYAVfZkUPiXid2TmC", "Likes"],
-          ["QmeHH3LN6NMgZAEFFYyN4f3z8xPHs4DHzhytjRHNBcHTza", "Comments"],
-        ].map((image: string[], indexTwo: number) => {
-          const functions = [
-            () =>
+          {
+            image: "QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo",
+            title: "Mirrors",
+            function: () =>
               setOpenMirrorChoice!((prev) => {
                 const choices = [...prev!];
                 choices[index] = !choices[index];
                 return choices;
               }),
-
-            like,
-            main
-              ? null
+            loader: false,
+            stats:
+              (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
+                ?.stats?.mirrors! ||
+              0 +
+                (item?.__typename === "Mirror"
+                  ? item?.mirrorOn
+                  : (item as Post)
+                )?.stats?.quotes! ||
+              0,
+            responded:
+              (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
+                ?.operations?.hasMirrored! ||
+              (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
+                ?.operations?.hasQuoted!,
+          },
+          {
+            image: "QmV2VzKD9NMX1CzqcwFhzwzASpPrxZYAVfZkUPiXid2TmC",
+            title: "Likes",
+            function: () =>
+              like &&
+              like(
+                item?.id,
+                (item?.__typename === "Mirror"
+                  ? item?.mirrorOn
+                  : (item as Post)
+                )?.operations?.hasReacted,
+                main,
+                quote
+              ),
+            loader: interactionsLoading?.like!,
+            stats:
+              (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
+                ?.stats?.reactions || 0,
+            responded: (item?.__typename === "Mirror"
+              ? item?.mirrorOn
+              : (item as Post)
+            )?.operations?.hasReacted!,
+          },
+          {
+            image: "QmeHH3LN6NMgZAEFFYyN4f3z8xPHs4DHzhytjRHNBcHTza",
+            title: "Comments",
+            function: main
+              ? undefined
               : () =>
                   setCommentsOpen((prev) => {
                     const arr = [...prev];
                     arr[index] = !commentsOpen[index];
                     return arr;
                   }),
-          ];
-
-          const loaders = [interactionsLoading?.like];
-
-          const stats = [
-            item?.__typename === "Mirror"
-              ? item?.mirrorOn?.stats?.mirrors! + item?.mirrorOn?.stats?.quotes!
-              : (item as Post)?.stats?.mirrors! +
-                (item as Post)?.stats?.quotes!,
-            item?.__typename === "Mirror"
-              ? item?.mirrorOn?.stats?.reactions
-              : (item as Post)?.stats?.reactions,
-            item?.__typename === "Mirror"
-              ? item?.mirrorOn?.stats?.comments
-              : (item as Post)?.stats?.comments,
-          ];
-
-          const responded = [
-            (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
-              ?.operations?.hasMirrored ||
+            loader: false,
+            stats:
               (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
-                ?.operations?.hasQuoted,
-            (item?.__typename === "Mirror" ? item?.mirrorOn : (item as Post))
-              ?.operations?.hasReacted,
-          ];
-
-          return (
-            <div
-              className={`relative w-full h-full flex flex-row items-center justify-center gap-1 font-din text-black`}
-              key={indexTwo}
-            >
+                ?.stats?.comments || 0,
+            responded: false,
+          },
+        ].map(
+          (
+            value: {
+              image: string;
+              title: string;
+              function: (() => void) | undefined | (() => Promise<void>);
+              loader: boolean;
+              stats: number;
+              responded: boolean;
+            },
+            indexTwo: number
+          ) => {
+            return (
               <div
-                className={`relative w-fit h-fit flex cursor-pointer items-center justify-center active:scale-95 ${
-                  responded?.[indexTwo] && "mix-blend-hard-light hue-rotate-60"
-                }`}
-                onClick={() => {
-                  if (disabled) {
-                    window.open(
-                      `https://cypher.digitalax.xyz/item/pub/${
-                        item?.__typename === "Mirror"
-                          ? item?.mirrorOn?.id
-                          : item?.id
-                      }`
-                    );
-                  } else {
-                    if (functions[indexTwo]) {
-                      if (image[1] !== "Likes") {
-                        (functions[indexTwo]! as any)(
-                          item?.__typename === "Mirror"
-                            ? item?.mirrorOn?.id
-                            : item?.id,
-                          item?.__typename === "Mirror" ? item?.id : undefined
-                        );
-                      } else {
-                        main
-                          ? (functions[indexTwo] as (
-                              id: string,
-                              hasReacted: boolean,
-                              main: boolean,
-                              mirror?: string
-                            ) => Promise<void>)!(
-                              item?.__typename === "Mirror"
-                                ? item?.mirrorOn?.id
-                                : item?.id,
-                              (item?.__typename === "Mirror"
-                                ? item?.mirrorOn
-                                : (item as Post)
-                              )?.operations?.hasReacted,
-                              main,
-                              item?.__typename === "Mirror"
-                                ? item?.id
-                                : undefined
-                            )
-                          : (
-                              functions[indexTwo]! as (
-                                id: string,
-                                hasReacted: boolean,
-                                mirror?: string
-                              ) => Promise<void>
-                            )(
-                              item?.id,
-                              (item?.__typename === "Mirror"
-                                ? item?.mirrorOn
-                                : (item as Post)
-                              )?.operations?.hasReacted,
-                              item?.__typename === "Mirror"
-                                ? item?.id
-                                : undefined
-                            );
-                      }
-                    }
-                  }
-                }}
+                className={`relative w-full h-full flex flex-row items-center justify-center gap-1 font-din text-black`}
+                key={indexTwo}
               >
-                {loaders[indexTwo] && image[1] === "Likes" ? (
-                  <div className="relative w-fit h-fit animate-spin flex items-center justify-center">
-                    <AiOutlineLoading size={15} color="black" />
-                  </div>
-                ) : (
-                  <div
-                    className={`relative w-3.5 h-3.5 flex items-center justify-center ${
-                      functions[indexTwo]
-                        ? "cursor-pointer active:scale-95"
-                        : "opacity-70"
-                    } `}
-                  >
-                    <Image
-                      layout="fill"
-                      src={`${INFURA_GATEWAY}/ipfs/${image[0]}`}
-                      draggable={false}
-                    />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`relative w-fit h-fit flex items-center justify-center text-center text-sm ${
-                  (stats[indexTwo] > 0 || image[1] === "Comments") &&
-                  "cursor-pointer active:scale-95"
-                }`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (disabled) {
-                    window.open(
-                      `https://cypher.digitalax.xyz/item/pub/${
-                        item?.__typename === "Mirror"
-                          ? item?.mirrorOn?.id
-                          : item?.id
-                      }`
-                    );
-                  } else {
-                    stats[indexTwo] > 0 && image[1] !== "Comments"
-                      ? dispatch(
-                          setReactBox({
-                            actionOpen: true,
-                            actionId: (item?.__typename === "Mirror"
-                              ? item?.mirrorOn
-                              : (item as Post)
-                            )?.id,
-                            actionType: image[1],
-                          })
-                        )
-                      : window.open(
+                <div
+                  className={`relative w-fit h-fit flex cursor-pointer items-center justify-center active:scale-95 ${
+                    value?.responded && "mix-blend-hard-light hue-rotate-60"
+                  }`}
+                  onClick={() =>
+                    disabled
+                      ? window.open(
                           `https://cypher.digitalax.xyz/item/pub/${
                             item?.__typename === "Mirror"
                               ? item?.mirrorOn?.id
                               : item?.id
                           }`
-                        );
+                        )
+                      : value?.function && value?.function()
                   }
-                }}
-              >
-                {numeral(stats[indexTwo]).format("0a")}
+                >
+                  {value?.loader && value?.title === "Likes" ? (
+                    <div className="relative w-fit h-fit animate-spin flex items-center justify-center">
+                      <AiOutlineLoading size={15} color="black" />
+                    </div>
+                  ) : (
+                    <div
+                      className={`relative w-3.5 h-3.5 flex items-center justify-center ${
+                        value?.function !== undefined
+                          ? "cursor-pointer active:scale-95"
+                          : "opacity-70"
+                      } `}
+                    >
+                      <Image
+                        layout="fill"
+                        src={`${INFURA_GATEWAY}/ipfs/${value?.image}`}
+                        draggable={false}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div
+                  className={`relative w-fit h-fit flex items-center justify-center text-center text-sm ${
+                    (value?.stats > 0 || value?.title === "Comments") &&
+                    "cursor-pointer active:scale-95"
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (disabled) {
+                      window.open(
+                        `https://cypher.digitalax.xyz/item/pub/${
+                          item?.__typename === "Mirror"
+                            ? item?.mirrorOn?.id
+                            : item?.id
+                        }`
+                      );
+                    } else {
+                      value?.stats > 0 && value?.title !== "Comments"
+                        ? dispatch(
+                            setReactBox({
+                              actionOpen: true,
+                              actionId: (item?.__typename === "Mirror"
+                                ? item?.mirrorOn
+                                : (item as Post)
+                              )?.id,
+                              actionType: value?.title,
+                            })
+                          )
+                        : window.open(
+                            `https://cypher.digitalax.xyz/item/pub/${
+                              item?.__typename === "Mirror"
+                                ? item?.mirrorOn?.id
+                                : item?.id
+                            }`
+                          );
+                    }
+                  }}
+                >
+                  {numeral(value?.stats).format("0a")}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          }
+        )}
       </div>
       {openMirrorChoice?.[index] && (
         <div
-          className={`absolute w-fit h-fit flex flex-row gap-4 p-2 items-center justify-center bg-lirio/80 rounded-sm left-2 -top-8 border border-black z-10`}
+          className={`absolute w-fit h-fit flex flex-row gap-4 p-2 items-center justify-center bg-lightWhite rounded-sm left-2 -top-8 border border-black z-10`}
         >
           {[
-            "QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo",
-            "QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei",
-          ].map((image: string, indexTwo: number) => {
-            const functions: ((() => void) | (() => Promise<void>))[] = [
-              main
-                ? () =>
-                    (
-                      mirror as (
-                        id: string,
-                        main: boolean,
-                        mirror?: string
-                      ) => Promise<void>
-                    )(
-                      item?.__typename === "Mirror"
-                        ? item?.mirrorOn?.id
-                        : item?.id,
-                      main,
-                      item?.__typename === "Mirror" ? item?.id : undefined
-                    )
-                : () =>
-                    (mirror as (id: string, mirror?: string) => Promise<void>)(
-                      item?.__typename === "Mirror"
-                        ? item?.mirrorOn?.id
-                        : item?.id,
-                      item?.__typename === "Mirror" ? item?.id : undefined
-                    ),
-              () =>
+            {
+              image: "QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo",
+              function: () => mirror!(item?.id, main, quote),
+              loader: interactionsLoading?.mirror!,
+            },
+            {
+              image: "QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei",
+              function: () =>
                 dispatch(
                   setQuoteBox({
                     actionOpen: true,
                     actionQuote: item,
                   })
                 ),
-            ];
-            const loaders = [interactionsLoading?.mirror];
-            return (
-              <div
-                key={indexTwo}
-                className="relative w-fit h-fit flex cursor-pointer items-center justify-center active:scale-95 hover:opacity-70"
-                onClick={() => {
-                  if (disabled) {
-                    window.open(
-                      `https://cypher.digitalax.xyz/item/pub/${
-                        item?.__typename === "Mirror"
-                          ? item?.mirrorOn?.id
-                          : item?.id
-                      }`
-                    );
-                  } else {
-                    !loaders[indexTwo] && functions[indexTwo]();
+              loader: false,
+            },
+          ].map(
+            (
+              value: {
+                image: string;
+                function: () => void;
+                loader: boolean;
+              },
+              indexTwo: number
+            ) => {
+              return (
+                <div
+                  key={indexTwo}
+                  className="relative w-fit h-fit flex cursor-pointer items-center justify-center active:scale-95 hover:opacity-70"
+                  onClick={() =>
+                    disabled
+                      ? window.open(
+                          `https://cypher.digitalax.xyz/item/pub/${
+                            item?.__typename === "Mirror"
+                              ? item?.mirrorOn?.id
+                              : item?.id
+                          }`
+                        )
+                      : !value?.loader && value.function()
                   }
-                }}
-              >
-                {loaders[indexTwo] && indexTwo == 0 ? (
-                  <div className="relative w-fit h-fit animate-spin flex items-center justify-center">
-                    <AiOutlineLoading size={15} color="black" />
-                  </div>
-                ) : (
-                  <div
-                    className={
-                      "relative w-4 h-4 flex items-center justify-center cursor-pointer active:scale-95"
-                    }
-                  >
-                    <Image
-                      layout="fill"
-                      src={`${INFURA_GATEWAY}/ipfs/${image}`}
-                      draggable={false}
-                    />
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                >
+                  {value?.loader && indexTwo == 0 ? (
+                    <div className="relative w-fit h-fit animate-spin flex items-center justify-center">
+                      <AiOutlineLoading size={15} color="black" />
+                    </div>
+                  ) : (
+                    <div
+                      className={
+                        "relative w-4 h-4 flex items-center justify-center cursor-pointer active:scale-95"
+                      }
+                    >
+                      <Image
+                        layout="fill"
+                        src={`${INFURA_GATEWAY}/ipfs/${value?.image}`}
+                        draggable={false}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            }
+          )}
         </div>
       )}
       <div className="relative w-fit h-fit flex flex-row gap-2 items-end sm:items-center justify-center ml-auto">
@@ -347,7 +321,8 @@ const PostBar: FunctionComponent<PostBarProps> = ({
               disabled,
               interactionsLoading?.simpleCollect!,
               dispatch,
-              main!,
+              main,
+              quote,
               simpleCollect
             )
           }
@@ -373,7 +348,6 @@ const PostBar: FunctionComponent<PostBarProps> = ({
             }
             index={index}
             setProfileHovers={setProfileHovers!}
-            feed
             dispatch={dispatch}
             lensConnected={lensConnected}
             parentId={item?.id}
@@ -381,6 +355,7 @@ const PostBar: FunctionComponent<PostBarProps> = ({
             bottom={bottom}
             left={left}
             right={right}
+            quote={quote}
           />
         )}
       </div>

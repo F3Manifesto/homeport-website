@@ -26,8 +26,8 @@ const Search: FunctionComponent<SearchProps> = ({
                             key={index}
                           >
                             <button
-                              className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
-                                router.asPath.includes(drop) && "bg-lightYellow"
+                              className={`border border-offBlack relative rounded-full py-1 px-1 sm:px-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
+                                router.asPath.includes(drop?.replaceAll(" ", "")) && "bg-lightYellow"
                               }`}
                               name={drop}
                               onClick={() => filterURL("collection", drop)}
@@ -74,7 +74,7 @@ const Search: FunctionComponent<SearchProps> = ({
                           >
                             <button
                               className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                                router.asPath?.includes(type) &&
+                                router.asPath?.includes(type?.replaceAll(" ", "")) &&
                                 "bg-lightYellow"
                               }`}
                               name={type}
@@ -109,7 +109,7 @@ const Search: FunctionComponent<SearchProps> = ({
                         >
                           <button
                             className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS break-word galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                              router.asPath?.includes(style) && "bg-lightYellow"
+                              router.asPath?.includes(style?.replaceAll(" ", "")) && "bg-lightYellow"
                             }`}
                             name={style}
                             onClick={() => filterURL("style", style)}

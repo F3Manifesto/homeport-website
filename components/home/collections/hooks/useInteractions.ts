@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Gallery } from "../../../../types/general.types";
 import { Dispatch } from "redux";
-import {
-  Post,
-  PrimaryPublication,
-  Profile,
-  PublicationStats,
-} from "../../../../graphql/generated";
+import { Profile, PublicationStats } from "../../../../graphql/generated";
 import { PublicClient, createWalletClient, custom } from "viem";
 import { polygon } from "viem/chains";
 import lensMirror from "../../../../lib/helpers/lensMirror";
 import errorChoice from "../../../../lib/helpers/errorChoice";
 import lensLike from "../../../../lib/helpers/lensLike";
 import { setAllGallery } from "../../../../redux/reducers/allGallerySlice";
-import { setQuoteBox } from "../../../../redux/reducers/quoteBoxSlice";
 
 const useInteractions = (
   gallery: Gallery[],
+  filteredGallery: Gallery[] | undefined,
   dispatch: Dispatch,
+  setFilteredGallery: (e: SetStateAction<Gallery[]>) => void,
   lensConnected: Profile | undefined,
   publicClient: PublicClient,
   address: `0x${string}` | undefined
@@ -29,8 +25,14 @@ const useInteractions = (
     }[]
   >([]);
 
-  const mirror = async (id: string, index: number) => {
+  const mirror = async (id: string) => {
     if (!lensConnected?.id) return;
+
+    const index = (
+      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+    )?.findIndex((item) => item?.publication?.id == id);
+
+    if (index == -1) return;
 
     setInteractionLoaders((prev) => {
       const updatedArray = [...prev];
@@ -81,8 +83,14 @@ const useInteractions = (
     });
   };
 
-  const like = async (id: string, hasReacted: boolean, index: number) => {
+  const like = async (id: string, hasReacted: boolean) => {
     if (!lensConnected?.id) return;
+
+    const index = (
+      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+    )?.findIndex((item) => item?.publication?.id == id);
+
+    if (index == -1) return;
 
     setInteractionLoaders((prev) => {
       const updatedArray = [...prev];
@@ -122,22 +130,15 @@ const useInteractions = (
     });
   };
 
-  const quote = (publication: PrimaryPublication) => {
-    dispatch(
-      setQuoteBox({
-        actionOpen: true,
-        actionQuote: publication,
-      })
-    );
-  };
-
   const updateInteractions = (
     index: number,
     valueToUpdate: Object,
     statToUpdate: string,
     increase: boolean
   ) => {
-    const newItems = gallery.map((item, idx) => {
+    const newItems = (
+      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+    ).map((item, idx) => {
       if (idx === index) {
         return {
           ...item,
@@ -160,7 +161,9 @@ const useInteractions = (
       return item;
     });
 
-    dispatch(setAllGallery(newItems as Gallery[]));
+    filteredGallery && filteredGallery?.length > 0
+      ? setFilteredGallery(newItems as Gallery[])
+      : dispatch(setAllGallery(newItems as Gallery[]));
   };
 
   useEffect(() => {
@@ -177,7 +180,6 @@ const useInteractions = (
   return {
     interactionLoaders,
     mirror,
-    quote,
     like,
   };
 };

@@ -58,19 +58,9 @@ const useF3Manifesto = (): UseF3ManifestoResults => {
     setNewImagesURI(newImagesURI);
   };
 
-  const viewMainImage = (e: any): void => {
-    let src: string = e.target.src;
-    // if (src.split("/ipfs/")[1].charAt(1) === ".") {
-    //   src = src.split("/ipfs/")[1].charAt(0);
-    // } else {
-    //   src = src.split("ipfs/")[1].charAt(0) + src.split("ipfs/")[1].charAt(1);
-    // }
-    setMainImage(src.split("/ipfs/")[1]);
-  };
-
   return {
     refreshImages,
-    viewMainImage,
+    setMainImage,
     mainImage,
     imagesURI,
     newImagesURI,

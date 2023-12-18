@@ -24,28 +24,14 @@ const useCollections = (
   const getAllGallery = async () => {
     setGalleryLoading(true);
     try {
-      let data: Gallery[] = [];
-      const first = 50;
-
-      for (let i = 0; i < 5; i++) {
-        const skip = i * first;
-        const returned = await getAllCollections(skip, first);
-
-        if (Array.isArray(returned?.data?.collectionCreateds)) {
-          data = data.concat(returned.data.collectionCreateds);
-        }
-
-        if (returned?.data?.collectionCreateds?.length < 1) {
-          break;
-        }
-      }
+      const returned = await getAllCollections(1000, 0);
 
       const sexesSet = new Set<string>();
       const stylesSet = new Set<string>();
       const dropsSet = new Set<string>();
 
       const colls = await handleCollectionProfilesAndPublications(
-        data,
+        returned?.data?.collectionCreateds,
         lensConnected
       );
 
@@ -81,19 +67,17 @@ const useCollections = (
     let newUrl: string = "";
 
     if (type !== "name") {
-      newValue = newValue.trim().replace(/\s+/g, "")?.toLowerCase();
+      newValue = newValue.trim().replace(/\s+/g, "");
 
       let queryArray =
         queryParams
           .get(type)
-          ?.replaceAll("#shopping", "")
+          ?.replaceAll("/#shopping", "")
           ?.split("-")
-          ?.filter((item) => item?.toLowerCase()) || [];
+          ?.filter((item) => item) || [];
 
       if (queryArray.includes(newValue)) {
-        queryArray = queryArray.filter(
-          (item) => item?.toLowerCase() !== newValue
-        );
+        queryArray = queryArray.filter((item) => item !== newValue);
       } else if (newValue !== "") {
         queryArray.push(newValue);
       }
@@ -118,13 +102,13 @@ const useCollections = (
       .join("");
 
     newUrl = `${baseUrl}?${queryString?.replaceAll(
-      "#shopping",
+      "/#shopping",
       ""
-    )}${"#shopping"}`;
+    )}${"/#shopping"}`;
 
     await router.replace(
       router.asPath,
-      newUrl?.includes("?#shopping") ? newUrl?.replaceAll("?", "") : newUrl,
+      newUrl?.includes("?/#shopping") ? newUrl?.replaceAll("?", "") : newUrl,
       {
         shallow: true,
         scroll: false,
@@ -135,59 +119,100 @@ const useCollections = (
   const filterGallery = () => {
     let galleryFiltered: Gallery[] = [];
 
-    if (router.asPath.includes("?sex=")) {
+    if (router.asPath.includes("sex=")) {
       const sexSelected: string[] = router.asPath
-        .split("?sex=")[1]
+        .split("sex=")[1]
+        .split("&")[0]
         .split("?")[0]
-        ?.split("/#shopping")?.[0]
         .replaceAll("-", " ")
+        ?.split("/#shopping")?.[0]
         .trim()
         .split(" ");
 
-      galleryFiltered = gallery?.filter((item) =>
-        sexSelected?.includes(item?.collectionMetadata?.sex)
-      );
+      if (sexSelected?.length > 0) {
+        galleryFiltered = gallery?.filter((item) =>
+          sexSelected?.some(
+            (sex) =>
+              sex
+                ?.replace(/([A-Z])/g, " $1")
+                ?.trim()
+                ?.toLowerCase() === item?.collectionMetadata?.sex?.toLowerCase()
+          )
+        );
+      }
     }
 
-    if (router.asPath.includes("?style=")) {
+    if (router.asPath.includes("style=")) {
       const styleSelected: string[] = router.asPath
-        .split("?style=")[1]
+        .split("style=")[1]
+        .split("&")[0]
         .split("?")[0]
-        ?.split("/#shopping")?.[0]
         .replaceAll("-", " ")
+        ?.split("/#shopping")?.[0]
         .trim()
         .split(" ");
 
-      galleryFiltered = gallery?.filter((item) =>
-        styleSelected?.includes(item?.collectionMetadata?.style)
-      );
+      if (styleSelected?.length > 0) {
+        galleryFiltered = (
+          galleryFiltered?.length > 0 ? galleryFiltered : gallery
+        )?.filter((item) =>
+          styleSelected?.some(
+            (style) =>
+              style
+                .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
+                  p1 ? p1 : " " + match
+                )
+                ?.toLowerCase()
+                .trim() === item?.collectionMetadata?.style?.toLowerCase()
+          )
+        );
+      }
     }
 
-    if (router.asPath.includes("?collection=")) {
+    if (router.asPath.includes("collection=")) {
       const dropSelected: string[] = router.asPath
-        .split("?collection=")[1]
+        .split("collection=")[1]
+        .split("&")[0]
         .split("?")[0]
-        ?.split("/#shopping")?.[0]
         .replaceAll("-", " ")
+        ?.split("/#shopping")?.[0]
         .trim()
         .split(" ");
 
-      galleryFiltered = gallery?.filter((item) =>
-        dropSelected?.includes(item?.dropMetadata?.dropTitle)
-      );
+      if (dropSelected?.length > 0) {
+        galleryFiltered = (
+          galleryFiltered?.length > 0 ? galleryFiltered : gallery
+        )?.filter((item) =>
+          dropSelected?.some(
+            (drop) =>
+              drop
+                .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
+                  p1 ? p1 : " " + match
+                )
+                ?.toLowerCase()
+                .trim() === item?.dropMetadata?.dropTitle?.toLowerCase()
+          )
+        );
+      }
     }
 
-    if (router.asPath.includes("?name=")) {
+    if (router.asPath.includes("name=")) {
       const nameSelected: string = router.asPath
-        .split("?name=")[1]
+        .split("name=")[1]
+        .split("&")[0]
         .split("?")[0]
         ?.split("/#shopping")?.[0];
 
-      galleryFiltered = gallery?.filter((item) =>
-        nameSelected?.includes(item?.collectionMetadata?.title)
-      );
+      if (nameSelected !== "" && nameSelected) {
+        galleryFiltered = (
+          galleryFiltered?.length > 0 ? galleryFiltered : gallery
+        )?.filter((item) =>
+          item?.collectionMetadata?.title
+            ?.toLowerCase()
+            ?.includes(nameSelected?.toLowerCase())
+        );
+      }
     }
-
     setFilteredGallery(galleryFiltered);
   };
 
@@ -209,6 +234,7 @@ const useCollections = (
     filteredGallery,
     galleryLoading,
     handleURL,
+    setFilteredGallery,
   };
 };
 

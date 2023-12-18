@@ -17,7 +17,6 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
   setMakePostComment,
   commentPostLoading,
   id,
-  itemId,
   height,
   imageHeight,
   imageWidth,
@@ -34,10 +33,16 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
   lensConnected,
   caretCoord,
   setCaretCoord,
+  width,
 }): JSX.Element => {
   const textElement = useRef(null);
   return (
-    <div className="relative w-full h-fit flex flex-col items-start justify-start gap-2">
+    <div
+      className={`relative h-fit flex flex-col items-start justify-start gap-2`}
+      style={{
+        width,
+      }}
+    >
       <div
         className="relative w-full p-2 border border-black text-black font-din text-sm bg-lightYellow flex items-center justify-center text-left rounded-md"
         style={{
@@ -227,16 +232,9 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
               !commentPostLoading &&
               (main
                 ? (
-                    commentPost as (
-                      id: string,
-                      main?: boolean,
-                      mirror?: string
-                    ) => Promise<void>
-                  )(itemId ? itemId : id, main, id)
-                : (commentPost as (
-                    id: string,
-                    mirror?: string
-                  ) => Promise<void>)!(itemId ? itemId : id, id))
+                    commentPost as (id: string, main: boolean) => Promise<void>
+                  )(id, main)
+                : (commentPost as (id: string) => Promise<void>)!(id))
             }
           >
             <div
