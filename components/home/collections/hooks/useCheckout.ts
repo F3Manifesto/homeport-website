@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { Details, Gallery, OracleData } from "../../../../types/general.types";
 import { Profile } from "../../../../graphql/generated";
-import {
-  LitNodeClient,
-  checkAndSignAuthMessage,
-} from "@lit-protocol/lit-node-client";
+import { ILitNodeClient } from "@lit-protocol/types";
+import { checkAndSignAuthMessage } from "@lit-protocol/lit-node-client";
 import { PublicClient, createWalletClient, custom } from "viem";
 import { ACCEPTED_TOKENS, F3M_OPEN_ACTION } from "../../../../lib/constants";
 import { polygon } from "viem/chains";
@@ -21,7 +19,7 @@ const useCheckout = (
   collection: Gallery | undefined,
   address: `0x${string}` | undefined,
   lensConnected: Profile | undefined,
-  client: LitNodeClient,
+  client: ILitNodeClient,
   publicClient: PublicClient,
   oracleData: OracleData[],
   dispatch: Dispatch
@@ -66,7 +64,6 @@ const useCheckout = (
     try {
       const authSig = await checkAndSignAuthMessage({
         chain: "polygon",
-        
       });
 
       await client.connect();
