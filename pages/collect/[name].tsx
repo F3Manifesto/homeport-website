@@ -5,11 +5,11 @@ import Metadata from "../../components/collect/modules/Metadata";
 import Connect from "../../components/collect/modules/Connect";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { ILitNodeClient } from "@lit-protocol/types";
 import useSignIn from "../../components/collect/hooks/useSignIn";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useChainModal } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
-import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { useAccountModal } from "@rainbow-me/rainbowkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -23,12 +23,16 @@ import { polygon } from "viem/chains";
 import Quotes from "../../components/collect/modules/Quotes";
 import Comments from "../../components/collect/modules/Comments";
 import useCheckout from "../../components/home/collections/hooks/useCheckout";
+import * as LitJsSdk from "@lit-protocol/lit-node-client";
 
 const Name: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { name } = router.query;
   const dispatch = useDispatch();
-  const client = new LitNodeClient({ litNetwork: "cayenne", debug: false });
+  const client = new LitJsSdk.LitNodeClient({
+    litNetwork: "cayenne",
+    debug: false,
+  });
   const publicClient = createPublicClient({
     chain: polygon,
     transport: http(
@@ -156,7 +160,7 @@ const Name: React.FC = (): JSX.Element => {
     collection,
     address,
     lensProfile,
-    client,
+    client as unknown as ILitNodeClient,
     publicClient,
     oracleData,
     dispatch
@@ -227,11 +231,7 @@ const Name: React.FC = (): JSX.Element => {
             ?.replaceAll(" ", "-")
             ?.toLowerCase()}`}
         />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
       <div className="w-full h-full flex flex-col relative items-center justify-start">
         <div className="relative w-full h-fit flex flex-row justify-between gap-4 items-center py-8 px-4">

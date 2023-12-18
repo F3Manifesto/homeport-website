@@ -1,9 +1,10 @@
-import { LitNodeClient, encryptString } from "@lit-protocol/lit-node-client";
+import {  encryptString } from "@lit-protocol/lit-node-client";
+import { ILitNodeClient } from "@lit-protocol/types";
 import { AuthSig, Details, Gallery } from "../../types/general.types";
 import { ACCEPTED_TOKENS, DIGITALAX_ADDRESS } from "../constants";
 
 export const encryptItems = async (
-  client: LitNodeClient,
+  client: ILitNodeClient,
   fulfillmentDetails: Details,
   address: `0x${string}`,
   authSig: AuthSig,
