@@ -66,6 +66,7 @@ const useCheckout = (
     try {
       const authSig = await checkAndSignAuthMessage({
         chain: "polygon",
+        
       });
 
       await client.connect();
