@@ -32,8 +32,8 @@ const COLLECTIONS = `
 `;
 
 const ALL_COLLECTIONS = `
-  query($origin: String!) {
-    collectionCreateds(where: {origin: $origin}) {
+  query($origin: String!, $first: Int, $skip: Int) {
+    collectionCreateds(where: {origin: $origin}, first: $first, skip: $skip) {
       amount
       uri
       dropMetadata {
@@ -90,12 +90,17 @@ export const getOneCollection = async (
   }
 };
 
-export const getAllCollections = async (): Promise<FetchResult | void> => {
+export const getAllCollections = async (
+  first: number,
+  skip: number
+): Promise<FetchResult | void> => {
   let timeoutId: NodeJS.Timeout | undefined;
   const queryPromise = graphPrintClient.query({
     query: gql(ALL_COLLECTIONS),
     variables: {
       origin: "4",
+      first,
+      skip,
     },
     fetchPolicy: "no-cache",
     errorPolicy: "all",

@@ -27,6 +27,13 @@ import approveCurrency from "../../../graphql/lens/mutations/approve";
 import handleIndexCheck from "../../../lib/helpers/handleIndexCheck";
 import lensCollect from "../../../lib/helpers/lensCollect";
 import { MakePostComment } from "../../../types/general.types";
+import {
+  FollowCollectState,
+  setFollowCollect,
+} from "../../../redux/reducers/followCollectSlice";
+import { setAvailableCurrencies } from "../../../redux/reducers/availableCurrenciesSlice";
+import refetchProfile from "../../../lib/helpers/refetchProfile";
+import lensFollow from "../../../lib/helpers/lensFollow";
 
 const useQuote = (
   availableCurrencies: Erc20[],
@@ -55,20 +62,26 @@ const useQuote = (
     {
       content: "",
       images: [],
+      videos: [],
     },
   ]);
-  const [quoteContentLoading, setQuoteContentLoading] = useState<boolean[]>([
-    false,
+  const [quoteContentLoading, setQuoteContentLoading] = useState<
+    {
+      image: boolean;
+      video: boolean;
+    }[]
+  >([
+    {
+      image: false,
+      video: false,
+    },
   ]);
   const [collects, setCollects] = useState<
     SimpleCollectOpenActionModuleInput | undefined
   >({
     followerOnly: false,
   });
-  const [searchGifLoading, setSearchGifLoading] = useState<boolean>(false);
   const [openMeasure, setOpenMeasure] = useState<{
-    searchedGifs: string[];
-    search: string;
     collectibleOpen: boolean;
     collectible: string;
     award: string;
@@ -80,8 +93,6 @@ const useQuote = (
     timeOpen: boolean;
     time: string;
   }>({
-    searchedGifs: [],
-    search: "",
     collectibleOpen: false,
     collectible: "Yes",
     award: "",
@@ -101,13 +112,14 @@ const useQuote = (
     try {
       const contentURI = await uploadPostContent(
         makeQuote[0]?.content?.trim() == "" ? " " : makeQuote[0]?.content,
-        makeQuote[0]?.images || []
+        makeQuote[0]?.images || [],
+        makeQuote[0]?.videos || []
       );
 
       const clientWallet = createWalletClient({
         chain: polygon,
         transport: custom((window as any).ethereum),
-      });
+      })
 
       await lensQuote(
         postBox?.quote?.id,
@@ -184,6 +196,7 @@ const useQuote = (
       {
         content: "",
         images: [],
+        videos: [],
       },
     ]);
     dispatch(
@@ -192,24 +205,6 @@ const useQuote = (
       })
     );
     setQuoteLoading([false]);
-  };
-
-  const handleGif = async (search: string) => {
-    try {
-      setSearchGifLoading(true);
-      const response = await fetch("/api/giphy", {
-        method: "POST",
-        body: search,
-      });
-      const allGifs = await response.json();
-      setOpenMeasure((prev) => ({
-        ...prev,
-        searchedGifs: allGifs?.json?.results,
-      }));
-      setSearchGifLoading(false);
-    } catch (err: any) {
-      console.error(err.message);
-    }
   };
 
   const checkCurrencyApproved = async () => {
@@ -472,8 +467,6 @@ const useQuote = (
     setCollects,
     openMeasure,
     setOpenMeasure,
-    searchGifLoading,
-    handleGif,
     informationLoading,
     transactionLoading,
     handleCollect,

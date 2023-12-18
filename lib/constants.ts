@@ -7,7 +7,8 @@ export const LENS_HUB_PROXY_ADDRESS_MATIC: `0x${string}` =
   "0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d";
 export const F3M_ADDRESS: `0x${string}` =
   "0xbE20D3f61f6995996a5B8dd58B036ADa7cf30945";
-
+export const F3M_OPEN_ACTION: `0x${string}` =
+  "0xb92725B5Bea87C7Ed856898AaC3122548aBA6349";
 export const ACCEPTED_TOKENS: string[][] = [
   [
     "QmYYUQ8nGDnyuk8jQSung1WmTksvLEQBXjnCctdRrKtsNk",

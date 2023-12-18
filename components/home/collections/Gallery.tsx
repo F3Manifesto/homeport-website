@@ -5,6 +5,7 @@ import { INFURA_GATEWAY } from "../../../lib/constants";
 import { AiOutlineLoading } from "react-icons/ai";
 import { Post } from "../../../graphql/generated";
 import { setLensConnectModal } from "../../../redux/reducers/lensConnectModalSlice";
+import { setReactBox } from "../../../redux/reducers/reactBoxSlice";
 
 const Gallery: FunctionComponent<GalleryProps> = ({
   gallery,
@@ -86,7 +87,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                     />
                   </div>
                   <div
-                    className="absolute w-fit py-1 px-2 left-2 bottom-2 border border-black bg-white/70 flex flex-row gap-3 z-2 cursor-default"
+                    className="absolute w-fit py-1 px-2 left-2 bottom-2 border border-black justify-center items-center bg-white/70 flex flex-row gap-3 z-2 cursor-default"
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -105,6 +106,14 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                         loader: interactionLoaders?.[index]?.like,
                         name: "Like",
                         reacted: token?.publication?.operations?.hasReacted!,
+                        who: () =>
+                          dispatch(
+                            setReactBox({
+                              actionOpen: true,
+                              actionId: token?.publication?.id,
+                              actionType: "Likes",
+                            })
+                          ),
                       },
                       {
                         count: token?.publication?.stats?.mirrors || 0,
@@ -113,6 +122,14 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                         loader: interactionLoaders?.[index]?.mirror,
                         name: "Mirror",
                         reacted: token?.publication?.operations?.hasMirrored!,
+                        who: () =>
+                          dispatch(
+                            setReactBox({
+                              actionOpen: true,
+                              actionId: token?.publication?.id,
+                              actionType: "Mirrors",
+                            })
+                          ),
                       },
                       {
                         count: token?.publication?.stats?.quotes || 0,
@@ -121,6 +138,14 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                         loader: false,
                         name: "Quote",
                         reacted: token?.publication?.operations?.hasQuoted!,
+                        who: () =>
+                          dispatch(
+                            setReactBox({
+                              actionOpen: true,
+                              actionId: token?.publication?.id,
+                              actionType: "Mirrors",
+                            })
+                          ),
                       },
                       {
                         count: token?.publication?.stats?.comments || 0,
@@ -129,6 +154,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                         loader: false,
                         name: "Comment",
                         reacted: false,
+                        who: () => router.push(`/collect/${nameToken}`),
                       },
                       {
                         count: token?.publication?.stats?.countOpenActions || 0,
@@ -139,6 +165,14 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                         reacted:
                           token?.publication?.operations?.hasActed
                             ?.isFinalisedOnchain!,
+                        who: () =>
+                          dispatch(
+                            setReactBox({
+                              actionOpen: true,
+                              actionId: token?.publication?.id,
+                              actionType: "Acts",
+                            })
+                          ),
                       },
                     ].map(
                       (
@@ -149,20 +183,21 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                           loader: boolean;
                           name: string;
                           reacted: boolean;
+                          who: () => void;
                         },
                         key: number
                       ) => {
                         return (
                           <div
                             key={key}
-                            className="relative w-fit h-fit flex items-center cursor-pointer justify-center flex flex-row gap-2"
+                            className="relative w-fit h-fit flex items-center cursor-default justify-center flex flex-row gap-2"
                             title={item.name}
                           >
                             <div
                               className={`relative w-4 h-4 flex items-center justify-center ${
                                 item?.reacted &&
                                 "mix-blend-multiply hue-rotate-60"
-                              }`}
+                              } ${!item.loader && "cursor-pointer"}`}
                               onClick={
                                 !connected
                                   ? openConnectModal
@@ -191,7 +226,12 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                                 />
                               )}
                             </div>
-                            <div className="relative w-fit h-fit flex items-center justify-center text-black font-din text-xxs">
+                            <div
+                              className={`relative w-fit h-fit flex items-center justify-center text-black font-din text-xxs ${
+                                item?.count > 0 && "cursor-pointer"
+                              }`}
+                              onClick={() => item?.count > 0 && item.who()}
+                            >
                               {item?.count}
                             </div>
                           </div>

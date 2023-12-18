@@ -11,7 +11,9 @@ import interactErrorReducer from "./reducers/interactErrorSlice";
 import postCollectReducer from "./reducers/postCollectSlice";
 import quoteBoxReducer from "./reducers/quoteBoxSlice";
 import reactBoxReducer from "./reducers/reactBoxSlice";
-import lensConnectModalSlice from "./reducers/lensConnectModalSlice";
+import lensConnectModalReducer from "./reducers/lensConnectModalSlice";
+import followCollectReducer from "./reducers/followCollectSlice";
+import availableCurrenciesReducer from "./reducers/availableCurrenciesSlice";
 
 const reducer = combineReducers({
   walletConnectedReducer,
@@ -25,7 +27,9 @@ const reducer = combineReducers({
   postCollectReducer,
   quoteBoxReducer,
   reactBoxReducer,
-  lensConnectModalSlice
+  lensConnectModalReducer,
+  followCollectReducer,
+  availableCurrenciesReducer
 });
 
 export const store = configureStore({

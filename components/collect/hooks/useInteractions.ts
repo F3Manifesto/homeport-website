@@ -44,8 +44,6 @@ const useInteractions = (
       mirror: boolean;
       comment: boolean;
       simpleCollect: boolean;
-      bookmark: boolean;
-      hide: boolean;
     }[]
   >(
     Array.from({ length: 1 }, () => ({
@@ -53,8 +51,6 @@ const useInteractions = (
       mirror: false,
       comment: false,
       simpleCollect: false,
-      bookmark: false,
-      hide: false,
     }))
   );
   const [openItemMirrorChoice, setOpenItemMirrorChoice] = useState<boolean[]>(
@@ -532,7 +528,7 @@ const useInteractions = (
     getMoreComments,
     commentInfo,
     comments,
-    comment
+    comment,
   };
 };
 

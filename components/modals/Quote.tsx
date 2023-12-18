@@ -4,24 +4,31 @@ import { ImCross } from "react-icons/im";
 import { QuoteProps } from "../../types/general.types";
 import PostComment from "./modules/PostComment";
 import PostQuote from "./modules/PostQuote";
+import { Quote } from "../../graphql/generated";
 
 const Quote: FunctionComponent<QuoteProps> = ({
   dispatch,
-  router,
-  commentPost,
-  contentLoading,
-  setContentLoading,
-  postCollect,
-  setMakePostComment,
-  makePostComment,
-  commentPostLoading,
   quote,
+  makePost,
+  post,
+  setMakePost,
+  postLoading,
+  setContentLoading,
+  contentLoading,
+  postCollect,
+  lensConnected,
+  caretCoord,
+  profilesOpen,
+  mentionProfiles,
+  setMentionProfiles,
+  setProfilesOpen,
+  setCaretCoord,
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
       <div className="relative w-[90vw] sm:w-[70vw] half:w-[40vw] h-fit max-h-[90vh] min-h-[27vh] place-self-center bg-lightWhite border border-black overflow-y-scroll cursor-empireA">
         <div className="relative w-full h-full flex flex-col gap-3 p-2 items-start justify-center">
-          <div className="relative w-fit h-fit items-end justify-end ml-auto cursor-empireS flex">
+          <div className="relative w-fit h-fit items-end justify-end ml-auto cursor-pointer flex">
             <ImCross
               color="black"
               size={10}
@@ -34,19 +41,31 @@ const Quote: FunctionComponent<QuoteProps> = ({
               }
             />
           </div>
-          <PostQuote router={router} quote={quote} />
+          <PostQuote
+            disabled={false}
+            dispatch={dispatch}
+            quote={quote as Quote}
+          />
           <div className="relative w-full h-full flex items-center justify-center pb-3">
             <div className="relative h-full w-4/5 items-center justify-center flex">
               <PostComment
-                height="12rem"
+                itemId={undefined}
+                setCaretCoord={setCaretCoord}
+                caretCoord={caretCoord}
+                profilesOpen={profilesOpen?.[0]}
+                mentionProfiles={mentionProfiles}
+                setMentionProfiles={setMentionProfiles}
+                setProfilesOpen={setProfilesOpen}
+                lensConnected={lensConnected}
+                main={false}
+                setMakePostComment={setMakePost}
+                makePostComment={makePost[0]}
+                commentPostLoading={postLoading[0]}
+                commentPost={post}
+                height="25vh"
                 imageHeight="1rem"
                 imageWidth="1rem"
-                main={false}
-                setMakePostComment={setMakePostComment}
-                makePostComment={makePostComment?.[0]}
-                commentPostLoading={commentPostLoading?.[0]}
-                commentPost={commentPost}
-                contentLoading={contentLoading?.[0]}
+                contentLoading={contentLoading[0]}
                 index={0}
                 setContentLoading={setContentLoading}
                 dispatch={dispatch}
