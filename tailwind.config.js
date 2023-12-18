@@ -83,6 +83,14 @@ module.exports = {
           },
         },
       },
+      width: {
+        100: "26rem",
+        110: "30rem",
+      },
+      height: {
+        100: "26rem",
+        110: "32rem",
+      },
       animation: {
         reverseAnimation: "marquee 40s linear infinite",
         unblur: "unblur 0.5s linear",

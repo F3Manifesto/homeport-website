@@ -38,7 +38,8 @@
     "viem": "^1.19.11",
     "wagmi": "^1.4.7",
     "wavesurfer.js": "^7.5.3",
-    "next-connect": "^0.13.0"
+    "next-connect": "^0.13.0",
+    "@lit-protocol/lit-node-client": "^3.0.22"
   },
   "devDependencies": {
     "@types/json-stable-stringify": "^1.0.36",

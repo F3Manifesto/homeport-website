@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import {
   Comment,
   Mirror,
-  Post,
   Quote,
   TextOnlyMetadataV3,
 } from "../../../graphql/generated";
@@ -40,6 +39,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
   contentLoading,
   postCollect,
   main,
+  quote,
   lensConnected,
   setMentionProfiles,
   setProfilesOpen,
@@ -54,7 +54,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
 }) => {
   return (
     <div
-      className={`relative rounded-sm h-fit w-full sm:w-110 px-1 py-3 sm:py-2 sm:px-2 flex flex-col gap-4 sm:gap-2 border-2 items-center justify-between border-black bg-lightYellow`}
+      className={`relative rounded-sm h-fit w-full lg:w-110 px-1 py-3 sm:py-2 sm:px-2 flex flex-col gap-4 sm:gap-2 border items-center justify-between border-black bg-lightYellow`}
       id={item?.id}
     >
       <div className="relative w-full h-fit flex items-center justify-between flex-row">
@@ -152,6 +152,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
         setCommentsOpen={setCommentsOpen!}
         commentsOpen={commentsOpen!}
         main={main}
+        quote={quote}
       />
       {commentsOpen?.[index] && (
         <PostComment
@@ -166,9 +167,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
           setMakePostComment={setMakePostComment!}
           commentPost={comment!}
           id={item?.id}
-          itemId={
-            item?.__typename === "Mirror" ? item?.mirrorOn?.id : undefined
-          }
+          width={"100%"}
           commentPostLoading={interactionsLoading?.[index]?.comment!}
           height="5rem"
           imageHeight="1.25rem"

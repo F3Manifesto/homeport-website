@@ -4,7 +4,7 @@ const allowedOrigins = [
   "https://api-v2-mumbai.lens.dev/",
   "https://api-v2.lens.dev/",
   "https://thedial.infura-ipfs.io",
-  "https://f3manifesto.infura-ipfs.io",
+  "https://thedial.infura-ipfs.io",
   "https://api.thegraph.com",
   "https://arweave.net/",
   "https://gw.ipfs-lens.dev",
@@ -15,11 +15,6 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "f3manifesto.infura-ipfs.io",
-        pathname: "/ipfs/**",
-      },
       {
         protocol: "https",
         hostname: "thedial.infura-ipfs.io",

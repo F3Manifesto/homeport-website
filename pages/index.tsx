@@ -42,11 +42,19 @@ const Home: NextPage = (): JSX.Element => {
   const lensProfile = useSelector(
     (state: RootState) => state.app.lensConnectedReducer.profile
   );
-  const { shopping, goShopping, filteredGallery, galleryLoading, handleURL } =
-    useCollections(dispatch, router, gallery, lensProfile);
-  const { like, quote, mirror, interactionLoaders } = useInteractions(
+  const {
+    shopping,
+    goShopping,
+    filteredGallery,
+    galleryLoading,
+    handleURL,
+    setFilteredGallery,
+  } = useCollections(dispatch, router, gallery, lensProfile);
+  const { like, mirror, interactionLoaders } = useInteractions(
     gallery,
+    filteredGallery,
     dispatch,
+    setFilteredGallery,
     lensProfile,
     publicClient,
     address
@@ -99,7 +107,6 @@ const Home: NextPage = (): JSX.Element => {
         openConnectModal={openConnectModal}
         mirror={mirror}
         like={like}
-        quote={quote}
       />
       <Poster />
       <Clear />

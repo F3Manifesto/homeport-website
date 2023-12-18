@@ -49,7 +49,6 @@ const Quote: FunctionComponent<QuoteProps> = ({
           <div className="relative w-full h-full flex items-center justify-center pb-3">
             <div className="relative h-full w-4/5 items-center justify-center flex">
               <PostComment
-                itemId={undefined}
                 setCaretCoord={setCaretCoord}
                 caretCoord={caretCoord}
                 profilesOpen={profilesOpen?.[0]}
@@ -71,6 +70,7 @@ const Quote: FunctionComponent<QuoteProps> = ({
                 dispatch={dispatch}
                 postCollect={postCollect}
                 id={quote?.id}
+                width={"100%"}
               />
             </div>
           </div>

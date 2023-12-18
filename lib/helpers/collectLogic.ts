@@ -8,9 +8,14 @@ const collectLogic = (
   loader: boolean,
   dispatch: Dispatch<AnyAction>,
   main: boolean,
+  quote: boolean,
   simpleCollect:
-    | ((id: string, type: string) => Promise<void>)
-    | ((id: string, type: string, main: boolean) => Promise<void>)
+    | ((
+        id: string,
+        type: string,
+        main: boolean,
+        quote: boolean
+      ) => Promise<void>)
     | undefined
 ): void => {
   if (
@@ -39,18 +44,14 @@ const collectLogic = (
           actionFollower: pub?.by,
         })
       )
-    : main
-    ? (
+    : (
         simpleCollect! as (
           id: string,
           type: string,
-          main: boolean
+          main: boolean,
+          quote: boolean
         ) => Promise<void>
-      )(pub?.id, pub?.openActionModules?.[0]?.__typename, main)
-    : (simpleCollect! as (id: string, type: string) => Promise<void>)(
-        pub?.id,
-        pub?.openActionModules?.[0]?.__typename
-      );
+      )(pub?.id, pub?.openActionModules?.[0]?.__typename, main, quote);
 };
 
 export default collectLogic;

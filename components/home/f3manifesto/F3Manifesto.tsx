@@ -8,13 +8,13 @@ const F3Manifesto: FunctionComponent<F3ManifestoProps> = ({
   filterConstants,
   filterURL,
 }): JSX.Element => {
-  const { refreshImages, viewMainImage, mainImage, imagesURI, newImagesURI } =
+  const { refreshImages, setMainImage, mainImage, imagesURI, newImagesURI } =
     useF3Manifesto();
   return (
     <div className="flex min-h-full h-full min-w-screen cursor-empireA clear-both pt-10">
       <MainBoard
         refreshImages={refreshImages}
-        viewMainImage={viewMainImage}
+        setMainImage={setMainImage}
         mainImage={mainImage}
         filterConstants={filterConstants}
         newImagesURI={newImagesURI}

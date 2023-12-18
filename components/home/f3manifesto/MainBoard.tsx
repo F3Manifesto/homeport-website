@@ -8,7 +8,7 @@ import { INFURA_GATEWAY } from "../../../lib/constants";
 const MainBoard: FunctionComponent<MainBoardProps> = ({
   refreshImages,
   mainImage,
-  viewMainImage,
+  setMainImage,
   newImagesURI,
   goShopping,
   filterURL,
@@ -39,7 +39,7 @@ const MainBoard: FunctionComponent<MainBoardProps> = ({
                       (index === 3 && "w-6/12") ||
                       (index === 4 && "w-4/12")
                     } ${blur && "animate-unblur blur-sm"}`}
-                    onClick={viewMainImage}
+                    onClick={() => setMainImage(uri)}
                   >
                     <Image
                       objectFit="cover"

@@ -6,14 +6,12 @@ import { Profile } from "../../../graphql/generated";
 
 const useCollection = (name: string, lensConnected: Profile | undefined) => {
   const [collectionLoading, setCollectionLoading] = useState<boolean>(false);
-  const [collect, setCollect] = useState<boolean>(false);
   const [collection, setCollection] = useState<Gallery>();
 
   const getCollection = async () => {
     setCollectionLoading(true);
     try {
-      const data = await getOneCollection(name);
-
+      const data = await getOneCollection(name?.replaceAll("-", " "));
       const coll = await handleCollectionProfilesAndPublications(
         (data as any)?.data?.collectionCreateds,
         lensConnected
@@ -35,8 +33,6 @@ const useCollection = (name: string, lensConnected: Profile | undefined) => {
     collection,
     collectionLoading,
     setCollection,
-    collect,
-    setCollect,
   };
 };
 

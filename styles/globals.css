@@ -260,3 +260,22 @@ textarea::-webkit-outer-spin-button:focus {
     transparent 100%
   );
 }
+
+
+
+
+#fadedItem {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #FBFBF1 0%,
+    #FFFFF9 90%,
+    transparent 99%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    to bottom,
+    #FBFBF1 0%,
+    #FFFFF9 90%,
+    transparent 100%
+  );
+}

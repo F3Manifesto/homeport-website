@@ -9,6 +9,7 @@ import useSignIn from "../../components/collect/hooks/useSignIn";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useChainModal } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { useAccountModal } from "@rainbow-me/rainbowkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -21,12 +22,13 @@ import { createPublicClient, http } from "viem";
 import { polygon } from "viem/chains";
 import Quotes from "../../components/collect/modules/Quotes";
 import Comments from "../../components/collect/modules/Comments";
-import Checkout from "../../components/collect/modules/Checkout";
+import useCheckout from "../../components/home/collections/hooks/useCheckout";
 
 const Name: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { name } = router.query;
   const dispatch = useDispatch();
+  const client = new LitNodeClient({ litNetwork: "cayenne", debug: false });
   const publicClient = createPublicClient({
     chain: polygon,
     transport: http(
@@ -59,22 +61,74 @@ const Name: React.FC = (): JSX.Element => {
     lensProfile,
     openAccountModal
   );
-  const { collection, collectionLoading, setCollection, collect, setCollect } =
-    useCollection(name as string, lensProfile);
-
+  const { collection, collectionLoading, setCollection } = useCollection(
+    name as string,
+    lensProfile
+  );
   const {
+    mainInteractionsLoading,
+    interactionsItemsLoading,
+    interactionsQuotesItemsLoading,
+    mirror,
+    like,
+    simpleCollect,
     commentsLoading,
     getMoreComments,
     commentInfo,
     comments,
+    comment,
     quotes,
     getMoreQuotes,
-    quoteInfo,
     quotesLoading,
-    mirror,
-    like,
-    interactionsItemsLoading,
-    quote, 
+    quoteInfo,
+    openItemMirrorChoice,
+    setOpenItemMirrorChoice,
+    commentsOpen,
+    commentsQuoteOpen,
+    quoteOpenItemMirrorChoice,
+    setQuoteOpenItemMirrorChoice,
+    makeQuoteComment,
+    makeComment,
+    setMakeComment,
+    profileHovers,
+    profileHoversQuote,
+    setProfileHovers,
+    setProfileHoversQuote,
+    quoteContentLoading,
+    setQuoteContentLoading,
+    contentLoading,
+    setContentLoading,
+    mainContentLoading,
+    setMainContentLoading,
+    setCommentsOpen,
+    unfollowProfile,
+    followProfile,
+    setMainMakeComment,
+    mainMakeComment,
+    mentionProfiles,
+    setMentionProfiles,
+    profilesOpen,
+    setProfilesOpen,
+    caretCoord,
+    setCaretCoord,
+    caretCoordMain,
+    setCaretCoordMain,
+    followLoading,
+    followLoadingQuote,
+    profilesOpenMain,
+    mentionProfilesMain,
+    setMentionProfilesMain,
+    setProfilesOpenMain,
+    commentRef,
+    collectRef,
+    caretCoordQuote,
+    setCaretCoordQuote,
+    setCommentsQuoteOpen,
+    setMentionProfilesQuote,
+    mentionProfilesQuote,
+    setProfilesOpenQuote,
+    profilesOpenQuote,
+    setMakeQuoteComment,
   } = useInteractions(
     lensProfile,
     dispatch,
@@ -83,6 +137,29 @@ const Name: React.FC = (): JSX.Element => {
     collection,
     setCollection,
     postCollect
+  );
+
+  const {
+    encryptedFulfillment,
+    openDropdown,
+    setOpenDropdown,
+    details,
+    setDetails,
+    encryptionLoading,
+    approveLoading,
+    collectPostLoading,
+    encryptFulfillment,
+    isApprovedSpend,
+    approveSpend,
+    collectItem,
+  } = useCheckout(
+    collection,
+    address,
+    lensProfile,
+    client,
+    publicClient,
+    oracleData,
+    dispatch
   );
 
   useEffect(() => {
@@ -202,9 +279,9 @@ const Name: React.FC = (): JSX.Element => {
                 {collection?.collectionMetadata?.title?.toUpperCase()}
               </div>
             </div>
-            <div className="relative w-full flex bg-foot py-8 border-y-8 border-lightWhite flex items-center justify-center">
+            <div className="relative w-full h-full flex bg-foot py-8 border-y-8 border-lightWhite flex items-center justify-center p-2">
               <div
-                className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] bg-lightWhite flex items-center justify-center"
+                className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] bg-lightWhite flex items-center justify-center p-3"
                 onClick={() =>
                   dispatch(
                     setImageViewer({
@@ -218,53 +295,145 @@ const Name: React.FC = (): JSX.Element => {
                   )
                 }
               >
-                <Image
-                  priority
-                  layout="fill"
-                  objectFit="contain"
-                  unoptimized
-                  draggable={false}
-                  src={`${INFURA_GATEWAY}/ipfs/${
-                    collection?.collectionMetadata?.images?.[0]?.split(
-                      "ipfs://"
-                    )?.[1]
-                  }`}
-                />
-                <div className="absolute bottom-10 w-1/3 h-10 flex items-center justify-center bg-lightYellow"></div>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    priority
+                    layout="fill"
+                    objectFit="contain"
+                    unoptimized
+                    draggable={false}
+                    src={`${INFURA_GATEWAY}/ipfs/${
+                      collection?.collectionMetadata?.images?.[0]?.split(
+                        "ipfs://"
+                      )?.[1]
+                    }`}
+                  />
+                </div>
               </div>
             </div>
-            <div className="relative w-full h-full flex flex-col xl:flex-row gap-3 items-center justify-center pt-10 pb-24 cursor-empireA px-5">
+            <div className="relative w-full h-full flex flex-col gap-3 items-center justify-center pt-10 pb-24 cursor-empireA px-5">
               <Metadata
+                collectRef={collectRef}
+                commentRef={commentRef}
+                like={like}
+                dispatch={dispatch}
+                mirror={mirror}
+                router={router}
+                walletConnected={walletConnected}
+                lensProfile={lensProfile}
+                openConnectModal={openConnectModal}
+                mainInteractionsLoading={mainInteractionsLoading}
                 item={collection}
-                collect={collect}
-                setCollect={setCollect}
+                encryptedFulfillment={encryptedFulfillment}
+                openDropdown={openDropdown}
+                setOpenDropdown={setOpenDropdown}
+                details={details}
+                setDetails={setDetails}
+                rate={Number(
+                  oracleData?.find(
+                    (oracle) =>
+                      oracle.currency?.toLowerCase() ===
+                      details?.checkoutCurrency?.toLowerCase()
+                  )?.rate
+                )}
+                encryptionLoading={encryptionLoading}
+                approveLoading={approveLoading}
+                collectPostLoading={collectPostLoading}
+                encryptFulfillment={encryptFulfillment}
+                isApprovedSpend={isApprovedSpend}
+                approveSpend={approveSpend}
+                collectItem={collectItem}
               />
-              {collect ? (
-                <Checkout />
-              ) : (
-                <>
+              <div className="relative w-full h-fit flex flex-col lg:flex-row gap-2 justify-start items-start">
+                {quotes?.length > 0 && (
                   <Quotes
                     quotes={quotes}
+                    interactionsLoading={interactionsQuotesItemsLoading}
                     getMoreQuotes={getMoreQuotes}
                     quotesLoading={quotesLoading}
                     quoteInfo={quoteInfo}
                     mirror={mirror}
                     like={like}
-                    quote={quote}
+                    dispatch={dispatch}
+                    lensConnected={lensProfile}
                     simpleCollect={simpleCollect}
+                    interactionsItemsLoading={interactionsQuotesItemsLoading}
+                    openItemMirrorChoice={quoteOpenItemMirrorChoice}
+                    setOpenItemMirrorChoice={setQuoteOpenItemMirrorChoice}
+                    makeComment={makeQuoteComment}
+                    profileHovers={profileHoversQuote}
+                    setProfileHovers={setProfileHoversQuote}
+                    contentLoading={quoteContentLoading}
+                    setContentLoading={setQuoteContentLoading}
+                    followLoading={followLoadingQuote}
+                    caretCoord={caretCoordQuote}
+                    setCaretCoord={setCaretCoordQuote}
+                    openMirrorChoice={quoteOpenItemMirrorChoice}
+                    setOpenMirrorChoice={setQuoteOpenItemMirrorChoice}
+                    commentsOpen={commentsQuoteOpen}
+                    setCommentsOpen={setCommentsQuoteOpen}
+                    comment={comment}
+                    postCollect={postCollect}
+                    profilesOpen={profilesOpenQuote}
+                    setMakeComment={setMakeQuoteComment}
+                    setMentionProfiles={setMentionProfilesQuote}
+                    setProfilesOpen={setProfilesOpenQuote}
+                    followProfile={followProfile}
+                    unfollowProfile={unfollowProfile}
+                    mentionProfiles={mentionProfilesQuote}
                   />
-                  <Comments
-                    comments={comments}
-                    getMoreComments={getMoreComments}
-                    commentsLoading={commentsLoading}
-                    commentInfo={commentInfo}
-                    mirror={mirror}
-                    like={like}
-                    quote={quote}
-                    simpleCollect={simpleCollect}
-                  />
-                </>
-              )}
+                )}
+                <Comments
+                  dispatch={dispatch}
+                  lensConnected={lensProfile}
+                  comments={comments}
+                  getMoreComments={getMoreComments}
+                  commentsLoading={commentsLoading}
+                  commentInfo={commentInfo}
+                  commentRef={commentRef}
+                  mirror={mirror}
+                  like={like}
+                  comment={comment}
+                  simpleCollect={simpleCollect}
+                  setOpenItemMirrorChoice={setOpenItemMirrorChoice}
+                  commentsOpen={commentsOpen}
+                  commentsQuoteOpen={commentsQuoteOpen}
+                  openItemMirrorChoice={openItemMirrorChoice}
+                  interactionsLoading={interactionsItemsLoading}
+                  makeComment={makeComment}
+                  profileHovers={profileHovers}
+                  setProfileHovers={setProfileHovers}
+                  openMirrorChoice={openItemMirrorChoice}
+                  setOpenMirrorChoice={setOpenItemMirrorChoice}
+                  unfollowProfile={unfollowProfile}
+                  followLoading={followLoading}
+                  followProfile={followProfile}
+                  setCommentsOpen={setCommentsOpen}
+                  setMakeComment={setMakeComment}
+                  setContentLoading={setContentLoading}
+                  contentLoading={contentLoading}
+                  postCollect={postCollect}
+                  setMentionProfiles={setMentionProfiles}
+                  setProfilesOpen={setProfilesOpen}
+                  mentionProfiles={mentionProfiles}
+                  profilesOpen={profilesOpen}
+                  caretCoord={caretCoord}
+                  setCaretCoord={setCaretCoord}
+                  mainInteractionsLoading={mainInteractionsLoading}
+                  setCaretCoordMain={setCaretCoordMain}
+                  caretCoordMain={caretCoordMain}
+                  profilesOpenMain={profilesOpenMain}
+                  mentionProfilesMain={mentionProfilesMain}
+                  setMentionProfilesMain={setMentionProfilesMain}
+                  setProfilesOpenMain={setProfilesOpenMain}
+                  mainMakeComment={mainMakeComment}
+                  setMainMakeComment={setMainMakeComment}
+                  item={collection!}
+                  setMainContentLoading={setMainContentLoading}
+                  mainContentLoading={mainContentLoading}
+                  quotes={quotes}
+                />
+              </div>
             </div>
           </>
         )}
