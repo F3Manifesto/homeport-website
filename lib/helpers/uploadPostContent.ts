@@ -4,17 +4,24 @@ import convertToFile from "./convertToFile";
 
 const uploadPostContent = async (
   contentText: string | undefined,
-  images: string[]
+  images: string[],
+  videos: string[]
 ): Promise<{ string: string; object: Object } | undefined> => {
   let $schema: string,
     mainContentFocus: PublicationMetadataMainFocusType,
     value: object = {};
 
-  if (images?.length < 1) {
+  if (images?.length < 1 && videos?.length < 1) {
     $schema = "https://json-schemas.lens.dev/publications/text-only/3.0.0.json";
     mainContentFocus = PublicationMetadataMainFocusType.TextOnly;
   } else {
     const mediaWithKeys = [
+      ...(videos || []).map((video) => ({
+        type: "video/mp4",
+        item: video?.includes("ipfs://")
+          ? video
+          : convertToFile(video, "video/mp4"),
+      })),
       ...(images || []).map((image) => ({
         type: "image/png",
         item:
@@ -45,8 +52,14 @@ const uploadPostContent = async (
       })
     );
 
-    const primaryMedia = uploads?.[0];
-    if (primaryMedia) {
+    const primaryMedia = uploads[0];
+    if (primaryMedia?.type === "video/mp4") {
+      $schema = "https://json-schemas.lens.dev/publications/video/3.0.0.json";
+      mainContentFocus = PublicationMetadataMainFocusType.Video;
+      value = {
+        video: primaryMedia,
+      };
+    } else {
       $schema = "https://json-schemas.lens.dev/publications/image/3.0.0.json";
       mainContentFocus = PublicationMetadataMainFocusType.Image;
       value = { image: primaryMedia };
@@ -71,7 +84,7 @@ const uploadPostContent = async (
         mainContentFocus,
         title: contentText ? contentText.slice(0, 20) : "",
         content: contentText ? contentText : "",
-        appId: "cyphersearch",
+        appId: "f3manifesto",
         ...value,
         id: uuidv4(),
         hideFromFeed: false,

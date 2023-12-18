@@ -1,20 +1,21 @@
 import { FunctionComponent } from "react";
-import { ImageMetadataV3 } from "../../../graphql/generated";
-import { F3M_ADDRESS } from "../../../lib/constants";
+import { F3M_ADDRESS, F3M_OPEN_ACTION } from "../../../lib/constants";
 import createProfilePicture from "../../../lib/helpers/createProfilePicture";
 import Image from "next/image";
 import moment from "moment";
-import Publication from "./Publication";
 import { PostQuoteProps } from "../../../types/general.types";
+import PostSwitch from "./PostSwitch";
+import { ImageMetadataV3 } from "../../../graphql/generated";
 
 const PostQuote: FunctionComponent<PostQuoteProps> = ({
   quote,
-  router,
+  dispatch,
+  disabled,
 }): JSX.Element => {
   const profilePicture = createProfilePicture(quote?.by?.metadata?.picture);
   return (
     <div
-      className="relative w-full h-60 overflow-y-hidden sm:px-5 py-1 flex items-start justify-center"
+      className="relative w-full h-60 overflow-y-hidden sm:px-5 py-1 flex items-start justify-center bg-grad2"
       id="fadedQuote"
     >
       <div
@@ -25,14 +26,16 @@ const PostQuote: FunctionComponent<PostQuoteProps> = ({
         } to-black bg-gradient-to-r rounded-md gap-5`}
         onClick={(e) => {
           e.stopPropagation();
+
           quote?.openActionModules?.[0]?.contract?.address
             ?.toLowerCase()
-            ?.includes(F3M_ADDRESS?.toLowerCase()) &&
-            router.push(
-              `/item/listener/${(
-                quote?.metadata as ImageMetadataV3
-              )?.title?.replaceAll(" ", "_")}`
-            );
+            ?.includes(F3M_OPEN_ACTION?.toLowerCase())
+            ? window.open(
+                `https://cypher.digitalax.xyz/item/f3m/${(
+                  quote?.metadata as ImageMetadataV3
+                )?.title?.replaceAll(" ", "_")}`
+              )
+            : window.open(`https://cypher.digitalax.xyz/item/pub/${quote?.id}`);
         }}
       >
         <div className="relative w-full h-fit flex flex-row items-center justify-center gap-2 px-1">
@@ -40,7 +43,6 @@ const PostQuote: FunctionComponent<PostQuoteProps> = ({
             <div className="relative w-fit h-fit flex items-center justify-center">
               <div
                 className="relative flex items-center justify-center rounded-full w-5 h-5"
-                id="pfp"
               >
                 {profilePicture && (
                   <Image
@@ -54,7 +56,7 @@ const PostQuote: FunctionComponent<PostQuoteProps> = ({
               </div>
             </div>
             <div
-              className={`relative w-fit h-fit text-xs flex items-center justify-center text-white font-bit top-px`}
+              className={`relative w-fit h-fit text-xs flex items-center justify-center text-black font-din top-px`}
             >
               {quote?.by?.handle?.suggestedFormatted?.localName
                 ? quote?.by?.handle?.suggestedFormatted?.localName.length > 25
@@ -68,14 +70,14 @@ const PostQuote: FunctionComponent<PostQuoteProps> = ({
           </div>
           <div className="relative w-fit h-fit flex items-center justify-center">
             <div
-              className={`relative w-fit h-fit text-white font-bit items-center justify-center flex text-xs ml-auto top-px`}
+              className={`relative w-fit h-fit text-black font-din items-center justify-center flex text-xs ml-auto top-px`}
             >
               {quote?.createdAt && moment(`${quote?.createdAt}`).fromNow()}
             </div>
           </div>
         </div>
         <div className="relative w-full h-fit flex items-start justify-center">
-          <Publication />
+          <PostSwitch item={quote} dispatch={dispatch} disabled={disabled} />
         </div>
       </div>
     </div>

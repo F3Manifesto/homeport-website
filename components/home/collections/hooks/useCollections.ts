@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Gallery } from "./../../../../types/general.types";
 import { NextRouter } from "next/router";
-import lodash from "lodash";
 import { Dispatch } from "redux";
 import { getAllCollections } from "../../../../graphql/subgraph/queries/getCollections";
 import { setAllGallery } from "../../../../redux/reducers/allGallerySlice";
@@ -25,14 +24,28 @@ const useCollections = (
   const getAllGallery = async () => {
     setGalleryLoading(true);
     try {
-      const data = await getAllCollections();
+      let data: Gallery[] = [];
+      const first = 50;
+
+      for (let i = 0; i < 5; i++) {
+        const skip = i * first;
+        const returned = await getAllCollections(skip, first);
+
+        if (Array.isArray(returned?.data?.collectionCreateds)) {
+          data = data.concat(returned.data.collectionCreateds);
+        }
+
+        if (returned?.data?.collectionCreateds?.length < 1) {
+          break;
+        }
+      }
 
       const sexesSet = new Set<string>();
       const stylesSet = new Set<string>();
       const dropsSet = new Set<string>();
 
       const colls = await handleCollectionProfilesAndPublications(
-        (data as any)?.data?.collectionCreateds,
+        data,
         lensConnected
       );
 
@@ -63,155 +76,60 @@ const useCollections = (
   };
 
   const handleURL = async (type: string, newValue: string): Promise<void> => {
-    const currentSex = router.asPath
-      ?.split("sex=")?.[1]
-      ?.split("?")?.[0]
-      ?.split("-")
-      .map((sex) => sex?.trim())
-      .filter((sex) => sex.length > 0);
-    const currentStyle = router.asPath
-      ?.split("style=")?.[1]
-      ?.split("?")?.[0]
-      ?.split("-")
-      .map((style) => style?.trim())
-      .filter((style) => style.length > 0);
-    const currentDrop = router.asPath
-      ?.split("style=")?.[1]
-      ?.split("?")?.[0]
-      ?.split("-")
-      .map((drop) => drop?.trim())
-      .filter((drop) => drop.length > 0);
+    let baseUrl = router.asPath.split("?")[0].split("#")[0];
+    let queryParams = new URLSearchParams(router.asPath.split("?")[1]);
+    let newUrl: string = "";
 
-    if (type === "name") {
-      if (router.asPath?.includes("name=")) {
-        await router.replace(
-          router.asPath,
-          newValue?.trim() === ""
-            ? router.asPath.replace(/(\?|&)name=[^?#]*(\?|\/#shopping)?/, "")
-            : router.asPath.replace(
-                /(name=)[^?#]*(\?|\/#shopping)/,
-                `$1${newValue}$2`
-              ),
-          {
-            shallow: true,
-            scroll: false,
-          }
+    if (type !== "name") {
+      newValue = newValue.trim().replace(/\s+/g, "")?.toLowerCase();
+
+      let queryArray =
+        queryParams
+          .get(type)
+          ?.replaceAll("#shopping", "")
+          ?.split("-")
+          ?.filter((item) => item?.toLowerCase()) || [];
+
+      if (queryArray.includes(newValue)) {
+        queryArray = queryArray.filter(
+          (item) => item?.toLowerCase() !== newValue
         );
+      } else if (newValue !== "") {
+        queryArray.push(newValue);
+      }
+
+      if (queryArray.length === 0) {
+        queryParams.delete(type);
       } else {
-        if (newValue?.trim() !== "") {
-          await router.replace(
-            router.asPath,
-            router.asPath + "?name=" + newValue + "/#shopping",
-            {
-              shallow: true,
-              scroll: false,
-            }
-          );
-        }
+        queryParams.set(type, queryArray.join("-"));
+      }
+    } else {
+      // Manejo específico para 'name'
+      if (newValue !== "") {
+        queryParams.set("name", newValue);
+      } else {
+        queryParams.delete("name");
       }
     }
+    let queryString = Array.from(queryParams.entries())
+      .map((entry, index) => {
+        return `${index === 0 ? "" : "&"}${entry[0]}=${entry[1]}`;
+      })
+      .join("");
 
-    if (
-      type === "sex" &&
-      newValue?.trim() !== "" &&
-      !currentSex?.includes(newValue)
-    ) {
-      if (router.asPath?.includes("sex=")) {
-        await router.replace(
-          router.asPath,
-          router.asPath.replace(
-            /(sex=)[^?#]*(\?|\/#shopping)/,
-            `$1${[
-              ...currentSex.filter((val) => val !== newValue),
-              ...(currentSex.includes(newValue) ? [] : [newValue]),
-            ]
-              .join("-")
-              .replaceAll(" ", "")}$2`
-          ),
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
-      } else {
-        router.replace(
-          router.asPath,
-          router.asPath + "?sex=" + newValue + "/#shopping",
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
-      }
-    }
+    newUrl = `${baseUrl}?${queryString?.replaceAll(
+      "#shopping",
+      ""
+    )}${"#shopping"}`;
 
-    if (
-      type === "style" &&
-      newValue?.trim() !== "" &&
-      !currentStyle?.includes(newValue)
-    ) {
-      if (router.asPath?.includes("style=")) {
-        await router.replace(
-          router.asPath,
-          router.asPath.replace(
-            /(style=)[^?#]*(\?|\/#shopping)/,
-            `$1${[
-              ...currentStyle.filter((val) => val !== newValue),
-              ...(currentStyle.includes(newValue) ? [] : [newValue]),
-            ]
-              .join("-")
-              .replaceAll(" ", "")}$2`
-          ),
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
-      } else {
-        await router.replace(
-          router.asPath,
-          router.asPath + "?style=" + newValue + "/#shopping",
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
+    await router.replace(
+      router.asPath,
+      newUrl?.includes("?#shopping") ? newUrl?.replaceAll("?", "") : newUrl,
+      {
+        shallow: true,
+        scroll: false,
       }
-    }
-
-    if (
-      type === "drop" &&
-      newValue?.trim() !== "" &&
-      !currentDrop?.includes(newValue)
-    ) {
-      if (router.asPath?.includes("drop=")) {
-        await router.replace(
-          router.asPath,
-          router.asPath.replace(
-            /(drop=)[^?#]*(\?|\/#shopping)/,
-            `$1${[
-              ...currentDrop.filter((val) => val !== newValue),
-              ...(currentDrop.includes(newValue) ? [] : [newValue]),
-            ]
-              .join("-")
-              .replaceAll(" ", "")}$2`
-          ),
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
-      } else {
-        await router.replace(
-          router.asPath,
-          router.asPath + "?drop=" + newValue + "/#shopping",
-          {
-            shallow: true,
-            scroll: false,
-          }
-        );
-      }
-    }
+    );
   };
 
   const filterGallery = () => {
@@ -245,9 +163,9 @@ const useCollections = (
       );
     }
 
-    if (router.asPath.includes("?drop=")) {
+    if (router.asPath.includes("?collection=")) {
       const dropSelected: string[] = router.asPath
-        .split("?drop=")[1]
+        .split("?collection=")[1]
         .split("?")[0]
         ?.split("/#shopping")?.[0]
         .replaceAll("-", " ")

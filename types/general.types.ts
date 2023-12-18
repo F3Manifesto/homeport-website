@@ -1,8 +1,22 @@
 import { AnyAction, Dispatch } from "redux";
-import { Post, PrimaryPublication, Profile, Quote } from "../graphql/generated";
+import {
+  ArticleMetadataV3,
+  Comment,
+  Erc20,
+  ImageMetadataV3,
+  Mirror,
+  Post,
+  PrimaryPublication,
+  Profile,
+  Quote,
+  SimpleCollectOpenActionModuleInput,
+  StoryMetadataV3,
+  TextOnlyMetadataV3,
+  VideoMetadataV3,
+} from "../graphql/generated";
 import { NextRouter } from "next/router";
 import { PostCollectState } from "../redux/reducers/postCollectSlice";
-import { MutableRefObject, SetStateAction } from "react";
+import { ChangeEvent, MutableRefObject, SetStateAction } from "react";
 
 export type UseLayoutResults = {
   randomImages: () => void;
@@ -54,6 +68,42 @@ export type marqueeVariants = {
   };
 };
 
+export type PostSwitchProps = {
+  dispatch: Dispatch<AnyAction>;
+  item: Post | Comment | Quote | Mirror;
+  disabled: boolean | undefined;
+};
+
+export type TextProps = {
+  metadata: ArticleMetadataV3 | StoryMetadataV3 | TextOnlyMetadataV3;
+};
+
+export type ImageProps = {
+  disabled: boolean | undefined;
+  dispatch: Dispatch<AnyAction>;
+  metadata: ImageMetadataV3 | VideoMetadataV3;
+};
+
+export type MediaProps = {
+  type: string;
+  srcUrl: string;
+  srcCover?: string;
+  classNameVideo?: string;
+  classNameImage?: string;
+  classNameAudio?: string;
+  objectFit?: string;
+  hidden?: boolean;
+};
+
+export type WaveFormProps = {
+  keyValue: string;
+  audio: string;
+  video: string;
+  type: string;
+  upload?: boolean;
+  handleMedia?: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
+};
+
 export type GalleryProps = {
   gallery: Gallery[];
   router: NextRouter;
@@ -85,6 +135,7 @@ export type SearchProps = {
 export interface MakePostComment {
   content: string | undefined;
   images: string[];
+  videos: string[];
 }
 
 export interface Gallery {
@@ -263,41 +314,91 @@ export type InteractErrorProps = {
 
 export type QuoteProps = {
   dispatch: Dispatch<AnyAction>;
-  router: NextRouter;
-  commentPostLoading: boolean[];
   postCollect: PostCollectState;
-  commentPost: (id: string, main?: boolean) => Promise<void>;
-  makePostComment: MakePostComment[];
-  setMakePostComment: (e: SetStateAction<MakePostComment[]>) => void;
-  id: string;
-  height: string;
-  imageHeight: string;
-  imageWidth: string;
-  setContentLoading: (e: SetStateAction<boolean[]>) => void;
-  contentLoading: boolean[];
-  index: number;
+  quote: PrimaryPublication | undefined;
+  makePost: MakePostComment[];
+  post: () => Promise<void>;
+  lensConnected: Profile | undefined;
+  caretCoord: {
+    x: number;
+    y: number;
+  };
+  setCaretCoord: (
+    e: SetStateAction<{
+      x: number;
+      y: number;
+    }>
+  ) => void;
+  profilesOpen: boolean[];
+  mentionProfiles: Profile[];
+  setMentionProfiles: (e: SetStateAction<Profile[]>) => void;
+  setProfilesOpen: (e: SetStateAction<boolean[]>) => void;
+  setMakePost: (e: SetStateAction<MakePostComment[]>) => void;
+  postLoading: boolean[];
+  setContentLoading: (
+    e: SetStateAction<
+      {
+        image: boolean;
+        video: boolean;
+      }[]
+    >
+  ) => void;
+  contentLoading: {
+    image: boolean;
+    video: boolean;
+  }[];
 };
 
 export type PostCommentProps = {
-  main: boolean;
-  dispatch: Dispatch<AnyAction>;
-  commentPostLoading: boolean;
-  postCollect: PostCollectState;
-  commentPost: (id: string, main?: boolean) => Promise<void>;
   makePostComment: MakePostComment;
+  caretCoord: {
+    x: number;
+    y: number;
+  };
+  setCaretCoord: (
+    e: SetStateAction<{
+      x: number;
+      y: number;
+    }>
+  ) => void;
+  mentionProfiles: Profile[];
+  profilesOpen: boolean;
+  setMentionProfiles: (e: SetStateAction<Profile[]>) => void;
+  setProfilesOpen: (e: SetStateAction<boolean[]>) => void;
+  lensConnected: Profile | undefined;
+  postCollect: PostCollectState;
   setMakePostComment: (e: SetStateAction<MakePostComment[]>) => void;
+  main?: boolean | undefined;
+  itemId: string | undefined;
+  commentPost:
+    | ((id: string) => Promise<void>)
+    | (() => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  commentPostLoading: boolean;
   id: string;
   height: string;
+  dispatch: Dispatch<AnyAction>;
   imageHeight: string;
   imageWidth: string;
-  setContentLoading: (e: SetStateAction<boolean[]>) => void;
-  contentLoading: boolean;
+  setContentLoading: (
+    e: SetStateAction<
+      {
+        image: boolean;
+        video: boolean;
+      }[]
+    >
+  ) => void;
+  contentLoading: {
+    image: boolean;
+    video: boolean;
+  };
   index: number;
 };
 
 export type PostQuoteProps = {
-  router: NextRouter;
   quote: Quote;
+  disabled: boolean;
+  dispatch: Dispatch<AnyAction>;
 };
 
 export type WhoProps = {
@@ -310,7 +411,6 @@ export type WhoProps = {
   mirrorQuote: boolean;
   setMirrorQuote: (e: SetStateAction<boolean>) => void;
   type: string;
-  router: NextRouter;
   dispatch: Dispatch<AnyAction>;
   lensConnected: Profile | undefined;
 };
@@ -318,7 +418,6 @@ export type WhoProps = {
 export type WhoSwitchProps = {
   type: string;
   dispatch: Dispatch<AnyAction>;
-  router: NextRouter;
   reactors: any[];
   quoters: Quote[];
   hasMore: boolean;
@@ -333,4 +432,225 @@ export type LensConnectProps = {
   handleLensSignIn: () => Promise<void>;
   dispatch: Dispatch<AnyAction>;
   connected: boolean;
+};
+
+export type PublicationProps = {
+  item: Post | Comment | Quote | Mirror;
+  index: number;
+  top: string;
+  bottom: string;
+  left: string;
+  right: string;
+  mentionProfiles?: Profile[];
+  profilesOpen?: boolean[];
+  caretCoord?: {
+    x: number;
+    y: number;
+  };
+  setCaretCoord?: (
+    e: SetStateAction<{
+      x: number;
+      y: number;
+    }>
+  ) => void;
+  setMentionProfiles?: (e: SetStateAction<Profile[]>) => void;
+  setProfilesOpen?: (e: SetStateAction<boolean[]>) => void;
+  lensConnected: Profile | undefined;
+  disabled?: boolean;
+  postCollect?: PostCollectState;
+  main?: boolean;
+  mirror?:
+    | ((id: string) => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  like?:
+    | ((id: string) => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  comment?:
+    | ((id: string) => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  commentsOpen?: boolean[];
+  setCommentsOpen?: (e: SetStateAction<boolean[]>) => void;
+  makeComment?: MakePostComment[];
+  setMakePostComment?: (e: SetStateAction<MakePostComment[]>) => void;
+  simpleCollect?:
+    | ((id: string, type: string) => Promise<void>)
+    | ((id: string, type: string, main: boolean) => Promise<void>);
+  interactionsLoading?: {
+    like: boolean;
+    mirror: boolean;
+    comment: boolean;
+    simpleCollect: boolean;
+  }[];
+  setOpenMirrorChoice?: (e: SetStateAction<boolean[]>) => void;
+  openMirrorChoice?: boolean[];
+  followLoading?: boolean[];
+  unfollowProfile?: (
+    id: string,
+    index: number,
+    feed?: boolean
+  ) => Promise<void>;
+  followProfile?: (id: string, index: number, feed?: boolean) => Promise<void>;
+  profileHovers?: boolean[];
+  setProfileHovers?: (e: SetStateAction<boolean[]>) => void;
+  dispatch: Dispatch<AnyAction>;
+  setContentLoading?: (
+    e: SetStateAction<
+      {
+        image: boolean;
+        video: boolean;
+      }[]
+    >
+  ) => void;
+  contentLoading?: {
+    image: boolean;
+    video: boolean;
+  }[];
+};
+
+export type PostBarProps = {
+  index: number;
+  main: boolean | undefined;
+  lensConnected: Profile | undefined;
+  top: string;
+  bottom: string;
+  left: string;
+  right: string;
+  mirror?:
+    | ((id: string) => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  like?:
+    | ((id: string) => Promise<void>)
+    | ((id: string, main: boolean) => Promise<void>);
+  simpleCollect?:
+    | ((id: string, type: string) => Promise<void>)
+    | ((id: string, type: string, main: boolean) => Promise<void>)
+    | undefined;
+  item: Post | Quote | Mirror | Comment;
+  setOpenMirrorChoice?: (e: SetStateAction<boolean[]>) => void;
+  openMirrorChoice?: boolean[];
+  commentsOpen: boolean[];
+  setCommentsOpen: (e: SetStateAction<boolean[]>) => void;
+  disabled?: boolean;
+  interactionsLoading?: {
+    like: boolean;
+    mirror: boolean;
+    simpleCollect: boolean;
+  };
+  setProfileHovers?: (e: SetStateAction<boolean[]>) => void;
+  profileHovers?: boolean[];
+  followLoading?: boolean[];
+  unfollowProfile?: (id: string, index: number) => Promise<void>;
+  followProfile?: (id: string, index: number) => Promise<void>;
+  dispatch: Dispatch<AnyAction>;
+};
+
+export type HoverProfileProps = {
+  followLoading: boolean[];
+  unfollowProfile:
+    | ((id: string, index?: number) => Promise<void>)
+    | ((
+        id: string,
+        index: number,
+        feed?: boolean,
+        main?: boolean
+      ) => Promise<void>);
+  followProfile:
+    | ((id: string, index?: number) => Promise<void>)
+    | ((
+        id: string,
+        index: number,
+        feed?: boolean,
+        main?: boolean
+      ) => Promise<void>);
+  publication: Profile;
+  parentId: string;
+  index: number;
+  dispatch: Dispatch<AnyAction>;
+  setProfileHovers: (e: SetStateAction<boolean[]>) => void;
+  feed?: boolean;
+  main?: boolean;
+  gallery?: boolean;
+  lensConnected: Profile | undefined;
+  bottom: string;
+  top: string;
+  left: string;
+  right: string;
+};
+
+export type PostCollectGifProps = {
+  dispatch: Dispatch<AnyAction>;
+  id: string;
+  setCollects: (
+    e: SetStateAction<SimpleCollectOpenActionModuleInput | undefined>
+  ) => void;
+  collects: SimpleCollectOpenActionModuleInput | undefined;
+  openMeasure: {
+    collectibleOpen: boolean;
+    collectible: string;
+    award: string;
+    whoCollectsOpen: boolean;
+    creatorAwardOpen: boolean;
+    currencyOpen: boolean;
+    editionOpen: boolean;
+    edition: string;
+    timeOpen: boolean;
+    time: string;
+  };
+  setOpenMeasure: (
+    e: SetStateAction<{
+      collectibleOpen: boolean;
+      collectible: string;
+      award: string;
+      whoCollectsOpen: boolean;
+      creatorAwardOpen: boolean;
+      currencyOpen: boolean;
+      editionOpen: boolean;
+      edition: string;
+      timeOpen: boolean;
+      time: string;
+    }>
+  ) => void;
+  availableCurrencies: Erc20[];
+  collectTypes:
+    | {
+        [key: string]: SimpleCollectOpenActionModuleInput | undefined;
+      }
+    | undefined;
+};
+
+export type CollectOptionsProps = {
+  id: string;
+  dispatch: Dispatch<AnyAction>;
+  collectTypes:
+    | {
+        [key: string]: SimpleCollectOpenActionModuleInput | undefined;
+      }
+    | undefined;
+  openMeasure: {
+    collectibleOpen: boolean;
+    collectible: string;
+    award: string;
+    whoCollectsOpen: boolean;
+    creatorAwardOpen: boolean;
+    currencyOpen: boolean;
+    editionOpen: boolean;
+    edition: string;
+    timeOpen: boolean;
+    time: string;
+  };
+  setOpenMeasure: (
+    e: SetStateAction<{
+      collectibleOpen: boolean;
+      collectible: string;
+      award: string;
+      whoCollectsOpen: boolean;
+      creatorAwardOpen: boolean;
+      currencyOpen: boolean;
+      editionOpen: boolean;
+      edition: string;
+      timeOpen: boolean;
+      time: string;
+    }>
+  ) => void;
+  availableCurrencies: Erc20[];
 };

@@ -20,7 +20,7 @@ const InteractError: FunctionComponent<InteractErrorProps> = ({
             />
           </div>
           <div className="relative w-full h-fit items-center justify-center flex flex-col gap-3 pb-4">
-            <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-sol text-base">
+            <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-black text-base">
               Try Interacting Again. You TX got lost in the ether.
             </div>
             <div className="relative w-[25vw] h-[25vh] flex items-center justify-center p-px bg-lightYellow border border-black">

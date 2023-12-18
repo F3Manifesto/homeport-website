@@ -17,19 +17,18 @@ const Who: FunctionComponent<WhoProps> = ({
   mirrorQuote,
   setMirrorQuote,
   type,
-  router,
   dispatch,
   lensConnected,
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-20 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
-      <div className="relative w-full w-[90vw] sm:w-[70vw] tablet:w-[60vw] min-w-fit px-2 md:w-[40vw] lg:w-[25vw] h-fit col-start-1 place-self-center bg-offBlack border border-white">
+      <div className="relative w-[90vw] sm:w-[70vw] tablet:w-[60vw] min-w-fit px-2 md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black cursor-empireS">
         <div className="relative w-full row-start-2 h-fit grid grid-flow-col auto-cols-auto">
           <div className="relative w-full h-full col-start-1 place-self-center">
             <div className="relative w-full h-full flex flex-col items-center justify-center gap-4 pb-8">
               <div className="relative w-fit h-fit items-end justify-end ml-auto pr-3 pt-3 cursor-pointer flex">
                 <ImCross
-                  color="white"
+                  color="black"
                   size={10}
                   onClick={() => {
                     dispatch(
@@ -53,7 +52,7 @@ const Who: FunctionComponent<WhoProps> = ({
                     >
                       <Image
                         layout="fill"
-                        src={`${INFURA_GATEWAY}/ipfs/QmfDNH347Vph4b1tEuegydufjMU2QwKzYnMZCjygGvvUMM`}
+                        src={`${INFURA_GATEWAY}/ipfs/QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei`}
                         draggable={false}
                       />
                     </div>
@@ -66,7 +65,7 @@ const Who: FunctionComponent<WhoProps> = ({
                     >
                       <Image
                         layout="fill"
-                        src={`${INFURA_GATEWAY}/ipfs/QmPRRRX1S3kxpgJdLC4G425pa7pMS1AGNnyeSedngWmfK3`}
+                        src={`${INFURA_GATEWAY}/ipfs/QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo`}
                         draggable={false}
                       />
                     </div>
@@ -75,7 +74,6 @@ const Who: FunctionComponent<WhoProps> = ({
 
               {!dataLoading ? (
                 <WhoSwitch
-                  router={router}
                   lensConnected={lensConnected}
                   type={type}
                   reactors={reactors}
@@ -89,7 +87,7 @@ const Who: FunctionComponent<WhoProps> = ({
               ) : (
                 <div className="relative w-[40vw] md:w-full h-60 grid grid-flow-col auto-cols-auto">
                   <div className="relative w-fit h-fit col-start-1 place-self-center animate-spin">
-                    <AiOutlineLoading color="white" size={20} />
+                    <AiOutlineLoading color="black" size={20} />
                   </div>
                 </div>
               )}

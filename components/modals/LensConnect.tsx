@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 import { ImCross } from "react-icons/im";
 import { LensConnectProps } from "../../types/general.types";
-import { setInteractError } from "../../redux/reducers/interactErrorSlice";
 import { AiOutlineLoading } from "react-icons/ai";
 import { setLensConnectModal } from "../../redux/reducers/lensConnectModalSlice";
 
@@ -25,7 +24,7 @@ const LensConnect: FunctionComponent<LensConnectProps> = ({
             />
           </div>
           <div className="relative w-full h-fit items-center justify-center flex flex-col gap-3 pb-4">
-            <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-sol text-base">
+            <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-black text-base">
               Connect to Lens Protocol.
             </div>
             <div

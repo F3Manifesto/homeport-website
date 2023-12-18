@@ -9,7 +9,6 @@ import { WhoSwitchProps } from "../../../types/general.types";
 
 const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
   type,
-  router,
   reactors,
   quoters,
   showMore,
@@ -35,7 +34,6 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
                 lensConnected={lensConnected}
                 index={index}
                 item={item}
-                router={router}
                 disabled={true}
                 dispatch={dispatch}
                 data-post-id={item?.id}
@@ -90,14 +88,13 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
             return (
               <div
                 key={index}
-                className="relative w-full h-14 p-2 flex flex-row border border-black items-center justify-start font-bit text-white cursor-pointer border border-white"
-                id="prerollFaded"
+                className="relative w-full h-14 p-2 flex flex-row items-center justify-start font-conso bg-lightYellow text-black cursor-pointer border border-black"
                 onClick={() => {
                   setReactBox({
                     actionOpen: false,
                   });
-                  router.push(
-                    `/autograph/${
+                  window.open(
+                    `https://cypher.digitalax.xyz/autograph/${
                       account?.handle?.suggestedFormatted?.localName?.split(
                         "@"
                       )[1]
@@ -106,10 +103,7 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
                 }}
               >
                 <div className="relative w-fit h-fit flex flex-row gap-3 items-center justify-center">
-                  <div
-                    className="relative w-8 h-8 rounded-full border border-white items-center justify-center"
-                    id="pfp"
-                  >
+                  <div className="relative w-8 h-8 rounded-full border border-black items-center justify-center bg-lightWhite">
                     {profileImage && (
                       <Image
                         src={profileImage}
@@ -123,7 +117,7 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
                   </div>
                   <div
                     id="handle"
-                    className="relative w-fit h-fit justify-center items-center flex top-px text-sm"
+                    className="relative w-fit h-fit justify-center items-center flex top-px text-xs"
                   >
                     {account?.handle?.suggestedFormatted?.localName}
                   </div>
@@ -134,7 +128,9 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
         </InfiniteScroll>
       </div>
     ) : (
-      <></>
+      <div className="relative w-fit h-fit text-black font-conso flex items-center justify-center text-xs py-3 px-1">
+        No Mirrors Yet.
+      </div>
     );
   }
 };

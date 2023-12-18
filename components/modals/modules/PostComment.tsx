@@ -1,11 +1,15 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import { setPostCollect } from "../../../redux/reducers/postCollectSlice";
 import { ImCross } from "react-icons/im";
 import { PostCommentProps } from "../../../types/general.types";
 import setPostMedia from "../../../lib/helpers/setPostMedia";
+import createProfilePicture from "../../../lib/helpers/createProfilePicture";
+import { Profile } from "../../../graphql/generated";
+import MediaSwitch from "./MediaSwitch";
+import handleSearchProfiles from "../../../lib/helpers/handleSearchProfiles";
 
 const PostComment: FunctionComponent<PostCommentProps> = ({
   commentPost,
@@ -13,6 +17,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
   setMakePostComment,
   commentPostLoading,
   id,
+  itemId,
   height,
   imageHeight,
   imageWidth,
@@ -22,11 +27,19 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
   dispatch,
   postCollect,
   main,
+  mentionProfiles,
+  profilesOpen,
+  setMentionProfiles,
+  setProfilesOpen,
+  lensConnected,
+  caretCoord,
+  setCaretCoord,
 }): JSX.Element => {
+  const textElement = useRef(null);
   return (
-    <div className="relative w-full h-fit flex flex-col items-start justify-start gap-2 cursor-empireA">
+    <div className="relative w-full h-fit flex flex-col items-start justify-start gap-2">
       <div
-        className="relative w-full p-2 border border-offBlack text-black font-din text-sm bg-lightYellow flex items-center justify-center text-left rounded-md"
+        className="relative w-full p-2 border border-black text-black font-din text-sm bg-lightYellow flex items-center justify-center text-left rounded-md"
         style={{
           height,
         }}
@@ -44,23 +57,97 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
               };
               return arr;
             });
+            handleSearchProfiles(
+              e,
+              setProfilesOpen,
+              setMentionProfiles,
+              index,
+              lensConnected,
+              setCaretCoord,
+              textElement
+            );
           }}
+          ref={textElement}
         ></textarea>
+        {mentionProfiles?.length > 0 && profilesOpen && (
+          <div
+            className={`absolute w-32 border border-black max-h-28 h-fit flex flex-col overflow-y-auto items-start justify-start z-60`}
+            style={{
+              top: caretCoord.y + 30,
+              left: caretCoord.x,
+            }}
+          >
+            {mentionProfiles?.map((user: Profile, indexTwo: number) => {
+              const profileImage = createProfilePicture(
+                user?.metadata?.picture
+              );
+              return (
+                <div
+                  key={indexTwo}
+                  className={`relative border-y border-black w-full h-10 px-3 py-2 bg-lightWhite flex flex-row gap-3 cursor-pointer items-center justify-center`}
+                  onClick={() => {
+                    setProfilesOpen((prev) => {
+                      const arr = [...prev];
+                      arr[index] = false;
+                      return arr;
+                    });
+
+                    setMakePostComment((prev) => {
+                      const arr = [...prev];
+                      arr[index] = {
+                        ...arr[index],
+                        content:
+                          makePostComment?.content?.substring(
+                            0,
+                            makePostComment?.content?.lastIndexOf("@")
+                          ) + `${user?.handle?.suggestedFormatted?.localName}`,
+                      };
+                      return arr;
+                    });
+                  }}
+                >
+                  <div className="relative flex flex-row w-full h-full text-black font-din items-center justify-center gap-2">
+                    <div
+                      className={`relative rounded-full flex bg-lightYellow border border-black w-3 h-3 items-center justify-center`}
+                    >
+                      {profileImage && (
+                        <Image
+                          src={profileImage}
+                          objectFit="cover"
+                          alt="pfp"
+                          layout="fill"
+                          className="relative w-fit h-fit rounded-full items-center justify-center flex"
+                          draggable={false}
+                        />
+                      )}
+                    </div>
+                    <div className="relative items-center justify-center w-fit h-fit text-xxs flex">
+                      {user?.handle?.suggestedFormatted?.localName}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       <div className="relative w-full h-fit flex flex-col sm:flex-row items-between justify-center sm:items-center sm:justify-between sm:gap-1.5 gap-4">
         <div className="relative w-full sm:w-fit h-fit items-center justify-start flex flex-row gap-2">
           {[
             ["QmXzLW1oUhtvBkd6GdTM1bHxqz9cSRw2UCCyT4u6FZ1QCr", "image"],
+            ["QmdYmp9Xn7rnvke97jKMJiSdbR9uNpTk7BUchecTbkuSSe", "video"],
             [
               "QmY6bapfAe18pFXk2RuX9mHBA7JN9scLT87H23uqENanLP",
               "collect options",
             ],
+            ["", "image"],
           ].map((image: string[], indexTwo: number) => {
-            return contentLoading && image[1] === "image" ? (
+            const loaders = [contentLoading?.image, contentLoading?.video];
+            return loaders[indexTwo] ? (
               <div
                 key={indexTwo}
                 className={`relative flex items-center justify-center  ${
-                  contentLoading && "animate-spin"
+                  loaders[indexTwo] && "animate-spin"
                 }`}
                 title={image[1]}
                 style={{
@@ -73,7 +160,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
             ) : indexTwo !== 2 && indexTwo !== 3 ? (
               <label
                 key={indexTwo}
-                className={`relative flex items-center justify-center cursor-empireS active:scale-95`}
+                className={`relative flex items-center justify-center cursor-pointer active:scale-95`}
                 title={image[1]}
                 style={{
                   height: imageHeight,
@@ -96,6 +183,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
                     e?.target?.files?.[0] &&
                     setPostMedia(
                       e,
+                      image[1],
                       setMakePostComment,
                       setContentLoading,
                       index
@@ -106,7 +194,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
             ) : (
               <div
                 key={indexTwo}
-                className={`relative flex items-center justify-center cursor-empireS active:scale-95`}
+                className={`relative flex items-center justify-center cursor-pointer active:scale-95`}
                 title={image[1]}
                 style={{
                   height: imageHeight,
@@ -132,10 +220,24 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
         </div>
         <div className="relative w-full sm:w-fit h-fit items-center justify-end flex">
           <div
-            className={`relative w-20 h-8 font-din text-white flex items-center justify-center bg-fuego border border-white text-xs rounded-sm ${
-              !commentPostLoading && "cursor-empireS active:scale-95"
+            className={`relative w-20 h-8 font-din text-black flex items-center justify-center bg-lightYellow border border-black text-xs rounded-sm ${
+              !commentPostLoading && "cursor-pointer active:scale-95"
             }`}
-            onClick={() => !commentPostLoading && commentPost(id, main)}
+            onClick={() =>
+              !commentPostLoading &&
+              (main
+                ? (
+                    commentPost as (
+                      id: string,
+                      main?: boolean,
+                      mirror?: string
+                    ) => Promise<void>
+                  )(itemId ? itemId : id, main, id)
+                : (commentPost as (
+                    id: string,
+                    mirror?: string
+                  ) => Promise<void>)!(itemId ? itemId : id, id))
+            }
           >
             <div
               className={`${
@@ -143,7 +245,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
               } relative w-fit h-fit flex items-center justify-center text-center`}
             >
               {commentPostLoading ? (
-                <AiOutlineLoading size={15} color="white" />
+                <AiOutlineLoading size={15} color="black" />
               ) : (
                 "Send It"
               )}
@@ -151,41 +253,72 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
           </div>
         </div>
       </div>
-      {makePostComment?.images?.length > 0 && (
+      {(makePostComment?.images?.length > 0 ||
+        makePostComment?.videos?.length > 0) && (
         <div className="relative w-full h-fit flex overflow-x-scroll justify-start items-start pt-4">
           <div className="relative gap-4 items-center justify-start flex flex-row">
-            {makePostComment?.images?.map((media: string, indexTwo: number) => {
-              return (
-                <div
-                  key={indexTwo}
-                  className="relative w-40 h-40 rounded-md flex items-center justify-center border border-white"
-                >
-                  {media && (
-                    <Image
-                      className="relative w-full h-full rounded-md"
-                      src={media}
-                      draggable={false}
-                    />
-                  )}
-
+            {[
+              ...makePostComment?.videos?.map((video) => ({
+                type: "video",
+                item: video,
+              })),
+              ...makePostComment?.images?.map((image) => ({
+                type: "image",
+                item: image,
+              })),
+            ].map(
+              (
+                media: {
+                  type: string;
+                  item: string;
+                },
+                indexTwo: number
+              ) => {
+                return (
                   <div
-                    className="absolute w-5 h-5 bg-black p-px -right-2 -top-2 bg-black rounded-full cursor-empireS flex items-center justify-center border border-white"
-                    onClick={() => {
-                      setMakePostComment((prev) => {
-                        const arr = [...prev];
-                        arr[index] = {
-                          ...arr[index],
-                          images: arr[index]?.images,
-                        };
-                        return arr;
-                      });
-                    }}
+                    key={indexTwo}
+                    className="relative w-40 h-40 rounded-md flex items-center justify-center border border-black"
                   >
-                    <ImCross color={"white"} size={8} />
+                    <MediaSwitch
+                      type={media.type !== "video" ? "image" : "video"}
+                      classNameImage={"rounded-md"}
+                      classNameAudio={"rounded-md"}
+                      classNameVideo={
+                        "object-cover w-full h-full flex items-center justify-center rounded-md"
+                      }
+                      srcUrl={media?.item}
+                      hidden
+                    />
+                    <div
+                      className="absolute w-5 h-5 p-px -right-2 -top-2 bg-lightWhite rounded-full cursor-pointer flex items-center justify-center border border-black"
+                      onClick={() => {
+                        setMakePostComment((prev) => {
+                          const arr = [...prev];
+                          arr[index] = {
+                            ...arr[index],
+                            images:
+                              media.type === "image"
+                                ? (arr[index]?.images ?? []).filter(
+                                    (_, i) => i !== indexTwo
+                                  )
+                                : arr[index]?.images,
+                            videos:
+                              media.type === "video"
+                                ? (arr[index]?.videos ?? []).filter(
+                                    (_, i) => i !== indexTwo
+                                  )
+                                : arr[index]?.videos,
+                          };
+                          return arr;
+                        });
+                      }}
+                    >
+                      <ImCross color={"black"} size={8} />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
           </div>
         </div>
       )}

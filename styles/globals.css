@@ -179,6 +179,41 @@ input:focus {
 }
 
 
+body::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0; /* Initially hide the scrollbar */
+}
+
+body:hover::-webkit-scrollbar {
+  opacity: 0; /* Show the scrollbar on hover */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+div::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  opacity: 0; /* Initially hide the scrollbar */
+}
+
+div:hover::-webkit-scrollbar {
+  opacity: 0; /* Show the scrollbar on hover */
+}
+
+div::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 
 input:focus {
   outline: none;
@@ -201,4 +236,27 @@ textarea::-webkit-inner-spin-button:focus,
 textarea::-webkit-outer-spin-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(249, 246, 66, 0.6);
+}
+
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+  display: flex;
+  justify-content: center
+}
+
+#fadedQuote {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #FBFBF1 0%,
+    #FFFFF9 70%,
+    transparent 95%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    to bottom,
+    #FBFBF1 0%,
+    #FFFFF9 50%,
+    transparent 100%
+  );
 }

@@ -30,7 +30,7 @@ const Search: FunctionComponent<SearchProps> = ({
                                 router.asPath.includes(drop) && "bg-lightYellow"
                               }`}
                               name={drop}
-                              onClick={() => filterURL("drop", drop)}
+                              onClick={() => filterURL("collection", drop)}
                             >
                               {drop?.toUpperCase()}
                             </button>
