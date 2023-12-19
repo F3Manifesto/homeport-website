@@ -96,7 +96,7 @@ const useSignIn = (
 
     handleAuthentication();
     dispatch(setWalletConnected(isConnected));
-  }, [isConnected, address]);
+  }, [isConnected, address, lensConnected]);
 
   const handleOracles = async (): Promise<void> => {
     try {
