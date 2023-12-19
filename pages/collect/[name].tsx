@@ -144,12 +144,10 @@ const Name: React.FC = (): JSX.Element => {
   );
 
   const {
-    encryptedFulfillment,
     openDropdown,
     setOpenDropdown,
     details,
     setDetails,
-    encryptionLoading,
     approveLoading,
     collectPostLoading,
     encryptFulfillment,
@@ -324,7 +322,6 @@ const Name: React.FC = (): JSX.Element => {
                 openConnectModal={openConnectModal}
                 mainInteractionsLoading={mainInteractionsLoading}
                 item={collection}
-                encryptedFulfillment={encryptedFulfillment}
                 openDropdown={openDropdown}
                 setOpenDropdown={setOpenDropdown}
                 details={details}
@@ -336,10 +333,8 @@ const Name: React.FC = (): JSX.Element => {
                       details?.checkoutCurrency?.toLowerCase()
                   )?.rate
                 )}
-                encryptionLoading={encryptionLoading}
                 approveLoading={approveLoading}
                 collectPostLoading={collectPostLoading}
-                encryptFulfillment={encryptFulfillment}
                 isApprovedSpend={isApprovedSpend}
                 approveSpend={approveSpend}
                 collectItem={collectItem}

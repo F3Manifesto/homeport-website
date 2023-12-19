@@ -12,16 +12,13 @@ import InteractBar from "../../modals/modules/InteractBar";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   item,
-  encryptedFulfillment,
   openDropdown,
   setOpenDropdown,
   details,
   setDetails,
   rate,
-  encryptionLoading,
   approveLoading,
   collectPostLoading,
-  encryptFulfillment,
   isApprovedSpend,
   approveSpend,
   collectItem,
@@ -244,9 +241,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   return (
                     <div
                       key={index}
-                      className={`relative w-fit h-fit flex items-start justify-center flex-col gap-2 ${
-                        encryptedFulfillment && "opacity-20"
-                      }`}
+                      className={`relative w-fit h-fit flex items-start justify-center flex-col gap-2`}
                     >
                       <div className="relative w-fit h-fit flex text-offBlack font-fira text-xs">
                         {item?.title}
@@ -254,11 +249,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                       {item?.drop ? (
                         <div className="relative w-fit h-fit flex flex-col items-start justify-start gap-1">
                           <div
-                            className={`relative h-10 flex flex-row justify-between p-2 w-40 items-center justify-center bg-lightYellow border border-black rounded-md ${
-                              encryptedFulfillment
-                                ? "opacity-70"
-                                : "cursor-pointer"
-                            }`}
+                            className={`relative h-10 flex flex-row justify-between p-2 w-40 items-center justify-center bg-lightYellow border border-black rounded-md cursor-pointer`}
                             onClick={() => setOpenDropdown(!openDropdown)}
                           >
                             <div className="relative w-fit h-fit flex items-center justify-center font-fira text-offBlack text-xs">
@@ -366,7 +357,6 @@ const Metadata: FunctionComponent<MetadataProps> = ({
           </div>
           <div
             className={`relative w-44 px-2 h-10 text-center py-1 border border-black rounded-md flex items-center justify-center text-offBlack bg-brightGreen font-jacklane text-sm mr-0 ${
-              !encryptionLoading &&
               !approveLoading &&
               !collectPostLoading &&
               details?.city?.trim() !== "" &&
@@ -381,31 +371,23 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 : "opacity-70"
             }`}
             onClick={() =>
-              !encryptionLoading &&
               !approveLoading &&
               !collectPostLoading &&
               Number(item?.amount) + details?.chosenAmount !=
                 Number(item?.soldTokens || 0) &&
-              (!encryptedFulfillment
-                ? encryptFulfillment()
-                : !isApprovedSpend
-                ? approveSpend()
-                : collectItem())
+              (!isApprovedSpend ? approveSpend() : collectItem())
             }
           >
             <div
               className={`${
-                (encryptionLoading || approveLoading || collectPostLoading) &&
-                "animate-spin"
+                (approveLoading || collectPostLoading) && "animate-spin"
               } flex items-center justify-center`}
             >
-              {encryptionLoading || approveLoading || collectPostLoading ? (
+              {approveLoading || collectPostLoading ? (
                 <AiOutlineLoading size={15} color="black" />
               ) : Number(item?.amount) + details?.chosenAmount ==
                 Number(item?.soldTokens || 0) ? (
                 "SOLD OUT"
-              ) : !encryptedFulfillment ? (
-                "Encrypt Fulfillment"
               ) : !isApprovedSpend ? (
                 "Approve Spend"
               ) : (

@@ -24,18 +24,9 @@ const useCheckout = (
   oracleData: OracleData[],
   dispatch: Dispatch
 ) => {
-  const [encryptedFulfillment, setEncryptedFulfillment] = useState<
-    | {
-        pubId: string;
-        data: string;
-      }[]
-    | undefined
-    | undefined
-  >();
   const [isApprovedSpend, setApprovedSpend] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const [approveLoading, setApproveLoading] = useState<boolean>(false);
-  const [encryptionLoading, setEncryptionLoading] = useState<boolean>(false);
   const [collectPostLoading, setCollectPostLoading] = useState<boolean>(false);
   const [details, setDetails] = useState<Details>({
     name: "",
@@ -60,7 +51,6 @@ const useCheckout = (
       details?.country?.trim() === ""
     )
       return;
-    setEncryptionLoading(true);
     try {
       const authSig = await checkAndSignAuthMessage({
         chain: "polygon",
@@ -78,11 +68,11 @@ const useCheckout = (
         authSig,
         collection!
       );
-      setEncryptedFulfillment(encryptedItems);
+
+      return encryptedItems;
     } catch (err: any) {
       console.error(err.message);
     }
-    setEncryptionLoading(false);
   };
 
   const checkApproved = async () => {
@@ -250,7 +240,7 @@ const useCheckout = (
   };
 
   const collectItem = async () => {
-    if (!encryptedFulfillment) return;
+    const encryptedFulfillment = await encryptFulfillment();
 
     setCollectPostLoading(true);
     try {
@@ -298,7 +288,7 @@ const useCheckout = (
       const unknownOpenAction = encodeActData(
         [0],
         [details?.chosenAmount],
-        encryptedFulfillment[0]?.data,
+        encryptedFulfillment?.[0]?.data!,
         details?.checkoutCurrency as `0x${string}`
       );
 
@@ -314,8 +304,6 @@ const useCheckout = (
         clientWallet,
         publicClient
       );
-
-      setEncryptedFulfillment(undefined);
       setDetails((prev) => ({
         name: "",
         contact: "",
@@ -357,12 +345,10 @@ const useCheckout = (
   }, [details?.checkoutCurrency, lensConnected?.id]);
 
   return {
-    encryptedFulfillment,
     openDropdown,
     setOpenDropdown,
     details,
     setDetails,
-    encryptionLoading,
     approveLoading,
     collectPostLoading,
     encryptFulfillment,
