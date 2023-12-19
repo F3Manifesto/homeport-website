@@ -248,8 +248,6 @@ export type F3ManifestoProps = {
 export type MetadataProps = {
   item: Gallery | undefined;
   approveLoading: boolean;
-  encryptionLoading: boolean;
-  encryptFulfillment: () => Promise<void>;
   setDetails: (e: SetStateAction<Details>) => void;
   openDropdown: boolean;
   setOpenDropdown: (e: SetStateAction<boolean>) => void;
@@ -258,12 +256,6 @@ export type MetadataProps = {
   approveSpend: () => Promise<void>;
   collectItem: () => Promise<void>;
   collectPostLoading: boolean;
-  encryptedFulfillment:
-    | {
-        pubId: string;
-        data: string;
-      }[]
-    | undefined;
   details: Details;
   like: (
     id: string,
