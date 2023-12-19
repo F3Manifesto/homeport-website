@@ -737,6 +737,7 @@ export type InsufficientBalanceProps = {
 export type SuccessCheckoutProps = {
   dispatch: Dispatch<Action>;
   image: string;
+  lensConnected: Profile | undefined;
 };
 
 export type QuoteCollectProps = {

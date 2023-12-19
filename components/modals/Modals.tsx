@@ -179,8 +179,12 @@ const Modals: FunctionComponent = (): JSX.Element => {
       )}
       {indexer?.open && <Index message={indexer?.message!} />}
       {interact?.value && <InteractError dispatch={dispatch} />}
-      {successCheckout?.value && (
-        <SuccessCheckout image={successCheckout?.image} dispatch={dispatch} />
+      {!successCheckout?.value && (
+        <SuccessCheckout
+          image={successCheckout?.image}
+          dispatch={dispatch}
+          lensConnected={lensConnected}
+        />
       )}
       {insufficientBalance?.value && (
         <InsufficientBalance
