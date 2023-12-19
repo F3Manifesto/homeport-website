@@ -1,4 +1,4 @@
-import {  encryptString } from "@lit-protocol/lit-node-client";
+import { encryptString } from "@lit-protocol/lit-node-client";
 import { ILitNodeClient } from "@lit-protocol/types";
 import { AuthSig, Details, Gallery } from "../../types/general.types";
 import { ACCEPTED_TOKENS, DIGITALAX_ADDRESS } from "../constants";
@@ -63,13 +63,7 @@ export const encryptItems = async (
         chain: "polygon",
         dataToEncrypt: JSON.stringify({
           ...rest,
-          prices: [
-            collection?.prices[
-              ACCEPTED_TOKENS?.findIndex(
-                (item) => item[2] == fulfillmentDetails?.checkoutCurrency
-              )
-            ],
-          ],
+          prices: [collection?.prices[0]],
           types: ["f3m"],
           amounts: [chosenAmount],
           collectionIds: [collection?.collectionId],

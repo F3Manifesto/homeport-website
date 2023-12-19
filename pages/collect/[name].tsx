@@ -314,6 +314,8 @@ const Name: React.FC = (): JSX.Element => {
                 collectRef={collectRef}
                 commentRef={commentRef}
                 like={like}
+                address={address}
+                handleSignIn={handleLensSignIn}
                 dispatch={dispatch}
                 mirror={mirror}
                 router={router}

@@ -32,6 +32,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   openConnectModal,
   commentRef,
   collectRef,
+  handleSignIn,
+  address,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-fit flex flex-col gap-3">
@@ -370,12 +372,25 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 ? "cursor-pointer active:scale-95"
                 : "opacity-70"
             }`}
-            onClick={() =>
+            onClick={
               !approveLoading &&
               !collectPostLoading &&
+              details?.city?.trim() !== "" &&
+              details?.country?.trim() !== "" &&
+              details?.zip?.trim() !== "" &&
+              details?.state?.trim() !== "" &&
+              details?.city?.trim() !== "" &&
+              details?.name?.trim() !== "" &&
               Number(item?.amount) + details?.chosenAmount !=
-                Number(item?.soldTokens || 0) &&
-              (!isApprovedSpend ? approveSpend() : collectItem())
+                Number(item?.soldTokens || 0)
+                ? !address
+                  ? openConnectModal
+                  : !lensProfile
+                  ? () => handleSignIn()
+                  : !isApprovedSpend
+                  ? () => approveSpend()
+                  : () => collectItem()
+                : () => {}
             }
           >
             <div
@@ -388,6 +403,10 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               ) : Number(item?.amount) + details?.chosenAmount ==
                 Number(item?.soldTokens || 0) ? (
                 "SOLD OUT"
+              ) : !address ? (
+                "CONNECT"
+              ) : !lensProfile ? (
+                "LENS"
               ) : !isApprovedSpend ? (
                 "Approve Spend"
               ) : (

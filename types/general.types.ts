@@ -275,6 +275,8 @@ export type MetadataProps = {
   openConnectModal: (() => void) | undefined;
   commentRef: MutableRefObject<HTMLDivElement | null>;
   collectRef: MutableRefObject<HTMLDivElement | null>;
+  handleSignIn: () => Promise<void>;
+  address: `0x${string}` | undefined;
 };
 
 export interface AuthSig {
