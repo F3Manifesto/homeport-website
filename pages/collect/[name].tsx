@@ -5,7 +5,6 @@ import Metadata from "../../components/collect/modules/Metadata";
 import Connect from "../../components/collect/modules/Connect";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { ILitNodeClient } from "@lit-protocol/types";
 import useSignIn from "../../components/collect/hooks/useSignIn";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useChainModal } from "@rainbow-me/rainbowkit";
@@ -150,7 +149,6 @@ const Name: React.FC = (): JSX.Element => {
     setDetails,
     approveLoading,
     collectPostLoading,
-    encryptFulfillment,
     isApprovedSpend,
     approveSpend,
     collectItem,
@@ -158,7 +156,7 @@ const Name: React.FC = (): JSX.Element => {
     collection,
     address,
     lensProfile,
-    client as unknown as ILitNodeClient,
+    client,
     publicClient,
     oracleData,
     dispatch
