@@ -357,7 +357,6 @@ const useCheckout = (
     setDetails,
     approveLoading,
     collectPostLoading,
-    encryptFulfillment,
     isApprovedSpend,
     approveSpend,
     collectItem,
