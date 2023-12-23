@@ -131,7 +131,9 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
       </div>
     ) : (
       <div className="relative w-fit h-fit text-black font-conso flex items-center justify-center text-xs py-3 px-1">
-        No Mirrors Yet.
+        {mirrorQuote && quoters?.length < 1
+          ? "No Quotes Yet."
+          : "No Mirrors Yet. "}
       </div>
     );
   }
