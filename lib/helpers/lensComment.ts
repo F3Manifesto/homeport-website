@@ -25,7 +25,7 @@ const lensComment = async (
 ): Promise<void> => {
   if (
     openActionModules &&
-    openActionModules?.hasOwnProperty("collectOpenAction") &&
+    openActionModules?.[0]?.hasOwnProperty("collectOpenAction") &&
     openActionModules?.[0]?.collectOpenAction?.hasOwnProperty(
       "simpleCollectOpenAction"
     )
