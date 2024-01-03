@@ -31,6 +31,16 @@ const lensComment = async (
     )
   ) {
     openActionModules = cleanCollect(openActionModules);
+  } else {
+    openActionModules = [
+      {
+        collectOpenAction: {
+          simpleCollectOpenAction: {
+            followerOnly: false,
+          },
+        },
+      },
+    ];
   }
 
   const metadata = await validateMetadata({
