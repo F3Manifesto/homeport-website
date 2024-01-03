@@ -28,15 +28,21 @@ const lensCollect = async (
 
   if (
     type === "SimpleCollectOpenActionSettings" ||
-    type === "MultirecipientFeeCollectOpenActionSettings"
+    type === "MultirecipientFeeCollectOpenActionSettings" ||
+    type === "SimpleCollectOpenActionModule" ||
+    type === "MultirecipientFeeCollectOpenActionModule"
   ) {
     const { data } = await collectPost({
       for: id,
       actOn: {
         simpleCollectOpenAction:
-          type === "SimpleCollectOpenActionSettings" ? true : undefined,
+          type === "SimpleCollectOpenActionSettings" ||
+          type === "SimpleCollectOpenActionModule"
+            ? true
+            : undefined,
         multirecipientCollectOpenAction:
-          type === "MultirecipientFeeCollectOpenActionSettings"
+          type === "MultirecipientFeeCollectOpenActionSettings" ||
+          type === "MultirecipientFeeCollectOpenActionModule"
             ? true
             : undefined,
       },
