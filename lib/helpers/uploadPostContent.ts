@@ -82,8 +82,12 @@ const uploadPostContent = async (
       $schema,
       lens: {
         mainContentFocus,
-        title: contentText ? contentText.slice(0, 20) : "",
-        content: contentText ? contentText : "",
+        title:
+          contentText && contentText?.trim() !== ""
+            ? contentText.slice(0, 20)
+            : undefined,
+        content:
+          contentText && contentText?.trim() !== "" ? contentText : undefined,
         appId: "f3manifesto",
         ...value,
         id: uuidv4(),
