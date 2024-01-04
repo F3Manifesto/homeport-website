@@ -7,12 +7,14 @@ import { setAllGallery } from "../../../../redux/reducers/allGallerySlice";
 import { setFilterConstants } from "../../../../redux/reducers/filterConstantsSlice";
 import handleCollectionProfilesAndPublications from "../../../../lib/helpers/handleCollectionProfilesAndPublications";
 import { Profile } from "../../../../graphql/generated";
+import { setprevURL } from "../../../../redux/reducers/prevURLSlice";
 
 const useCollections = (
   dispatch: Dispatch,
   router: NextRouter,
   gallery: Gallery[],
-  lensConnected: Profile | undefined
+  lensConnected: Profile | undefined,
+  prevURL: string
 ) => {
   const [filteredGallery, setFilteredGallery] = useState<Gallery[]>([]);
   const [galleryLoading, setGalleryLoading] = useState<boolean>(false);
@@ -62,8 +64,12 @@ const useCollections = (
   };
 
   const handleURL = async (type: string, newValue: string): Promise<void> => {
-    let baseUrl = router.asPath.split("?")[0].split("#")[0];
-    let queryParams = new URLSearchParams(router.asPath.split("?")[1]);
+    let baseUrl = (window.location.search + window.location.hash)
+      ?.split("?")[0]
+      ?.split("#")[0];
+    let queryParams = new URLSearchParams(
+      (window.location.search + window.location.hash)?.split("?")[1]
+    );
     let newUrl: string = "";
 
     if (type !== "name") {
@@ -88,7 +94,6 @@ const useCollections = (
         queryParams.set(type, queryArray.join("-"));
       }
     } else {
-      // Manejo específico para 'name'
       if (newValue !== "") {
         queryParams.set("name", newValue);
       } else {
@@ -106,28 +111,46 @@ const useCollections = (
       ""
     )}${"/#shopping"}`;
 
-    await router.replace(
-      router.asPath,
-      newUrl?.includes("?/#shopping") ? newUrl?.replaceAll("?", "") : newUrl,
-      {
-        shallow: true,
-        scroll: false,
-      }
+    window.history.replaceState(
+      null,
+      "",
+      newUrl?.includes("?/#shopping") ? newUrl?.replaceAll("?", "") : newUrl
     );
+    dispatch(
+      setprevURL(
+        newUrl?.includes("?/#shopping") ? newUrl?.replaceAll("?", "") : newUrl
+      )
+    );
+    // await router.replace(
+    //   (window.location.search + window.location.hash)?,
+    //   newUrl?.includes("?/#shopping") ? newUrl?.replaceAll("?", "") : newUrl,
+    //   {
+    //     shallow: true,
+    //     scroll: false,
+    //   }
+    // );
   };
 
   const filterGallery = () => {
     let galleryFiltered: Gallery[] = [];
-
-    if (router.asPath.includes("sex=")) {
-      const sexSelected: string[] = router.asPath
-        .split("sex=")[1]
-        .split("&")[0]
-        .split("?")[0]
-        .replaceAll("-", " ")
+    if (
+      (prevURL && prevURL?.trim() !== ""
+        ? prevURL
+        : window.location.search + window.location.hash
+      )?.includes("sex=")
+    ) {
+      const sexSelected: string[] = (
+        prevURL && prevURL?.trim() !== ""
+          ? prevURL
+          : window.location.search + window.location.hash
+      )
+        ?.split("sex=")[1]
+        ?.split("&")[0]
+        ?.split("?")[0]
+        ?.replaceAll("-", " ")
         ?.split("/#shopping")?.[0]
-        .trim()
-        .split(" ");
+        ?.trim()
+        ?.split(" ");
 
       if (sexSelected?.length > 0) {
         galleryFiltered = gallery?.filter((item) =>
@@ -142,15 +165,24 @@ const useCollections = (
       }
     }
 
-    if (router.asPath.includes("style=")) {
-      const styleSelected: string[] = router.asPath
-        .split("style=")[1]
-        .split("&")[0]
-        .split("?")[0]
-        .replaceAll("-", " ")
+    if (
+      (prevURL && prevURL?.trim() !== ""
+        ? prevURL
+        : window.location.search + window.location.hash
+      )?.includes("style=")
+    ) {
+      const styleSelected: string[] = (
+        prevURL && prevURL?.trim() !== ""
+          ? prevURL
+          : window.location.search + window.location.hash
+      )
+        ?.split("style=")[1]
+        ?.split("&")[0]
+        ?.split("?")[0]
+        ?.replaceAll("-", " ")
         ?.split("/#shopping")?.[0]
-        .trim()
-        .split(" ");
+        ?.trim()
+        ?.split(" ");
 
       if (styleSelected?.length > 0) {
         galleryFiltered = (
@@ -169,15 +201,24 @@ const useCollections = (
       }
     }
 
-    if (router.asPath.includes("collection=")) {
-      const dropSelected: string[] = router.asPath
-        .split("collection=")[1]
-        .split("&")[0]
-        .split("?")[0]
-        .replaceAll("-", " ")
+    if (
+      (prevURL && prevURL?.trim() !== ""
+        ? prevURL
+        : window.location.search + window.location.hash
+      )?.includes("collection=")
+    ) {
+      const dropSelected: string[] = (
+        prevURL && prevURL?.trim() !== ""
+          ? prevURL
+          : window.location.search + window.location.hash
+      )
+        ?.split("collection=")[1]
+        ?.split("&")[0]
+        ?.split("?")[0]
+        ?.replaceAll("-", " ")
         ?.split("/#shopping")?.[0]
-        .trim()
-        .split(" ");
+        ?.trim()
+        ?.split(" ");
 
       if (dropSelected?.length > 0) {
         galleryFiltered = (
@@ -196,11 +237,20 @@ const useCollections = (
       }
     }
 
-    if (router.asPath.includes("name=")) {
-      const nameSelected: string = router.asPath
-        .split("name=")[1]
-        .split("&")[0]
-        .split("?")[0]
+    if (
+      (prevURL && prevURL?.trim() !== ""
+        ? prevURL
+        : window.location.search + window.location.hash
+      )?.includes("name=")
+    ) {
+      const nameSelected: string = (
+        prevURL && prevURL?.trim() !== ""
+          ? prevURL
+          : window.location.search + window.location.hash
+      )
+        ?.split("name=")[1]
+        ?.split("&")[0]
+        ?.split("?")[0]
         ?.split("/#shopping")?.[0];
 
       if (nameSelected !== "" && nameSelected) {
@@ -222,12 +272,21 @@ const useCollections = (
     }
   }, [gallery]);
 
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && gallery?.length > 0) {
+  //     window.addEventListener("popstate", filterGallery);
+
+  //     return () => {
+  //       window.removeEventListener("popstate", filterGallery);
+  //     };
+  //   }
+  // }, [gallery?.length]);
+
   useEffect(() => {
     if (gallery?.length > 0) {
       filterGallery();
     }
-  }, [gallery?.length, router.asPath]);
-
+  }, [router.asPath, prevURL, gallery]);
   return {
     shopping,
     goShopping,

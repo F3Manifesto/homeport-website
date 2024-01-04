@@ -43,6 +43,9 @@ const Home: NextPage = (): JSX.Element => {
   const lensProfile = useSelector(
     (state: RootState) => state.app.lensConnectedReducer.profile
   );
+  const prevURL = useSelector(
+    (state: RootState) => state.app.prevURLReducer.url
+  );
   const {
     shopping,
     goShopping,
@@ -50,7 +53,7 @@ const Home: NextPage = (): JSX.Element => {
     galleryLoading,
     handleURL,
     setFilteredGallery,
-  } = useCollections(dispatch, router, gallery, lensProfile);
+  } = useCollections(dispatch, router, gallery, lensProfile, prevURL);
   const { like, mirror, interactionLoaders } = useInteractions(
     gallery,
     filteredGallery,
