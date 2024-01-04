@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/layout/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
@@ -10,6 +10,8 @@ import { polygon } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { store } from "../redux/store";
 import Modals from "../components/modals/Modals";
+import { useRouter } from "next/router";
+import RouterChange from "../components/layout/RouterChange";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [polygon],
@@ -75,6 +77,32 @@ function MyApp({ Component, pageProps }: AppProps) {
     /**      /**     /** ******** /**     /**/** //*******  /**    //***
     //       //      // ////////  //      // //   ///////   //      /// `);
   }, []);
+  const [routerChangeLoading, setRouterChangeLoading] =
+    useState<boolean>(false);
+  const router = useRouter();
+  useEffect(() => {
+    const handleStart = () => {
+      setRouterChangeLoading(true);
+    };
+
+    const handleStop = () => {
+      setRouterChangeLoading(false);
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeError", handleStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeError", handleStop);
+    };
+  }, [router]);
+
+  if (routerChangeLoading) {
+    return <RouterChange />;
+  }
 
   return (
     <WagmiConfig config={config}>
