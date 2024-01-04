@@ -3,7 +3,13 @@ import { graphPrintClient } from "../../../lib/graph/client";
 
 const COLLECTIONS = `
   query($title: String!, $origin: String!) {
-    collectionCreateds(where: {origin: $origin, collectionMetadata_: {title_contains_nocase: $title}}, first: 1) {
+    collectionCreateds(where: {
+      and: [
+        { origin: $origin },
+        { collectionMetadata_: { title_starts_with_nocase: $title } },
+        { collectionMetadata_: { title_ends_with_nocase: $title } },
+      ]
+    },first: 1) {
       amount
       uri
       dropMetadata {

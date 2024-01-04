@@ -4,7 +4,6 @@ import { SearchProps } from "./../../../types/general.types";
 const Search: FunctionComponent<SearchProps> = ({
   filterConstants,
   filterURL,
-  router,
 }): JSX.Element => {
   return (
     <div className="flex relative h-fit max-w-screen w-full min-w-fit overflow-hidden pb-12">
@@ -22,12 +21,12 @@ const Search: FunctionComponent<SearchProps> = ({
                       (drop: string, index: number) => {
                         return (
                           <span
-                            className={`m-2 ml-0 border border-offBlack rounded-full border-l border-r pl-1 pr-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex font-conso break-word`}
+                            className={`m-2 border border-offBlack rounded-full border-l border-r px-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex font-conso break-word`}
                             key={index}
                           >
                             <button
-                              className={`border border-offBlack relative rounded-full py-1 px-1 sm:px-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
-                                router.asPath.includes(drop?.replaceAll(" ", "")) && "bg-lightYellow"
+                              className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md ${
+                                window.location.search?.includes(drop?.replaceAll(" ", "")) && "bg-lightYellow"
                               }`}
                               name={drop}
                               onClick={() => filterURL("collection", drop)}
@@ -74,7 +73,7 @@ const Search: FunctionComponent<SearchProps> = ({
                           >
                             <button
                               className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                                router.asPath?.includes(type?.replaceAll(" ", "")) &&
+                                window.location.search?.includes(type?.replaceAll(" ", "")) &&
                                 "bg-lightYellow"
                               }`}
                               name={type}
@@ -109,7 +108,7 @@ const Search: FunctionComponent<SearchProps> = ({
                         >
                           <button
                             className={`border border-offBlack rounded-full p-2 w-fit cursor-empireS break-word galaxy:whitespace-nowrap hover:bg-lightYellow active:bg-grayBlue relative ${
-                              router.asPath?.includes(style?.replaceAll(" ", "")) && "bg-lightYellow"
+                              window.location.search?.includes(style?.replaceAll(" ", "")) && "bg-lightYellow"
                             }`}
                             name={style}
                             onClick={() => filterURL("style", style)}

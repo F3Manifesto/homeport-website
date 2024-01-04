@@ -28,7 +28,6 @@ const Collections: FunctionComponent<CollectionProps> = ({
       <div className="w-full min-h-auto bg-offWhite relative inline-block">
         <hr className="h-4 w-full bg-grayBlue top-2 absolute" />
         <Search
-          router={router}
           filterURL={filterURL}
           filterConstants={filterConstants}
         />

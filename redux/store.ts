@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import walletConnectedReducer from "./reducers/walletConnectedSlice";
 import lensConnectedReducer from "./reducers/lensConnectedSlice";
+import prevURLReducer from "./reducers/prevURLSlice";
 import oracleDataReducer from "./reducers/oracleDataSlice";
 import ImageLargeReducer from "./reducers/ImageLargeSlice";
 import allGalleryReducer from "./reducers/allGallerySlice";
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   reactBoxReducer,
   lensConnectModalReducer,
   followCollectReducer,
+  prevURLReducer,
   availableCurrenciesReducer,
   insufficientBalanceReducer,
   successCheckoutReducer,

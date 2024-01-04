@@ -50,6 +50,9 @@ const Name: React.FC = (): JSX.Element => {
   const postCollect = useSelector(
     (state: RootState) => state.app.postCollectReducer
   );
+  const prevURL = useSelector(
+    (state: RootState) => state.app.prevURLReducer.url
+  );
   const walletConnected = useSelector(
     (state: RootState) => state.app.walletConnectedReducer.value
   );
@@ -232,7 +235,7 @@ const Name: React.FC = (): JSX.Element => {
       <div className="w-full h-full flex flex-col relative items-center justify-start">
         <div className="relative w-full h-fit flex flex-row justify-between gap-4 items-center py-8 px-4">
           <div
-            onClick={() => router.back()}
+            onClick={() => router.push(`/${prevURL}`)}
             className="relative w-fit h-fit flex mr-auto text-offBlack font-fira opacity-80 hover:opacity-20 cursor-empireS flex-row gap-2"
           >
             <AiFillBackward

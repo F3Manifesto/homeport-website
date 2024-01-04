@@ -124,7 +124,6 @@ export type GalleryProps = {
 };
 
 export type SearchProps = {
-  router: NextRouter;
   filterConstants: {
     sexes: string[];
     styles: string[];

@@ -21,10 +21,10 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   if (
     filteredGallery.length === 0 &&
     !galleryLoading &&
-    (router.asPath?.includes("sex") ||
-      router.asPath?.includes("style") ||
-      router.asPath?.includes("collection") ||
-      router.asPath?.includes("name"))
+    (window.location.search?.includes("sex") ||
+      window.location.search?.includes("style") ||
+      window.location.search?.includes("collection") ||
+      window.location.search?.includes("name"))
   ) {
     return (
       <div className="font-york text-offBlue flex items-center justify-center w-full h-fit">
