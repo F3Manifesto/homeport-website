@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import Sidebar from "../../layout/Sidebar";
 import Shutter from "./Shutter";
+import { INFURA_GATEWAY } from "../../../lib/constants";
 
 const VintageFilm: FunctionComponent = (): JSX.Element => {
   return (
@@ -15,6 +16,7 @@ const VintageFilm: FunctionComponent = (): JSX.Element => {
           autoPlay
           muted
           loop
+          poster={`${INFURA_GATEWAY}/ipfs/Qma9uA5oK2yfr2upLoYjAnuZ6q1xBd5bu7yXac6ZfESV8G`}
         >
           <source src="/videos/homevideo.mp4" type="video/mp4" />
         </video>
