@@ -17,6 +17,7 @@ import { useAccount } from "wagmi";
 import { polygon } from "viem/chains";
 import { createPublicClient, http } from "viem";
 import useInteractions from "../components/home/collections/hooks/useInteractions";
+import RouterChange from "../components/layout/RouterChange";
 
 const Home: NextPage = (): JSX.Element => {
   const router = useRouter();
@@ -60,60 +61,67 @@ const Home: NextPage = (): JSX.Element => {
     address
   );
 
-  return (
-    <div
-      id="cursor"
-      className="flex flex-col midWhite bg-offBlack h-full min-w-screen"
-    >
-      <Head>
-        <title>F3Manifesto</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:site_name" content="F3M" />
-        <meta property="og:image" content="https://f3manifesto.xyz/card.png/" />
-        <meta property="og:type" content="website" />
-        <meta name="og:url" content="https://f3manifesto.xyz/" />
-        <meta name="og:title" content="F3Manifesto" />
-        <meta name="og:description" content="I Want My Web3 Fashion" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@f3manifesto" />
-        <meta name="twitter:creator" content="@f3manifesto" />
-        <meta
-          name="twitter:image"
-          content="https://f3manifesto.xyz/card.png/"
+  if (!galleryLoading && gallery?.length > 0) {
+    return (
+      <div
+        id="cursor"
+        className="flex flex-col midWhite bg-offBlack h-full min-w-screen"
+      >
+        <Head>
+          <title>F3Manifesto</title>
+          <link rel="icon" href="/favicon.ico" />
+          <meta property="og:site_name" content="F3M" />
+          <meta
+            property="og:image"
+            content="https://f3manifesto.xyz/card.png/"
+          />
+          <meta property="og:type" content="website" />
+          <meta name="og:url" content="https://f3manifesto.xyz/" />
+          <meta name="og:title" content="F3Manifesto" />
+          <meta name="og:description" content="I Want My Web3 Fashion" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@f3manifesto" />
+          <meta name="twitter:creator" content="@f3manifesto" />
+          <meta
+            name="twitter:image"
+            content="https://f3manifesto.xyz/card.png/"
+          />
+          <meta name="twitter:url" content="https://f3manifesto.xyz/" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="canonical" href="https://f3manifesto.xyz/" />
+        </Head>
+        <VintageFilm />
+        <F3Manifesto
+          filterURL={handleURL}
+          goShopping={goShopping}
+          filterConstants={filterConstants}
         />
-        <meta name="twitter:url" content="https://f3manifesto.xyz/" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="canonical" href="https://f3manifesto.xyz/" />
-      </Head>
-      <VintageFilm />
-      <F3Manifesto
-        filterURL={handleURL}
-        goShopping={goShopping}
-        filterConstants={filterConstants}
-      />
-      <Web3Fashion goShopping={goShopping} />
-      <Collections
-        filterURL={handleURL}
-        shopping={shopping}
-        filteredGallery={filteredGallery}
-        router={router}
-        gallery={gallery}
-        filterConstants={filterConstants}
-        galleryLoading={galleryLoading}
-        interactionLoaders={interactionLoaders}
-        connected={walletConnected}
-        lensConnected={lensProfile}
-        dispatch={dispatch}
-        openConnectModal={openConnectModal}
-        mirror={mirror}
-        like={like}
-      />
-      <Poster />
-      <Clear />
-      <Slider />
-      <Gap />
-    </div>
-  );
+        <Web3Fashion goShopping={goShopping} />
+        <Collections
+          filterURL={handleURL}
+          shopping={shopping}
+          filteredGallery={filteredGallery}
+          router={router}
+          gallery={gallery}
+          filterConstants={filterConstants}
+          galleryLoading={galleryLoading}
+          interactionLoaders={interactionLoaders}
+          connected={walletConnected}
+          lensConnected={lensProfile}
+          dispatch={dispatch}
+          openConnectModal={openConnectModal}
+          mirror={mirror}
+          like={like}
+        />
+        <Poster />
+        <Clear />
+        <Slider />
+        <Gap />
+      </div>
+    );
+  }
+
+  return <RouterChange />;
 };
 
 export default Home;
