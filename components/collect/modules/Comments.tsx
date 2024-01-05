@@ -81,7 +81,9 @@ const Comments: FunctionComponent<CommentProps> = ({
           contentLoading={mainContentLoading?.[0]}
           dispatch={dispatch}
           main={true}
-          width={quotes?.length > 0 ? "80%" : "50%"}
+          width={
+            quotes?.length > 0 ? "80%" : window.innerWidth < 640 ? "100%" : "50%"
+          }
         />
         {commentsLoading ? (
           Array.from({ length: 10 }).map((_, index: number) => {
