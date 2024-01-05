@@ -9,8 +9,8 @@ import {
 const isApprovedData = async (
   request: ApprovedModuleAllowanceAmountRequest
 ): Promise<FetchResult<ApprovedModuleAllowanceAmountQuery>> => {
-  return await apolloClient.mutate({
-    mutation: ApprovedModuleAllowanceAmountDocument,
+  return await apolloClient.query({
+    query: ApprovedModuleAllowanceAmountDocument,
     variables: {
       request,
     },
