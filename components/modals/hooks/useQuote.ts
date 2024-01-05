@@ -238,6 +238,7 @@ const useQuote = (
   };
 
   const approveSpend = async () => {
+    if (!lensConnected?.id) return;
     setTransactionLoading(true);
     try {
       const { data } = await approveCurrency({
@@ -286,6 +287,7 @@ const useQuote = (
         account: data?.generateModuleCurrencyApprovalData
           ?.from as `0x${string}`,
         data: data?.generateModuleCurrencyApprovalData?.data,
+        value: BigInt("0"),
       });
       const tx = await publicClient.waitForTransactionReceipt({ hash: res });
       await handleIndexCheck(
