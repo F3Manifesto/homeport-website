@@ -119,7 +119,7 @@ const useQuote = (
       const clientWallet = createWalletClient({
         chain: polygon,
         transport: custom((window as any).ethereum),
-      })
+      });
 
       await lensQuote(
         postBox?.quote?.id,
@@ -285,7 +285,7 @@ const useQuote = (
         to: data?.generateModuleCurrencyApprovalData?.to as `0x${string}`,
         account: data?.generateModuleCurrencyApprovalData
           ?.from as `0x${string}`,
-        value: data?.generateModuleCurrencyApprovalData?.data,
+        data: data?.generateModuleCurrencyApprovalData?.data,
       });
       const tx = await publicClient.waitForTransactionReceipt({ hash: res });
       await handleIndexCheck(
