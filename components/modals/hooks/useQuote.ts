@@ -289,13 +289,13 @@ const useQuote = (
         data: data?.generateModuleCurrencyApprovalData?.data,
         value: BigInt("0"),
       });
-      const tx = await publicClient.waitForTransactionReceipt({ hash: res });
-      await handleIndexCheck(
-        {
-          forTxHash: tx.transactionHash,
-        },
-        dispatch
-      );
+      await publicClient.waitForTransactionReceipt({ hash: res });
+      // await handleIndexCheck(
+      //   {
+      //     forTxHash: tx.transactionHash,
+      //   },
+      //   dispatch
+      // );
       setApproved(true);
     } catch (err: any) {
       console.error(err.message);
