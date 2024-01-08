@@ -24,7 +24,6 @@ import { setIndexer } from "../../../redux/reducers/indexerSlice";
 import getEnabledCurrencies from "../../../graphql/lens/queries/enabledCurrencies";
 import isApprovedData from "../../../graphql/lens/mutations/isApproved";
 import approveCurrency from "../../../graphql/lens/mutations/approve";
-import handleIndexCheck from "../../../lib/helpers/handleIndexCheck";
 import lensCollect from "../../../lib/helpers/lensCollect";
 import { MakePostComment } from "../../../types/general.types";
 import {
@@ -97,7 +96,7 @@ const useQuote = (
   }>({
     collectibleOpen: false,
     collectible: "Yes",
-    award: "",
+    award: "No",
     whoCollectsOpen: false,
     creatorAwardOpen: false,
     currencyOpen: false,
@@ -215,9 +214,13 @@ const useQuote = (
       const { data } = await isApprovedData({
         currencies:
           followCollect?.type === "collect"
-            ? followCollect?.collect?.item?.amount?.asset.contract.address
-            : (followCollect?.follower?.followModule as FeeFollowModuleSettings)
-                ?.amount.asset.contract.address,
+            ? [followCollect?.collect?.item?.amount?.asset.contract.address]
+            : [
+                (
+                  followCollect?.follower
+                    ?.followModule as FeeFollowModuleSettings
+                )?.amount.asset.contract.address,
+              ],
       });
 
       if (data && data.approvedModuleAllowanceAmount[0]) {
@@ -308,6 +311,7 @@ const useQuote = (
   const handleCollect = async () => {
     if (
       followCollect?.type === "collect" &&
+      Number(followCollect?.collect?.item?.collectLimit || 0) > 0 &&
       Number(followCollect?.collect?.item?.collectLimit) ==
         Number(followCollect?.collect?.stats)
     )

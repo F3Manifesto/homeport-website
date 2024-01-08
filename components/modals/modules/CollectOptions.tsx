@@ -10,6 +10,7 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
   id,
   dispatch,
 }): JSX.Element => {
+
   return (
     <div
       className={`relative rounded-md flex gap-5 w-full items-center justify-center h-full cursor-empireS`}
@@ -98,6 +99,16 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
                   amount: {
                     ...(newCTs[id]?.amount || {}),
                     value: item,
+                    currency:
+                      availableCurrencies?.find((value) => {
+                        if (
+                          value.contract.address ===
+                          collectTypes?.[id!]?.amount?.currency
+                        ) {
+                          return value;
+                        }
+                      })?.contract?.address! ||
+                      availableCurrencies?.[0]?.contract?.address,
                   },
                 } as any;
 
@@ -281,9 +292,7 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
                     <div className="relative w-full h-fit flex items-start justify-start font-din text-black text-sm">
                       {item?.title}
                     </div>
-                    <div
-                      className="relative w-full h-12 p-px rounded-sm flex flex-row items-center justify-center font-din text-black text-center border border-black"
-                    >
+                    <div className="relative w-full h-12 p-px rounded-sm flex flex-row items-center justify-center font-din text-black text-center border border-black">
                       <div className="relative bg-lightYellow flex flex-row w-full h-full justify-start items-center rounded-sm p-2 gap-2">
                         <div
                           className={`relative flex items-center justify-center cursor-pointer w-4 h-3 ${
@@ -293,17 +302,13 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
                         >
                           <div className="relative w-fit h-fit text-xl">#</div>
                         </div>
-                        <div
-                          className="relative w-full h-full p-1.5 bg-lightYellow flex items-center justify-center"
-                        >
+                        <div className="relative w-full h-full p-1.5 bg-lightYellow flex items-center justify-center">
                           {item.chosenValue}
                         </div>
                       </div>
                     </div>
                     {item.dropOpen && (
-                      <div
-                        className="absolute flex items-start justify-center w-full h-fit max-height-[7rem] overflow-y-scroll z-50 bg-lightYellow top-20 p-px border border-black rounded-sm"
-                      >
+                      <div className="absolute flex items-start justify-center w-full h-fit max-height-[7rem] overflow-y-scroll z-50 bg-lightYellow top-20 p-px border border-black rounded-sm">
                         <div className="relative flex flex-col items-center justify-start w-full h-fit gap-px">
                           {item.dropValues?.map(
                             (value: string, indexThree: number) => {
@@ -338,9 +343,7 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
                     <div className="relative w-full h-fit flex items-start justify-start font-din text-black text-sm">
                       {item?.title}
                     </div>
-                    <div
-                      className="relative w-full h-12 p-px rounded-sm flex flex-row items-center justify-center font-din text-sol text-center"
-                    >
+                    <div className="relative w-full h-12 p-px rounded-sm flex flex-row items-center justify-center font-din text-sol text-center">
                       <div
                         className={`relative flex items-center justify-center cursor-pointer w-4 h-3`}
                       >
