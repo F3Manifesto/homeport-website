@@ -184,6 +184,7 @@ const Name: React.FC = (): JSX.Element => {
             ?.replaceAll(" ", "-")
             ?.toLowerCase()}`}
         />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="og:title" content={name as string} />
         <meta
           name="og:description"
