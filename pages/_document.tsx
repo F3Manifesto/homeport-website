@@ -7,125 +7,122 @@ class Document extends NextDocument {
       <Html>
         <Head>
           <meta name="og:image" content="https://f3manifesto.xyz/card.png/" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             rel="preload"
-            href="/fonts/jacklane_2.woff"
+            href="https://www.f3manifesto.xyz/fonts/jacklane_2.woff"
             as="font"
             type="font/woff"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/NaNHoloCondensed_TRIAL-Black.ttf"
+            href="https://www.f3manifesto.xyz/fonts/NaNHoloCondensed_TRIAL-Black.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/NewYork.otf"
+            href="https://www.f3manifesto.xyz/fonts/NewYork.otf"
             as="font"
             type="font/otf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/airstrikegrad.ttf"
+            href="https://www.f3manifesto.xyz/fonts/airstrikegrad.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Emiken Regular.ttf"
+            href="https://www.f3manifesto.xyz/fonts/EmikenRegular.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Atmosphere-Regular.ttf"
+            href="https://www.f3manifesto.xyz/fonts/Atmosphere-Regular.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Alberto-Regular.ttf"
+            href="https://www.f3manifesto.xyz/fonts/Alberto-Regular.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Doctor Glitch.otf"
+            href="https://www.f3manifesto.xyz/fonts/DoctorGlitch.otf"
             as="font"
             type="font/otf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Conso-Regular.otf"
+            href="https://www.f3manifesto.xyz/fonts/Conso-Regular.otf"
             as="font"
             type="font/otf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Conso-Medium.otf"
+            href="https://www.f3manifesto.xyz/fonts/Conso-Medium.otf"
             as="font"
             type="font/otf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Gaia.otf"
+            href="https://www.f3manifesto.xyz/fonts/Gaia.otf"
             as="font"
             type="font/otf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/FiraCode-Regular.ttf"
+            href="https://www.f3manifesto.xyz/fonts/FiraCode-Regular.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/FiraCode-Light.ttf"
+            href="https://www.f3manifesto.xyz/fonts/FiraCode-Light.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/FiraCode-Bold.ttf"
+            href="https://www.f3manifesto.xyz/fonts/FiraCode-Bold.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/FiraCode-Medium.ttf"
+            href="https://www.f3manifesto.xyz/fonts/FiraCode-Medium.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/DIN Condensed Bold.ttf"
+            href="https://www.f3manifesto.xyz/fonts/DINCondensedBold.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/Futurist Regular.ttf"
+            href="https://www.f3manifesto.xyz/fonts/FuturistRegular.ttf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
@@ -154,7 +151,7 @@ class Document extends NextDocument {
                 @font-face {
                   font-family: "Emiken";
                   font-weight: 400;
-                  src: url("./fonts/Emiken Regular.ttf");
+                  src: url("./fonts/EmikenRegular.ttf");
                 }
 
                 @font-face {
@@ -172,7 +169,7 @@ class Document extends NextDocument {
                 @font-face {
                   font-family: "Doctor Glitch";
                   font-weight: 400;
-                  src: url("./fonts/Doctor Glitch.otf");
+                  src: url("./fonts/DoctorGlitch.otf");
                 } 
 
                 @font-face {
@@ -214,13 +211,13 @@ class Document extends NextDocument {
                 @font-face {
                   font-family: "DIN Condensed";
                   font-weight: 400;
-                  src: url("./fonts/DIN Condensed Bold.ttf");
+                  src: url("./fonts/DINCondensedBold.ttf");
                 }
 
                 @font-face {
                   font-family: "Futurist";
                   font-weight: 400;
-                  src: url("./fonts/Futurist Regular.ttf");
+                  src: url("./fonts/FuturistRegular.ttf");
                 }
 
                 @font-face {
@@ -232,7 +229,7 @@ class Document extends NextDocument {
                 @font-face {
                   font-family: "Fira Medium";
                   font-weight: 400;
-                  src: url("./../public/fonts/FiraCode-Medium.ttf");
+                  src: url("./fonts/FiraCode-Medium.ttf");
                 }
 
                 .loader {

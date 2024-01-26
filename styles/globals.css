@@ -24,7 +24,7 @@
   @font-face {
     font-family: "Emiken";
     font-weight: 400;
-    src: url("/fonts/Emiken Regular.ttf");
+    src: url("/fonts/EmikenRegular.ttf");
   }
 
   @font-face {
@@ -42,7 +42,7 @@
   @font-face {
     font-family: "Doctor Glitch";
     font-weight: 400;
-    src: url("/fonts/Doctor Glitch.otf");
+    src: url("/fonts/DoctorGlitch.otf");
   }
 
   @font-face {
@@ -84,13 +84,13 @@
   @font-face {
     font-family: "DIN Condensed";
     font-weight: 400;
-    src: url("/fonts/DIN Condensed Bold.ttf");
+    src: url("/fonts/DINCondensedBold.ttf");
   }
 
   @font-face {
     font-family: "Futurist";
     font-weight: 400;
-    src: url("/fonts/Futurist Regular.ttf");
+    src: url("/fonts/FuturistRegular.ttf");
   }
 
   @font-face {
