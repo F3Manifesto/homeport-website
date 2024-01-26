@@ -37,7 +37,9 @@ const useCollections = (
         lensConnected
       );
 
-      dispatch(setAllGallery(colls as Gallery[]));
+      dispatch(
+        setAllGallery(colls?.sort(() => 0.5 - Math.random()) as Gallery[])
+      );
 
       colls?.forEach((item: any) => {
         if (item.collectionMetadata?.sex) {
