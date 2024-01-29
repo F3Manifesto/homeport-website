@@ -621,7 +621,6 @@ export type PostCollectGifProps = {
   ) => void;
   collects: SimpleCollectOpenActionModuleInput | undefined;
   openMeasure: {
-    collectibleOpen: boolean;
     collectible: string;
     award: string;
     whoCollectsOpen: boolean;
@@ -634,7 +633,6 @@ export type PostCollectGifProps = {
   };
   setOpenMeasure: (
     e: SetStateAction<{
-      collectibleOpen: boolean;
       collectible: string;
       award: string;
       whoCollectsOpen: boolean;
@@ -663,7 +661,6 @@ export type CollectOptionsProps = {
       }
     | undefined;
   openMeasure: {
-    collectibleOpen: boolean;
     collectible: string;
     award: string;
     whoCollectsOpen: boolean;
@@ -676,7 +673,6 @@ export type CollectOptionsProps = {
   };
   setOpenMeasure: (
     e: SetStateAction<{
-      collectibleOpen: boolean;
       collectible: string;
       award: string;
       whoCollectsOpen: boolean;
