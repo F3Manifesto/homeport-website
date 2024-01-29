@@ -150,8 +150,7 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
                   collect?.item?.followerOnly))
                 ? approveSpend()
                 : approved &&
-                  type === "collect" &&
-                  (!collect?.item?.followerOnly ||
+                  ((type === "collect" && !collect?.item?.followerOnly) ||
                     (follower?.operations?.isFollowedByMe?.value &&
                       collect?.item?.followerOnly))
                 ? handleCollect()
