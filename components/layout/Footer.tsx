@@ -117,7 +117,7 @@ const Footer: FunctionComponent = (): JSX.Element => {
               </Link>
             </div>
             <div className="relative w-fit h-fit col-start-3">
-              <Link href={"https://www.cypher.digitalax.xyz/autograph/f3manifesto"}>
+              <Link href={"https://cypher.digitalax.xyz/autograph/f3manifesto"}>
                 <a
                   target="_blank"
                   rel="noreferrer"
