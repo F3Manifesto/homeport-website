@@ -9,6 +9,7 @@ const allowedOrigins = [
   "https://arweave.net/",
   "https://gw.ipfs-lens.dev",
   "https://hey.xyz",
+  "https://statics-v2.lens.dev",
 ];
 
 const nextConfig = {
