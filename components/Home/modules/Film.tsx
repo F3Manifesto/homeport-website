@@ -54,31 +54,48 @@ const Film: FunctionComponent<FilmProps> = ({
         <div className="absolute top-0 left-16 hidden sm:flex items-center justify-center w-fit h-full p-4">
           <div className="relative flex w-full h-full items-start justify-between flex-col gap-10">
             {[
-              "QmNS1DJqH8XEXSoAVRtJ89iegcTQvu8nZPo79ozNgHPMmp",
-              "QmSweJiaPzfewwfFxPiJ1ERhoy25DXK5RCGtzdaoovgviE",
-              "QmdmACJZ2erwjM6pQVobqi9c2nkAzSDS8CNBv91csyGUZd",
-            ].map((video: string, index: number) => {
-              return (
-                <div
-                  className="relative w-fit h-full flex items-center justfiy-center"
-                  key={index}
-                >
-                  <div className="relative flex items-center justify-center w-44 h-full rounded-3xl bg-offBlue border-offBlue shadow-film shadow-rose-600 cursor-empireS border-b-2 border-t-4 border-r-4 half:border-r-8">
-                    <video
-                      autoPlay
-                      muted
-                      loop
-                      className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl opacity-70"
+              { image: "QmNS1DJqH8XEXSoAVRtJ89iegcTQvu8nZPo79ozNgHPMmp" },
+              {
+                image: "QmSweJiaPzfewwfFxPiJ1ERhoy25DXK5RCGtzdaoovgviE",
+                link: "https://kinora.irrevocable.dev/video/0x01c6a9-0x49",
+              },
+              {
+                image: "QmdmACJZ2erwjM6pQVobqi9c2nkAzSDS8CNBv91csyGUZd",
+                link: "https://kinora.irrevocable.dev/video/0x01c6a9-0x48",
+              },
+            ].map(
+              (
+                video: {
+                  image: string;
+                  link?: string;
+                },
+                index: number
+              ) => {
+                return (
+                  <div
+                    className="relative w-fit h-full flex items-center justfiy-center"
+                    key={index}
+                  >
+                    <div
+                      className="relative flex items-center justify-center w-44 h-full rounded-3xl bg-offBlue border-offBlue shadow-film shadow-rose-600 cursor-empireS border-b-2 border-t-4 border-r-4 half:border-r-8"
+                      onClick={() => video.link && window.open(video.link)}
                     >
-                      <source
-                        src={`${INFURA_GATEWAY}/ipfs/${video}`}
-                        type="video/mp4"
-                      />
-                    </video>
+                      <video
+                        autoPlay
+                        muted
+                        loop
+                        className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl opacity-70"
+                      >
+                        <source
+                          src={`${INFURA_GATEWAY}/ipfs/${video.image}`}
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
           </div>
         </div>
       </div>
