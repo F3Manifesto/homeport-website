@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import { ImCross } from "react-icons/im";
 import { setPostCollect } from "../../../redux/reducers/postCollectSlice";
-import CollectOptions from "../../Modals/modules/CollectOptions";
 import { PostCollectGifProps } from "../../Modals/types/modals.types";
+import CollectOptions from "../../Modals/modules/CollectOptions";
 
 const PostCollect: FunctionComponent<PostCollectGifProps> = ({
   dispatch,
