@@ -4,8 +4,8 @@ import { Quote } from "../../../graphql/generated";
 import createProfilePicture from "../../../lib/helpers/createProfilePicture";
 import Image from "next/image";
 import { setReactBox } from "../../../redux/reducers/reactBoxSlice";
-import Publication from "./Publication";
-import { WhoSwitchProps } from "../../../types/general.types";
+import Publication from "../../Collect/modules/Publication";
+import { WhoSwitchProps } from "../types/modals.types";
 
 const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
   type,

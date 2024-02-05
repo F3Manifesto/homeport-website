@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { FunctionComponent } from "react";
-import { MetadataProps } from "../../../types/general.types";
 import {
   ACCEPTED_TOKENS,
   COUNTRIES,
@@ -8,7 +7,8 @@ import {
 } from "../../../lib/constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
-import InteractBar from "../../modals/modules/InteractBar";
+import InteractBar from "../../Home/modules/InteractBar";
+import { MetadataProps } from "../types/collect.types";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   item,
@@ -325,7 +325,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               <div className="relative flex flex-row flex-wrap items-end justify-end gap-5 w-full h-fit">
                 {ACCEPTED_TOKENS?.filter((value) =>
                   item?.acceptedTokens
-                    ?.map((item) => item.toLowerCase())
+                    ?.map((item: string) => item.toLowerCase())
                     ?.includes(value?.[2])
                 )?.map((item: string[], indexTwo: number) => {
                   return (

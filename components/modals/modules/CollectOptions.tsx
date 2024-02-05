@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { setPostCollect } from "../../../redux/reducers/postCollectSlice";
-import { CollectOptionsProps } from "../../../types/general.types";
+import { CollectOptionsProps } from "../types/modals.types";
 
 const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
   openMeasure,

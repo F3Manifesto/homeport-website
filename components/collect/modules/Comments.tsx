@@ -1,9 +1,9 @@
 import { FunctionComponent } from "react";
-import { CommentProps } from "../../../types/general.types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Publication from "../../modals/modules/Publication";
+import Publication from "./Publication";
 import { Comment } from "../../../graphql/generated";
-import PostComment from "../../modals/modules/PostComment";
+import PostComment from "./PostComment";
+import { CommentProps } from "../types/collect.types";
 
 const Comments: FunctionComponent<CommentProps> = ({
   commentsLoading,

@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { ConnectProps } from "../../../types/general.types";
 import { AiOutlineLoading } from "react-icons/ai";
 import createProfilePicture from "../../../lib/helpers/createProfilePicture";
 import Image from "next/image";
+import { ConnectProps } from "../types/collect.types";
 
 const Connect: FunctionComponent<ConnectProps> = ({
   handleLensSignIn,
