@@ -16,7 +16,7 @@ import { setLensConnected } from "../../../redux/reducers/lensConnectedSlice";
 import { setOracleData } from "../../../redux/reducers/oracleDataSlice";
 import { getOracleData } from "../../../graphql/subgraph/queries/getOracleData";
 import { setWalletConnected } from "../../../redux/reducers/walletConnectedSlice";
-import { OracleData } from "../../../types/general.types";
+import { OracleData } from "../../Modals/types/modals.types";
 
 const useSignIn = (
   address: `0x${string}` | undefined,

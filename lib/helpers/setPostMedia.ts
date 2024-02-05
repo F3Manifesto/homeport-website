@@ -1,5 +1,5 @@
 import { ChangeEvent, SetStateAction } from "react";
-import { MakePostComment } from "../../types/general.types";
+import { MakePostComment } from "../../components/Modals/types/modals.types";
 
 const setPostMedia = async (
   e: ChangeEvent<HTMLInputElement>,

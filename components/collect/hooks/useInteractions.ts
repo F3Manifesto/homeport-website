@@ -11,7 +11,6 @@ import { PublicClient, createWalletClient, custom } from "viem";
 import errorChoice from "../../../lib/helpers/errorChoice";
 import { Dispatch } from "redux";
 import { polygon } from "viem/chains";
-import { Gallery, MakePostComment } from "../../../types/general.types";
 import lensCollect from "../../../lib/helpers/lensCollect";
 import lensLike from "../../../lib/helpers/lensLike";
 import getPublications from "../../../graphql/lens/queries/publications";
@@ -24,6 +23,8 @@ import refetchProfile from "../../../lib/helpers/refetchProfile";
 import { setInteractError } from "../../../redux/reducers/interactErrorSlice";
 import { setIndexer } from "../../../redux/reducers/indexerSlice";
 import lensUnfollow from "../../../lib/helpers/lensUnfollow";
+import { Gallery } from "../../Home/types/home.types";
+import { MakePostComment } from "../../Modals/types/modals.types";
 
 const useInteractions = (
   lensConnected: Profile | undefined,

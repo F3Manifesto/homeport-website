@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Gallery } from "../../../types/general.types";
 import { NextRouter } from "next/router";
 import { Dispatch } from "redux";
 import { getAllCollections } from "../../../graphql/subgraph/queries/getCollections";
@@ -8,6 +7,7 @@ import { setFilterConstants } from "../../../redux/reducers/filterConstantsSlice
 import handleCollectionProfilesAndPublications from "../../../lib/helpers/handleCollectionProfilesAndPublications";
 import { Profile } from "../../../graphql/generated";
 import { setprevURL } from "../../../redux/reducers/prevURLSlice";
+import { Gallery } from "../types/home.types";
 
 const useCollections = (
   dispatch: Dispatch,

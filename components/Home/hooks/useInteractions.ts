@@ -1,5 +1,4 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Gallery } from "../../../types/general.types";
 import { Dispatch } from "redux";
 import { Profile, PublicationStats } from "../../../graphql/generated";
 import { PublicClient, createWalletClient, custom } from "viem";
@@ -8,6 +7,7 @@ import lensMirror from "../../../lib/helpers/lensMirror";
 import errorChoice from "../../../lib/helpers/errorChoice";
 import lensLike from "../../../lib/helpers/lensLike";
 import { setAllGallery } from "../../../redux/reducers/allGallerySlice";
+import { Gallery } from "../types/home.types";
 
 const useInteractions = (
   gallery: Gallery[],

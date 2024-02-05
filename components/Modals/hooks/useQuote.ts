@@ -25,7 +25,6 @@ import getEnabledCurrencies from "../../../graphql/lens/queries/enabledCurrencie
 import isApprovedData from "../../../graphql/lens/mutations/isApproved";
 import approveCurrency from "../../../graphql/lens/mutations/approve";
 import lensCollect from "../../../lib/helpers/lensCollect";
-import { MakePostComment } from "../../../types/general.types";
 import {
   FollowCollectState,
   setFollowCollect,
@@ -35,6 +34,7 @@ import refetchProfile from "../../../lib/helpers/refetchProfile";
 import lensFollow from "../../../lib/helpers/lensFollow";
 import { setInsufficientBalance } from "../../../redux/reducers/insufficientBalanceSlice";
 import findBalance from "../../../lib/helpers/findBalance";
+import { MakePostComment } from "../types/modals.types";
 
 const useQuote = (
   availableCurrencies: Erc20[],

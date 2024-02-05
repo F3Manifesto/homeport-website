@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Gallery } from "../../types/general.types";
 
 export interface FilterConstantsState {
   constants: {

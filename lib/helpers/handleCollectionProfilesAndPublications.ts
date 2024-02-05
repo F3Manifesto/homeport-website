@@ -1,6 +1,6 @@
+import { Gallery } from "../../components/Home/types/home.types";
 import { Profile } from "../../graphql/generated";
 import getPublication from "../../graphql/lens/queries/publication";
-import { Gallery } from "../../types/general.types";
 import collectionFixer from "./collectionFixer";
 import toHexWithLeadingZero from "./leadingZero";
 
