@@ -1,4 +1,4 @@
-import { Gallery } from "../../types/general.types";
+import { Gallery } from "../../components/Home/types/home.types";
 import fetchIPFSJSON from "./fetchIpfsJson";
 
 const collectionFixer = async (collection: Gallery): Promise<Gallery> => {

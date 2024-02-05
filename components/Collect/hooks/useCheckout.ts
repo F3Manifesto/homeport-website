@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Details, Gallery, OracleData } from "../../../types/general.types";
+import { Details } from "./../types/collect.types";
 import { Profile } from "../../../graphql/generated";
 import { ILitNodeClient } from "@lit-protocol/types";
 import {
@@ -17,6 +17,8 @@ import { setInsufficientBalance } from "../../../redux/reducers/insufficientBala
 import encodeActData from "../../../lib/helpers/encodeActData";
 import { setSuccessCheckout } from "../../../redux/reducers/successCheckoutSlice";
 import { encryptItems } from "../../../lib/helpers/encryptItems";
+import { Gallery } from "../../Home/types/home.types";
+import { OracleData } from "../../Modals/types/modals.types";
 
 const useCheckout = (
   collection: Gallery | undefined,

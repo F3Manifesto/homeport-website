@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Gallery } from "../../types/general.types";
+import { Gallery } from "../../components/Home/types/home.types";
 
 export interface AllGalleryState {
   gallery: Gallery[];

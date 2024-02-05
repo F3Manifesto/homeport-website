@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Gallery } from "../../../types/general.types";
 import { getOneCollection } from "../../../graphql/subgraph/queries/getCollections";
 import handleCollectionProfilesAndPublications from "../../../lib/helpers/handleCollectionProfilesAndPublications";
 import { Profile } from "../../../graphql/generated";
+import { Gallery } from "../../Home/types/home.types";
 
 const useCollection = (name: string, lensConnected: Profile | undefined) => {
   const [collectionLoading, setCollectionLoading] = useState<boolean>(false);

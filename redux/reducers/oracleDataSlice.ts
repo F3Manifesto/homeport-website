@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { OracleData } from "../../types/general.types";
+import { OracleData } from "../../components/Modals/types/modals.types";
 
 export interface OracleDataState {
   data: OracleData[];
