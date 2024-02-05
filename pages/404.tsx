@@ -1,21 +1,19 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import Sidebar from "../components/layout/Sidebar";
 import Head from "next/head";
 
 const Custom404: NextPage = (): JSX.Element => {
   return (
-    <div className="relative min-h-screen min-w-screen h-screen w-screen grid grid-flow-col auto-cols-auto cursor-empireA">
+    <div className="relative flex items-center justify-center h-screen w-full cursor-empireA">
       <Head>
         <title>Glitch</title>
         <meta name="og:url" content={`https://f3manifesto.xyz/card.png`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Sidebar />
-      <div className="relative w-fit h-fit place-self-center text-lightYellow font-fira p-6 text-center">
+      <div className="relative w-fit h-fit text-lightYellow font-fira p-6 text-center flex items-center justify-center break-all">
         There&apos;s been a glitch in the fabric. Find your way back{" "}
         <Link href="/">
-          <a className="hover:opacity-80 cursor-empireS">home.</a>
+          <a className="hover:opacity-80 cursor-empireS pl-2">{" "}home.</a>
         </Link>
       </div>
     </div>

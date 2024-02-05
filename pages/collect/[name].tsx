@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { AiFillBackward } from "react-icons/ai";
-import Metadata from "../../components/collect/modules/Metadata";
-import Connect from "../../components/collect/modules/Connect";
+import Metadata from "../../components/Collect/modules/Metadata";
+import Connect from "../../components/Collect/modules/Connect";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import useSignIn from "../../components/collect/hooks/useSignIn";
+import useSignIn from "../../components/Collect/hooks/useSignIn";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useChainModal } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
@@ -15,13 +15,13 @@ import { RootState } from "../../redux/store";
 import { useNetwork } from "wagmi";
 import { setImageViewer } from "../../redux/reducers/ImageLargeSlice";
 import { INFURA_GATEWAY } from "../../lib/constants";
-import useCollection from "../../components/collect/hooks/useCollection";
-import useInteractions from "../../components/collect/hooks/useInteractions";
+import useCollection from "../../components/Collect/hooks/useCollection";
+import useInteractions from "../../components/Collect/hooks/useInteractions";
 import { createPublicClient, http } from "viem";
 import { polygon } from "viem/chains";
-import Quotes from "../../components/collect/modules/Quotes";
-import Comments from "../../components/collect/modules/Comments";
-import useCheckout from "../../components/home/collections/hooks/useCheckout";
+import Quotes from "../../components/Collect/modules/Quotes";
+import Comments from "../../components/Collect/modules/Comments";
+import useCheckout from "../../components/Collect/hooks/useCheckout";
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
 
 const Name: React.FC = (): JSX.Element => {

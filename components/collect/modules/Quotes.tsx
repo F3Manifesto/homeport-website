@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
-import { QuoteCollectProps } from "../../../types/general.types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Publication from "../../modals/modules/Publication";
+import Publication from "./Publication";
 import { Quote } from "../../../graphql/generated";
+import { QuoteCollectProps } from "../types/collect.types";
 
 const Quotes: FunctionComponent<QuoteCollectProps> = ({
   quotes,

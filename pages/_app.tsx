@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import Footer from "../components/layout/Footer";
+import Footer from "../components/Layout/modules/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { Provider } from "react-redux";
@@ -9,9 +9,10 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { store } from "../redux/store";
-import Modals from "../components/modals/Modals";
+import Modals from "../components/Modals/modules/Modals";
 import { useRouter } from "next/router";
-import RouterChange from "../components/layout/RouterChange";
+import RouterChange from "../components/Layout/modules/RouterChange";
+import { FACTORY_RANDOM } from "../lib/constants";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [polygon],
@@ -79,6 +80,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   const [routerChangeLoading, setRouterChangeLoading] =
     useState<boolean>(false);
+  const [randomFactory, _] = useState<string>(
+    FACTORY_RANDOM.sort(() => Math.random() - 0.5)[0]
+  );
   const router = useRouter();
   useEffect(() => {
     const handleStart = () => {
@@ -108,10 +112,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
         <Provider store={store}>
-          <div className="min-h-screen h-auto w-full bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden">
+          <div className="h-fit w-full bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden flex flex-col">
             <Component {...pageProps} />
             <Modals />
-            <Footer />
+            <Footer randomFactory={randomFactory} />
           </div>
         </Provider>
       </RainbowKitProvider>
