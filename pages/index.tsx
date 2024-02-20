@@ -167,53 +167,81 @@ const Home: NextPage = (): JSX.Element => {
             FASHION
           </div>
           <div className="absolute top-2/3 left-2 sm:left-10 w-full h-fit flex flex-row items-center justify-start">
-            <div className="relative w-fit h-[25.3rem] flex flex-row items-start justify-center">
-              <div className="relative w-0.5 h-full rounded-lg bg-offWhite flex items-center justify-center"></div>
-              <div className="relative w-fit h-full flex flex-col items-start justify-between gap-3 font-holo">
-                {[
-                  {
-                    title: "ZK CYPHERPUNK",
-                    video: "QmQs6MHroLcc5ifmUSdcqUbrPa6emwiBCTVajv9Dm9kh16",
-                  },
-                  {
-                    title: "THE NAVIGATORS",
-                    video: "QmQ8oq5VhKAYQ3iKNtk6SaHiuhw7JfzSHkN46r7QjzioAA",
-                  },
-                  {
-                    title: "OS ENGINEERING",
-                    video: "QmSqg89NzVqBriAZWHBSZPgNBUaLu9saGMSrMLuGiFB7tG",
-                  },
-                  {
-                    title: "REALMS",
-                    video: "QmdGa6HZGnZEQY3Riix7FYrpvdTcJNz1mGd4c5qEJyjin4",
-                  },
-                  {
-                    title: "UNSPUN",
-                    video: "QmNYRZ5k5R63ZAYQxXzMZexLZ4Fm6ZWGzQAMyecQ5id8Yr",
-                  },
-                  {
-                    title: "SYNTH WAVE",
-                    video: "QmbSNy3aUmwCzaEutJHDpBMhCy6y75jZEMtwP6KVmz3wVm",
-                  },
-                ].map(
-                  (video: { title: string; video: string }, index: number) => {
-                    return (
-                      <div
-                        className={`relative w-fit h-fit flex items-start flex-row gap-3 justify-start`}
-                        key={index}
-                      >
-                        <div className="relative w-10 sm:w-20 h-0.5 flex items-center justify-center bg-offWhite"></div>
+            <div className="relative w-fit h-[25.3rem] flex flex-row items-start justify-center font-holo">
+              <div className="relative w-fit h-full rounded-l-md border-l-2 border-t-2 border-b-2 border-white flex items-start justify-between flex-col gap-20">
+                <div
+                  className={`relative w-fit h-fit flex items-start flex-row gap-3 justify-start`}
+                >
+                  <div
+                    className="absolute left-12 sm:left-24 -top-3 whitespace-nowrap text-offWhite cursor-empireS hover:text-bright flex items-center justify-center"
+                    onMouseOver={() =>
+                      setVideoImage(
+                        "QmQs6MHroLcc5ifmUSdcqUbrPa6emwiBCTVajv9Dm9kh16"
+                      )
+                    }
+                    onMouseLeave={() => setVideoImage(undefined)}
+                  >
+                    ZK CYPHERPUNK
+                  </div>
+                </div>
+                <div className="relative w-fit h-full flex flex-col items-start justify-between gap-6">
+                  {[
+                    {
+                      title: "THE NAVIGATORS",
+                      video: "QmQ8oq5VhKAYQ3iKNtk6SaHiuhw7JfzSHkN46r7QjzioAA",
+                    },
+                    {
+                      title: "OS ENGINEERING",
+                      video: "QmSqg89NzVqBriAZWHBSZPgNBUaLu9saGMSrMLuGiFB7tG",
+                    },
+                    {
+                      title: "REALMS",
+                      video: "QmdGa6HZGnZEQY3Riix7FYrpvdTcJNz1mGd4c5qEJyjin4",
+                    },
+                    {
+                      title: "UNSPUN",
+                      video: "QmNYRZ5k5R63ZAYQxXzMZexLZ4Fm6ZWGzQAMyecQ5id8Yr",
+                    },
+                  ].map(
+                    (
+                      video: { title: string; video: string },
+                      index: number
+                    ) => {
+                      return (
                         <div
-                          className="absolute left-12 sm:left-24 -top-3 whitespace-nowrap text-offWhite cursor-empireS hover:text-bright flex items-center justify-center"
-                          onMouseOver={() => setVideoImage(video.video)}
-                          onMouseLeave={() => setVideoImage(undefined)}
+                          className={`relative w-fit h-fit flex items-start flex-row gap-3 justify-start`}
+                          key={index}
                         >
-                          {video.title}
+                          <div
+                            className={`relative w-10 sm:w-20 h-0.5 flex items-center justify-center bg-offWhite`}
+                          ></div>
+                          <div
+                            className="absolute left-12 sm:left-24 -top-3 whitespace-nowrap text-offWhite cursor-empireS hover:text-bright flex items-center justify-center"
+                            onMouseOver={() => setVideoImage(video.video)}
+                            onMouseLeave={() => setVideoImage(undefined)}
+                          >
+                            {video.title}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  }
-                )}
+                      );
+                    }
+                  )}
+                </div>
+                <div
+                  className={`relative w-fit h-fit flex items-start flex-row gap-3 justify-start`}
+                >
+                  <div
+                    className="absolute left-12 sm:left-24 -top-3 whitespace-nowrap text-offWhite cursor-empireS hover:text-bright flex items-center justify-center"
+                    onMouseOver={() =>
+                      setVideoImage(
+                        "QmbSNy3aUmwCzaEutJHDpBMhCy6y75jZEMtwP6KVmz3wVm"
+                      )
+                    }
+                    onMouseLeave={() => setVideoImage(undefined)}
+                  >
+                    SYNTH WAVE
+                  </div>
+                </div>
               </div>
             </div>
             <div className="absolute flex items-center justify-center w-5/6 left-0 sm:w-fit h-fit md:left-60 md:top-auto -top-96">
@@ -223,6 +251,7 @@ const Home: NextPage = (): JSX.Element => {
                     className="object-cover w-full h-full rounded-lg"
                     autoPlay
                     loop
+                    key={videoImage}
                     muted
                   >
                     <source src={`${INFURA_GATEWAY}/ipfs/${videoImage}`} />
@@ -268,7 +297,7 @@ const Home: NextPage = (): JSX.Element => {
           <div className="absolute bottom-20 right-5 sm:right-10 grid auto-rows-auto grid-flow-col gap-6">
             <div className="relative col-start-1 md:col-start-2 md:row-start-2 row-start-3 w-fit h-fit">
               <div
-                className={`w-40 h-40 galaxy:h-80 galaxy:w-80 border border-lightYellow relative flex items-center justify-center`}
+                className={`w-40 h-40 galaxy:h-80 galaxy:w-80 border border-lightYellow relative flex items-center justify-center bg-lightYellow`}
               >
                 <Image
                   src={`${INFURA_GATEWAY}/ipfs/QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
@@ -332,7 +361,7 @@ const Home: NextPage = (): JSX.Element => {
             })}
           </Marquee>
         </div>
-        <div className="relative W-full flex items-center justify-center flex-col flex bg-offWhite pt-32">
+        <div className="relative w-full flex items-center justify-center flex-col flex h-fit">
           <div className="relative w-full h-2 bg-lightYellow flex items-center justify-center"></div>
           <div className="relative w-full h-2 bg-midGray flex items-center justify-center"></div>
         </div>
