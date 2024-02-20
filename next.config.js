@@ -10,6 +10,8 @@ const allowedOrigins = [
   "https://gw.ipfs-lens.dev",
   "https://hey.xyz",
   "https://statics-v2.lens.dev",
+  "https://f3manifesto.xyz",
+  "https://www.f3manifesto.xyz",
 ];
 
 const nextConfig = {
