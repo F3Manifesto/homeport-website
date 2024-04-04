@@ -8,13 +8,15 @@ import broadcast from "../../graphql/lens/mutations/broadcast";
 import { LENS_HUB_PROXY_ADDRESS_MATIC } from "../constants";
 import handleIndexCheck from "./handleIndexCheck";
 import { setIndexer } from "../../redux/reducers/indexerSlice";
+import { TFunction } from "i18next";
 
 const lensMirror = async (
   mirrorOn: string,
   dispatch: Dispatch<AnyAction>,
   address: `0x${string}`,
   clientWallet: WalletClient,
-  publicClient: PublicClient
+  publicClient: PublicClient,
+  t: TFunction<"collect", undefined>
 ): Promise<void> => {
   const data = await mirrorPost({
     mirrorOn,
@@ -39,14 +41,15 @@ const lensMirror = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
     await handleIndexCheck(
       {
         forTxId: broadcastResult?.data?.broadcastOnchain?.txId,
       },
-      dispatch
+      dispatch,
+      t
     );
   } else {
     const { request } = await publicClient.simulateContract({
@@ -71,7 +74,7 @@ const lensMirror = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
     const tx = await publicClient.waitForTransactionReceipt({ hash: res });
@@ -79,7 +82,8 @@ const lensMirror = async (
       {
         forTxHash: tx.transactionHash,
       },
-      dispatch
+      dispatch,
+      t
     );
   }
   setTimeout(() => {

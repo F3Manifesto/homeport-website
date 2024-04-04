@@ -51,6 +51,7 @@ const Comments: FunctionComponent<CommentProps> = ({
   followLoading,
   commentRef,
   quotes,
+  t,
 }): JSX.Element => {
   return (
     <div
@@ -60,6 +61,7 @@ const Comments: FunctionComponent<CommentProps> = ({
     >
       <div className="relative w-full h-fit flex flex-col gap-5 justify-start items-center">
         <PostComment
+          t={t}
           setCaretCoord={setCaretCoordMain}
           caretCoord={caretCoordMain}
           profilesOpen={profilesOpenMain?.[0]}
@@ -82,7 +84,11 @@ const Comments: FunctionComponent<CommentProps> = ({
           dispatch={dispatch}
           main={true}
           width={
-            quotes?.length > 0 ? "80%" : window.innerWidth < 640 ? "100%" : "50%"
+            quotes?.length > 0
+              ? "80%"
+              : window.innerWidth < 640
+              ? "100%"
+              : "50%"
           }
         />
         {commentsLoading ? (
@@ -96,7 +102,7 @@ const Comments: FunctionComponent<CommentProps> = ({
           })
         ) : comments?.length < 1 ? (
           <div className="relative w-fit h-fit items-center justify-center flex text-black font-din break-words">
-            No comments yet. Make one?
+            {t("comMake")}
           </div>
         ) : (
           <>
@@ -111,6 +117,7 @@ const Comments: FunctionComponent<CommentProps> = ({
                 return (
                   <Publication
                     main={false}
+                    t={t}
                     lensConnected={lensConnected}
                     index={index}
                     item={item}

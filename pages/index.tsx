@@ -19,10 +19,14 @@ import { INFURA_GATEWAY, MARQUEE_IMAGES } from "../lib/constants";
 import Search from "../components/Home/modules/Search";
 import Gallery from "../components/Home/modules/Gallery";
 import Marquee from "react-fast-marquee";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Home: NextPage = (): JSX.Element => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("common");
+  const { t: tCollect } = useTranslation("collect");
   const { openConnectModal } = useConnectModal();
   const { address } = useAccount();
   const publicClient = createPublicClient({
@@ -61,7 +65,8 @@ const Home: NextPage = (): JSX.Element => {
     setFilteredGallery,
     lensProfile,
     publicClient,
-    address
+    address,
+    tCollect
   );
   const {
     clicked,
@@ -73,7 +78,7 @@ const Home: NextPage = (): JSX.Element => {
     videoImage,
     setVideoImage,
     message,
-  } = useGeneral();
+  } = useGeneral(router);
 
   if (!galleryLoading && gallery?.length > 0) {
     return (
@@ -104,8 +109,10 @@ const Home: NextPage = (): JSX.Element => {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="canonical" href="https://f3manifesto.xyz/" />
         </Head>
-        <Film clicked={clicked} setClicked={setClicked} />
+        <Film t={t} i18n={i18n} clicked={clicked} setClicked={setClicked} />
         <Board
+          t={t}
+          router={router}
           filterURL={handleURL}
           goShopping={goShopping}
           filterConstants={filterConstants}
@@ -126,8 +133,8 @@ const Home: NextPage = (): JSX.Element => {
           </div>
           <div className="absolute w-full h-fit top-4 flex items-center justify-between gap-3 flex-col md:flex-row">
             <div className="font-glitch w-full md:w-96 xl:w-72 h-fit relative inline-table flex-col text-sm sm:text-base md:text-lg leading-tight cursor-empireS break-word items-center justify-center pl-2 half:pl-0 half:left-24 text-lightYellow">
-              these looks are devices tailor made from the fabric stuff of web3
-              <em className="font-air">,</em> for electric collections.
+              {t("looks")}
+              <em className="font-air">,</em> {t("elec")}
             </div>
             <div className="relative w-28 h-fit flex items-center justify-center mr-0">
               <motion.div
@@ -161,10 +168,10 @@ const Home: NextPage = (): JSX.Element => {
             className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4"
             id="want"
           >
-            I WANT MY <br />
-            WEB3
+            {t("want")} <br />
+            {t("web3")}
             <br />
-            FASHION
+            {t("fash")}
           </div>
           <div className="absolute top-2/3 left-2 sm:left-10 w-full h-fit flex flex-row items-center justify-start">
             <div className="relative w-fit h-[25.3rem] flex flex-row items-start justify-center font-holo">
@@ -187,19 +194,19 @@ const Home: NextPage = (): JSX.Element => {
                 <div className="relative w-fit h-full flex flex-col items-start justify-between gap-6">
                   {[
                     {
-                      title: "THE NAVIGATORS",
+                      title: t("nav"),
                       video: "QmQ8oq5VhKAYQ3iKNtk6SaHiuhw7JfzSHkN46r7QjzioAA",
                     },
                     {
-                      title: "OS ENGINEERING",
+                      title: t("eng"),
                       video: "QmSqg89NzVqBriAZWHBSZPgNBUaLu9saGMSrMLuGiFB7tG",
                     },
                     {
-                      title: "REALMS",
+                      title: t("rea"),
                       video: "QmdGa6HZGnZEQY3Riix7FYrpvdTcJNz1mGd4c5qEJyjin4",
                     },
                     {
-                      title: "UNSPUN",
+                      title: t("un"),
                       video: "QmNYRZ5k5R63ZAYQxXzMZexLZ4Fm6ZWGzQAMyecQ5id8Yr",
                     },
                   ].map(
@@ -239,7 +246,7 @@ const Home: NextPage = (): JSX.Element => {
                     }
                     onMouseLeave={() => setVideoImage(undefined)}
                   >
-                    SYNTH WAVE
+                    {t("synth")}
                   </div>
                 </div>
               </div>
@@ -266,7 +273,11 @@ const Home: NextPage = (): JSX.Element => {
           ref={shopping}
         >
           <div className="w-full h-4 flex items-center justify-center relative bg-grayBlue"></div>
-          <Search filterURL={handleURL} filterConstants={filterConstants} />
+          <Search
+            t={t}
+            filterURL={handleURL}
+            filterConstants={filterConstants}
+          />
           <Gallery
             filteredGallery={filteredGallery}
             router={router}
@@ -373,3 +384,9 @@ const Home: NextPage = (): JSX.Element => {
 };
 
 export default Home;
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common", "collect", "footer"])),
+  },
+});

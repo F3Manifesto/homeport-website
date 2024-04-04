@@ -10,6 +10,7 @@ import { setIndexer } from "../../redux/reducers/indexerSlice";
 import LensHubProxy from "./../../abis/LensHubProxy.json";
 import broadcast from "../../graphql/lens/mutations/broadcast";
 import { setInsufficientBalance } from "../../redux/reducers/insufficientBalanceSlice";
+import { TFunction } from "i18next";
 
 const actPost = async (
   pubId: string,
@@ -17,7 +18,8 @@ const actPost = async (
   dispatch: Dispatch<AnyAction>,
   address: `0x${string}`,
   clientWallet: WalletClient,
-  publicClient: PublicClient
+  publicClient: PublicClient,
+  t: TFunction<"collect", undefined>
 ): Promise<boolean | void> => {
   try {
     const { data } = await collectPost({
@@ -47,7 +49,8 @@ const actPost = async (
         {
           forTxId: broadcastResult?.data?.broadcastOnchain.txId,
         },
-        dispatch
+        dispatch,
+        t
       );
     } else {
       const { request } = await publicClient.simulateContract({
@@ -81,7 +84,7 @@ const actPost = async (
       dispatch(
         setIndexer({
           actionOpen: true,
-          actionMessage: "Indexing Collect",
+          actionMessage: t("indexCol"),
         })
       );
 
@@ -89,7 +92,8 @@ const actPost = async (
         {
           forTxHash: tx.transactionHash,
         },
-        dispatch
+        dispatch,
+        t
       );
 
       dispatch(
@@ -103,8 +107,7 @@ const actPost = async (
   } catch (err: any) {
     dispatch(
       setInsufficientBalance({
-        actionMessage:
-          "There was an issue estimating the tx gas. Try reducing the number of tokens you collect at once!",
+        actionMessage: t("gas"),
         actionValue: true,
       })
     );

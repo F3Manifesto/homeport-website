@@ -16,6 +16,7 @@ import { Gallery } from "../../Home/types/home.types";
 import { PostCollectState } from "../../../redux/reducers/postCollectSlice";
 import { MakePostComment } from "../../Modals/types/modals.types";
 import { NextRouter } from "next/router";
+import { TFunction } from "i18next";
 
 export type QuoteCollectProps = {
   quotes: Quote[];
@@ -78,6 +79,7 @@ export type QuoteCollectProps = {
     x: number;
     y: number;
   };
+  t: TFunction<"collect", undefined>;
   setCaretCoord: (e: SetStateAction<{ x: number; y: number }>) => void;
   followProfile: (
     id: string,
@@ -112,6 +114,7 @@ export interface Details {
 
 export type MetadataProps = {
   item: Gallery | undefined;
+  t: TFunction<"collect", undefined>;
   approveLoading: boolean;
   setDetails: (e: SetStateAction<Details>) => void;
   openDropdown: boolean;
@@ -153,11 +156,13 @@ export type ConnectProps = {
   handleLogOut: () => void;
   loginLoading: boolean;
   chain: number | undefined;
+  t: TFunction<"collect", undefined>;
 };
 
 export type CommentProps = {
   comments: Comment[];
   quotes: Quote[];
+  t: TFunction<"collect", undefined>;
   getMoreComments: () => Promise<void>;
   commentsLoading: boolean;
   commentRef: MutableRefObject<HTMLDivElement | null>;
@@ -288,6 +293,7 @@ export type PublicationProps = {
   item: Post | Comment | Quote | Mirror;
   index: number;
   top: string;
+  t: TFunction<"collect", undefined>;
   bottom: string;
   left: string;
   right: string;
@@ -454,6 +460,7 @@ export type PostCommentProps = {
     }>
   ) => void;
   width: string;
+  t: TFunction<"collect", undefined>;
   mentionProfiles: Profile[];
   profilesOpen: boolean;
   setMentionProfiles: (e: SetStateAction<Profile[]>) => void;

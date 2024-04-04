@@ -40,7 +40,12 @@
     "uuid": "^9.0.1",
     "viem": "^1.19.11",
     "wagmi": "^1.4.7",
-    "wavesurfer.js": "^7.5.3"
+    "wavesurfer.js": "^7.5.3",
+    "next-i18next": "^15.2.0",
+    "react-i18next": "^14.1.0",
+    "i18next": "^23.10.1",
+    "i18next-browser-languagedetector": "^7.2.1",
+    "i18next-http-backend": "^2.5.0"
   },
   "devDependencies": {
     "@types/json-stable-stringify": "^1.0.36",

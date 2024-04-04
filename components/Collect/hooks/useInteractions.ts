@@ -25,6 +25,7 @@ import { setIndexer } from "../../../redux/reducers/indexerSlice";
 import lensUnfollow from "../../../lib/helpers/lensUnfollow";
 import { Gallery } from "../../Home/types/home.types";
 import { MakePostComment } from "../../Modals/types/modals.types";
+import { TFunction } from "i18next";
 
 const useInteractions = (
   lensConnected: Profile | undefined,
@@ -33,7 +34,8 @@ const useInteractions = (
   publicClient: PublicClient,
   collection: Gallery | undefined,
   setCollection: (e: SetStateAction<Gallery | undefined>) => void,
-  postCollect: PostCollectState
+  postCollect: PostCollectState,
+  t: TFunction<"collect", undefined>
 ) => {
   const commentRef = useRef<null | HTMLDivElement>(null);
   const collectRef = useRef<null | HTMLDivElement>(null);
@@ -324,7 +326,8 @@ const useInteractions = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       updateInteractions(
         index!,
@@ -358,7 +361,8 @@ const useInteractions = (
             main,
             quote
           ),
-        dispatch
+        dispatch,
+        t
       );
     }
 
@@ -454,7 +458,8 @@ const useInteractions = (
         address as `0x${string}`,
         clientWallet,
         publicClient,
-        () => clearComment(index, main, quote)
+        () => clearComment(index, main, quote),
+        t
       );
       updateInteractions(index!, {}, "comments", true, main, quote);
       await getComments();
@@ -462,7 +467,8 @@ const useInteractions = (
       errorChoice(
         err,
         () => updateInteractions(index!, {}, "comments", true, main, quote),
-        dispatch
+        dispatch,
+        t
       );
     }
 
@@ -592,7 +598,8 @@ const useInteractions = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       updateInteractions(
         index!,
@@ -618,7 +625,8 @@ const useInteractions = (
             main,
             quote
           ),
-        dispatch
+        dispatch,
+        t
       );
     }
 
@@ -641,7 +649,7 @@ const useInteractions = (
     if (!main && index == -1) return;
     handleLoaders(false, main, quote, index, "like");
     try {
-      await lensLike(id, dispatch, hasReacted);
+      await lensLike(id, dispatch, hasReacted, t);
       updateInteractions(
         index!,
         {
@@ -666,7 +674,8 @@ const useInteractions = (
             main,
             quote
           ),
-        dispatch
+        dispatch,
+        t
       );
     }
 
@@ -701,7 +710,8 @@ const useInteractions = (
         undefined,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       await refetchProfile(dispatch, lensConnected?.id, lensConnected?.id);
     } catch (err: any) {
@@ -729,7 +739,7 @@ const useInteractions = (
         dispatch(
           setIndexer({
             actionOpen: true,
-            actionMessage: "Successfully Indexed",
+            actionMessage: t("index"),
           })
         );
 
@@ -787,7 +797,8 @@ const useInteractions = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       await refetchProfile(dispatch, lensConnected?.id, lensConnected?.id);
     } catch (err: any) {
@@ -815,7 +826,7 @@ const useInteractions = (
         dispatch(
           setIndexer({
             actionOpen: true,
-            actionMessage: "Successfully Indexed",
+            actionMessage: t("index"),
           })
         );
 

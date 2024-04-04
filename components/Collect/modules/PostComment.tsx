@@ -34,6 +34,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
   caretCoord,
   setCaretCoord,
   width,
+  t
 }): JSX.Element => {
   const textElement = useRef(null);
   return (
@@ -231,9 +232,10 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
             onClick={() =>
               !commentPostLoading &&
               (main
-                ? (
-                    commentPost as (id: string, main: boolean) => Promise<void>
-                  )(id, main)
+                ? (commentPost as (id: string, main: boolean) => Promise<void>)(
+                    id,
+                    main
+                  )
                 : (commentPost as (id: string) => Promise<void>)!(id))
             }
           >
@@ -245,7 +247,7 @@ const PostComment: FunctionComponent<PostCommentProps> = ({
               {commentPostLoading ? (
                 <AiOutlineLoading size={15} color="black" />
               ) : (
-                "Send It"
+                t("send")
               )}
             </div>
           </div>

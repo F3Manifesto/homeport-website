@@ -12,6 +12,7 @@ import { LENS_HUB_PROXY_ADDRESS_MATIC } from "../constants";
 import handleIndexCheck from "./handleIndexCheck";
 import { setIndexer } from "../../redux/reducers/indexerSlice";
 import cleanCollect from "./cleanCollect";
+import { TFunction } from "i18next";
 
 const lensComment = async (
   id: string,
@@ -21,7 +22,8 @@ const lensComment = async (
   address: `0x${string}`,
   clientWallet: WalletClient,
   publicClient: PublicClient,
-  clearComment: () => void
+  clearComment: () => void,
+  t: TFunction<"collect", undefined>
 ): Promise<void> => {
   if (
     openActionModules &&
@@ -79,7 +81,8 @@ const lensComment = async (
       {
         forTxId: broadcastResult?.data?.broadcastOnchain.txId,
       },
-      dispatch
+      dispatch,
+      t
     );
   } else {
     const { request } = await publicClient.simulateContract({
@@ -109,7 +112,7 @@ const lensComment = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
     clearComment();
@@ -117,7 +120,8 @@ const lensComment = async (
       {
         forTxHash: tx.transactionHash,
       },
-      dispatch
+      dispatch,
+      t
     );
   }
   setTimeout(() => {

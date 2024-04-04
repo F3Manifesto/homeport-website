@@ -19,6 +19,7 @@ import { setSuccessCheckout } from "../../../redux/reducers/successCheckoutSlice
 import { encryptItems } from "../../../lib/helpers/encryptItems";
 import { Gallery } from "../../Home/types/home.types";
 import { OracleData } from "../../Modals/types/modals.types";
+import { TFunction } from "i18next";
 
 const useCheckout = (
   collection: Gallery | undefined,
@@ -27,7 +28,8 @@ const useCheckout = (
   client: LitNodeClient,
   publicClient: PublicClient,
   oracleData: OracleData[],
-  dispatch: Dispatch
+  dispatch: Dispatch,
+  t: TFunction<"collect", undefined>
 ) => {
   const [isApprovedSpend, setApprovedSpend] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
@@ -281,7 +283,7 @@ const useCheckout = (
         dispatch(
           setInsufficientBalance({
             actionValue: true,
-            actionMessage: "Pockets Empty. Need to top up?",
+            actionMessage: t("pockets"),
           })
         );
         setCollectPostLoading(false);
@@ -310,7 +312,8 @@ const useCheckout = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       setDetails((prev) => ({
         name: "",

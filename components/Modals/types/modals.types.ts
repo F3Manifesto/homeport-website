@@ -10,6 +10,7 @@ import {
   SimpleCollectOpenActionSettings,
 } from "../../../graphql/generated";
 import { PostCollectState } from "../../../redux/reducers/postCollectSlice";
+import { TFunction } from "i18next";
 
 export interface MakePostComment {
   content: string | undefined;
@@ -24,6 +25,7 @@ export type InsufficientBalanceProps = {
 
 export type FollowCollectProps = {
   dispatch: Dispatch<AnyAction>;
+  t: TFunction<"collect", undefined>;
   type: string;
   collect:
     | {
@@ -46,6 +48,7 @@ export type FollowCollectProps = {
 
 export type QuoteProps = {
   dispatch: Dispatch<AnyAction>;
+  t: TFunction<"collect", undefined>;
   postCollect: PostCollectState;
   quote: PrimaryPublication | undefined;
   makePost: MakePostComment[];
@@ -84,11 +87,13 @@ export type QuoteProps = {
 export type SuccessCheckoutProps = {
   dispatch: Dispatch<Action>;
   image: string;
+  t: TFunction<"collect", undefined>;
   lensConnected: Profile | undefined;
 };
 
 export type WhoProps = {
   dataLoading: boolean;
+  t: TFunction<"collect", undefined>;
   reactors: any[];
   quoters: Quote[];
   hasMore: boolean;
@@ -105,6 +110,7 @@ export type WhoSwitchProps = {
   type: string;
   dispatch: Dispatch<AnyAction>;
   reactors: any[];
+  t: TFunction<"collect", undefined>;
   quoters: Quote[];
   hasMore: boolean;
   hasMoreQuote: boolean;
@@ -118,6 +124,7 @@ export type LensConnectProps = {
   handleLensSignIn: () => Promise<void>;
   dispatch: Dispatch<AnyAction>;
   connected: boolean;
+  t: TFunction<"collect", undefined>;
 };
 
 export type useMetadataResults = {
@@ -168,10 +175,12 @@ export type IndexProps = {
 
 export type InteractErrorProps = {
   dispatch: Dispatch<AnyAction>;
+  t: TFunction<"collect", undefined>;
 };
 
 export type PostCollectGifProps = {
   dispatch: Dispatch<AnyAction>;
+  t: TFunction<"collect", undefined>;
   id: string;
   setCollects: (
     e: SetStateAction<SimpleCollectOpenActionModuleInput | undefined>
@@ -211,6 +220,7 @@ export type PostCollectGifProps = {
 
 export type CollectOptionsProps = {
   id: string;
+  t: TFunction<"collect", undefined>;
   dispatch: Dispatch<AnyAction>;
   collectTypes:
     | {

@@ -13,6 +13,7 @@ const Connect: FunctionComponent<ConnectProps> = ({
   connected,
   lensProfile,
   chain,
+  t
 }): JSX.Element => {
   const profilePicture = createProfilePicture(lensProfile?.metadata?.picture);
   return (
@@ -55,13 +56,13 @@ const Connect: FunctionComponent<ConnectProps> = ({
           {loginLoading ? (
             <AiOutlineLoading size={15} color={"black"} />
           ) : !connected ? (
-            "Connect"
+            t("con")
           ) : connected && !lensProfile?.id ? (
             "Lens"
           ) : connected && lensProfile && chain != 137 ? (
-            "Switch"
+            t("switch")
           ) : (
-            "Log Out"
+            t("log")
           )}
         </div>
       </div>

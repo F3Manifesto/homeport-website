@@ -8,6 +8,7 @@ import errorChoice from "../../../lib/helpers/errorChoice";
 import lensLike from "../../../lib/helpers/lensLike";
 import { setAllGallery } from "../../../redux/reducers/allGallerySlice";
 import { Gallery } from "../types/home.types";
+import { TFunction } from "i18next";
 
 const useInteractions = (
   gallery: Gallery[],
@@ -16,7 +17,8 @@ const useInteractions = (
   setFilteredGallery: (e: SetStateAction<Gallery[]>) => void,
   lensConnected: Profile | undefined,
   publicClient: PublicClient,
-  address: `0x${string}` | undefined
+  address: `0x${string}` | undefined,
+  t: TFunction<"collect", undefined>
 ) => {
   const [interactionLoaders, setInteractionLoaders] = useState<
     {
@@ -50,7 +52,8 @@ const useInteractions = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       updateInteractions(
         index!,
@@ -72,7 +75,8 @@ const useInteractions = (
             "mirrors",
             true
           ),
-        dispatch
+        dispatch,
+        t
       );
     }
 
@@ -98,7 +102,7 @@ const useInteractions = (
       return updatedArray;
     });
     try {
-      await lensLike(id, dispatch, hasReacted);
+      await lensLike(id, dispatch, hasReacted, t);
       updateInteractions(
         index!,
         {
@@ -119,7 +123,8 @@ const useInteractions = (
             "reactions",
             hasReacted ? false : true
           ),
-        dispatch
+        dispatch,
+        t
       );
     }
 

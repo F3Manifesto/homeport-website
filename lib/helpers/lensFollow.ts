@@ -8,7 +8,8 @@ import { setIndexer } from "../../redux/reducers/indexerSlice";
 import handleIndexCheck from "./handleIndexCheck";
 import { LENS_HUB_PROXY_ADDRESS_MATIC } from "../constants";
 import { polygon } from "viem/chains";
-import LensHubProxy from "./../../abis/LensHubProxy.json"
+import LensHubProxy from "./../../abis/LensHubProxy.json";
+import { TFunction } from "i18next";
 
 const lensFollow = async (
   id: string,
@@ -16,7 +17,8 @@ const lensFollow = async (
   module: FollowModuleRedeemInput | undefined,
   address: `0x${string}`,
   clientWallet: WalletClient,
-  publicClient: PublicClient
+  publicClient: PublicClient,
+  t: TFunction<"collect", undefined>
 ): Promise<void> => {
   const { data } = await follow({
     follow: [
@@ -26,7 +28,7 @@ const lensFollow = async (
       },
     ],
   });
-  
+
   const typedData = data?.createFollowTypedData?.typedData;
 
   const signature = await clientWallet.signTypedData({
@@ -46,7 +48,7 @@ const lensFollow = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
 
@@ -54,7 +56,8 @@ const lensFollow = async (
       {
         forTxId: broadcastResult?.data?.broadcastOnchain?.txId,
       },
-      dispatch
+      dispatch,
+      t
     );
   } else {
     const { request } = await publicClient.simulateContract({
@@ -75,14 +78,15 @@ const lensFollow = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
     await handleIndexCheck(
       {
         forTxHash: tx.transactionHash,
       },
-      dispatch
+      dispatch,
+      t
     );
   }
 

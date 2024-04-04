@@ -36,6 +36,7 @@ const Quotes: FunctionComponent<QuoteCollectProps> = ({
   profilesOpen,
   caretCoord,
   setCaretCoord,
+  t
 }): JSX.Element => {
   return (
     <div
@@ -64,6 +65,7 @@ const Quotes: FunctionComponent<QuoteCollectProps> = ({
               return (
                 <Publication
                   main={false}
+                  t={t}
                   lensConnected={lensConnected}
                   index={index}
                   item={item}

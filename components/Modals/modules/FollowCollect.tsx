@@ -19,6 +19,7 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
   informationLoading,
   approved,
   approveSpend,
+  t,
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
@@ -45,7 +46,7 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
               className={`relative rounded-md flex flex-col gap-5 w-5/6 p-2 items-center justify-center w-full h-fit font-din text-black text-sm`}
             >
               <div className="relative w-fit h-fit flex items-center justify-center">
-                Ready to Collect?
+                {t("ready")}
               </div>
               <div className="relative w-3/4 xl:w-1/2 items-center justify-center rounded-md border border-black h-60 flex">
                 <Image
@@ -59,8 +60,8 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
               {collect?.item?.endsAt && (
                 <div className="relative w-fit h-fit flex items-center justify-center font-din break-words px-2 text-center">
                   {collect?.item?.endsAt < Date.now()
-                    ? "Collect Period Over :/"
-                    : `Collect Period Finishes in ${
+                    ? t("over")
+                    : `${t("finish")} ${
                         moment
                           .duration(
                             moment(collect?.item?.endsAt).diff(moment())
@@ -97,11 +98,11 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
               className={`relative rounded-md flex flex-col gap-5 w-5/6 p-2 items-center justify-center w-full h-fit font-firaB text-black text-sm`}
             >
               <div className="relative w-fit h-fit flex items-center justify-center">
-                Follow {follower?.handle?.suggestedFormatted?.localName}{" "}
+                {t("follow")} {follower?.handle?.suggestedFormatted?.localName}{" "}
                 {type == "collect" &&
                   collect?.item?.followerOnly &&
                   !follower?.operations?.isFollowedByMe?.value &&
-                  "to collect"}
+                  t("collect")}
               </div>
               <div className="relative w-3/4 xl:w-1/2 items-center justify-center rounded-md border border-black h-60 flex">
                 <Image
@@ -170,14 +171,14 @@ const FollowCollect: FunctionComponent<FollowCollectProps> = ({
                 (!collect?.item?.followerOnly ||
                   (follower?.operations?.isFollowedByMe?.value &&
                     collect?.item?.followerOnly)) ? (
-                "Approve Spend"
+                t("app")
               ) : type === "collect" &&
                 (!collect?.item?.followerOnly ||
                   (follower?.operations?.isFollowedByMe?.value &&
                     collect?.item?.followerOnly)) ? (
-                "Collect"
+                t("col")
               ) : (
-                "Follow"
+                t("follow")
               )}
             </div>
           </div>

@@ -23,11 +23,14 @@ import Quotes from "../../components/Collect/modules/Quotes";
 import Comments from "../../components/Collect/modules/Comments";
 import useCheckout from "../../components/Collect/hooks/useCheckout";
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Name: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { name } = router.query;
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("collect");
   const client = new LitJsSdk.LitNodeClient({
     litNetwork: "cayenne",
     debug: false,
@@ -142,7 +145,8 @@ const Name: React.FC = (): JSX.Element => {
     publicClient,
     collection,
     setCollection,
-    postCollect
+    postCollect,
+    t
   );
 
   const {
@@ -162,7 +166,8 @@ const Name: React.FC = (): JSX.Element => {
     client,
     publicClient,
     oracleData,
-    dispatch
+    dispatch,
+    t
   );
 
   useEffect(() => {
@@ -245,7 +250,7 @@ const Name: React.FC = (): JSX.Element => {
               className="float-left mr-2"
             />
             <div className="relative w-fit h-fit flex items-center justify-center">
-              Return
+              {t("return")}
             </div>
           </div>
           <div className="w-fit h-fit ml-auto flex items-center justify-center hover:text-offBlue underline underline-offset-4 h-fit relative">
@@ -258,6 +263,7 @@ const Name: React.FC = (): JSX.Element => {
               openConnectModal={openConnectModal}
               lensProfile={lensProfile}
               loginLoading={loginLoading}
+              t={t}
             />
           </div>
         </div>
@@ -316,6 +322,7 @@ const Name: React.FC = (): JSX.Element => {
                 collectRef={collectRef}
                 commentRef={commentRef}
                 like={like}
+                t={t}
                 address={address}
                 handleSignIn={handleLensSignIn}
                 dispatch={dispatch}
@@ -347,6 +354,7 @@ const Name: React.FC = (): JSX.Element => {
                 {quotes?.length > 0 && (
                   <Quotes
                     quotes={quotes}
+                    t={t}
                     interactionsLoading={interactionsQuotesItemsLoading}
                     getMoreQuotes={getMoreQuotes}
                     quotesLoading={quotesLoading}
@@ -383,6 +391,7 @@ const Name: React.FC = (): JSX.Element => {
                   />
                 )}
                 <Comments
+                  t={t}
                   dispatch={dispatch}
                   lensConnected={lensProfile}
                   comments={comments}
@@ -442,3 +451,16 @@ const Name: React.FC = (): JSX.Element => {
 };
 
 export default Name;
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["collect", "footer"])),
+  },
+});

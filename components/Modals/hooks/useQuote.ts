@@ -35,6 +35,7 @@ import lensFollow from "../../../lib/helpers/lensFollow";
 import { setInsufficientBalance } from "../../../redux/reducers/insufficientBalanceSlice";
 import findBalance from "../../../lib/helpers/findBalance";
 import { MakePostComment } from "../types/modals.types";
+import { TFunction } from "i18next";
 
 const useQuote = (
   availableCurrencies: Erc20[],
@@ -44,7 +45,8 @@ const useQuote = (
   postBox: QuoteBoxState,
   dispatch: Dispatch,
   publicClient: PublicClient,
-  address: `0x${string}` | undefined
+  address: `0x${string}` | undefined,
+  t: TFunction<"collect", undefined>
 ) => {
   const [transactionLoading, setTransactionLoading] = useState<boolean>(false);
   const [informationLoading, setInformationLoading] = useState<boolean>(false);
@@ -137,6 +139,7 @@ const useQuote = (
         address as `0x${string}`,
         clientWallet,
         publicClient,
+        t,
         () => clearBox()
       );
 
@@ -159,7 +162,7 @@ const useQuote = (
         dispatch(
           setIndexer({
             actionOpen: true,
-            actionMessage: "Successfully Indexed",
+            actionMessage: t("index"),
           })
         );
 
@@ -335,7 +338,7 @@ const useQuote = (
       dispatch(
         setInsufficientBalance({
           actionValue: true,
-          actionMessage: "Pockets Empty. Need to top up?",
+          actionMessage: t("pockets"),
         })
       );
       return;
@@ -356,7 +359,8 @@ const useQuote = (
         dispatch,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
 
       dispatch(
@@ -409,7 +413,8 @@ const useQuote = (
           : undefined,
         address as `0x${string}`,
         clientWallet,
-        publicClient
+        publicClient,
+        t
       );
       await refetchProfile(dispatch, lensConnected?.id, lensConnected?.id);
       if (
