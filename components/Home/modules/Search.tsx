@@ -4,13 +4,14 @@ import { SearchProps } from "../types/home.types";
 const Search: FunctionComponent<SearchProps> = ({
   filterConstants,
   filterURL,
+  t,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-fit flex sm:flex-nowrap flex-wrap flex-row items-start justify-start px-4 font-conso gap-10">
       <div className="relative w-full h-fit flex flex-col items-start justify-start gap-10">
         <div className="relative w-full h-fit flex items-start justify-center flex-col gap-3">
           <div className="relative w-fit h-fit text-md md:text-xl">
-            CHOOSE A COLLECTION
+            {t("choose")}
           </div>
           <div className="relative flex flex-wrap justify-start gap-5 w-fit h-fit items-center">
             {filterConstants?.drops?.map((drop: string, index: number) => {
@@ -37,7 +38,7 @@ const Search: FunctionComponent<SearchProps> = ({
         </div>
         <div className="relative w-full h-fit flex items-start justify-center flex-col gap-3">
           <div className="relative w-fit h-fit text-md md:text-xl">
-            FILTER BY NAME
+            {t("filter")}
           </div>
           <div className="flex items-center justify-center border border-offBlack rounded-full border-x px-1 h-fit w-fit relative">
             <input
@@ -50,7 +51,9 @@ const Search: FunctionComponent<SearchProps> = ({
       </div>
       <div className="relative w-full h-fit flex flex-col items-start justify-start gap-10">
         <div className="relative w-full h-fit flex items-start justify-center flex-col gap-3">
-          <div className="relative w-fit h-fit text-md md:text-xl">SEX</div>
+          <div className="relative w-fit h-fit text-md md:text-xl">
+            {t("sex")}
+          </div>
           <div className="relative flex flex-wrap justify-start gap-5 w-fit h-fit items-center">
             {filterConstants?.sexes?.map((sex: string, index: number) => {
               return (
@@ -75,7 +78,9 @@ const Search: FunctionComponent<SearchProps> = ({
           </div>
         </div>
         <div className="relative w-full h-fit flex items-start justify-center flex-col gap-3">
-          <div className="relative w-fit h-fit text-md md:text-xl">STYLE</div>
+          <div className="relative w-fit h-fit text-md md:text-xl">
+            {t("style")}
+          </div>
           <div className="relative flex flex-wrap justify-start gap-5 w-fit h-fit items-center">
             {filterConstants?.styles?.map((style: string, index: number) => {
               return (

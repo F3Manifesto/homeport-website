@@ -6,6 +6,8 @@ import Image from "next/image";
 const Film: FunctionComponent<FilmProps> = ({
   clicked,
   setClicked,
+  t,
+  i18n,
 }): JSX.Element => {
   return (
     <div className="flex items-center justify-center h-screen w-full relative bg-offBlack">
@@ -23,10 +25,57 @@ const Film: FunctionComponent<FilmProps> = ({
             />
           </div>
           {clicked && (
-            <div className="relative text-right flex items-center justify-center w-fit h-fit font-alber text-offWhite text-base">
-              Did you <br />
-              expect this <br />
-              to go somewhere?
+            <div className="absolute text-right flex items-center justify-center h-fit font-alber text-offBlack text-sm top-10 flex-col bg-gradient-to-r from-grad1 via-grad2 to-grad3 rounded-md right-0 border border-offBlack w-[8rem]">
+              <div className="relative w-3/4 h-fit flex items-center justify-center text-xs pb-2 text-center py-1 px-1">
+                {t("trad")}
+              </div>
+              {[
+                {
+                  image: "QmUSR6zQuNTLy3WGHBMDcyBJ7DHXGJxuiJuoLJ1V2MyKTb",
+                  name: "en",
+                },
+                {
+                  image: "QmYQBkpgirwnNhteymuJci9FHH4Sq2eAEEDDGjNDRkXKWc",
+                  name: "es",
+                },
+                {
+                  image: "QmZVU5rZxU1REJHNHtScLuNgeKMoDVK4ruwuP7tSznTqUg",
+                  name: t("soon"),
+                },
+              ].map(
+                (
+                  item: {
+                    image: string;
+                    name: string;
+                  },
+                  index: number
+                ) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 hover:opacity-80 cursor-empireS ${
+                        index == 0
+                          ? "border-y border-offBlack"
+                          : index == 1 && "border-b border-offBlack"
+                      }`}
+                      onClick={() => i18n.changeLanguage(item.name)}
+                    >
+                      <div className="relative w-fit h-fit flex items-center justify-center">
+                        <div className="relative w-6 h-6 flex items-center justify-center">
+                          <Image
+                            draggable={false}
+                            src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                            layout="fill"
+                          />
+                        </div>
+                      </div>
+                      <div className="relative w-fit h-fit flex items-center justify-center text-center">
+                        {item.name}
+                      </div>
+                    </div>
+                  );
+                }
+              )}
             </div>
           )}
         </div>

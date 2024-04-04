@@ -3,16 +3,17 @@ import { FunctionComponent, ReactElement } from "react";
 import { BsTwitter } from "react-icons/bs";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import { FooterProps } from "../types/layout.types";
+import { useTranslation } from "next-i18next";
 
 const Footer: FunctionComponent<FooterProps> = ({
   randomFactory,
 }): JSX.Element => {
+  const { t } = useTranslation("footer");
   return (
     <div className="relative w-full h-fit flex items-center justify-center bg-black items-stretch cursor-empireA mb-0 flex-col md:flex-row gap-10 md:gap-3 pt-6 pb-2 px-4 text-white">
       <div className="relative w-fit min-h-full flex flex-col gap-3 items-start justify-between grow">
         <div className="relative w-fit h-fit text-left items-center justify-center flex font-futur text-lg w-5/6 md:w-72 tracking-widest leading-relaxed mt-0">
-          Before you go, let’s take a look at what the latest language synth
-          model has to say for itself…
+          {t("before")}
         </div>
         <div className="relative items-center justify-center w-fit h-fit text-sm font-futur mb-0 flex">
           Src: Claude
@@ -20,27 +21,17 @@ const Footer: FunctionComponent<FooterProps> = ({
       </div>
       <div className="relative w-full h-full flex flex-col gap-10 items-start justify-between">
         <div className="relative h-fit w-5/6 flex items-center justify-center text-left text-xs font-glitch leading-8">
-          Through the gritty streets of Brooklyn, across the park, forward
-          towards Graham. Her steel-toed boots clicked on the pavement. <br />
-          <br /> She was on a mission.
-          <br /> <br />
-          Decentralized manufacturing in New York City. In hidden workshops
-          beneath the city, fabrics shimmered with arcane beauty, woven from
-          ether and moonbeams. Each item bestows uncanny gifts upon the wearer -
-          invisibility, flight, protection from blades and spells. Where once
-          was just brick and concrete, now swirled portals to other realms,
-          viewable only by those initiated into the fold. Each cloak and tunic
-          was a spell, waiting to be unleashed.
+          {t("prompt")}
         </div>
         <div className="relative h-fit w-fit text-sm font-futur flex items-center justify-center text-left mb-0">
-          log: 0012
+          {t("log")}
         </div>
       </div>
       <div className="relative w-fit flex grow flex-col gap-3 items-start justify-between min-h-full">
         <div className="relative flex items-start md:items-center justify-center flex-col gap-2 w-fit h-fit flex-wrap sm:flex-nowrap">
           <div className="relative w-fit h-fit flex items-center justify-center flex-row gap-1.5">
             <div className="relative font-fira text-xs w-fit h-fit flex items-center justify-center text-white">
-              Latent microfactory feed
+              {t("feed")}
             </div>
             <div className="relative h-4 w-4 flex items-center justify-center rounded-full opacity-75 animate-ping bg-green-500"></div>
             <div className="absolute right-px flex items-center justify-center rounded-full h-3 w-3 bg-green-300"></div>
@@ -74,7 +65,7 @@ const Footer: FunctionComponent<FooterProps> = ({
             {
               link: "https://cypher.digitalax.xyz/autograph/f3manifesto",
               image: "QmamuDJVJw4BoWUrnRdE4GVabsbUFsYPysqzQn3pfeTPL9",
-              title: "Autograph",
+              title: t("auto"),
             },
             {
               link: "https://twitter.com/f3manifestoo",

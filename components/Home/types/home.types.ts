@@ -1,6 +1,8 @@
 import { NextRouter } from "next/router";
 import { Post, Profile } from "../../../graphql/generated";
 import { Action, AnyAction, Dispatch } from "redux";
+import { TFunction } from "i18next";
+import { I18n } from "next-i18next";
 
 export type SidebarProps = {
   clicked: boolean;
@@ -41,6 +43,8 @@ export type InteractBarProps = {
 export type FilmProps = {
   clicked: boolean;
   setClicked: (e: boolean) => void;
+  t: TFunction<"common", undefined>;
+  i18n: I18n;
 };
 
 export interface Gallery {
@@ -93,10 +97,12 @@ export type SearchProps = {
     styles: string[];
     drops: string[];
   };
+  t: TFunction<"common", undefined>;
   filterURL: (type: string, newValue: string) => void;
 };
 
 export type BoardProps = {
+  t: TFunction<"common", undefined>;
   setMainImages: (e: string[]) => void;
   mainImages: string[];
   filterConstants: {
@@ -104,9 +110,9 @@ export type BoardProps = {
     styles: string[];
     drops: string[];
   };
+  router: NextRouter;
   filterURL: (type: string, newValue: string) => void;
   goShopping: () => void;
   mainImage: string;
   setMainImage: (e: string) => void;
 };
-

@@ -12,6 +12,8 @@ const Board: FunctionComponent<BoardProps> = ({
   mainImages,
   mainImage,
   setMainImage,
+  t,
+  router,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-full min-h-full flex items-center justify-start flex flex-col bg-offBlack">
@@ -58,17 +60,24 @@ const Board: FunctionComponent<BoardProps> = ({
                 })}
               </div>
               <div className="relative w-full half:w-72 h-fit flex items-center justify-start half:justify-center half:pl-0 pl-2 bottom-0">
-                <div className="font-glitch h-fit w-full relative inline-table text-sm sm:text-base md:text-lg leading-tight cursor-empireS break-word">
-                  Like most things in glass dial simulacra
+                <div
+                  className={`font-glitch h-fit w-full relative inline-table leading-tight cursor-empireS break-word ${
+                    router.locale == "en"
+                      ? "text-sm sm:text-base md:text-lg"
+                      : "text-sm sm:text-base"
+                  }`}
+                >
+                  {t("glass")}
                   <span className="font-air">,</span>
-                  their appeal comes from appearance
-                  <span className="font-air">,</span> status
-                  <span className="font-air">,</span> and material use.
+                  {t("appeal")}
+                  <span className="font-air">,</span> {t("status")}
+                  <span className="font-air">,</span> {t("use")}
                   <br />
                   <br />
-                  In worlds run by interfaces
-                  <span className="font-air">,</span> machine code
-                  <span className="font-air">,</span> and whimsy<span>.</span>
+                  {t("worlds")}
+                  <span className="font-air">,</span> {t("code")}
+                  <span className="font-air">,</span> {t("whimsy")}
+                  <span>.</span>
                 </div>
               </div>
             </div>
@@ -101,7 +110,7 @@ const Board: FunctionComponent<BoardProps> = ({
                     100% CC0
                   </div>
                   <div className="sm:h-60 relative xl:h-full 2xl:h-80 h-fit w-fit sm:rotate-90 whitespace-nowrap flex items-center justify-center">
-                    CYPHERPUNKS WRITE PROMPTS
+                    {t("prompt")}
                   </div>
                 </div>
                 <div className="relative w-full h-fit flex items-start justify-center">
@@ -287,9 +296,9 @@ const Board: FunctionComponent<BoardProps> = ({
           </div>
           <div className="relative h-fit w-full px-3 py-2 flex items-center justify-center flex-col">
             <div className="relative leading-snug w-fit h-fit text-xs font-firaL text-center break-word flex items-center justify-center">
-              MICROFACTORY CO-OPs <br />
+              {t("micro")} <br />
               <br />
-              VIRTUAL, LATENT & IRL SPACE Chapter 0001 - NYC Edition
+              {t("virt")}
             </div>
           </div>
         </div>

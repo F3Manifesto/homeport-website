@@ -13,6 +13,7 @@ import broadcast from "../../graphql/lens/mutations/broadcast";
 import handleIndexCheck from "./handleIndexCheck";
 import { setIndexer } from "../../redux/reducers/indexerSlice";
 import { LENS_HUB_PROXY_ADDRESS_MATIC } from "../constants";
+import { TFunction } from "i18next";
 
 const lensCollect = async (
   id: string,
@@ -20,7 +21,8 @@ const lensCollect = async (
   dispatch: Dispatch<AnyAction>,
   address: `0x${string}`,
   clientWallet: WalletClient,
-  publicClient: PublicClient
+  publicClient: PublicClient,
+  t: TFunction<"collect", undefined>
 ): Promise<void> => {
   let broadcastResult: FetchResult<BroadcastOnchainMutation>,
     functionName: string,
@@ -113,7 +115,8 @@ const lensCollect = async (
       {
         forTxId: broadcastResult?.data?.broadcastOnchain.txId,
       },
-      dispatch
+      dispatch,
+      t
     );
   } else {
     const { request } = await publicClient.simulateContract({
@@ -129,7 +132,7 @@ const lensCollect = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
 
@@ -137,7 +140,8 @@ const lensCollect = async (
       {
         forTxHash: tx.transactionHash,
       },
-      dispatch
+      dispatch,
+      t
     );
   }
 

@@ -1,11 +1,13 @@
 import { AnyAction, Dispatch } from "redux";
 import { setInteractError } from "../../redux/reducers/interactErrorSlice";
 import { setIndexer } from "../../redux/reducers/indexerSlice";
+import { TFunction } from "i18next";
 
 const errorChoice = async (
   err: any,
   runner: (() => Promise<void>) | (() => void),
-  dispatch: Dispatch<AnyAction>
+  dispatch: Dispatch<AnyAction>,
+  t: TFunction<"collect", undefined>
 ) => {
   if (err?.message?.includes("User rejected the request")) return;
   if (
@@ -18,7 +20,7 @@ const errorChoice = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Successfully Indexed",
+        actionMessage: t("index"),
       })
     );
 

@@ -1,5 +1,7 @@
 import "../styles/globals.css";
+import "./../i18n";
 import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import Footer from "../components/Layout/modules/Footer";
 import "@rainbow-me/rainbowkit/styles.css";
@@ -123,4 +125,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

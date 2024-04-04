@@ -9,6 +9,7 @@ const LensConnect: FunctionComponent<LensConnectProps> = ({
   handleLensSignIn,
   loginLoading,
   connected,
+  t,
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto cursor-empireS">
@@ -25,7 +26,7 @@ const LensConnect: FunctionComponent<LensConnectProps> = ({
           </div>
           <div className="relative w-full h-fit items-center justify-center flex flex-col gap-3 pb-4">
             <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-black text-base">
-              Connect to Lens Protocol.
+              {t("lens")}
             </div>
             <div
               className={`relative font-din h-8 w-28 px-2 py-1 flex items-center bg-lightYellow justify-center text-black text-sm border border-black ${
@@ -41,9 +42,9 @@ const LensConnect: FunctionComponent<LensConnectProps> = ({
                 {loginLoading ? (
                   <AiOutlineLoading size={15} color={"black"} />
                 ) : !connected ? (
-                  "Connect"
+                  t("con2")
                 ) : (
-                  "Connected"
+                  t("connected")
                 )}
               </div>
             </div>

@@ -34,6 +34,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   collectRef,
   handleSignIn,
   address,
+  t,
 }): JSX.Element => {
   return (
     <div className="relative w-full h-fit flex flex-col gap-3">
@@ -68,7 +69,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               {
                 title:
                   Number(item?.amount) == Number(item?.soldTokens)
-                    ? "SOLD OUT"
+                    ? t("sold")
                     : Number(item?.soldTokens) > 0
                     ? `${Number(item?.soldTokens)} / ${Number(item?.amount)}`
                     : `${Number(item?.amount)} / ${Number(item?.amount)}`,
@@ -123,7 +124,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
           </div>
           <div className="relative w-full h-fit row-start-3 grid grid-flow-row auto-rows-auto">
             <div className="relative w-fit h-fit row-start-1 text-offBlack text-lg font-firaB">
-              STYLE
+              {t("style")}
             </div>
             <div className="relative w-full h-1 row-start-2 bg-offBlack"></div>
             <div className="relative w-fit h-fit row-start-3 grid grid-flow-col auto-cols-auto pt-3 gap-2">
@@ -183,7 +184,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-full h-0.5 bg-offBlack justify-end flex"></div>
             <div className="relative w-full h-fit flex flex-col gap-2 items-end justify-end">
               <div className="relative w-fit h-fit flex text-offBlack font-firaB text-lg justify-end items-end">
-                SYNTH GRAPH
+                {t("graph")}
               </div>
               <div className="relative w-full h-fit text-offBlack font-firaL text-sm text-right flex items-end justify-end">
                 {item?.collectionMetadata?.prompt}
@@ -199,37 +200,35 @@ const Metadata: FunctionComponent<MetadataProps> = ({
         <div className="relative justify-between items-start flex flex-col gap-4 w-full h-full">
           <div className="relative w-full h-fit flex flex-col items-start justify-start gap-5">
             <div className="relative w-fit h-fit flex text-offBlack font-firaB text-2xl">
-              Fulfillment Details
+              {t("details")}
             </div>
             <div className="relative w-fit h-fit flex text-sol font-firaL text-xs opacity-90">
-              These NFTs extend beyond screens. When collected, you&apos;ve
-              unlocked IRL customization. Encrypt your parameters and
-              fulfillment details to get started.
+              {t("encrypt")}
             </div>
             <div className="relative flex flex-row flex-wrap items-start justify-start gap-5 w-full h-fit">
               {[
                 {
-                  title: "Name",
+                  title: t("name"),
                   drop: false,
                 },
                 {
-                  title: "Address",
+                  title: t("address"),
                   drop: false,
                 },
                 {
-                  title: "Zip",
+                  title: t("zip"),
                   drop: false,
                 },
                 {
-                  title: "City",
+                  title: t("city"),
                   drop: false,
                 },
                 {
-                  title: "State",
+                  title: t("state"),
                   drop: false,
                 },
                 {
-                  title: "Country",
+                  title: t("country"),
                   drop: true,
                 },
               ].map(
@@ -402,15 +401,15 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <AiOutlineLoading size={15} color="black" />
               ) : Number(item?.amount) + details?.chosenAmount ==
                 Number(item?.soldTokens || 0) ? (
-                "SOLD OUT"
+                t("sold")
               ) : !address ? (
-                "CONNECT"
+                t("connect")
               ) : !lensProfile ? (
                 "LENS"
               ) : !isApprovedSpend ? (
-                "Approve Spend"
+                t("app")
               ) : (
-                "Collect Item"
+                t("coll")
               )}
             </div>
           </div>

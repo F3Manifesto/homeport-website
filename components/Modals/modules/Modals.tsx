@@ -18,9 +18,11 @@ import PostCollect from "../../Collect/modules/PostCollect";
 import InsufficientBalance from "./InsufficientBalance";
 import SuccessCheckout from "./SuccessCheckout";
 import FollowCollect from "./FollowCollect";
+import { useTranslation } from "next-i18next";
 
 const Modals: FunctionComponent = (): JSX.Element => {
   const dispatch = useDispatch();
+  const { t } = useTranslation("collect");
   const publicClient = createPublicClient({
     chain: polygon,
     transport: http(
@@ -109,7 +111,8 @@ const Modals: FunctionComponent = (): JSX.Element => {
     quoteBox,
     dispatch,
     publicClient,
-    address
+    address,
+    t
   );
   return (
     <>
@@ -118,6 +121,7 @@ const Modals: FunctionComponent = (): JSX.Element => {
       )}
       {quoteBox?.open && (
         <Quote
+          t={t}
           lensConnected={lensConnected}
           setCaretCoord={setCaretCoord}
           setMentionProfiles={setMentionProfiles}
@@ -138,6 +142,7 @@ const Modals: FunctionComponent = (): JSX.Element => {
       )}
       {postCollect?.id && (
         <PostCollect
+          t={t}
           dispatch={dispatch}
           openMeasure={openMeasure}
           setOpenMeasure={setOpenMeasure}
@@ -161,6 +166,7 @@ const Modals: FunctionComponent = (): JSX.Element => {
           showMore={showMore}
           mirrorQuote={mirrorQuote}
           setMirrorQuote={setMirrorQuote}
+          t={t}
         />
       )}
       {followCollect?.type && (
@@ -175,15 +181,17 @@ const Modals: FunctionComponent = (): JSX.Element => {
           transactionLoading={transactionLoading}
           approved={approved}
           approveSpend={approveSpend}
+          t={t}
         />
       )}
       {indexer?.open && <Index message={indexer?.message!} />}
-      {interact?.value && <InteractError dispatch={dispatch} />}
+      {interact?.value && <InteractError t={t} dispatch={dispatch} />}
       {successCheckout?.value && (
         <SuccessCheckout
           image={successCheckout?.image}
           dispatch={dispatch}
           lensConnected={lensConnected}
+          t={t}
         />
       )}
       {insufficientBalance?.value && (
@@ -198,6 +206,7 @@ const Modals: FunctionComponent = (): JSX.Element => {
           loginLoading={loginLoading}
           handleLensSignIn={handleLensSignIn}
           connected={lensConnected?.id}
+          t={t}
         />
       )}
     </>

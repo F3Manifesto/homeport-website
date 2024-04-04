@@ -19,6 +19,7 @@ const Who: FunctionComponent<WhoProps> = ({
   type,
   dispatch,
   lensConnected,
+  t,
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-20 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
@@ -74,6 +75,7 @@ const Who: FunctionComponent<WhoProps> = ({
 
               {!dataLoading ? (
                 <WhoSwitch
+                  t={t}
                   lensConnected={lensConnected}
                   type={type}
                   reactors={reactors}

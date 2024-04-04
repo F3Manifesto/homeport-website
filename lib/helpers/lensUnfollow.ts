@@ -8,13 +8,15 @@ import { setIndexer } from "../../redux/reducers/indexerSlice";
 import { LENS_HUB_PROXY_ADDRESS_MATIC } from "../constants";
 import { polygon } from "viem/chains";
 import handleIndexCheck from "../../graphql/lens/queries/indexed";
+import { TFunction } from "i18next";
 
 const lensUnfollow = async (
   id: string,
   dispatch: Dispatch<AnyAction>,
   address: `0x${string}`,
   clientWallet: WalletClient,
-  publicClient: PublicClient
+  publicClient: PublicClient,
+  t: TFunction<"collect", undefined>
 ): Promise<void> => {
   const { data } = await unfollow({
     unfollow: [id],
@@ -39,7 +41,7 @@ const lensUnfollow = async (
     dispatch(
       setIndexer({
         actionOpen: true,
-        actionMessage: "Indexing Interaction",
+        actionMessage: t("indexInt"),
       })
     );
 
@@ -47,7 +49,8 @@ const lensUnfollow = async (
       {
         forTxId: broadcastResult?.data?.broadcastOnchain?.txId,
       },
-      dispatch
+      dispatch,
+      t
     );
   } else {
     const { request } = await publicClient.simulateContract({
@@ -68,7 +71,8 @@ const lensUnfollow = async (
       {
         forTxHash: tx.transactionHash,
       },
-      dispatch
+      dispatch,
+      t
     );
   }
 

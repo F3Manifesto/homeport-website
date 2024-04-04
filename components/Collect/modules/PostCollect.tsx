@@ -11,6 +11,7 @@ const PostCollect: FunctionComponent<PostCollectGifProps> = ({
   availableCurrencies,
   collectTypes,
   id,
+  t
 }): JSX.Element => {
   return (
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto cursor-empireS">
@@ -30,6 +31,7 @@ const PostCollect: FunctionComponent<PostCollectGifProps> = ({
             />
           </div>
           <CollectOptions
+            t={t}
             openMeasure={openMeasure}
             setOpenMeasure={setOpenMeasure}
             collectTypes={collectTypes}

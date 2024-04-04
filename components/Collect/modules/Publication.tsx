@@ -51,6 +51,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
   bottom,
   left,
   right,
+  t
 }) => {
   return (
     <div
@@ -156,6 +157,7 @@ const Publication: FunctionComponent<PublicationProps> = ({
       />
       {commentsOpen?.[index] && (
         <PostComment
+          t={t}
           caretCoord={caretCoord!}
           profilesOpen={profilesOpen?.[index]!}
           mentionProfiles={mentionProfiles!}
