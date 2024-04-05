@@ -3,7 +3,7 @@ import { setQuoteBox } from "../../../redux/reducers/quoteBoxSlice";
 import { ImCross } from "react-icons/im";
 import PostComment from "../../Collect/modules/PostComment";
 import PostQuote from "../../Collect/modules/PostQuote";
-import { Quote } from "../../../graphql/generated";
+import { Quote as QuoteType } from "../../../graphql/generated";
 import { QuoteProps } from "../types/modals.types";
 
 const Quote: FunctionComponent<QuoteProps> = ({
@@ -45,7 +45,7 @@ const Quote: FunctionComponent<QuoteProps> = ({
           <PostQuote
             disabled={false}
             dispatch={dispatch}
-            quote={quote as Quote}
+            quote={quote as QuoteType}
           />
           <div className="relative w-full h-full flex items-center justify-center pb-3">
             <div className="relative h-full w-4/5 items-center justify-center flex">
