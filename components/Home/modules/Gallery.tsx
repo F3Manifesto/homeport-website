@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FunctionComponent } from "react";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import InteractBar from "./InteractBar";
-import { Gallery, GalleryProps } from "../types/home.types";
+import { Gallery as GalleryTokens, GalleryProps } from "../types/home.types";
 
 const Gallery: FunctionComponent<GalleryProps> = ({
   gallery,
@@ -48,7 +48,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
         : (filteredGallery?.length < 1
             ? gallery?.slice(0, 9)
             : filteredGallery
-          )?.map((token: Gallery, index: number) => {
+          )?.map((token: GalleryTokens, index: number) => {
             const nameToken = token?.collectionMetadata?.title
               ?.replaceAll(" ", "-")
               .toLowerCase();
