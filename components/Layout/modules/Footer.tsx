@@ -20,7 +20,7 @@ const Footer: FunctionComponent<FooterProps> = ({
         </div>
       </div>
       <div className="relative w-full h-full flex flex-col gap-10 items-start justify-between">
-        <div className="relative h-fit w-5/6 flex items-center justify-center text-left text-xs font-glitch leading-8">
+        <div className="relative h-fit w-5/6 flex items-center justify-center text-left text-xs font-glitch leading-8 whitespace-pre-line">
           {t("prompt")}
         </div>
         <div className="relative h-fit w-fit text-sm font-futur flex items-center justify-center text-left mb-0">
