@@ -53,12 +53,14 @@ const Film: FunctionComponent<FilmProps> = ({
                   return (
                     <div
                       key={index}
-                      className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 hover:opacity-80 cursor-empireS ${
+                      className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 ${
                         index == 0
                           ? "border-y border-offBlack"
                           : index == 1 && "border-b border-offBlack"
-                      }`}
-                      onClick={() => i18n.changeLanguage(item.name)}
+                      } ${index !== 2 && "hover:opacity-80 cursor-empireS"}`}
+                      onClick={() =>
+                        index !== 2 && i18n.changeLanguage(item.name)
+                      }
                     >
                       <div className="relative w-fit h-fit flex items-center justify-center">
                         <div className="relative w-6 h-6 flex items-center justify-center">
