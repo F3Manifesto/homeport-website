@@ -134,31 +134,53 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                     <Image
                       src={`${INFURA_GATEWAY}/ipfs/${
                         [
-                          [
-                            "Vintage Americana",
-                            "QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML",
-                          ],
-                          [
-                            "Digicore Patchwork",
-                            "QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX",
-                          ],
-                          [
-                            "DIY Brutalism",
-                            "QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H",
-                          ],
-                          [
-                            "LoFi Tech Wear",
-                            "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
-                          ],
-                          [
-                            "Cottagecore Web Kitsch",
-                            "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
-                          ],
+                          {
+                            name: {
+                              es: "Americana Vintage",
+                              en: "Vintage Americana",
+                            },
+                            image:
+                              "QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML",
+                          },
+                          {
+                            name: {
+                              es: "Retazos Digicore",
+                              en: "Digicore Patchwork",
+                            },
+                            image:
+                              "QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX",
+                          },
+                          {
+                            name: {
+                              es: "Brutalismo DIY",
+                              en: "DIY Brutalism",
+                            },
+                            image:
+                              "QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H",
+                          },
+                          {
+                            name: {
+                              es: "LoFi Ropa Tec",
+                              en: "LoFi Tech Wear",
+                            },
+                            image:
+                              "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
+                          },
+                          {
+                            name: {
+                              es: "Cottagecore Web Kitsch",
+                              en: "Cottagecore Web Kitsch",
+                            },
+                            image:
+                              "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
+                          },
                         ]?.filter(
                           (value) =>
-                            value?.[0]?.toLowerCase() ==
+                            value?.name?.[
+                              router.locale as "en" | "es"
+                            ]?.toLowerCase() ==
                             item?.collectionMetadata?.style?.toLowerCase()
-                        )?.[0]?.[1]
+                        )?.[0]?.image
                       }`}
                       objectFit="contain"
                       layout="fill"

@@ -30,7 +30,7 @@ const Name: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { name } = router.query;
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation("collect");
+  const { t } = useTranslation("collect");
   const client = new LitJsSdk.LitNodeClient({
     litNetwork: "cayenne",
     debug: false,
