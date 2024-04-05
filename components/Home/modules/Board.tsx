@@ -183,7 +183,10 @@ const Board: FunctionComponent<BoardProps> = ({
               {[
                 {
                   image: "QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H",
-                  title: "D.I.Y Brutalism",
+                  title: {
+                    es: "Brutalismo D.I.Y",
+                    en: "D.I.Y Brutalism",
+                  },
                   code: "68 73 89",
                   reverse: false,
                   style: filterConstants?.styles?.[2],
@@ -192,7 +195,10 @@ const Board: FunctionComponent<BoardProps> = ({
                 },
                 {
                   image: "QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX",
-                  title: "Digicore Patchwork",
+                  title: {
+                    es: "Retazos Digicore",
+                    en: "Digicore Patchwork",
+                  },
                   code: "100 105 103 105",
                   reverse: true,
                   style: filterConstants?.styles?.[1],
@@ -201,7 +207,10 @@ const Board: FunctionComponent<BoardProps> = ({
                 },
                 {
                   image: "QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML",
-                  title: "Vintage Americana",
+                  title: {
+                    es: "Americana Vintage",
+                    en: "Vintage Americana",
+                  },
                   code: "118 105 110 116",
                   reverse: false,
                   style: filterConstants?.styles?.[0],
@@ -210,7 +219,10 @@ const Board: FunctionComponent<BoardProps> = ({
                 },
                 {
                   image: "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
-                  title: "Cottagecore Web Kitsch",
+                  title: {
+                    es: "Cottagecore Web Kitsch",
+                    en: "Cottagecore Web Kitsch",
+                  },
                   code: "119 101 98",
                   reverse: true,
                   style: filterConstants?.styles?.[4],
@@ -219,7 +231,10 @@ const Board: FunctionComponent<BoardProps> = ({
                 },
                 {
                   image: "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
-                  title: "LoFi Tech Wear",
+                  title: {
+                    es: "LoFi Ropa Tec",
+                    en: "LoFi Tech Wear",
+                  },
                   code: "108 111 102 105",
                   reverse: false,
                   style: filterConstants?.styles?.[3],
@@ -230,7 +245,10 @@ const Board: FunctionComponent<BoardProps> = ({
                 (
                   item: {
                     image: string;
-                    title: string;
+                    title: {
+                      en: string;
+                      es: string;
+                    };
                     code: string;
                     reverse: boolean;
                     style: string;
@@ -258,11 +276,19 @@ const Board: FunctionComponent<BoardProps> = ({
                           }`}</div>
                           <div className="relative w-fit h-fit flex items-start justify-center font-fira text-darkP text-md flex-col gap-1">
                             <div className="relative w-fit h-fit flex items-center justify-center">
-                              {item.title.split(" ")[0]}
+                              {
+                                item.title?.[
+                                  router?.locale as "en" | "es"
+                                ]?.split(" ")[0]
+                              }
                             </div>
                             <div className="relative font-firaB w-fit h-fit flex items-center justify-center">
-                              {item.title.substring(
-                                item.title.indexOf(" ") + 1
+                              {item.title?.[
+                                router?.locale as "en" | "es"
+                              ]?.substring(
+                                item.title?.[
+                                  router?.locale as "en" | "es"
+                                ]?.indexOf(" ") + 1
                               )}
                             </div>
                           </div>
