@@ -279,6 +279,7 @@ const Home: NextPage = (): JSX.Element => {
             filterConstants={filterConstants}
           />
           <Gallery
+            t={t}
             filteredGallery={filteredGallery}
             router={router}
             gallery={gallery}
