@@ -16,6 +16,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   lensConnected,
   openConnectModal,
   dispatch,
+  t
 }): JSX.Element => {
   if (
     filteredGallery.length === 0 &&
@@ -27,7 +28,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   ) {
     return (
       <div className="font-york text-offBlue flex items-center justify-center w-full h-fit relative">
-        Reshuffle to Find A Look.
+        {t("shuffle")}
       </div>
     );
   }
