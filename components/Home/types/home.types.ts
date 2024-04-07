@@ -45,6 +45,7 @@ export type FilmProps = {
   setClicked: (e: boolean) => void;
   t: TFunction<"common", undefined>;
   i18n: I18n;
+  router: NextRouter;
 };
 
 export interface Gallery {
