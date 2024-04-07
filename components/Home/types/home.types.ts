@@ -77,6 +77,7 @@ export interface Gallery {
 export type GalleryProps = {
   gallery: Gallery[];
   router: NextRouter;
+  t: TFunction<"common", undefined>;
   filteredGallery: Gallery[];
   galleryLoading: boolean;
   interactionLoaders: {
