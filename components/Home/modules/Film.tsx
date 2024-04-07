@@ -8,6 +8,7 @@ const Film: FunctionComponent<FilmProps> = ({
   setClicked,
   t,
   i18n,
+  router
 }): JSX.Element => {
   return (
     <div className="flex items-center justify-center h-screen w-full relative bg-offBlack">
@@ -58,9 +59,15 @@ const Film: FunctionComponent<FilmProps> = ({
                           ? "border-y border-offBlack"
                           : index == 1 && "border-b border-offBlack"
                       } ${index !== 2 && "hover:opacity-80 cursor-empireS"}`}
-                      onClick={() =>
-                        index !== 2 && i18n.changeLanguage(item.name)
-                      }
+                      onClick={() => {
+                        if (index !== 2) {
+                          i18n.changeLanguage(item.name);
+                          router.push(router.asPath, undefined, {
+                            shallow: true,
+                            locale: item.name,
+                          });
+                        }
+                      }}
                     >
                       <div className="relative w-fit h-fit flex items-center justify-center">
                         <div className="relative w-6 h-6 flex items-center justify-center">

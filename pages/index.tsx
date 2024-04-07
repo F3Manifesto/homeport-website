@@ -109,7 +109,13 @@ const Home: NextPage = (): JSX.Element => {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="canonical" href="https://f3manifesto.xyz/" />
         </Head>
-        <Film t={t} i18n={i18n} clicked={clicked} setClicked={setClicked} />
+        <Film
+          router={router}
+          t={t}
+          i18n={i18n}
+          clicked={clicked}
+          setClicked={setClicked}
+        />
         <Board
           t={t}
           router={router}
