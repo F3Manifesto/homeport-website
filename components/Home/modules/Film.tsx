@@ -63,7 +63,7 @@ const Film: FunctionComponent<FilmProps> = ({
                         if (index !== 2) {
                           i18n.changeLanguage(item.name);
                           router.push(router.asPath, undefined, {
-                            shallow: true,
+                            // shallow: true,
                             locale: item.name,
                           });
                         }
