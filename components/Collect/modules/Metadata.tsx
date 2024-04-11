@@ -179,7 +179,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             value?.name?.[
                               router.locale as "en" | "es"
                             ]?.toLowerCase() ==
-                            item?.collectionMetadata?.style?.toLowerCase()
+                              item?.collectionMetadata?.style?.toLowerCase() ||
+                            value?.name?.en?.toLowerCase() ==
+                              item?.collectionMetadata?.style?.toLowerCase()
                         )?.[0]?.image
                       }`}
                       objectFit="contain"
