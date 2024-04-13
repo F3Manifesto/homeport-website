@@ -11,6 +11,7 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
   dispatch,
   t,
 }): JSX.Element => {
+  console.log({ collectTypes });
   return (
     <div
       className={`relative rounded-md flex gap-5 w-full items-center justify-center h-full cursor-empireS`}
@@ -133,7 +134,10 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
               dropValues: availableCurrencies?.map((item) => item.symbol),
               chosenValue:
                 availableCurrencies?.find((item) => {
-                  if (item.symbol === collectTypes?.[id]?.amount?.currency) {
+                  if (
+                    item.contract.address ===
+                    collectTypes?.[id]?.amount?.currency
+                  ) {
                     return item;
                   }
                 })?.symbol! || availableCurrencies?.[0]?.symbol,
@@ -155,7 +159,9 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
                   ...(newCTs[id] || {}),
                   amount: {
                     ...(newCTs[id]?.amount || {}),
-                    currency: item,
+                    currency: availableCurrencies?.find(
+                      (val) => item == val.symbol
+                    )?.contract?.address,
                   },
                 } as any;
 
