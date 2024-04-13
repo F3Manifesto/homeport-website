@@ -133,10 +133,7 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
               dropValues: availableCurrencies?.map((item) => item.symbol),
               chosenValue:
                 availableCurrencies?.find((item) => {
-                  if (
-                    item.contract.address ===
-                    collectTypes?.[id]?.amount?.currency
-                  ) {
+                  if (item.symbol === collectTypes?.[id]?.amount?.currency) {
                     return item;
                   }
                 })?.symbol! || availableCurrencies?.[0]?.symbol,

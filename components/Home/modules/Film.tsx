@@ -41,7 +41,7 @@ const Film: FunctionComponent<FilmProps> = ({
                 },
                 {
                   image: "QmZVU5rZxU1REJHNHtScLuNgeKMoDVK4ruwuP7tSznTqUg",
-                  name: t("soon"),
+                  name: t("soon", ),
                 },
               ].map(
                 (

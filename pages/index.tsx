@@ -57,7 +57,7 @@ const Home: NextPage = (): JSX.Element => {
     galleryLoading,
     handleURL,
     setFilteredGallery,
-  } = useCollections(dispatch, router, gallery, lensProfile, prevURL);
+  } = useCollections(dispatch, router, gallery, lensProfile, prevURL, t);
   const { like, mirror, interactionLoaders } = useInteractions(
     gallery,
     filteredGallery,

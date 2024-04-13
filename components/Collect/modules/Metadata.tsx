@@ -80,7 +80,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 color: "#462D4A",
               },
               {
-                title: item?.collectionMetadata?.sex!,
+                title: t(item?.collectionMetadata?.sex?.toLowerCase() || "")!,
                 color: "#8BCDF4",
               },
               {
@@ -194,7 +194,11 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 </div>
               </div>
               <div className="relative col-start-2 w-fit h-fit text-offBlack text-base font-fira place-self-center">
-                {item?.collectionMetadata?.style}
+                {t(
+                  item?.collectionMetadata?.style
+                    ?.replaceAll(" ", "")
+                    ?.toLowerCase() ?? ""
+                )}
               </div>
             </div>
           </div>
