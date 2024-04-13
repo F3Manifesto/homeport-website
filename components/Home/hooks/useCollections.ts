@@ -8,13 +8,15 @@ import handleCollectionProfilesAndPublications from "../../../lib/helpers/handle
 import { Profile } from "../../../graphql/generated";
 import { setprevURL } from "../../../redux/reducers/prevURLSlice";
 import { Gallery } from "../types/home.types";
+import { TFunction } from "i18next";
 
 const useCollections = (
   dispatch: Dispatch,
   router: NextRouter,
   gallery: Gallery[],
   lensConnected: Profile | undefined,
-  prevURL: string
+  prevURL: string,
+  t: TFunction<"collect", undefined>
 ) => {
   const [filteredGallery, setFilteredGallery] = useState<Gallery[]>([]);
   const [galleryLoading, setGalleryLoading] = useState<boolean>(false);
@@ -75,7 +77,15 @@ const useCollections = (
     let newUrl: string = "";
 
     if (type !== "name") {
-      newValue = newValue.trim().replace(/\s+/g, "");
+      newValue = (
+        type == "sex" || type == "style"
+          ? t(newValue, {
+              lng: "en",
+            })
+          : newValue
+      )
+        .trim()
+        .replace(/\s+/g, "");
 
       let queryArray =
         queryParams

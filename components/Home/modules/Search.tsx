@@ -67,10 +67,10 @@ const Search: FunctionComponent<SearchProps> = ({
                         sex?.replaceAll(" ", "")
                       ) && "bg-lightYellow"
                     }`}
-                    title={sex}
+                    title={t(sex?.toLowerCase())}
                     onClick={() => filterURL("sex", sex)}
                   >
-                    {sex?.toUpperCase()}
+                    {t(sex?.toLowerCase())?.toUpperCase()}
                   </div>
                 </span>
               );
@@ -94,10 +94,12 @@ const Search: FunctionComponent<SearchProps> = ({
                         style?.replaceAll(" ", "")
                       ) && "bg-lightYellow"
                     }`}
-                    title={style}
+                    title={t(style?.replaceAll(" ", "")?.toLowerCase())}
                     onClick={() => filterURL("style", style)}
                   >
-                    {style?.toUpperCase()}
+                    {t(
+                      style?.replaceAll(" ", "")?.toLowerCase()
+                    )?.toUpperCase()}
                   </div>
                 </span>
               );

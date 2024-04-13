@@ -17,7 +17,7 @@
   "con2": "Conectar",
   "connected": "Conectado",
   "app": "Aprobar Gasto",
-  "coll": "Colecciona NFT",
+  "coll": "Coleccionar NFT",
   "con": "Conectar",
   "switch": "Cambiar",
   "log": "Salir",
@@ -31,7 +31,7 @@
   "no": "No",
   "amount": "Número del Premio",
   "curr": "Moneda del Premio",
-  "ref": "Referencia?",
+  "ref": "¿Referencia?",
   "edit": "¿Edición limitada?",
   "editam": "Número de la Edición",
   "24": "¿Limite de 24hrs?",
@@ -49,5 +49,12 @@
   "lens": "Conéctate al Protocolo Lens.",
   "index": "Indexado Exitosamente",
   "indexCol": "Indexando Compra",
-  "indexInt": "Indexando Interación"
+  "indexInt": "Indexando Interación",
+  "vintageamericana": "Americana Vintage",
+  "cottagecorewebkitsch": "Cottagecore Web Kitsch",
+  "diybrutalism": "Brutalismo DIY",
+  "digicorepatchwork": "Retazos Digicore",
+  "lofitechwear": "LoFi Ropa Tec",
+  "female": "MUJER",
+  "male": "HOMBRE"
 }

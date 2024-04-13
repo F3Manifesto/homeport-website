@@ -1,7 +1,7 @@
 {
   "soon": "ar (próximamente)",
-  "choose": "ELIGE UNA COLECCIÓN",
-  "filter": "FILTRA POR NOMBRE",
+  "choose": "ELIGIR UNA COLECCIÓN",
+  "filter": "FILTRAR POR NOMBRE",
   "style": "ESTILO",
   "sex": "SEXO",
   "nav": "LOS NAVEGADORES",
@@ -25,5 +25,12 @@
   "web3": "MI MODA",
   "fash": "WEB3",
   "trad": "Desde el corazón, traducciones a mano",
-  "shuffle": "Remezcla para Encontrar Un Estilo."
+  "shuffle": "Remezcla para Encontrar Un Estilo.",
+  "female": "MUJER",
+  "male": "HOMBRE",
+  "vintageamericana": "Americana Vintage",
+  "cottagecorewebkitsch": "Cottagecore Web Kitsch",
+  "diybrutalism": "Brutalismo DIY",
+  "digicorepatchwork": "Retazos Digicore",
+  "lofitechwear": "LoFi Ropa Tec"
 }
