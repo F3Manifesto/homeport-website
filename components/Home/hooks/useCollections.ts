@@ -85,7 +85,8 @@ const useCollections = (
           : newValue
       )
         .trim()
-        .replace(/\s+/g, "");
+        .replace(/\s+/g, "")
+        ?.replaceAll("’", "");
 
       let queryArray =
         queryParams
@@ -160,6 +161,7 @@ const useCollections = (
         ?.split("&")[0]
         ?.split("?")[0]
         ?.replaceAll("-", " ")
+
         ?.split("/#shopping")?.[0]
         ?.trim()
         ?.split(" ");
@@ -243,7 +245,9 @@ const useCollections = (
                   p1 ? p1 : " " + match
                 )
                 ?.toLowerCase()
-                .trim() === item?.dropMetadata?.dropTitle?.toLowerCase()
+                .trim()
+                ?.replaceAll("’", "") ===
+              item?.dropMetadata?.dropTitle?.toLowerCase()?.replaceAll("’", "")
           )
         );
       }
@@ -284,21 +288,12 @@ const useCollections = (
     }
   }, [gallery]);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && gallery?.length > 0) {
-  //     window.addEventListener("popstate", filterGallery);
-
-  //     return () => {
-  //       window.removeEventListener("popstate", filterGallery);
-  //     };
-  //   }
-  // }, [gallery?.length]);
-
   useEffect(() => {
     if (gallery?.length > 0) {
       filterGallery();
     }
   }, [router.asPath, prevURL, gallery]);
+
   return {
     shopping,
     goShopping,
