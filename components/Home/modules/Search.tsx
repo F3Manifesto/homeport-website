@@ -23,7 +23,7 @@ const Search: FunctionComponent<SearchProps> = ({
                   <div
                     className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md flex items-center justify-center ${
                       window.location.search?.includes(
-                        drop?.replaceAll(" ", "")
+                        drop?.replaceAll(" ", "")?.replaceAll("’", "")
                       ) && "bg-lightYellow"
                     }`}
                     title={drop}

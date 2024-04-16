@@ -11,7 +11,6 @@ const CollectOptions: FunctionComponent<CollectOptionsProps> = ({
   dispatch,
   t,
 }): JSX.Element => {
-  console.log({ collectTypes });
   return (
     <div
       className={`relative rounded-md flex gap-5 w-full items-center justify-center h-full cursor-empireS`}
