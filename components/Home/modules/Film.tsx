@@ -8,7 +8,7 @@ const Film: FunctionComponent<FilmProps> = ({
   setClicked,
   t,
   i18n,
-  router
+  router,
 }): JSX.Element => {
   return (
     <div className="flex items-center justify-center h-screen w-full relative bg-offBlack">
@@ -41,7 +41,15 @@ const Film: FunctionComponent<FilmProps> = ({
                 },
                 {
                   image: "QmZVU5rZxU1REJHNHtScLuNgeKMoDVK4ruwuP7tSznTqUg",
-                  name: t("soon", ),
+                  name: `ar ${t("soon")}`,
+                },
+                {
+                  image: "QmX5L5R7y2dbFM3mEqWsydsadcScebnUDdeYJW7mWirX5d",
+                  name: `he ${t("soon")}`,
+                },
+                {
+                  image: "QmRq7WA5H9ghy5qX1FuLLpj9EZvgZyWMuvsyPkGFyVG5ap",
+                  name: `br ${t("soon")}`,
                 },
               ].map(
                 (
@@ -57,10 +65,13 @@ const Film: FunctionComponent<FilmProps> = ({
                       className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 ${
                         index == 0
                           ? "border-y border-offBlack"
-                          : index == 1 && "border-b border-offBlack"
-                      } ${index !== 2 && "hover:opacity-80 cursor-empireS"}`}
+                          : index !== 4 && "border-b border-offBlack"
+                      } ${
+                        (index === 0 || index === 1) &&
+                        "hover:opacity-80 cursor-empireS"
+                      }`}
                       onClick={() => {
-                        if (index !== 2) {
+                        if (index === 0 || index === 1) {
                           i18n.changeLanguage(item.name);
                           router.push(router.asPath, undefined, {
                             // shallow: true,
