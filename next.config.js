@@ -6,7 +6,7 @@ const allowedOrigins = [
   "https://api-v2.lens.dev/",
   "https://thedial.infura-ipfs.io",
   "https://thedial.infura-ipfs.io",
-  "https://api.thegraph.com",
+  "https://gateway-arbitrum.network.thegraph.com",
   "https://arweave.net/",
   "https://gw.ipfs-lens.dev",
   "https://hey.xyz",
