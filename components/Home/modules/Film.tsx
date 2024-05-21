@@ -56,7 +56,7 @@ const Film: FunctionComponent<FilmProps> = ({
                   name: `uk ${t("soon")}`,
                 },
                 {
-                  image: "QmPe83Dqtk1BUbxZCnaPFs2hMxKcLdpsM1DfwJbz5LXMht",
+                  image: "QmdbSbop2xMqYEyYk3hErLF9nQmmsFtLSsrwzQgkad9Koo",
                   name: `fa ${t("soon")}`,
                 },
               ].map(
@@ -73,7 +73,7 @@ const Film: FunctionComponent<FilmProps> = ({
                       className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 ${
                         index == 0
                           ? "border-y border-offBlack"
-                          : index !== 4 && "border-b border-offBlack"
+                          : index !== 6 && "border-b border-offBlack"
                       } ${
                         (index === 0 || index === 1) &&
                         "hover:opacity-80 cursor-empireS"
