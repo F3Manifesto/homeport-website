@@ -85,13 +85,16 @@ export const COUNTRIES: string[] = [
 
 export const BOARD_IMAGES: string[] = [
   "QmZkDxAytc1em4HjDugaADBLQ29ke3FSrrrnThas41DzE8",
+  "Qmdti74BE3vrCsjFbaR8dcuoLqA9QYjFUHg5rJFKQYjDyW",
   "QmahxsFpuw13Yr33BYaouvf3uhUHq14dec5HPgShoLrbu6",
   "QmU8xZxDhes5c6QVzieRjdTCwQDn8CQZNpLvxSziwV1RLT",
+  "QmavSEvTBV4PjohZAz6DkAHFHCG2dMDbt2iVZGzCpNv313",
   "QmToXdYPDtkWEsgmhHKef5yXPuuXKpvmSwGKdfE8u5z5LR",
   "QmY1w74Fp9sJ3sRrUBwELJUFJsnpQroNKbYemU3pdUU8QQ",
   "QmaqTRqYrhKvQeWDEHX9NFZS1w8ZxGPDLC1hYmuCmojDnA",
   "QmdHxY7hbqwwUQHaUUhaGGspCa4JZXtm6SEmz5Q2XietQf",
   "QmavRQgQJ7DpiBEx6TA9iMqM6eswW72bHN4iRfHbymg3tA",
+  "QmUH5KCaZR3Sexx9YSSRta6rFsbhVDEuFsQnGsaM9DNnHN",
   "QmahxsFpuw13Yr33BYaouvf3uhUHq14dec5HPgShoLrbu6",
   "QmXBi2ex9QJYUzGZaWvuD1y44xYmDnSNXNfxfvbKhAppD5",
   "QmacyphkA9JZKd7TvhCmmQj5rLiU1T1uhbx6A7WbdTjrwM",
