@@ -13,6 +13,7 @@ const allowedOrigins = [
   "https://statics-v2.lens.dev",
   "https://f3manifesto.xyz",
   "https://www.f3manifesto.xyz",
+  "https://i.stack.imgur.com/uzEM4.png"
 ];
 
 const nextConfig = {

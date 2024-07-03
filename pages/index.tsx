@@ -171,7 +171,7 @@ const Home: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div
-            className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4"
+            className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4" 
             id="want"
           >
             {t("want")} <br />
