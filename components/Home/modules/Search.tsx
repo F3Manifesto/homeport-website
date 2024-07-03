@@ -15,6 +15,7 @@ const Search: FunctionComponent<SearchProps> = ({
           </div>
           <div className="relative flex flex-wrap justify-start gap-5 w-fit h-fit items-center">
             {filterConstants?.drops?.map((drop: string, index: number) => {
+
               return (
                 <span
                   className={`flex items-center justify-center border border-offBlack rounded-full border-x px-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex break-word`}
@@ -22,9 +23,18 @@ const Search: FunctionComponent<SearchProps> = ({
                 >
                   <div
                     className={`border border-offBlack relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue text-xs galaxy:text-sm lg:text-md flex items-center justify-center ${
-                      window.location.search?.includes(
-                        drop?.replaceAll(" ", "")?.replaceAll("’", "")
-                      ) && "bg-lightYellow"
+                      ((window.location.search?.includes(
+                        "%D1%84%D0%BB%D0%BE%D1%80%D0%B8%D0%B2%D0%9A%D0%B8%D1%94%D0%B2%D1%96"
+                      ) &&
+                        drop == "флори в Києві") ||
+                        (window.location.search?.includes(
+                          "%D7%92%D6%BC%D6%B0%D7%9E%D6%B7%D7%98%D6%B0%D7%A8%D6%B4%D7%99%D6%BC%D6%B8%D7%94"
+                        ) &&
+                          drop == "גְּמַטְרִיָּה") ||
+                        window.location.search?.includes(
+                          drop?.replaceAll(" ", "")?.replaceAll("’", "")
+                        )) &&
+                      "bg-lightYellow"
                     }`}
                     title={drop}
                     onClick={() => filterURL("collection", drop)}

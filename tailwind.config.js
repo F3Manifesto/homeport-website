@@ -68,6 +68,7 @@ module.exports = {
         1: "1",
         2: "2",
         3: "3",
+        
       },
       keyframes: {
         marquee: {

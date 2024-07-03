@@ -233,20 +233,21 @@ const useCollections = (
         ?.split("/#shopping")?.[0]
         ?.trim()
         ?.split(" ");
-
       if (dropSelected?.length > 0) {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : gallery
         )?.filter((item) =>
           dropSelected?.some(
             (drop) =>
-              drop
-                .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
-                  p1 ? p1 : " " + match
-                )
-                ?.toLowerCase()
-                .trim()
-                ?.replaceAll("’", "") ===
+              (drop == "флоривКиєві"
+                ? "флори в Києві"?.toLowerCase()
+                : drop
+                    .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
+                      p1 ? p1 : " " + match
+                    )
+                    ?.toLowerCase()
+                    .trim()
+                    ?.replaceAll("’", "")) ===
               item?.dropMetadata?.dropTitle?.toLowerCase()?.replaceAll("’", "")
           )
         );
