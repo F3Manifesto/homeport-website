@@ -68,7 +68,7 @@ const Footer: FunctionComponent<FooterProps> = ({
               title: t("auto"),
             },
             {
-              link: "https://twitter.com/f3manifestoo",
+              link: "https://twitter.com/f3manifesto",
               component: <BsTwitter size={30} color={"#FCF894"} />,
               title: "Twitter",
             },
