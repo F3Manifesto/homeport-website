@@ -41,11 +41,11 @@ const Film: FunctionComponent<FilmProps> = ({
                 },
                 {
                   image: "QmZVU5rZxU1REJHNHtScLuNgeKMoDVK4ruwuP7tSznTqUg",
-                  name: `ar ${t("soon")}`,
+                  name: `ع ${t("soon")}`,
                 },
                 {
                   image: "QmX5L5R7y2dbFM3mEqWsydsadcScebnUDdeYJW7mWirX5d",
-                  name: `he ${t("soon")}`,
+                  name: `א ${t("soon")}`,
                 },
                 {
                   image: "QmRq7WA5H9ghy5qX1FuLLpj9EZvgZyWMuvsyPkGFyVG5ap",
@@ -53,11 +53,11 @@ const Film: FunctionComponent<FilmProps> = ({
                 },
                 {
                   image: "QmfRNNJKQ8QxuvdjTh1u5T1JW8WCH3cfsixd5FnGNxVD1m",
-                  name: `uk ${t("soon")}`,
+                  name: `ук ${t("soon")}`,
                 },
                 {
                   image: "QmdbSbop2xMqYEyYk3hErLF9nQmmsFtLSsrwzQgkad9Koo",
-                  name: `fa ${t("soon")}`,
+                  name: `د ${t("soon")}`,
                 },
               ].map(
                 (
