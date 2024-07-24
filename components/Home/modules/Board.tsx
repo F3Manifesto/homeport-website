@@ -130,7 +130,7 @@ const Board: FunctionComponent<BoardProps> = ({
           </div>
         </div>
         <div className="relative w-full 2xl:w-full xl:w-fit flex items-center justify-between grow flex-col gap-7 bg-gradient-to-r from-grad1 via-grad2 to-grad3 border-2 border-borderBlue py-3 xl:min-h-full xl:h-auto">
-          <div className="relative w-full h-fit flex items-center justify-center flex-row gap-7 flex-wrap">
+          <div className="relative w-3/4 h-fit flex items-center justify-center flex-row gap-7 flex-wrap">
             {[
               {
                 image: "QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC",
