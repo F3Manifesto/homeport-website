@@ -233,6 +233,7 @@ const useCollections = (
         ?.split("/#shopping")?.[0]
         ?.trim()
         ?.split(" ");
+      console.log({ dropSelected });
       if (dropSelected?.length > 0) {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : gallery
@@ -241,6 +242,8 @@ const useCollections = (
             (drop) =>
               (drop == "флоривКиєві"
                 ? "флори в Києві"?.toLowerCase()
+                : drop == "زن،زندگی،آزادی"
+                ? "زن، زندگی، آزادی"
                 : drop
                     .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
                       p1 ? p1 : " " + match
