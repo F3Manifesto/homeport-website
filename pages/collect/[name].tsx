@@ -23,14 +23,14 @@ import Quotes from "../../components/Collect/modules/Quotes";
 import Comments from "../../components/Collect/modules/Comments";
 import useCheckout from "../../components/Collect/hooks/useCheckout";
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
-import { useTranslation } from "next-i18next";
+import { useTranslation, withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Name: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { name } = router.query;
   const dispatch = useDispatch();
-  const { t } = useTranslation("collect");
+  const { t, i18n } = useTranslation("collect");
   const client = new LitJsSdk.LitNodeClient({
     litNetwork: "cayenne",
     debug: false,
@@ -179,6 +179,14 @@ const Name: React.FC = (): JSX.Element => {
 
     return () => clearTimeout(timeoutId);
   }, [collectionLoading, commentsLoading]);
+
+  useEffect(() => {
+    const loadTranslations = async () => {
+      await i18n.loadNamespaces("common");
+    };
+    loadTranslations();
+  }, [i18n]);
+
   return (
     <div className="flex h-full min-h-screen w-full relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-gradient-to-b from-lightY via-white to-lightPurple items-start justify-center">
       <Head>
@@ -450,7 +458,7 @@ const Name: React.FC = (): JSX.Element => {
   );
 };
 
-export default Name;
+export default withTranslation()(Name);
 
 export async function getStaticPaths() {
   return {
