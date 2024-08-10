@@ -59,6 +59,14 @@ const Film: FunctionComponent<FilmProps> = ({
                   image: "QmdbSbop2xMqYEyYk3hErLF9nQmmsFtLSsrwzQgkad9Koo",
                   name: `د ${t("soon")}`,
                 },
+                {
+                  image: "QmXzFXL5rxoqUei2X2rVEMZ5a91d4U6ommUBq4XeFHsA5k",
+                  name: `あ ${t("soon")}`,
+                },
+                {
+                  image: "QmSG2wdnpEB8xnfmqM7gVhM6BiA2m9GhSJwXSVkQ9JXT3Z",
+                  name: `yi ${t("soon")}`,
+                },
               ].map(
                 (
                   item: {
@@ -73,7 +81,7 @@ const Film: FunctionComponent<FilmProps> = ({
                       className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 ${
                         index == 0
                           ? "border-y border-offBlack"
-                          : index !== 6 && "border-b border-offBlack"
+                          : index !== 8 && "border-b border-offBlack"
                       } ${
                         (index === 0 || index === 1) &&
                         "hover:opacity-80 cursor-empireS"
