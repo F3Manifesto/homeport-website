@@ -15,6 +15,7 @@ import Modals from "../components/Modals/modules/Modals";
 import { useRouter } from "next/router";
 import RouterChange from "../components/Layout/modules/RouterChange";
 import { FACTORY_RANDOM } from "../lib/constants";
+import { DefaultSeo } from "next-seo";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [polygon],
@@ -115,9 +116,27 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains}>
         <Provider store={store}>
           <div className="h-fit w-full bg-black relative cursor-empire selection:bg-lightYellow selection:text-lightYellow overflow-x-hidden flex flex-col">
+            <DefaultSeo
+              title="F3Manifesto"
+              description="Transcendent nostalgia. Machine & human made. In with gen. AI, web3 fashion & cc0 before it was cool. زن، زندگی، آزادی"
+              openGraph={{
+                type: "website",
+                url: "https://www.f3manifesto.xyz/",
+                site_name: "F3Manifesto",
+              }}
+              twitter={{
+                handle: "@f3manifesto",
+                site: "@f3manifesto",
+                cardType: "summary_large_image",
+              }}
+            />
             <Component {...pageProps} />
             <Modals />
             <Footer randomFactory={randomFactory} />
+            <div style={{ display: "none" }}>
+              Web3, Web3 Fashion, Moda Web3, Open Source, CC0, Emma-Jane
+              MacKinnon-Lee, Open Source LLMs, DIGITALAX
+            </div>
           </div>
         </Provider>
       </RainbowKitProvider>
