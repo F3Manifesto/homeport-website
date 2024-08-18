@@ -85,7 +85,7 @@ const Film: FunctionComponent<FilmProps> = ({
                       className={`relative w-full h-12 flex items-center px-2 justify-center flex-row gap-2 ${
                         index == 0
                           ? "border-y border-offBlack"
-                          : index !== 8 && "border-b border-offBlack"
+                          : index !== 9 && "border-b border-offBlack"
                       } ${
                         (index === 0 || index === 1) &&
                         "hover:opacity-80 cursor-empireS"
