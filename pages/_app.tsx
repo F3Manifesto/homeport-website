@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import RouterChange from "../components/Layout/modules/RouterChange";
 import { FACTORY_RANDOM } from "../lib/constants";
 import { DefaultSeo } from "next-seo";
+import Head from "next/head";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [polygon],
@@ -130,14 +131,30 @@ function MyApp({ Component, pageProps }: AppProps) {
                 cardType: "summary_large_image",
               }}
             />
+            <Head>
+              <meta
+                name="keywords"
+                content="Web3, Web3 Fashion, Moda Web3, Open Source, CC0, Emma-Jane MacKinnon-Lee, Open Source LLMs, DIGITALAX, F3Manifesto, www.digitalax.xyz, www.f3manifesto.xyz, Women, Life, Freedom."
+              />
+              <meta name="robots" content="index, follow" />
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    name: "Synthetic Futures",
+                    description:
+                      "Web3, Web3 Fashion, Moda Web3, Open Source, CC0, Emma-Jane MacKinnon-Lee, Open Source LLMs, DIGITALAX, F3Manifesto, www.digitalax.xyz, www.f3manifesto.xyz, Women, Life, Freedom.",
+                    url: "https://www.syntheticfutures.xyz/",
+                  }),
+                }}
+              ></script>
+            </Head>
+
             <Component {...pageProps} />
             <Modals />
             <Footer randomFactory={randomFactory} />
-            <div style={{ display: "none" }}>
-              Web3, Web3 Fashion, Moda Web3, Open Source, CC0, Emma-Jane
-              MacKinnon-Lee, Open Source LLMs, DIGITALAX, F3Manifesto,
-              www.digitalax.xyz, www.f3manifesto.xyz, Women, Life, Freedom.
-            </div>
           </div>
         </Provider>
       </RainbowKitProvider>
