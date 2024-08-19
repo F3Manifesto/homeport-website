@@ -143,10 +143,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                   __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "WebSite",
-                    name: "Synthetic Futures",
+                    name: "F3Manifesto",
                     description:
                       "Web3, Web3 Fashion, Moda Web3, Open Source, CC0, Emma-Jane MacKinnon-Lee, Open Source LLMs, DIGITALAX, F3Manifesto, www.digitalax.xyz, www.f3manifesto.xyz, Women, Life, Freedom.",
-                    url: "https://www.syntheticfutures.xyz/",
+                    url: "https://www.f3manifesto.xyz/",
                   }),
                 }}
               ></script>
