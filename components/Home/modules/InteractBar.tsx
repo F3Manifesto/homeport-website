@@ -25,6 +25,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
   hideCollect,
   absolute,
   main,
+  isekai,
 }): JSX.Element => {
   return (
     <div
@@ -60,9 +61,16 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
                   main,
                   false
                 )
-              : (like as (id: string, hasReacted: boolean) => Promise<void>)(
+              : (
+                  like as (
+                    id: string,
+                    hasReacted: boolean,
+                    isekai: boolean
+                  ) => Promise<void>
+                )(
                   token?.publication?.id,
-                  token?.publication?.operations?.hasReacted!
+                  token?.publication?.operations?.hasReacted!,
+                  isekai || false
                 ),
           loader: interactionLoaders?.[index]?.like,
           name: "Like",
@@ -88,8 +96,9 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
                     quote: boolean
                   ) => Promise<void>
                 )(token?.publication?.id, main, false)
-              : (mirror as (id: string) => Promise<void>)(
-                  token?.publication?.id
+              : (mirror as (id: string, isekai: boolean) => Promise<void>)(
+                  token?.publication?.id,
+                  isekai || false
                 ),
           loader: interactionLoaders?.[index]?.mirror,
           name: "Mirror",

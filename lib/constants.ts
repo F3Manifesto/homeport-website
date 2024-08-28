@@ -225,3 +225,16 @@ export const FACTORY_RANDOM: string[] = [
   "QmcgD8UxHD1pEnL3Z1RWFDkknScJPSYrPqmXcq1mSwNToj",
   "QmW7RruyDraa6A3iQ6qNCroSxqzWdQEWMM1YY3zEHjCZ5n",
 ];
+
+export const IDIOMAS: string[] = [
+"English",
+"Spanish",
+"Portuguese",
+"Arabic",
+"Farsi",
+"Hebrew",
+"Yiddish",
+"Japanese",
+"French",
+"Ukranian"
+]

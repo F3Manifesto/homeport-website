@@ -127,3 +127,4 @@ export const getAllCollections = async (
     return result;
   }
 };
+

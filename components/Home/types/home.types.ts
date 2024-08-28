@@ -12,7 +12,7 @@ export type SidebarProps = {
 export type InteractBarProps = {
   token: Gallery;
   like:
-    | ((id: string, hasReacted: boolean) => Promise<void>)
+    | ((id: string, hasReacted: boolean, isekai: boolean) => Promise<void>)
     | ((
         id: string,
         hasReacted: boolean,
@@ -21,7 +21,7 @@ export type InteractBarProps = {
       ) => Promise<void>);
   dispatch: Dispatch<Action>;
   mirror:
-    | ((id: string) => Promise<void>)
+    | ((id: string, isekai: boolean) => Promise<void>)
     | ((id: string, main: boolean, quote: boolean) => Promise<void>);
   router: NextRouter;
   index: number;
@@ -38,6 +38,7 @@ export type InteractBarProps = {
   hideCollect?: () => void;
   absolute?: boolean;
   main: boolean;
+  isekai?: boolean;
 };
 
 export type FilmProps = {
@@ -85,12 +86,30 @@ export type GalleryProps = {
     like: boolean;
     mirror: boolean;
   }[];
-  mirror: (id: string) => Promise<void>;
-  like: (id: string, hasReacted: boolean) => Promise<void>;
+  mirror: (id: string, isekai: boolean) => Promise<void>;
+  like: (id: string, hasReacted: boolean, isekai: boolean) => Promise<void>;
   connected: boolean;
   lensConnected: Profile | undefined;
   openConnectModal: (() => void) | undefined;
   dispatch: Dispatch<AnyAction>;
+};
+
+export type IsekaiGalleryProps = {
+  router: NextRouter;
+  t: TFunction<"common", undefined>;
+  filteredGallery: Gallery[];
+  galleryLoading: boolean;
+  interactionLoaders: {
+    like: boolean;
+    mirror: boolean;
+  }[];
+  mirror: (id: string, isekai: boolean) => Promise<void>;
+  like: (id: string, hasReacted: boolean, isekai: boolean) => Promise<void>;
+  connected: boolean;
+  lensConnected: Profile | undefined;
+  openConnectModal: (() => void) | undefined;
+  dispatch: Dispatch<AnyAction>;
+  isekaiDrops: { image: string; title: string }[];
 };
 
 export type SearchProps = {
@@ -99,6 +118,11 @@ export type SearchProps = {
     styles: string[];
     drops: string[];
   };
+  t: TFunction<"common", undefined>;
+  filterURL: (type: string, newValue: string) => void;
+};
+
+export type IsekaiSearchProps = {
   t: TFunction<"common", undefined>;
   filterURL: (type: string, newValue: string) => void;
 };

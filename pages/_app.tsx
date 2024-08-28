@@ -151,7 +151,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 }}
               ></script>
             </Head>
-
             <Component {...pageProps} />
             <Modals />
             <Footer randomFactory={randomFactory} />

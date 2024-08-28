@@ -130,7 +130,7 @@ const Board: FunctionComponent<BoardProps> = ({
           </div>
         </div>
         <div className="relative w-full 2xl:w-full xl:w-fit flex items-center justify-between grow flex-col gap-7 bg-gradient-to-r from-grad1 via-grad2 to-grad3 border-2 border-borderBlue py-3 xl:min-h-full xl:h-auto">
-          <div className="relative w-3/4 h-fit flex items-center justify-center flex-row gap-7 flex-wrap">
+          <div className="relative w-3/4 h-fit flex items-center justify-center flex-row gap-5 flex-wrap">
             {[
               {
                 image: "QmQVaJCzQ4uYUYKGAzHNy3rXpiygF1B2PSsYpvoWVspcKC",
@@ -157,6 +157,11 @@ const Board: FunctionComponent<BoardProps> = ({
                 title: "Synthetic Futures",
                 link: "https://syntheticfutures.xyz",
               },
+              {
+                title: "Boudica",
+                image: "QmerLASHD3GJTk87LYgVPY3ecSDxMsQ4DbNEowdTSr3ZvB",
+                link: "https://boudica.emancipa.xyz",
+              },
             ].map(
               (
                 item: {
@@ -169,7 +174,7 @@ const Board: FunctionComponent<BoardProps> = ({
                 return (
                   <div
                     key={index}
-                    className={`relative h-12 w-12 rounded-full flex cursor-empireS hover:rotate-12 items-center justify-center ${
+                    className={`relative h-10 w-10 rounded-full flex cursor-empireS hover:rotate-12 items-center justify-center ${
                       index !== 0 && "border-2 border-black"
                     }`}
                     onClick={() => window.open(item.link)}

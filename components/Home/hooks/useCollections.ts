@@ -9,16 +9,21 @@ import { Profile } from "../../../graphql/generated";
 import { setprevURL } from "../../../redux/reducers/prevURLSlice";
 import { Gallery } from "../types/home.types";
 import { TFunction } from "i18next";
+import { setIsekaiGallery } from "../../../redux/reducers/isekaiGallerySlice";
 
 const useCollections = (
   dispatch: Dispatch,
   router: NextRouter,
   gallery: Gallery[],
+  isekaiGallery: Gallery[],
   lensConnected: Profile | undefined,
   prevURL: string,
   t: TFunction<"collect", undefined>
 ) => {
   const [filteredGallery, setFilteredGallery] = useState<Gallery[]>([]);
+  const [filteredIsekaiGallery, setFilteredIsekaiGallery] = useState<Gallery[]>(
+    []
+  );
   const [galleryLoading, setGalleryLoading] = useState<boolean>(false);
   const shopping = useRef<null | HTMLDivElement>(null);
   const goShopping = (): void => {
@@ -33,17 +38,29 @@ const useCollections = (
       const sexesSet = new Set<string>();
       const stylesSet = new Set<string>();
       const dropsSet = new Set<string>();
+      const portalsSet = new Set<{ title: string; image: string }>();
 
       const colls = await handleCollectionProfilesAndPublications(
         returned?.data?.collectionCreateds,
         lensConnected
       );
 
-      dispatch(
-        setAllGallery(colls?.sort(() => 0.5 - Math.random()) as Gallery[])
+      const todo = colls?.filter(
+        (col) =>
+          !col.dropMetadata?.dropTitle?.toLowerCase()?.includes("isekai -")
+      );
+      const isekai = colls?.filter((col) =>
+        col.dropMetadata?.dropTitle?.toLowerCase()?.includes("isekai -")
       );
 
-      colls?.forEach((item: any) => {
+      dispatch(
+        setAllGallery(todo?.sort(() => 0.5 - Math.random()) as Gallery[])
+      );
+      dispatch(
+        setIsekaiGallery(isekai?.sort(() => 0.5 - Math.random()) as Gallery[])
+      );
+
+      todo?.forEach((item: any) => {
         if (item.collectionMetadata?.sex) {
           sexesSet.add(item.collectionMetadata.sex);
         }
@@ -54,11 +71,22 @@ const useCollections = (
           dropsSet.add(item.dropMetadata.dropTitle);
         }
       });
+
+      isekai?.forEach((item: any) => {
+        if (item.dropMetadata?.dropTitle) {
+          portalsSet.add({
+            title: item.dropMetadata.dropTitle,
+            image: item.dropMetadata.dropCover,
+          });
+        }
+      });
+
       dispatch(
         setFilterConstants({
           sexes: Array.from(sexesSet),
           styles: Array.from(stylesSet),
           drops: Array.from(dropsSet),
+          portals: Array.from(portalsSet),
         })
       );
     } catch (err: any) {
@@ -98,7 +126,11 @@ const useCollections = (
       if (queryArray.includes(newValue)) {
         queryArray = queryArray.filter((item) => item !== newValue);
       } else if (newValue !== "") {
-        queryArray.push(newValue);
+        if (type == "portal") {
+          queryArray[0] = newValue;
+        } else {
+          queryArray.push(newValue);
+        }
       }
 
       if (queryArray.length === 0) {
@@ -233,7 +265,6 @@ const useCollections = (
         ?.split("/#shopping")?.[0]
         ?.trim()
         ?.split(" ");
-      console.log({ dropSelected });
       if (dropSelected?.length > 0) {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : gallery
@@ -286,6 +317,49 @@ const useCollections = (
     setFilteredGallery(galleryFiltered);
   };
 
+  const filterIsekaiGallery = () => {
+    let galleryFiltered: Gallery[] = [];
+
+    if (
+      (prevURL && prevURL?.trim() !== ""
+        ? prevURL
+        : window.location.search + window.location.hash
+      )?.includes("portal=")
+    ) {
+      const portalSelected: string[] = (
+        prevURL && prevURL?.trim() !== ""
+          ? prevURL
+          : window.location.search + window.location.hash
+      )
+        ?.split("portal=")[1]
+        ?.split("&")[0]
+        ?.split("?")[0]
+        ?.replaceAll("-", " ")
+        ?.split("/#shopping")?.[0]
+        ?.trim()
+        ?.split(" ");
+      if (portalSelected?.length > 0) {
+        galleryFiltered = (
+          galleryFiltered?.length > 0 ? galleryFiltered : isekaiGallery
+        )?.filter((item) =>
+          portalSelected?.some(
+            (portal) =>
+              portal
+                .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
+                  p1 ? p1 : " " + match
+                )
+                ?.toLowerCase()
+                .trim()
+                ?.replaceAll("’", "") ===
+              item?.dropMetadata?.dropTitle?.toLowerCase()?.replaceAll("’", "")
+          )
+        );
+      }
+    }
+
+    setFilteredIsekaiGallery(galleryFiltered);
+  };
+
   useEffect(() => {
     if (gallery?.length < 1) {
       getAllGallery();
@@ -298,6 +372,12 @@ const useCollections = (
     }
   }, [router.asPath, prevURL, gallery]);
 
+  useEffect(() => {
+    if (isekaiGallery?.length > 0) {
+      filterIsekaiGallery();
+    }
+  }, [router.asPath, prevURL, isekaiGallery]);
+
   return {
     shopping,
     goShopping,
@@ -305,6 +385,8 @@ const useCollections = (
     galleryLoading,
     handleURL,
     setFilteredGallery,
+    filteredIsekaiGallery,
+    setFilteredIsekaiGallery,
   };
 };
 

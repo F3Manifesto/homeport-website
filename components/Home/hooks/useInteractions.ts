@@ -9,12 +9,16 @@ import lensLike from "../../../lib/helpers/lensLike";
 import { setAllGallery } from "../../../redux/reducers/allGallerySlice";
 import { Gallery } from "../types/home.types";
 import { TFunction } from "i18next";
+import { setIsekaiGallery } from "../../../redux/reducers/isekaiGallerySlice";
 
 const useInteractions = (
   gallery: Gallery[],
   filteredGallery: Gallery[] | undefined,
+  isekaiGallery: Gallery[],
+  filteredIsekaiGallery: Gallery[] | undefined,
   dispatch: Dispatch,
   setFilteredGallery: (e: SetStateAction<Gallery[]>) => void,
+  setFilteredIsekaiGallery: (e: SetStateAction<Gallery[]>) => void,
   lensConnected: Profile | undefined,
   publicClient: PublicClient,
   address: `0x${string}` | undefined,
@@ -26,17 +30,29 @@ const useInteractions = (
       like: boolean;
     }[]
   >([]);
+  const [isekaiInteractionLoaders, setIsekaiInteractionLoaders] = useState<
+    {
+      mirror: boolean;
+      like: boolean;
+    }[]
+  >([]);
 
-  const mirror = async (id: string) => {
+  const mirror = async (id: string, isekai: boolean) => {
     if (!lensConnected?.id) return;
 
     const index = (
-      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+      isekai
+        ? filteredIsekaiGallery && filteredIsekaiGallery?.length > 0
+          ? filteredIsekaiGallery
+          : isekaiGallery
+        : filteredGallery && filteredGallery?.length > 0
+        ? filteredGallery
+        : gallery
     )?.findIndex((item) => item?.publication?.id == id);
 
     if (index == -1) return;
 
-    setInteractionLoaders((prev) => {
+    (isekai ? setIsekaiInteractionLoaders : setInteractionLoaders)((prev) => {
       const updatedArray = [...prev];
       updatedArray[index!] = { ...updatedArray[index!], mirror: true };
       return updatedArray;
@@ -61,7 +77,8 @@ const useInteractions = (
           hasMirrored: true,
         },
         "mirrors",
-        true
+        true,
+        isekai
       );
     } catch (err: any) {
       errorChoice(
@@ -73,30 +90,37 @@ const useInteractions = (
               hasMirrored: true,
             },
             "mirrors",
-            true
+            true,
+            isekai
           ),
         dispatch,
         t
       );
     }
 
-    setInteractionLoaders((prev) => {
+    (isekai ? setIsekaiInteractionLoaders : setInteractionLoaders)((prev) => {
       const updatedArray = [...prev];
       updatedArray[index!] = { ...updatedArray[index!], mirror: false };
       return updatedArray;
     });
   };
 
-  const like = async (id: string, hasReacted: boolean) => {
+  const like = async (id: string, hasReacted: boolean, isekai: boolean) => {
     if (!lensConnected?.id) return;
 
     const index = (
-      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+      isekai
+        ? filteredIsekaiGallery && filteredIsekaiGallery?.length > 0
+          ? filteredIsekaiGallery
+          : isekaiGallery
+        : filteredGallery && filteredGallery?.length > 0
+        ? filteredGallery
+        : gallery
     )?.findIndex((item) => item?.publication?.id == id);
 
     if (index == -1) return;
 
-    setInteractionLoaders((prev) => {
+    (isekai ? setIsekaiInteractionLoaders : setInteractionLoaders)((prev) => {
       const updatedArray = [...prev];
       updatedArray[index!] = { ...updatedArray[index!], like: true };
       return updatedArray;
@@ -109,7 +133,8 @@ const useInteractions = (
           hasReacted: hasReacted ? false : true,
         },
         "reactions",
-        hasReacted ? false : true
+        hasReacted ? false : true,
+        isekai
       );
     } catch (err: any) {
       errorChoice(
@@ -121,14 +146,15 @@ const useInteractions = (
               hasReacted: hasReacted ? false : true,
             },
             "reactions",
-            hasReacted ? false : true
+            hasReacted ? false : true,
+            isekai
           ),
         dispatch,
         t
       );
     }
 
-    setInteractionLoaders((prev) => {
+    (isekai ? setIsekaiInteractionLoaders : setInteractionLoaders)((prev) => {
       const updatedArray = [...prev];
       updatedArray[index!] = { ...updatedArray[index!], like: false };
       return updatedArray;
@@ -139,10 +165,17 @@ const useInteractions = (
     index: number,
     valueToUpdate: Object,
     statToUpdate: string,
-    increase: boolean
+    increase: boolean,
+    isekai: boolean
   ) => {
     const newItems = (
-      filteredGallery && filteredGallery?.length > 0 ? filteredGallery : gallery
+      isekai
+        ? filteredIsekaiGallery && filteredIsekaiGallery?.length > 0
+          ? filteredIsekaiGallery
+          : isekaiGallery
+        : filteredGallery && filteredGallery?.length > 0
+        ? filteredGallery
+        : gallery
     ).map((item, idx) => {
       if (idx === index) {
         return {
@@ -166,7 +199,11 @@ const useInteractions = (
       return item;
     });
 
-    filteredGallery && filteredGallery?.length > 0
+    isekai
+      ? filteredIsekaiGallery && filteredIsekaiGallery?.length > 0
+        ? setFilteredIsekaiGallery(newItems as Gallery[])
+        : dispatch(setIsekaiGallery(newItems as Gallery[]))
+      : filteredGallery && filteredGallery?.length > 0
       ? setFilteredGallery(newItems as Gallery[])
       : dispatch(setAllGallery(newItems as Gallery[]));
   };
@@ -180,12 +217,22 @@ const useInteractions = (
         }))
       );
     }
-  }, [gallery]);
+
+    if (isekaiGallery?.length > 0) {
+      setIsekaiInteractionLoaders(
+        Array.from({ length: isekaiGallery?.length }, () => ({
+          like: false,
+          mirror: false,
+        }))
+      );
+    }
+  }, [gallery, isekaiGallery]);
 
   return {
     interactionLoaders,
     mirror,
     like,
+    isekaiInteractionLoaders,
   };
 };
 

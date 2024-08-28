@@ -17,6 +17,7 @@ import followCollectReducer from "./reducers/followCollectSlice";
 import availableCurrenciesReducer from "./reducers/availableCurrenciesSlice";
 import insufficientBalanceReducer from "./reducers/insufficientBalanceSlice";
 import successCheckoutReducer from "./reducers/successCheckoutSlice";
+import isekaiGalleryReducer from "./reducers/isekaiGallerySlice";
 
 const reducer = combineReducers({
   walletConnectedReducer,
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   oracleDataReducer,
   ImageLargeReducer,
   allGalleryReducer,
+  isekaiGalleryReducer,
   filterConstantsReducer,
   indexerReducer,
   interactErrorReducer,

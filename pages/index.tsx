@@ -21,6 +21,8 @@ import Gallery from "../components/Home/modules/Gallery";
 import Marquee from "react-fast-marquee";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Isekai from "../components/Home/modules/Isekai";
+import IsekaiGallery from "../components/Home/modules/IsekaiGallery";
 
 const Home: NextPage = (): JSX.Element => {
   const router = useRouter();
@@ -41,6 +43,9 @@ const Home: NextPage = (): JSX.Element => {
   const gallery = useSelector(
     (state: RootState) => state.app.allGalleryReducer.gallery
   );
+  const isekaiGallery = useSelector(
+    (state: RootState) => state.app.isekaiGalleryReducer.gallery
+  );
   const walletConnected = useSelector(
     (state: RootState) => state.app.walletConnectedReducer.value
   );
@@ -57,17 +62,31 @@ const Home: NextPage = (): JSX.Element => {
     galleryLoading,
     handleURL,
     setFilteredGallery,
-  } = useCollections(dispatch, router, gallery, lensProfile, prevURL, t);
-  const { like, mirror, interactionLoaders } = useInteractions(
-    gallery,
-    filteredGallery,
+    filteredIsekaiGallery,
+    setFilteredIsekaiGallery,
+  } = useCollections(
     dispatch,
-    setFilteredGallery,
+    router,
+    gallery,
+    isekaiGallery,
     lensProfile,
-    publicClient,
-    address,
-    tCollect
+    prevURL,
+    t
   );
+  const { like, mirror, interactionLoaders, isekaiInteractionLoaders } =
+    useInteractions(
+      gallery,
+      filteredGallery,
+      isekaiGallery,
+      filteredIsekaiGallery,
+      dispatch,
+      setFilteredGallery,
+      setFilteredIsekaiGallery,
+      lensProfile,
+      publicClient,
+      address,
+      tCollect
+    );
   const {
     clicked,
     setClicked,
@@ -171,7 +190,7 @@ const Home: NextPage = (): JSX.Element => {
             </div>
           </div>
           <div
-            className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4" 
+            className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4"
             id="want"
           >
             {t("want")} <br />
@@ -297,6 +316,29 @@ const Home: NextPage = (): JSX.Element => {
             openConnectModal={openConnectModal}
             mirror={mirror}
             like={like}
+          />
+        </div>
+        <div className="w-full h-fit flex items-center justify-center relative flex-col cursor-empireA bg-offBlack px-4 pb-14 pt-20 text-white gap-4">
+          <div className="relative w-full h-fit break-words text-4xl md:text-6xl font-emiken">
+            {t("isekai")}
+          </div>
+          <div className="relative w-full h-fit text-sm preG:text-md md:text-xl font-conso">
+            {t("portal")}
+          </div>
+          <Isekai t={t} filterURL={handleURL} />
+          <IsekaiGallery
+            t={t}
+            filteredGallery={filteredIsekaiGallery}
+            router={router}
+            galleryLoading={galleryLoading}
+            interactionLoaders={isekaiInteractionLoaders}
+            connected={walletConnected}
+            lensConnected={lensProfile}
+            dispatch={dispatch}
+            openConnectModal={openConnectModal}
+            mirror={mirror}
+            like={like}
+            isekaiDrops={filterConstants?.portals}
           />
         </div>
         <div className="relative w-full h-[275vh] flex bg-offWhite items-center justify-center">

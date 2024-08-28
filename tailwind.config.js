@@ -109,6 +109,7 @@ module.exports = {
         midi: "1140px",
         half: "900px",
         alm: "740px",
+        preG: "450px",
         galaxy: "350px",
         wide: "1280px",
         equ: "1200px",

@@ -5,6 +5,7 @@ export interface FilterConstantsState {
     sexes: string[];
     styles: string[];
     drops: string[];
+    portals: { title: string; image: string }[];
   };
 }
 
@@ -13,6 +14,7 @@ const initialFilterConstantsState: FilterConstantsState = {
     sexes: [],
     styles: [],
     drops: [],
+    portals: [],
   },
 };
 
@@ -26,6 +28,7 @@ export const filterConstantsSlice = createSlice({
         sexes: string[];
         styles: string[];
         drops: string[];
+        portals: { title: string; image: string }[];
       }>
     ) => {
       state.constants = action.payload;

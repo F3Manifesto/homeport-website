@@ -1,6 +1,6 @@
 {
   "soon": "(próximamente)",
-  "choose": "ELEGIR UNA COLECCIÓN",
+  "choose": "ELEGIR UNA COLECCIÓN.",
   "filter": "FILTRAR POR NOMBRE",
   "style": "ESTILO",
   "sex": "SEXO",
@@ -26,11 +26,24 @@
   "fash": "WEB3",
   "trad": "Desde el corazón, traducciones a mano",
   "shuffle": "Remezcle para Encontrar Un Estilo.",
+  "mait": "Portal en Mantenimiento, ¿Probar Otro?",
   "female": "MUJER",
   "male": "HOMBRE",
   "vintageamericana": "Americana Vintage",
   "cottagecorewebkitsch": "Cottagecore Web Kitsch",
   "diybrutalism": "Brutalismo DIY",
   "digicorepatchwork": "Retazos Digicore",
-  "lofitechwear": "LoFi Ropa Tec"
+  "lofitechwear": "LoFi Ropa Tec",
+  "isekai": "DÁTE UN ISEKAI.",
+  "portal": "ELIGE UN PORTAL.",
+  "English": "Ingles",
+  "Spanish": "Español",
+  "Portuguese": "Portugués",
+  "Arabic": "Árabe",
+  "Farsi": "Farsi",
+  "Hebrew": "Hebreo",
+  "Yiddish": "Yiddish",
+  "Japanese": "Japonés",
+  "French": "Francés",
+  "Ukranian": "Ucraniano"
 }

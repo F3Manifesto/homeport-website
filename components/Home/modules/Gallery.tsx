@@ -27,7 +27,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
       window.location.search?.includes("name"))
   ) {
     return (
-      <div className="font-york text-offBlue flex items-center justify-center w-full h-fit relative">
+      <div className="font-york text-offBlack flex items-center justify-center w-full h-fit relative">
         {t("shuffle")}
       </div>
     );
@@ -35,7 +35,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
   return (
     <div className="relative w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-fit grid-flow-row gap-4 items-center">
       {galleryLoading
-        ? Array.from({ length: 9 })?.map((_, index: number) => {
+        ? Array.from({ length: 15 })?.map((_, index: number) => {
             return (
               <div
                 key={index}
@@ -47,7 +47,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
             );
           })
         : (filteredGallery?.length < 1
-            ? gallery?.slice(0, 9)
+            ? gallery?.slice(0, 15)
             : filteredGallery
           )?.map((token: GalleryTokens, index: number) => {
             const nameToken = token?.collectionMetadata?.title
