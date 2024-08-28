@@ -24,7 +24,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
   if (
     !galleryLoading &&
     filteredGallery?.length < 1 &&
-    window.location.search?.includes("?portal=")
+    window.location.search?.includes("portal=")
   ) {
     return (
       <div className="font-york pt-6 text-white flex items-center justify-center w-full h-fit relative">
@@ -45,7 +45,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
             );
           })
         : (filteredGallery?.length < 1 &&
-          !window.location.search?.includes("?portal=")
+          !window.location.search?.includes("portal=")
             ? isekaiDrops
             : filteredGallery
           )?.map(
@@ -58,12 +58,12 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                   key={(token as GalleryTokens)?.pubId}
                   className={`h-40 galaxy:h-80 w-full border border-lightYellow relative flex items-center justify-center bg-lightYellow ${
                     filteredGallery?.length > 0 &&
-                    window.location.search?.includes("?portal=") &&
+                    window.location.search?.includes("portal=") &&
                     "cursor-empireS"
                   }`}
                   onClick={() =>
                     filteredGallery?.length > 0 &&
-                    window.location.search?.includes("?portal=") &&
+                    window.location.search?.includes("portal=") &&
                     router.push(
                       `/collect/${(
                         token as GalleryTokens
@@ -83,14 +83,14 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                       draggable={false}
                       alt={
                         filteredGallery?.length > 0 &&
-                        window.location.search?.includes("?portal=")
+                        window.location.search?.includes("portal=")
                           ? (token as GalleryTokens)?.collectionMetadata?.title
                           : (token as { image: string; title: string }).title
                       }
                       objectPosition="top"
                       src={`${INFURA_GATEWAY}/ipfs/${
                         (filteredGallery?.length > 0 &&
-                        window.location.search?.includes("?portal=")
+                        window.location.search?.includes("portal=")
                           ? (token as GalleryTokens)?.collectionMetadata
                               ?.images?.[0]
                           : (token as { image: string; title: string }).image
@@ -98,7 +98,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                       }`}
                     />
                     {filteredGallery?.length > 0 &&
-                      window.location.search?.includes("?portal=") && (
+                      window.location.search?.includes("portal=") && (
                         <InteractBar
                           token={token as GalleryTokens}
                           like={like}
