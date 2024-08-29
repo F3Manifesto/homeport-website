@@ -28,7 +28,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
     window.location.search?.includes("portal=")
   ) {
     return (
-      <div className="font-york pt-6 text-white flex items-center justify-center w-full h-fit relative">
+      <div className="font-york pt-6 text-white flex items-center justify-center w-full h-40 galaxy:h-80 relative">
         {t("mait")}
       </div>
     );
