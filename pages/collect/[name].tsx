@@ -70,10 +70,8 @@ const Name: React.FC = (): JSX.Element => {
     lensProfile,
     openAccountModal
   );
-  const { collection, collectionLoading, setCollection } = useCollection(
-    name as string,
-    lensProfile
-  );
+  const { collection, collectionLoading, setCollection, indice, setIndice } =
+    useCollection(name as string, lensProfile);
   const {
     mainInteractionsLoading,
     interactionsItemsLoading,
@@ -294,21 +292,7 @@ const Name: React.FC = (): JSX.Element => {
               </div>
             </div>
             <div className="relative w-full h-full flex bg-foot py-8 border-y-8 border-lightWhite flex items-center justify-center p-2">
-              <div
-                className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] bg-lightWhite flex items-center justify-center p-3"
-                onClick={() =>
-                  dispatch(
-                    setImageViewer({
-                      actionValue: true,
-                      actionImage: `${INFURA_GATEWAY}/ipfs/${
-                        collection?.collectionMetadata?.images?.[0]?.split(
-                          "ipfs://"
-                        )?.[1]
-                      }`,
-                    })
-                  )
-                }
-              >
+              <div className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] bg-lightWhite flex items-center justify-center p-3">
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
                     priority
@@ -317,11 +301,77 @@ const Name: React.FC = (): JSX.Element => {
                     unoptimized
                     draggable={false}
                     src={`${INFURA_GATEWAY}/ipfs/${
-                      collection?.collectionMetadata?.images?.[0]?.split(
+                      collection?.collectionMetadata?.images?.[indice]?.split(
                         "ipfs://"
                       )?.[1]
                     }`}
+                    key={indice}
+                    onClick={() =>
+                      dispatch(
+                        setImageViewer({
+                          actionValue: true,
+                          actionImage: `${INFURA_GATEWAY}/ipfs/${
+                            collection?.collectionMetadata?.images?.[indice]?.split(
+                              "ipfs://"
+                            )?.[1]
+                          }`,
+                        })
+                      )
+                    }
                   />
+                  {(collection?.collectionMetadata?.images || [])?.length >
+                    1 && (
+                    <div className="absolute z-10 top-3 right-3 flex items-center justify-center flex-row gap-2">
+                      <div
+                        className="relative w-fit h-fit flex items-center justify-center active:scale-95 cursor-empireS"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          setIndice(
+                            indice - 1 < 0
+                              ? (collection?.collectionMetadata?.images || [])
+                                  ?.length - 1
+                              : indice - 1
+                          );
+                        }}
+                      >
+                        <div className="relative w-4 h-6 flex items-center justify-center rotate-180">
+                          <Image
+                            src={`${INFURA_GATEWAY}/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
+                            layout="fill"
+                            alt="Arrow"
+                            priority
+                            draggable={false}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="relative w-fit h-fit flex items-center justify-center active:scale-95 cursor-empireS"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          setIndice(
+                            indice + 1 >
+                              (collection?.collectionMetadata?.images || [])
+                                ?.length -
+                                1
+                              ? 0
+                              : indice + 1
+                          );
+                        }}
+                      >
+                        <div className="relative  w-4 h-6 flex items-center justify-center">
+                          <Image
+                            src={`${INFURA_GATEWAY}/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
+                            layout="fill"
+                            alt="Arrow"
+                            priority
+                            draggable={false}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -20,6 +20,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
   dispatch,
   t,
   isekaiDrops,
+  filterURL,
 }): JSX.Element => {
   if (
     !galleryLoading &&
@@ -32,9 +33,8 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
       </div>
     );
   }
-
   return (
-    <div className="relative w-full pt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-fit grid-flow-row gap-4 items-center justify-center">
+    <div className="relative w-full pt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-fit grid-flow-row gap-4 items-center">
       {galleryLoading
         ? Array.from({ length: 3 })?.map((_, index: number) => {
             return (
@@ -63,14 +63,20 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                   }`}
                   onClick={() =>
                     filteredGallery?.length > 0 &&
-                    window.location.search?.includes("portal=") &&
-                    router.push(
-                      `/collect/${(
-                        token as GalleryTokens
-                      )?.collectionMetadata?.title
-                        ?.replaceAll(" ", "-")
-                        .toLowerCase()}`
-                    )
+                    window.location.search?.includes("portal=")
+                      ? router.push(
+                          `/collect/${(
+                            token as GalleryTokens
+                          )?.collectionMetadata?.title
+                            ?.replaceAll(" ", "-")
+                            .toLowerCase()}`
+                        )
+                      : filterURL(
+                          "portal",
+                          (
+                            token as { image: string; title: string }
+                          )?.title?.split("- ")?.[1]
+                        )
                   }
                 >
                   <div
@@ -118,7 +124,6 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                         />
                       )}
                   </div>
-                  <div className="h-0.5 w-full flex items-center justify-center bg-white relative"></div>
                 </div>
               );
             }

@@ -22,6 +22,7 @@ const COLLECTIONS = `
         style
         sex
         title
+        extra
         tags
         prompt
         description
@@ -54,6 +55,7 @@ const ALL_COLLECTIONS = `
         sex
         title
         tags
+        extra
         prompt
         description
         images

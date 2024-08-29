@@ -7,6 +7,7 @@ import { Gallery } from "../../Home/types/home.types";
 const useCollection = (name: string, lensConnected: Profile | undefined) => {
   const [collectionLoading, setCollectionLoading] = useState<boolean>(false);
   const [collection, setCollection] = useState<Gallery>();
+  const [indice, setIndice] = useState<number>(0);
 
   const getCollection = async () => {
     setCollectionLoading(true);
@@ -33,6 +34,8 @@ const useCollection = (name: string, lensConnected: Profile | undefined) => {
     collection,
     collectionLoading,
     setCollection,
+    indice,
+    setIndice,
   };
 };
 

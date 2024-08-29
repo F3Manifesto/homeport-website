@@ -328,6 +328,7 @@ const Home: NextPage = (): JSX.Element => {
           <Isekai t={t} filterURL={handleURL} />
           <IsekaiGallery
             t={t}
+            filterURL={handleURL}
             filteredGallery={filteredIsekaiGallery}
             router={router}
             galleryLoading={galleryLoading}

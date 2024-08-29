@@ -1,12 +1,22 @@
 import { encryptString } from "@lit-protocol/lit-node-client";
 import { ILitNodeClient } from "@lit-protocol/types";
 import { DIGITALAX_ADDRESS } from "../constants";
-import { Details } from "../../components/Collect/types/collect.types";
 import { Gallery } from "../../components/Home/types/home.types";
 
 export const encryptItems = async (
   client: ILitNodeClient,
-  fulfillmentDetails: Details,
+  fulfillmentDetails: {
+    name: string;
+    contact: string;
+    address: string;
+    zip: string;
+    city: string;
+    state: string;
+    country: string;
+    checkoutCurrency: string;
+    chosenAmount: number;
+    sizes: string[];
+  },
   address: `0x${string}`,
   authSig: {
     sig: any;

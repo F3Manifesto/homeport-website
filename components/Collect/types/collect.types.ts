@@ -110,6 +110,7 @@ export interface Details {
   country: string;
   checkoutCurrency: string;
   chosenAmount: number;
+  tamano: string;
 }
 
 export type MetadataProps = {

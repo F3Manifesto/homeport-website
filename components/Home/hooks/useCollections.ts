@@ -342,16 +342,11 @@ const useCollections = (
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : isekaiGallery
         )?.filter((item) =>
-          portalSelected?.some(
-            (portal) =>
-              portal
-                .replace(/(LoFi|DIY|LES|MEV)|([A-Z])/g, (match, p1) =>
-                  p1 ? p1 : " " + match
-                )
-                ?.toLowerCase()
-                .trim()
-                ?.replaceAll("’", "") ===
-              item?.dropMetadata?.dropTitle?.toLowerCase()?.replaceAll("’", "")
+          portalSelected?.some((portal) =>
+            item?.dropMetadata?.dropTitle
+              ?.toLowerCase()
+              ?.split("- ")?.[1]
+              ?.includes(portal?.toLowerCase().trim())
           )
         );
       }

@@ -9,6 +9,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
 import InteractBar from "../../Home/modules/InteractBar";
 import { MetadataProps } from "../types/collect.types";
+import descriptionRegex from "../../../lib/helpers/descriptionRegex";
 
 const Metadata: FunctionComponent<MetadataProps> = ({
   item,
@@ -205,18 +206,37 @@ const Metadata: FunctionComponent<MetadataProps> = ({
         </div>
         <div className="relative sm:flex hidden w-px h-full bg-offBlack"></div>
         <div className="relative w-full h-full flex flex-col p-4 items-end overflow-y-scroll justify-between">
-          <div className="relative w-full h-full flex flex-col gap-4 justify-between items-end">
+          <div
+            className={`relative w-full flex flex-col gap-4 justify-between items-end ${
+              item?.collectionMetadata?.extra?.trim() !== "" &&
+              item?.collectionMetadata?.extra
+                ? "h-fit"
+                : "h-full"
+            }`}
+          >
             <div className="flex relative md:w-3/4 mr-0 w-full h-fit text-offBlack font-firaM text-sm text-right justify-end items-end">
               {item?.collectionMetadata?.description}
             </div>
             <div className="relative w-full h-0.5 bg-offBlack justify-end flex"></div>
-            <div className="relative w-full h-fit flex flex-col gap-2 items-end justify-end">
+            <div className="relative w-full h-fit flex flex-col gap-2 items-end justify-end overflow-y-scroll">
               <div className="relative w-fit h-fit flex text-offBlack font-firaB text-lg justify-end items-end">
-                {t("graph")}
+                {item?.collectionMetadata?.extra?.trim() !== "" &&
+                item?.collectionMetadata?.extra
+                  ? t("extra")
+                  : t("graph")}
               </div>
-              <div className="relative w-full h-fit text-offBlack font-firaL text-sm text-right flex items-end justify-end">
-                {item?.collectionMetadata?.prompt}
-              </div>
+              <div
+                className="relative w-full h-fit text-offBlack font-firaL text-sm text-right flex items-end justify-end whitespace-inline"
+                dangerouslySetInnerHTML={{
+                  __html: descriptionRegex(
+                    item?.collectionMetadata?.extra?.trim() !== "" &&
+                      item?.collectionMetadata?.extra
+                      ? item?.collectionMetadata?.extra || ""
+                      : item?.collectionMetadata?.prompt || "",
+                    false
+                  ),
+                }}
+              ></div>
             </div>
           </div>
         </div>
@@ -335,110 +355,141 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             </div>
           </div>
         </div>
-        <div className="relative justify-end items-end flex flex-col gap-4 w-full h-full">
-          <div className="relative w-full h-full flex items-end justify-end flex-col gap-6 mr-0">
-            <div className="relative w-full h-fit flex flex-col items-end justify-end gap-3">
-              <div className="relative w-fit h-fit flex text-offBlack font-fira text-sm">
-                {`${Number(
-                  ((Number(item?.prices?.[0]) * 10 ** 18) / rate)?.toFixed(3)
-                )} ${
-                  ACCEPTED_TOKENS?.find(
-                    (item) =>
-                      item[2]?.toLowerCase() ===
-                      details?.checkoutCurrency?.toLowerCase()
-                  )?.[1]
-                }`}
+        <div className="relative justify-between items-end flex flex-col gap-4 w-full h-full">
+          {item?.collectionMetadata?.extra?.trim() !== "" &&
+            item?.collectionMetadata?.extra && (
+              <div className="w-full flex flex-row items-start justify-start lg:justify-end gap-3 flex-wrap">
+                {["XS", "S", "M", "L", "XL", "2XL"].map(
+                  (t: string, indice: number) => {
+                    return (
+                      <div
+                        key={indice}
+                        className={`relative border border-black rounded-md flex items-center justify-center font-fira text-offBlack p-2 h-8 w-8 text-xs cursor-empireS hover:bg-brightGreen ${
+                          details?.tamano == t
+                            ? "bg-brightGreen"
+                            : "bg-lightYellow"
+                        }`}
+                        onClick={() =>
+                          setDetails((prev) => ({
+                            ...prev,
+                            tamano: t,
+                          }))
+                        }
+                      >
+                        <div className="flex relative items-center justify-center">
+                          {t}
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
               </div>
-              <div className="relative flex flex-row flex-wrap items-end justify-end gap-5 w-full h-fit">
-                {ACCEPTED_TOKENS?.filter((value) =>
-                  item?.acceptedTokens
-                    ?.map((item: string) => item.toLowerCase())
-                    ?.includes(value?.[2])
-                )?.map((item: string[], indexTwo: number) => {
-                  return (
-                    <div
-                      className={`relative w-fit h-fit rounded-full flex items-center cursor-pointer active:scale-95 ${
-                        details?.checkoutCurrency?.toLowerCase() ===
-                        item[2]?.toLowerCase()
-                          ? "opacity-50"
-                          : "opacity-100"
-                      }`}
-                      key={indexTwo}
-                      onClick={() =>
-                        setDetails((prev) => ({
-                          ...prev,
-                          checkoutCurrency: item[2],
-                        }))
-                      }
-                    >
-                      <Image
-                        src={`${INFURA_GATEWAY}/ipfs/${item[0]}`}
-                        className="flex rounded-full"
-                        draggable={false}
-                        width={30}
-                        height={35}
-                      />
-                    </div>
-                  );
-                })}
+            )}
+          <div className="relative w-full flex flex-col gap-4 items-end justify-end">
+            <div className="relative w-full h-full flex items-end justify-end flex-col gap-6 mr-0">
+              <div className="relative w-full h-fit flex flex-col items-end justify-end gap-3">
+                <div className="relative w-fit h-fit flex text-offBlack font-fira text-sm">
+                  {`${Number(
+                    ((Number(item?.prices?.[0]) * 10 ** 18) / rate)?.toFixed(3)
+                  )} ${
+                    ACCEPTED_TOKENS?.find(
+                      (item) =>
+                        item[2]?.toLowerCase() ===
+                        details?.checkoutCurrency?.toLowerCase()
+                    )?.[1]
+                  }`}
+                </div>
+                <div className="relative flex flex-row flex-wrap items-end justify-end gap-5 w-full h-fit">
+                  {ACCEPTED_TOKENS?.filter((value) =>
+                    item?.acceptedTokens
+                      ?.map((item: string) => item.toLowerCase())
+                      ?.includes(value?.[2])
+                  )?.map((item: string[], indexTwo: number) => {
+                    return (
+                      <div
+                        className={`relative w-fit h-fit rounded-full flex items-center cursor-pointer active:scale-95 ${
+                          details?.checkoutCurrency?.toLowerCase() ===
+                          item[2]?.toLowerCase()
+                            ? "opacity-50"
+                            : "opacity-100"
+                        }`}
+                        key={indexTwo}
+                        onClick={() =>
+                          setDetails((prev) => ({
+                            ...prev,
+                            checkoutCurrency: item[2],
+                          }))
+                        }
+                      >
+                        <Image
+                          src={`${INFURA_GATEWAY}/ipfs/${item[0]}`}
+                          className="flex rounded-full"
+                          draggable={false}
+                          width={30}
+                          height={35}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`relative w-44 px-2 h-10 text-center py-1 border border-black rounded-md flex items-center justify-center text-offBlack bg-brightGreen font-jacklane text-sm mr-0 ${
-              !approveLoading &&
-              !collectPostLoading &&
-              details?.city?.trim() !== "" &&
-              details?.country?.trim() !== "" &&
-              details?.zip?.trim() !== "" &&
-              details?.state?.trim() !== "" &&
-              details?.city?.trim() !== "" &&
-              details?.name?.trim() !== "" &&
-              Number(item?.amount) + details?.chosenAmount !=
-                Number(item?.soldTokens || 0)
-                ? "cursor-pointer active:scale-95"
-                : "opacity-70"
-            }`}
-            onClick={
-              !approveLoading &&
-              !collectPostLoading &&
-              details?.city?.trim() !== "" &&
-              details?.country?.trim() !== "" &&
-              details?.zip?.trim() !== "" &&
-              details?.state?.trim() !== "" &&
-              details?.city?.trim() !== "" &&
-              details?.name?.trim() !== "" &&
-              Number(item?.amount) + details?.chosenAmount !=
-                Number(item?.soldTokens || 0)
-                ? !address
-                  ? openConnectModal
-                  : !lensProfile
-                  ? () => handleSignIn()
-                  : !isApprovedSpend
-                  ? () => approveSpend()
-                  : () => collectItem()
-                : () => {}
-            }
-          >
             <div
-              className={`${
-                (approveLoading || collectPostLoading) && "animate-spin"
-              } flex items-center justify-center`}
+              className={`relative w-44 px-2 h-10 text-center py-1 border border-black rounded-md flex items-center justify-center text-offBlack bg-brightGreen font-jacklane text-sm mr-0 ${
+                !approveLoading &&
+                !collectPostLoading &&
+                details?.city?.trim() !== "" &&
+                details?.country?.trim() !== "" &&
+                details?.zip?.trim() !== "" &&
+                details?.state?.trim() !== "" &&
+                details?.city?.trim() !== "" &&
+                details?.name?.trim() !== "" &&
+                Number(item?.amount) + details?.chosenAmount !=
+                  Number(item?.soldTokens || 0)
+                  ? "cursor-pointer active:scale-95"
+                  : "opacity-70"
+              }`}
+              onClick={
+                !approveLoading &&
+                !collectPostLoading &&
+                details?.city?.trim() !== "" &&
+                details?.country?.trim() !== "" &&
+                details?.zip?.trim() !== "" &&
+                details?.state?.trim() !== "" &&
+                details?.city?.trim() !== "" &&
+                details?.name?.trim() !== "" &&
+                Number(item?.amount) + details?.chosenAmount !=
+                  Number(item?.soldTokens || 0)
+                  ? !address
+                    ? openConnectModal
+                    : !lensProfile
+                    ? () => handleSignIn()
+                    : !isApprovedSpend
+                    ? () => approveSpend()
+                    : () => collectItem()
+                  : () => {}
+              }
             >
-              {approveLoading || collectPostLoading ? (
-                <AiOutlineLoading size={15} color="black" />
-              ) : Number(item?.amount) + details?.chosenAmount ==
-                Number(item?.soldTokens || 0) ? (
-                t("sold")
-              ) : !address ? (
-                t("connect")
-              ) : !lensProfile ? (
-                "LENS"
-              ) : !isApprovedSpend ? (
-                t("app")
-              ) : (
-                t("coll")
-              )}
+              <div
+                className={`${
+                  (approveLoading || collectPostLoading) && "animate-spin"
+                } flex items-center justify-center`}
+              >
+                {approveLoading || collectPostLoading ? (
+                  <AiOutlineLoading size={15} color="black" />
+                ) : Number(item?.amount) + details?.chosenAmount ==
+                  Number(item?.soldTokens || 0) ? (
+                  t("sold")
+                ) : !address ? (
+                  t("connect")
+                ) : !lensProfile ? (
+                  "LENS"
+                ) : !isApprovedSpend ? (
+                  t("app")
+                ) : (
+                  t("coll")
+                )}
+              </div>
             </div>
           </div>
         </div>

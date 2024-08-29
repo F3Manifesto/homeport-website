@@ -45,6 +45,7 @@ const useCheckout = (
     country: "",
     checkoutCurrency: "",
     chosenAmount: 1,
+    tamano: "M",
   });
 
   const encryptFulfillment = async () => {
@@ -68,11 +69,14 @@ const useCheckout = (
 
       await client.connect();
 
+      const { tamano, ...newDetails } = details;
+
       const encryptedItems = await encryptItems(
         client as any,
         {
-          ...details,
+          ...newDetails,
           contact: lensConnected?.handle?.suggestedFormatted?.localName!,
+          sizes: tamano?.trim() !== "" ? [tamano] : [],
         },
         address,
         authSig,
@@ -325,6 +329,7 @@ const useCheckout = (
         country: "",
         checkoutCurrency: prev?.checkoutCurrency,
         chosenAmount: 1,
+        tamano: "M",
       }));
       dispatch(
         setSuccessCheckout({

@@ -66,6 +66,7 @@ export interface Gallery {
     description: string;
     images: string[];
     access: string[];
+    extra: string;
   };
   pubId: string;
   profileId: string;
@@ -110,6 +111,7 @@ export type IsekaiGalleryProps = {
   openConnectModal: (() => void) | undefined;
   dispatch: Dispatch<AnyAction>;
   isekaiDrops: { image: string; title: string }[];
+  filterURL: (type: string, newValue: string) => void;
 };
 
 export type SearchProps = {
