@@ -38,7 +38,7 @@ const useCollections = (
       const sexesSet = new Set<string>();
       const stylesSet = new Set<string>();
       const dropsSet = new Set<string>();
-      const portalsSet = new Set<{ title: string; image: string }>();
+      const portalsMap = new Map<string, { title: string; image: string }>();
 
       const colls = await handleCollectionProfilesAndPublications(
         returned?.data?.collectionCreateds,
@@ -74,7 +74,7 @@ const useCollections = (
 
       isekai?.forEach((item: any) => {
         if (item.dropMetadata?.dropTitle) {
-          portalsSet.add({
+          portalsMap.set(item.dropMetadata.dropTitle, {
             title: item.dropMetadata.dropTitle,
             image: item.dropMetadata.dropCover,
           });
@@ -86,7 +86,7 @@ const useCollections = (
           sexes: Array.from(sexesSet),
           styles: Array.from(stylesSet),
           drops: Array.from(dropsSet),
-          portals: Array.from(portalsSet),
+          portals: Array.from(new Set(portalsMap.values())),
         })
       );
     } catch (err: any) {
