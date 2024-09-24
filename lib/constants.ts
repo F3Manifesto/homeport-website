@@ -227,14 +227,17 @@ export const FACTORY_RANDOM: string[] = [
 ];
 
 export const IDIOMAS: string[] = [
-"English",
-"Spanish",
-"Portuguese",
-"Arabic",
-"Farsi",
-"Hebrew",
-"Yiddish",
-"Japanese",
-"French",
-"Ukranian"
-]
+  "English",
+  "Spanish",
+  "Portuguese",
+  "Arabic",
+  "Farsi",
+  "Hebrew",
+  "Yiddish",
+  "Japanese",
+  "French",
+  "Ukranian",
+  "Hungarian",
+  "Turkish",
+  "Yolŋu",
+];

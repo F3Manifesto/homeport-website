@@ -71,6 +71,18 @@ const Film: FunctionComponent<FilmProps> = ({
                   image: "QmPkEFY3L1EnKgALyhgpYnnUXtt8KQNcSAUEPiiJcQyhEU",
                   name: `fr ${t("soon")}`,
                 },
+                {
+                  image: "QmURxxCvHcRZQNEPvGnEXjJW57iiu7uBDk9AR8JaPN8ooa",
+                  name: `ç ${t("soon")}`,
+                },
+                {
+                  image: "QmWeNpFCobF9AP4PeLErQ79HxRayedhJGb2nPKtEcTvpn4",
+                  name: `ű ${t("soon")}`,
+                },
+                {
+                  image: "QmfHYdrJSrmPHNaGMqzenCq9w2tKSs7NFUcB97MXuHz1cB",
+                  name: `ŋ ${t("soon")}`,
+                },
               ].map(
                 (
                   item: {
