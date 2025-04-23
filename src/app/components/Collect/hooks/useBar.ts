@@ -31,7 +31,7 @@ const useBar = (dict: any, post: Post) => {
   }>({
     mirror: false,
     like: false,
-    collect: true,
+    collect: false,
   });
 
   const reactPost = async () => {

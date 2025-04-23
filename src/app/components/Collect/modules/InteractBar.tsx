@@ -3,7 +3,6 @@ import { AiOutlineLoading } from "react-icons/ai";
 import Image from "next/legacy/image";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import useBar from "../hooks/useBar";
-import { useRouter } from "next/navigation";
 import { ModalContext } from "@/app/providers";
 import { useAccount } from "wagmi";
 import { useModal } from "connectkit";
