@@ -97,6 +97,9 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                     (token as Gallery)?.post && (
                       <InteractBar
                         dict={dict}
+                        title={(token as Gallery)?.collectionMetadata?.title
+                          ?.replaceAll(" ", "-")
+                          .toLowerCase()}
                         post={(token as Gallery)?.post!}
                       />
                     )}
