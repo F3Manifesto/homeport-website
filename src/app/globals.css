@@ -1,26 +1,427 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Nan Holo";
+  font-weight: 400;
+  src: url("/fonts/NaNHoloCondensed_TRIAL-Black.ttf");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "New York";
+  font-weight: 400;
+  src: url("/fonts/NewYork.otf");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@font-face {
+  font-family: "Air Strike";
+  font-weight: 400;
+  src: url("/fonts/airstrikegrad.ttf");
+}
+
+@font-face {
+  font-family: "Emiken";
+  font-weight: 400;
+  src: url("/fonts/EmikenRegular.ttf");
+}
+
+@font-face {
+  font-family: "Atmosphere";
+  font-weight: 400;
+  src: url("/fonts/Atmosphere-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Alberto";
+  font-weight: 400;
+  src: url("/fonts/Alberto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Doctor Glitch";
+  font-weight: 400;
+  src: url("/fonts/DoctorGlitch.otf");
+}
+
+@font-face {
+  font-family: "Conso Regular";
+  font-weight: 400;
+  src: url("/fonts/Conso-Regular.otf");
+}
+
+@font-face {
+  font-family: "Conso Medium";
+  font-weight: 400;
+  src: url("/fonts/Conso-Medium.otf");
+}
+
+@font-face {
+  font-family: "Gaia";
+  font-weight: 400;
+  src: url("/fonts/Gaia.otf");
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-weight: 400;
+  src: url("/fonts/FiraCode-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Fira Code Light";
+  font-weight: 400;
+  src: url("/fonts/FiraCode-Light.ttf");
+}
+
+@font-face {
+  font-family: "Fira Code Bold";
+  font-weight: 400;
+  src: url("/fonts/FiraCode-Bold.ttf");
+}
+
+@font-face {
+  font-family: "DIN Condensed";
+  font-weight: 400;
+  src: url("/fonts/DINCondensedBold.ttf");
+}
+
+@font-face {
+  font-family: "Futurist";
+  font-weight: 400;
+  src: url("/fonts/FuturistRegular.ttf");
+}
+
+@font-face {
+  font-family: "Jack Lane";
+  font-weight: 400;
+  src: url("/fonts/jacklane_2.woff");
+}
+
+@font-face {
+  font-family: "Fira Medium";
+  font-weight: 400;
+  src: url("/fonts/FiraCode-Medium.ttf");
+}
+
+@theme {
+  --font-xxs: 0.6rem;
+
+  --font-holo: "Nan Holo";
+  --font-york: "New York";
+  --font-air: "Air Strike";
+  --font-emiken: "Emiken";
+  --font-atmos: "Atmosphere";
+  --font-alber: "Alberto";
+  --font-glitch: "Doctor Glitch";
+  --font-conso: "Conso Regular";
+  --font-consoM: "Conso Medium";
+  --font-gaia: "Gaia";
+  --font-fira: "Fira Code";
+  --font-firaL: "Fira Code Light";
+  --font-firaB: "Fira Code Bold";
+  --font-firaM: "Fira Medium";
+  --font-din: "DIN Condensed";
+  --font-futur: "Futurist";
+  --font-jacklane: "Jack Lane";
+
+  --color-offBlack: #111313;
+  --color-offBlue: #01030c;
+  --color-offWhite: #f2f2f2;
+  --color-lightYellow: #fcf894;
+  --color-grayBlue: #cde1e1;
+  --color-midGray: #505a5a;
+  --color-bright: #cdfb51;
+  --color-grad1: #8bcdf4;
+  --color-grad2: #c9f5fd;
+  --color-grad3: #c6f8fe;
+  --color-borderBlue: #b8f3ff;
+  --color-darkP: #462d4a;
+  --color-foot: #f7f8e8;
+  --color-lightY: #fffff9;
+  --color-lightPurple: #ede5fb;
+  --color-lightWhite: #fbfbf1;
+  --color-brightGreen: #aafdbe;
+  --color-bronze: #bb552d;
+  --color-midBlue: #709af3;
+  --color-pinkish: #b42aa1;
+
+  --breakpoint-midi: 1140px;
+  --breakpoint-half: 900px;
+  --breakpoint-alm: 740px;
+  --breakpoint-preG: 450px;
+  --breakpoint-galaxy: 350px;
+  --breakpoint-wide: 1280px;
+  --breakpoint-equ: 1200px;
+
+  --h-100: 26rem;
+  --h-110: 32rem;
+
+  --w-100: 26rem;
+  --w-110: 30rem;
+
+  --cursor-empireA: url("https://thedial.infura-ipfs.io/ipfs/QmY5HoV5TDahoAjutA18XctiTE79NDtU9BDjGbadvf6Nmt"),
+    auto;
+  --cursor-empireS: url("https://thedial.infura-ipfs.io/ipfs/Qmchgr77mEfYEKEzHWDRdEjke44JAwDVmUftUwoppECw71"),
+    auto;
+}
+
+@layer utilities {
+  .text-xxs {
+    font-size: var(--font-xxs);
+  }
+
+  .font-holo {
+    font-family: var(--font-holo);
+  }
+  .font-york {
+    font-family: var(--font-york);
+  }
+  .font-air {
+    font-family: var(--font-air);
+  }
+  .font-emiken {
+    font-family: var(--font-emiken);
+  }
+  .font-atmos {
+    font-family: var(--font-atmos);
+  }
+  .font-alber {
+    font-family: var(--font-alber);
+  }
+  .font-glitch {
+    font-family: var(--font-glitch);
+  }
+  .font-conso {
+    font-family: var(--font-conso);
+  }
+  .font-consoM {
+    font-family: var(--font-consoM);
+  }
+  .font-gaia {
+    font-family: var(--font-gaia);
+  }
+  .font-fira {
+    font-family: var(--font-fira);
+  }
+  .font-firaL {
+    font-family: var(--font-firaL);
+  }
+  .font-firaB {
+    font-family: var(--font-firaB);
+  }
+  .font-firaM {
+    font-family: var(--font-firaM);
+  }
+  .font-din {
+    font-family: var(--font-din);
+  }
+  .font-futur {
+    font-family: var(--font-futur);
+  }
+  .font-jacklane {
+    font-family: var(--font-jacklane);
+  }
+
+  .animate-reverseAnimation {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-unblur {
+    animation: unblur 0.5s linear;
+  }
+
+  .z-20 {
+    z-index: 20;
+  }
+
+  .z-30 {
+    z-index: 30;
+  }
+
+  .cursor-empireA {
+    cursor: var(--cursor-empireA);
+  }
+  .cursor-empireS {
+    cursor: var(--cursor-empireS);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes unblur {
+    0% {
+      filter: blur(20);
+    }
+    100% {
+      filter: blur(0);
+    }
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #131313;
+}
+
+input:focus {
+  outline: 0;
+
+  border-color: #fcf894 !important;
+}
+
+#want {
+  font-family: "Air Strike";
+  display: flex;
+  position: absolute;
+
+  background-size: 450px 450px;
+  background-image: url(https://thedial.infura-ipfs.io/ipfs/QmQ6BdizFgMCVM6kESs6ocSQvnNaYjngHyGw6rtQNZiTma);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  animation: anim 1s steps(2, end) infinite both;
+
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes anim {
+  0% {
+    background-position: 0% 0%;
+  }
+  10% {
+    background-position: -25% 25%;
+  }
+  20% {
+    background-position: 30%, -25%;
+  }
+  30% {
+    background-position: -25% 25%;
+  }
+  40% {
+    background-position: 40% -50%;
+  }
+  50% {
+    background-position: 25% 70%;
+  }
+  60% {
+    background-position: 60% 80%;
+  }
+  70% {
+    background-position: 30% 50%;
+  }
+  80% {
+    background-position: 30%, -25%;
+  }
+  90% {
+    background-position: 0% 70%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0; /* Initially hide the scrollbar */
+}
+
+body:hover::-webkit-scrollbar {
+  opacity: 0; /* Show the scrollbar on hover */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+div::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  opacity: 0; /* Initially hide the scrollbar */
+}
+
+div:hover::-webkit-scrollbar {
+  opacity: 0; /* Show the scrollbar on hover */
+}
+
+div::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(249, 246, 66);
+}
+
+input::-webkit-inner-spin-button:focus,
+input::-webkit-outer-spin-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(249, 246, 66, 0.6);
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(249, 246, 66);
+}
+
+textarea::-webkit-inner-spin-button:focus,
+textarea::-webkit-outer-spin-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(249, 246, 66, 0.6);
+}
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#fadedQuote {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #fbfbf1 0%,
+    #fffff9 70%,
+    transparent 95%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    to bottom,
+    #fbfbf1 0%,
+    #fffff9 50%,
+    transparent 100%
+  );
+}
+
+#fadedItem {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #fbfbf1 0%,
+    #fffff9 90%,
+    transparent 99%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    to bottom,
+    #fbfbf1 0%,
+    #fffff9 90%,
+    transparent 100%
+  );
 }
