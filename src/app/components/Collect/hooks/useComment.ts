@@ -77,6 +77,11 @@ const useComment = (
         commentOn: {
           post: pub?.id,
         },
+        actions: [
+          {
+            simpleCollect: {},
+          },
+        ],
         contentUri: uri,
       });
 
