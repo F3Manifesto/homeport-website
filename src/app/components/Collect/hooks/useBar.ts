@@ -1,6 +1,10 @@
 import { ModalContext } from "@/app/providers";
 import { Post } from "@lens-protocol/client";
-import { addReaction, repost } from "@lens-protocol/client/actions";
+import {
+  addReaction,
+  executePostAction,
+  repost,
+} from "@lens-protocol/client/actions";
 import { useContext, useEffect, useState } from "react";
 
 const useBar = (dict: any, post: Post) => {
@@ -10,18 +14,24 @@ const useBar = (dict: any, post: Post) => {
     hasUpvoted: boolean;
     reposts: number;
     hasReposted: boolean;
+    collects: number;
+    hasSimpleCollected: boolean;
   }>({
     upvotes: 0,
     hasUpvoted: false,
     reposts: 0,
     hasReposted: false,
+    collects: 0,
+    hasSimpleCollected: false,
   });
   const [interactionLoading, setInteractionLoading] = useState<{
     mirror: boolean;
     like: boolean;
+    collect: boolean;
   }>({
     mirror: false,
     like: false,
+    collect: true,
   });
 
   const reactPost = async () => {
@@ -65,6 +75,54 @@ const useBar = (dict: any, post: Post) => {
     }));
   };
 
+  const simpleCollect = async () => {
+    if (!context?.lensConectado?.sessionClient) return;
+    setInteractionLoading((prev) => ({
+      ...prev,
+      collect: true,
+    }));
+    try {
+      const res = await executePostAction(
+        context?.lensConectado?.sessionClient!,
+        {
+          post: post?.id,
+          action: {
+            simpleCollect: {
+              selected: true,
+            },
+          },
+        }
+      );
+
+      if (res.isOk()) {
+        if ((res.value as any)?.reason?.includes("Signless")) {
+          context?.setSignless?.(true);
+        } else if ((res.value as any)?.hash) {
+          context?.setIndexar?.(dict?.common?.success);
+          setStats((prev) => ({
+            ...prev,
+            hasSimpleCollected: true,
+            collects: prev.collects + 1,
+          }));
+          setTimeout(() => {
+            context?.setIndexar?.(undefined);
+          }, 3000);
+        } else {
+          context?.setNotification?.(dict?.common?.error);
+        }
+      } else {
+        context?.setNotification?.(dict?.common?.error);
+      }
+    } catch (err: any) {
+      context?.setNotification?.(dict?.common?.error);
+      console.error(err.message);
+    }
+    setInteractionLoading((prev) => ({
+      ...prev,
+      collect: false,
+    }));
+  };
+
   const mirrorPost = async () => {
     if (!context?.lensConectado?.sessionClient) return;
     setInteractionLoading((prev) => ({
@@ -75,7 +133,6 @@ const useBar = (dict: any, post: Post) => {
       const res = await repost(context?.lensConectado?.sessionClient!, {
         post: post?.id,
       });
-
 
       if (res.isOk()) {
         if ((res.value as any)?.reason?.includes("Signless")) {
@@ -113,6 +170,8 @@ const useBar = (dict: any, post: Post) => {
         hasUpvoted: post?.operations?.hasUpvoted!,
         reposts: post?.stats?.reposts,
         hasReposted: post?.operations?.hasReposted?.optimistic!,
+        hasSimpleCollected: post?.operations?.hasSimpleCollected!,
+        collects: post?.stats?.collects,
       });
     }
   }, [post]);
@@ -122,6 +181,7 @@ const useBar = (dict: any, post: Post) => {
     reactPost,
     mirrorPost,
     stats,
+    simpleCollect,
   };
 };
 

@@ -17,7 +17,8 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
   const context = useContext(ModalContext);
   const { chainId, address, isConnected } = useAccount();
   const { openOnboarding, openSwitchNetworks } = useModal();
-  const { interactionLoading, reactPost, mirrorPost, stats } = useBar(dict, post);
+  const { interactionLoading, reactPost, mirrorPost, stats, simpleCollect } =
+    useBar(dict, post);
   const { handleLensConnect, lensLoading } = useLens(address, dict);
 
   return (
@@ -32,16 +33,16 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
         {
           count: stats?.upvotes || 0,
           image: "QmV2VzKD9NMX1CzqcwFhzwzASpPrxZYAVfZkUPiXid2TmC",
-          function: () =>
-            reactPost(),
+          function: () => reactPost(),
           loader: interactionLoading?.like,
           name: "Like",
-          reacted:stats?.hasUpvoted!,
+          reacted: stats?.hasUpvoted!,
           who: () =>
             context?.setReactBox({
               type: "Likes",
               post,
             }),
+          disabled: false,
         },
         {
           count: stats?.reposts || 0,
@@ -55,14 +56,19 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
               type: "Mirrors",
               post,
             }),
+          disabled: false,
         },
         {
-          count: post?.stats?.collects || 0,
+          count: stats?.collects || 0,
           image: "Qmde7MbuTdD4MvH9Uvns5dCiAYUxDhvAFhmKYFy6wJTMg6",
-          function: () => {},
-          loader: false,
+          function: () => simpleCollect(),
+          disabled:
+            post?.actions?.[0]?.__typename !== "SimpleCollectAction"
+              ? true
+              : false,
+          loader: interactionLoading?.collect,
           name: "Collect",
-          reacted: false,
+          reacted: stats?.hasSimpleCollected!,
           who: () =>
             context?.setReactBox({
               type: "Collects",
@@ -74,6 +80,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
           item: {
             image: string;
             count: number;
+            disabled: boolean;
             function: () => void;
             loader: boolean;
             name: string;
@@ -91,7 +98,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
               <div
                 className={`relative w-4 h-4 flex items-center justify-center ${
                   item?.reacted && "mix-blend-multiply hue-rotate-60"
-                } ${!item.loader && "cursor-pointer"}`}
+                } ${!item.loader && !item.disabled && "cursor-pointer"}`}
                 onClick={
                   !isConnected
                     ? () => openOnboarding()
@@ -99,7 +106,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
                     ? () => openSwitchNetworks()
                     : isConnected && !context?.lensConectado?.profile
                     ? () => !lensLoading && handleLensConnect()
-                    : () => item.function()
+                    : () => !item.disabled && item.function()
                 }
               >
                 {item?.loader ? (
