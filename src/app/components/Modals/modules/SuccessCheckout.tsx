@@ -3,16 +3,18 @@ import { ImCross } from "react-icons/im";
 import Image from "next/legacy/image";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
+import { useRouter } from "next/navigation";
 
 const SuccessCheckout: FunctionComponent<{ dict: any }> = ({
   dict,
 }): JSX.Element => {
   const context = useContext(ModalContext);
+  const router = useRouter();
   return (
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
       <div className="relative w-[90vw] cursor-empireS sm:w-[50vw] half:w-[30vw] h-fit max-h-[90vh] place-self-center bg-lightWhite rounded-lg border border-black rounded-sm overflow-y-scroll">
         <div className="relative w-full h-full flex flex-col gap-5 p-2">
-          <div className="relative w-fit h-fit items-end justify-end ml-auto flex cursor-pointer">
+          <div className="relative w-fit h-fit items-end justify-end ml-auto flex cursor-empireS">
             <ImCross
               color="black"
               size={10}
@@ -23,11 +25,7 @@ const SuccessCheckout: FunctionComponent<{ dict: any }> = ({
             <div className="relative w-2/3 h-fit items-center justify-center text-center break-words font-din text-black text-base">
               {dict?.collect?.success} <br />
               <br />
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href={`https://cypher.digitalax.xyz/autograph/${context?.successCheckout?.post?.author?.username?.localName}`}
-              >
+              <a onClick={() => router.push("/orders")}>
                 {" "}
                 {dict?.collect?.view}
               </a>

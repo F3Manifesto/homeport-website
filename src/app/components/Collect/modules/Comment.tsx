@@ -77,7 +77,7 @@ const Comment: FunctionComponent<CommentProps> = ({
               return (
                 <div
                   key={indexTwo}
-                  className={`relative border-y border-black w-full h-10 px-3 py-2 bg-lightWhite flex flex-row gap-3 cursor-pointer items-center justify-center`}
+                  className={`relative border-y border-black w-full h-10 px-3 py-2 bg-lightWhite flex flex-row gap-3 cursor-empireS items-center justify-center`}
                   onClick={() => {
                     setProfilesOpen(false);
                     setCommentContent((prev) => ({
@@ -136,7 +136,7 @@ const Comment: FunctionComponent<CommentProps> = ({
                 commentLoading ||
                 commentContent?.images?.length == 4
                   ? "opacity-70"
-                  : "cursor-pointer active:scale-95"
+                  : "cursor-empireS active:scale-95"
               }`}
               style={{
                 height: "1.25rem",
@@ -169,7 +169,7 @@ const Comment: FunctionComponent<CommentProps> = ({
         <div className="relative w-full sm:w-fit h-fit items-center justify-end flex">
           <div
             className={`relative w-20 h-8 font-din text-black flex items-center justify-center bg-lightYellow border border-black text-xs rounded-sm ${
-              !commentLoading && "cursor-pointer active:scale-95"
+              !commentLoading && "cursor-empireS active:scale-95"
             }`}
             onClick={() => !commentLoading && makeComment()}
           >
@@ -219,7 +219,7 @@ const Comment: FunctionComponent<CommentProps> = ({
                         hidden
                       />
                       <div
-                        className="absolute w-5 h-5 p-px -right-2 -top-2 bg-lightWhite rounded-full cursor-pointer flex items-center justify-center border border-black"
+                        className="absolute w-5 h-5 p-px -right-2 -top-2 bg-lightWhite rounded-full cursor-empireS flex items-center justify-center border border-black"
                         onClick={() => {
                           setCommentContent((prev) => ({
                             ...prev,

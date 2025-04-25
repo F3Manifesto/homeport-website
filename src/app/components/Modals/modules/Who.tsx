@@ -26,7 +26,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
         <div className="relative w-full row-start-2 h-fit grid grid-flow-col auto-cols-auto">
           <div className="relative w-full h-full col-start-1 place-self-center">
             <div className="relative w-full h-full flex flex-col items-center justify-center gap-4 pb-8">
-              <div className="relative w-fit h-fit items-end justify-end ml-auto pr-3 pt-3 cursor-pointer flex">
+              <div className="relative w-fit h-fit items-end justify-end ml-auto pr-3 pt-3 cursor-empireS flex">
                 <ImCross
                   color="black"
                   size={10}
@@ -40,7 +40,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 (reactors?.length > 0 || quoters?.length > 0) && (
                   <div className="relative w-full h-fit flex items-center justify-center flex-row gap-2">
                     <div
-                      className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-pointer ${
+                      className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-empireS ${
                         !mirrorQuote && "opacity-50"
                       }`}
                       onClick={() => setMirrorQuote(true)}
@@ -53,7 +53,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                       />
                     </div>
                     <div
-                      className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-pointer ${
+                      className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-empireS ${
                         mirrorQuote && "opacity-50"
                       }`}
                       onClick={() => setMirrorQuote(false)}

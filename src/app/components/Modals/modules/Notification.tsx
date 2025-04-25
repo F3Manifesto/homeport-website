@@ -10,7 +10,7 @@ const Notification: FunctionComponent = (): JSX.Element => {
     <div className="inset-0 justify-center fixed z-50 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
       <div className="relative w-[90vw] cursor-empireS sm:w-[50vw] half:w-[30vw] h-fit max-h-[90vh] place-self-center bg-lightWhite rounded-lg border border-black rounded-sm overflow-y-scroll">
         <div className="relative w-full h-full flex flex-col gap-5 p-2">
-          <div className="relative w-fit h-fit items-end justify-end ml-auto flex cursor-pointer">
+          <div className="relative w-fit h-fit items-end justify-end ml-auto flex cursor-empireS">
             <ImCross
               color="black"
               size={10}

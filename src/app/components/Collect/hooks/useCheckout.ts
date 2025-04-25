@@ -36,7 +36,7 @@ const useCheckout = (
     transport: http("https://rpc.lens.xyz"),
   });
   const client = new LitNodeClient({
-    litNetwork: LIT_NETWORK.DatilDev,
+    litNetwork: LIT_NETWORK.Datil,
     debug: false,
   });
   const context = useContext(ModalContext);
@@ -304,7 +304,11 @@ const useCheckout = (
                   data: blockchainData(
                     coder.encode(
                       ["string", "address", "bool"],
-                      [encryptedFulfillment, details?.checkoutCurrency, 1]
+                      [
+                        encryptedFulfillment,
+                        details?.checkoutCurrency,
+                        1,
+                      ]
                     )
                   ),
                 },

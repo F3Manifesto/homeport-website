@@ -28,66 +28,6 @@ export default function CollectEntry({
   if (collection && post && !postLoading) {
     return (
       <div className="flex h-full min-h-screen w-full relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-gradient-to-b from-lightY via-white to-lightPurple items-start justify-center">
-        <Head>
-          <title>{collection?.collectionMetadata?.title}</title>
-          <meta
-            name="og:url"
-            content={`https://f3manifesto.xyz/collect/${collection?.collectionMetadata?.title
-              ?.replaceAll(" ", "-")
-              ?.toLowerCase()}`}
-          />
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="og:title"
-            content={collection?.collectionMetadata?.title}
-          />
-          <meta
-            name="og:description"
-            content={collection?.collectionMetadata?.description}
-          />
-          <meta
-            name="og:image"
-            content={`${INFURA_GATEWAY}/ipfs/${
-              collection?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1]
-            }`}
-          />
-          <meta name="twitter:card" content="summary" />
-          <meta
-            name="og:url"
-            content={`https://f3manifesto.xyz/collect/${collection?.collectionMetadata?.title
-              ?.replaceAll(" ", "-")
-              ?.toLowerCase()}`}
-          />
-          <meta
-            name="og:image"
-            content={`${INFURA_GATEWAY}/ipfs/${
-              collection?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1]
-            }`}
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@f3manifesto" />
-          <meta name="twitter:creator" content="@f3manifesto" />
-          <meta
-            name="twitter:image"
-            content={`${INFURA_GATEWAY}/ipfs/${
-              collection?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1]
-            }`}
-          />
-          <meta
-            name="twitter:url"
-            content={`https://f3manifesto.xyz/collect/${collection?.collectionMetadata?.title
-              ?.replaceAll(" ", "-")
-              ?.toLowerCase()}`}
-          />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="canonical"
-            href={`https://f3manifesto.xyz/collect/${collection?.collectionMetadata?.title
-              ?.replaceAll(" ", "-")
-              ?.toLowerCase()}`}
-          />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-        </Head>
         <div className="w-full h-full flex flex-col relative items-center justify-start">
           <div className="relative w-full h-fit flex flex-row justify-between gap-4 items-center py-8 px-4 sm:flex-nowrap flex-wrap">
             <div

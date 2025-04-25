@@ -58,7 +58,7 @@ const Media: FunctionComponent<MediaProps> = ({ metadata }): JSX.Element => {
                     <div
                       key={index}
                       className={`w-60 border border-black rounded-sm h-60 flex items-center justify-center bg-lightWhite ${
-                        media?.url && "cursor-pointer"
+                        media?.url && "cursor-empireS"
                       }`}
                       onClick={() =>
                         media?.type === "Image" &&

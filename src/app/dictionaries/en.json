@@ -81,6 +81,7 @@
     "code": "machine code",
     "whimsy": "and whimsy",
     "looks": "these looks are devices tailor made from the fabric stuff of web3",
+    "reunion": "NFT reunion needed! Connect your Lens F3M treasures to your main wallet?",
     "elec": "for electric collections.",
     "micro": "MICROFACTORY CO-OPs",
     "virt": "VIRTUAL, LATENT & IRL SPACE Chapter 0001 - NYC Edition",
@@ -92,6 +93,7 @@
     "mait": "Portal Under Maintenance, Try Another?",
     "female": "FEMALE",
     "male": "MALE",
+    "transfer": "Reunite",
     "vintageamericana": "Vintage Americana",
     "cottagecorewebkitsch": "Cottagecore Web Kitsch",
     "diybrutalism": "DIY Brutalismo",
@@ -99,6 +101,7 @@
     "lofitechwear": "LoFi Tech Wear",
     "isekai": "GET ISEKAI'D.",
     "portal": "CHOOSE A PORTAL.",
+    "orders": "Orders",
     "English": "English",
     "Spanish": "Spanish",
     "Portuguese": "Portuguese",
@@ -126,7 +129,11 @@
     "createLens": "Create Lens Account",
     "fetch": "Error with Fetching New Account",
     "createAccount": "Error with Account Creation",
-    "taken": "Username Already Taken. Try something else?"
+    "taken": "Username Already Taken. Try something else?",
+    "noOrders": "No orders yet.",
+    "order": "Order",
+    "descifrar": "Decrypt",
+    "descifrado": "Decrypted"
   },
   "404": {
     "glitch": "There's been a glitch in the fabric. Find your way back",

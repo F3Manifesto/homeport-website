@@ -6,15 +6,27 @@ import { usePathname, useRouter } from "next/navigation";
 const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
   const router = useRouter();
   const path = usePathname();
-  const [openHeart, setOpenHeart] = useState<boolean>(false);
+  const [openLanguages, setOpenLanguages] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
   return (
     <div className="relative w-full h-fit flex items-start justify-start">
-      <div className="flex items-center justify-center h-60 galaxy:h-80 sm:h-screen w-full relative bg-offBlack">
+      <div
+        className="flex items-center justify-center h-60 galaxy:h-80 sm:h-screen w-full relative bg-offBlack"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          setOpenLanguages(false);
+          setOpenMenu(false);
+        }}
+      >
         <div className="absolute top-0 right-3 w-fit h-full flex items-center justify-between z-30 flex-col gap-3">
           <div className="relative w-fit h-fit flex items-center justify-center flex-col gap-2 mt-0 top-5">
             <div
               className={`cursor-empireS relative flex items-center justify-center w-12 h-9`}
-              onClick={() => setOpenHeart(!openHeart)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpenMenu(!openMenu);
+              }}
             >
               <Image
                 layout="fill"
@@ -23,8 +35,23 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 priority
               />
             </div>
-            {openHeart && (
+            {openMenu && (
               <div className="absolute text-right flex items-center justify-center h-fit font-alber text-offBlack text-sm top-10 flex-col bg-gradient-to-r from-grad1 via-grad2 to-grad3 rounded-md right-0 border border-offBlack w-[8rem]">
+                <div
+                  className="relative w-3/4 h-fit flex items-center justify-center text-sm cursor-empireS pb-2 text-center py-1 px-1 hover:opacity-70"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    router.push("/orders");
+                  }}
+                >
+                  {dict?.common?.orders}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="relative mb-0 bottom-5 flex items-center justify-center w-fit h-fit cursor-empireS">
+            {openLanguages && (
+              <div className="absolute text-right flex items-center justify-center h-fit font-alber text-offBlack text-sm bottom-10 flex-col bg-gradient-to-r from-grad1 via-grad2 to-grad3 rounded-md right-0 border border-offBlack w-[8rem]">
                 <div className="relative w-3/4 h-fit flex items-center justify-center text-xs pb-2 text-center py-1 px-1">
                   {dict?.common?.trad}
                 </div>
@@ -126,9 +153,13 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 )}
               </div>
             )}
-          </div>
-          <div className="relative mb-0 bottom-5 flex items-center justify-center w-fit h-fit cursor-empireS">
-            <div className="relative w-10 h-4 flex items-center justify-center">
+            <div
+              className="relative w-10 h-4 flex items-center justify-center cursor-empireS"
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpenLanguages(!openLanguages);
+              }}
+            >
               <Image
                 draggable={false}
                 src={`${INFURA_GATEWAY}/ipfs/Qmdp2EmTueHenNAyq8PvyURCvWFFpXbSx3Dw2exQ3naYYL`}

@@ -328,7 +328,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                     )?.[1]
                   }`}
                 </div>
-                <div className="relative flex flex-row flex-wrap items-end justify-end gap-5 w-full h-fit">
+                <div className="relative flex flex-row flex-wrap items-end justify-end gap-3 w-full h-fit">
                   {ACCEPTED_TOKENS?.filter((value) =>
                     item?.acceptedTokens
                       ?.map((item: string) => item.toLowerCase())
@@ -336,7 +336,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   )?.map((item: string[], indexTwo: number) => {
                     return (
                       <div
-                        className={`relative w-fit h-fit rounded-full flex items-center cursor-pointer active:scale-95 ${
+                        className={`relative w-fit h-fit rounded-full flex items-center cursor-empireS active:scale-95 ${
                           details?.checkoutCurrency?.toLowerCase() ===
                           item[2]?.toLowerCase()
                             ? "opacity-50"
@@ -371,7 +371,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 Number(item?.mintedTokenIds?.length || 0) + 1 >
                   Number(item?.amount)
                   ? "opacity-70"
-                  : "cursor-pointer active:scale-95"
+                  : "cursor-empireS active:scale-95"
               }`}
               onClick={
                 !depositLoading &&

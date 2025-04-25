@@ -49,7 +49,7 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
             return (
               <div
                 key={index}
-                className="relative w-full h-14 p-2 flex flex-row items-center justify-start font-conso bg-lightYellow text-black cursor-pointer border border-black"
+                className="relative w-full h-14 p-2 flex flex-row items-center justify-start font-conso bg-lightYellow text-black cursor-empireS border border-black"
                 onClick={() => {
                   context?.setReactBox(undefined);
                   window.open(

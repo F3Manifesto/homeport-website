@@ -120,7 +120,7 @@ const CrearCuenta: FunctionComponent<{ dict: any }> = ({
             <div
               className={`relative px-3 py-1 flex items-center justify-center rounded-md border border-black w-28 h-8 ${
                 !accountLoading &&
-                "cursor-pointer active:scale-95 hover:opacity-70"
+                "cursor-empireS active:scale-95 hover:opacity-70"
               }`}
               onClick={() => !accountLoading && handleCreateAccount()}
             >

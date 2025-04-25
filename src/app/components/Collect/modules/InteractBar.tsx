@@ -97,7 +97,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
               <div
                 className={`relative w-4 h-4 flex items-center justify-center ${
                   item?.reacted && "mix-blend-multiply hue-rotate-60"
-                } ${!item.loader && !item.disabled && "cursor-pointer"}`}
+                } ${!item.loader && !item.disabled && "cursor-empireS"}`}
                 onClick={
                   !isConnected
                     ? () => openOnboarding()
@@ -122,7 +122,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
               </div>
               <div
                 className={`relative w-fit h-fit flex items-center justify-center text-black font-din text-xxs ${
-                  item?.count > 0 && "cursor-pointer"
+                  item?.count > 0 && "cursor-empireS"
                 }`}
                 onClick={() => item?.count > 0 && item.who()}
               >

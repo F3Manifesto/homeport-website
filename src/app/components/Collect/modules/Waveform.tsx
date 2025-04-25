@@ -81,7 +81,7 @@ const Waveform: FunctionComponent<WaveFormProps> = ({
   return (
     <div className="absolute right-0 bottom-0 w-full h-10 flex flex-row gap-1.5 items-center justify-between bg-offBlack px-1 border border-white">
       <div
-        className="relative flex w-fit h-fit items-center justify-center flex cursor-pointer active:scale-95"
+        className="relative flex w-fit h-fit items-center justify-center flex cursor-empireS active:scale-95"
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
@@ -91,11 +91,11 @@ const Waveform: FunctionComponent<WaveFormProps> = ({
         <HiOutlinePlayPause color="white" size={15} />
       </div>
       <div
-        className="relative w-full h-fit justify-center items-center cursor-pointer"
+        className="relative w-full h-fit justify-center items-center cursor-empireS"
         ref={waveformRef}
       />
       {upload && (
-        <label className="relative flex justify-end items-end cursor-pointer active:scale-95">
+        <label className="relative flex justify-end items-end cursor-empireS active:scale-95">
           <BsCloudUpload size={15} />
           <input
             hidden

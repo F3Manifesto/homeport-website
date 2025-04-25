@@ -1,7 +1,8 @@
+import { Status } from "../components/Orders/types/orders.types";
+
 export const CHROMADIN: `0x${string}` =
   "0x16a362A10C1f6Bc0565C8fFAd298f1c2761630C5";
-export const F3M: `0x${string}` = "0x998f214873835a4d0c31fdD76b49d4e198b3Ee9E";
-
+export const F3M: `0x${string}` = "0xB15282B59b80C0aACC2609410c910B1Ab0460070";
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 export const GROVE_GATEWAY: string = "https://api.grove.storage/";
 export const LOCALES: string[] = ["en", "es"];
@@ -182,3 +183,10 @@ export const IDIOMAS: string[] = [
   "Turkish",
   "Yolŋu",
 ];
+
+export const orderStatus: { [key in number]: Status } = {
+  [0]: Status.Fulfilled,
+  [1]: Status.Shipped,
+  [2]: Status.Shipping,
+  [3]: Status.Designing,
+};
