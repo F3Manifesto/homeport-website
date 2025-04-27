@@ -2,35 +2,65 @@ import { NextResponse } from "next/server";
 import { getAllCollections } from "../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY } from "../lib/constants";
 
-
 const locales = ["en", "es"];
 
+function escapeXml(unsafe: string) {
+  if (!unsafe) return "";
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      case "'":
+        return "&apos;";
+      case '"':
+        return "&quot;";
+      default:
+        return c;
+    }
+  });
+}
+
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://emancipa.xyz";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://f3manifesto.xyz";
   const gallery = await getAllCollections(1000, 0);
-  
+
   const collections = gallery?.data?.collectionCreateds || [];
 
-  const collectionsXml = collections.map((coll: any) => {
-    const slug = encodeURIComponent(coll?.collectionMetadata?.title?.replace(/\s+/g, "-").toLowerCase());
+  const collectionsXml = collections
+    .map((coll: any) => {
+      const rawTitle = coll?.collectionMetadata?.title ?? "";
+      const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-")); 
+      const title = escapeXml(rawTitle.replace(/-/g, " "));
+      const image = coll?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1];
 
-    return locales.map((locale) => `
+      return locales
+        .map(
+          (locale) => `
       <url>
-        <loc>${baseUrl}/${locale}/collect/${slug}</loc>
-        ${locales.map(
-          altLocale => `
-          <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${slug}" />
+        <loc>${baseUrl}/${locale}/collect/${safeSlug}</loc>
+        ${locales
+          .map(
+            (altLocale) => `
+          <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${safeSlug}" />
           `
-        ).join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en/collect/${slug}" />
+          )
+          .join("")}
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en/collect/${safeSlug}" />
         <image:image>
-        <image:loc>${INFURA_GATEWAY}/ipfs/${coll?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1]}</image:loc>
-        <image:title><![CDATA[${coll?.collectionMetadata?.title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
-        <image:caption><![CDATA[${coll?.collectionMetadata?.title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
+        <image:loc>${INFURA_GATEWAY}/ipfs/${image}</image:loc>
+        <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
+        <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
       </image:image>
       </url>
-    `).join("");
-  }).join("");
+    `
+        )
+        .join("");
+    })
+    .join("");
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset 
@@ -38,29 +68,41 @@ export async function GET() {
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-${locales.map(locale => `
+${locales
+  .map(
+    (locale) => `
     <url>
       <loc>${baseUrl}/${locale}</loc>
-      ${locales.map(
-        altLocale => `
+      ${locales
+        .map(
+          (altLocale) => `
         <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}" />
         `
-      ).join("")}
+        )
+        .join("")}
       <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en" />
     </url>
-  `).join("")}
+  `
+  )
+  .join("")}
   
-  ${locales.map(locale => `
+  ${locales
+    .map(
+      (locale) => `
     <url>
       <loc>${baseUrl}/${locale}/orders</loc>
-      ${locales.map(
-        altLocale => `
+      ${locales
+        .map(
+          (altLocale) => `
         <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/orders" />
         `
-      ).join("")}
+        )
+        .join("")}
       <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en/orders" />
     </url>
-  `).join("")}
+  `
+    )
+    .join("")}
 
   ${collectionsXml}
 </urlset>`;
