@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 import { InteractBarProps } from "../types/common.types";
@@ -118,6 +118,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
                   </div>
                 ) : (
                   <Image
+                    alt="interact"
                     layout="fill"
                     src={`${INFURA_GATEWAY}/ipfs/${item?.image}`}
                     draggable={false}

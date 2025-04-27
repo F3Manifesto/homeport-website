@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import { ImCross } from "react-icons/im";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 import { useRouter } from "next/navigation";
@@ -38,6 +38,7 @@ const SuccessCheckout: FunctionComponent<{ dict: any }> = ({
                     "ipfs://"
                   )?.[1]
                 }`}
+                alt={`${context?.successCheckout?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                 draggable={false}
                 objectFit="cover"
               />

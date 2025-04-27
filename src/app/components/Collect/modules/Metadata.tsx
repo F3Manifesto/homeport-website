@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useRef } from "react";
 import { ACCEPTED_TOKENS, INFURA_GATEWAY } from "../../../lib/constants";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -356,6 +356,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             src={`${INFURA_GATEWAY}/ipfs/${item[0]}`}
                             className="flex rounded-full"
                             draggable={false}
+                            alt={item[1]}
                           />
                         </div>
                       </div>

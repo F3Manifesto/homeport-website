@@ -1,5 +1,5 @@
 import { ModalContext } from "@/app/providers";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FunctionComponent, JSX, useContext } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import useCrearCuenta from "../hooks/useCrearCuenta";
@@ -37,6 +37,7 @@ const CrearCuenta: FunctionComponent<{ dict: any }> = ({
               >
                 {account?.pfp && (
                   <Image
+                    alt="pfp"
                     src={URL.createObjectURL(account.pfp)}
                     objectFit="cover"
                     layout="fill"

@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Publication from "../../Collect/modules/Publication";
 import { Account, Post } from "@lens-protocol/client";
 import { ModalContext } from "@/app/providers";

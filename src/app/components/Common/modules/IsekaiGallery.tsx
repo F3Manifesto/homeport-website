@@ -77,12 +77,12 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                     objectFit="cover"
                     layout="fill"
                     draggable={false}
-                    alt={
+                    alt={`${
                       filteredIsekaiGallery?.length > 0 &&
                       window.location.search?.includes("portal=")
                         ? (token as Gallery)?.collectionMetadata?.title
                         : (token as { image: string; title: string }).title
-                    }
+                    } | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
                     src={`${INFURA_GATEWAY}/ipfs/${
                       (filteredIsekaiGallery?.length > 0 &&

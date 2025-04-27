@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { AiFillBackward } from "react-icons/ai";
 import useOrders from "../hooks/useOrders";
 import Connect from "../../Collect/modules/Connect";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { ACCEPTED_TOKENS, INFURA_GATEWAY } from "@/app/lib/constants";
 import { Details } from "../../Collect/types/collect.types";
 
@@ -192,6 +192,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                           layout="fill"
                                           draggable={false}
                                           src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
+                                          alt="loader"
                                         />
                                       </div>
                                     </div>
@@ -212,6 +213,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                   <div className="relative w-fit h-fit flex items-center justify-start">
                                     <div className="relative w-8 h-8 rounded-md flex items-center justify-center bg-lightPurple border border-ligero">
                                       <Image
+                                        alt={`${order?.collection?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                                         src={`${INFURA_GATEWAY}/ipfs/${
                                           order?.collection?.collectionMetadata?.images?.[0]?.split(
                                             "ipfs://"
@@ -245,6 +247,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                             order?.currency?.toLowerCase()
                                         )?.[0]
                                       }`}
+                                      alt={order?.orderId}
                                       className="flex rounded-full"
                                       draggable={false}
                                       layout="fill"

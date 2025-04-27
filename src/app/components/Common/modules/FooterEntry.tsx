@@ -2,7 +2,7 @@
 
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { ModalContext } from "@/app/providers";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { ReactElement, useContext } from "react";
 
 export default function FooterEntry({ dict }: { dict: any }) {
@@ -88,6 +88,7 @@ export default function FooterEntry({ dict }: { dict: any }) {
                         layout="fill"
                         draggable={false}
                         src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                        alt={item.title}
                       />
                     )}
                   </div>

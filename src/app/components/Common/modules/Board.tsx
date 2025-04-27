@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { BOARD_IMAGES, INFURA_GATEWAY } from "../../../lib/constants";
@@ -62,6 +62,7 @@ const Board: FunctionComponent<BoardProps> = ({
                         layout="fill"
                         draggable={false}
                         src={`${INFURA_GATEWAY}/ipfs/${uri}`}
+                        alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                       />
                     </div>
                   );
@@ -109,6 +110,7 @@ const Board: FunctionComponent<BoardProps> = ({
                     draggable={false}
                     src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                     className="relative w-full h-full"
+                    alt="loader"
                   />
                 </motion.div>
               </div>
@@ -130,6 +132,7 @@ const Board: FunctionComponent<BoardProps> = ({
                       layout="fill"
                       objectPosition={"top"}
                       objectFit="cover"
+                      alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                     />
                   </div>
                 </div>
@@ -195,6 +198,7 @@ const Board: FunctionComponent<BoardProps> = ({
                       objectFit="cover"
                       draggable={false}
                       priority
+                      alt={`${item.title} by Emma-Jane MacKinnon-Lee`}
                     />
                   </div>
                 );
@@ -340,6 +344,7 @@ const Board: FunctionComponent<BoardProps> = ({
                             draggable={false}
                             src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
                             priority
+                            alt="F3Manifesto"
                           />
                         </div>
                       </div>

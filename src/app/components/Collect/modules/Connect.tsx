@@ -1,6 +1,6 @@
 import React, { FunctionComponent, JSX, useContext } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import useLens from "../../Common/hooks/useLens";
 import { useAccount } from "wagmi";
 import { useModal } from "connectkit";
@@ -26,6 +26,7 @@ const Connect: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
               draggable={false}
               className="rounded-full"
               objectFit="cover"
+              alt="pfp"
             />
           </div>
           <div className="text-black text-xs relative w-fit h-fit flex items-center justify-center font-fira">

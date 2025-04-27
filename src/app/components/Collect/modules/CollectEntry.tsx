@@ -1,7 +1,6 @@
 "use client";
 
-import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { ModalContext } from "@/app/providers";
 import RouterChange from "../../Common/modules/RouterChange";
@@ -60,6 +59,7 @@ export default function CollectEntry({
                   layout="fill"
                   objectFit="contain"
                   unoptimized
+                  alt={`${collection?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                   draggable={false}
                   src={`${INFURA_GATEWAY}/ipfs/${
                     collection?.collectionMetadata?.images?.[indice]?.split(

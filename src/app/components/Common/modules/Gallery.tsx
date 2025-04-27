@@ -73,7 +73,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                     objectFit="cover"
                     layout="fill"
                     draggable={false}
-                    alt={token?.collectionMetadata?.title}
+                    alt={`${token?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
                     src={`${INFURA_GATEWAY}/ipfs/${
                       token?.collectionMetadata?.images?.[0]?.split(

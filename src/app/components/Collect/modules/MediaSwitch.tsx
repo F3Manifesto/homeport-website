@@ -1,5 +1,5 @@
 import { FunctionComponent, JSX } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Waveform from "./Waveform";
 import { MediaSwitchProps } from "../types/collect.types";
 
@@ -52,6 +52,7 @@ const MediaSwitch: FunctionComponent<MediaSwitchProps> = ({
             objectFit={objectFit ? "contain" : "cover"}
             className={classNameAudio}
             draggable={false}
+            alt="media"
           />
           {!hidden && (
             <Waveform
@@ -69,6 +70,7 @@ const MediaSwitch: FunctionComponent<MediaSwitchProps> = ({
         <Image
           src={srcUrl}
           layout="fill"
+          alt="media"
           objectFit={objectFit ? "contain" : "cover"}
           objectPosition={"center"}
           className={classNameImage}

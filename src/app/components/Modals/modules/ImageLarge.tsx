@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FunctionComponent, JSX, useContext } from "react";
 import { ModalContext } from "@/app/providers";
 
@@ -14,6 +14,7 @@ const ImageLarge: FunctionComponent = (): JSX.Element => {
           <div className="relative w-5/6 sm:w-4/5 h-4/5 justify-center flex items-center">
             <div className="relative w-full h-full row-start-1 grid grid-flow-col auto-cols-auto px-4">
               <Image
+                alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                 src={context?.imageViewer!}
                 layout="fill"
                 objectFit="contain"

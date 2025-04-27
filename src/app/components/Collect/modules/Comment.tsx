@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useRef } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { INFURA_GATEWAY } from "../../../lib/constants";
@@ -147,6 +147,7 @@ const Comment: FunctionComponent<CommentProps> = ({
                 layout="fill"
                 src={`${INFURA_GATEWAY}/ipfs/QmXzLW1oUhtvBkd6GdTM1bHxqz9cSRw2UCCyT4u6FZ1QCr`}
                 draggable={false}
+                alt="loader"
               />
               <input
                 hidden

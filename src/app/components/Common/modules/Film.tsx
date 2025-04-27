@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX, useState } from "react";
 import { INFURA_GATEWAY } from "../../../lib/constants";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useLanguage from "../hooks/useLanguage";
 
@@ -33,6 +33,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 draggable={false}
                 src={`${INFURA_GATEWAY}/ipfs/QmebjCsHCiUWzxMwdjYwQcF1CigsNva6g1HH2vCvmiJNcu`}
                 priority
+                alt="F3Manifesto"
               />
             </div>
             {openMenu && (
@@ -136,6 +137,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                         <div className="relative w-fit h-fit flex items-center justify-center">
                           <div className="relative w-6 h-6 flex items-center justify-center">
                             <Image
+                              alt="F3Manifesto"
                               draggable={false}
                               src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
                               layout="fill"
@@ -163,6 +165,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 src={`${INFURA_GATEWAY}/ipfs/Qmdp2EmTueHenNAyq8PvyURCvWFFpXbSx3Dw2exQ3naYYL`}
                 priority
                 layout="fill"
+                alt="F3Manifesto"
               />
             </div>
           </div>

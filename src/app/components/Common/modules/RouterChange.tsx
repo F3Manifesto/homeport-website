@@ -1,5 +1,5 @@
 import { FunctionComponent, JSX } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 
 const RouterChange: FunctionComponent = (): JSX.Element => {
@@ -8,6 +8,7 @@ const RouterChange: FunctionComponent = (): JSX.Element => {
       <div className="relative flex justify-center items-center flex-col gap-4">
         <div className="w-12 h-12 relative flex items-center justify-center animate-spin">
           <Image
+            alt="loader"
             layout="fill"
             draggable={false}
             src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}

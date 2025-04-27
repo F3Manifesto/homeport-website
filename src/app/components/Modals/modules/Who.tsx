@@ -1,7 +1,7 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import { ImCross } from "react-icons/im";
 import { AiOutlineLoading } from "react-icons/ai";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import WhoSwitch from "./WhoSwitch";
 import { ModalContext } from "@/app/providers";
@@ -50,6 +50,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                         layout="fill"
                         src={`${INFURA_GATEWAY}/ipfs/QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei`}
                         draggable={false}
+                        alt="quote"
                       />
                     </div>
                     <div
@@ -63,6 +64,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                         layout="fill"
                         src={`${INFURA_GATEWAY}/ipfs/QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo`}
                         draggable={false}
+                        alt="mirror"
                       />
                     </div>
                   </div>

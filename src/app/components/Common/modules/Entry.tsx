@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import RouterChange from "./RouterChange";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { INFURA_GATEWAY, MARQUEE_IMAGES } from "@/app/lib/constants";
 import Marquee from "react-fast-marquee";
 import useGallery from "../hooks/useGallery";
@@ -68,6 +68,7 @@ export default function Entry({ dict }: { dict: any }) {
               objectFit="cover"
               layout="fill"
               draggable={false}
+              alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
             />
           </div>
           <div className="absolute w-full h-fit top-4 flex items-center justify-between gap-3 flex-col md:flex-row">
@@ -99,6 +100,7 @@ export default function Entry({ dict }: { dict: any }) {
                   src={`${INFURA_GATEWAY}/ipfs/QmNrCdpmAPgqt4rJ5NDPKkuWTZWwLDBpHuR16zug1HDf7h`}
                   layout="fill"
                   draggable={false}
+                  alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                 />
               </motion.div>
             </div>
@@ -245,6 +247,7 @@ export default function Entry({ dict }: { dict: any }) {
               objectFit="cover"
               objectPosition={"left"}
               draggable={false}
+              alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
             />
           </div>
           <div className="absolute bottom-20 right-5 sm:right-10 grid auto-rows-auto grid-flow-col gap-6">
@@ -258,6 +261,7 @@ export default function Entry({ dict }: { dict: any }) {
                   objectFit="cover"
                   layout="fill"
                   draggable={false}
+                  alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                 />
               </div>
             </div>
@@ -271,6 +275,7 @@ export default function Entry({ dict }: { dict: any }) {
                   objectFit="cover"
                   layout="fill"
                   draggable={false}
+                  alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                 />
               </div>
             </div>
@@ -281,6 +286,7 @@ export default function Entry({ dict }: { dict: any }) {
                 <Image
                   src={`${INFURA_GATEWAY}/ipfs/QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
                   priority
+                  alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                   objectFit="cover"
                   layout="fill"
                   draggable={false}
@@ -308,6 +314,7 @@ export default function Entry({ dict }: { dict: any }) {
                     layout="fill"
                     priority
                     draggable={false}
+                    alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                   />
                 </div>
               );
