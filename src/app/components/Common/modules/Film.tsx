@@ -1,12 +1,12 @@
 import { FunctionComponent, JSX, useState } from "react";
 import { INFURA_GATEWAY } from "../../../lib/constants";
 import Image from "next/legacy/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import useLanguage from "../hooks/useLanguage";
 
 const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
   const router = useRouter();
-  const path = usePathname();
-  const [openLanguages, setOpenLanguages] = useState<boolean>(false);
+  const { changeLanguage, openLanguages, setOpenLanguages } = useLanguage();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   return (
     <div className="relative w-full h-fit flex items-start justify-start">
@@ -129,9 +129,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                         }`}
                         onClick={() => {
                           if (index === 0 || index === 1) {
-                            router.replace(
-                              path.replace(/\/(en|es)\//g, `/${item.name}/`)
-                            );
+                            changeLanguage(item.name);
                           }
                         }}
                       >
