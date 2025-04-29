@@ -9,15 +9,22 @@ export async function GET(req: NextRequest) {
   if (!cid) return new Response('Missing CID', { status: 400 })
 
   const infuraUrl = `${INFURA_GATEWAY}/ipfs/${cid}`
-  const res = await fetch(infuraUrl, { cache: 'no-store' })
 
-  const headers = new Headers(res.headers)
+  const res = await fetch(infuraUrl, {
+    headers: { 'x-cid': cid },
+    cache: 'no-store',
+    next: { revalidate: 0 },
+  })
+
+  const blob = await res.blob()
+
+  const headers = new Headers()
+  headers.set('Content-Type', blob.type)
+  headers.set('Content-Length', blob.size.toString())
   headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-  headers.set('Vary', 'cid')
-  headers.delete('set-cookie')
-  
+  headers.set('Vary', 'x-cid')
 
-  return new Response(res.body, {
+  return new Response(blob, {
     status: res.status,
     headers,
   })
