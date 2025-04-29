@@ -1,5 +1,9 @@
+export const dynamic = "force-dynamic";
+
+
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { NextRequest } from "next/server";
+
 
 export async function GET(req: NextRequest) {
   const cid = req.nextUrl.searchParams.get("cid");
@@ -23,6 +27,7 @@ export async function GET(req: NextRequest) {
       headers: {
         "Content-Type": contentType,
         "Cache-Control": "public, max-age=31536000, immutable",
+        "Vary": "cid",
       },
     });
   } catch (err) {
