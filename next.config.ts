@@ -18,41 +18,41 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'localhost',
-        pathname: '/api/infura',
+        hostname: 'f3manifesto.xyz',
+        pathname: "/api/infura/**",
       },
     ],
     
     unoptimized: true,
   },
   trailingSlash: true,
-  // async headers() {
-  //   let headersConfig: any[] = [];
+  async headers() {
+    let headersConfig: any[] = [];
 
-  //   const allowedOrigins = ["https://thedial.infura-ipfs.io"];
-  //   allowedOrigins.forEach((origin) => {
-  //     headersConfig.push({
-  //       source: "/(.*)",
-  //       headers: [
-  //         {
-  //           key: "Access-Control-Allow-Origin",
-  //           value: origin,
-  //         },
-  //         {
-  //           key: "Access-Control-Allow-Headers",
-  //           value:
-  //             "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-  //         },
-  //         {
-  //           key: "Access-Control-Allow-Methods",
-  //           value: "GET, POST, PUT, DELETE, OPTIONS",
-  //         },
-  //       ],
-  //     });
-  //   });
+    const allowedOrigins = ["https://thedial.infura-ipfs.io"];
+    allowedOrigins.forEach((origin) => {
+      headersConfig.push({
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: origin,
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value:
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, PUT, DELETE, OPTIONS",
+          },
+        ],
+      });
+    });
 
-  //   return headersConfig;
-  // },
+    return headersConfig;
+  },
 };
 
 export default nextConfig;
