@@ -8,6 +8,8 @@ import { Gallery } from "@/app/components/Common/types/common.types";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import Wrapper from "@/app/components/Common/modules/Wrapper";
+import { Suspense } from "react";
+import RouterChange from "@/app/components/Common/modules/RouterChange";
 
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
@@ -79,6 +81,13 @@ export default async function Collect({
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
 
   return (
-    <Wrapper page={<CollectEntry collection={collection} dict={dict} />} />
+    <Wrapper
+      dict={dict}
+      page={
+        <Suspense fallback={<RouterChange />}>
+          <CollectEntry collection={collection} dict={dict} />
+        </Suspense>
+      }
+    />
   );
 }

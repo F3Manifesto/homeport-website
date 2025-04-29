@@ -3,6 +3,8 @@ import OrdersEntry from "@/app/components/Orders/modules/OrdersEntry";
 import { Metadata } from "next";
 import { getDictionary } from "../[lang]/dictionaries";
 import Wrapper from "../components/Common/modules/Wrapper";
+import { Suspense } from "react";
+import RouterChange from "../components/Common/modules/RouterChange";
 
 export const metadata: Metadata = {
   title: "Orders",
@@ -52,5 +54,14 @@ export default async function Orders({ params }: { params: tParams }) {
   const { lang } = await params;
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <Wrapper page={<OrdersEntry dict={dict} />} />;
+  return (
+    <Wrapper
+      dict={dict}
+      page={
+        <Suspense fallback={<RouterChange />}>
+          <OrdersEntry dict={dict} />
+        </Suspense>
+      }
+    />
+  );
 }
