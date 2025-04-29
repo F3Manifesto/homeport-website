@@ -13,7 +13,9 @@ export async function GET(req: NextRequest) {
 
   const headers = new Headers(res.headers)
   headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  headers.set('Vary', 'cid')
   headers.delete('set-cookie')
+  
 
   return new Response(res.body, {
     status: res.status,
