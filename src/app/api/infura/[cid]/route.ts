@@ -1,12 +1,13 @@
 export const dynamic = "force-dynamic";
 
-
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { NextRequest } from "next/server";
 
-
-export async function GET(req: NextRequest) {
-  const cid = req.nextUrl.searchParams.get("cid");
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: { cid: string } }
+) {
+  const cid = params.cid;
 
   if (!cid || !cid.match(/^Qm[1-9A-HJ-NP-Za-km-z]{44}$/)) {
     return new Response("CID inválido", { status: 400 });
@@ -27,7 +28,6 @@ export async function GET(req: NextRequest) {
       headers: {
         "Content-Type": contentType,
         "Cache-Control": "public, max-age=31536000, immutable",
-        "Vary": "cid",
       },
     });
   } catch (err) {
