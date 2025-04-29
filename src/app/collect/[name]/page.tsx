@@ -62,11 +62,10 @@ export default async function Collect({
   params,
 }: {
   params: Promise<{
-    lang: string;
     name: string;
   }>;
 }) {
-  const { lang, name } = await params;
+  const { name } = await params;
   const data = await getOneCollection(
     decodeURIComponent(name)?.replaceAll("-", " ")
   );
@@ -78,8 +77,7 @@ export default async function Collect({
     collection.collectionMetadata = await json.json();
   }
 
-  const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-
+  const dict = await (getDictionary as (locale: any) => Promise<any>)("en");
   return (
     <Wrapper
       dict={dict}
