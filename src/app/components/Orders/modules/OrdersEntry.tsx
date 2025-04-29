@@ -1,14 +1,12 @@
 "use client";
 
-import { ModalContext } from "@/app/providers";
 import RouterChange from "../../Common/modules/RouterChange";
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { AiFillBackward } from "react-icons/ai";
 import useOrders from "../hooks/useOrders";
 import Connect from "../../Collect/modules/Connect";
 import Image from "next/image";
-import { ACCEPTED_TOKENS, INFURA_GATEWAY } from "@/app/lib/constants";
+import { ACCEPTED_TOKENS, INFURA_GATEWAY_INTERNAL } from "@/app/lib/constants";
 import { Details } from "../../Collect/types/collect.types";
 
 export default function OrdersEntry({ dict }: { dict: any }) {
@@ -191,7 +189,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                         <Image
                                           layout="fill"
                                           draggable={false}
-                                          src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
+                                          src={`${INFURA_GATEWAY_INTERNAL}QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                                           alt="loader"
                                         />
                                       </div>
@@ -214,7 +212,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                     <div className="relative w-8 h-8 rounded-md flex items-center justify-center bg-lightPurple border border-ligero">
                                       <Image
                                         alt={`${order?.collection?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
-                                        src={`${INFURA_GATEWAY}/ipfs/${
+                                        src={`${INFURA_GATEWAY_INTERNAL}${
                                           order?.collection?.collectionMetadata?.images?.[0]?.split(
                                             "ipfs://"
                                           )?.[1]
@@ -240,7 +238,7 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                 <div className="relative w-fit h-fit flex">
                                   <div className="relative flex items-center w-7 h-7 rounded-full bg-lightPurple   justify-center border border-white">
                                     <Image
-                                      src={`${INFURA_GATEWAY}/ipfs/${
+                                      src={`${INFURA_GATEWAY_INTERNAL}${
                                         ACCEPTED_TOKENS?.find(
                                           (tok) =>
                                             tok[2].toLocaleLowerCase() ==

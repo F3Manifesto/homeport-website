@@ -1,7 +1,7 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import { ImCross } from "react-icons/im";
 import Image from "next/image";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 import { useRouter } from "next/navigation";
 
@@ -33,7 +33,7 @@ const SuccessCheckout: FunctionComponent<{ dict: any }> = ({
             <div className="relative w-[25vw] h-[25vh] flex items-center justify-center p-px bg-lightYellow border border-black">
               <Image
                 layout="fill"
-                src={`${INFURA_GATEWAY}/ipfs/${
+                src={`${INFURA_GATEWAY_INTERNAL}${
                   context?.successCheckout?.collectionMetadata?.images?.[0]?.split(
                     "ipfs://"
                   )?.[1]

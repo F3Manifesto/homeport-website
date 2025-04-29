@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useEffect, useState } from "react";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import InteractBar from "./InteractBar";
 import { useRouter } from "next/navigation";
 import { ModalContext } from "@/app/providers";
@@ -75,14 +75,18 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                     draggable={false}
                     alt={`${token?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
-                    src={`${INFURA_GATEWAY}/ipfs/${
+                    src={`${INFURA_GATEWAY_INTERNAL}${
                       token?.collectionMetadata?.images?.[0]?.split(
                         "ipfs://"
                       )?.[1]
                     }`}
                   />
                   {token?.post && (
-                    <InteractBar dict={dict} post={token?.post} title={nameToken} />
+                    <InteractBar
+                      dict={dict}
+                      post={token?.post}
+                      title={nameToken}
+                    />
                   )}
                 </div>
                 <div className="h-0.5 w-full flex items-center justify-center bg-black relative"></div>

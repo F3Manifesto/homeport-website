@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useRef } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import { ImCross } from "react-icons/im";
 import useComment from "../hooks/useComment";
 import handleSearchProfiles from "@/app/lib/helpers/handleSearchProfiles";
@@ -15,7 +15,7 @@ import setPostMedia from "@/app/lib/helpers/setPostMedia";
 const Comment: FunctionComponent<CommentProps> = ({
   post,
   dict,
-  getReferences
+  getReferences,
 }): JSX.Element => {
   const textElement = useRef(null);
   const context = useContext(ModalContext);
@@ -145,7 +145,7 @@ const Comment: FunctionComponent<CommentProps> = ({
             >
               <Image
                 layout="fill"
-                src={`${INFURA_GATEWAY}/ipfs/QmXzLW1oUhtvBkd6GdTM1bHxqz9cSRw2UCCyT4u6FZ1QCr`}
+                src={`${INFURA_GATEWAY_INTERNAL}QmXzLW1oUhtvBkd6GdTM1bHxqz9cSRw2UCCyT4u6FZ1QCr`}
                 draggable={false}
                 alt="loader"
               />

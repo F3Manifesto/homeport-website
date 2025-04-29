@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX } from "react";
 import Image from "next/image";
-import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "@/app/lib/constants";
 
 const RouterChange: FunctionComponent = (): JSX.Element => {
   return (
@@ -11,7 +11,7 @@ const RouterChange: FunctionComponent = (): JSX.Element => {
             alt="loader"
             layout="fill"
             draggable={false}
-            src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
+            src={`${INFURA_GATEWAY_INTERNAL}/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
           />
         </div>
       </div>

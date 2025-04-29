@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useRef } from "react";
-import { ACCEPTED_TOKENS, INFURA_GATEWAY } from "../../../lib/constants";
+import {
+  ACCEPTED_TOKENS,
+  INFURA_GATEWAY_INTERNAL,
+} from "../../../lib/constants";
 import { AiOutlineLoading } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import descriptionRegex from "@/app/lib/helpers/descriptionRegex";
@@ -86,7 +89,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                   >
                     <div className="relative w-2 h-4 flex items-center justify-center">
                       <Image
-                        src={`${INFURA_GATEWAY}/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
+                        src={`${INFURA_GATEWAY_INTERNAL}QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                         layout="fill"
                         alt="Arrow"
                         priority
@@ -116,7 +119,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                 <div className="relative h-10 w-16 border-r-4 border-t-2 border-b-2 border-l-2 border-offBlack rounded-md bg-lightWhite place-self-center grid grid-flow-col auto-cols-auto hover:rotate-6 cursor-empireS hover:mix-blend-exclusion">
                   <div className="relative h-6 w-10 col-start-1 place-self-center">
                     <Image
-                      src={`${INFURA_GATEWAY}/ipfs/${
+                      src={`${INFURA_GATEWAY_INTERNAL}${
                         [
                           {
                             name: {
@@ -353,7 +356,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                         <div className="relative w-5 h-5 flex">
                           <Image
                             layout="fill"
-                            src={`${INFURA_GATEWAY}/ipfs/${item[0]}`}
+                            src={`${INFURA_GATEWAY_INTERNAL}${item[0]}`}
                             className="flex rounded-full"
                             draggable={false}
                             alt={item[1]}

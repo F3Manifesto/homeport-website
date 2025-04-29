@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FunctionComponent, JSX, useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { BOARD_IMAGES, INFURA_GATEWAY } from "../../../lib/constants";
+import { BOARD_IMAGES, INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 import { BoardProps } from "../types/common.types";
 import { usePathname } from "next/navigation";
@@ -61,7 +61,7 @@ const Board: FunctionComponent<BoardProps> = ({
                         objectFit="cover"
                         layout="fill"
                         draggable={false}
-                        src={`${INFURA_GATEWAY}/ipfs/${uri}`}
+                        src={`${INFURA_GATEWAY_INTERNAL}${uri}`}
                         alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                       />
                     </div>
@@ -108,7 +108,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   <Image
                     layout="fill"
                     draggable={false}
-                    src={`${INFURA_GATEWAY}/ipfs/QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
+                    src={`${INFURA_GATEWAY_INTERNAL}QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
                     className="relative w-full h-full"
                     alt="loader"
                   />
@@ -128,7 +128,7 @@ const Board: FunctionComponent<BoardProps> = ({
                     <Image
                       priority
                       draggable={false}
-                      src={`${INFURA_GATEWAY}/ipfs/${mainImage}`}
+                      src={`${INFURA_GATEWAY_INTERNAL}${mainImage}`}
                       layout="fill"
                       objectPosition={"top"}
                       objectFit="cover"
@@ -192,7 +192,7 @@ const Board: FunctionComponent<BoardProps> = ({
                     title={item.title}
                   >
                     <Image
-                      src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                      src={`${INFURA_GATEWAY_INTERNAL}${item.image}`}
                       layout="fill"
                       className="rounded-full"
                       objectFit="cover"
@@ -342,7 +342,7 @@ const Board: FunctionComponent<BoardProps> = ({
                           <Image
                             layout="fill"
                             draggable={false}
-                            src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                            src={`${INFURA_GATEWAY_INTERNAL}${item.image}`}
                             priority
                             alt="F3Manifesto"
                           />

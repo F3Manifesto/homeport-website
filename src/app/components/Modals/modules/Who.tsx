@@ -2,7 +2,7 @@ import { FunctionComponent, JSX, useContext } from "react";
 import { ImCross } from "react-icons/im";
 import { AiOutlineLoading } from "react-icons/ai";
 import Image from "next/image";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import WhoSwitch from "./WhoSwitch";
 import { ModalContext } from "@/app/providers";
 import useWho from "../hooks/useWho";
@@ -48,7 +48,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                     >
                       <Image
                         layout="fill"
-                        src={`${INFURA_GATEWAY}/ipfs/QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei`}
+                        src={`${INFURA_GATEWAY_INTERNAL}QmWDazvMf6mLejU1QoTmMejc8jXWpiaYgd2qzXsnzAQ8ei`}
                         draggable={false}
                         alt="quote"
                       />
@@ -62,7 +62,7 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                     >
                       <Image
                         layout="fill"
-                        src={`${INFURA_GATEWAY}/ipfs/QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo`}
+                        src={`${INFURA_GATEWAY_INTERNAL}QmQbWFsaUvQKbDpTyXesJKJM975qUEn5ncx3Mg3fs2wMZo`}
                         draggable={false}
                         alt="mirror"
                       />

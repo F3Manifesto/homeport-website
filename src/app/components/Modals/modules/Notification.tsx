@@ -1,7 +1,7 @@
 import { FunctionComponent, JSX, useContext } from "react";
 import { ImCross } from "react-icons/im";
 import Image from "next/image";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 
 const Notification: FunctionComponent = (): JSX.Element => {
@@ -25,7 +25,7 @@ const Notification: FunctionComponent = (): JSX.Element => {
               <Image
                 layout="fill"
                 alt="F3Manifesto"
-                src={`${INFURA_GATEWAY}/ipfs/QmVFBj9iJGjTxtz471x8NncDdt4rJpkSmRCevkuLDXZy5F`}
+                src={`${INFURA_GATEWAY_INTERNAL}QmVFBj9iJGjTxtz471x8NncDdt4rJpkSmRCevkuLDXZy5F`}
                 draggable={false}
                 objectFit="cover"
               />

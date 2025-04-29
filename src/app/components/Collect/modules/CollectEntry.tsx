@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "@/app/lib/constants";
 import { ModalContext } from "@/app/providers";
 import RouterChange from "../../Common/modules/RouterChange";
 import { useContext } from "react";
@@ -61,7 +61,7 @@ export default function CollectEntry({
                   unoptimized
                   alt={`${collection?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                   draggable={false}
-                  src={`${INFURA_GATEWAY}/ipfs/${
+                  src={`${INFURA_GATEWAY_INTERNAL}${
                     collection?.collectionMetadata?.images?.[indice]?.split(
                       "ipfs://"
                     )?.[1]
@@ -69,7 +69,7 @@ export default function CollectEntry({
                   key={indice}
                   onClick={() =>
                     context?.setImageViewer(
-                      `${INFURA_GATEWAY}/ipfs/${
+                      `${INFURA_GATEWAY_INTERNAL}${
                         collection?.collectionMetadata?.images?.[indice]?.split(
                           "ipfs://"
                         )?.[1]
@@ -94,7 +94,7 @@ export default function CollectEntry({
                     >
                       <div className="relative w-4 h-6 flex items-center justify-center rotate-180">
                         <Image
-                          src={`${INFURA_GATEWAY}/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
+                          src={`${INFURA_GATEWAY_INTERNAL}QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                           layout="fill"
                           alt="Arrow"
                           priority
@@ -119,7 +119,7 @@ export default function CollectEntry({
                     >
                       <div className="relative  w-4 h-6 flex items-center justify-center">
                         <Image
-                          src={`${INFURA_GATEWAY}/ipfs/QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
+                          src={`${INFURA_GATEWAY_INTERNAL}QmaercaFRN5CogxWiB5TVdDMG42XY2Uf7MD5zHfQgJKEWQ`}
                           layout="fill"
                           alt="Arrow"
                           priority

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FunctionComponent, JSX, useContext } from "react";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import { ModalContext } from "@/app/providers";
 import { useRouter } from "next/navigation";
 import { Gallery, IsekaiGalleryProps } from "../types/common.types";
@@ -84,7 +84,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                         : (token as { image: string; title: string }).title
                     } | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
-                    src={`${INFURA_GATEWAY}/ipfs/${
+                    src={`${INFURA_GATEWAY_INTERNAL}${
                       (filteredIsekaiGallery?.length > 0 &&
                       window.location.search?.includes("portal=")
                         ? (token as Gallery)?.collectionMetadata?.images?.[0]

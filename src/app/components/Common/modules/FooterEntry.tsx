@@ -1,6 +1,6 @@
 "use client";
 
-import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "@/app/lib/constants";
 import { ModalContext } from "@/app/providers";
 import Image from "next/image";
 import { ReactElement, useContext } from "react";
@@ -41,7 +41,7 @@ export default function FooterEntry({ dict }: { dict: any }) {
               autoPlay
               muted
               loop
-              src={`${INFURA_GATEWAY}/ipfs/${context?.randomFactory}`}
+              src={`${INFURA_GATEWAY_INTERNAL}${context?.randomFactory}`}
             />
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function FooterEntry({ dict }: { dict: any }) {
                       <Image
                         layout="fill"
                         draggable={false}
-                        src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                        src={`${INFURA_GATEWAY_INTERNAL}${item.image}`}
                         alt={item.title}
                       />
                     )}

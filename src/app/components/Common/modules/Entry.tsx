@@ -4,7 +4,7 @@ import { useContext } from "react";
 import RouterChange from "./RouterChange";
 import Head from "next/head";
 import Image from "next/image";
-import { INFURA_GATEWAY, MARQUEE_IMAGES } from "@/app/lib/constants";
+import { INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "@/app/lib/constants";
 import Marquee from "react-fast-marquee";
 import useGallery from "../hooks/useGallery";
 import { ModalContext } from "@/app/providers";
@@ -64,7 +64,7 @@ export default function Entry({ dict }: { dict: any }) {
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
               priority
-              src={`${INFURA_GATEWAY}/ipfs/QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
+              src={`${INFURA_GATEWAY_INTERNAL}QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9`}
               objectFit="cover"
               layout="fill"
               draggable={false}
@@ -97,7 +97,7 @@ export default function Entry({ dict }: { dict: any }) {
               >
                 <Image
                   priority
-                  src={`${INFURA_GATEWAY}/ipfs/QmNrCdpmAPgqt4rJ5NDPKkuWTZWwLDBpHuR16zug1HDf7h`}
+                  src={`${INFURA_GATEWAY_INTERNAL}QmNrCdpmAPgqt4rJ5NDPKkuWTZWwLDBpHuR16zug1HDf7h`}
                   layout="fill"
                   draggable={false}
                   alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
@@ -202,7 +202,7 @@ export default function Entry({ dict }: { dict: any }) {
                     key={videoImage}
                     muted
                   >
-                    <source src={`${INFURA_GATEWAY}/ipfs/${videoImage}`} />
+                    <source src={`${INFURA_GATEWAY_INTERNAL}${videoImage}`} />
                   </video>
                 </div>
               )}
@@ -241,7 +241,7 @@ export default function Entry({ dict }: { dict: any }) {
             className={`w-full h-full relative flex items-center justify-center`}
           >
             <Image
-              src={`${INFURA_GATEWAY}/ipfs/QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL`}
+              src={`${INFURA_GATEWAY_INTERNAL}QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL`}
               priority
               layout="fill"
               objectFit="cover"
@@ -256,7 +256,7 @@ export default function Entry({ dict }: { dict: any }) {
                 className={`w-40 h-40 galaxy:h-80 galaxy:w-80 border border-lightYellow relative flex items-center justify-center bg-lightYellow`}
               >
                 <Image
-                  src={`${INFURA_GATEWAY}/ipfs/QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
+                  src={`${INFURA_GATEWAY_INTERNAL}QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD`}
                   priority
                   objectFit="cover"
                   layout="fill"
@@ -270,7 +270,7 @@ export default function Entry({ dict }: { dict: any }) {
                 className={`w-40 h-40 galaxy:h-80 galaxy:w-80 border border-lightYellow relative flex items-center justify-center`}
               >
                 <Image
-                  src={`${INFURA_GATEWAY}/ipfs/QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu`}
+                  src={`${INFURA_GATEWAY_INTERNAL}QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu`}
                   priority
                   objectFit="cover"
                   layout="fill"
@@ -284,7 +284,7 @@ export default function Entry({ dict }: { dict: any }) {
                 className={`w-40 h-40 galaxy:h-80 galaxy:w-80 border border-lightYellow relative flex items-center justify-center`}
               >
                 <Image
-                  src={`${INFURA_GATEWAY}/ipfs/QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
+                  src={`${INFURA_GATEWAY_INTERNAL}QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC`}
                   priority
                   alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                   objectFit="cover"
@@ -309,7 +309,7 @@ export default function Entry({ dict }: { dict: any }) {
                   className={`h-60 w-60 relative mr-4 bg-lightYellow`}
                 >
                   <Image
-                    src={`${INFURA_GATEWAY}/ipfs/${uri}`}
+                    src={`${INFURA_GATEWAY_INTERNAL}${uri}`}
                     objectFit="cover"
                     layout="fill"
                     priority

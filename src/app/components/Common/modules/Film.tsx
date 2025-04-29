@@ -1,5 +1,5 @@
 import { FunctionComponent, JSX, useState } from "react";
-import { INFURA_GATEWAY } from "../../../lib/constants";
+import { INFURA_GATEWAY_INTERNAL } from "../../../lib/constants";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useLanguage from "../hooks/useLanguage";
@@ -31,7 +31,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
               <Image
                 layout="fill"
                 draggable={false}
-                src={`${INFURA_GATEWAY}/ipfs/QmebjCsHCiUWzxMwdjYwQcF1CigsNva6g1HH2vCvmiJNcu`}
+                src={`${INFURA_GATEWAY_INTERNAL}QmebjCsHCiUWzxMwdjYwQcF1CigsNva6g1HH2vCvmiJNcu`}
                 priority
                 alt="F3Manifesto"
               />
@@ -139,7 +139,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                             <Image
                               alt="F3Manifesto"
                               draggable={false}
-                              src={`${INFURA_GATEWAY}/ipfs/${item.image}`}
+                              src={`${INFURA_GATEWAY_INTERNAL}${item.image}`}
                               layout="fill"
                             />
                           </div>
@@ -162,7 +162,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
             >
               <Image
                 draggable={false}
-                src={`${INFURA_GATEWAY}/ipfs/Qmdp2EmTueHenNAyq8PvyURCvWFFpXbSx3Dw2exQ3naYYL`}
+                src={`${INFURA_GATEWAY_INTERNAL}Qmdp2EmTueHenNAyq8PvyURCvWFFpXbSx3Dw2exQ3naYYL`}
                 priority
                 layout="fill"
                 alt="F3Manifesto"
@@ -176,8 +176,8 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
             autoPlay
             muted
             loop
-            src={`${INFURA_GATEWAY}/ipfs/Qmaa9dTmhyvSQifLqciAVdNEAHmvRRpxcvawRxGdnM8mCe`}
-            poster={`${INFURA_GATEWAY}/ipfs/Qma9uA5oK2yfr2upLoYjAnuZ6q1xBd5bu7yXac6ZfESV8G`}
+            src={`${INFURA_GATEWAY_INTERNAL}Qmaa9dTmhyvSQifLqciAVdNEAHmvRRpxcvawRxGdnM8mCe`}
+            poster={`${INFURA_GATEWAY_INTERNAL}Qma9uA5oK2yfr2upLoYjAnuZ6q1xBd5bu7yXac6ZfESV8G`}
           ></video>
           <div className="absolute top-0 left-16 hidden sm:flex items-center justify-center w-fit h-full p-4">
             <div className="relative flex w-full h-full items-start justify-between flex-col gap-10">
@@ -215,7 +215,7 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                           className="absolute max-h-full max-w-none h-full w-full object-cover rounded-3xl opacity-70"
                         >
                           <source
-                            src={`${INFURA_GATEWAY}/ipfs/${video.image}`}
+                            src={`${INFURA_GATEWAY_INTERNAL}${video.image}`}
                             type="video/mp4"
                           />
                         </video>
