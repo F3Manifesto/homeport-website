@@ -1,13 +1,13 @@
 export const dynamic = "force-dynamic";
 
-import { INFURA_GATEWAY } from "@/app/lib/constants";
 import { NextRequest } from "next/server";
+import { INFURA_GATEWAY } from "@/app/lib/constants";
 
 export async function GET(
-  _req: NextRequest,
-  { params }: { params: { cid: string } }
+  request: NextRequest,
+  context: { params: { cid: string } }
 ) {
-  const cid = params.cid;
+  const { cid } = context.params;
 
   if (!cid || !cid.match(/^Qm[1-9A-HJ-NP-Za-km-z]{44}$/)) {
     return new Response("CID inválido", { status: 400 });
