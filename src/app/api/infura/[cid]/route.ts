@@ -1,13 +1,14 @@
 export const dynamic = "force-dynamic";
 
-import { NextRequest } from "next/server";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  context: { params: { cid: string } }
+  context: { params: Promise<{ cid: string }> } | { params: { cid: string } }
 ) {
-  const { cid } = context.params;
+  const params = await context.params;
+  const cid = params.cid;
 
   if (!cid || !cid.match(/^Qm[1-9A-HJ-NP-Za-km-z]{44}$/)) {
     return new Response("CID inválido", { status: 400 });
@@ -17,7 +18,7 @@ export async function GET(
     const response = await fetch(`${INFURA_GATEWAY}/ipfs/${cid}`);
 
     if (!response.ok) {
-      return new Response("Arquivo não encontrado", { status: 404 });
+      return new Response("Archivo no encontrado", { status: 404 });
     }
 
     const contentType =
@@ -31,7 +32,7 @@ export async function GET(
       },
     });
   } catch (err) {
-    console.error("Erro no proxy IPFS:", err);
-    return new Response("Erro interno", { status: 500 });
+    console.error("Error en el proxy IPFS:", err);
+    return new Response("Error interno", { status: 500 });
   }
 }
