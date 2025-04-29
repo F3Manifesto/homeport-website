@@ -3,7 +3,7 @@ import { Status } from "../components/Orders/types/orders.types";
 export const CHROMADIN: `0x${string}` =
   "0x16a362A10C1f6Bc0565C8fFAd298f1c2761630C5";
 export const F3M: `0x${string}` = "0xB15282B59b80C0aACC2609410c910B1Ab0460070";
-export const INFURA_GATEWAY_INTERNAL: string = "https://f3manifesto.xyz/api/infura?cid=";
+export const INFURA_GATEWAY_INTERNAL: string = "https://f3manifesto.xyz/api/infura/";
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 export const GROVE_GATEWAY: string = "https://api.grove.storage/";
 export const LOCALES: string[] = ["en", "es"];
