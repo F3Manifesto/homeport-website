@@ -1,7 +1,7 @@
 "use client";
 
 import { ModalContext } from "@/app/providers";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ImageLarge from "./ImageLarge";
 import Indexer from "./Indexer";
 import Notification from "./Notification";
@@ -12,6 +12,12 @@ import CrearCuenta from "./CrearCuenta";
 
 export default function ModalsEntry({ dict }: { dict: any }) {
   const context = useContext(ModalContext);
+
+  useEffect(() => {
+
+  }, [])
+
+
   return (
     <>
       {context?.reactBox && <Who dict={dict} />}

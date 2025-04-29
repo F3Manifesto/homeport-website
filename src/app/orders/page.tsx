@@ -1,7 +1,8 @@
+import { tParams } from "../layout";
 import OrdersEntry from "@/app/components/Orders/modules/OrdersEntry";
 import { Metadata } from "next";
-import { getDictionary } from "../dictionaries";
-import { tParams } from "@/app/layout";
+import { getDictionary } from "../[lang]/dictionaries";
+import Wrapper from "../components/Common/modules/Wrapper";
 
 export const metadata: Metadata = {
   title: "Orders",
@@ -51,5 +52,5 @@ export default async function Orders({ params }: { params: tParams }) {
   const { lang } = await params;
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <OrdersEntry dict={dict} />;
+  return <Wrapper page={<OrdersEntry dict={dict} />} />;
 }

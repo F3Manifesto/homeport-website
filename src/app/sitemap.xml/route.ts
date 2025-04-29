@@ -33,15 +33,14 @@ export async function GET() {
   const collectionsXml = collections
     .map((coll: any) => {
       const rawTitle = coll?.collectionMetadata?.title ?? "";
-      const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-")); 
+      const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
       const title = escapeXml(rawTitle.replace(/-/g, " "));
-      const image = coll?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1];
+      const image =
+        coll?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1];
 
-      return locales
-        .map(
-          (locale) => `
+      return `
       <url>
-        <loc>${baseUrl}/${locale}/collect/${safeSlug}</loc>
+        <loc>${baseUrl}/collect/${safeSlug}</loc>
         ${locales
           .map(
             (altLocale) => `
@@ -49,63 +48,50 @@ export async function GET() {
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en/collect/${safeSlug}" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}" />
         <image:image>
-        <image:loc>${INFURA_GATEWAY}/ipfs/${image}</image:loc>
-        <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
-        <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
-      </image:image>
+          <image:loc>${INFURA_GATEWAY}/ipfs/${image}</image:loc>
+          <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
+          <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
+        </image:image>
       </url>
-    `
-        )
-        .join("");
+    `;
     })
     .join("");
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-${locales
-  .map(
-    (locale) => `
-    <url>
-      <loc>${baseUrl}/${locale}</loc>
-      ${locales
-        .map(
-          (altLocale) => `
-        <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}" />
-        `
-        )
-        .join("")}
-      <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en" />
-    </url>
-  `
-  )
-  .join("")}
-  
-  ${locales
-    .map(
-      (locale) => `
-    <url>
-      <loc>${baseUrl}/${locale}/orders</loc>
-      ${locales
-        .map(
-          (altLocale) => `
-        <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/orders" />
-        `
-        )
-        .join("")}
-      <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en/orders" />
-    </url>
-  `
-    )
-    .join("")}
+    <urlset 
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    >
+      <url>
+        <loc>${baseUrl}/</loc>
+        ${locales
+          .map(
+            (locale) => `
+          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}" />
+          `
+          )
+          .join("")}
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/" />
+      </url>
 
-  ${collectionsXml}
-</urlset>`;
+
+           <url>
+        <loc>${baseUrl}/orders</loc>
+        ${locales
+          .map(
+            (locale) => `
+          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders" />
+          `
+          )
+          .join("")}
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/orders" />
+      </url>
+    
+      ${collectionsXml}
+    </urlset>`;
 
   return new NextResponse(body, {
     headers: {

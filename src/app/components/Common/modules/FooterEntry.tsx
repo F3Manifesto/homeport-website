@@ -7,6 +7,7 @@ import { ReactElement, useContext } from "react";
 
 export default function FooterEntry({ dict }: { dict: any }) {
   const context = useContext(ModalContext);
+
   return (
     <div className="relative w-full h-fit flex items-center justify-center bg-black items-stretch cursor-empireA mb-0 flex-col md:flex-row gap-10 md:gap-3 pt-6 pb-2 px-4 text-white">
       <div className="relative w-fit min-h-full flex flex-col gap-3 items-start justify-between grow">

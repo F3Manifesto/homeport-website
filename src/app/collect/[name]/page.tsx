@@ -1,12 +1,13 @@
 import CollectEntry from "@/app/components/Collect/modules/CollectEntry";
-import { Metadata } from "next";
-import { Gallery } from "@/app/components/Common/types/common.types";
-import { INFURA_GATEWAY } from "@/app/lib/constants";
 import {
   getAllCollections,
   getOneCollection,
-} from "../../../../../graphql/queries/getCollections";
-import { getDictionary } from "../../dictionaries";
+} from "../../../../graphql/queries/getCollections";
+import { Metadata } from "next";
+import { Gallery } from "@/app/components/Common/types/common.types";
+import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import Wrapper from "@/app/components/Common/modules/Wrapper";
 
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
@@ -76,5 +77,8 @@ export default async function Collect({
   }
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <CollectEntry collection={collection} dict={dict} />;
+
+  return (
+    <Wrapper page={<CollectEntry collection={collection} dict={dict} />} />
+  );
 }

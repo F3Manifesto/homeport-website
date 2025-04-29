@@ -1,11 +1,12 @@
-import OrdersEntry from "@/app/components/Orders/modules/OrdersEntry";
 import { Metadata } from "next";
-import { getDictionary } from "../dictionaries";
-import { tParams } from "@/app/layout";
+import "./globals.css";
+import Providers from "./providers";
+
+export type tParams = Promise<{ lang: string }>;
 
 export const metadata: Metadata = {
-  title: "Orders",
-  metadataBase: new URL("https://f3manifesto.xyz/orders"),
+  title: "F3Manifesto",
+  metadataBase: new URL("https://f3manifesto.xyz"),
   description:
     "Transcendent nostalgia. Machine & human made. In with gen. AI, web3 fashion & cc0 before it was cool. زن، زندگی، آزادی",
   twitter: {
@@ -47,9 +48,16 @@ export const metadata: Metadata = {
   ],
 };
 
-export default async function Orders({ params }: { params: tParams }) {
-  const { lang } = await params;
-
-  const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <OrdersEntry dict={dict} />;
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
 }
