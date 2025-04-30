@@ -8,7 +8,7 @@ const useLanguage = () => {
 
   const changeLanguage = (lang: string) => {
     const segments = path.split("/");
-    segments[1] = lang;
+    segments[1] = lang ?? "en";
     const newPath = segments.join("/");
 
     document.cookie = `NEXT_LOCALE=${lang}; path=/; SameSite=Lax`;
