@@ -1,7 +1,7 @@
 import OrdersEntry from "@/app/components/Orders/modules/OrdersEntry";
 import { Metadata } from "next";
 import { getDictionary } from "../dictionaries";
-import { tParams } from "@/app/layout";
+import { tParams } from "../layout";
 
 export const metadata: Metadata = {
   title: "Orders",

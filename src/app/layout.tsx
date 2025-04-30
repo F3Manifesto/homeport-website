@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 
-export type tParams = Promise<{ lang: string }>;
 
 export const metadata: Metadata = {
   title: "F3Manifesto",

@@ -1,4 +1,4 @@
-import { tParams } from "@/app/layout";
+import { tParams } from "@/app/[lang]/layout";
 import ModalsEntry from "./ModalsEntry";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 

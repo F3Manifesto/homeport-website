@@ -1,6 +1,6 @@
 import Footer from "../components/Common/modules/Footer";
 import Modals from "../components/Modals/modules/Modals";
-import { tParams } from "../layout";
+export type tParams = Promise<{ lang: string }>;
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "es" }];
