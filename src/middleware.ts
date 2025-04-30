@@ -29,6 +29,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/images") ||
+    pathname.startsWith("/opengraph_image.png") ||
     pathname.startsWith("/fonts") ||
     pathname.startsWith("/favicon.ico") ||
     pathname.startsWith("/api") ||
