@@ -53,10 +53,6 @@ export const ModalContext = createContext<
   | undefined
 >(undefined);
 
-export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "es" }];
-}
-
 export const config = createConfig(
   getDefaultConfig({
     appName: "F3Manifesto",

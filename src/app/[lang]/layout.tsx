@@ -2,6 +2,10 @@ import Footer from "../components/Common/modules/Footer";
 import Modals from "../components/Modals/modules/Modals";
 import { tParams } from "../layout";
 
+export async function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "es" }];
+}
+
 export default function RootLayout({
   children,
   params,
