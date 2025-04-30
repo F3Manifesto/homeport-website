@@ -17,19 +17,22 @@ const nextConfig: NextConfig = {
         pathname: "/ipfs/**",
       },
       {
-        protocol: 'https',
-        hostname: 'f3manifesto.xyz',
+        protocol: "https",
+        hostname: "f3manifesto.xyz",
         pathname: "/api/infura/**",
       },
     ],
-    
+
     unoptimized: true,
   },
   trailingSlash: true,
   async headers() {
     let headersConfig: any[] = [];
 
-    const allowedOrigins = ["https://thedial.infura-ipfs.io"];
+    const allowedOrigins = [
+      "https://thedial.infura-ipfs.io",
+      "https://f3manifesto.xyz",
+    ];
     allowedOrigins.forEach((origin) => {
       headersConfig.push({
         source: "/(.*)",

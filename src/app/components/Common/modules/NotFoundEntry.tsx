@@ -12,7 +12,7 @@ export default function NotFoundEntry({ dict }: { dict: any }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="relative w-fit h-fit text-lightYellow font-fira p-6 text-center flex items-center justify-center break-all">
-        {dict?.footer?.glitch} <Link href="/"> {dict?.footer?.home}</Link>
+        {dict?.[404]?.glitch} <Link href="/"> {dict?.[404]?.home}</Link>
       </div>
     </div>
   );

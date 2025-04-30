@@ -58,7 +58,6 @@ export default function CollectEntry({
                   priority
                   layout="fill"
                   objectFit="contain"
-                  unoptimized
                   alt={`${collection?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                   draggable={false}
                   src={`${INFURA_GATEWAY_INTERNAL}${

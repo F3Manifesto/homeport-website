@@ -65,7 +65,7 @@ export default function FooterEntry({ dict }: { dict: any }) {
           ].map(
             (
               item: {
-                image?: string;
+                image: string;
                 title: string;
                 component?: ReactElement;
                 link: string;

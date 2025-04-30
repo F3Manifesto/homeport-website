@@ -11,7 +11,6 @@ const RouterChange: FunctionComponent = (): JSX.Element => {
             alt="loader"
             layout="fill"
             draggable={false}
-            unoptimized
             src={`${INFURA_GATEWAY_INTERNAL}QmWcaVfpqyRB2BQ9swPHBB85fBTQSjQgoh4LNt1tWTXPmU`}
           />
         </div>

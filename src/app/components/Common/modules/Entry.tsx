@@ -202,7 +202,7 @@ export default function Entry({ dict }: { dict: any }) {
                     key={videoImage}
                     muted
                   >
-                    <source src={`${INFURA_GATEWAY_INTERNAL}${videoImage}`} />
+                    <source  src={`${INFURA_GATEWAY_INTERNAL}${videoImage}`} />
                   </video>
                 </div>
               )}
@@ -313,6 +313,7 @@ export default function Entry({ dict }: { dict: any }) {
                     objectFit="cover"
                     layout="fill"
                     priority
+                    unoptimized
                     draggable={false}
                     alt="F3Manifesto by Emma-Jane MacKinnon-Lee"
                   />
