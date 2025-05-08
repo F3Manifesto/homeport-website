@@ -24,7 +24,7 @@ export default function CollectEntry({
   const router = useRouter();
   const { indice, setIndice, post, postLoading } = useCollection(collection);
 
-  if (collection && post && !postLoading) {
+  // if (collection && post && !postLoading) {
     return (
       <div className="flex h-full min-h-screen w-full relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-gradient-to-b from-lightY via-white to-lightPurple items-start justify-center">
         <div className="w-full h-full flex flex-col relative items-center justify-start">
@@ -47,9 +47,9 @@ export default function CollectEntry({
             </div>
           </div>
           <div className="relative w-full h-fit flex border-t-4 border-lightWhite px-4 py-7">
-            <div className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl">
-              {collection?.collectionMetadata?.title?.toUpperCase()}
-            </div>
+            <h1 className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl">
+              {collection?.metadata?.title?.toUpperCase()}
+            </h1>
           </div>
           <div className="relative w-full h-full flex bg-foot py-8 border-y-8 border-lightWhite flex items-center justify-center p-2">
             <div className="relative w-full h-[120vw] sm:h-[90vw] md:[80vw] lg:h-[50vw] bg-lightWhite flex items-center justify-center p-3">
@@ -58,10 +58,10 @@ export default function CollectEntry({
                   priority
                   layout="fill"
                   objectFit="contain"
-                  alt={`${collection?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
+                  alt={`${collection?.metadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                   draggable={false}
                   src={`${INFURA_GATEWAY_INTERNAL}${
-                    collection?.collectionMetadata?.images?.[indice]?.split(
+                    collection?.metadata?.images?.[indice]?.split(
                       "ipfs://"
                     )?.[1]
                   }`}
@@ -69,14 +69,14 @@ export default function CollectEntry({
                   onClick={() =>
                     context?.setImageViewer(
                       `${INFURA_GATEWAY_INTERNAL}${
-                        collection?.collectionMetadata?.images?.[indice]?.split(
+                        collection?.metadata?.images?.[indice]?.split(
                           "ipfs://"
                         )?.[1]
                       }`
                     )
                   }
                 />
-                {(collection?.collectionMetadata?.images || [])?.length > 1 && (
+                {(collection?.metadata?.images || [])?.length > 1 && (
                   <div className="absolute z-10 top-3 right-3 flex items-center justify-center flex-row gap-2">
                     <div
                       className="relative w-fit h-fit flex items-center justify-center active:scale-95 cursor-empireS"
@@ -85,7 +85,7 @@ export default function CollectEntry({
                         e.preventDefault();
                         setIndice(
                           indice - 1 < 0
-                            ? (collection?.collectionMetadata?.images || [])
+                            ? (collection?.metadata?.images || [])
                                 ?.length - 1
                             : indice - 1
                         );
@@ -108,7 +108,7 @@ export default function CollectEntry({
                         e.preventDefault();
                         setIndice(
                           indice + 1 >
-                            (collection?.collectionMetadata?.images || [])
+                            (collection?.metadata?.images || [])
                               ?.length -
                               1
                             ? 0
@@ -140,7 +140,7 @@ export default function CollectEntry({
         </div>
       </div>
     );
-  }
+  // }
 
-  return <RouterChange />;
+  // return <RouterChange />;
 }

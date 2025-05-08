@@ -43,9 +43,9 @@ export default function OrdersEntry({ dict }: { dict: any }) {
             </div>
           </div>
           <div className="relative w-full h-fit flex border-t-4 border-lightWhite px-4 py-7">
-            <div className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl">
+            <h1 className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl">
               {dict?.common?.orders}
-            </div>
+            </h1>
           </div>
 
           <div
@@ -211,9 +211,9 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                                   <div className="relative w-fit h-fit flex items-center justify-start">
                                     <div className="relative w-8 h-8 rounded-md flex items-center justify-center bg-lightPurple border border-ligero">
                                       <Image
-                                        alt={`${order?.collection?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
+                                        alt={`${order?.collection?.metadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                                         src={`${INFURA_GATEWAY_INTERNAL}${
-                                          order?.collection?.collectionMetadata?.images?.[0]?.split(
+                                          order?.collection?.metadata?.images?.[0]?.split(
                                             "ipfs://"
                                           )?.[1]
                                         }`}

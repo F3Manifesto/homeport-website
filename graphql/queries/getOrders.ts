@@ -6,19 +6,19 @@ const ORDERS = `
     orderCreateds(where: { buyer: $buyer }) {
       amount
       messages
+      orderId
       collection {
         collectionId
-        collectionMetadata {
+        metadata {
           images
           title
         }
         postId
       }
+      isFulfilled
       buyer
-      collectionId
       currency
       details
-      fulfilled
       status
       totalPrice
       blockTimestamp

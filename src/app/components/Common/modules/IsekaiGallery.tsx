@@ -57,7 +57,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                     ? router.push(
                         `/collect/${(
                           token as Gallery
-                        )?.collectionMetadata?.title
+                        )?.metadata?.title
                           ?.replaceAll(" ", "-")
                           .toLowerCase()}`
                       )
@@ -80,14 +80,14 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                     alt={`${
                       filteredIsekaiGallery?.length > 0 &&
                       window.location.search?.includes("portal=")
-                        ? (token as Gallery)?.collectionMetadata?.title
+                        ? (token as Gallery)?.metadata?.title
                         : (token as { image: string; title: string }).title
                     } | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
                     src={`${INFURA_GATEWAY_INTERNAL}${
                       (filteredIsekaiGallery?.length > 0 &&
                       window.location.search?.includes("portal=")
-                        ? (token as Gallery)?.collectionMetadata?.images?.[0]
+                        ? (token as Gallery)?.metadata?.images?.[0]
                         : (token as { image: string; title: string }).image
                       )?.split("ipfs://")?.[1]
                     }`}
@@ -97,7 +97,7 @@ const IsekaiGallery: FunctionComponent<IsekaiGalleryProps> = ({
                     (token as Gallery)?.post && (
                       <InteractBar
                         dict={dict}
-                        title={(token as Gallery)?.collectionMetadata?.title
+                        title={(token as Gallery)?.metadata?.title
                           ?.replaceAll(" ", "-")
                           .toLowerCase()}
                         post={(token as Gallery)?.post!}

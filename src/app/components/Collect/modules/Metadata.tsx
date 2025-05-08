@@ -28,9 +28,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
     details,
     setDetails,
     collectPostLoading,
-    depositFunds,
-    depositLoading,
-    deposited,
+    approveLoading,
+    approved,
+    approveFunds,
     collectItem,
   } = useCheckout(item, address, dict);
 
@@ -50,10 +50,10 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             {[
               {
                 title:
-                  Number(item?.amount) == Number(item?.mintedTokenIds?.length)
+                  Number(item?.amount) == Number(item?.tokenIdsMinted?.length)
                     ? dict?.collect?.sold
-                    : Number(item?.mintedTokenIds?.length) > 0
-                    ? `${Number(item?.mintedTokenIds?.length)} / ${Number(
+                    : Number(item?.tokenIdsMinted?.length) > 0
+                    ? `${Number(item?.tokenIdsMinted?.length)} / ${Number(
                         item?.amount
                       )}`
                     : `${Number(item?.amount)} / ${Number(item?.amount)}`,
@@ -65,13 +65,11 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               },
               {
                 title:
-                  dict?.collect?.[
-                    item?.collectionMetadata?.sex?.toLowerCase() || ""
-                  ],
+                  dict?.collect?.[item?.metadata?.sex?.toLowerCase() || ""],
                 color: "#8BCDF4",
               },
               {
-                title: item?.drop?.dropMetadata?.title!,
+                title: item?.drop?.metadata?.title!,
                 color: "#B42AA1",
               },
             ]?.map(
@@ -168,9 +166,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                                 /(?<=\/)(en|es)(?=\/)/
                               )?.[0] as any as "es") || "en"
                             ]?.toLowerCase() ==
-                              item?.collectionMetadata?.style?.toLowerCase() ||
+                              item?.metadata?.style?.toLowerCase() ||
                             value?.name?.en?.toLowerCase() ==
-                              item?.collectionMetadata?.style?.toLowerCase()
+                              item?.metadata?.style?.toLowerCase()
                         )?.[0]?.image
                       }`}
                       objectFit="contain"
@@ -185,9 +183,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               <div className="relative col-start-2 w-fit h-fit text-offBlack text-base font-fira place-self-center">
                 {
                   dict?.collect?.[
-                    item?.collectionMetadata?.style
-                      ?.replaceAll(" ", "")
-                      ?.toLowerCase() ?? ""
+                    item?.metadata?.style?.replaceAll(" ", "")?.toLowerCase() ??
+                      ""
                   ]
                 }
               </div>
@@ -198,31 +195,29 @@ const Metadata: FunctionComponent<MetadataProps> = ({
         <div className="relative w-full h-full flex flex-col p-4 items-end overflow-y-scroll justify-between">
           <div
             className={`relative w-full flex flex-col gap-4 justify-between items-end ${
-              item?.collectionMetadata?.extra?.trim() !== "" &&
-              item?.collectionMetadata?.extra
+              item?.metadata?.extra?.trim() !== "" && item?.metadata?.extra
                 ? "h-fit"
                 : "h-full"
             }`}
           >
             <div className="flex relative md:w-3/4 mr-0 w-full h-fit text-offBlack font-firaM text-sm text-right justify-end items-end">
-              {item?.collectionMetadata?.description}
+              {item?.metadata?.description}
             </div>
             <div className="relative w-full h-0.5 bg-offBlack justify-end flex"></div>
             <div className="relative w-full h-fit flex flex-col gap-2 items-end justify-end overflow-y-scroll">
               <div className="relative w-fit h-fit flex text-offBlack font-firaB text-lg justify-end items-end">
-                {item?.collectionMetadata?.extra?.trim() !== "" &&
-                item?.collectionMetadata?.extra
+                {item?.metadata?.extra?.trim() !== "" && item?.metadata?.extra
                   ? dict?.collect?.extra
                   : dict?.collect?.graph}
               </div>
               <div
-                className="relative w-full h-fit text-offBlack font-firaL text-sm text-right flex items-end justify-end whitespace-inline"
+                className="relative w-full h-fit text-offBlack font-firaL text-sm text-right flex items-start justify-end whitespace-inline overflow-y-scroll"
                 dangerouslySetInnerHTML={{
                   __html: descriptionRegex(
-                    item?.collectionMetadata?.extra?.trim() !== "" &&
-                      item?.collectionMetadata?.extra
-                      ? item?.collectionMetadata?.extra || ""
-                      : item?.collectionMetadata?.prompt || "",
+                    item?.metadata?.extra?.trim() !== "" &&
+                      item?.metadata?.extra
+                      ? item?.metadata?.extra || ""
+                      : item?.metadata?.prompt || "",
                     false
                   ),
                 }}
@@ -279,35 +274,34 @@ const Metadata: FunctionComponent<MetadataProps> = ({
           </div>
         </div>
         <div className="relative justify-between items-end flex flex-col gap-4 w-full h-full">
-          {item?.collectionMetadata?.extra?.trim() !== "" &&
-            item?.collectionMetadata?.extra && (
-              <div className="w-full flex flex-row items-start justify-start lg:justify-end gap-3 flex-wrap">
-                {["XS", "S", "M", "L", "XL", "2XL"].map(
-                  (t: string, indice: number) => {
-                    return (
-                      <div
-                        key={indice}
-                        className={`relative border border-black rounded-md flex items-center justify-center font-fira text-offBlack p-2 h-8 w-8 text-xs cursor-empireS hover:bg-brightGreen ${
-                          details?.tamano == t
-                            ? "bg-brightGreen"
-                            : "bg-lightYellow"
-                        }`}
-                        onClick={() =>
-                          setDetails((prev) => ({
-                            ...prev,
-                            tamano: t,
-                          }))
-                        }
-                      >
-                        <div className="flex relative items-center justify-center">
-                          {t}
-                        </div>
+          {item?.metadata?.extra?.trim() !== "" && item?.metadata?.extra && (
+            <div className="w-full flex flex-row items-start justify-start lg:justify-end gap-3 flex-wrap">
+              {["XS", "S", "M", "L", "XL", "2XL"].map(
+                (t: string, indice: number) => {
+                  return (
+                    <div
+                      key={indice}
+                      className={`relative border border-black rounded-md flex items-center justify-center font-fira text-offBlack p-2 h-8 w-8 text-xs cursor-empireS hover:bg-brightGreen ${
+                        details?.tamano == t
+                          ? "bg-brightGreen"
+                          : "bg-lightYellow"
+                      }`}
+                      onClick={() =>
+                        setDetails((prev) => ({
+                          ...prev,
+                          tamano: t,
+                        }))
+                      }
+                    >
+                      <div className="flex relative items-center justify-center">
+                        {t}
                       </div>
-                    );
-                  }
-                )}
-              </div>
-            )}
+                    </div>
+                  );
+                }
+              )}
+            </div>
+          )}
           <div className="relative w-full flex flex-col gap-4 items-end justify-end">
             <div className="relative w-full h-full flex items-end justify-end flex-col gap-6 mr-0">
               <div className="relative w-full h-fit flex flex-col items-end justify-end gap-3">
@@ -370,17 +364,17 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             </div>
             <div
               className={`relative w-44 px-2 h-10 text-center py-1 border border-black rounded-md flex items-center justify-center text-offBlack bg-brightGreen font-jacklane text-sm mr-0 ${
-                depositLoading ||
+                approveLoading ||
                 collectPostLoading ||
-                Number(item?.mintedTokenIds?.length || 0) + 1 >
+                Number(item?.tokenIdsMinted?.length || 0) + 1 >
                   Number(item?.amount)
                   ? "opacity-70"
                   : "cursor-empireS active:scale-95"
               }`}
               onClick={
-                !depositLoading &&
+                !approveLoading &&
                 !collectPostLoading &&
-                Number(item?.mintedTokenIds?.length || 0) + 1 <=
+                Number(item?.tokenIdsMinted?.length || 0) + 1 <=
                   Number(item?.amount)
                   ? !isConnected
                     ? () => openOnboarding()
@@ -388,28 +382,28 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                     ? () => openSwitchNetworks()
                     : isConnected && !context?.lensConectado?.profile
                     ? () => !lensLoading && handleLensConnect()
-                    : !deposited
-                    ? () => depositFunds()
+                    : !approved
+                    ? () => approveFunds()
                     : () => collectItem()
                   : () => {}
               }
             >
               <div
                 className={`${
-                  (depositLoading || collectPostLoading) && "animate-spin"
+                  (approveLoading || collectPostLoading) && "animate-spin"
                 } flex items-center justify-center`}
               >
-                {depositLoading || collectPostLoading ? (
+                {approveLoading || collectPostLoading ? (
                   <AiOutlineLoading size={15} color="black" />
-                ) : Number(item?.mintedTokenIds?.length) + 1 >
+                ) : Number(item?.tokenIdsMinted?.length) + 1 >
                   Number(item?.amount) ? (
                   dict?.collect?.sold
                 ) : !isConnected ? (
                   dict?.collect?.connect
                 ) : isConnected && !context?.lensConectado?.profile ? (
                   "LENS"
-                ) : !deposited ? (
-                  dict?.collect?.dep
+                ) : !approved ? (
+                  dict?.collect?.app
                 ) : (
                   dict?.collect?.coll
                 )}

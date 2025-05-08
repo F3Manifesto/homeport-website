@@ -66,7 +66,7 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
           count: post?.stats?.collects || 0,
           image: "Qmde7MbuTdD4MvH9Uvns5dCiAYUxDhvAFhmKYFy6wJTMg6",
           function: () => router.push(`/collect/${title}`),
-          loader: interactionsLoading?.mirror,
+          loader: false,
           name: dict?.common?.mirror,
           reacted: false,
           who: () =>

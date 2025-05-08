@@ -12,7 +12,6 @@ const Connect: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
   const { chainId, address, isConnected } = useAccount();
   const { openOnboarding, openSwitchNetworks } = useModal();
   const { handleLensConnect, lensLoading, logout } = useLens(address, dict);
-
   return (
     <div className="relative flex items-center justify-center flex-row gap-4">
       {isConnected && context?.lensConectado?.profile && (

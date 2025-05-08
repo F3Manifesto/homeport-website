@@ -32,11 +32,11 @@ export async function GET() {
 
   const collectionsXml = collections
     .map((coll: any) => {
-      const rawTitle = coll?.collectionMetadata?.title ?? "";
+      const rawTitle = coll?.metadata?.title ?? "";
       const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
       const title = escapeXml(rawTitle.replace(/-/g, " "));
       const image =
-        coll?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1];
+        coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
 
       return `
       <url>
@@ -44,13 +44,13 @@ export async function GET() {
         ${locales
           .map(
             (altLocale) => `
-          <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${safeSlug}" />
+          <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${safeSlug}/" />
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" />
         <image:image>
-          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}</image:loc>
+          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}/</image:loc>
           <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
           <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
         </image:image>
@@ -70,7 +70,7 @@ export async function GET() {
         ${locales
           .map(
             (locale) => `
-          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}" />
+          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/" />
           `
           )
           .join("")}
@@ -83,11 +83,11 @@ export async function GET() {
         ${locales
           .map(
             (locale) => `
-          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders" />
+          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders/" />
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/orders" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/orders/" />
       </url>
     
       ${collectionsXml}

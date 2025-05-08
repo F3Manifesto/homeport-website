@@ -25,13 +25,19 @@ const useOrders = () => {
     setOrdersLoading(true);
     try {
       const data = await getOrders(address!);
+
       setOrders(
-        data?.data?.orderCreateds?.map((order: Order) => ({
-          ...order,
-          decrypted: false,
-          status: orderStatus[Number(order?.status)],
-          totalPrice: Number(order?.totalPrice) / 10 ** 18,
-        })) || []
+        (
+          data?.data?.orderCreateds?.map((order: Order) => ({
+            ...order,
+            decrypted: false,
+            status: orderStatus[Number(order?.status)],
+            totalPrice: Number(order?.totalPrice) / 10 ** 18,
+          })) || []
+        )?.sort(
+          (a: Order, b: Order) =>
+            Number(b?.blockTimestamp) - Number(a?.blockTimestamp)
+        )
       );
       setOrderOpen(
         Array.from({ length: data?.data?.orderCreateds?.length }, () => false)

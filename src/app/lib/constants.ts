@@ -3,20 +3,22 @@ import { Status } from "../components/Orders/types/orders.types";
 export const CHROMADIN: `0x${string}` =
   "0x16a362A10C1f6Bc0565C8fFAd298f1c2761630C5";
 export const F3M: `0x${string}` = "0xB15282B59b80C0aACC2609410c910B1Ab0460070";
-export const INFURA_GATEWAY_INTERNAL: string = "https://f3manifesto.xyz/api/infura/";
+export const INFURA_GATEWAY_INTERNAL: string =
+  "https://f3manifesto.xyz/api/infura/";
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 export const GROVE_GATEWAY: string = "https://api.grove.storage/";
 export const LOCALES: string[] = ["en", "es"];
 
 export const IPFS_REGEX: RegExp = /\b(Qm[1-9A-Za-z]{44}|ba[A-Za-z2-7]{57})\b/;
 export const F3M_OPEN_ACTION: `0x${string}` =
-  "0x0df753624938F942F84cdB45cCFd7694Fb669155";
+  "0xBe8FBd070bD469bd486794C5f6a8C7D1DB2FcDc1";
 export const DIGITALAX_ADDRESS: `0x${string}` =
   "0xAA3e5ee4fdC831e5274FE7836c95D670dC2502e6";
 export const ACCEPTED_TOKENS: string[][] = [
   [
     "QmYCDxCv7mJyjn49n84kP6d3ADgGp422ukKzRyd2ZcGEsW",
     "WGHO",
+
     "0x6bDc36E20D267Ff0dd6097799f82e78907105e2F",
   ],
   [

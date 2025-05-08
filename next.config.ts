@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         hostname: "f3manifesto.xyz",
         pathname: "/api/infura/**",
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        pathname: "/lens/**",
+      },
     ],
 
     unoptimized: true,
@@ -32,6 +37,7 @@ const nextConfig: NextConfig = {
     const allowedOrigins = [
       "https://thedial.infura-ipfs.io",
       "https://f3manifesto.xyz",
+      "https://ik.imagekit.io",
     ];
     allowedOrigins.forEach((origin) => {
       headersConfig.push({

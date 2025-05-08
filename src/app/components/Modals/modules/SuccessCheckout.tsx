@@ -34,11 +34,11 @@ const SuccessCheckout: FunctionComponent<{ dict: any }> = ({
               <Image
                 layout="fill"
                 src={`${INFURA_GATEWAY_INTERNAL}${
-                  context?.successCheckout?.collectionMetadata?.images?.[0]?.split(
+                  context?.successCheckout?.metadata?.images?.[0]?.split(
                     "ipfs://"
                   )?.[1]
                 }`}
-                alt={`${context?.successCheckout?.collectionMetadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
+                alt={`${context?.successCheckout?.metadata?.title} by F3M | Emma-Jane MacKinnon-Lee`}
                 draggable={false}
                 objectFit="cover"
               />

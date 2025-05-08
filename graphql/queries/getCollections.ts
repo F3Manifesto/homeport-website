@@ -3,17 +3,17 @@ import { FetchResult, gql } from "@apollo/client";
 
 const COLLECTIONS = `
   query($title: String!) {
-    collectionCreateds(where: {collectionMetadata_: { title_contains_nocase: $title }},first: 1) {
+    collectionCreateds(where: {metadata_: { title_contains_nocase: $title }},first: 1) {
       amount
       uri
       drop {
         uri 
-        dropMetadata {
+        metadata {
           cover
           title
         }
       }
-      collectionMetadata {
+      metadata {
         access
         visibility
         style
@@ -28,7 +28,7 @@ const COLLECTIONS = `
       postId
       acceptedTokens
       price
-      mintedTokenIds
+      tokenIdsMinted
       collectionId
       blockTimestamp
     }
@@ -37,17 +37,17 @@ const COLLECTIONS = `
 
 const ALL_COLLECTIONS = `
   query($first: Int, $skip: Int) {
-    collectionCreateds(first: $first, skip: $skip) {
+    collectionCreateds(where: {origin: 3}, first: $first, skip: $skip) {
       amount
       uri
       drop {
         uri
-        dropMetadata {
+        metadata {
           cover
           title
         }
       }
-      collectionMetadata {
+      metadata {
         access
         visibility
         style
@@ -62,7 +62,7 @@ const ALL_COLLECTIONS = `
       postId
       acceptedTokens
       price
-      mintedTokenIds
+      tokenIdsMinted
       collectionId
     }
   }

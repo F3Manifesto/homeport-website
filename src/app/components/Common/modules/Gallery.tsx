@@ -56,7 +56,7 @@ const Gallery: FunctionComponent<GalleryProps> = ({
             ? context?.gallery?.slice(0, 15)
             : filteredGallery
           )?.map((token) => {
-            const nameToken = token?.collectionMetadata?.title
+            const nameToken = token?.metadata?.title
               ?.replaceAll(" ", "-")
               .toLowerCase();
             return (
@@ -73,10 +73,10 @@ const Gallery: FunctionComponent<GalleryProps> = ({
                     objectFit="cover"
                     layout="fill"
                     draggable={false}
-                    alt={`${token?.collectionMetadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
+                    alt={`${token?.metadata?.title} | F3Manifesto by Emma-Jane MacKinnon-Lee`}
                     objectPosition="top"
                     src={`${INFURA_GATEWAY_INTERNAL}${
-                      token?.collectionMetadata?.images?.[0]?.split(
+                      token?.metadata?.images?.[0]?.split(
                         "ipfs://"
                       )?.[1]
                     }`}

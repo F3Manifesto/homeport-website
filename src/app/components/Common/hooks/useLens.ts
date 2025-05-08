@@ -48,7 +48,6 @@ const useLens = (address: `0x${string}` | undefined, dict: any) => {
         }
 
         const sessionClient = authenticated.value;
-
         context?.setLensConectado?.({
           sessionClient,
           profile: accounts.value.items?.[0]?.account,

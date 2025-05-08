@@ -15,14 +15,14 @@ export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
   return await Promise.all(
     gallery?.data?.collectionCreateds?.map(async (coll: Gallery) => {
-      if (!coll?.collectionMetadata && coll?.uri) {
+      if (!coll?.metadata && coll?.uri) {
         const json = await fetch(
           `${INFURA_GATEWAY}/ipfs/${coll?.uri?.split("ipfs://")?.[1]}`
         );
-        coll.collectionMetadata = await json.json();
+        coll.metadata = await json.json();
       }
 
-      return { name: coll?.collectionMetadata?.title };
+      return { name: coll?.metadata?.title };
     })
   );
 }
@@ -40,19 +40,19 @@ export const generateMetadata = async ({
   );
   const collection = data?.data?.collectionCreateds?.[0];
 
-  if (!collection?.collectionMetadata && collection?.uri) {
+  if (!collection?.metadata && collection?.uri) {
     const json = await fetch(
       `${INFURA_GATEWAY}/ipfs/${collection?.uri?.split("ipfs://")?.[1]}`
     );
-    collection.collectionMetadata = await json.json();
+    collection.metadata = await json.json();
   }
 
   return {
-    title: collection?.collectionMetadata?.title,
-    description: collection?.collectionMetadata?.description,
+    title: collection?.metadata?.title,
+    description: collection?.metadata?.description,
     openGraph: {
       images: `${INFURA_GATEWAY}/ipfs/${
-        collection?.collectionMetadata?.images?.[0]?.split("ipfs://")?.[1]
+        collection?.metadata?.images?.[0]?.split("ipfs://")?.[1]
       }`,
     },
   };
@@ -70,11 +70,11 @@ export default async function Collect({
     decodeURIComponent(name)?.replaceAll("-", " ")
   );
   const collection = data?.data?.collectionCreateds?.[0];
-  if (!collection?.collectionMetadata && collection?.uri) {
+  if (!collection?.metadata && collection?.uri) {
     const json = await fetch(
       `${INFURA_GATEWAY}/ipfs/${collection?.uri?.split("ipfs://")?.[1]}`
     );
-    collection.collectionMetadata = await json.json();
+    collection.metadata = await json.json();
   }
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)("en");

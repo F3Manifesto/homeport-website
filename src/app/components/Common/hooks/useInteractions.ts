@@ -11,6 +11,17 @@ const useInteractions = (dict: any) => {
     mirror: false,
     like: false,
   });
+  const [stats, setStats] = useState<{
+    upvotes: number;
+    hasUpvoted: boolean;
+    reposts: number;
+    hasReposted: boolean;
+  }>({
+    upvotes: 0,
+    hasUpvoted: false,
+    reposts: 0,
+    hasReposted: false,
+  });
 
   const handleLike = async (id: string, reaction: boolean) => {
     setIntearactionsLoading((prev) => ({
@@ -29,6 +40,27 @@ const useInteractions = (dict: any) => {
           context?.setSignless?.(true);
         } else if ((res.value as any)?.success) {
           context?.setIndexar?.(dict?.common?.success);
+
+          context?.setGallery((prev) => {
+            let arr = [...prev];
+            let index = arr.findIndex((post) => post?.postId == id);
+            arr[index] = {
+              ...arr[index],
+              post: {
+                ...arr[index]?.post!,
+                operations: {
+                  ...arr[index]?.post?.operations!,
+                  hasUpvoted: true,
+                },
+                stats: {
+                  ...arr[index]?.post?.stats!,
+                  upvotes: Number(arr[index]?.post?.stats?.upvotes) + 1,
+                },
+              },
+            };
+
+            return arr;
+          });
 
           setTimeout(() => {
             context?.setIndexar?.(undefined);
@@ -63,6 +95,30 @@ const useInteractions = (dict: any) => {
           context?.setSignless?.(true);
         } else if ((res.value as any)?.hash) {
           context?.setIndexar?.(dict?.common?.success);
+
+          context?.setGallery((prev) => {
+            let arr = [...prev];
+            let index = arr.findIndex((post) => post?.postId == id);
+            arr[index] = {
+              ...arr[index],
+              post: {
+                ...arr[index]?.post!,
+                operations: {
+                  ...arr[index]?.post?.operations!,
+                  hasReposted: {
+                    ...arr[index]?.post?.operations?.hasReposted!,
+                    optimistic: true,
+                  },
+                },
+                stats: {
+                  ...arr[index]?.post?.stats!,
+                  reposts: Number(arr[index]?.post?.stats?.reposts) + 1,
+                },
+              },
+            };
+
+            return arr;
+          });
 
           setTimeout(() => {
             context?.setIndexar?.(undefined);

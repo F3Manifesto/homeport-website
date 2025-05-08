@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { fetchPost } from "@lens-protocol/client/actions";
 import { getAllCollections } from "../../../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
-
 const useGallery = () => {
   const context = useContext(ModalContext);
   const search = useSearchParams();
@@ -41,12 +40,12 @@ const useGallery = () => {
             }
           }
 
-          if (!col?.collectionMetadata) {
+          if (!col?.metadata) {
             const data = await fetch(
               `${INFURA_GATEWAY}/ipfs/${col?.uri?.split("ipfs://")?.[1]}`
             );
 
-            col.collectionMetadata = await data.json();
+            col.metadata = await data.json();
           }
 
           return {
@@ -57,11 +56,10 @@ const useGallery = () => {
       )) as Gallery[];
 
       const todo = colls?.filter(
-        (col) =>
-          !col.drop?.dropMetadata?.title?.toLowerCase()?.includes("isekai -")
+        (col) => !col.drop?.metadata?.title?.toLowerCase()?.includes("isekai -")
       );
       const isekai = colls?.filter((col) =>
-        col.drop?.dropMetadata?.title?.toLowerCase()?.includes("isekai -")
+        col.drop?.metadata?.title?.toLowerCase()?.includes("isekai -")
       );
 
       context?.setGallery(todo?.sort(() => 0.5 - Math.random()) as Gallery[]);
@@ -71,22 +69,22 @@ const useGallery = () => {
       );
 
       todo?.forEach((item: any) => {
-        if (item.collectionMetadata?.sex) {
-          sexesSet.add(item.collectionMetadata.sex);
+        if (item.metadata?.sex) {
+          sexesSet.add(item.metadata.sex);
         }
-        if (item.collectionMetadata?.style) {
-          stylesSet.add(item.collectionMetadata.style);
+        if (item.metadata?.style) {
+          stylesSet.add(item.metadata.style);
         }
-        if (item.drop?.dropMetadata?.title) {
-          dropsSet.add(item.drop?.dropMetadata.title);
+        if (item.drop?.metadata?.title) {
+          dropsSet.add(item.drop?.metadata.title);
         }
       });
 
       isekai?.forEach((item: any) => {
-        if (item.drop?.dropMetadata?.title) {
-          portalsMap.set(item.drop?.dropMetadata.title, {
-            title: item.drop?.dropMetadata.title,
-            image: item.drop?.dropMetadata.cover,
+        if (item.drop?.metadata?.title) {
+          portalsMap.set(item.drop?.metadata.title, {
+            title: item.drop?.metadata.title,
+            image: item.drop?.metadata.cover,
           });
         }
       });
@@ -202,7 +200,7 @@ const useGallery = () => {
               sex
                 ?.replace(/([A-Z])/g, " $1")
                 ?.trim()
-                ?.toLowerCase() === item?.collectionMetadata?.sex?.toLowerCase()
+                ?.toLowerCase() === item?.metadata?.sex?.toLowerCase()
           )
         );
       }
@@ -238,7 +236,7 @@ const useGallery = () => {
                   p1 ? p1 : " " + match
                 )
                 ?.toLowerCase()
-                .trim() === item?.collectionMetadata?.style?.toLowerCase()
+                .trim() === item?.metadata?.style?.toLowerCase()
           )
         );
       }
@@ -280,9 +278,7 @@ const useGallery = () => {
                     ?.toLowerCase()
                     .trim()
                     ?.replaceAll("’", "")) ===
-              item?.drop?.dropMetadata?.title
-                ?.toLowerCase()
-                ?.replaceAll("’", "")
+              item?.drop?.metadata?.title?.toLowerCase()?.replaceAll("’", "")
           )
         );
       }
@@ -308,7 +304,7 @@ const useGallery = () => {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : context?.gallery || []
         )?.filter((item) =>
-          item?.collectionMetadata?.title
+          item?.metadata?.title
             ?.toLowerCase()
             ?.includes(nameSelected?.toLowerCase())
         );
@@ -345,7 +341,7 @@ const useGallery = () => {
             : context?.isekaiGallery || []
         )?.filter((item) =>
           portalSelected?.some((portal) =>
-            item?.drop?.dropMetadata?.title
+            item?.drop?.metadata?.title
               ?.toLowerCase()
               ?.split("- ")?.[1]
               ?.includes(portal?.toLowerCase().trim())

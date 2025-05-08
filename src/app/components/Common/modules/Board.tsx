@@ -29,7 +29,7 @@ const Board: FunctionComponent<BoardProps> = ({
       <div className="relative w-full flex flex-col xl:flex-row gap-5 items-start justify-between h-fit xl:h-[50rem] 2xl:h-fit 2xl:flex-col">
         <div className="relative w-full h-full flex items-center justify-start flex-col gap-12 bg-offWhite grow">
           <div className="relative w-full h-fit flex items-center justify-start flex-row px-2">
-            <div className="font-emiken w-fit text-[10vw] md:text-[6vw] xl:text-[8.5vw] h-fit relative flex flex-row items-center justify-center">
+            <h1 className="font-emiken w-fit text-[10vw] md:text-[6vw] xl:text-[8.5vw] h-fit relative flex flex-row items-center justify-center">
               <div className="relative flex items-center justify-center w-fit h-fit">
                 F
               </div>
@@ -39,7 +39,7 @@ const Board: FunctionComponent<BoardProps> = ({
               <div className="relative flex items-center justify-center w-fit h-fit">
                 MANIFESTO
               </div>
-            </div>
+            </h1>
           </div>
           <div className="relative w-full h-full flex flex-col half:flex-row gap-10 sm:gap-5 items-start justify-between">
             <div className="relative w-full min-h-full h-full flex flex-col gap-10 items-center justify-between grow">

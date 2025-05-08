@@ -12,17 +12,8 @@ import { Details } from "../types/collect.types";
 import { chains } from "@lens-chain/sdk/viem";
 import { Gallery } from "../../Common/types/common.types";
 import { ModalContext } from "@/app/providers";
-import {
-  deposit,
-  executePostAction,
-  fetchAccountBalances,
-} from "@lens-protocol/client/actions";
-import {
-  AnyAccountBalance,
-  blockchainData,
-  Erc20Amount,
-  evmAddress,
-} from "@lens-protocol/client";
+import { executePostAction } from "@lens-protocol/client/actions";
+import { blockchainData } from "@lens-protocol/client";
 import { ethers } from "ethers";
 import pollResult from "@/app/lib/helpers/pollResult";
 
@@ -41,8 +32,8 @@ const useCheckout = (
   });
   const context = useContext(ModalContext);
   const coder = new ethers.AbiCoder();
-  const [deposited, setDeposited] = useState<boolean>(false);
-  const [depositLoading, setDepositLoading] = useState<boolean>(false);
+  const [approved, setApproved] = useState<boolean>(false);
+  const [approveLoading, setApproveLoading] = useState<boolean>(false);
   const [collectPostLoading, setCollectPostLoading] = useState<boolean>(false);
   const [details, setDetails] = useState<Details>({
     address: "",
@@ -64,6 +55,7 @@ const useCheckout = (
       details?.country?.trim() === ""
     )
       return;
+
     try {
       let nonce = await client.getLatestBlockhash();
       await checkAndSignAuthMessage({
@@ -113,67 +105,121 @@ const useCheckout = (
         ),
       });
 
-      return JSON.stringify({
-        ciphertext,
-        dataToEncryptHash,
-        accessControlConditions,
+      const res = await fetch("/api/ipfs", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ciphertext,
+          dataToEncryptHash,
+          accessControlConditions,
+          chain: "polygon",
+        }),
       });
+      const json = await res.json();
+
+      if (!json?.cid) {
+        return "";
+      }
+
+      return "ipfs://" + json?.cid;
     } catch (err: any) {
       console.error(err.message);
     }
   };
 
-  const checkDeposited = async () => {
+  const checkApproved = async () => {
     try {
       if (!context?.lensConectado?.sessionClient) return;
 
-      const res = await fetchAccountBalances(
-        context?.lensConectado?.sessionClient!,
-        {
-          includeNative: false,
-          tokens: [details?.checkoutCurrency],
-        }
-      );
+      const data = await publicClient.readContract({
+        address: details?.checkoutCurrency as `0x${string}`,
+        abi: [
+          {
+            inputs: [
+              {
+                internalType: "address",
+                name: "owner",
+                type: "address",
+              },
+              {
+                internalType: "address",
+                name: "spender",
+                type: "address",
+              },
+            ],
+            name: "allowance",
+            outputs: [
+              {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+          },
+        ],
+        functionName: "allowance",
+        args: [address as `0x${string}`, F3M_OPEN_ACTION],
+      });
 
-      if (res?.isOk()) {
-        if (
-          ((res.value as AnyAccountBalance[])?.[0] as Erc20Amount)?.value >=
-          (Number(collection?.price) /
-            10 ** 18 /
-            Number(
-              context?.oracleData?.find(
-                (oraculo) =>
-                  oraculo.currency?.toLowerCase() ===
-                  details?.checkoutCurrency?.toLowerCase()
-              )?.rate
-            )) *
-            Number(
-              context?.oracleData?.find(
-                (oraculo) =>
-                  oraculo.currency?.toLowerCase() ===
-                  details?.checkoutCurrency?.toLowerCase()
-              )?.wei
-            )
-        ) {
-          setDeposited(true);
-        } else {
-          setDeposited(false);
-        }
+      if (
+        Number(data as any) >=
+        (Number(collection?.price) /
+          Number(
+            context?.oracleData?.find(
+              (oraculo) =>
+                oraculo.currency?.toLowerCase() ===
+                details?.checkoutCurrency?.toLowerCase()
+            )?.rate
+          )) *
+          Number(
+            context?.oracleData?.find(
+              (oraculo) =>
+                oraculo.currency?.toLowerCase() ===
+                details?.checkoutCurrency?.toLowerCase()
+            )?.wei
+          )
+      ) {
+        setApproved(true);
+      } else {
+        setApproved(false);
       }
     } catch (err: any) {
       console.error(err.message);
     }
   };
 
-  const depositFunds = async () => {
+  const approveFunds = async () => {
     if (!context?.lensConectado?.sessionClient) return;
-    setDepositLoading(true);
+    setApproveLoading(true);
     try {
-      const res = await deposit(context?.lensConectado?.sessionClient!, {
-        erc20: {
-          value:
+      const clientWallet = createWalletClient({
+        chain: chains.mainnet,
+        transport: custom((window as any).ethereum),
+      });
+
+      const { request } = await publicClient.simulateContract({
+        address: details?.checkoutCurrency as `0x${string}`,
+        abi: [
+          {
+            type: "function",
+            name: "approve",
+            inputs: [
+              { name: "spender", type: "address", internalType: "address" },
+              { name: "value", type: "uint256", internalType: "uint256" },
+            ],
+            outputs: [{ name: "", type: "bool", internalType: "bool" }],
+            stateMutability: "nonpayable",
+          },
+        ],
+        functionName: "approve",
+        args: [
+          F3M_OPEN_ACTION,
+          BigInt(
             (Number(collection?.price) /
-              10 ** 18 /
               Number(
                 context?.oracleData?.find(
                   (oraculo) =>
@@ -181,36 +227,24 @@ const useCheckout = (
                     details?.checkoutCurrency?.toLowerCase()
                 )?.rate
               )) *
-            Number(
-              context?.oracleData?.find(
-                (oraculo) =>
-                  oraculo.currency?.toLowerCase() ===
-                  details?.checkoutCurrency?.toLowerCase()
-              )?.wei
-            ),
-          currency: evmAddress(details?.checkoutCurrency),
-        },
+              Number(
+                context?.oracleData?.find(
+                  (oraculo) =>
+                    oraculo.currency?.toLowerCase() ===
+                    details?.checkoutCurrency?.toLowerCase()
+                )?.wei
+              )
+          ),
+        ],
+        chain: chains.mainnet,
+        account: address,
       });
 
-      if (res?.isOk()) {
-        const provider = new ethers.BrowserProvider(window.ethereum);
+      const res = await clientWallet.writeContract(request);
+      const tx = await publicClient.waitForTransactionReceipt({ hash: res });
 
-        const signer = await provider.getSigner();
-
-        const tx = {
-          chainId: (res.value as any)?.raw?.chainId,
-          from: (res.value as any)?.raw?.from,
-          to: (res.value as any)?.raw?.to,
-          nonce: (res.value as any)?.raw?.nonce,
-          gasLimit: (res.value as any)?.raw?.gasLimit,
-          maxFeePerGas: (res.value as any)?.raw?.maxFeePerGas,
-          maxPriorityFeePerGas: (res.value as any)?.raw?.maxPriorityFeePerGas,
-          value: (res.value as any)?.raw?.value,
-          data: (res.value as any)?.raw?.data,
-        };
-        const txResponse = await signer.sendTransaction(tx);
-        await txResponse.wait();
-        setDeposited(true);
+      if (tx?.transactionHash) {
+        setApproved(true);
       } else {
         context?.setNotification(dict?.collect?.pockets);
       }
@@ -219,76 +253,18 @@ const useCheckout = (
 
       console.error(err.message);
     }
-    setDepositLoading(false);
+    setApproveLoading(false);
   };
 
   const collectItem = async () => {
     setCollectPostLoading(true);
     const encryptedFulfillment = await encryptFulfillment();
 
+    if (!encryptedFulfillment || !encryptedFulfillment?.includes("ipfs://")) {
+      context?.setNotification(dict?.collect?.fill);
+    }
+
     try {
-      const erc20 = new ethers.Contract(
-        details?.checkoutCurrency,
-        [
-          "function approve(address spender, uint256 amount) public returns (bool)",
-        ],
-        new ethers.JsonRpcProvider("https://rpc.lens.xyz", 232)
-      );
-
-      const approveData = erc20.interface.encodeFunctionData("approve", [
-        F3M_OPEN_ACTION,
-        BigInt(
-          ((Number(collection?.price) * 1.1) /
-            Number(
-              context?.oracleData?.find(
-                (oraculo) =>
-                  oraculo.currency?.toLowerCase() ===
-                  details?.checkoutCurrency?.toLowerCase()
-              )?.rate
-            )) *
-            Number(
-              context?.oracleData?.find(
-                (oraculo) =>
-                  oraculo.currency?.toLowerCase() ===
-                  details?.checkoutCurrency?.toLowerCase()
-              )?.wei
-            )
-        ),
-      ]);
-
-      const clientWallet = createWalletClient({
-        chain: chains.mainnet,
-        transport: custom((window as any).ethereum),
-      });
-
-      const { request } = await publicClient.simulateContract({
-        address: context?.lensConectado?.profile?.address,
-        abi: [
-          {
-            type: "function",
-            name: "executeTransaction",
-            inputs: [
-              { name: "to", type: "address" },
-              { name: "value", type: "uint256" },
-              { name: "data", type: "bytes" },
-            ],
-            outputs: [{ name: "", type: "bytes" }],
-            stateMutability: "payable",
-          },
-        ],
-        functionName: "executeTransaction",
-        chain: chains.mainnet,
-        args: [
-          details?.checkoutCurrency as `0x${string}`,
-          BigInt(0),
-          approveData as `0x${string}`,
-        ],
-        account: address,
-      });
-
-      const res = await clientWallet.writeContract(request);
-      await publicClient.waitForTransactionReceipt({ hash: res });
-
       const postRes = await executePostAction(
         context?.lensConectado?.sessionClient!,
         {
@@ -303,11 +279,12 @@ const useCheckout = (
                   ),
                   data: blockchainData(
                     coder.encode(
-                      ["string", "address", "bool"],
+                      ["string[]", "address[]", "uint256[]", "uint8[]"],
                       [
-                        encryptedFulfillment,
-                        details?.checkoutCurrency,
-                        1,
+                        [encryptedFulfillment],
+                        [details?.checkoutCurrency],
+                        [],
+                        [1],
                       ]
                     )
                   ),
@@ -408,16 +385,16 @@ const useCheckout = (
 
   useEffect(() => {
     if (context?.lensConectado?.sessionClient && details?.checkoutCurrency) {
-      checkDeposited();
+      checkApproved();
     }
   }, [details?.checkoutCurrency, context?.lensConectado?.sessionClient]);
   return {
     details,
     setDetails,
     collectPostLoading,
-    deposited,
-    depositLoading,
-    depositFunds,
+    approveLoading,
+    approved,
+    approveFunds,
     collectItem,
   };
 };

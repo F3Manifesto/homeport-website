@@ -17,13 +17,13 @@ export interface Gallery {
   uri: string;
   drop: {
     uri: string;
-    dropMetadata: {
+    metadata: {
       cover: string;
       title: string;
     };
   };
-  mintedTokenIds: string[];
-  collectionMetadata: {
+  tokenIdsMinted: string[];
+  metadata: {
     style: string;
     sex: string;
     title: string;
