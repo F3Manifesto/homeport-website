@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Gallery } from "../types/common.types";
 import { ModalContext } from "@/app/providers";
 import { useSearchParams } from "next/navigation";
-import { fetchPost } from "@lens-protocol/client/actions";
+import { fetchAccountsBulk, fetchPost } from "@lens-protocol/client/actions";
 import { getAllCollections } from "../../../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 const useGallery = () => {

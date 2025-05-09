@@ -149,6 +149,8 @@ const useWho = () => {
             anyOf: [
               {
                 address: F3M_OPEN_ACTION,
+              },
+              {
                 simpleCollect: true,
               },
             ],
@@ -230,6 +232,8 @@ const useWho = () => {
             anyOf: [
               {
                 address: F3M_OPEN_ACTION,
+              },
+              {
                 simpleCollect: true,
               },
             ],

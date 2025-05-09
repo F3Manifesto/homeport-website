@@ -40,7 +40,7 @@ export async function GET() {
 
       return `
       <url>
-        <loc>${baseUrl}/collect/${safeSlug}</loc>
+        <loc>${baseUrl}/collect/${safeSlug}/</loc>
         ${locales
           .map(
             (altLocale) => `
