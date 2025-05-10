@@ -44,11 +44,11 @@ export async function GET() {
         ${locales
           .map(
             (altLocale) => `
-          <xhtml:link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${safeSlug}/" />
+          <link rel="alternate" hreflang="${altLocale}" href="${baseUrl}/${altLocale}/collect/${safeSlug}/" ></link>
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" />
+        <link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" ></link>
         <image:image>
           <image:loc>${INFURA_GATEWAY_INTERNAL}${image}/</image:loc>
           <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
@@ -70,11 +70,11 @@ export async function GET() {
         ${locales
           .map(
             (locale) => `
-          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/" />
+          <link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/" ></link>
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/" />
+        <link rel="alternate" hreflang="x-default" href="${baseUrl}/" ></link>
       </url>
 
 
@@ -83,11 +83,11 @@ export async function GET() {
         ${locales
           .map(
             (locale) => `
-          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders/" />
+          <link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders/"> </link>
           `
           )
           .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/orders/" />
+        <link rel="alternate" hreflang="x-default" href="${baseUrl}/orders/"> </link>
       </url>
     
       ${collectionsXml}
