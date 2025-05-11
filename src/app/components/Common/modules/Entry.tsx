@@ -16,7 +16,6 @@ import IsekaiSearch from "./IsekaiSearch";
 import IsekaiGallery from "./IsekaiGallery";
 import Search from "./Search";
 import Gallery from "./Gallery";
-import { useAccount } from "wagmi";
 
 export default function Entry({ dict }: { dict: any }) {
   const context = useContext(ModalContext);
@@ -29,7 +28,6 @@ export default function Entry({ dict }: { dict: any }) {
     handleURL,
   } = useGallery();
   const { videoImage, setVideoImage, message } = useCommon();
-  const { address } = useAccount();
 
   if (!galleryLoading && context?.filters) {
     return (

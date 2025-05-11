@@ -1,8 +1,17 @@
 import { NextResponse } from "next/server";
 import { getAllCollections } from "../../../graphql/queries/getCollections";
-import { INFURA_GATEWAY_INTERNAL } from "../lib/constants";
+import { INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "../lib/constants";
 
 const locales = ["en", "es"];
+
+const STATIC_IMAGES = [
+  "QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9",
+  "QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL",
+  "QmcM8caaAM6Pu7bdiwM6QMkwYJa2hhqsAmJFi8zvZzEQQD",
+  "QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu",
+  "QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC",
+  ...MARQUEE_IMAGES,
+];
 
 function escapeXml(unsafe: string) {
   if (!unsafe) return "";
@@ -35,8 +44,7 @@ export async function GET() {
       const rawTitle = coll?.metadata?.title ?? "";
       const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
       const title = escapeXml(rawTitle.replace(/-/g, " "));
-      const image =
-        coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
+      const image = coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
 
       return `
       <url>
@@ -59,6 +67,17 @@ export async function GET() {
     })
     .join("");
 
+  const homeImagesXml = STATIC_IMAGES.map((cid) => {
+    const url = `${INFURA_GATEWAY_INTERNAL}${cid}/`;
+    return `
+      <image:image>
+        <image:loc>${url}</image:loc>
+        <image:title><![CDATA[Emma-Jane MacKinnon-Lee visual identity node | F3Manifesto]]></image:title>
+        <image:caption><![CDATA[Emma-Jane MacKinnon-Lee visual identity node | F3Manifesto]]></image:caption>
+      </image:image>
+    `;
+  }).join("");
+
   const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset 
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
@@ -75,19 +94,7 @@ export async function GET() {
           )
           .join("")}
         <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/" />
-      </url>
-
-
-           <url>
-        <loc>${baseUrl}/orders</loc>
-        ${locales
-          .map(
-            (locale) => `
-          <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/orders/" />
-          `
-          )
-          .join("")}
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/orders/" />
+        ${homeImagesXml}
       </url>
     
       ${collectionsXml}

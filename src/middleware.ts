@@ -19,12 +19,14 @@ function getLocale(request: NextRequest) {
 }
 
 function isBot(userAgent: string) {
-  return /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou/i.test(userAgent);
+  return /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou/i.test(
+    userAgent
+  );
 }
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const userAgent = request.headers.get('user-agent') || '';
+  const userAgent = request.headers.get("user-agent") || "";
 
   if (
     pathname.startsWith("/_next") ||
@@ -33,6 +35,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/fonts") ||
     pathname.startsWith("/favicon.ico") ||
     pathname.startsWith("/api") ||
+    pathname.startsWith("/image-sitemap.xml") ||
     pathname.startsWith("/sitemap.xml")
   ) {
     return NextResponse.next();
@@ -66,5 +69,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|images|fonts|favicon.ico|opengraph_image.png|api|sitemap).*)"],
+  matcher: [
+    "/((?!_next|images|fonts|favicon.ico|opengraph_image.png|api|sitemap|image-sitemap.xml).*)",
+  ],
 };
