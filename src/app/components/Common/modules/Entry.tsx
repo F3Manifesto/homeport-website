@@ -4,7 +4,7 @@ import { useContext } from "react";
 import RouterChange from "./RouterChange";
 import Head from "next/head";
 import Image from "next/image";
-import { INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "@/app/lib/constants";
+import { BOARD_IMAGES, INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "@/app/lib/constants";
 import Marquee from "react-fast-marquee";
 import useGallery from "../hooks/useGallery";
 import { ModalContext } from "@/app/providers";
@@ -27,6 +27,7 @@ export default function Entry({ dict }: { dict: any }) {
     goShopping,
     handleURL,
   } = useGallery();
+  console.log(BOARD_IMAGES.length + MARQUEE_IMAGES.length)
   const { videoImage, setVideoImage, message } = useCommon();
 
   if (!galleryLoading && context?.filters) {

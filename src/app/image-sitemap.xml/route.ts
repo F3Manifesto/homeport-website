@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getAllCollections } from "../../../graphql/queries/getCollections";
-import { INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "../lib/constants";
+import {
+  BOARD_IMAGES,
+  INFURA_GATEWAY_INTERNAL,
+  MARQUEE_IMAGES,
+  TITLES,
+} from "../lib/constants";
 
 const locales = ["en", "es"];
 
@@ -11,7 +16,11 @@ const STATIC_IMAGES = [
   "QmTVMXcjyMNmkMiyUFKxx3iqqdCTMuSpnLCgUS6usLX9Bu",
   "QmcJm2mBZ1SErHEDYro3yJYyyv8aqnjVCt5s7NbqkkcYpC",
   ...MARQUEE_IMAGES,
-];
+  ...BOARD_IMAGES,
+].map((marquee, i) => ({
+  image: marquee,
+  title: TITLES[i],
+}));
 
 function escapeXml(unsafe: string) {
   if (!unsafe) return "";
@@ -68,12 +77,12 @@ export async function GET() {
     .join("");
 
   const homeImagesXml = STATIC_IMAGES.map((cid) => {
-    const url = `${INFURA_GATEWAY_INTERNAL}${cid}/`;
+    const url = `${INFURA_GATEWAY_INTERNAL}${cid?.image}/`;
     return `
       <image:image>
         <image:loc>${url}</image:loc>
-        <image:title><![CDATA[Emma-Jane MacKinnon-Lee visual identity node | F3Manifesto]]></image:title>
-        <image:caption><![CDATA[Emma-Jane MacKinnon-Lee visual identity node | F3Manifesto]]></image:caption>
+        <image:title><![CDATA[Emma-Jane MacKinnon-Lee visual ${cid?.title} | F3Manifesto]]></image:title>
+        <image:caption><![CDATA[Emma-Jane MacKinnon-Lee ${cid?.title} | F3Manifesto]]></image:caption>
       </image:image>
     `;
   }).join("");
