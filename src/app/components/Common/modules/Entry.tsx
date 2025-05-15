@@ -27,7 +27,6 @@ export default function Entry({ dict }: { dict: any }) {
     goShopping,
     handleURL,
   } = useGallery();
-  console.log(BOARD_IMAGES.length + MARQUEE_IMAGES.length)
   const { videoImage, setVideoImage, message } = useCommon();
 
   if (!galleryLoading && context?.filters) {
