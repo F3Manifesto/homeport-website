@@ -109,6 +109,10 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                     image: "QmfHYdrJSrmPHNaGMqzenCq9w2tKSs7NFUcB97MXuHz1cB",
                     name: `ŋ ${dict?.common?.soon}`,
                   },
+                  {
+                    image: "QmNcb5wckWSPzDDv1fTh7otCKQvrYUP8bEQMHjM62NDHyD",
+                    name: `gd ${dict?.common?.soon}`,
+                  },
                 ].map(
                   (
                     item: {
