@@ -3,7 +3,7 @@ import { FetchResult, gql } from "@apollo/client";
 
 const COLLECTIONS = `
   query($title: String!) {
-    collectionCreateds(where: {metadata_: { title_contains_nocase: $title }},first: 1) {
+    collectionCreateds(where: {metadata_: { title_nocase: $title }},first: 1) {
       amount
       uri
       drop {

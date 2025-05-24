@@ -2,9 +2,8 @@
 
 import { useContext } from "react";
 import RouterChange from "./RouterChange";
-import Head from "next/head";
 import Image from "next/image";
-import { BOARD_IMAGES, INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "@/app/lib/constants";
+import { INFURA_GATEWAY_INTERNAL, MARQUEE_IMAGES } from "@/app/lib/constants";
 import Marquee from "react-fast-marquee";
 import useGallery from "../hooks/useGallery";
 import { ModalContext } from "@/app/providers";
@@ -35,29 +34,6 @@ export default function Entry({ dict }: { dict: any }) {
         id="cursor"
         className="flex flex-col bg-offBlack h-fit w-full relative justify-start items-center"
       >
-        <Head>
-          <title>F3Manifesto</title>
-          <link rel="icon" href="/favicon.ico" />
-          <meta property="og:site_name" content="F3M" />
-          <meta
-            property="og:image"
-            content="https://f3manifesto.xyz/card.png/"
-          />
-          <meta property="og:type" content="website" />
-          <meta name="og:url" content="https://f3manifesto.xyz/" />
-          <meta name="og:title" content="F3Manifesto" />
-          <meta name="og:description" content="I Want My Web3 Fashion" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@f3manifesto" />
-          <meta name="twitter:creator" content="@f3manifesto" />
-          <meta
-            name="twitter:image"
-            content="https://f3manifesto.xyz/card.png/"
-          />
-          <meta name="twitter:url" content="https://f3manifesto.xyz/" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="canonical" href="https://f3manifesto.xyz/" />
-        </Head>
         <Film dict={dict} />
         <Board dict={dict} goShopping={goShopping} handleURL={handleURL} />
         <div className="w-full h-[400vh] items-center justify-center relative flex bg-offBlack overflow-hidden">
