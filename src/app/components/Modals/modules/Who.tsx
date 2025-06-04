@@ -21,8 +21,15 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
   } = useWho();
 
   return (
-    <div className="inset-0 justify-center fixed z-20 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto">
-      <div className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit px-2 md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black cursor-empireS">
+    <div
+      className="inset-0 justify-center fixed z-20 bg-opacity-50 backdrop-blur-sm overflow-y-hidden grid grid-flow-col auto-cols-auto w-full h-auto cursor-empireS"
+      onClick={(e) => {
+        e.stopPropagation();
+        setMirrorQuote(false);
+        context?.setReactBox(undefined);
+      }}
+    >
+      <div className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit px-2 md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black cursor-empireA">
         <div className="relative w-full row-start-2 h-fit grid grid-flow-col auto-cols-auto">
           <div className="relative w-full h-full col-start-1 place-self-center">
             <div className="relative w-full h-full flex flex-col items-center justify-center gap-4 pb-8">
@@ -43,7 +50,10 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                       className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-empireS ${
                         !mirrorQuote && "opacity-50"
                       }`}
-                      onClick={() => setMirrorQuote(true)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMirrorQuote(true);
+                      }}
                       title="Quotes"
                     >
                       <Image
@@ -57,7 +67,10 @@ const Who: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                       className={`relative w-5 h-5 flex items-center justify-center hover:opacity-70 cursor-empireS ${
                         mirrorQuote && "opacity-50"
                       }`}
-                      onClick={() => setMirrorQuote(false)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMirrorQuote(false);
+                      }}
                       title="Mirrors"
                     >
                       <Image

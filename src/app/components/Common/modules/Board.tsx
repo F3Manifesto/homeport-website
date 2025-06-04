@@ -213,6 +213,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   title: {
                     es: "Brutalismo D.I.Y",
                     en: "D.I.Y Brutalism",
+                    ym: "D.I.Y Brutalism",
                   },
                   code: "68 73 89",
                   reverse: false,
@@ -225,6 +226,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   title: {
                     es: "Retazos Digicore",
                     en: "Digicore Patchwork",
+                    ym: "Digicore Patchwork",
                   },
                   code: "100 105 103 105",
                   reverse: true,
@@ -237,6 +239,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   title: {
                     es: "Americana Vintage",
                     en: "Vintage Americana",
+                    ym: "Vintage Americana",
                   },
                   code: "118 105 110 116",
                   reverse: false,
@@ -249,6 +252,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   title: {
                     es: "Cottagecore Web Kitsch",
                     en: "Cottagecore Web Kitsch",
+                    ym: "Cottagecore Web Kitsch",
                   },
                   code: "119 101 98",
                   reverse: true,
@@ -261,6 +265,7 @@ const Board: FunctionComponent<BoardProps> = ({
                   title: {
                     es: "LoFi Ropa Tec",
                     en: "LoFi Tech Wear",
+                    ym: "LoFi Tech Girri'",
                   },
                   code: "108 111 102 105",
                   reverse: false,
@@ -305,22 +310,22 @@ const Board: FunctionComponent<BoardProps> = ({
                             <div className="relative w-fit h-fit flex items-center justify-center">
                               {
                                 item.title?.[
-                                  (path.match(
-                                    /(?<=\/)(en|es)(?=\/)/
-                                  )?.[0] as any as "es") || "en"
+                                  path.match(
+                                    /(?<=\/)(en|es|ar|ym)(?=\/)/
+                                  )?.[0] as any as "es" | "en"
                                 ]?.split(" ")[0]
                               }
                             </div>
                             <div className="relative font-firaB w-fit h-fit flex items-center justify-center">
                               {item.title?.[
-                                (path.match(
-                                  /(?<=\/)(en|es)(?=\/)/
-                                )?.[0] as any as "es") || "en"
+                                path.match(
+                                  /(?<=\/)(en|es|ar|ym)(?=\/)/
+                                )?.[0] as any as "es" | "en"
                               ]?.substring(
                                 item.title?.[
-                                  (path.match(
-                                    /(?<=\/)(en|es)(?=\/)/
-                                  )?.[0] as any as "es") || "en"
+                                  path.match(
+                                    /(?<=\/)(en|es|ar|ym)(?=\/)/
+                                  )?.[0] as any as "es" | "en"
                                 ]?.indexOf(" ") + 1
                               )}
                             </div>

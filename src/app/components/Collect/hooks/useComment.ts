@@ -6,12 +6,14 @@ import { chains } from "@lens-chain/sdk/viem";
 import { image, textOnly, MediaImageMimeType } from "@lens-protocol/metadata";
 import convertirArchivo from "@/app/lib/helpers/convertirArchivo";
 import { post } from "@lens-protocol/client/actions";
+import { ethers } from "ethers";
 
 const useComment = (
   pub: Post | undefined,
   dict: any,
   getReferences: () => Promise<void>
 ) => {
+  const coder = new ethers.AbiCoder();
   const context = useContext(ModalContext);
   const [contentLoading, setContentLoading] = useState<boolean>(false);
   const [mentionProfiles, setMentionProfiles] = useState<Account[]>([]);
@@ -33,7 +35,12 @@ const useComment = (
   });
 
   const makeComment = async () => {
-    if (!context?.lensConectado?.sessionClient) return;
+    if (
+      !context?.lensConectado?.sessionClient ||
+      (commentContent.content?.trim() == "" &&
+        commentContent?.images?.length < 1)
+    )
+      return;
     setCommentLoading(true);
     try {
       const acl = immutable(chains.mainnet.id);
@@ -73,6 +80,7 @@ const useComment = (
       const { uri } = await context?.storageClient?.uploadAsJson(schema, {
         acl,
       })!;
+
       const res = await post(context?.lensConectado?.sessionClient!, {
         commentOn: {
           post: pub?.id,
@@ -82,6 +90,7 @@ const useComment = (
             simpleCollect: {},
           },
         ],
+        // feed: "0x90139c418Ea313552C31A1528bD25da54f7fE948",
         contentUri: uri,
       });
 

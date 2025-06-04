@@ -262,13 +262,19 @@ const useGallery = () => {
         ?.trim()
         ?.split(" ");
 
+      console.log(
+   dropSelected
+      );
+
       if (dropSelected?.length > 0) {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : context?.gallery || []
         )?.filter((item) =>
           dropSelected?.some(
             (drop) =>
-              (drop == "флоривКиєві"
+              (drop == "OutofContext"
+                ? "Out of Context"?.toLowerCase()
+                : drop == "флоривКиєві"
                 ? "флори в Києві"?.toLowerCase()
                 : drop == "زن،زندگی،آزادی"
                 ? "زن، زندگی، آزادی"

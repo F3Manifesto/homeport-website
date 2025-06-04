@@ -50,7 +50,8 @@ const WhoSwitch: FunctionComponent<WhoSwitchProps> = ({
               <div
                 key={index}
                 className="relative w-full h-14 p-2 flex flex-row items-center justify-start font-conso bg-lightYellow text-black cursor-empireS border border-black"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   context?.setReactBox(undefined);
                   window.open(
                     `https://cypher.digitalax.xyz/autograph/${reactor?.username?.localName}`

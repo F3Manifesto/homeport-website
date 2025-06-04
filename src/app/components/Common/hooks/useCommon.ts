@@ -19,7 +19,7 @@ const useCommon = () => {
   useEffect(() => {
     setMessage(
       messages[Math.floor(messages.length * Math.random())][
-        (path.match(/(?<=\/)(en|es)(?=\/)/)?.[0] as any as "es") || "en"
+        path.match(/(?<=\/)(en|es|ar|ym)(?=\/)/)?.[0] as any as "es" | "en"
       ]
     );
   }, [path]);

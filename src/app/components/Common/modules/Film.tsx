@@ -67,7 +67,11 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                   },
                   {
                     image: "QmZVU5rZxU1REJHNHtScLuNgeKMoDVK4ruwuP7tSznTqUg",
-                    name: `ع ${dict?.common?.soon}`,
+                    name: `ع`,
+                  },
+                  {
+                    image: "QmfHYdrJSrmPHNaGMqzenCq9w2tKSs7NFUcB97MXuHz1cB",
+                    name: `ŋ`,
                   },
                   {
                     image: "QmX5L5R7y2dbFM3mEqWsydsadcScebnUDdeYJW7mWirX5d",
@@ -106,10 +110,6 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                     name: `ű ${dict?.common?.soon}`,
                   },
                   {
-                    image: "QmfHYdrJSrmPHNaGMqzenCq9w2tKSs7NFUcB97MXuHz1cB",
-                    name: `ŋ ${dict?.common?.soon}`,
-                  },
-                  {
                     image: "QmNcb5wckWSPzDDv1fTh7otCKQvrYUP8bEQMHjM62NDHyD",
                     name: `gd ${dict?.common?.soon}`,
                   },
@@ -129,11 +129,11 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                             ? "border-y border-offBlack"
                             : index !== 9 && "border-b border-offBlack"
                         } ${
-                          (index === 0 || index === 1) &&
+                          (index <= 3) &&
                           "hover:opacity-80 cursor-empireS"
                         }`}
                         onClick={() => {
-                          if (index === 0 || index === 1) {
+                          if (index <= 3) {
                             changeLanguage(item.name);
                           }
                         }}

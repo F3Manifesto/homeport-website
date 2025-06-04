@@ -20,7 +20,7 @@ const CrearCuenta: FunctionComponent<{ dict: any }> = ({
       }}
     >
       <div
-        className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black font-din text-black"
+        className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black font-din text-black cursor-empireA"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative w-full h-fit flex flex-col gap-3 items-center justify-center p-3">

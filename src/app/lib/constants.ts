@@ -7,7 +7,14 @@ export const INFURA_GATEWAY_INTERNAL: string =
   "https://f3manifesto.xyz/api/infura/";
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 export const GROVE_GATEWAY: string = "https://api.grove.storage/";
-export const LOCALES: string[] = ["en", "es"];
+export const LOCALES: string[] = ["en", "es", "ar", "ym"];
+
+export const LANGUAGE: { [key in string]: string } = {
+  ["en"]: "en",
+  ["es"]: "es",
+  ["ع"]: "ar",
+  ["ŋ"]: "ym",
+};
 
 export const IPFS_REGEX: RegExp = /\b(Qm[1-9A-Za-z]{44}|ba[A-Za-z2-7]{57})\b/;
 export const F3M_OPEN_ACTION: `0x${string}` =
@@ -349,3 +356,11 @@ export const TITLES: string[] = [
   "Her look was parsed, and the parser failed",
   "Textiles run on self-governing syntax",
 ];
+
+export const TITLES_EDIT: { [key in string]: string } = {
+  ["old fashioned charm"]: "Old-Fashioned Charm",
+  ["pantallas de drive in"]: "Pantallas de Drive-In",
+  ["self reconfiguration based on manufacturing needs"]:
+    "Self-reconfiguration based on manufacturing needs",
+  ["1800 futur synth"]: "1800-FUTUR-SYNTH",
+};

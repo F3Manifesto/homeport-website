@@ -1,7 +1,7 @@
 import CollectEntry from "@/app/components/Collect/modules/CollectEntry";
 import { Metadata } from "next";
 import { Gallery } from "@/app/components/Common/types/common.types";
-import { INFURA_GATEWAY } from "@/app/lib/constants";
+import { INFURA_GATEWAY, TITLES_EDIT } from "@/app/lib/constants";
 import {
   getAllCollections,
   getOneCollection,
@@ -32,9 +32,14 @@ export const generateMetadata = async ({
   }>;
 }): Promise<Metadata> => {
   const { name } = await params;
-  const data = await getOneCollection(
+  let data = await getOneCollection(
     decodeURIComponent(name)?.replaceAll("-", " ")
   );
+  if (data?.data?.collectionCreateds?.length < 1) {
+    data = await getOneCollection(
+      TITLES_EDIT[decodeURIComponent(name)?.replaceAll("-", " ")]
+    );
+  }
   const collection = data?.data?.collectionCreateds?.[0];
 
   if (!collection?.metadata && collection?.uri) {
@@ -64,9 +69,15 @@ export default async function Collect({
   }>;
 }) {
   const { lang, name } = await params;
-  const data = await getOneCollection(
+  let data = await getOneCollection(
     decodeURIComponent(name)?.replaceAll("-", " ")
   );
+
+  if (data?.data?.collectionCreateds?.length < 1) {
+    data = await getOneCollection(
+      TITLES_EDIT[decodeURIComponent(name)?.replaceAll("-", " ")]
+    );
+  }
   const collection = data?.data?.collectionCreateds?.[0];
   if (!collection?.metadata && collection?.uri) {
     const json = await fetch(

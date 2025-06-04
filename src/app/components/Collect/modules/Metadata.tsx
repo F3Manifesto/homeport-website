@@ -123,6 +123,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             name: {
                               es: "Americana Vintage",
                               en: "Vintage Americana",
+                              ym: "Vintage Americana",
                             },
                             image:
                               "QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML",
@@ -131,6 +132,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             name: {
                               es: "Retazos Digicore",
                               en: "Digicore Patchwork",
+                              ym: "Digicore Patchwork",
                             },
                             image:
                               "QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX",
@@ -139,6 +141,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             name: {
                               es: "Brutalismo DIY",
                               en: "DIY Brutalism",
+                              ym: "DIY Brutalism",
                             },
                             image:
                               "QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H",
@@ -147,6 +150,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             name: {
                               es: "LoFi Ropa Tec",
                               en: "LoFi Tech Wear",
+                              ym: "LoFi Tech Girri'",
                             },
                             image:
                               "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
@@ -155,6 +159,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                             name: {
                               es: "Cottagecore Web Kitsch",
                               en: "Cottagecore Web Kitsch",
+                              ym: "Cottagecore Web Kitsch",
                             },
                             image:
                               "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
@@ -162,9 +167,9 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                         ]?.filter(
                           (value) =>
                             value?.name?.[
-                              (path.match(
-                                /(?<=\/)(en|es)(?=\/)/
-                              )?.[0] as any as "es") || "en"
+                              path.match(
+                                /(?<=\/)(en|es|ar|ym)(?=\/)/
+                              )?.[0] as any as "es" | "en"
                             ]?.toLowerCase() ==
                               item?.metadata?.style?.toLowerCase() ||
                             value?.name?.en?.toLowerCase() ==

@@ -16,10 +16,10 @@ const Signless: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
       }}
     >
       <div
-        className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black font-din text-black"
+        className="relative w-[90vw] sm:w-[70vw] half:w-[60vw] min-w-fit md:w-[40vw] lg:w-[40vw] h-fit col-start-1 place-self-center bg-lightWhite border border-black font-din text-black cursor-empireA"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full h-fit flex items-center justify-center p-3 gap-3 flex-col cursor-empireA">
+        <div className="relative w-full h-fit flex items-center justify-center p-3 gap-3 flex-col">
           <div className="relative w-fit h-fit text-center break-words text-base">
             {dict?.common?.signless}
           </div>

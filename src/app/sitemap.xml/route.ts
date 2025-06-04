@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getAllCollections } from "../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY_INTERNAL } from "../lib/constants";
 
-const locales = ["en", "es"];
+const locales = ["en", "es", "ar", "ym"];
 
 function escapeXml(unsafe: string) {
   if (!unsafe) return "";
@@ -35,8 +35,7 @@ export async function GET() {
       const rawTitle = coll?.metadata?.title ?? "";
       const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
       const title = escapeXml(rawTitle.replace(/-/g, " "));
-      const image =
-        coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
+      const image = coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
 
       return `
       <url>

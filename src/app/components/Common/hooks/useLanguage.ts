@@ -1,3 +1,4 @@
+import { LANGUAGE } from "@/app/lib/constants";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -8,10 +9,10 @@ const useLanguage = () => {
 
   const changeLanguage = (lang: string) => {
     const segments = path.split("/");
-    segments[1] = lang ?? "en";
+    segments[1] = LANGUAGE[lang] ?? "en";
     const newPath = segments.join("/");
 
-    document.cookie = `NEXT_LOCALE=${lang}; path=/; SameSite=Lax`;
+    document.cookie = `NEXT_LOCALE=${LANGUAGE[lang]}; path=/; SameSite=Lax`;
 
     router.push(newPath);
   };
