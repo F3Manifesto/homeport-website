@@ -262,10 +262,6 @@ const useGallery = () => {
         ?.trim()
         ?.split(" ");
 
-      console.log(
-   dropSelected
-      );
-
       if (dropSelected?.length > 0) {
         galleryFiltered = (
           galleryFiltered?.length > 0 ? galleryFiltered : context?.gallery || []
