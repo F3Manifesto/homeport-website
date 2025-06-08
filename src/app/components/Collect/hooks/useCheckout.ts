@@ -262,6 +262,8 @@ const useCheckout = (
 
     if (!encryptedFulfillment || !encryptedFulfillment?.includes("ipfs://")) {
       context?.setNotification(dict?.collect?.fill);
+      setCollectPostLoading(false);
+      return;
     }
 
     try {
