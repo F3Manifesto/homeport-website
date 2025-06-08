@@ -89,7 +89,7 @@ const useCheckout = (
           parameters: [":userAddress"],
           returnValueTest: {
             comparator: "=",
-            value: address?.toLowerCase() as string,
+            value: DIGITALAX_ADDRESS?.toLowerCase() as string,
           },
         },
       ] as AccessControlConditions;

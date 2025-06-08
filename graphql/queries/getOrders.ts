@@ -3,7 +3,7 @@ import { FetchResult, gql } from "@apollo/client";
 
 const ORDERS = `
   query($buyer: String!) {
-    orderCreateds(where: { buyer: $buyer }) {
+    orderCreateds(where: { buyer: $buyer, collection_: {origin : 3} }) {
       amount
       messages
       orderId
