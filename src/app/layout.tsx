@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 
-
 export const metadata: Metadata = {
   title: "F3Manifesto",
   metadataBase: new URL("https://f3manifesto.xyz"),
@@ -54,6 +53,34 @@ export default function RootLayout({
 }>) {
   return (
     <html>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "F3Manifesto",
+              url: "https://www.f3manifesto.xyz",
+              founder: {
+                "@type": "Person",
+                name: "Emma-Jane MacKinnon-Lee",
+                url: "https://www.emmajanemackinnonlee.com",
+                sameAs: [
+                  "https://twitter.com/emmajane1313",
+                  "https://medium.com/@casadeespejos",
+                  "https://www.flickr.com/photos/emmajanemackinnonlee/",
+                  "https://www.syntheticfutures.xyz",
+                  "https://www.web3fashion.xyz",
+                  "https://www.emancipa.xyz",
+                  "https://www.highlangu.xyz",
+                  "https://www.digitalax.xyz",
+                ],
+              },
+            }),
+          }}
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
