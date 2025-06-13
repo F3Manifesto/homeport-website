@@ -1,7 +1,7 @@
 import CollectEntry from "@/app/components/Collect/modules/CollectEntry";
 import { Metadata } from "next";
 import { Gallery } from "@/app/components/Common/types/common.types";
-import { INFURA_GATEWAY, TITLES_EDIT } from "@/app/lib/constants";
+import { INFURA_GATEWAY, LOCALES, TITLES_EDIT } from "@/app/lib/constants";
 import {
   getAllCollections,
   getOneCollection,
@@ -52,6 +52,13 @@ export const generateMetadata = async ({
   return {
     title: collection?.metadata?.title,
     description: collection?.metadata?.description,
+    alternates: {
+      canonical: `https://f3manifesto.xyz/collect/${name}`,
+      languages: LOCALES.reduce((acc, item) => {
+        acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}`;
+        return acc;
+      }, {} as { [key: string]: string }),
+    },
     openGraph: {
       images: `${INFURA_GATEWAY}/ipfs/${
         collection?.metadata?.images?.[0]?.split("ipfs://")?.[1]

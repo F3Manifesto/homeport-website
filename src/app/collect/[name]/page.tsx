@@ -5,7 +5,7 @@ import {
 } from "../../../../graphql/queries/getCollections";
 import { Metadata } from "next";
 import { Gallery } from "@/app/components/Common/types/common.types";
-import { INFURA_GATEWAY, TITLES_EDIT } from "@/app/lib/constants";
+import { INFURA_GATEWAY, LOCALES, TITLES_EDIT } from "@/app/lib/constants";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import Wrapper from "@/app/components/Common/modules/Wrapper";
 import { Suspense } from "react";
@@ -57,6 +57,13 @@ export const generateMetadata = async ({
   return {
     title: collection?.metadata?.title,
     description: collection?.metadata?.description,
+    alternates: {
+      canonical: `https://f3manifesto.xyz/collect/${name}`,
+      languages: LOCALES.reduce((acc, item) => {
+        acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}`;
+        return acc;
+      }, {} as { [key: string]: string }),
+    },
     openGraph: {
       images: `${INFURA_GATEWAY}/ipfs/${
         collection?.metadata?.images?.[0]?.split("ipfs://")?.[1]

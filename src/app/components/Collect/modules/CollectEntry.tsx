@@ -24,7 +24,7 @@ export default function CollectEntry({
   const router = useRouter();
   const { indice, setIndice, post, postLoading } = useCollection(collection);
 
-  // if (collection && post && !postLoading) {
+  if (collection && post && !postLoading) {
     return (
       <div className="flex h-full min-h-screen w-full relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-gradient-to-b from-lightY via-white to-lightPurple items-start justify-center">
         <div className="w-full h-full flex flex-col relative items-center justify-start">
@@ -140,7 +140,7 @@ export default function CollectEntry({
         </div>
       </div>
     );
-  // }
+  }
 
-  // return <RouterChange />;
+  return <RouterChange />;
 }
