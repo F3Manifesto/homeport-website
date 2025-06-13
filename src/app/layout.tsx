@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
+import { LOCALES } from "./lib/constants";
 
 export const metadata: Metadata = {
   title: "F3Manifesto",
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
     title: "F3Manifesto",
     description:
       "Transcendent nostalgia. Machine & human made. In with gen. AI, web3 fashion & cc0 before it was cool. زن، زندگی، آزادی",
+  },
+  alternates: {
+    canonical: `https://f3manifesto.xyz/`,
+    languages: LOCALES.reduce((acc, item) => {
+      acc[item] = `https://f3manifesto.xyz/${item}/`;
+      return acc;
+    }, {} as { [key: string]: string }),
   },
   robots: {
     googleBot: {

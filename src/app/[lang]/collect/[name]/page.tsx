@@ -53,9 +53,9 @@ export const generateMetadata = async ({
     title: collection?.metadata?.title,
     description: collection?.metadata?.description,
     alternates: {
-      canonical: `https://f3manifesto.xyz/collect/${name}`,
+      canonical: `https://f3manifesto.xyz/collect/${name}/`,
       languages: LOCALES.reduce((acc, item) => {
-        acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}`;
+        acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}/`;
         return acc;
       }, {} as { [key: string]: string }),
     },
