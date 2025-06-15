@@ -85,8 +85,7 @@ export default function CollectEntry({
                         e.preventDefault();
                         setIndice(
                           indice - 1 < 0
-                            ? (collection?.metadata?.images || [])
-                                ?.length - 1
+                            ? (collection?.metadata?.images || [])?.length - 1
                             : indice - 1
                         );
                       }}
@@ -108,9 +107,7 @@ export default function CollectEntry({
                         e.preventDefault();
                         setIndice(
                           indice + 1 >
-                            (collection?.metadata?.images || [])
-                              ?.length -
-                              1
+                            (collection?.metadata?.images || [])?.length - 1
                             ? 0
                             : indice + 1
                         );
