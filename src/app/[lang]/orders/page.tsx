@@ -6,7 +6,7 @@ import { LOCALES } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Orders",
-  metadataBase: new URL("https://f3manifesto.xyz/orders/"),
+  metadataBase: new URL("https://f3manifesto.xyz/"),
   alternates: {
     canonical: `https://f3manifesto.xyz/orders/`,
     languages: LOCALES.reduce((acc, item) => {
