@@ -5,7 +5,7 @@ import { LOCALES } from "./lib/constants";
 
 export const metadata: Metadata = {
   title: "F3Manifesto",
-  metadataBase: new URL("https://f3manifesto.xyz"),
+  metadataBase: new URL("https://f3manifesto.xyz/"),
   description:
     "Transcendent nostalgia. Machine & human made. In with gen. AI, web3 fashion & cc0 before it was cool. زن، زندگی، آزادی",
   twitter: {
