@@ -67,7 +67,7 @@ export async function GET() {
           .join("")}
         <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" />
         <image:image>
-          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}/</image:loc>
+          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}</image:loc>
           <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
           <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
         </image:image>
