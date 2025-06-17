@@ -69,11 +69,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "F3Manifesto",
-              url: "https://www.f3manifesto.xyz",
+              url: "https://f3manifesto.xyz/",
               founder: {
                 "@type": "Person",
                 name: "Emma-Jane MacKinnon-Lee",
-                url: "https://www.emmajanemackinnonlee.com",
+                url: "https://emmajanemackinnonlee.com/",
                 sameAs: [
                   "https://emmajanemackinnonlee.com/",
                   "https://syntheticfutures.xyz/",
