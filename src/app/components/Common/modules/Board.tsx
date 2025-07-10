@@ -310,22 +310,22 @@ const Board: FunctionComponent<BoardProps> = ({
                             <div className="relative w-fit h-fit flex items-center justify-center">
                               {
                                 item.title?.[
-                                  path.match(
+                                  (path.match(
                                     /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                  )?.[0] as any as "es" | "en"
+                                  )?.[0] as "en") ?? "en"
                                 ]?.split(" ")[0]
                               }
                             </div>
                             <div className="relative font-firaB w-fit h-fit flex items-center justify-center">
                               {item.title?.[
-                                path.match(
+                                (path.match(
                                   /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                )?.[0] as any as "es" | "en"
+                                )?.[0] as "en") ?? "en"
                               ]?.substring(
                                 item.title?.[
-                                  path.match(
+                                  (path.match(
                                     /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                  )?.[0] as any as "es" | "en"
+                                  )?.[0] as "en") ?? "en"
                                 ]?.indexOf(" ") + 1
                               )}
                             </div>
