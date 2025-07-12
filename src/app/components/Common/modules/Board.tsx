@@ -385,7 +385,7 @@ const Board: FunctionComponent<BoardProps> = ({
                             >
                               {item.title?.[
                                 (path.match(
-                                  /(?<=\/)(en|es|ar|ym)(?=\/)/
+                                  /(?<=\/)(en|es|ar|ym|pt)(?=\/)/
                                 )?.[0] as "en" | "es" | "ar" | "ym") ?? "en"
                               ]?.substring(
                                 item.title?.[

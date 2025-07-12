@@ -178,9 +178,14 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                         ]?.filter(
                           (value) =>
                             value?.name?.[
-                              path.match(
+                              (path.match(
                                 /(?<=\/)(en|es|ar|ym|pt)(?=\/)/
-                              )?.[0] as any as "es" | "en" | "ar" | "ym" | "pt"
+                              )?.[0] as any as
+                                | "es"
+                                | "en"
+                                | "ar"
+                                | "ym"
+                                | "pt") ?? "en"
                             ]?.toLowerCase() ==
                               item?.metadata?.style?.toLowerCase() ||
                             value?.name?.en?.toLowerCase() ==
