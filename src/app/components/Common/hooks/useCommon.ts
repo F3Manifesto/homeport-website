@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const useCommon = () => {
+const useCommon = (lang: string) => {
   const path = usePathname();
   const [videoImage, setVideoImage] = useState<string | undefined>();
   const messages: { en: string; es: string; ar: string; pt: string }[] = [
@@ -23,10 +23,14 @@ const useCommon = () => {
   useEffect(() => {
     setMessage(
       messages[Math.floor(messages.length * Math.random())][
-        path.match(/(?<=\/)(en|es|ar|pt|ym)(?=\/)/)?.[0] as "en" | "es" | "ar" | "pt" ?? "en"
+        (path.match(/(?<=\/)(en|es|ar|pt|ym)(?=\/)/)?.[0] as
+          | "en"
+          | "es"
+          | "ar"
+          | "pt") ?? "en"
       ]
     );
-  }, [path]);
+  }, [path, lang]);
 
   return {
     message,

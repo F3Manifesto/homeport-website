@@ -26,7 +26,7 @@ export default function Entry({ dict, lang }: { dict: any; lang: string }) {
     goShopping,
     handleURL,
   } = useGallery();
-  const { videoImage, setVideoImage, message } = useCommon();
+  const { videoImage, setVideoImage, message } = useCommon(lang);
 
   if (!galleryLoading && context?.filters) {
     return (
