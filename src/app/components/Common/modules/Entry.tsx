@@ -124,7 +124,7 @@ export default function Entry({ dict, lang }: { dict: any; lang: string }) {
                     }
                     onMouseLeave={() => setVideoImage(undefined)}
                   >
-                    ZK CYPHERPUNK
+                    {dict?.common?.zk}
                   </div>
                 </div>
                 <div className="relative w-fit h-full flex flex-col items-start justify-between gap-6">
