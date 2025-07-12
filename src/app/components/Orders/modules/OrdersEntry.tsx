@@ -9,7 +9,13 @@ import Image from "next/image";
 import { ACCEPTED_TOKENS, INFURA_GATEWAY_INTERNAL } from "@/app/lib/constants";
 import { Details } from "../../Collect/types/collect.types";
 
-export default function OrdersEntry({ dict }: { dict: any }) {
+export default function OrdersEntry({
+  dict,
+  lang,
+}: {
+  dict: any;
+  lang: string;
+}) {
   const router = useRouter();
   const {
     ordersLoading,
@@ -43,7 +49,10 @@ export default function OrdersEntry({ dict }: { dict: any }) {
             </div>
           </div>
           <div className="relative w-full h-fit flex border-t-4 border-lightWhite px-4 py-7">
-            <h1 className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl">
+            <h1
+              className="relative flex items-center justify-start font-jacklane text-4xl sm:text-7xl"
+              dir={lang == "ar" ? "rtl" : "ltr"}
+            >
               {dict?.common?.orders}
             </h1>
           </div>
@@ -263,7 +272,10 @@ export default function OrdersEntry({ dict }: { dict: any }) {
                 </div>
               </div>
             ) : (
-              <div className="relative w-fit h-fit flex items-center justify-center font-firaL">
+              <div
+                dir={lang == "ar" ? "rtl" : "ltr"}
+                className="relative w-fit h-fit flex items-center justify-center font-firaL"
+              >
                 {dict?.common?.noOrders}
               </div>
             )}

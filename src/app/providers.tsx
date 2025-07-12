@@ -64,6 +64,7 @@ export const config = createConfig(
     transports: {
       [chains.mainnet.id]: http("https://rpc.lens.xyz"),
     },
+    connectors: [],
     ssr: true,
   })
 );

@@ -43,12 +43,14 @@ export interface Gallery {
 
 export type BoardProps = {
   dict: any;
+  lang: string;
   goShopping: () => void;
   handleURL: (type: string, newValue: string) => Promise<void>;
 };
 
 export type IsekaiSearchProps = {
   dict: any;
+  lang: string;
   handleURL: (type: string, newValue: string) => Promise<void>;
 };
 

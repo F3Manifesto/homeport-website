@@ -10,6 +10,7 @@ const Board: FunctionComponent<BoardProps> = ({
   dict,
   goShopping,
   handleURL,
+  lang,
 }): JSX.Element => {
   const context = useContext(ModalContext);
   const path = usePathname();
@@ -68,24 +69,55 @@ const Board: FunctionComponent<BoardProps> = ({
                   );
                 })}
               </div>
-              <div className="relative w-full half:w-72 h-fit flex items-center justify-start half:justify-center half:pl-0 pl-2 bottom-0">
+              <div
+                className={`relative w-full h-fit flex items-center justify-start half:justify-center bottom-0 ${
+                  lang == "ar"
+                    ? "half:w-96 pr-2 half:pr-0"
+                    : "half:w-72 pl-2 half:pl-0"
+                }`}
+              >
                 <div
-                  className={`font-glitch h-fit w-full relative inline-table leading-tight cursor-empireS break-word ${
+                  dir={lang == "ar" ? "rtl" : "ltr"}
+                  className={`h-fit w-full relative inline-table leading-tight cursor-empireS break-word ${
                     path?.includes("/en/")
                       ? "text-sm sm:text-base md:text-lg"
                       : "text-sm sm:text-base"
-                  }`}
+                  } ${lang == "ar" ? "font-firaA" : "font-glitch"}`}
                 >
                   {dict?.common?.glass}
-                  <span className="font-air">,</span>
+                  <span
+                    className={`${lang == "ar" ? "font-firaA" : "font-air"}`}
+                  >
+                    ,
+                  </span>
                   {dict?.common?.appeal}
-                  <span className="font-air">,</span> {dict?.common?.status}
-                  <span className="font-air">,</span> {dict?.common?.use}
+                  <span
+                    className={`${lang == "ar" ? "font-firaA" : "font-air"}`}
+                  >
+                    ,
+                  </span>{" "}
+                  {dict?.common?.status}
+                  <span
+                    className={`${lang == "ar" ? "font-firaA" : "font-air"}`}
+                  >
+                    ,
+                  </span>{" "}
+                  {dict?.common?.use}
                   <br />
                   <br />
                   {dict?.common?.worlds}
-                  <span className="font-air">,</span> {dict?.common?.code}
-                  <span className="font-air">,</span> {dict?.common?.whimsy}
+                  <span
+                    className={`${lang == "ar" ? "font-firaA" : "font-air"}`}
+                  >
+                    ,
+                  </span>{" "}
+                  {dict?.common?.code}
+                  <span
+                    className={`${lang == "ar" ? "font-firaA" : "font-air"}`}
+                  >
+                    ,
+                  </span>{" "}
+                  {dict?.common?.whimsy}
                   <span>.</span>
                 </div>
               </div>
@@ -115,7 +147,11 @@ const Board: FunctionComponent<BoardProps> = ({
                 </motion.div>
               </div>
               <div className="flex items-center justify-center flex-col sm:flex-row gap-1.5 w-full md:w-fit h-full">
-                <div className="relative w-fit h-full flex flex-col gap-4 items-center justify-center font-alber mb-0">
+                <div
+                  className={`relative w-fit h-full flex flex-col gap-4 items-center justify-center mb-0 ${
+                    lang == "ar" ? "font-uni" : "font-alber"
+                  }`}
+                >
                   <div className="sm:h-20 xl:h-full 2xl:h-40 w-fit h-fit sm:rotate-90 whitespace-nowrap flex items-center justify-center">
                     100% CC0
                   </div>
@@ -214,6 +250,8 @@ const Board: FunctionComponent<BoardProps> = ({
                     es: "Brutalismo D.I.Y",
                     en: "D.I.Y Brutalism",
                     ym: "D.I.Y Brutalism",
+                    ar: "دي آي واي بروتاليزمو",
+                    pt: "D.I.Y Brutalismo",
                   },
                   code: "68 73 89",
                   reverse: false,
@@ -227,6 +265,8 @@ const Board: FunctionComponent<BoardProps> = ({
                     es: "Retazos Digicore",
                     en: "Digicore Patchwork",
                     ym: "Digicore Patchwork",
+                    ar: "ديجي كور باتشوورك",
+                    pt: "Digicore Patchwork",
                   },
                   code: "100 105 103 105",
                   reverse: true,
@@ -240,6 +280,8 @@ const Board: FunctionComponent<BoardProps> = ({
                     es: "Americana Vintage",
                     en: "Vintage Americana",
                     ym: "Vintage Americana",
+                    ar: "أمريكانا فينتيج",
+                    pt: "Americana Vintage",
                   },
                   code: "118 105 110 116",
                   reverse: false,
@@ -253,6 +295,8 @@ const Board: FunctionComponent<BoardProps> = ({
                     es: "Cottagecore Web Kitsch",
                     en: "Cottagecore Web Kitsch",
                     ym: "Cottagecore Web Kitsch",
+                    ar: "كوتيج كور ويب كيتش",
+                    pt: "Cottage Core Web Kitsch",
                   },
                   code: "119 101 98",
                   reverse: true,
@@ -266,6 +310,8 @@ const Board: FunctionComponent<BoardProps> = ({
                     es: "LoFi Ropa Tec",
                     en: "LoFi Tech Wear",
                     ym: "LoFi Tech Girri'",
+                    ar: "لو فاي تيك وير",
+                    pt: "Lo-Fi Techwear",
                   },
                   code: "108 111 102 105",
                   reverse: false,
@@ -280,6 +326,9 @@ const Board: FunctionComponent<BoardProps> = ({
                     title: {
                       en: string;
                       es: string;
+                      ar: string;
+                      ym: string;
+                      pt: string;
                     };
                     code: string;
                     reverse: boolean;
@@ -299,33 +348,51 @@ const Board: FunctionComponent<BoardProps> = ({
                           item.reverse ? "order-first" : "order-last"
                         }`}
                       >
-                        <div className="relative w-fit h-fit flex items-center justify-center border border-offWhite text-darkP font-firaL text-xxs whitespace-nowrap p-1">
+                        <div
+                          className={
+                            "relative w-fit h-fit flex items-center justify-center border border-offWhite text-darkP font-firaL text-xxs whitespace-nowrap p-1"
+                          }
+                        >
                           {item.code}
                         </div>
                         <div className="relative w-fit h-fit flex items-center justify-center flex-row gap-3">
                           <div className="relative w-fit h-fit flex items-center justify-center text-xs font-fira text-darkP">{`0${
                             index + 1
                           }`}</div>
-                          <div className="relative w-fit h-fit flex items-start justify-center font-fira text-darkP text-md flex-col gap-1">
-                            <div className="relative w-fit h-fit flex items-center justify-center">
+                          <div
+                            className={`relative w-fit h-fit flex items-start justify-center text-darkP text-md flex-col gap-1 ${
+                              lang == "ar" ? "font-uni" : "font-fira"
+                            }`}
+                          >
+                            <div
+                              dir={lang == "ar" ? "rtl" : "ltr"}
+                              className="relative w-fit h-fit flex items-center justify-center"
+                            >
                               {
                                 item.title?.[
                                   (path.match(
-                                    /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                  )?.[0] as "en") ?? "en"
+                                    /(?<=\/)(en|es|ar|ym|pt)(?=\/)/
+                                  )?.[0] as "en" | "es" | "ar" | "ym" | "pt") ??
+                                    "en"
                                 ]?.split(" ")[0]
                               }
                             </div>
-                            <div className="relative font-firaB w-fit h-fit flex items-center justify-center">
+                            <div
+                              dir={lang == "ar" ? "rtl" : "ltr"}
+                              className={`relative w-fit h-fit flex items-center justify-center ${
+                                lang == "ar" ? "font-uni" : "font-firaB"
+                              }`}
+                            >
                               {item.title?.[
                                 (path.match(
                                   /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                )?.[0] as "en") ?? "en"
+                                )?.[0] as "en" | "es" | "ar" | "ym") ?? "en"
                               ]?.substring(
                                 item.title?.[
                                   (path.match(
-                                    /(?<=\/)(en|es|ar|ym)(?=\/)/
-                                  )?.[0] as "en") ?? "en"
+                                    /(?<=\/)(en|es|ar|ym|pt)(?=\/)/
+                                  )?.[0] as "en" | "es" | "ar" | "ym" | "pt") ??
+                                    "en"
                                 ]?.indexOf(" ") + 1
                               )}
                             </div>
@@ -359,8 +426,15 @@ const Board: FunctionComponent<BoardProps> = ({
               )}
             </div>
           </div>
-          <div className="relative h-fit w-full px-3 py-2 flex items-center justify-center flex-col">
-            <div className="relative leading-snug w-fit h-fit text-xs font-firaL text-center break-word flex items-center justify-center">
+          <div
+            className="relative h-fit w-full px-3 py-2 flex items-center justify-center flex-col"
+            dir={lang == "ar" ? "rtl" : "ltr"}
+          >
+            <div
+              className={`relative leading-snug w-fit h-fit text-xs text-center break-word flex items-center justify-center ${
+                lang == "ar" ? "font-uni" : "font-firaL"
+              }`}
+            >
               {dict?.common?.micro} <br />
               <br />
               {dict?.common?.virt}

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getAllCollections } from "../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY_INTERNAL } from "../lib/constants";
 
-const locales = ["en", "es", "ar", "ym"];
+const locales = ["en", "es", "ar", "ym", "pt"];
 
 function escapeXml(unsafe: string) {
   if (!unsafe) return "";

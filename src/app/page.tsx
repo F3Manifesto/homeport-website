@@ -10,7 +10,7 @@ export default async function Home() {
       dict={dict}
       page={
         <Suspense fallback={<RouterChange />}>
-          <Entry dict={dict} />
+          <Entry dict={dict} lang={"en"} />
         </Suspense>
       }
     />

@@ -3,7 +3,13 @@ import Modals from "../components/Modals/modules/Modals";
 export type tParams = Promise<{ lang: string }>;
 
 export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "es" }, { lang: "ar" }, { lang: "ym" }];
+  return [
+    { lang: "en" },
+    { lang: "es" },
+    { lang: "ar" },
+    { lang: "ym" },
+    { lang: "pt" },
+  ];
 }
 
 export default function RootLayout({

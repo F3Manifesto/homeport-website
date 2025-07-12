@@ -16,7 +16,7 @@ import IsekaiGallery from "./IsekaiGallery";
 import Search from "./Search";
 import Gallery from "./Gallery";
 
-export default function Entry({ dict }: { dict: any }) {
+export default function Entry({ dict, lang }: { dict: any; lang: string }) {
   const context = useContext(ModalContext);
   const {
     filteredGallery,
@@ -35,7 +35,12 @@ export default function Entry({ dict }: { dict: any }) {
         className="flex flex-col bg-offBlack h-fit w-full relative justify-start items-center"
       >
         <Film dict={dict} />
-        <Board dict={dict} goShopping={goShopping} handleURL={handleURL} />
+        <Board
+          lang={lang}
+          dict={dict}
+          goShopping={goShopping}
+          handleURL={handleURL}
+        />
         <div className="w-full h-[400vh] items-center justify-center relative flex bg-offBlack overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
@@ -48,9 +53,17 @@ export default function Entry({ dict }: { dict: any }) {
             />
           </div>
           <div className="absolute w-full h-fit top-4 flex items-center justify-between gap-3 flex-col md:flex-row">
-            <div className="font-glitch w-full md:w-96 xl:w-72 h-fit relative inline-table flex-col text-sm sm:text-base md:text-lg leading-tight cursor-empireS break-word items-center justify-center pl-2 half:pl-0 half:left-24 text-lightYellow">
+            <div
+              className={`w-full md:w-96 xl:w-72 h-fit relative inline-table flex-col text-sm sm:text-base md:text-lg leading-tight cursor-empireS break-word items-center justify-center half:pl-0 half:left-24 text-lightYellow ${
+                lang == "ar" ? "font-firaA pr-2" : "font-glitch pl-2"
+              }`}
+              dir={lang == "ar" ? "rtl" : "ltr"}
+            >
               {dict?.common?.looks}
-              <em className="font-air">,</em> {dict?.common?.elec}
+              <em className={`${lang == "ar" ? "font-firaA" : "font-air"}`}>
+                ,
+              </em>{" "}
+              {dict?.common?.elec}
             </div>
             <div className="relative w-28 h-fit flex items-center justify-center mr-0">
               <motion.div
@@ -82,7 +95,9 @@ export default function Entry({ dict }: { dict: any }) {
             </div>
           </div>
           <div
-            className="absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4"
+            className={`absolute w-full h-fit justify-center flex leading-tight top-72 mix-blend-hard-light text-[20vw] md:text-[11rem] cursor-empireA text-center items-center p-4 ${
+              lang == "ar" ? "font-uk" : "font-air"
+            }`}
             id="want"
           >
             {dict?.common?.want} <br />
@@ -91,7 +106,11 @@ export default function Entry({ dict }: { dict: any }) {
             {dict?.common?.fash}
           </div>
           <div className="absolute top-2/3 left-2 sm:left-10 w-full h-fit flex flex-row items-center justify-start">
-            <div className="relative w-fit h-[25.3rem] flex flex-row items-start justify-center font-holo">
+            <div
+              className={`relative w-fit h-[25.3rem] flex flex-row items-start justify-center ${
+                lang == "ar" ? "font-uni" : "font-holo"
+              }`}
+            >
               <div className="relative w-fit h-full rounded-l-md border-l-2 border-t-2 border-b-2 border-white flex items-start justify-between flex-col gap-20">
                 <div
                   className={`relative w-fit h-fit flex items-start flex-row gap-3 justify-start`}
@@ -198,13 +217,23 @@ export default function Entry({ dict }: { dict: any }) {
           />
         </div>
         <div className="w-full h-fit flex items-center justify-center relative flex-col cursor-empireA bg-offBlack px-4 pb-14 pt-20 text-white gap-4">
-          <div className="relative w-full h-fit break-words text-4xl md:text-6xl font-emiken">
+          <div
+            className={`relative w-full h-fit break-words text-4xl md:text-6xl ${
+              lang == "ar" ? "font-uni" : "font-emiken"
+            }`}
+            dir={lang == "ar" ? "rtl" : "ltr"}
+          >
             {dict?.common?.isekai}
           </div>
-          <div className="relative w-full h-fit text-sm preG:text-md md:text-xl font-conso">
+          <div
+            className={`relative w-full h-fit text-sm preG:text-md md:text-xl ${
+              lang == "ar" ? "font-uni" : "font-conso"
+            }`}
+            dir={lang == "ar" ? "rtl" : "ltr"}
+          >
             {dict?.common?.portal}
           </div>
-          <IsekaiSearch dict={dict} handleURL={handleURL} />
+          <IsekaiSearch lang={lang} dict={dict} handleURL={handleURL} />
           <IsekaiGallery
             dict={dict}
             handleURL={handleURL}
@@ -272,7 +301,11 @@ export default function Entry({ dict }: { dict: any }) {
           </div>
         </div>
         <div className="relative flex w-full h-fit items-center justify-end bg-offWhite">
-          <div className="font-gaia break-word text-3xl relative flex items-center justify-center w-fit h-96 px-10 text-right w-40 mr-0">
+          <div
+            className={`break-word text-3xl relative flex items-center justify-center w-fit h-96 px-10 text-right w-40 mr-0  ${
+              lang == "ar" ? "font-uni" : "font-gaia"
+            }`}
+          >
             {message}
           </div>
         </div>

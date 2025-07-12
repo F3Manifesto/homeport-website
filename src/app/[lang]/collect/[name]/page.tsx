@@ -94,5 +94,5 @@ export default async function Collect({
   }
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <CollectEntry collection={collection} dict={dict} />;
+  return <CollectEntry lang={lang} collection={collection} dict={dict} />;
 }

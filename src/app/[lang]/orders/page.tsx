@@ -20,5 +20,5 @@ export default async function Orders({ params }: { params: tParams }) {
   const { lang } = await params;
 
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
-  return <OrdersEntry dict={dict} />;
+  return <OrdersEntry dict={dict} lang={lang} />;
 }

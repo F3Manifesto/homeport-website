@@ -7,7 +7,7 @@ import {
   TITLES,
 } from "../lib/constants";
 
-const locales = ["en", "es", "ar", "ym"];
+const locales = ["en", "es", "ar", "ym", "pt"];
 
 const STATIC_IMAGES = [
   "QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9",

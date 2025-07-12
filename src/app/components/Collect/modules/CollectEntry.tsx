@@ -16,9 +16,11 @@ import { Gallery } from "../../Common/types/common.types";
 export default function CollectEntry({
   dict,
   collection,
+  lang,
 }: {
   dict: any;
   collection: Gallery;
+  lang: string;
 }) {
   const context = useContext(ModalContext);
   const router = useRouter();
@@ -129,7 +131,7 @@ export default function CollectEntry({
             </div>
           </div>
           <div className="relative w-full h-full flex flex-col gap-3 items-center justify-center pt-10 pb-24 cursor-empireA px-5">
-            <Metadata post={post} item={collection!} dict={dict} />
+            <Metadata lang={lang} post={post} item={collection!} dict={dict} />
             <div className="relative w-full h-fit flex flex-col lg:flex-row gap-2 justify-start items-start">
               <References post={post} dict={dict} />
             </div>

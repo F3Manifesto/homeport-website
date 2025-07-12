@@ -9,7 +9,7 @@ export default async function Home({ params }: { params: tParams }) {
   const dict = await (getDictionary as (locale: any) => Promise<any>)(lang);
   return (
     <Suspense fallback={<RouterChange />} >
-      <Entry dict={dict} />
+      <Entry dict={dict} lang={lang} />
     </Suspense>
   );
 }

@@ -5,9 +5,14 @@ import { IsekaiSearchProps } from "../types/common.types";
 const IsekaiSearch: FunctionComponent<IsekaiSearchProps> = ({
   handleURL,
   dict,
+  lang,
 }): JSX.Element => {
   return (
-    <div className="relative w-full h-fit flex sm:flex-nowrap flex-wrap flex-row items-start justify-start px-4 font-conso sm:pt-20 pt-10">
+    <div
+      className={`relative w-full h-fit flex sm:flex-nowrap flex-wrap flex-row items-start justify-start px-4 sm:pt-20 pt-10 ${
+        lang == "ar" ? "font-uni" : "font-conso"
+      }`}
+    >
       <div className="relative w-full h-fit flex items-start justify-center flex-col gap-5">
         <div className="relative flex flex-wrap justify-between gap-5 w-full h-fit items-center">
           {IDIOMAS?.map((idioma: string, indice: number) => {

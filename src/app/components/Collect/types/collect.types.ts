@@ -29,7 +29,8 @@ export interface OracleData {
 export type MetadataProps = {
   item: Gallery;
   dict: any;
-  post: Post | undefined
+  lang: string;
+  post: Post | undefined;
 };
 
 export type InteractBarProps = {

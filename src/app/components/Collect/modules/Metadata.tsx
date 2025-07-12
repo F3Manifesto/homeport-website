@@ -19,6 +19,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
   dict,
   item,
   post,
+  lang,
 }): JSX.Element => {
   const collectRef = useRef<null | HTMLDivElement>(null);
   const { chainId, address, isConnected } = useAccount();
@@ -124,6 +125,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               es: "Americana Vintage",
                               en: "Vintage Americana",
                               ym: "Vintage Americana",
+                              ar: "أمريكانا فينتيج",
+                              pt: "Americana Vintage",
                             },
                             image:
                               "QmZJLFCwTWpbxGwVNxR5MFHgkq54PRWXhpL3REN5DxAeML",
@@ -133,6 +136,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               es: "Retazos Digicore",
                               en: "Digicore Patchwork",
                               ym: "Digicore Patchwork",
+                              ar: "ديجي كور باتشوورك",
+                              pt: "Digicore Patchwork",
                             },
                             image:
                               "QmcK4e8wqP8p4YgQ5k3wMrFqwHTPL1Ex5vGQ1eHYNs6FLX",
@@ -142,6 +147,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               es: "Brutalismo DIY",
                               en: "DIY Brutalism",
                               ym: "DIY Brutalism",
+                              ar: "دي آي واي بروتاليزمو",
+                              pt: "DIY Brutalismo",
                             },
                             image:
                               "QmWTJSNcEuYBqzu1FDFu2XzWtCwqgKcYbXNVNU6Jhvsx1H",
@@ -151,6 +158,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               es: "LoFi Ropa Tec",
                               en: "LoFi Tech Wear",
                               ym: "LoFi Tech Girri'",
+                              ar: "لو فاي تيك وير",
+                              pt: "Lo-Fi Techwear",
                             },
                             image:
                               "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
@@ -160,6 +169,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               es: "Cottagecore Web Kitsch",
                               en: "Cottagecore Web Kitsch",
                               ym: "Cottagecore Web Kitsch",
+                              ar: "كوتيج كور ويب كيتش",
+                              pt: "Cottage Core Web Kitsch",
                             },
                             image:
                               "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
@@ -168,8 +179,8 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                           (value) =>
                             value?.name?.[
                               path.match(
-                                /(?<=\/)(en|es|ar|ym)(?=\/)/
-                              )?.[0] as any as "es" | "en"
+                                /(?<=\/)(en|es|ar|ym|pt)(?=\/)/
+                              )?.[0] as any as "es" | "en" | "ar" | "ym" | "pt"
                             ]?.toLowerCase() ==
                               item?.metadata?.style?.toLowerCase() ||
                             value?.name?.en?.toLowerCase() ==
@@ -240,7 +251,10 @@ const Metadata: FunctionComponent<MetadataProps> = ({
             <div className="relative w-fit h-fit flex text-offBlack font-firaB text-2xl">
               {dict?.collect?.details}
             </div>
-            <div className="relative w-fit h-fit flex text-sol font-firaL text-xs opacity-90">
+            <div
+              className="relative w-fit h-fit flex text-sol font-firaL text-xs opacity-90"
+              dir={lang == "ar" ? "rtl" : "ltr"}
+            >
               {dict?.collect?.encrypt}
             </div>
             <div className="relative flex flex-row flex-wrap items-start justify-start gap-5 w-full h-fit">

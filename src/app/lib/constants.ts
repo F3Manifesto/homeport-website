@@ -7,13 +7,14 @@ export const INFURA_GATEWAY_INTERNAL: string =
   "https://f3manifesto.xyz/api/infura/";
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 export const GROVE_GATEWAY: string = "https://api.grove.storage/";
-export const LOCALES: string[] = ["en", "es", "ar", "ym"];
+export const LOCALES: string[] = ["en", "es", "ar", "ym", "pt"];
 
 export const LANGUAGE: { [key in string]: string } = {
   ["en"]: "en",
   ["es"]: "es",
   ["ع"]: "ar",
   ["ŋ"]: "ym",
+  ["br"]: "pt",
 };
 
 export const IPFS_REGEX: RegExp = /\b(Qm[1-9A-Za-z]{44}|ba[A-Za-z2-7]{57})\b/;
@@ -188,7 +189,7 @@ export const IDIOMAS: string[] = [
   "Yiddish",
   "Japanese",
   "French",
-  "Ukranian",
+  "Ukrainian",
   "Hungarian",
   "Turkish",
   "Yolŋu",

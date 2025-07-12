@@ -103,7 +103,7 @@ export default async function Collect({
       dict={dict}
       page={
         <Suspense fallback={<RouterChange />}>
-          <CollectEntry collection={collection} dict={dict} />
+          <CollectEntry lang={"en"} collection={collection} dict={dict} />
         </Suspense>
       }
     />

@@ -5,13 +5,24 @@ import { ModalContext } from "@/app/providers";
 import Image from "next/image";
 import { ReactElement, useContext } from "react";
 
-export default function FooterEntry({ dict }: { dict: any }) {
+export default function FooterEntry({
+  dict,
+  lang,
+}: {
+  dict: any;
+  lang: string;
+}) {
   const context = useContext(ModalContext);
 
   return (
     <div className="relative w-full h-fit flex items-center justify-center bg-black items-stretch cursor-empireA mb-0 flex-col md:flex-row gap-10 md:gap-3 pt-6 pb-2 px-4 text-white">
       <div className="relative w-fit min-h-full flex flex-col gap-3 items-start justify-between grow">
-        <div className="relative w-fit h-fit text-left items-center justify-center flex font-futur text-lg w-5/6 md:w-72 tracking-widest leading-relaxed mt-0">
+        <div
+          className={`relative w-fit h-fit text-left items-center justify-center flex text-lg w-5/6 md:w-72 tracking-widest leading-relaxed mt-0  ${
+            lang == "ar" ? "font-uni" : "font-futur"
+          }`}
+          dir={lang == "ar" ? "rtl" : "ltr"}
+        >
           {dict?.footer?.before}
         </div>
         <div className="relative items-center justify-center w-fit h-fit text-sm font-futur mb-0 flex">
@@ -19,17 +30,32 @@ export default function FooterEntry({ dict }: { dict: any }) {
         </div>
       </div>
       <div className="relative w-full h-full flex flex-col gap-10 items-start justify-between">
-        <div className="relative h-fit w-5/6 flex items-center justify-center text-left text-xs font-glitch leading-8 whitespace-pre-line">
+        <div
+          className={`relative h-fit w-5/6 flex items-center justify-center text-left text-xs leading-8 whitespace-pre-line ${
+            lang == "ar" ? "font-uni" : "font-glitch"
+          }`}
+          dir={lang == "ar" ? "rtl" : "ltr"}
+        >
           {dict?.footer?.prompt}
         </div>
-        <div className="relative h-fit w-fit text-sm font-futur flex items-center justify-center text-left mb-0">
+        <div
+          className={`relative h-fit w-fit text-sm flex items-center justify-center text-left mb-0 ${
+            lang == "ar" ? "font-uni" : "font-futur"
+          }`}
+          dir={lang == "ar" ? "rtl" : "ltr"}
+        >
           {dict?.footer?.log}
         </div>
       </div>
       <div className="relative w-fit flex grow flex-col gap-3 items-start justify-between min-h-full">
         <div className="relative flex items-start md:items-center justify-center flex-col gap-2 w-fit h-fit flex-wrap sm:flex-nowrap">
           <div className="relative w-fit h-fit flex items-center justify-center flex-row gap-1.5">
-            <div className="relative font-fira text-xs w-fit h-fit flex items-center justify-center text-white">
+            <div
+              className={`relative text-xs w-fit h-fit flex items-center justify-center text-white  ${
+                lang == "ar" ? "font-uni" : "font-fira"
+              }`}
+              dir={lang == "ar" ? "rtl" : "ltr"}
+            >
               {dict?.footer?.feed}
             </div>
             <div className="relative h-4 w-4 flex items-center justify-center rounded-full opacity-75 animate-ping bg-green-500"></div>

@@ -25,7 +25,7 @@ export default async function Orders() {
       dict={dict}
       page={
         <Suspense fallback={<RouterChange />}>
-          <OrdersEntry dict={dict} />
+          <OrdersEntry dict={dict} lang="en" />
         </Suspense>
       }
     />

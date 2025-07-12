@@ -7,6 +7,12 @@
 }
 
 @font-face {
+  font-family: "Fira";
+  font-weight: 400;
+  src: url("/fonts/Fira.otf");
+}
+
+@font-face {
   font-family: "New York";
   font-weight: 400;
   src: url("/fonts/NewYork.otf");
@@ -91,9 +97,19 @@
 }
 
 @font-face {
+  font-family: "Uk";
+  src: url("/fonts/Uk.ttf");
+}
+
+@font-face {
   font-family: "Jack Lane";
   font-weight: 400;
   src: url("/fonts/jacklane_2.woff");
+}
+
+@font-face {
+  font-family: "Uni";
+  src: url("/fonts/unixel.ttf");
 }
 
 @font-face {
@@ -106,8 +122,10 @@
   --font-xxs: 0.6rem;
 
   --font-holo: "Nan Holo";
+  --font-firaA: "Fira";
   --font-york: "New York";
   --font-air: "Air Strike";
+  --font-uk: "Uk";
   --font-emiken: "Emiken";
   --font-atmos: "Atmosphere";
   --font-alber: "Alberto";
@@ -122,6 +140,7 @@
   --font-din: "DIN Condensed";
   --font-futur: "Futurist";
   --font-jacklane: "Jack Lane";
+  --font-uni: "Uni";
 
   --color-offBlack: #111313;
   --color-offBlue: #01030c;
@@ -174,6 +193,15 @@
   }
   .font-york {
     font-family: var(--font-york);
+  }
+  .font-firaA {
+    font-family: var(--font-firaA);
+  }
+  .font-uk {
+    font-family: var(--font-uk);
+  }
+  .font-uni {
+    font-family: var(--font-uni);
   }
   .font-air {
     font-family: var(--font-air);
@@ -279,7 +307,6 @@ input:focus {
 }
 
 #want {
-  font-family: "Air Strike";
   display: flex;
   position: absolute;
 
