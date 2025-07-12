@@ -159,7 +159,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               en: "LoFi Tech Wear",
                               ym: "LoFi Tech Girri'",
                               ar: "لو فاي تيك وير",
-                              pt: "Lo-Fi Techwear",
+                              pt: "LoFi Tech Wear",
                             },
                             image:
                               "QmSu8HaEDZAy1CXAPoogGrmdtBkps8Rjk3bwcDEr9No6HP",
@@ -170,7 +170,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
                               en: "Cottagecore Web Kitsch",
                               ym: "Cottagecore Web Kitsch",
                               ar: "كوتيج كور ويب كيتش",
-                              pt: "Cottage Core Web Kitsch",
+                              pt: "Cottagecore Web Kitsch",
                             },
                             image:
                               "QmdXPUuopyM2feMd275n2qLzD2qkY3ky44ct22tHFdqzQR",
