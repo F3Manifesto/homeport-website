@@ -185,14 +185,14 @@ const Board: FunctionComponent<BoardProps> = ({
                 link: "https://digitalax.xyz",
               },
               {
-                link: "https://chromadin.xyz",
-                image: "QmXM6QSYCbMJ5eXJHuGqMTbCTkaDqth5c4NswX2nWTpenB",
-                title: "Chromadin",
+                link: "https://cc0web3fashion.com",
+                image: "QmW7PL8jDBy3owPouwsoYve7vbWsqxytLfdnkChLmJBMMV",
+                title: "CC0 Web3 Fashion",
               },
               {
-                link: "https://cypher.digitalax.xyz",
-                image: "QmYRZYGFKgH6wGJ39aWHbr7T1PsySh2kTSjo11yEZrrGcM",
-                title: "Cypher",
+                link: "https://globaldesignernetwork.com",
+                image: "QmbNDgnT5oJUb9W1gCLkSN11re13V34wjda85hdH6FV4Mk",
+                title: "Global Designer Network",
               },
               {
                 image: "QmbQkSmVxr6eqQ4TDUYu6cWLnXDsfykYXXXnjqeWPeSo5M",
@@ -205,9 +205,9 @@ const Board: FunctionComponent<BoardProps> = ({
                 link: "https://syntheticfutures.xyz",
               },
               {
-                title: "Boudica",
-                image: "QmerLASHD3GJTk87LYgVPY3ecSDxMsQ4DbNEowdTSr3ZvB",
-                link: "https://boudica.emancipa.xyz",
+                title: "W3FW",
+                image: "QmTTzNHLyxPf47auAUAxeuihcpBovX7kY8pY4gZGA6Dx9t",
+                link: "https://web3fashionweek.com",
               },
             ].map(
               (

@@ -72,8 +72,13 @@ export default function RootLayout({
               url: "https://f3manifesto.xyz/",
               founder: {
                 "@type": "Person",
+                "@id": "https://emmajanemackinnonlee.com/#person",
                 name: "Emma-Jane MacKinnon-Lee",
                 url: "https://emmajanemackinnonlee.com/",
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": "https://emmajanemackinnonlee.com/",
+                },
                 sameAs: [
                   "https://emmajanemackinnonlee.com/",
                   "https://emmajanemackinnon.com/",
@@ -81,11 +86,11 @@ export default function RootLayout({
                   "https://emmajanemackinnonlee.xyz/",
                   "https://emmajanemackinnonlee.net/",
                   "https://emmajanemackinnonlee.ai/",
+                  "https://emmajane.ai/",
                   "https://emmajanemackinnonlee.org/",
-                  "https://emmajanemackinnonlee.io/",
-                  "https://emmajanemackinnonlee.live/",
                   "https://emmajanemackinnonlee-f3manifesto.com/",
                   "https://emmajanemackinnonlee-digitalax.com/",
+                  "https://emmajanemackinnonlee-runway.com/",
                   "https://icoinedweb3fashion.com/",
                   "https://syntheticfutures.xyz/",
                   "https://web3fashion.xyz/",
