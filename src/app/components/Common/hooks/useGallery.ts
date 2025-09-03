@@ -6,6 +6,8 @@ import { fetchPost } from "@lens-protocol/client/actions";
 import { getAllCollections } from "../../../../../graphql/queries/getCollections";
 import { INFURA_GATEWAY } from "@/app/lib/constants";
 
+
+
 const useGallery = () => {
   const context = useContext(ModalContext);
   const search = useSearchParams();
@@ -23,7 +25,6 @@ const useGallery = () => {
     setGalleryLoading(true);
     try {
       const returned = await getAllCollections(1000, 0);
-
       const sexesSet = new Set<string>();
       const stylesSet = new Set<string>();
       const dropsSet = new Set<string>();

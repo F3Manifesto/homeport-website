@@ -187,11 +187,11 @@ const Film: FunctionComponent<{ dict: any }> = ({ dict }): JSX.Element => {
                 { image: "QmNS1DJqH8XEXSoAVRtJ89iegcTQvu8nZPo79ozNgHPMmp" },
                 {
                   image: "QmSweJiaPzfewwfFxPiJ1ERhoy25DXK5RCGtzdaoovgviE",
-                  link: "https://kinora.irrevocable.dev/video/0x01c6a9-0x49",
+                  link: "https://kinora.irrevocable.dev/es/video/19941247888346924968936860334482122153116615320380873193618245361321612497383/",
                 },
                 {
                   image: "QmdmACJZ2erwjM6pQVobqi9c2nkAzSDS8CNBv91csyGUZd",
-                  link: "https://kinora.irrevocable.dev/video/0x01c6a9-0x48",
+                  link: "https://kinora.irrevocable.dev/es/video/100536816821653952064635670007879704301056762604886691973074851683521133961863/",
                 },
               ].map(
                 (
