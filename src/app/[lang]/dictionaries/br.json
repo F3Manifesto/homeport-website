@@ -115,8 +115,8 @@
     "Ukrainian": "Ucraniano",
     "Hungarian": "Húngaro",
     "Turkish": "Turco",
-    "YolKu": "Yolŋu Matha",
-    "error": "Algo deu errado :( tentar novamente?",
+    "Yolŋu": "Yolŋu Matha",
+    "error": "Algo deu errado :/ Tentar novamente?",
     "success": "Indexado com sucesso",
     "index": "Indexando",
     "mirror": "Espelhar",
@@ -131,7 +131,7 @@
     "fetch": "Erro ao buscar nova conta",
     "createAccount": "Erro ao criar conta",
     "taken": "Esse nome de usuário já está em uso. tentar outro?",
-    "reunion": "Reunião",
+    "reunion": "Reunião de NFTs necessária! Conectar seus tesouros do F3M Lens à sua carteira principal?",
     "noOrders": "Ainda não há pedidos.",
     "order": "Pedido",
     "descifrar": "Descriptografar",
@@ -142,7 +142,7 @@
     "home": "início"
   },
   "footer": {
-    "before": "Antes de ir, vamos ver o que o mais recente modelo de linguagem synth\ndiz sobre si mesmo&",
+    "before": "Antes de ir, vamos ver o que o mais recente modelo de linguagem synth\ndiz sobre si mesmo…",
     "auto": "Assinatura",
     "feed": "Feed da micro fábrica latente",
     "log": "log: 0012",
