@@ -18,11 +18,11 @@ const IsekaiSearch: FunctionComponent<IsekaiSearchProps> = ({
           {IDIOMAS?.map((idioma: string, indice: number) => {
             return (
               <span
-                className={`flex items-center justify-center rounded-full px-1 cursor-empireS w-fit h-fit relative xl:text-base inline-flex break-word`}
+                className={`flex items-center justify-center rounded-full px-1 cursor-empireS w-fit h-fit relative inline-flex break-word`}
                 key={indice}
               >
                 <div
-                  className={`relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue hover:text-black active:text-black text-xs galaxy:text-sm lg:text-md flex items-center justify-center ${
+                  className={`relative rounded-full p-2 w-fit cursor-empireS hover:bg-lightYellow active:bg-grayBlue hover:text-black active:text-black text-xs flex items-center justify-center ${
                     typeof window !== "undefined" &&
                     (window.location.search?.includes(idioma) ||
                       window.location.search?.includes(

@@ -192,6 +192,7 @@ export const IDIOMAS: string[] = [
   "Ukrainian",
   "Hungarian",
   "Turkish",
+  "Gaelic",
   "Yolŋu",
 ];
 
