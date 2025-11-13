@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ApolloClient, InMemoryCache, HttpLink, gql } from "@apollo/client";
 
-const serverAutographClient = new ApolloClient({
+const serverPrintClient = new ApolloClient({
   link: new HttpLink({
     uri: process.env.GRAPH_NODE_URL,
   }),
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await serverAutographClient.query({
+    const result = await serverPrintClient.query({
       query: gql(query),
       variables: variables || {},
       fetchPolicy: "no-cache",

@@ -16,3 +16,12 @@ export const graphF3MClient = new ApolloClient({
   link: f3mLinkPrint,
   cache: new InMemoryCache(),
 });
+
+const serverLink = new HttpLink({
+  uri: process.env.GRAPH_NODE_URL,
+});
+
+export const graphF3MServerClient = new ApolloClient({
+  link: serverLink,
+  cache: new InMemoryCache(),
+});

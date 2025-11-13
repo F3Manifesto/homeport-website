@@ -1,4 +1,4 @@
-import { graphF3MClient } from "@/app/lib/graph/client";
+import { graphF3MClient, graphF3MServerClient } from "@/app/lib/graph/client";
 import { FetchResult, gql } from "@apollo/client";
 
 const COLLECTIONS = `
@@ -72,7 +72,8 @@ export const getOneCollection = async (
   title: string
 ): Promise<FetchResult | void> => {
   let timeoutId: NodeJS.Timeout | undefined;
-  const queryPromise = graphF3MClient.query({
+  const client = typeof window === "undefined" ? graphF3MServerClient : graphF3MClient;
+  const queryPromise = client.query({
     query: gql(COLLECTIONS),
     variables: {
       title,
@@ -102,7 +103,8 @@ export const getAllCollections = async (
   skip: number
 ): Promise<FetchResult | void> => {
   let timeoutId: NodeJS.Timeout | undefined;
-  const queryPromise = graphF3MClient.query({
+  const client = typeof window === "undefined" ? graphF3MServerClient : graphF3MClient;
+  const queryPromise = client.query({
     query: gql(ALL_COLLECTIONS),
     variables: {
       first,
