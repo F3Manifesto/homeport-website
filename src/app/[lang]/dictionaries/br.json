@@ -136,7 +136,8 @@
     "noOrders": "Ainda não há pedidos.",
     "order": "Pedido",
     "descifrar": "Descriptografar",
-    "descifrado": "Descriptografado"
+    "descifrado": "Descriptografado",
+    "decryptPrompt": "Digite a chave privada da sua carteira para descriptografar os detalhes de entrega.\n\nEsta interface é totalmente de código aberto, roda inteiramente no seu navegador e nunca armazena sua chave. Certifique-se de estar em um ambiente seguro antes de digitá-la."
   },
   "404": {
     "glitch": "Algo falhou no sistema. Voltar ao",

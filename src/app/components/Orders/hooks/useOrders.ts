@@ -1,25 +1,17 @@
 import { useEffect, useState } from "react";
-import { EncryptedDetails, Order } from "../types/orders.types";
+import { EncryptedData, Order } from "../types/orders.types";
 import { useAccount } from "wagmi";
 import { getOrders } from "../../../../../graphql/queries/getOrders";
 import { INFURA_GATEWAY, orderStatus } from "@/app/lib/constants";
-import {
-  checkAndSignAuthMessage,
-  LitNodeClient,
-  uint8arrayToString,
-} from "@lit-protocol/lit-node-client";
-import { LIT_NETWORK } from "@lit-protocol/constants";
+import { decryptData } from "@/app/lib/helpers/encryption";
 
-const useOrders = () => {
+const useOrders = (dict: any) => {
   const { address } = useAccount();
   const [ordersLoading, setOrdersLoading] = useState<boolean>(false);
   const [decryptLoading, setDecryptLoading] = useState<boolean[]>([]);
   const [orderOpen, setOrderOpen] = useState<boolean[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
-  const client = new LitNodeClient({
-    litNetwork: LIT_NETWORK.Datil,
-    debug: false,
-  });
+  const [privateKey, setPrivateKey] = useState<string | null>(null);
 
   const handleOrders = async () => {
     setOrdersLoading(true);
@@ -65,31 +57,34 @@ const useOrders = () => {
     }
 
     try {
-      let nonce = await client.getLatestBlockhash();
-
-      const authSig = await checkAndSignAuthMessage({
-        chain: "polygon",
-        nonce,
-      });
-
       const data = await fetch(
         `${INFURA_GATEWAY}/ipfs/${
           orders[index]?.details?.split("ipfs://")?.[1]
         }`
       );
 
-      const details = (await data.json()) as EncryptedDetails;
+      let key = privateKey;
 
-      await client.connect();
-      const { decryptedData } = await client.decrypt({
-        dataToEncryptHash: details.dataToEncryptHash,
-        accessControlConditions: details.accessControlConditions,
-        chain: details.chain || "polygon",
-        ciphertext: details.ciphertext,
-        authSig,
-      });
+      if (!key) {
+        const promptMessage = dict?.common?.decryptPrompt;
+        const promptValue = window.prompt(promptMessage);
 
-      const fulfillment = await JSON.parse(uint8arrayToString(decryptedData));
+        if (!promptValue) {
+          return;
+        }
+
+        key = promptValue.trim();
+
+        if (!key.startsWith("0x")) {
+          key = `0x${key}`;
+        }
+
+        setPrivateKey(key);
+      }
+
+      const details = (await data.json()) as EncryptedData;
+
+      const fulfillment = await decryptData(details, key, address);
 
       setOrders((prev) => {
         const pedidos = [...prev];

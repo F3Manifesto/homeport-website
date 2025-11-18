@@ -24,7 +24,7 @@ export default function OrdersEntry({
     handleDecrypt,
     orderOpen,
     setOrderOpen,
-  } = useOrders();
+  } = useOrders(dict);
 
   if (!ordersLoading) {
     return (

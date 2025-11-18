@@ -1,13 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { LIT_NETWORK } from "@lit-protocol/constants";
-import { AccessControlConditions } from "@lit-protocol/types";
-import {
-  LitNodeClient,
-  checkAndSignAuthMessage,
-  uint8arrayFromString,
-} from "@lit-protocol/lit-node-client";
 import { createPublicClient, createWalletClient, custom, http } from "viem";
-import { DIGITALAX_ADDRESS, F3M_OPEN_ACTION } from "../../../lib/constants";
+import {
+  DIGITALAX_ADDRESS,
+  DIGITALAX_PUBLIC_KEY,
+  F3M_OPEN_ACTION,
+} from "../../../lib/constants";
 import { Details } from "../types/collect.types";
 import { chains } from "@lens-chain/sdk/viem";
 import { Gallery } from "../../Common/types/common.types";
@@ -16,6 +13,10 @@ import { executePostAction } from "@lens-protocol/client/actions";
 import { blockchainData } from "@lens-protocol/client";
 import { ethers } from "ethers";
 import pollResult from "@/app/lib/helpers/pollResult";
+import {
+  encryptForMultipleRecipients,
+  getPublicKeyFromSignature,
+} from "@/app/lib/helpers/encryption";
 
 const useCheckout = (
   collection: Gallery,
@@ -25,10 +26,6 @@ const useCheckout = (
   const publicClient = createPublicClient({
     chain: chains.mainnet,
     transport: http("https://rpc.lens.xyz"),
-  });
-  const client = new LitNodeClient({
-    litNetwork: LIT_NETWORK.Datil,
-    debug: false,
   });
   const context = useContext(ModalContext);
   const coder = new ethers.AbiCoder();
@@ -57,67 +54,44 @@ const useCheckout = (
       return;
 
     try {
-      let nonce = await client.getLatestBlockhash();
-      await checkAndSignAuthMessage({
-        chain: "polygon",
-        nonce: nonce!,
+      const clientWallet = createWalletClient({
+        chain: chains.mainnet,
+        transport: custom((window as any).ethereum),
       });
-      await client.connect();
+
+      const message = "Sign this message to encrypt your fulfillment details";
+      const signature = await clientWallet.signMessage({
+        account: address,
+        message,
+      });
+
+      const buyerPublicKey = await getPublicKeyFromSignature(
+        message,
+        signature
+      );
 
       const { tamano, ...newDetails } = details;
 
-      const accessControlConditions = [
+      const encryptedData = await encryptForMultipleRecipients(
         {
-          contractAddress: "",
-          standardContractType: "",
-          chain: "polygon",
-          method: "",
-          parameters: [":userAddress"],
-          returnValueTest: {
-            comparator: "=",
-            value: address.toLowerCase(),
-          },
+          ...newDetails,
+          sizes: tamano?.trim() !== "" ? [tamano] : [],
+          fulfillerAddress: [DIGITALAX_ADDRESS],
         },
-        {
-          operator: "or",
-        },
-        {
-          contractAddress: "",
-          standardContractType: "",
-          chain: "polygon",
-          method: "",
-          parameters: [":userAddress"],
-          returnValueTest: {
-            comparator: "=",
-            value: DIGITALAX_ADDRESS?.toLowerCase() as string,
-          },
-        },
-      ] as AccessControlConditions;
+        [
+          { address, publicKey: buyerPublicKey },
+          { address: DIGITALAX_ADDRESS, publicKey: DIGITALAX_PUBLIC_KEY },
+        ]
+      );
 
-      const { ciphertext, dataToEncryptHash } = await client.encrypt({
-        accessControlConditions,
-        dataToEncrypt: uint8arrayFromString(
-          JSON.stringify({
-            ...newDetails,
-            sizes: tamano?.trim() !== "" ? [tamano] : [],
-            fulfillerAddress: [DIGITALAX_ADDRESS],
-          })
-        ),
-      });
-
-      const res = await fetch("/api/ipfs", {
+      const ipfsRes = await fetch("/api/ipfs", {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ciphertext,
-          dataToEncryptHash,
-          accessControlConditions,
-          chain: "polygon",
-        }),
+        body: JSON.stringify(encryptedData),
       });
-      const json = await res.json();
+      const json = await ipfsRes.json();
 
       if (!json?.cid) {
         return "";

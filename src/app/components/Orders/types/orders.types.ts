@@ -1,13 +1,12 @@
-import { AccessControlConditions } from "@lit-protocol/types";
 import { Gallery } from "../../Common/types/common.types";
 
-export interface EncryptedDetails {
-  ciphertext: string;
-  dataToEncryptHash: string;
-  chain: string;
-  accessControlConditions: AccessControlConditions;
+export interface EncryptedData {
+  [address: string]: {
+    ephemPublicKey: string;
+    iv: string;
+    ciphertext: string;
+  };
 }
-
 export interface Order {
   messages: string[];
   tokenIds: string[];

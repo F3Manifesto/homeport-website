@@ -134,7 +134,8 @@
     "noOrders": "No orders yet.",
     "order": "Order",
     "descifrar": "Decrypt",
-    "descifrado": "Decrypted"
+    "descifrado": "Decrypted",
+    "decryptPrompt": "Enter your wallet private key to decrypt your fulfillment details.\n\nThis interface is fully open source, runs entirely in your browser, and never stores your key. Make sure you are in a secure environment before entering it."
   },
   "404": {
     "glitch": "There's been a glitch in the fabric. Find your way back",

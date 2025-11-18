@@ -135,7 +135,8 @@
     "noOrders": "Aún no hay pedidos.",
     "order": "Pedido",
     "descifrar": "Descifrar",
-    "descifrado": "Descifrado"
+    "descifrado": "Descifrado",
+    "decryptPrompt": "Ingresa la clave privada de tu billetera para descifrar los detalles de cumplimiento.\n\nEsta interfaz es completamente de código abierto, se ejecuta completamente en tu navegador y nunca almacena tu clave. Asegúrate de estar en un entorno seguro antes de ingresarla."
   },
   "404": {
     "glitch": "Ha habido un fallo en el tejido. Encuentra tu camino de vuelta a",

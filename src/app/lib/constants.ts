@@ -21,7 +21,11 @@ export const IPFS_REGEX: RegExp = /\b(Qm[1-9A-Za-z]{44}|ba[A-Za-z2-7]{57})\b/;
 export const F3M_OPEN_ACTION: `0x${string}` =
   "0xBe8FBd070bD469bd486794C5f6a8C7D1DB2FcDc1";
 export const DIGITALAX_ADDRESS: `0x${string}` =
-  "0xAA3e5ee4fdC831e5274FE7836c95D670dC2502e6";
+  "0xdd35935c12e3748704c96492e5565d34dae73de7";
+
+export const DIGITALAX_PUBLIC_KEY: string =
+  "0x04d9824e95252fda536edb1e80797e5ba885d2a98e1a6d880ab9ccbe050aa850c8d0fdb95f347256c907468b74e058181b14edc8acb3f3b178f2b7946bb9170ebe";
+
 export const ACCEPTED_TOKENS: string[][] = [
   [
     "QmYCDxCv7mJyjn49n84kP6d3ADgGp422ukKzRyd2ZcGEsW",
