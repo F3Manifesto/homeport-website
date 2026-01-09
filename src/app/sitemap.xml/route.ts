@@ -4,6 +4,10 @@ import { INFURA_GATEWAY_INTERNAL } from "../lib/constants";
 
 const locales = ["en", "es", "ar", "ym", "pt"];
 
+function toSlug(value: string) {
+  return encodeURIComponent(value.replace(/\s+/g, "-"));
+}
+
 function escapeXml(unsafe: string) {
   if (!unsafe) return "";
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -24,6 +28,14 @@ function escapeXml(unsafe: string) {
   });
 }
 
+function resolveMediaUrl(media?: string) {
+  if (!media) return "";
+  if (media.startsWith("ipfs://")) {
+    return `${INFURA_GATEWAY_INTERNAL}${media.split("ipfs://")[1]}`;
+  }
+  return media;
+}
+
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://f3manifesto.xyz";
   const gallery = await getAllCollections(1000, 0);
@@ -33,9 +45,47 @@ export async function GET() {
   const collectionsXml = collections
     .map((coll: any) => {
       const rawTitle = coll?.metadata?.title ?? "";
-      const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
+      if (!rawTitle) return "";
+      const safeSlug = toSlug(rawTitle);
       const title = escapeXml(rawTitle.replace(/-/g, " "));
-      const image = coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
+      const imageUrls = (coll?.metadata?.images || [])
+        .map((item: string) => resolveMediaUrl(item))
+        .filter(Boolean);
+      const videoUrls = [
+        resolveMediaUrl(coll?.metadata?.video),
+        resolveMediaUrl(coll?.metadata?.animation_url),
+      ].filter(Boolean);
+      const thumbnailUrl = imageUrls[0];
+
+      const videoXml =
+        thumbnailUrl && videoUrls.length
+          ? videoUrls
+              .map(
+                (videoUrl) => `
+        <video:video>
+          <video:thumbnail_loc>${thumbnailUrl}</video:thumbnail_loc>
+          <video:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></video:title>
+          <video:description><![CDATA[${title} by Emma-Jane MacKinnon-Lee | F3Manifesto Web3 Fashion]]></video:description>
+          <video:content_loc>${videoUrl}</video:content_loc>
+          <video:player_loc allow_embed="yes">${baseUrl}/collect/${safeSlug}/</video:player_loc>
+          <video:family_friendly>yes</video:family_friendly>
+        </video:video>`
+              )
+              .join("")
+          : "";
+
+      const imagesXml = imageUrls.length
+        ? imageUrls
+            .map(
+              (imageUrl: string) => `
+        <image:image>
+          <image:loc>${imageUrl}</image:loc>
+          <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
+          <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
+        </image:image>`
+            )
+            .join("")
+        : "";
 
       return `
       <url>
@@ -48,20 +98,19 @@ export async function GET() {
           )
           .join("")}
         <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" />
-        <image:image>
-          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}</image:loc>
-          <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
-          <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
-        </image:image>
+        ${imagesXml}
+        ${videoXml}
       </url>
     `;
     })
+    .filter(Boolean)
     .join("");
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset 
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
       xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:video="http://www.google.com/schemas/sitemap-video/"
       xmlns:xhtml="http://www.w3.org/1999/xhtml"
     >
       <url>
@@ -78,7 +127,7 @@ export async function GET() {
 
 
            <url>
-        <loc>${baseUrl}/orders</loc>
+        <loc>${baseUrl}/orders/</loc>
         ${locales
           .map(
             (locale) => `

@@ -8,6 +8,10 @@ import {
 } from "../../../../../graphql/queries/getCollections";
 import { getDictionary } from "../../dictionaries";
 
+function toSlug(value: string) {
+  return encodeURIComponent(value.replace(/\s+/g, "-"));
+}
+
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
   return await Promise.all(
@@ -19,7 +23,7 @@ export async function generateStaticParams() {
         coll.metadata = await json.json();
       }
 
-      return { name: coll?.metadata?.title };
+      return { name: toSlug(coll?.metadata?.title || "") };
     })
   );
 }
@@ -28,10 +32,11 @@ export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{
+    lang: string;
     name: string;
   }>;
 }): Promise<Metadata> => {
-  const { name } = await params;
+  const { lang, name } = await params;
   let data = await getOneCollection(
     decodeURIComponent(name)?.replaceAll("-", " ")
   );
@@ -53,7 +58,7 @@ export const generateMetadata = async ({
     title: collection?.metadata?.title,
     description: collection?.metadata?.description,
     alternates: {
-      canonical: `https://f3manifesto.xyz/collect/${name}/`,
+      canonical: `https://f3manifesto.xyz/${lang}/collect/${name}/`,
       languages: LOCALES.reduce((acc, item) => {
         acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}/`;
         return acc;

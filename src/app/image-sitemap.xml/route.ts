@@ -9,6 +9,18 @@ import {
 
 const locales = ["en", "es", "ar", "ym", "pt"];
 
+function toSlug(value: string) {
+  return encodeURIComponent(value.replace(/\s+/g, "-"));
+}
+
+function resolveMediaUrl(media?: string) {
+  if (!media) return "";
+  if (media.startsWith("ipfs://")) {
+    return `${INFURA_GATEWAY_INTERNAL}${media.split("ipfs://")[1]}`;
+  }
+  return media;
+}
+
 const STATIC_IMAGES = [
   "QmeNFvYW5eWDBwFgCkpiU6PY18oabkBuj56iDcr1ZU9AY9",
   "QmQdKuK1f2VmEBoXr7nWr9dEjZo4B2WSRoUs65WxJ5KEzL",
@@ -51,9 +63,14 @@ export async function GET() {
   const collectionsXml = collections
     .map((coll: any) => {
       const rawTitle = coll?.metadata?.title ?? "";
-      const safeSlug = encodeURIComponent(rawTitle.replace(/\s+/g, "-"));
+      if (!rawTitle) return "";
+      const safeSlug = toSlug(rawTitle);
       const title = escapeXml(rawTitle.replace(/-/g, " "));
-      const image = coll?.metadata?.images?.[0]?.split("ipfs://")?.[1];
+      const imageUrls = (coll?.metadata?.images || [])
+        .map((item: string) => resolveMediaUrl(item))
+        .filter(Boolean);
+
+      if (!imageUrls.length) return "";
 
       return `
       <url>
@@ -66,14 +83,20 @@ export async function GET() {
           )
           .join("")}
         <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/collect/${safeSlug}/" />
+        ${imageUrls
+          .map(
+            (imageUrl: string) => `
         <image:image>
-          <image:loc>${INFURA_GATEWAY_INTERNAL}${image}</image:loc>
+          <image:loc>${imageUrl}</image:loc>
           <image:title><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:title>
           <image:caption><![CDATA[${title} | F3Manifesto | Emma-Jane MacKinnon-Lee]]></image:caption>
-        </image:image>
+        </image:image>`
+          )
+          .join("")}
       </url>
     `;
     })
+    .filter(Boolean)
     .join("");
 
   const homeImagesXml = STATIC_IMAGES.map((cid) => {

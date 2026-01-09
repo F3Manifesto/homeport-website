@@ -11,6 +11,10 @@ import Wrapper from "@/app/components/Common/modules/Wrapper";
 import { Suspense } from "react";
 import RouterChange from "@/app/components/Common/modules/RouterChange";
 
+function toSlug(value: string) {
+  return encodeURIComponent(value.replace(/\s+/g, "-"));
+}
+
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
   return await Promise.all(
@@ -22,7 +26,7 @@ export async function generateStaticParams() {
         coll.metadata = await json.json();
       }
 
-      return { name: coll?.metadata?.title };
+      return { name: toSlug(coll?.metadata?.title || "") };
     })
   );
 }
