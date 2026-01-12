@@ -35,7 +35,7 @@ export type MetadataProps = {
 
 export type InteractBarProps = {
   dict: any;
-  post: Post;
+  post: Post | undefined;
 };
 
 export type PublicationProps = {

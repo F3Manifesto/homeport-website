@@ -7,7 +7,7 @@ import {
 } from "@lens-protocol/client/actions";
 import { useContext, useEffect, useState } from "react";
 
-const useBar = (dict: any, post: Post) => {
+const useBar = (dict: any, post: Post | undefined) => {
   const context = useContext(ModalContext);
   const [stats, setStats] = useState<{
     upvotes: number;
@@ -35,7 +35,7 @@ const useBar = (dict: any, post: Post) => {
   });
 
   const reactPost = async () => {
-    if (!context?.lensConectado?.sessionClient) return;
+    if (!context?.lensConectado?.sessionClient || !post?.id) return;
     setInteractionLoading((prev) => ({
       ...prev,
       like: true,
@@ -76,7 +76,7 @@ const useBar = (dict: any, post: Post) => {
   };
 
   const simpleCollect = async () => {
-    if (!context?.lensConectado?.sessionClient) return;
+    if (!context?.lensConectado?.sessionClient || !post?.id) return;
     setInteractionLoading((prev) => ({
       ...prev,
       collect: true,
@@ -124,7 +124,7 @@ const useBar = (dict: any, post: Post) => {
   };
 
   const mirrorPost = async () => {
-    if (!context?.lensConectado?.sessionClient) return;
+    if (!context?.lensConectado?.sessionClient || !post?.id) return;
     setInteractionLoading((prev) => ({
       ...prev,
       mirror: true,

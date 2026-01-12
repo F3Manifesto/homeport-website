@@ -18,6 +18,14 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
   const { openOnboarding, openSwitchNetworks } = useModal();
   const { interactionLoading, reactPost, mirrorPost, stats, simpleCollect } =
     useBar(dict, post);
+  const hasPost = Boolean(post?.id);
+  const openReactBox = (type: "Likes" | "Mirrors" | "Collects") => {
+    if (!post) return;
+    context?.setReactBox({
+      type,
+      post,
+    });
+  };
   const { handleLensConnect, lensLoading } = useLens(address, dict);
 
   return (
@@ -35,13 +43,9 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
           function: () => reactPost(),
           loader: interactionLoading?.like,
           name: "Like",
-          reacted: stats?.hasUpvoted!,
-          who: () =>
-            context?.setReactBox({
-              type: "Likes",
-              post,
-            }),
-          disabled: false,
+          reacted: stats?.hasUpvoted || false,
+          who: () => openReactBox("Likes"),
+          disabled: !hasPost,
         },
         {
           count: stats?.reposts || 0,
@@ -50,29 +54,19 @@ const InteractBar: FunctionComponent<InteractBarProps> = ({
           loader: interactionLoading?.mirror,
           name: "Mirror",
           reacted: stats?.hasReposted,
-          who: () =>
-            context?.setReactBox({
-              type: "Mirrors",
-              post,
-            }),
-          disabled: false,
+          who: () => openReactBox("Mirrors"),
+          disabled: !hasPost,
         },
         {
           count: stats?.collects || 0,
           image: "Qmde7MbuTdD4MvH9Uvns5dCiAYUxDhvAFhmKYFy6wJTMg6",
           function: () => simpleCollect(),
           disabled:
-            post?.actions?.[0]?.__typename !== "SimpleCollectAction"
-              ? true
-              : false,
+            !hasPost || post?.actions?.[0]?.__typename !== "SimpleCollectAction",
           loader: interactionLoading?.collect,
           name: "Collect",
-          reacted: stats?.hasSimpleCollected!,
-          who: () =>
-            context?.setReactBox({
-              type: "Collects",
-              post,
-            }),
+          reacted: stats?.hasSimpleCollected || false,
+          who: () => openReactBox("Collects"),
         },
       ].map(
         (

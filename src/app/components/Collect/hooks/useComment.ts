@@ -37,6 +37,7 @@ const useComment = (
   const makeComment = async () => {
     if (
       !context?.lensConectado?.sessionClient ||
+      !pub?.id ||
       (commentContent.content?.trim() == "" &&
         commentContent?.images?.length < 1)
     )

@@ -46,7 +46,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({
               ${Number(item?.price) / 10 ** 18}
             </div>
           </div>
-          <InteractBar post={post!} dict={dict} />
+          <InteractBar post={post} dict={dict} />
           <div className="relative w-fit h-fit pb-8 galaxy:pb-0 flex flex-col font-firaM gap-2">
             {[
               {

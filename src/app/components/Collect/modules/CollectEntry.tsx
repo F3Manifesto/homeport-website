@@ -24,9 +24,9 @@ export default function CollectEntry({
 }) {
   const context = useContext(ModalContext);
   const router = useRouter();
-  const { indice, setIndice, post, postLoading } = useCollection(collection);
+  const { indice, setIndice, post } = useCollection(collection);
 
-  if (collection && post && !postLoading) {
+  if (collection) {
     return (
       <div className="flex h-full min-h-screen w-full relative cursor-empire selection:bg-lightYellow selection:text-lightYellow bg-gradient-to-b from-lightY via-white to-lightPurple items-start justify-center">
         <div className="w-full h-full flex flex-col relative items-center justify-start">
