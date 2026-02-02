@@ -12,8 +12,6 @@ function toSlug(value: string) {
   return encodeURIComponent(value.replace(/\s+/g, "-"));
 }
 
-export const dynamicParams = false;
-
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
   const collections = await Promise.all(
