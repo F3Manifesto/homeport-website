@@ -16,7 +16,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
-  return await Promise.all(
+  const collections = await Promise.all(
     gallery?.data?.collectionCreateds?.map(async (coll: Gallery) => {
       if (!coll?.metadata && coll?.uri) {
         const json = await fetch(
@@ -25,8 +25,15 @@ export async function generateStaticParams() {
         coll.metadata = await json.json();
       }
 
-      return { name: toSlug(coll?.metadata?.title || "") };
+      return toSlug(coll?.metadata?.title || "");
     })
+  );
+
+  return LOCALES.flatMap((lang) =>
+    collections.map((name) => ({
+      lang,
+      name,
+    }))
   );
 }
 
