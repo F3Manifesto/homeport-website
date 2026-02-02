@@ -15,6 +15,8 @@ function toSlug(value: string) {
   return encodeURIComponent(value.replace(/\s+/g, "-"));
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const gallery = await getAllCollections(1000, 0);
   return await Promise.all(
@@ -67,6 +69,14 @@ export const generateMetadata = async ({
         acc[item] = `https://f3manifesto.xyz/${item}/collect/${name}/`;
         return acc;
       }, {} as { [key: string]: string }),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
     openGraph: {
       images: `${INFURA_GATEWAY}/ipfs/${

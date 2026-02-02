@@ -90,6 +90,8 @@ export async function GET() {
       return `
       <url>
         <loc>${baseUrl}/collect/${safeSlug}/</loc>
+        <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
         ${locales
           .map(
             (altLocale) => `
@@ -115,6 +117,8 @@ export async function GET() {
     >
       <url>
         <loc>${baseUrl}/</loc>
+        <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
         ${locales
           .map(
             (locale) => `
@@ -128,6 +132,8 @@ export async function GET() {
 
            <url>
         <loc>${baseUrl}/orders/</loc>
+        <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
         ${locales
           .map(
             (locale) => `
